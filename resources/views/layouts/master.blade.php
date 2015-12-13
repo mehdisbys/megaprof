@@ -51,8 +51,7 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo"></a>
-                    <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a>
+                    <h1>Megaprof</h1>
                 </div><!-- #logo end -->
 
                 <!-- Primary Navigation
@@ -60,26 +59,17 @@
                 <nav id="primary-menu">
 
                     <ul>
-                        <li><a href="index.html"><div>Home</div></a>
-                            <ul></ul>
+                        <li><a href="index.html"><div>Accueil</div></a>
                         </li>
-                        <li><a href="#"><div>Features</div></a>
-                            <ul></ul>
+                        <li><a href="#"><div>Donner des cours</div></a>
                         </li>
-                        <li class="mega-menu"><a href="#"><div>Pages</div></a>
-                            <div class="mega-menu-content style-2 col-4 clearfix">
-                            </div>
+                        <li><a href="#"><div>Mon Compte</div></a>
                         </li>
-                        <li class="current mega-menu"><a href="#"><div>Portfolio</div></a>
-                            <div class="mega-menu-content style-2 col-5 clearfix">
-                            </div>
+                        <li><a href="#"><div>Messages</div></a>
                         </li>
-                        <li class="mega-menu"><a href="#"><div>Blog</div></a>
+                        <li><a href="#"><div>Aide</div></a>
                         </li>
-                        <li class="mega-menu"><a href="#"><div>Shortcodes</div></a>
-                            <div class="mega-menu-content col-5 clearfix">
-                            </div>
-                        </li>
+
                     </ul>
 
                     <!-- Top Search

@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('layouts.master');
 });
 
-Route::get('/nouvelle-annonce-1', 'AdvertController@createStep1');
+Route::get('/nouvelle-annonce-1', 'AdvertController@getStep1');
+Route::post('/nouvelle-annonce-1', 'AdvertController@postStep1');

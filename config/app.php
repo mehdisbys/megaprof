@@ -194,7 +194,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-	'HTML'      => Illuminate\Html\HtmlFacade::class,
+	    'HTML'      => Illuminate\Html\HtmlFacade::class,
+        'Form'      => Illuminate\Html\FormFacade::class,
+
     ],
 
 ];
