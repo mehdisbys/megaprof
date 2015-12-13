@@ -5,7 +5,9 @@
 
     <div class="col-md-6 col-md-offset-3">
 
-        <label for='title'>Titre de votre annonce </label>
+        <h2>Titre de l'annonce et Niveaux</h2>
+
+        <label for='title' class="topmargin-sm">Titre de votre annonce </label>
         {!! Form::input('text', 'title', null, ['class' => 'sm-form-control required']) !!}
 
         <div class="clear topmargin-sm"> </div>

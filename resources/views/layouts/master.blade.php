@@ -59,9 +59,9 @@
                 <nav id="primary-menu">
 
                     <ul>
-                        <li><a href="index.html"><div>Accueil</div></a>
+                        <li><a href="/"><div>Accueil</div></a>
                         </li>
-                        <li><a href="#"><div>Donner des cours</div></a>
+                        <li><a href="/nouvelle-annonce-1"><div>Créer une annonce</div></a>
                         </li>
                         <li><a href="#"><div>Mon Compte</div></a>
                         </li>

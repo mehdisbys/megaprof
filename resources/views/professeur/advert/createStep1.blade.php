@@ -5,6 +5,9 @@
     {!! Form::open(['url' => '/nouvelle-annonce-1']) !!}
 
     <div class="col-md-6 col-md-offset-3">
+
+        <h2>Quelle(s) matière(s) enseignez-vous ?</h2>
+
         @foreach ($subjects as $subject)
             <div class="toggle toggle-bg clearfix">
 
