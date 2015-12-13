@@ -1,0 +1,8 @@
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-11-09 11:47:23' WHERE `id`='1217';
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-12-01 12:03:05' WHERE `id`='1218';
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-11-20 12:01:49' WHERE `id`='1219';
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-11-28 11:53:36' WHERE `id`='1220';
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-11-05 12:03:37' WHERE `id`='1222';
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-11-17 12:06:44' WHERE `id`='1223';
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-11-19 12:09:13' WHERE `id`='1224';
+UPDATE `amal`.`fbf_jobs` SET `published_date`='2015-12-01 12:12:44' WHERE `id`='1226';

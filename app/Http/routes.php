@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.master');
 });
+
+Route::get('/nouvelle-annonce-1', 'AdvertController@createStep1');
