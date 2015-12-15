@@ -40,7 +40,7 @@
 
     <!-- Header
     ============================================= -->
-    <header id="header" class="full-header">
+    <header id="header" class="full-header sticky-header">
 
         <div id="header-wrap">
 

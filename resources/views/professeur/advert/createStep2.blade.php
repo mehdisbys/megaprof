@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    {!! Form::open(['url' => '/nouvelle-annonce-1']) !!}
+    {!! Form::open(['url' => '/nouvelle-annonce-2']) !!}
 
     <div class="col-md-6 col-md-offset-3">
 
@@ -9,7 +9,7 @@
 
         <label for='title' class="topmargin-sm">Titre de votre annonce </label>
         {!! Form::input('text', 'title', null, ['class' => 'sm-form-control required']) !!}
-
+        {!! Form::hidden('advert_id', $advert_id) !!}
         <div class="clear topmargin-sm"> </div>
 
 
@@ -30,8 +30,8 @@
                     <div class="togglec" style="display: none;">
                         @foreach ($level->subLevels as $subs)
                             <div class="ck-button">
-                                <input class="no-display" type="checkbox" name="levels[]" id="{{$subs->id}}" value="{{$subs->id}}">
-                                <label class="" for="{{$subs->id}}">
+                                <input class="no-display" type="checkbox" name="levels[{{$subject->id}}][]" id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}">
+                                <label class="" for="{{$subject->id ."_". $subs->id}}">
                                     <span>{{$subs->name}}</span>
                                 </label>
                             </div>
@@ -39,7 +39,6 @@
                     </div>
                 </div>
             @endforeach
-
         @endforeach
 
         <div class="col-md-12 text-center">

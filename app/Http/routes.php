@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('/nouvelle-annonce-1', 'AdvertController@getStep1');
 Route::post('/nouvelle-annonce-1', 'AdvertController@postStep1');
+Route::post('/nouvelle-annonce-2', 'AdvertController@postStep2');
