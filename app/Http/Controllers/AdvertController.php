@@ -56,6 +56,5 @@ class AdvertController extends Controller
         }
 
         return view('professeur.advert.createStep3')->with(compact('advert_id'));
-
     }
 }
