@@ -1,0 +1,11 @@
+.no-visibility {
+
+    position: absolute;
+    left: -1000000px;
+}
+
+.make-visible {
+
+    position:relative;
+    left: 0px;
+}

@@ -14,6 +14,7 @@
     {!! HTML::style('css/animate.css')!!}
     {!! HTML::style('css/magnific-popup.css')!!}
     {!! HTML::style('css/checkbox-button.css')!!}
+    {!! HTML::style('css/custom.css')!!}
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

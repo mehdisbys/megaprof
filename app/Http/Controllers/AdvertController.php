@@ -20,7 +20,6 @@ class AdvertController extends Controller
 
     public function postStep1(Request $request)
     {
-
         // 1. Create advert linked with userid
         $advert = \App\Models\Advert::create(['user_id' => 1]);
 
@@ -50,11 +49,38 @@ class AdvertController extends Controller
 
         foreach ($subjects as $subject => $sublevels)
         {
-                $ad = \App\Models\SubjectsPerAdvert::where(['advert_id' => $advert_id, 'subject_id' => $subject])->first();
-                $ad->level_ids = json_encode($sublevels); // TODO setup model accessor functions get/set
-                $ad->save();
+            $ad = \App\Models\SubjectsPerAdvert::where(['advert_id' => $advert_id, 'subject_id' => $subject])->first();
+            $ad->level_ids = json_encode($sublevels); // TODO setup model accessor functions get/set
+            $ad->save();
         }
 
         return view('professeur.advert.createStep3')->with(compact('advert_id'));
+    }
+
+    public function postStep3(Request $request)
+    {
+        $advert_id = $request->input('advert_id');
+
+        $table = [
+            'location_lat' => 'latitude',
+            'location_long' => 'longitude',
+            'location_postcode' => 'postcode',
+            'location_city' => 'city',
+            'location_country' => 'country',
+            'location_street' => 'address',
+            'travel_radius' => 'radius',
+            'can_travel' => 'can_travel',
+            'can_receive' => 'can_receive',
+            'can_webcam' => 'can_webcam'
+        ];
+
+        $values = $request->only(array_values($table));
+        $keys = array_keys($table);
+        $loc_data = array_combine($keys, $values);
+
+        \App\Models\Advert::find($advert_id)->update($loc_data);
+
+        return view('professeur.advert.createStep4')->with(compact('advert_id'));
+
     }
 }

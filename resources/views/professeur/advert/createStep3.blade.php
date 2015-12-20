@@ -2,19 +2,28 @@
 
 @section('content')
 
-    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;') !!}
+    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
     {!! HTML::script("js/locationpicker.jquery.js") !!}
-    {!! HTML::style("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css") !!}
-    {!! HTML::script("//code.jquery.com/ui/1.11.4/jquery-ui.js")!!}
-    {!! Form::open(['url' => '/nouvelle-annonce-2']) !!}
+    {!! HTML::style("css/jquery-ui.css") !!}
+    {!! HTML::script("js/jquery-ui.js")!!}
+    {!! Form::open(['url' => '/nouvelle-annonce-3']) !!}
 
     <div class="col-md-6 col-md-offset-3">
-
 
         <h2>Lieux des cours et Modalités</h2>
 
         <label for='location' class="topmargin-sm">Où se dérouleront vos cours ?</label>
+        {!! Form::hidden('advert_id', $advert_id) !!}
+
         {!! Form::input('text','location',null,['class' => 'alert_location sm-form-control', 'id' => 'location']) !!}
+
+        {!! Form::hidden('longitude',null, ['id' => 'longitude']) !!}
+        {!! Form::hidden('latitude', null, ['id' => 'latitude']) !!}
+        {!! Form::hidden('address',  null, ['id' => 'address']) !!}
+        {!! Form::hidden('city',     null, ['id' => 'city']) !!}
+        {!! Form::hidden('region',     null, ['id' => 'region']) !!}
+        {!! Form::hidden('postcode', null, ['id' => 'postcode']) !!}
+        {!! Form::hidden('country',  null, ['id' => 'country']) !!}
 
         <div class="ck-button col-md-12 col-md-offset-2">
             {!! Form::input('checkbox','can_receive',null,['class' => 'no-display', 'id' => 'can_receive']) !!}
@@ -30,17 +39,10 @@
             </label>
         </div>
 
-        <div class="ck-button col-md-12 col-md-offset-2">
-            {!! Form::input('checkbox','can_webcam',null,['class' => 'no-display', 'id' => 'can_webcam']) !!}
-            <label for='can_webcam' class="topmargin-sm">
-                <span>Je peux donner des cours par webcam</span>
-            </label>
-        </div>
-
-        <div class="col-md-12 topmargin-sm" id="map-and-radius">
+        <div class="col-md-12 topmargin-sm no-visibility" id="map-and-radius">
             <div class="col-md-4">
                 Radius: <div id="radius"></div>
-                <input type="text" id="radius-hidden" value="" hidden>
+                <input type="text" name="radius" id="radius-hidden" value="" hidden>
             </div>
 
             <div class="col-md-8">
@@ -49,15 +51,29 @@
             </div>
         </div>
 
+        <div class="ck-button col-md-12 col-md-offset-2">
+            {!! Form::input('checkbox','can_webcam',null,['class' => 'no-display', 'id' => 'can_webcam']) !!}
+            <label for='can_webcam' class="topmargin-sm">
+                <span>Je peux donner des cours par webcam</span>
+            </label>
+        </div>
         <script>
             $(document).ready(function() {
+
+                function updateControls(addressComponents) {
+                    $('#address').val(addressComponents.addressLine1);
+                    $('#city').val(addressComponents.city);
+                    $('#region').val(addressComponents.stateOrProvince);
+                    $('#postcode').val(addressComponents.postalCode);
+                    $('#country').val(addressComponents.country);
+                }
 
                 $("#can_travel").change(function(){
 
                     if($("#can_travel").prop('checked'))
-                        $("#map-and-radius").removeClass('no-display');
+                        $("#map-and-radius").removeClass('no-visibility');
                     else
-                        $("#map-and-radius").addClass('no-display');
+                        $("#map-and-radius").addClass('no-visibility');
 
                 })
 
@@ -73,15 +89,15 @@
                 });
 
                 $('#map').locationpicker({
-                    location: {latitude: 48.864716, longitude: 2.349014},
+                    location: {latitude: 0, longitude: 0},
                     radius: 1000,
                     zoom: 12,
                     inputBinding: {
                         radiusInput: $('#radius-hidden'),
-                        //radiusInput: $('#radius-input'),
                         locationNameInput: $('#location')
                     },
                     enableAutocomplete: true,
+                    onlocationnotfound: null,
                     onchanged: function(currentLocation, radius, isMarkerDropped) {
                         var mapContext = $(this).locationpicker('map');
 
@@ -96,11 +112,16 @@
 
                         if (13000 <= radius)
                             mapContext.map.setZoom(9);
+
+                        $("#latitude").val(currentLocation.latitude);
+                        $("#longitude").val(currentLocation.longitude);
+                        var addressComponents = $(this).locationpicker('map').location.addressComponents;
+                        updateControls(addressComponents);
                     }
                 });
 
                 $("#radius").slider({
-                    orientation: 'vertical',
+                    //  orientation: 'vertical',
                     value: 3000,
                     min: 1000,
                     max: 20000,
@@ -119,8 +140,5 @@
     </div>
 
     {!! Form::close() !!}
-
-
-
 
 @endsection
