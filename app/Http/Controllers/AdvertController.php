@@ -91,7 +91,20 @@ class AdvertController extends Controller
 
         \App\Models\Advert::find($advert_id)->update($content_data);
 
-        return view('professeur.advert.createStep5')->with(compact('advert_id'));
+        $advert = \App\Models\Advert::find($advert_id);
+
+        $can_travel = $advert->can_travel;
+
+        $can_webcam = $advert->can_webcam;
+
+        return view('professeur.advert.createStep5')->with(compact('advert_id','can_travel', 'can_webcam'));
+    }
+
+    public function postStep5(Request $request)
+    {
+        $advert_id = $request->input('advert_id');
+
+        dd($request->all()) ;
 
     }
 }
