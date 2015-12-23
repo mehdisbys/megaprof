@@ -21,7 +21,7 @@
         {!! Form::hidden('latitude', null, ['id' => 'latitude']) !!}
         {!! Form::hidden('address',  null, ['id' => 'address']) !!}
         {!! Form::hidden('city',     null, ['id' => 'city']) !!}
-        {!! Form::hidden('region',     null, ['id' => 'region']) !!}
+        {!! Form::hidden('region',   null, ['id' => 'region']) !!}
         {!! Form::hidden('postcode', null, ['id' => 'postcode']) !!}
         {!! Form::hidden('country',  null, ['id' => 'country']) !!}
 

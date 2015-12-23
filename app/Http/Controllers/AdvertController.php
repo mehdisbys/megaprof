@@ -81,6 +81,17 @@ class AdvertController extends Controller
         \App\Models\Advert::find($advert_id)->update($loc_data);
 
         return view('professeur.advert.createStep4')->with(compact('advert_id'));
+    }
+
+    public function postStep4(Request $request)
+    {
+        $advert_id = $request->input('advert_id');
+
+        $content_data = $request->only(['presentation', 'content', 'experience']);
+
+        \App\Models\Advert::find($advert_id)->update($content_data);
+
+        return view('professeur.advert.createStep5')->with(compact('advert_id'));
 
     }
 }
