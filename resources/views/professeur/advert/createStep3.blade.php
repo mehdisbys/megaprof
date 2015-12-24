@@ -75,7 +75,7 @@
                     else
                         $("#map-and-radius").addClass('no-visibility');
 
-                })
+                });
 
                 $("#radius").slider({
                     value: 1000,

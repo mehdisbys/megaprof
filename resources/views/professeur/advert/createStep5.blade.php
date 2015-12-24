@@ -17,44 +17,46 @@
         {!! Form::label('price',"Quel est le prix d'une heure de cours ?", ['class' => 'col-md-offset-3 col-md-9']) !!}
 
         <div class="small col-md-offset-1 col-md-2"><em>Indiquez ici votre prix de base pour une heure de cours, sans réduction ni autre déduction</em></div>
-        {!! Form::input('text', 'price', null,['class' => 'sm-form-control small-input col-md-6 leftmargin-sm', 'id' => 'price']) !!}
+       <div class="col-md-2"></div>
+        {!! Form::input('text', 'price', null,['class' => 'sm-form-control small-input col-md-3 leftmargin-sm', 'id' => 'price']) !!}
         <div class="col-md-3 small">&nbsp; Dirhams</div>
 
         <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
 
         @if($can_travel)
 
-        <div class="ck-button col-md-12 col-md-offset-3">
-            {!! Form::input('checkbox','price_travel_supp',null,['class' => 'no-display', 'id' => 'price_travel_supp']) !!}
-            <label for='price_travel_supp' class="">
-                <span>Je souhaite facturer un supplément lorsque je me déplace</span>
-            </label>
-        </div>
+            <div class="ck-button col-md-12 col-md-offset-3">
+                {!! Form::input('checkbox','price_travel_supp',null,['class' => 'no-display', 'id' => 'price_travel_supp']) !!}
+                <label for='price_travel_supp' class="bottommargin-sm">
+                    <span>Je souhaite facturer un supplément lorsque je me déplace</span>
+                </label>
+            </div>
 
-        <div class="col-md-12 no-visibility-off topmargin-sm" id="map-and-radius">
+            <div class="col-md-12 no-visibility" id="price_travel_supp_display">
 
-            <div class="small col-md-offset-1 col-md-2"><em>Ce montant sera rajouté à votre prix de base</em></div>
-            {!! Form::input('text', 'price_travel', null,['class' => 'sm-form-control small-input col-md-6 leftmargin-sm']) !!}
-            <div class="col-md-3 small">&nbsp; Dirhams</div>
+                <div class="small col-md-offset-1 col-md-2"><em>Ce montant sera rajouté à votre prix de base</em></div>
+                {!! Form::input('text', 'price_travel', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_travel']) !!}
+                <div class="col-md-1 small">&nbsp; Dirhams</div>
+                <div class="col-md-6" id="price_travel_text">Le tarif lorsque vous vous déplacez sera de <span id="price_travel_span"></span> Dhs par heure</div>
+            </div>
 
-        </div>
-
-        <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
+            <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
         @endif
 
         @if($can_webcam)
 
             <div class="ck-button col-md-12 col-md-offset-3">
                 {!! Form::input('checkbox','price_webcam_bool',null,['class' => 'no-display', 'id' => 'price_webcam_bool']) !!}
-                <label for='price_webcam_bool' class="">
-                    <span>Je souhaite réduire le prix lorsque les cours se font via webcam</span>
+                <label for='price_webcam_bool' class="bottommargin-sm ">
+                    <span>Je souhaite réduire le prix pour les cours faits via webcam</span>
                 </label>
             </div>
 
-            <div class="col-md-12 no-visibility-off topmargin-sm" id="map-and-radius">
+            <div class="col-md-12 no-visibility" id="price_webcam_bool_display">
                 <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix de base</em></div>
-                {!! Form::input('text', 'price_webcam', null,['class' => 'sm-form-control small-input col-md-6 leftmargin-sm']) !!}
-                <div class="col-md-3 small">&nbsp; %</div>
+                {!! Form::input('text', 'price_webcam', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_webcam']) !!}
+                <div class="col-md-1 small">&nbsp; %</div>
+                <div class="col-md-6" id="price_webcam_text">Le tarif lorsque vous enseignez via webcam sera de <span id="price_webcam_span"></span> Dhs par heure</div>
             </div>
 
             <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
@@ -62,24 +64,28 @@
 
         <div class="ck-button col-md-12 col-md-offset-3">
             {!! Form::input('checkbox','price_degressive',null,['class' => 'no-display', 'id' => 'price_degressive']) !!}
-            <label for='price_degressive' class="">
+            <label for='price_degressive' class="bottommargin-sm">
                 <span>Je pratique une réduction sur les forfaits payés à l'avance </span>
             </label>
         </div>
 
-        <div class="col-md-12 no-visibility-off topmargin-sm" id="price-reductions">
+        <div class="col-md-12 no-visibility" id="price_degressive_display">
 
             <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix de base</em></div>
 
             {!! Form::label('price_5_hours',"Pour 5 heures", ['class' => 'col-md-2']) !!}
-            {!! Form::input('text', 'price_5_hours', null,['class' => 'sm-form-control small-input col-md-6']) !!}
+            {!! Form::input('text', 'price_5_hours', null,['class' => 'sm-form-control small-input col-md-1', 'id' => 'price_5_hours']) !!}
             <div class="col-md-1 small">&nbsp; %</div>
+            <div class="col-md-5" id="price_5_hours_text">Soit <span id="price_5_hours_span"></span>
+                Dhs par heure, et <span id="price_5_hours_total"></span> Dhs au total</div>
 
             <div class="clearfix"></div>
 
-            {!! Form::label('price',"Pour 10 heures", ['class' => 'col-md-offset-3 col-md-2']) !!}
-            {!! Form::input('text', 'price_10_hours', null,['class' => 'sm-form-control small-input col-md-6 bottommargin-sm ']) !!}
+            {!! Form::label('price_10_hours',"Pour 10 heures", ['class' => 'col-md-offset-3 col-md-2']) !!}
+            {!! Form::input('text', 'price_10_hours', null,['class' => 'sm-form-control small-input col-md-2 bottommargin-sm', 'id' => 'price_10_hours']) !!}
             <div class="col-md-1 small">&nbsp; %</div>
+            <div class="col-md-5" id="price_10_hours_text">Soit <span id="price_10_hours_span"></span>
+                Dhs par heure, et <span id="price_10_hours_total"></span> Dhs au total</div>
 
         </div>
 
@@ -96,6 +102,90 @@
                 J'ai défini le prix de mes cours
             </button>
         </div>
-    {!! Form::close() !!}
+        {!! Form::close() !!}
 
+        <script>
+            $(document).ready(function() {
+
+                var updatePrices = function(inputs, price) {
+                    inputs.forEach(function(el){
+                        return updateField(el,minus_percentage,price);
+                    });
+                };
+
+                var updateField = function( el, func, price){
+                    var percent = checkInt($(el).val());
+                    percent = percent ? percent : 0;
+                    var times = el.split('_')[1];
+
+                    $(el + "_span").text(func(price, percent));
+                    $(el + "_total").text(func(price, percent) * times);
+                };
+
+                var listenField = function (field){
+
+                    $(field).on('change keyup',function(){
+                        price = getBasicPrice();
+                        updateField(field, minus_percentage, price);
+                    });
+                };
+
+                var updatePriceTravel = function(price){
+                    var supp = checkInt($("#price_travel").val());
+                    $("#price_travel_span").text(parseInt(supp) + price);
+                };
+
+                var listenFields = function(fields){
+
+                    fields.forEach(listenField);
+
+                    $("#price_travel").on('change keyup', function(){
+                        updatePriceTravel(parseInt(getBasicPrice()));
+                    });
+                };
+
+                var getBasicPrice = function(){return checkInt($("#price").val())};
+
+                var minus_percentage = function (value, percentage){
+                    return value - ((value * percentage)/100);
+                };
+
+                function checkInt(value) {
+                    var x = parseFloat(value);
+                    if(!isNaN(value) && (x | 0) === x)
+                        return value;
+                    return 0;
+                }
+
+                var toggleDisplays = function(inputs){
+
+                    inputs.forEach(toggleDisplay);
+                };
+
+                var toggleDisplay = function(el){
+
+                    $(el).change(function(){
+                        if($(el).prop('checked'))
+                            $(el + "_display").removeClass('no-visibility');
+                        else
+                            $(el + "_display").addClass('no-visibility');
+                    });
+                };
+
+                //--------
+
+                var inputs = ["#price_webcam", "#price_5_hours", "#price_10_hours"];
+
+                $("#price").on('change keyup', function(){
+                    var price = checkInt($(this).val());
+                    updatePrices(inputs, price);
+                    updatePriceTravel(parseInt(price));
+                });
+
+                listenFields(inputs);
+
+                toggleDisplays(["#price_travel_supp","#price_webcam_bool","#price_degressive"]);
+            });
+
+        </script>
 @endsection

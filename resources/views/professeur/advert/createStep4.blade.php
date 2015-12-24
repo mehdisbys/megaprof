@@ -90,14 +90,13 @@
 
                 var countWords = function (string) {
                     return string
-                            .replace( /(^\s*)|(\s*$)/gi, "" )
-                            .replace( /\s+/gi, " " )
-                            .split(' ').length -1 ;
+                                    .replace( /(^\s*)|(\s*$)/gi, "" )
+                                    .replace( /\s+/gi, " " )
+                                    .split(' ').length -1 ;
                 };
 
                 var updateCount = function (el, expected) {
                     var nb = expected - countWords($(el).val());
-                    console.log(nb);
                     if(nb > 0)
                     {
                         $("#" + $(el).attr('id') + "-text").removeClass('no-display');
