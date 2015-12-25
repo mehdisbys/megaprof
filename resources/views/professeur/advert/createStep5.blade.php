@@ -5,7 +5,7 @@
     {!! HTML::script("js/parsley.min.js")!!}
 
     <form id="presentation-content"  accept-charset="UTF-8"
-          action="http://megaprof.local/nouvelle-annonce-5" method="POST" data-parsley-validate>
+          action="/nouvelle-annonce-5" method="POST" data-parsley-validate>
 
         {!! csrf_field() !!}
 
