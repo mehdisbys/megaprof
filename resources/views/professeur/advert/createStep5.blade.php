@@ -11,13 +11,12 @@
 
         {!! Form::hidden('advert_id', $advert_id) !!}
 
-
         <h2 class="col-md-offset-3">Quel est le prix de vos cours ?</h2>
 
         {!! Form::label('price',"Quel est le prix d'une heure de cours ?", ['class' => 'col-md-offset-3 col-md-9']) !!}
 
         <div class="small col-md-offset-1 col-md-2"><em>Indiquez ici votre prix de base pour une heure de cours, sans réduction ni autre déduction</em></div>
-       <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
         {!! Form::input('text', 'price', null,['class' => 'sm-form-control small-input col-md-3 leftmargin-sm', 'id' => 'price']) !!}
         <div class="col-md-3 small">&nbsp; Dirhams</div>
 
@@ -35,9 +34,10 @@
             <div class="col-md-12 no-visibility" id="price_travel_supp_display">
 
                 <div class="small col-md-offset-1 col-md-2"><em>Ce montant sera rajouté à votre prix de base</em></div>
-                {!! Form::input('text', 'price_travel', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_travel']) !!}
+                {!! Form::input('text', 'price_travel_percentage', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_travel_percentage']) !!}
                 <div class="col-md-1 small">&nbsp; Dirhams</div>
                 <div class="col-md-6" id="price_travel_text">Le tarif lorsque vous vous déplacez sera de <span id="price_travel_span"></span> Dhs par heure</div>
+                {!! Form::hidden('price_travel', null, ['id' => 'price_travel']) !!}
             </div>
 
             <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
@@ -54,9 +54,11 @@
 
             <div class="col-md-12 no-visibility" id="price_webcam_bool_display">
                 <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix de base</em></div>
-                {!! Form::input('text', 'price_webcam', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_webcam']) !!}
+                {!! Form::input('text', 'price_webcam_percentage', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_webcam_percentage']) !!}
                 <div class="col-md-1 small">&nbsp; %</div>
                 <div class="col-md-6" id="price_webcam_text">Le tarif lorsque vous enseignez via webcam sera de <span id="price_webcam_span"></span> Dhs par heure</div>
+                {!! Form::hidden('price_webcam', null, ['id' => 'price_webcam' ]) !!}
+
             </div>
 
             <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
@@ -73,19 +75,21 @@
 
             <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix de base</em></div>
 
-            {!! Form::label('price_5_hours',"Pour 5 heures", ['class' => 'col-md-2']) !!}
-            {!! Form::input('text', 'price_5_hours', null,['class' => 'sm-form-control small-input col-md-1', 'id' => 'price_5_hours']) !!}
+            {!! Form::label('price_5_hours_percentage',"Pour 5 heures", ['class' => 'col-md-2']) !!}
+            {!! Form::input('text', 'price_5_hours_percentage', null,['class' => 'sm-form-control small-input col-md-1', 'id' => 'price_5_hours_percentage']) !!}
             <div class="col-md-1 small">&nbsp; %</div>
             <div class="col-md-5" id="price_5_hours_text">Soit <span id="price_5_hours_span"></span>
                 Dhs par heure, et <span id="price_5_hours_total"></span> Dhs au total</div>
 
             <div class="clearfix"></div>
 
-            {!! Form::label('price_10_hours',"Pour 10 heures", ['class' => 'col-md-offset-3 col-md-2']) !!}
-            {!! Form::input('text', 'price_10_hours', null,['class' => 'sm-form-control small-input col-md-2 bottommargin-sm', 'id' => 'price_10_hours']) !!}
+            {!! Form::label('price_10_hours_percentage',"Pour 10 heures", ['class' => 'col-md-offset-3 col-md-2']) !!}
+            {!! Form::input('text', 'price_10_hours_percentage', null,['class' => 'sm-form-control small-input col-md-2 bottommargin-sm', 'id' => 'price_10_hours_percentage']) !!}
             <div class="col-md-1 small">&nbsp; %</div>
             <div class="col-md-5" id="price_10_hours_text">Soit <span id="price_10_hours_span"></span>
                 Dhs par heure, et <span id="price_10_hours_total"></span> Dhs au total</div>
+            {!! Form::hidden('price_5_hours', null, ['id' => 'price_5_hours' ]) !!}
+            {!! Form::hidden('price_10_hours', null, ['id' => 'price_10_hours' ]) !!}
 
         </div>
 
@@ -113,35 +117,38 @@
                     });
                 };
 
-                var updateField = function( el, func, price){
-                    var percent = checkInt($(el).val());
-                    percent = percent ? percent : 0;
-                    var times = el.split('_')[1];
-
-                    $(el + "_span").text(func(price, percent));
-                    $(el + "_total").text(func(price, percent) * times);
-                };
-
-                var listenField = function (field){
-
-                    $(field).on('change keyup',function(){
-                        price = getBasicPrice();
-                        updateField(field, minus_percentage, price);
-                    });
-                };
-
                 var updatePriceTravel = function(price){
-                    var supp = checkInt($("#price_travel").val());
+                    var supp = checkInt($("#price_travel_percentage").val());
                     $("#price_travel_span").text(parseInt(supp) + price);
+                    $("#price_travel").val(parseInt(supp) + price);
                 };
 
                 var listenFields = function(fields){
 
                     fields.forEach(listenField);
 
-                    $("#price_travel").on('change keyup', function(){
+                    $("#price_travel_percentage").on('change keyup', function(){
                         updatePriceTravel(parseInt(getBasicPrice()));
                     });
+                };
+
+                var listenField = function (field){
+
+                    $(field + "_percentage").on('change keyup',function(){
+                        price = getBasicPrice();
+                        updateField(field, minus_percentage, price);
+                    });
+                };
+
+                var updateField = function( el, func, price){
+                    var percent = checkInt($(el + "_percentage").val());
+                    percent = percent ? percent : 0;
+                    var times = el.split('_')[1];
+                    if(checkInt(times) == false) times = 1 ;
+
+                    $(el + "_span").text(func(price, percent));
+                    $(el + "_total").text(func(price, percent) * times);
+                    $(el).val(func(price, percent) * times);
                 };
 
                 var getBasicPrice = function(){return checkInt($("#price").val())};

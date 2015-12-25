@@ -104,7 +104,23 @@ class AdvertController extends Controller
     {
         $advert_id = $request->input('advert_id');
 
-        dd($request->all()) ;
+        $only = [
+            "price" ,
+            "price_travel_percentage",
+            "price_travel" ,
+            "price_webcam_percentage" ,
+            "price_webcam" ,
+            "price_5_hours_percentage",
+            "price_10_hours_percentage",
+            "price_5_hours" ,
+            "price_10_hours" ,
+            "price_more"
+        ];
 
+        $data = $request->only($only);
+
+        \App\Models\Advert::find($advert_id)->update($data);
+
+        return view('professeur.advert.createStep6')->with(compact('advert_id'));
     }
 }
