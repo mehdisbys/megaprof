@@ -123,4 +123,9 @@ class AdvertController extends Controller
 
         return view('professeur.advert.createStep6')->with(compact('advert_id'));
     }
+
+    public function postStep6(Request $request)
+    {
+        dd($request->all());
+    }
 }
