@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -126,6 +127,24 @@ class AdvertController extends Controller
 
     public function postStep6(Request $request)
     {
-        dd($request->all());
+        $advert_id = $request->input('advert_id');
+
+        $coord = $request->only(['w','h','x','y']);
+
+        $m = new Avatar();
+
+        $m->handleFile('img_upload');
+
+        $m->cropAvatar('img_upload', $coord);
+
+        $m->user_id = 1;
+
+        $m->save();
+
+        $response = \Response::make($m->img_cropped, 200);
+
+        $response->header('Content-Type', $m->img_mime);
+
+        return $response;
     }
 }

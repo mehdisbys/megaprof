@@ -21,4 +21,5 @@ Route::post('/nouvelle-annonce-2', 'AdvertController@postStep2');
 Route::post('/nouvelle-annonce-3', 'AdvertController@postStep3');
 Route::post('/nouvelle-annonce-4', 'AdvertController@postStep4');
 Route::post('/nouvelle-annonce-5', 'AdvertController@postStep5');
+Route::post('/nouvelle-annonce-6', 'AdvertController@postStep6');
 

@@ -7,14 +7,8 @@
     {!! HTML::script("js/jquery.Jcrop.min.js") !!}
     {!! HTML::style('css/jquery.Jcrop.min.css')!!}
 
-    <script type="text/javascript">
-
-
-
-    </script>
-
     <form id="presentation-content"  accept-charset="UTF-8"
-          action="/nouvelle-annonce-6" method="POST" data-parsley-validate>
+          action="/nouvelle-annonce-6" method="POST"  enctype="multipart/form-data">
 
         {!! csrf_field() !!}
 
@@ -41,14 +35,19 @@
                 <div id="capture" class="col-md-5 no-visibility">
                     <div id="my_result" style="width:380px; height:380px;" class=""></div>
                     <a href="javascript:void(initJcrop())" class="button button-3d button-mini button-rounded button-blue">Recadrer</a>
-
                 </div>
-
             </div>
 
             <div class="clearfix"></div>
 
             <input type="file" id="img_upload" name="img_upload" class="no-visibility">
+            <img id="previewHolder" class="img_preview"/>
+            <a href="javascript:void(initJcropPreview())" class="button button-3d button-mini button-rounded button-blue">Recadrer</a>
+
+            <input type="text" id="x" name="x"/>
+            <input type="text" id="y" name="y"/>
+            <input type="text" id="w" name="w"/>
+            <input type="text" id="h" name="h"/>
 
             <div id="my_buttons" class="">
                 <label class="button" for="img_upload"><i class="icon-camera"></i>Téléchargez une photo</label>
@@ -68,8 +67,29 @@
 
             <script language="JavaScript">
 
-                $("#use-webcam").click(function(){
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#previewHolder').attr('src', e.target.result);
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
 
+                $("#img_upload").change(function() {
+                    $("#img-question-mark").addClass('no-visibility');
+                    readURL(this);
+                    //initJcrop("#previewHolder");
+                });
+
+                function initJcropPreview() {
+                    initJcrop("#previewHolder");
+                    $("#validate_buttons").removeClass('no-visibility');
+                    $("#my_buttons").addClass('no-visibility');
+                };
+
+                $("#use-webcam").click(function(){
                     Webcam.set({
                         width: 380,
                         height: 380,
@@ -78,7 +98,6 @@
                     });
 
                     Webcam.attach('#my_camera');
-
                     $("#webcam").removeClass('no-visibility');
                     $("#validate_buttons").removeClass('no-visibility');
                     $("#img-question-mark").addClass('no-visibility');
@@ -102,17 +121,27 @@
                         document.getElementById('my_result').innerHTML = '<img src="' + data_uri + '"/>';
                         $("#my_result").removeClass('no-visibility');
                         $("#capture").removeClass('no-visibility');
-                        initJcrop();
+                        initJcrop("#my_result");
                     });
                 }
 
-                var jcrop_api; // Holder for the API
-
-                function initJcrop()
+                function showCoords(c)
                 {
-                    $('#my_result').Jcrop({},function(){
+                    jQuery('#x').val(c.x);
+                    jQuery('#y').val(c.y);
+                    jQuery('#w').val(c.w);
+                    jQuery('#h').val(c.h);
+                };
 
-                        jcrop_api = this;
+                function initJcrop(el)
+                {
+                    $(el).Jcrop({
+                        onchange:showCoords,
+                        onSelect:showCoords
+
+                    },function(){
+
+                        var jcrop_api = this;
                         jcrop_api.animateTo([70,70,250,250]);
 
                         jcrop_api.setOptions({
@@ -123,8 +152,6 @@
                     });
                 };
             </script>
-
-
 
         </div>
     {!! Form::close() !!}
