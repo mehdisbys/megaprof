@@ -23,11 +23,9 @@
     padding: 0px !important;
 }
 
-.img-preview {
+.imgpreview {
     /* You can specify preview size in CSS */
     /*  width: 700px;*/
-    height: 400px;
-    position: relative;
 }
 
 
