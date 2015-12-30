@@ -129,7 +129,9 @@ class AdvertController extends Controller
     {
         $advert_id = $request->input('advert_id');
 
-        $coord = $request->only(['w','h','x','y']);
+       // dd($request->all());
+
+        $coord = $request->only(['w','h','x','y', 'r']);
 
         $m = new Avatar();
 

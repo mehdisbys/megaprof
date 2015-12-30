@@ -29,17 +29,15 @@ class Avatar extends Model
     {
         $cropped = \Image::make(\Request::file($name));
 
-        // resize the image to a width of 300 and constrain aspect ratio (auto height)
-        $cropped->resize(null, 624, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        $cropped->rotate(-$c['r']);
 
-        $cropped->crop($c['w'], $c['h'], $c['x'], $c['y']);
+        $cropped->crop(round($c['w']), round($c['h']), round($c['x']), round($c['y']));
+
+        $cropped->resize(190,190);
 
         if($cropped)
         {
             $this->img_cropped = $cropped->encode('png');
-
         }
     }
 }
