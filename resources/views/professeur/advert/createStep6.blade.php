@@ -47,7 +47,7 @@
 
                 <div class="col-md-8">
                     <!-- <h3 class="page-header">Demo:</h3> -->
-                    <div class="img-container">
+                    <div class="img-container no-visibility">
                         <img id="image" src="" alt="Votre Image" name="image" class="no-visibility">
 
                         <input name="x" id="x" type="text" class="no-visibility">
@@ -99,13 +99,19 @@
                     }
                 }
 
-                $("#img_upload").change(function() {
+                function imgUpload(){
                     $("#validate_buttons").toggleClass('no-visibility');
                     $("#img-preview").toggleClass('no-visibility');
                     $("#cropper-module").toggleClass('no-visibility');
                     $("#image").toggleClass('no-visibility');
                     $("#my_buttons").toggleClass('no-visibility');
                     $("#img-question-mark").toggleClass('no-visibility');
+                    $('.img-container').toggleClass('no-visibility');
+
+                }
+
+                $("#img_upload").change(function() {
+                    imgUpload();
                 });
 
                 $("#use-webcam").click(function(){
@@ -127,11 +133,11 @@
                     e.preventDefault();
                     Webcam.reset();
 
-                    $("#webcam").toggleClass('no-visibility');
-                    $("#validate_buttons").toggleClass('no-visibility');
-                    $("#img-question-mark").toggleClass('no-visibility');
-                    $("#my_buttons").toggleClass('no-visibility');
+                    $().cropper('destroy');
+                    $('.cropper-container').html('');
+                    $('.cropper-container').toggleClass('no-visibility');
 
+                    imgUpload();
                 });
 
                 function take_snapshot() {
