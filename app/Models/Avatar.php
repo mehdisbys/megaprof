@@ -9,6 +9,7 @@ class Avatar extends Model
 
     protected $table = 'avatar';
 
+    protected static $defaultAvatar = 'images/question-mark-face.jpg';
     protected $guarded = [];
 
 
@@ -47,5 +48,29 @@ class Avatar extends Model
         $cropped->resize(190,190);
 
         $this->img_cropped = $cropped->encode('png');
+    }
+
+    public static function getAvatar($user_id, $advert_id)
+    {
+        $avatar = static::where(['user_id' => $user_id, 'advert_id' => $advert_id])->first();
+
+        if($avatar && $avatar->img_cropped != null)
+        {
+            $response = \Response::make($avatar->img_cropped, 200);
+
+            $response->header('Content-Type', $avatar->img_mime);
+
+            return $response;
+        }
+        return static::defaultAvatar();
+    }
+
+    public static function defaultAvatar()
+    {
+        $response = \Response::make(\File::get(static::defaultLogo), 200);
+
+        $response->header('Content-Type', 'image/jpg');
+
+        return $response;
     }
 }

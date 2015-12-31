@@ -11,4 +11,9 @@ class Advert extends Model
 
     protected $guarded = [];
 
+
+    public function getAvatar()
+    {
+        return "/avatar/{$this->user_id}/{$this->id}";
+    }
 }

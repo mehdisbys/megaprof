@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advert;
 use App\Models\Avatar;
 use Illuminate\Http\Request;
 
@@ -148,10 +149,18 @@ class AdvertController extends Controller
             $m->cropAvatar($filename, $coord, true);
         }
 
+        $m->advert_id = $advert_id;
         $m->user_id = 1;
         $m->save();
 
-        return view('professeur.advert.createComplete')->with(compact('advert_id'));
+        $advert = Advert::find($advert_id);
 
+        return view('professeur.advert.createComplete')->with(compact('advert'));
     }
+
+    public function getAvatar($user_id, $advert_id)
+    {
+        return Avatar::getAvatar($user_id, $advert_id);
+    }
+
 }
