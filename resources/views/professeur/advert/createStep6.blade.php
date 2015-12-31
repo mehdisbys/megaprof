@@ -2,9 +2,9 @@
 
 @section('content')
 
-    {!! HTML::script("js/parsley.min.js")!!}
     {!! HTML::script("js/webcam.min.js") !!}
     {!! HTML::script("js/cropper.js") !!}
+    {!! HTML::script("js/jquery.stickyPanel.js") !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
     {!! HTML::style('css/cropper.min.css')!!}
 
@@ -28,13 +28,15 @@
 
                 <div class="clearfix"></div>
 
-                <div id="webcam" class="no-visibility col-md-5 col-md-offset-1">
+                <div id="webcam" class="no-visibility col-md-3 col-md-offset-3">
                     <div id="my_camera"></div>
                     <a href="javascript:void(take_snapshot())" class="button button-3d button-mini button-rounded button-blue">Prendre la photo</a>
+                    <input type="hidden" name="webcam_img" id="webcam_img">
+
                 </div>
 
-                <div id="capture" class="col-md-5 no-visibility">
-                    <div id="my_result" style="width:380px; height:380px;" class=""></div>
+                <div id="capture" class="col-md-3 no-visibility">
+                    <div id="my_result" style="" class=""></div>
                 </div>
             </div>
 
@@ -89,15 +91,8 @@
 
             <script>
                 //--------
-                function readURL(input, target) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $(target).attr('src', e.target.result);
-                        }
-                        reader.readAsDataURL(input.files[0]);
-                    }
-                }
+
+                $("#img-preview").stickyPanel();
 
                 function imgUpload(){
                     $("#validate_buttons").toggleClass('no-visibility');
@@ -110,16 +105,14 @@
 
                 }
 
-                $("#img_upload").change(function() {
-                    imgUpload();
-                });
+                $("#img_upload").change(function() { imgUpload(); });
 
                 $("#use-webcam").click(function(){
                     Webcam.set({
-                        width: 380,
-                        height: 380,
-                        dest_width: 380,
-                        dest_height: 380
+                        width: 190,
+                        height: 170,
+                        dest_width: 190,
+                        dest_height: 170
                     });
 
                     Webcam.attach('#my_camera');
@@ -142,8 +135,12 @@
 
                 function take_snapshot() {
                     Webcam.snap(function (data_uri) {
-                        document.getElementById('my_result').innerHTML = '<img src="' + data_uri + '"/>';
-                        $("#my_result").removeClass('no-visibility');
+                        var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+
+                        document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+                        $("#webcam_img").val(raw_image_data);
+                        $('.img-container').removeClass('no-visibility');
+                        //$("#image").removeClass('no-visibility');
                         $("#capture").removeClass('no-visibility');
                     });
                 }

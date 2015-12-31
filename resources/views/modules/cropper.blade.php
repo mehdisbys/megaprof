@@ -121,15 +121,16 @@
 
         var console = window.console || { log: function () {} };
         var $image = $('#image');
-        var $download = $('#download');
-        var $dataX = $('#dataX');
-        var $dataY = $('#dataY');
-        var $dataHeight = $('#dataHeight');
-        var $dataWidth  = $('#dataWidth');
-        var $dataRotate = $('#dataRotate');
-        var $dataScaleX = $('#dataScaleX');
-        var $dataScaleY = $('#dataScaleY');
+        var $dataX = $('#x');
+        var $dataY = $('#y');
+        var $dataHeight = $('#h');
+        var $dataWidth  = $('#w');
+        var $dataRotate = $('#r');
+        var $dataScaleX = $('#scalex');
+        var $dataScaleY = $('#scaley');
         var img_upload = "#img_upload";
+        var img_preview = $("#img-preview");
+
         var options = {
             aspectRatio: NaN,
             preview: '.img-preview',
@@ -150,16 +151,7 @@
         // Cropper
         $image.on({
             'crop.cropper': function (e) {
-
                // $("#previewButton").trigger('click');
-                $("#x").val(e.x);
-                $("#y").val(e.y);
-                $("#w").val(e.width);
-                $("#h").val(e.height);
-                $("#r").val(e.rotate);
-                $("#scaley").val(e.scaleY);
-                $("#scalex").val(e.scaleX);
-
             },
             'zoom.cropper': function (e) {
                 console.log(e.type, e.ratio);
@@ -233,7 +225,7 @@
 
                 if (result)
                 {
-                    $('#img-preview').html(result);
+                    img_preview.html(result);
                 }
             }
         });

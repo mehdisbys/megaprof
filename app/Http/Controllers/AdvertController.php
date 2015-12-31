@@ -129,24 +129,29 @@ class AdvertController extends Controller
     {
         $advert_id = $request->input('advert_id');
 
-       // dd($request->all());
-
-        $coord = $request->only(['w','h','x','y', 'r']);
+        $coord = $request->only(['w','h','x','y','r']);
 
         $m = new Avatar();
 
-        $m->handleFile('img_upload');
+        $webcam = $request->file('img_upload') ? false : true;
 
-        $m->cropAvatar('img_upload', $coord);
+        if(! $webcam)
+        {
+            $filename = 'img_upload';
+            $m->handleFile($filename);
+            $m->cropAvatar($filename, $coord);
+        }
+
+        else
+        {
+            $filename = 'webcam_img';
+            $m->cropAvatar($filename, $coord, true);
+        }
 
         $m->user_id = 1;
-
         $m->save();
 
-        $response = \Response::make($m->img_cropped, 200);
+        return view('professeur.advert.createComplete')->with(compact('advert_id'));
 
-        $response->header('Content-Type', $m->img_mime);
-
-        return $response;
     }
 }

@@ -25,9 +25,20 @@ class Avatar extends Model
         }
     }
 
-    public function cropAvatar($name, array $c)
+    public function cropAvatar($name, array $c, $webcam = false)
     {
-        $cropped = \Image::make(\Request::file($name));
+        if($webcam)
+        {
+            $filename = "webcam_avatar/webcam_" . time() . '.jpg';
+
+            file_put_contents('webcam_avatar/webcam_' . time() . '.jpg', base64_decode($_POST[$name]));
+
+            $this->img_cropped = \Image::make($filename)->resize(190, 190);
+
+            return $this->img_cropped->response();
+        }
+
+        $cropped =  \Image::make(\Request::file($name));
 
         $cropped->rotate(-$c['r']);
 
@@ -35,9 +46,6 @@ class Avatar extends Model
 
         $cropped->resize(190,190);
 
-        if($cropped)
-        {
-            $this->img_cropped = $cropped->encode('png');
-        }
+        $this->img_cropped = $cropped->encode('png');
     }
 }
