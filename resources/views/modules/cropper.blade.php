@@ -132,8 +132,9 @@
         var img_preview = $("#img-preview");
 
         var options = {
-            aspectRatio: NaN,
+            aspectRatio: 1,
             preview: '.img-preview',
+            viewMode: 0,
             crop: function (e) {
                 $dataX.val(Math.round(e.x));
                 $dataY.val(Math.round(e.y));

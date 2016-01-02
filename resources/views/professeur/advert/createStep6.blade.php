@@ -4,7 +4,6 @@
 
     {!! HTML::script("js/webcam.min.js") !!}
     {!! HTML::script("js/cropper.js") !!}
-    {!! HTML::script("js/jquery.stickyPanel.js") !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
     {!! HTML::style('css/cropper.min.css')!!}
 
@@ -45,7 +44,7 @@
             <input type="file" id="img_upload" name="img_upload" class="no-visibility" accept="image/*">
             <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
 
-            <div class="row">
+            <div class="row" data-spy="scroll" data-target=".scrollspy">
 
                 <div class="col-md-8">
                     <!-- <h3 class="page-header">Demo:</h3> -->
@@ -63,8 +62,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-3" >
-                    <div id="img-preview"  class="no-visibility topmargin-lg" style="width: 190px; height: 190px;"></div>
+                <div class="col-md-3 scrollspy" >
+                    <div id="img-preview" data-spy="affix" class="no-visibility topmargin-lg" style="width: 190px; height: 190px;"></div>
                 </div>
 
             </div>
@@ -89,10 +88,19 @@
                 </button>
             </div>
 
-            <script>
-                //--------
 
-                $("#img-preview").stickyPanel();
+
+            <script>
+                $( document ).ready(function() {
+
+                    $("#img-preview").affix({
+                        offset: {
+                            top: $("#img-preview").offset().top,
+                            bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 15A0
+                        }
+                    });
+                });
+                //--------
 
                 function imgUpload(){
                     $("#validate_buttons").toggleClass('no-visibility');
