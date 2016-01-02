@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('layouts.master');
 });
 
+
 Route::get('/nouvelle-annonce-1',  'AdvertController@getStep1');
 Route::post('/nouvelle-annonce-1', 'AdvertController@postStep1');
 Route::post('/nouvelle-annonce-2', 'AdvertController@postStep2');
@@ -22,6 +23,9 @@ Route::post('/nouvelle-annonce-3', 'AdvertController@postStep3');
 Route::post('/nouvelle-annonce-4', 'AdvertController@postStep4');
 Route::post('/nouvelle-annonce-5', 'AdvertController@postStep5');
 Route::post('/nouvelle-annonce-6', 'AdvertController@postStep6');
+Route::post('/nouvelle-annonce-7', 'AdvertController@postStep7');
 
 Route::get('/avatar/{user_id}/{advert_id}', 'AdvertController@getAvatar');
 
+
+Route::get('/{slug}', 'AdvertController@view');

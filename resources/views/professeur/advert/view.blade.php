@@ -2,11 +2,6 @@
 
 @section('content')
 
-    <h2 class="col-md-12 center">Publication de l'annonce</h2>
-
-    <div class="col-md-12 center">
-        <h5>Félicitations votre annonce est prête à être publiée! Passez en revue votre annonce et modifiez-la si nécessaire.</h5>
-    </div>
 
     <div class="row" data-spy="scroll" data-target=".scrollspy">
 
@@ -30,7 +25,6 @@
 
         <div class="col-md-5">
             <h3>{{ $advert->title }}</h3>
-
 
             <div id="presentation"> {{ $advert->presentation  }}</div>
 

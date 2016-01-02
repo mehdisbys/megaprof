@@ -132,7 +132,7 @@ class AdvertController extends Controller
 
         $coord = $request->only(['w','h','x','y','r']);
 
-        $m = new Avatar();
+        $m = Avatar::firstOrCreate(['advert_id' => $advert_id, 'user_id' => 1]);
 
         $webcam = $request->file('img_upload') ? false : true;
 
@@ -149,14 +149,30 @@ class AdvertController extends Controller
             $m->cropAvatar($filename, $coord, true);
         }
 
-        $m->advert_id = $advert_id;
-        $m->user_id = 1;
         $m->save();
 
         $advert = Advert::find($advert_id);
 
-        return view('professeur.advert.createComplete')->with(compact('advert'));
+        return view('professeur.advert.createStep7')->with(compact('advert'));
     }
+
+    public function postStep7(Request $request)
+    {
+        $advert_id = $request->input('advert_id');
+
+        $advert = Advert::find($advert_id);
+
+        return view('professeur.advert.view')->with(compact('advert'));
+    }
+
+
+    public function view($slug)
+    {
+        $advert = Advert::findBySlugOr404($slug);
+
+        return view('professeur.advert.view')->with(compact('advert'));
+    }
+
 
     public function getAvatar($user_id, $advert_id)
     {
