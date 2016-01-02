@@ -96,7 +96,7 @@
                     $("#img-preview").affix({
                         offset: {
                             top: $("#img-preview").offset().top,
-                            bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 15A0
+                            bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 150
                         }
                     });
                 });
