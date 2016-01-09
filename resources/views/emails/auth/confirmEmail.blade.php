@@ -1,19 +1,21 @@
 <html>
 
 <body>
-	<h1>Account Activation</h1>
+	<h1>Bienvenue !</h1>
 
 	<hr>
 
-	<p>Hello {{$name }},</p>
+	<p>Bonjour {{$name }},</p>
 	
 	<br>
 
-	<p>Please activate account by clicking on this <a href="{{$link}}">link</a> </p>	
+	<p>Veuillez confirmer la création de votre compte en cliquant sur le lien suivant <a href="{{$link}}">link</a> </p>
 
 	<br>
+
+    <p>Merci</p>
 	
-	<p>Thank you !</p>
+	<p>L'Équipe Mégaprof</p>
 
 </body>
 </html>

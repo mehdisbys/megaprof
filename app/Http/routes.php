@@ -29,10 +29,7 @@ Route::get('/avatar/{user_id}/{advert_id}', 'AdvertController@getAvatar');
 // Signup
 get( 'inscription', 'SignupController@getSignup');
 post('inscription', 'SignupController@candidateSignup');
-
-get( 'recruiter/signup', 'SignupController@getRecruiterSignup');
-post('recruiter/signup', 'SignupController@recruiterSignup');
-
+// Confirm
 get( 'register/confirm/{code}','SignupController@confirmEmail' );
 
 // Signing in

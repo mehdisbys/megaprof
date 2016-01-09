@@ -109,6 +109,36 @@ INSERT INTO `avatar` VALUES (5,1,49,'ÿØÿà\0JFIF\0\0H\0H\0\0ÿÛ\0C\0
 UNLOCK TABLES;
 
 --
+-- Table structure for table `jobs`
+--
+
+DROP TABLE IF EXISTS `jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `attempts` tinyint(3) unsigned NOT NULL,
+  `reserved` tinyint(3) unsigned NOT NULL,
+  `reserved_at` int(10) unsigned DEFAULT NULL,
+  `available_at` int(10) unsigned NOT NULL,
+  `created_at` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_reserved_reserved_at_index` (`queue`,`reserved`,`reserved_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jobs`
+--
+
+LOCK TABLES `jobs` WRITE;
+/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `levels`
 --
 
@@ -153,7 +183,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_12_01_134113_create_subjects_table',1),('2015_12_01_134336_create_sub_subjects_table',1),('2015_12_01_134644_create_levels_table',1),('2015_12_01_134819_create_sub_levels_table',1),('2015_12_01_144819_create_adverts_table',2),('2015_12_01_174336_entrust_setup_tables',2);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_12_01_134113_create_subjects_table',1),('2015_12_01_134336_create_sub_subjects_table',1),('2015_12_01_134644_create_levels_table',1),('2015_12_01_134819_create_sub_levels_table',1),('2015_12_01_144819_create_adverts_table',2),('2015_12_01_174336_entrust_setup_tables',2),('2016_01_09_140738_create_jobs_table',3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +308,7 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,6 +317,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'admin','Admin',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'professeur','Professeur',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'eleve','Ã‰lÃ¨ve',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'test','Test',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,12 +442,11 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `companyid` int(11) DEFAULT NULL,
+  `firstname` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `telephone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password_confirmation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `confirmation_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `forgotten_token` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -424,8 +454,6 @@ CREATE TABLE `users` (
   `auto_created` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `adverts_credit` int(11) DEFAULT '0',
-  `free_adverts_credit` int(11) DEFAULT '0',
   `premium_credit` int(11) DEFAULT '0',
   `stripe_customer_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `last4` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -434,7 +462,7 @@ CREATE TABLE `users` (
   `brand` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -443,6 +471,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (6,'User','Test','ramses@yopmail.com',NULL,'$2y$10$45wxzzb4xk2nbp0Ndbz5TebX1YNMe5h9dodkWjLS7o1SEwsYUP8xu','LMkxiwHSKGmQk83IZwJRoDpPpi4BOV',NULL,NULL,0,NULL,'2016-01-09 13:53:11','2016-01-09 13:53:11',0,NULL,NULL,NULL,NULL,NULL),(10,'Mehdi','Test','mehdi.souihed@gmail.com',NULL,'$2y$10$Xkrhb8AwaQpNox8OM2U1p.QUMNtVQIRqT.67ZDoTMtDosV8xBA8J.','','yL2szoR6coAEhTNKAS43P7Q9VckVj2tODPkttFzjzcVF2UPaNxhuKKuwNbeJ',NULL,1,NULL,'2016-01-09 15:01:15','2016-01-09 15:11:34',0,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -455,4 +484,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-02 21:28:52
+-- Dump completed on 2016-01-09 15:20:49

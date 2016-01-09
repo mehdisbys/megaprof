@@ -51,12 +51,12 @@ class SignupController extends Controller
 	{
 		$view = 'emails.auth.confirmEmail';
 		$config['to'] = $user->email;
-		$config['name'] = $user->username;
-		$config['subject'] = $user->username . ' fd';
-		$all['name'] = $user->username;
+		$config['name'] = $user->firstname;
+		$config['subject'] = ucfirst($user->firstname) . ' bienvenue sur Megaprof';
+		$all['name'] = $user->firstname;
 		$all['link'] = url('register/confirm/' . $user->confirmation_code); 
 
-		$this->mailer->queueMail($view, $all, $config);
+		$this->mailer->sendMail($view, $all, $config);
 	}
 
 	/**

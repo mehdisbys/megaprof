@@ -17,6 +17,7 @@ return array(
     'App\\Models\\SubjectsPerAdvert' => $baseDir . '/app/Models/SubjectsPerAdvert.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'CreateAdvertsTable' => $baseDir . '/database/migrations/2015_12_01_144819_create_adverts_table.php',
+    'CreateJobsTable' => $baseDir . '/database/migrations/2016_01_09_140738_create_jobs_table.php',
     'CreateLevelsTable' => $baseDir . '/database/migrations/2015_12_01_134644_create_levels_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSubLevelsTable' => $baseDir . '/database/migrations/2015_12_01_134819_create_sub_levels_table.php',

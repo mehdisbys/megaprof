@@ -51,26 +51,34 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <h1>Megaprof</h1>
+                    <h1><a href="/">Megaprof</a></h1>
                 </div><!-- #logo end -->
 
                 <!-- Primary Navigation
                 ============================================= -->
                 <nav id="primary-menu">
 
-                    <ul>
-                        <li><a href="/"><div>Accueil</div></a>
-                        </li>
-                        <li><a href="/nouvelle-annonce-1"><div>Créer une annonce</div></a>
-                        </li>
-                        <li><a href="#"><div>Mon Compte</div></a>
-                        </li>
-                        <li><a href="#"><div>Messages</div></a>
-                        </li>
-                        <li><a href="#"><div>Aide</div></a>
-                        </li>
+                    @if(Auth::check())
+                        <ul>
+                            <li><a href="/inscription"><div>Créer une annonce</div></a></li>
 
-                    </ul>
+                            <li><a href="#"><div>{{Auth::user()->firstname }}</div></a></li>
+
+                            <li><a href="#"><div>S'inscrire</div></a></li>
+
+                            <li><a href="#"><div>Aide</div></a></li>
+                        </ul>
+                    @else
+                        <ul>
+                            <li><a href="/nouvelle-annonce-1"><div>Créer une annonce</div></a></li>
+
+                            <li><a href="#"><div>Mon Compte</div></a></li>
+
+                            <li><a href="/inscription"><div>S'inscrire</div></a></li>
+
+                            <li><a href="#"><div>Aide</div></a></li>
+                        </ul>
+                    @endif
 
                     <!-- Top Search
                     ============================================= -->
