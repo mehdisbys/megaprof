@@ -136,7 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-	Illuminate\Html\HtmlServiceProvider::class,
+	    Illuminate\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -144,11 +144,11 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\MailServiceProvider::class,
+        AdamWathan\BootForms\BootFormsServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
-
-
     ],
 
     /*
@@ -199,6 +199,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 	    'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Form'      => Illuminate\Html\FormFacade::class,
+        'BootForm'  => AdamWathan\BootForms\Facades\BootForm::class,
         'Image'     => Intervention\Image\Facades\Image::class,
 
     ],

@@ -24,8 +24,21 @@ Route::post('/nouvelle-annonce-4', 'AdvertController@postStep4');
 Route::post('/nouvelle-annonce-5', 'AdvertController@postStep5');
 Route::post('/nouvelle-annonce-6', 'AdvertController@postStep6');
 Route::post('/nouvelle-annonce-7', 'AdvertController@postStep7');
-
 Route::get('/avatar/{user_id}/{advert_id}', 'AdvertController@getAvatar');
+
+// Signup
+get( 'inscription', 'SignupController@getSignup');
+post('inscription', 'SignupController@candidateSignup');
+
+get( 'recruiter/signup', 'SignupController@getRecruiterSignup');
+post('recruiter/signup', 'SignupController@recruiterSignup');
+
+get( 'register/confirm/{code}','SignupController@confirmEmail' );
+
+// Signing in
+get( 'login','SessionsController@login');
+post('login','SessionsController@postLogin');
+get( 'logout', 'SessionsController@logout');
 
 
 Route::get('/{slug}', 'AdvertController@view');

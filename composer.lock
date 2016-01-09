@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2e46debd65c1890433ce3d96209d01cd",
-    "content-hash": "7d1dbd1b0c60df49fa5df0e0af839409",
+    "hash": "c06df713b6bbaca19c6182a47b2b974e",
+    "content-hash": "53a092c86457577af341121cadeee32c",
     "packages": [
         {
             "name": "adamwathan/bootforms",
-            "version": "dev-master",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adamwathan/bootforms.git",
-                "reference": "f48e10bfdd3f7ab5e784ea1d2eb051bf6841eba7"
+                "reference": "9da18932543690d98e45dd684f5acd8bb9a86349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/bootforms/zipball/f48e10bfdd3f7ab5e784ea1d2eb051bf6841eba7",
-                "reference": "f48e10bfdd3f7ab5e784ea1d2eb051bf6841eba7",
+                "url": "https://api.github.com/repos/adamwathan/bootforms/zipball/9da18932543690d98e45dd684f5acd8bb9a86349",
+                "reference": "9da18932543690d98e45dd684f5acd8bb9a86349",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                 }
             ],
             "description": "Just a Formbuilder with some Bootstrap specific conveniences. Remembers old input, retrieves error messages and handles all your boilerplate Bootstrap markup automatically.",
-            "time": "2015-12-11 19:47:04"
+            "time": "2015-12-08 16:07:27"
         },
         {
             "name": "adamwathan/form",
@@ -101,7 +101,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/974fd16e328ca851a081449100d9509af59cf0ff",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/67d5a0f3501d808ee27265c391b532c64e04db1b",
                 "reference": "866806cbd410e7d098642daa426fc0c131b9ee39",
                 "shasum": ""
             },
@@ -271,7 +271,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/de9822e2d3cf3aefce9c8301d231cde776fcc340",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/2457098d93fb3a0a62d012fbc575af6e5d37bde5",
                 "reference": "562a721057615660736aebd084bd22ab13d55ba8",
                 "shasum": ""
             },
@@ -3904,8 +3904,7 @@
         "cviebrock/eloquent-taggable": 20,
         "barryvdh/laravel-debugbar": 20,
         "zizaco/entrust": 20,
-        "spatie/laravel-tail": 20,
-        "adamwathan/bootforms": 20
+        "spatie/laravel-tail": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

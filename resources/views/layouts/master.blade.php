@@ -7,25 +7,24 @@
     <!-- Stylesheets
     ============================================= -->
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-    {!! HTML::style('css/bootstrap.css') !!}
-    {!! HTML::style('css/style.css')!!}
-    {!! HTML::style('css/dark.css')!!}
-    {!! HTML::style('css/font-icons.css')!!}
-    {!! HTML::style('css/animate.css')!!}
-    {!! HTML::style('css/magnific-popup.css')!!}
-    {!! HTML::style('css/checkbox-button.css')!!}
-    {!! HTML::style('css/custom.css')!!}
-
-    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {!! HTML::style('/css/bootstrap.css') !!}
+    {!! HTML::style('/css/style.css')!!}
+    {!! HTML::style('/css/dark.css')!!}
+    {!! HTML::style('/css/font-icons.css')!!}
+    {!! HTML::style('/css/animate.css')!!}
+    {!! HTML::style('/css/magnific-popup.css')!!}
+    {!! HTML::style('/css/checkbox-button.css')!!}
+    {!! HTML::style('/css/custom.css')!!}
+    {!! HTML::style("/css/responsive.css") !!}
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <![endif]-->
 
     <!-- External JavaScripts
     ============================================= -->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/plugins.js"></script>
+    {!! HTML::script("/js/jquery.js") !!}
+    {!! HTML::script("/js/plugins.js") !!}
 
     <!-- Document Title
     ============================================= -->
@@ -126,11 +125,11 @@
 
                         <div class="widget clearfix">
 
-                            <img src="images/footer-widget-logo.png" alt="" class="footer-logo">
+                            <img src="/images/footer-widget-logo.png" alt="" class="footer-logo">
 
                             <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
 
-                            <div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
+                            <div style="background: url('/images/world-map.png') no-repeat center center; background-size: 100%;">
                                 <address>
                                     <strong>Headquarters:</strong><br>
                                     795 Folsom Ave, Suite 600<br>
@@ -362,7 +361,7 @@
 
 <!-- Footer Scripts
 ============================================= -->
-<script type="text/javascript" src="js/functions.js"></script>
+{!! HTML::script("js/functions.js") !!}
 
 </body>
 </html>

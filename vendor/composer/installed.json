@@ -3164,7 +3164,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/974fd16e328ca851a081449100d9509af59cf0ff",
+            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/67d5a0f3501d808ee27265c391b532c64e04db1b",
             "reference": "866806cbd410e7d098642daa426fc0c131b9ee39",
             "shasum": ""
         },
@@ -3455,7 +3455,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/de9822e2d3cf3aefce9c8301d231cde776fcc340",
+            "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/2457098d93fb3a0a62d012fbc575af6e5d37bde5",
             "reference": "562a721057615660736aebd084bd22ab13d55ba8",
             "shasum": ""
         },
@@ -3495,50 +3495,6 @@
             "laravel",
             "slug"
         ]
-    },
-    {
-        "name": "adamwathan/bootforms",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/adamwathan/bootforms.git",
-            "reference": "f48e10bfdd3f7ab5e784ea1d2eb051bf6841eba7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/adamwathan/bootforms/zipball/f48e10bfdd3f7ab5e784ea1d2eb051bf6841eba7",
-            "reference": "f48e10bfdd3f7ab5e784ea1d2eb051bf6841eba7",
-            "shasum": ""
-        },
-        "require": {
-            "adamwathan/form": "~0.7.1",
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "0.9.*",
-            "phpunit/phpunit": "3.7.*",
-            "satooshi/php-coveralls": "dev-master"
-        },
-        "time": "2015-12-11 19:47:04",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "AdamWathan\\BootForms": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Adam Wathan",
-                "email": "adam.wathan@gmail.com"
-            }
-        ],
-        "description": "Just a Formbuilder with some Bootstrap specific conveniences. Remembers old input, retrieves error messages and handles all your boilerplate Bootstrap markup automatically."
     },
     {
         "name": "psy/psysh",
@@ -4025,5 +3981,49 @@
             "thumbnail",
             "watermark"
         ]
+    },
+    {
+        "name": "adamwathan/bootforms",
+        "version": "v0.7.1",
+        "version_normalized": "0.7.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/adamwathan/bootforms.git",
+            "reference": "9da18932543690d98e45dd684f5acd8bb9a86349"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/adamwathan/bootforms/zipball/9da18932543690d98e45dd684f5acd8bb9a86349",
+            "reference": "9da18932543690d98e45dd684f5acd8bb9a86349",
+            "shasum": ""
+        },
+        "require": {
+            "adamwathan/form": "~0.7.1",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.9.*",
+            "phpunit/phpunit": "3.7.*",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2015-12-08 16:07:27",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "AdamWathan\\BootForms": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Adam Wathan",
+                "email": "adam.wathan@gmail.com"
+            }
+        ],
+        "description": "Just a Formbuilder with some Bootstrap specific conveniences. Remembers old input, retrieves error messages and handles all your boilerplate Bootstrap markup automatically."
     }
 ]
