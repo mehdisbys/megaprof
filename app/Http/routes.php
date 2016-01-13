@@ -22,9 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4');
     post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5');
     post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
-    post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
 
 });
+post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
 
 Route::get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
 
