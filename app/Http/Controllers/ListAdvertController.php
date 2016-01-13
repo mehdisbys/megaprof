@@ -9,7 +9,15 @@
 namespace App\Http\Controllers;
 
 
-class ListAdvertController
+use App\Models\Advert;
+
+class ListAdvertController extends Controller
 {
 
+    public function index()
+    {
+        $adverts = Advert::all();
+
+        return view('main.index')->with(compact('adverts'));
+    }
 }

@@ -11,20 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.master');
+get('/', 'ListAdvertController@index');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    get('/nouvelle-annonce-1', 'SubmitAdvertController@getStep1');
+    post('/nouvelle-annonce-1', 'SubmitAdvertController@postStep1');
+    post('/nouvelle-annonce-2', 'SubmitAdvertController@postStep2');
+    post('/nouvelle-annonce-3', 'SubmitAdvertController@postStep3');
+    post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4');
+    post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5');
+    post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
+    post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
+
 });
 
-
-Route::get('/nouvelle-annonce-1',  'AdvertController@getStep1');
-Route::post('/nouvelle-annonce-1', 'AdvertController@postStep1');
-Route::post('/nouvelle-annonce-2', 'AdvertController@postStep2');
-Route::post('/nouvelle-annonce-3', 'AdvertController@postStep3');
-Route::post('/nouvelle-annonce-4', 'AdvertController@postStep4');
-Route::post('/nouvelle-annonce-5', 'AdvertController@postStep5');
-Route::post('/nouvelle-annonce-6', 'AdvertController@postStep6');
-Route::post('/nouvelle-annonce-7', 'AdvertController@postStep7');
-Route::get('/avatar/{user_id}/{advert_id}', 'AdvertController@getAvatar');
+Route::get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
 
 // Signup
 get( 'inscription', 'SignupController@getSignup');
@@ -38,4 +40,4 @@ post('login','SessionsController@postLogin');
 get( 'logout', 'SessionsController@logout');
 
 
-Route::get('/{slug}', 'AdvertController@view');
+Route::get('/{slug}', 'SubmitAdvertController@view');

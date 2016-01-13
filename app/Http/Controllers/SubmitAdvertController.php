@@ -10,7 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 
-class AdvertController extends Controller
+class SubmitAdvertController extends Controller
 {
 
     public function getStep1()
