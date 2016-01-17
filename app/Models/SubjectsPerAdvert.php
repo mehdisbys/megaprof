@@ -10,4 +10,9 @@ class SubjectsPerAdvert extends Model
 
     protected $guarded = [];
 
+    public function subsubjects()
+    {
+        return $this->belongsTo(SubSubject::class, 'subject_id');
+    }
+
 }

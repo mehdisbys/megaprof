@@ -29,6 +29,21 @@ class Advert extends Model implements SluggableInterface {
     ];
 
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function subjectsPerAd()
+    {
+        return $this->hasMany(SubjectsPerAdvert::class);
+    }
+
+    public static function currentUserAdverts()
+    {
+        return static::where('user_id', \Auth::id())->with('subjectsPerAd')->get();
+    }
+
     public function getAvatar()
     {
         return "/avatar/{$this->user_id}/{$this->id}";

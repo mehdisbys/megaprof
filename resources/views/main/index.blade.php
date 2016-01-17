@@ -19,7 +19,7 @@
         {!! Form::close() !!}
     </div>
 
-    <div class="col-md-10 col-md-offset-1 topmargin-sm">
+    <div class="col-md-10 col-md-offset-1 topmargin-lg">
 
         @foreach($adverts as $advert)
 

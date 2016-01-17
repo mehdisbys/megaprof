@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth'], function () {
     post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5');
     post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
 
+    get('/mon-compte', 'ProfAccountController@index');
+
+    //get('/mes-annonces', 'ProfAdvertController@index');
+
 });
 post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
 

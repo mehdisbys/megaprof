@@ -60,23 +60,21 @@
 
                     @if(Auth::check())
                         <ul>
-                            <li><a href="/inscription"><div>Créer une annonce</div></a></li>
+                            <li><a href="/mes-annonces"><div>Gérer mes annonces</div></a></li>
 
-                            <li><a href="#"><div>{{Auth::user()->firstname }}</div></a></li>
+                            <li><a href="/mon-compte"><div>Mon Compte</div></a></li>
 
-                            <li><a href="#"><div>S'inscrire</div></a></li>
+                            <li><a href="/mes-messages"><div>Messages</div></a></li>
 
-                            <li><a href="#"><div>Aide</div></a></li>
+                            <li><a href="/aide"><div>Aide</div></a></li>
                         </ul>
                     @else
                         <ul>
-                            <li><a href="/nouvelle-annonce-1"><div>Créer une annonce</div></a></li>
-
-                            <li><a href="#"><div>Mon Compte</div></a></li>
+                            <li><a href="/inscription"><div>Créer une annonce</div></a></li>
 
                             <li><a href="/inscription"><div>S'inscrire</div></a></li>
 
-                            <li><a href="#"><div>Aide</div></a></li>
+                            <li><a href="/aide"><div>Aide</div></a></li>
                         </ul>
                     @endif
 

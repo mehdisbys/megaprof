@@ -1,19 +1,20 @@
 <div class="row border1px">
 
     <div class="">
-        <div id="author" class="col-md-3 col-md-offset-1">
+        <div id="author" class="col-md-3">
             <div id="leftside">
                 <img src="{{ $advert->getAvatar() }}" alt="">
 
-                <h3><a href="#" class=" center">Yacine</a></h3>
+                <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
             </div>
         </div>
 
-        <div class="col-md-5">
-            <h4>{{ $advert->title }}</h4>
-
+        <div class="col-md-6">
+            <h5>{{ $advert->title }}</h5>
             <div id="presentation"> {{ str_limit($advert->presentation, 345) }}</div>
-            <div class="pull-right"><i class="icon-location"></i> Habite à <strong>{{ $advert->location_city }}</strong> </div>
+            <div class="pull-right">
+                <i class="icon-location"></i> Habite à <strong>{{ $advert->location_city }}</strong>
+            </div>
 
         </div>
 
