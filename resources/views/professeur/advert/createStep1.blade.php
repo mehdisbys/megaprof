@@ -20,7 +20,12 @@
                 <div class="togglec" style="display: none;">
                     @foreach ($subject->subSubjects as $subs)
                         <div class="ck-button">
-                            <input class="no-display" type="checkbox" name="subjects[]" id="{{$subs->id}}" value="{{$subs->id}}">
+                            <input class="no-display" type="checkbox" name="subjects[]" id="{{$subs->id}}"
+                                   value="{{$subs->id}}"
+                                   @if(isset($checkedSubjects) and in_array($subs->id, $checkedSubjects))
+                                    checked
+                                   @endif
+                            >
                             <label class="" for="{{$subs->id}}">
                                 <span>{{$subs->name}}</span>
                             </label>

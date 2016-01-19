@@ -82,17 +82,19 @@
                                 @endforeach
                             </div>
 
-                            <div class="col-md-12 pull-right topmargin-sm">
+                            <div class="pull-right topmargin-sm">
                                 <i class="icon-location"></i><strong>{{ $advert->location_city }}</strong>
                             </div>
 
-                            <div class="col-md-12 topmargin-sm"> Dernière
+                            <div class="col-md-12"> Dernière
                                 modification: {{$advert->updated_at->format('m/d/Y H:i') }}</div>
                         </div>
 
                         <div class="col-md-2">
+                            <div class="button button-small button-white button-rounded"><a  href="/deactivate/{{$advert->id}}/">Désactiver</a></div>
                             <div class="button button-small button-leaf button-rounded"><a  href="/{{$advert->slug}}">Voir</a></div>
-                            <div class="button button-yellow button-rounded">Modifier</div>
+                            <div class="button button-yellow button-rounded">
+                                <a href="/modifier-annonce-1/{{$advert->id}}">Modifier</a></div>
                         </div>
                     </div>
                 @endforeach
