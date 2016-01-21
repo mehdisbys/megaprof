@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
 
     get('/modifier-annonce-1/{advert_id}', 'EditAdvertController@editStep1');
+    post('/modifier-annonce-1/{advert_id}', 'EditAdvertController@postEditStep1');
     any('/modifier-annonce-2/{advert_id}', 'EditAdvertController@editStep2');
     any('/modifier-annonce-3/{advert_id}', 'EditAdvertController@editStep3');
     any('/modifier-annonce-4/{advert_id}', 'EditAdvertController@editStep4');

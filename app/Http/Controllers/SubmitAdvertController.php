@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\Avatar;
+use App\Models\SubjectsPerAdvert;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,11 +28,7 @@ class SubmitAdvertController extends Controller
 
         // 2. Fill subjects_per_adverts  table
         $subjectsArray = $request->input('subjects');
-
-        foreach ($subjectsArray as $subject_id)
-        {
-            \App\Models\SubjectsPerAdvert::firstOrCreate(['advert_id' => $advert->id, 'subject_id' => $subject_id]);
-        }
+        SubjectsPerAdvert::fillSubjectForAdvert($advert->id, $subjectsArray);
 
         // 3. Return data necessary for next step
         $subjects = \App\Models\SubSubject::whereIn('id', $subjectsArray)->get();
