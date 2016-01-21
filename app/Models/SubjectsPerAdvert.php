@@ -24,4 +24,14 @@ class SubjectsPerAdvert extends Model
             \App\Models\SubjectsPerAdvert::firstOrCreate(['advert_id' => $advert_id, 'subject_id' => $subject_id]);
         }
     }
+
+    public static function fillLevelsPerSubjects($advert_id, $subjects)
+    {
+        foreach ($subjects as $subject => $sublevels)
+        {
+            $ad = \App\Models\SubjectsPerAdvert::where(['advert_id' => $advert_id, 'subject_id' => $subject])->first();
+            $ad->level_ids = json_encode($sublevels); // TODO setup model accessor functions get/set
+            $ad->save();
+        }
+    }
 }

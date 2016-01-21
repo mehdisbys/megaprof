@@ -28,7 +28,6 @@ class EditAdvertController extends Controller
 
     public function postEditStep1($advert_id)
     {
-
         $subjectsArray = \Input::get('subjects');
         SubjectsPerAdvert::fillSubjectForAdvert($advert_id, $subjectsArray);
 
@@ -36,13 +35,23 @@ class EditAdvertController extends Controller
         $subjects = \App\Models\SubSubject::whereIn('id', $subjectsArray)->get();
         $levels = \App\Models\Level::all();
 
-        return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id'));
+        $advert = Advert::findOrFail($advert_id);
+
+        return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id', 'advert'));
     }
 
-    public function editStep2()
+    public function postEditStep2($advert_id)
     {
+        $subjects = \Input::get('levels');
+        $title = \Input::get('title');
 
+        \App\Models\Advert::find($advert_id)->update(['title' => $title]);
 
+        SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $subjects);
+
+        $advert =  Advert::findOrFail($advert_id);
+
+        return view('professeur.advert.createStep3')->with(compact('advert_id', 'advert'));
     }
 
     public function editStep3()

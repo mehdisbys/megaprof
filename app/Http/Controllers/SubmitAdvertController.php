@@ -46,12 +46,7 @@ class SubmitAdvertController extends Controller
 
         \App\Models\Advert::find($advert_id)->update(['title' => $title]);
 
-        foreach ($subjects as $subject => $sublevels)
-        {
-            $ad = \App\Models\SubjectsPerAdvert::where(['advert_id' => $advert_id, 'subject_id' => $subject])->first();
-            $ad->level_ids = json_encode($sublevels); // TODO setup model accessor functions get/set
-            $ad->save();
-        }
+        SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $subjects);
 
         return view('professeur.advert.createStep3')->with(compact('advert_id'));
     }
