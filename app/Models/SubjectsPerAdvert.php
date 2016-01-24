@@ -17,7 +17,7 @@ class SubjectsPerAdvert extends Model
 
     public static function fillSubjectForAdvert($advert_id, $subjectsArray)
     {
-        static::where('advert_id', $advert_id)->delete();
+        static::where('advert_id', $advert_id)->whereNotIn('subject_id', $subjectsArray)->delete();
 
         foreach ($subjectsArray as $subject_id)
         {
@@ -33,5 +33,16 @@ class SubjectsPerAdvert extends Model
             $ad->level_ids = json_encode($sublevels); // TODO setup model accessor functions get/set
             $ad->save();
         }
+    }
+
+    public static function getLevelsPerSubjects($advert_id, $subjects)
+    {
+        return static::whereIn('subject_id', $subjects)
+            ->where('advert_id', $advert_id)
+            ->select('subject_id', 'level_ids')
+          //  ->select('level_ids')
+            ->get()
+            //->pluck('level_ids')
+            ;
     }
 }

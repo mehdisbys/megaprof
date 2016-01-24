@@ -28,9 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     post('/modifier-annonce-2/{advert_id}', 'EditAdvertController@postEditStep2');
     post('/modifier-annonce-3/{advert_id}', 'EditAdvertController@postEditStep3');
     post('/modifier-annonce-4/{advert_id}', 'EditAdvertController@postEditStep4');
-
-    any('/modifier-annonce-5/{advert_id}', 'EditAdvertController@editStep5');
-    any('/modifier-annonce-6/{advert_id}', 'EditAdvertController@editStep6');
+    post('/modifier-annonce-5/{advert_id}', 'EditAdvertController@postEditStep5');
+    post('/modifier-annonce-6/{advert_id}', 'EditAdvertController@postEditStep6');
 
     get('/mon-compte', 'ProfAccountController@index');
 });

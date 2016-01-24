@@ -41,12 +41,12 @@ class SubmitAdvertController extends Controller
     public function postStep2(Request $request)
     {
         $advert_id = $request->input('advert_id');
-        $subjects = $request->input('levels');
+        $levels = $request->input('levels');
         $title = $request->input('title');
 
         \App\Models\Advert::find($advert_id)->update(['title' => $title]);
 
-        SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $subjects);
+        SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $levels);
 
         return view('professeur.advert.createStep3')->with(compact('advert_id'));
     }
@@ -122,26 +122,7 @@ class SubmitAdvertController extends Controller
     {
         $advert_id = $request->input('advert_id');
 
-        $coord = $request->only(['w','h','x','y','r']);
-
-        $m = Avatar::firstOrCreate(['advert_id' => $advert_id, 'user_id' => 1]);
-
-        $webcam = $request->file('img_upload') ? false : true;
-
-        if(! $webcam)
-        {
-            $filename = 'img_upload';
-            $m->handleFile($filename);
-            $m->cropAvatar($filename, $coord);
-        }
-
-        else
-        {
-            $filename = 'webcam_img';
-            $m->cropAvatar($filename, $coord, true);
-        }
-
-        $m->save();
+        savePicture($advert_id);
 
         $advert = Advert::find($advert_id);
 

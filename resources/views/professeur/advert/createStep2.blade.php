@@ -39,7 +39,11 @@
                         @foreach ($level->subLevels as $subs)
                             <div class="ck-button">
                                 <input class="no-display" type="checkbox" name="levels[{{$subject->id}}][]"
-                                       id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}">
+                                       id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}"
+                                        @if(isset($checked) and in_array($subs->id, $checked[$subject->id]))
+                                        checked="on"
+                                        @endif
+                                        >
                                 <label class="" for="{{$subject->id ."_". $subs->id}}">
                                     <span>{{$subs->name}}</span>
                                 </label>

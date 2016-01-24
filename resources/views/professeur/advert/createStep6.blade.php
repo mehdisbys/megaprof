@@ -7,8 +7,13 @@
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
     {!! HTML::style('css/cropper.min.css')!!}
 
-    <form id="presentation-content"  accept-charset="UTF-8"
-          action="/nouvelle-annonce-6" method="POST"  enctype="multipart/form-data">
+    @if(isset($advert))
+        <form id="presentation-content"  accept-charset="UTF-8"
+              action="/modifier-annonce-6/{{$advert->id}}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+    @else
+        <form id="presentation-content"  accept-charset="UTF-8"
+              action="/nouvelle-annonce-6" method="POST" enctype="multipart/form-data" data-parsley-validate>
+    @endif
 
         {!! csrf_field() !!}
 
@@ -23,7 +28,11 @@
         <div class="col-md-12 center topmargin-sm">
 
             <div id="img-container">
+                @if(isset($advert))
+                    <img src="{{ $advert->getAvatar() }}" alt="">
+                @else
                 {!! HTML::image('images/question-mark-face.jpg', null, ["style" => "width:350px; height:200px;", 'id' => 'img-question-mark']) !!}
+                @endif
 
                 <div class="clearfix"></div>
 

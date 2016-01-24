@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="row" data-spy="scroll" data-target=".scrollspy">
 
         <div id="author" class="col-md-3 col-md-offset-1 scrollspy">

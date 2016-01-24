@@ -3,6 +3,7 @@
 
 use App\Http\Requests\Request;
 use App\Models\Advert;
+use App\Models\Avatar;
 use App\Models\SubjectsPerAdvert;
 
 class EditAdvertController extends Controller
@@ -15,10 +16,10 @@ class EditAdvertController extends Controller
         if (Advert::where(['id' => $advert_id, 'user_id' => \Auth::id()])->exists() == false)
             return redirect()->back();
 
-        $advert =  Advert::findOrFail($advert_id);
+        $advert = Advert::findOrFail($advert_id);
 
         $checkedSubjects = SubjectsPerAdvert::select('subject_id')
-            ->where('advert_id',$advert->id)
+            ->where('advert_id', $advert->id)
             ->get()
             ->pluck('subject_id')
             ->toArray();
@@ -35,21 +36,35 @@ class EditAdvertController extends Controller
         $subjects = \App\Models\SubSubject::whereIn('id', $subjectsArray)->get();
         $levels = \App\Models\Level::all();
 
+        $checkedLevels = SubjectsPerAdvert::getLevelsPerSubjects($advert_id, $subjectsArray);
+        $checked = [];
+        $checkedLevels->filter(function ($item) use ($subjects, $levels, &$checked) {
+            foreach ($subjects as $subject)
+                foreach ($levels as $level) {
+                    foreach ($level->subLevels as $subs) {
+                        if ($subject->id == $item->subject_id and in_array($subs->id, json_decode($item->level_ids))) {
+                            $checked[$subject->id][] = $subs->id;
+                        }
+                    }
+                }
+        }
+        );
+        //dd($checked);
         $advert = Advert::findOrFail($advert_id);
 
-        return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id', 'advert'));
+        return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id', 'advert', 'checked'));
     }
 
     public function postEditStep2($advert_id)
     {
-        $subjects = \Input::get('levels');
+        $levels = \Input::get('levels');
         $title = \Input::get('title');
 
         \App\Models\Advert::find($advert_id)->update(['title' => $title]);
 
-        SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $subjects);
+        SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $levels);
 
-        $advert =  Advert::findOrFail($advert_id);
+        $advert = Advert::findOrFail($advert_id);
 
         return view('professeur.advert.createStep3')->with(compact('advert_id', 'advert'));
     }
@@ -67,14 +82,14 @@ class EditAdvertController extends Controller
         $loc_data = array_combine($keys, $values);
 
         \App\Models\Advert::find($advert_id)->update($loc_data);
-        $advert =  Advert::findOrFail($advert_id);
+        $advert = Advert::findOrFail($advert_id);
 
         return view('professeur.advert.createStep4')->with(compact('advert_id', 'advert'));
     }
 
     public function postEditStep4($advert_id)
     {
-        $advert =  Advert::findOrFail($advert_id);
+        $advert = Advert::findOrFail($advert_id);
 
         $content_data = \Request::only(['presentation', 'content', 'experience']);
 
@@ -88,13 +103,35 @@ class EditAdvertController extends Controller
         return view('professeur.advert.createStep5')->with(compact('advert_id', 'advert', 'can_travel', 'can_webcam'));
     }
 
-    public function editStep5()
+    public function postEditStep5($advert_id)
     {
+        $only = [
+            "price",
+            "price_travel_percentage",
+            "price_travel",
+            "price_webcam_percentage",
+            "price_webcam",
+            "price_5_hours_percentage",
+            "price_10_hours_percentage",
+            "price_5_hours",
+            "price_10_hours",
+            "price_more"
+        ];
 
+        $data = \Request::only($only);
+
+        \App\Models\Advert::find($advert_id)->update($data);
+        $advert = \App\Models\Advert::find($advert_id);
+
+        return view('professeur.advert.createStep6')->with(compact('advert_id', 'advert'));
     }
 
-    public function editStep6()
+    public function postEditStep6($advert_id)
     {
+        savePicture($advert_id);
 
+        $advert = Advert::find($advert_id);
+
+        return view('professeur.advert.createStep7')->with(compact('advert'));
     }
 }

@@ -55,11 +55,6 @@ function prepareFileUpload($path)
 	return new \Symfony\Component\HttpFoundation\File\UploadedFile ($path, null, $mime, null, null, true);
 }
 
-function alreadyApplied($jobid, $userid)
-{
-	return \App\Models\JobApplication::checkRecordExists($jobid, $userid);
-}
-
 function issetAndHasValue($var = NULL, $value = true)
 {
     return isset($var) and $var == $value;
@@ -72,12 +67,28 @@ function calculate_next_time($interval, $start_time = NULL)
 	return $start_time + $interval;
 }
 
-function slugFromJobid($jobid)
+function savePicture($advert_id)
 {
-	return \App\Models\Job::find($jobid)->slug;
-}
+	$coord = \Request::only(['w','h','x','y','r']);
 
-function jobidFromSlug($slug)
-{
-	return \App\Models\Job::whereSlug($slug)->first()->id;
+	$m = \App\Models\Avatar::firstOrCreate(['advert_id' => $advert_id, 'user_id' => \Auth::id()]);
+
+	$webcam = \Request::file('img_upload') ? false : true;
+
+	if(! $webcam)
+	{
+		$filename = 'img_upload';
+		$m->handleFile($filename);
+		$m->cropAvatar($filename, $coord);
+	}
+
+	else
+	{
+		$filename ='webcam_img';
+		$m->cropAvatar($filename, $coord, true);
+	}
+
+	$m->save();
+	$m->save();
+
 }
