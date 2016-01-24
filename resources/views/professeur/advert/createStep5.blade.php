@@ -4,6 +4,14 @@
 
     {!! HTML::script("js/parsley.min.js")!!}
 
+    @if(isset($advert))
+        <form id="presentation-content"  accept-charset="UTF-8"
+              action="/modifier-annonce-5/{{$advert->id}}" method="POST" data-parsley-validate>
+    @else
+        <form id="presentation-content"  accept-charset="UTF-8"
+              action="/nouvelle-annonce-5" method="POST" data-parsley-validate>
+    @endif
+
     <form id="presentation-content"  accept-charset="UTF-8"
           action="/nouvelle-annonce-5" method="POST" data-parsley-validate>
 
@@ -25,20 +33,21 @@
 
         @if($can_travel)
             <?php $price_travel = isset($advert) ? $advert->price_travel : null ?>
+            <?php $price_travel_percentage = isset($advert) ? $advert->price_travel_percentage : null ?>
 
             <div class="ck-button col-md-12 col-md-offset-3">
 
-
-                {!! Form::input('checkbox','price_travel_supp', $price_travel,['class' => 'no-display', 'id' => 'price_travel_supp']) !!}
+                {!! Form::input('checkbox','price_travel_supp', $price_travel,['class' => 'no-display', 'id' => 'price_travel_supp',
+                 'checked' => $can_travel]) !!}
                 <label for='price_travel_supp' class="bottommargin-sm">
                     <span>Je souhaite facturer un supplément lorsque je me déplace</span>
                 </label>
             </div>
 
-            <div class="col-md-12 no-visibility" id="price_travel_supp_display">
+            <div class="col-md-12 {{$can_travel ? "" : "no-visibility" }}" id="price_travel_supp_display">
 
                 <div class="small col-md-offset-1 col-md-2"><em>Ce montant sera rajouté à votre prix de base</em></div>
-                {!! Form::input('text', 'price_travel_percentage', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_travel_percentage']) !!}
+                {!! Form::input('text', 'price_travel_percentage', $price_travel_percentage,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_travel_percentage']) !!}
                 <div class="col-md-1 small">&nbsp; Dirhams</div>
                 <div class="col-md-6" id="price_travel_text">Le tarif lorsque vous vous déplacez sera de <span id="price_travel_span"></span> Dhs par heure</div>
                 {!! Form::hidden('price_travel', null, ['id' => 'price_travel']) !!}
@@ -50,15 +59,17 @@
         @if($can_webcam)
 
             <div class="ck-button col-md-12 col-md-offset-3">
-                {!! Form::input('checkbox','price_webcam_bool',null,['class' => 'no-display', 'id' => 'price_webcam_bool']) !!}
+                {!! Form::input('checkbox','price_webcam_bool',null,['class' => 'no-display', 'id' => 'price_webcam_bool',
+                'checked' => $can_webcam]) !!}
                 <label for='price_webcam_bool' class="bottommargin-sm ">
                     <span>Je souhaite réduire le prix pour les cours faits via webcam</span>
                 </label>
             </div>
 
-            <div class="col-md-12 no-visibility" id="price_webcam_bool_display">
+            <?php $price_webcam = isset($advert) ? $advert->price_webcam : null ?>
+            <div class="col-md-12 {{$can_webcam? "" : 'no-visibility'}}" id="price_webcam_bool_display">
                 <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix de base</em></div>
-                {!! Form::input('text', 'price_webcam_percentage', null,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_webcam_percentage']) !!}
+                {!! Form::input('text', 'price_webcam_percentage', $price_webcam,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_webcam_percentage']) !!}
                 <div class="col-md-1 small">&nbsp; %</div>
                 <div class="col-md-6" id="price_webcam_text">Le tarif lorsque vous enseignez via webcam sera de <span id="price_webcam_span"></span> Dhs par heure</div>
                 {!! Form::hidden('price_webcam', null, ['id' => 'price_webcam' ]) !!}
@@ -106,9 +117,11 @@
         <div class="divider divider-short divider-center topmargin-sm"><i class="icon-crop"></i></div>
 
         <div class="col-md-offset-3 col-md-6">
+            <?php $price_more = isset($advert) ? $advert->price_more : null ?>
+
             {!! Form::label('price_more',"Si vos tarifs varient en fonction d'autres paramètres, veuillez l'indiquer ci-dessous (facultatif)") !!}
 
-            {!! Form::textarea('price_more',null,['class' => 'sm-form-control', 'id' => 'price_more']) !!}
+            {!! Form::textarea('price_more', $price_more,['class' => 'sm-form-control', 'id' => 'price_more']) !!}
         </div>
 
         <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
