@@ -6,7 +6,12 @@
     {!! HTML::script("js/locationpicker.jquery.js") !!}
     {!! HTML::style("css/jquery-ui.css") !!}
     {!! HTML::script("js/jquery-ui.js")!!}
-    {!! Form::open(['url' => '/nouvelle-annonce-3']) !!}
+
+    @if(isset($advert))
+        {!! Form::open(['url' => "/modifier-annonce-3/{$advert_id}"]) !!}
+    @else
+        {!! Form::open(['url' => '/nouvelle-annonce-3']) !!}
+    @endif
 
     <div class="col-md-6 col-md-offset-3">
 
@@ -15,7 +20,17 @@
         <label for='location' class="topmargin-sm">Où se dérouleront vos cours ?</label>
         {!! Form::hidden('advert_id', $advert_id) !!}
 
-        {!! Form::input('text','location',null,['class' => 'alert_location sm-form-control', 'id' => 'location']) !!}
+        <?php $location = isset($advert) ? $advert->location_street .','. $advert->location_city : null; ?>
+
+        @if(isset($advert))
+            <div class="address"><strong>Addresse :</strong> {{  $advert->location_street }} </div>
+            <div class="address"><strong>Code Postal :</strong> {{  $advert->location_postcode }} </div>
+            <div class="address"><strong>Ville :</strong> {{  $advert->location_city }} </div>
+            <div class="address"><strong>Pays :</strong> {{  $advert->location_country }} </div>
+
+        @else
+        {!! Form::input('text','location',$location,['class' => 'alert_location sm-form-control', 'id' => 'location']) !!}
+        @endif
 
         {!! Form::hidden('longitude',null, ['id' => 'longitude']) !!}
         {!! Form::hidden('latitude', null, ['id' => 'latitude']) !!}
@@ -26,23 +41,31 @@
         {!! Form::hidden('country',  null, ['id' => 'country']) !!}
 
         <div class="ck-button col-md-12 col-md-offset-2">
-            {!! Form::input('checkbox','can_receive',null,['class' => 'no-display', 'id' => 'can_receive']) !!}
+            <?php $can_receive = isset($advert) ? $advert->can_receive : null; ?>
+
+            {!! Form::input('checkbox','can_receive', null,['class' => 'no-display', 'id' => 'can_receive',
+            'checked' => $can_receive]) !!}
             <label for='can_receive' class="topmargin-sm">
                 <span>Je peux recevoir mes élèves</span>
             </label>
         </div>
 
         <div class="ck-button col-md-12 col-md-offset-2">
-            {!! Form::input('checkbox','can_travel',null,['class' => 'no-display', 'id' => 'can_travel']) !!}
+            <?php $can_travel = isset($advert) ? $advert->can_travel : null; ?>
+
+            {!! Form::input('checkbox','can_travel',null,['class' => 'no-display', 'id' => 'can_travel',
+            'checked' => $can_travel]) !!}
             <label for='can_travel' class="topmargin-sm">
                 <span>Je peux me déplacer</span>
             </label>
         </div>
 
+        <?php $travel_radius = isset($advert) ? $advert->travel_radius : null; ?>
+
         <div class="col-md-12 topmargin-sm no-visibility" id="map-and-radius">
             <div class="col-md-4">
                 Radius: <div id="radius"></div>
-                <input type="text" name="radius" id="radius-hidden" value="" hidden>
+                <input type="text" name="radius" id="radius-hidden" value="{{$travel_radius}}" hidden>
             </div>
 
             <div class="col-md-8">
@@ -52,7 +75,11 @@
         </div>
 
         <div class="ck-button col-md-12 col-md-offset-2">
-            {!! Form::input('checkbox','can_webcam',null,['class' => 'no-display', 'id' => 'can_webcam']) !!}
+            <?php $can_webcam = isset($advert) ? $advert->can_webcam : null; ?>
+
+            {!! Form::input('checkbox','can_webcam',null,['class' => 'no-display', 'id' => 'can_webcam',
+            'checked' => $can_webcam ]) !!}
+
             <label for='can_webcam' class="topmargin-sm">
                 <span>Je peux donner des cours par webcam</span>
             </label>

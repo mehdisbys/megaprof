@@ -4,9 +4,13 @@
 
     {!! HTML::script("js/parsley.min.js")!!}
 
+    @if(isset($advert))
+        <form id="presentation-content"  accept-charset="UTF-8"
+              action="/modifier-annonce-4/{{$advert->id}}" method="POST" data-parsley-validate>
+    @else
     <form id="presentation-content"  accept-charset="UTF-8"
           action="/nouvelle-annonce-4" method="POST" data-parsley-validate>
-
+    @endif
         {!! csrf_field() !!}
 
         {!! Form::hidden('advert_id', $advert_id) !!}
@@ -24,7 +28,9 @@
                 </ul>
             </div>
 
-            {!! Form::textarea('presentation',null,['class' => 'sm-form-control', 'id' => 'presentation',
+            <?php $presentation = isset($advert) ? $advert->presentation: null; ?>
+
+            {!! Form::textarea('presentation',$presentation,['class' => 'sm-form-control', 'id' => 'presentation',
             'required' => "required",
             'data-parsley-required-message'=>"Ce champs est requis",
             'data-parsley-minimumwords' => "40",
@@ -46,7 +52,8 @@
                     <li>Quels résultats vos élèves ont-ils obtenu grâce à vous (notes, diplômes, etc.) ?</li>
                 </ul>
             </div>
-            {!! Form::textarea('content',null,['class' => 'sm-form-control', 'id' => 'content',
+            <?php $content = isset($advert) ? $advert->content: null ; ?>
+            {!! Form::textarea('content',$content,['class' => 'sm-form-control', 'id' => 'content',
             'required' => "required",
             'data-parsley-required-message'=>"Ce champs est requis",
             'data-parsley-minimumwords' => "40",
@@ -66,7 +73,9 @@
                     <li>Vos expériences professionnelles en lien avec vos matières enseignées</li>
                 </ul>
             </div>
-            {!! Form::textarea('experience',null,['class' => 'sm-form-control', 'id' => 'experience',
+            <?php $experience = isset($advert) ? $advert->experience : null; ?>
+
+            {!! Form::textarea('experience', $experience,['class' => 'sm-form-control', 'id' => 'experience',
              'required' => "required",
              'data-parsley-required-message'=>"Ce champs est requis",
              'data-parsley-minimumwords' => "40",

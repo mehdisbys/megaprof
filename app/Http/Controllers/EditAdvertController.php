@@ -54,14 +54,38 @@ class EditAdvertController extends Controller
         return view('professeur.advert.createStep3')->with(compact('advert_id', 'advert'));
     }
 
-    public function editStep3()
+    public function postEditStep3($advert_id)
     {
+        $table = [
+            'can_travel' => 'can_travel',
+            'can_receive' => 'can_receive',
+            'can_webcam' => 'can_webcam'
+        ];
 
+        $values = \Request::only(array_values($table));
+        $keys = array_keys($table);
+        $loc_data = array_combine($keys, $values);
+
+        \App\Models\Advert::find($advert_id)->update($loc_data);
+        $advert =  Advert::findOrFail($advert_id);
+
+        return view('professeur.advert.createStep4')->with(compact('advert_id', 'advert'));
     }
 
-    public function editStep4()
+    public function postEditStep4($advert_id)
     {
+        $advert =  Advert::findOrFail($advert_id);
 
+        $content_data = \Request::only(['presentation', 'content', 'experience']);
+
+        \App\Models\Advert::find($advert_id)->update($content_data);
+
+        $advert = \App\Models\Advert::find($advert_id);
+
+        $can_travel = $advert->can_travel;
+        $can_webcam = $advert->can_webcam;
+
+        return view('professeur.advert.createStep5')->with(compact('advert_id', 'advert', 'can_travel', 'can_webcam'));
     }
 
     public function editStep5()
