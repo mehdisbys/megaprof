@@ -21,16 +21,17 @@
         <div class="col-md-3">
             <div id="rightside">
 
-                <div id="info-price" >
+                <div id="info-price">
                     <div class="entry-overlay-meta">
                         <h3><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h3>
 
                         <h4>Premier cours offert !</h4>
-                        {!! Form::open(['url' => '/nouvelle-annonce-7']) !!}
-                        {!! Form::hidden('advert_id', $advert->id) !!}
-                        <div class="col-md-8">
-                            <button type="submit" class="btn btn-danger btn-block btn-md" href="#">Voir l'annonce</button>
-                        </div>
+                        <a href="/{{$advert->slug}}">
+                            <div class="col-md-8">
+                                <button type="submit" class="btn btn-danger btn-block btn-md">Voir l'annonce
+                                </button>
+                            </div>
+                        </a>
                         {!! Form::close() !!}
 
                     </div>

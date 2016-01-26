@@ -10,7 +10,7 @@
 
                 <div id="info-author">
                     <div class="entry-overlay-meta">
-                        <h3><a href="#" class=" center">Yacine</a></h3>
+                        <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
                         <div class="clearfix"></div>
                         <ul class="iconlist">
                             <li><i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong> </li>
@@ -52,7 +52,7 @@
                         <h4>Premier cours offert !</h4>
 
                         <div class="col-md-8">
-                            <a class="btn btn-danger btn-block btn-md" href="#">Réserver un cours</a>
+                            <a class="btn btn-danger btn-block btn-md" href="/mise-en-relation/{{$advert->id}}">Réserver un cours</a>
                         </div>
                         <div class="col-md-10 topmargin-sm">
                             <a href="#" class="social-icon si-colored si-facebook">

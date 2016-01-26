@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4');
     post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5');
     post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
+    post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
 
     get('/modifier-annonce-1/{advert_id}', 'EditAdvertController@editStep1');
     post('/modifier-annonce-1/{advert_id}', 'EditAdvertController@postEditStep1');
@@ -32,8 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
     post('/modifier-annonce-6/{advert_id}', 'EditAdvertController@postEditStep6');
 
     get('/mon-compte', 'ProfAccountController@index');
+
+
 });
-post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
 
 Route::get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
 
@@ -47,6 +49,5 @@ get( 'register/confirm/{code}','SignupController@confirmEmail' );
 get( 'login','SessionsController@login');
 post('login','SessionsController@postLogin');
 get( 'logout', 'SessionsController@logout');
-
-
-Route::get('/{slug}', 'SubmitAdvertController@view');
+get('/{slug}', 'SubmitAdvertController@view');
+get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');

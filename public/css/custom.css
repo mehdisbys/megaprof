@@ -86,3 +86,7 @@ img{
 .gray-backround {
     background-color: #F5F5F5;
 }
+
+.bold {
+    font-weight: 800;
+}

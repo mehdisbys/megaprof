@@ -6,3 +6,5 @@ vendor/
 Homestead.yaml
 Homestead.json
 .env
+.DS_Store
+nohup.out
