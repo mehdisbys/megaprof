@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-
+    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
+    {!! HTML::script("js/locationpicker.jquery.js") !!}
+    {!! HTML::script("js/jquery.geocomplete.min.js") !!}
+    {!! HTML::style("css/jquery-ui.css") !!}
+    {!! HTML::script("js/jquery-ui.js")!!}
     <div class="row" data-spy="scroll" data-target=".scrollspy">
 
         <div id="author" class="col-md-3 col-md-offset-1 scrollspy">
@@ -77,6 +81,9 @@
                             <span>Date au choix</span>
                         </label>
                     </div>
+                    <div class="col-md-12 no-visibility" id="date_custom_display">
+                        {!! Form::input('text','pick_a_date', null, ['id' => 'pick_a_date', 'placeholder' => 'Choisir une date']) !!}
+                    </div>
                 </div>
 
                 <div class="col-md-4 bold topmargin-sm">
@@ -113,6 +120,60 @@
                             <span>Proposer un lieu</span>
                         </label>
                     </div>
+                    <div class="col-md-12 no-visibility" id="location_custom_display">
+                        {!! Form::input('text','pick_a_location', null, ['id' => 'pick_a_location', 'placeholder' => 'Précisez le lieu']) !!}
+                    </div>
+                </div>
+                <div class="col-md-4 bold topmargin-sm">
+                    À qui s'addresse ce cours ?
+                </div>
+                <div class="col-md-8 topmargin-sm">
+                    <div class="ck-button">
+                        {!! Form::radio('client','myself', null,['class' => 'no-display', 'id' => 'client_myself']) !!}
+                        <label for='client_myself'>
+                            <span>Moi</span>
+                        </label>
+                    </div>
+                    <div class="ck-button">
+                        {!! Form::radio('client','notme', null,['class' => 'no-display', 'id' => 'client_notme']) !!}
+                        <label for='client_notme'>
+                            <span>Quelqu'un d'autre</span>
+                        </label>
+                    </div>
+                    <div class="col-md-12 no-visibility" id="client_notme_display">
+                        {!! Form::input('text','pick_a_client', null, ['id' => 'pick_a_client', 'placeholder' => "Prénom de l'élève"]) !!}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="ck-button">
+                        {!! Form::radio('gender','man', null,['class' => 'no-display', 'id' => 'gender_man']) !!}
+                        <label for='gender_man'>
+                            <span>Homme</span>
+                        </label>
+                    </div>
+                    <div class="ck-button">
+                        {!! Form::radio('gender','woman', null,['class' => 'no-display', 'id' => 'gender_woman']) !!}
+                        <label for='gender_woman'>
+                            <span>Femme</span>
+                        </label>
+                    </div>
+                    <div class="col-md-12" id="birthdate_display">
+                        {!! Form::input('text','birthdate', null, ['id' => 'birthdate', 'placeholder' => "Date de naissance"]) !!}
+                    </div>
+                </div>
+                <div class="clearfix topmargin-sm"></div>
+                <div class="divider"><i class="icon-circle"></i></div>
+                <div class="col-md-4 bold">
+                    Vos coordonnées
+                </div>
+                <div class="col-md-8">
+                    {!! Form::input('text','mobile', null, ['id' => 'mobile', 'placeholder' => "mobile"]) !!}
+                    <div class="clearfix"></div>
+                    {!! Form::input('text','addresse', null, ['class' => 'col-md-8 topmargin-sm', 'id' => 'addresse', 'placeholder' => "Votre addresse"]) !!}
+                </div>
+                <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
+                    <button type="submit" class="button button-3d button-large button-rounded button-green">
+                        Envoyer ma demande
+                    </button>
                 </div>
             </form>
         </div>
@@ -135,8 +196,30 @@
                     bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 100
                 }
             });
-        });
 
+            $('#addresse').geocomplete();
+
+            var toggleRadioDisplays = function (inputs) {
+
+                inputs.forEach(toggleRadioDisplay);
+            };
+
+            var toggleRadioDisplay = function (tuple) {
+                var radio = tuple[0];
+                var el = tuple[1];
+                console.log(radio);
+
+                $('input[name="' + radio + '"]:radio').on('change', function () {
+                    if ($(el).prop('checked'))
+                        $(el + "_display").removeClass('no-visibility');
+                    else
+                        $(el + "_display").addClass('no-visibility');
+                });
+            };
+
+            toggleRadioDisplays([["date", "#date_custom"], ["location", "#location_custom"], ["client", "#client_notme"]]);
+
+        });
     </script>
 
 
