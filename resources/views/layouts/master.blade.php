@@ -60,6 +60,8 @@
 
                     @if(Auth::check())
                         <ul>
+                            <li><a href="/nouvelle-annonce-1"><div>Créer une annonce</div></a></li>
+
                             <li><a href="/mon-compte"><div>Mon Compte</div></a></li>
 
                             <li><a href="/mes-messages"><div>Messages</div></a></li>
