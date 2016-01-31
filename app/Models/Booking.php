@@ -20,8 +20,17 @@ class Booking extends Model
         return $this->belongsTo(User::class, 'student_user_id', 'id');
     }
 
+    public function advert()
+    {
+        return $this->belongsTo(Advert::class, 'advert_id', 'id');
+    }
+
     public static function currentProfBookingRequests()
     {
-        return static::where('prof_user_id', \Auth::id())->with('student')->get();
+        return static::where('prof_user_id', \Auth::id())
+            ->orWhere('student_user_id', \Auth::id())
+            ->with('student')
+            ->with('prof')
+            ->get();
     }
 }

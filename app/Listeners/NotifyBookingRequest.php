@@ -25,14 +25,25 @@ class NotifyBookingRequest
      */
     public function handle(BookingRequestSent $event)
     {
-//        $view = 'emails.auth.confirmEmail';
-//        $config['to'] = $user->email;
-//        $config['name'] = $user->firstname;
-//        $config['subject'] = ucfirst($user->firstname) . ' bienvenue sur Megaprof';
-//        $all['name'] = $user->firstname;
-//        $all['link'] = url('register/confirm/' . $user->confirmation_code);
-//
-//        $this->mailer->sendMail($view, $all, $config);
+        // Mail prof
+        $user = $event->booking->prof;
+        $view = 'emails.requests.bookingRequestProf';
+        $config['to'] = $user->email;
+        $config['name'] = $user->firstname;
+        $config['subject'] = ucfirst($user->firstname) . ' vous avez reçu une demande de cours';
+        $all['name'] = $user->firstname;
+        $all['link'] = url('/mon-compte');
 
+        $this->mailer->sendMail($view, $all, $config);
+
+        //Mail student
+        $user = $event->booking->student;
+        $view = 'emails.requests.bookingRequestStudent';
+        $config['to'] = $user->email;
+        $config['name'] = $user->firstname;
+        $config['subject'] = ucfirst($user->firstname) . ' votre demande a bien été envoyée';
+        $all['name'] = $user->firstname;
+
+        $this->mailer->sendMail($view, $all, $config);
     }
 }

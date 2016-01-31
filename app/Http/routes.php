@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     post('/modifier-annonce-5/{advert_id}', 'EditAdvertController@postEditStep5');
     post('/modifier-annonce-6/{advert_id}', 'EditAdvertController@postEditStep6');
 
-    get('/mon-compte', 'ProfAccountController@index');
+    get('/mon-compte', 'DashboardController@index');
 
     get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');
     post('/reserver-un-cours', 'BookCourseController@postBookLesson');

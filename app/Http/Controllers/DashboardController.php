@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ProfAccountController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,11 @@ class ProfAccountController extends Controller
      */
     public function index()
     {
-        $adverts = Advert::currentUserAdverts();
 
+        $adverts = Advert::currentUserAdverts();
         $bookings = Booking::currentProfBookingRequests();
 
         return view('dashboard.index')->with(compact('adverts', 'bookings'));
-
     }
 
 

@@ -27,5 +27,6 @@ class BookCourseController extends Controller
 
         Event::fire(new BookingRequestSent($bookModel));
 
+        return redirect('/mon-compte');
     }
 }
