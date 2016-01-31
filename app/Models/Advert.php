@@ -46,7 +46,7 @@ class Advert extends Model implements SluggableInterface {
 
     public static function getAllSubjectsForUser($user_id)
     {
-        return static::where('user_id', $user_id)->
+       // return static::where('user_id', $user_id)->
     }
 
     public function getAvatar()
