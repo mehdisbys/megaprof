@@ -26,24 +26,12 @@ class NotifyBookingRequest
     public function handle(BookingRequestSent $event)
     {
         // Mail prof
-        $user = $event->booking->prof;
-        $view = 'emails.requests.bookingRequestProf';
-        $config['to'] = $user->email;
-        $config['name'] = $user->firstname;
-        $config['subject'] = ucfirst($user->firstname) . ' vous avez reçu une demande de cours';
-        $all['name'] = $user->firstname;
-        $all['link'] = url('/mon-compte');
-
-        $this->mailer->sendMail($view, $all, $config);
+        list($all, $config) = emailConfig($event->booking->prof, 'vous avez reçu une demande de cours');
+        $all['link']        = url('/mon-compte');
+        $this->mailer->sendMail('emails.requests.bookingRequestProf', $all, $config);
 
         //Mail student
-        $user = $event->booking->student;
-        $view = 'emails.requests.bookingRequestStudent';
-        $config['to'] = $user->email;
-        $config['name'] = $user->firstname;
-        $config['subject'] = ucfirst($user->firstname) . ' votre demande a bien été envoyée';
-        $all['name'] = $user->firstname;
-
-        $this->mailer->sendMail($view, $all, $config);
+        list($all, $config) = emailConfig($event->booking->student, 'votre demande a bien été envoyée');
+        $this->mailer->sendMail('emails.requests.bookingRequestStudent', $all, $config);
     }
 }

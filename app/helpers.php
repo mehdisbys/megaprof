@@ -87,8 +87,15 @@ function savePicture($advert_id)
 		$filename ='webcam_img';
 		$m->cropAvatar($filename, $coord, true);
 	}
-
 	$m->save();
-	$m->save();
+}
 
+function emailConfig(\App\Models\User $user, $subject)
+{
+	$config['to']       = $user->email;
+	$config['name']     = $user->firstname;
+	$config['subject']  = ucfirst($user->firstname) . ' ' . $subject;
+	$all['name']        = $user->firstname;
+
+	return [$all, $config];
 }
