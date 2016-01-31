@@ -172,4 +172,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return User::where('forgotten_token', $token)->first();
     }
+
 }

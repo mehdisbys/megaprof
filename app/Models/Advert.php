@@ -44,11 +44,15 @@ class Advert extends Model implements SluggableInterface {
         return static::where('user_id', \Auth::id())->with('subjectsPerAd')->get();
     }
 
+    public static function getAllSubjectsForUser($user_id)
+    {
+        return static::where('user_id', $user_id)->
+    }
+
     public function getAvatar()
     {
         return "/avatar/{$this->user_id}/{$this->id}";
     }
-
 
     public static function findBySlugOr404($slug)
     {
