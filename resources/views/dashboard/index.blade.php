@@ -90,9 +90,8 @@
                                     href="/demande/{{$booking->id}}/repondre">Répondre</a>
                         </div>
                     </div>
-            </div>
             @endforeach
-
+            </div>
         </div>
 
         <div class="tab-container col-md-8">
