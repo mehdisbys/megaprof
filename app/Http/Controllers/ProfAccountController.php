@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advert;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,9 +20,10 @@ class ProfAccountController extends Controller
     {
         $adverts = Advert::currentUserAdverts();
 
-      //  dd($adverts->first()->subjectsPerAd->first()->subsubjects->name);
+        $bookings = Booking::currentProfBookingRequests();
 
-        return view('dashboard.index')->with(compact('adverts'));
+        return view('dashboard.index')->with(compact('adverts', 'bookings'));
+
     }
 
 
