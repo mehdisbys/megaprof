@@ -6,6 +6,8 @@
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::style("css/jquery-ui.css") !!}
     {!! HTML::script("js/jquery-ui.js")!!}
+
+    @include('includes.inputErrors')
     <div class="row" data-spy="scroll" data-target=".scrollspy">
 
         <div id="author" class="col-md-3 col-md-offset-1 scrollspy">
@@ -33,8 +35,8 @@
             <form id="book-a-lesson" accept-charset="UTF-8"
                   action="/reserver-un-cours" method="POST" data-parsley-validate>
                 {!! csrf_field() !!}
-
                 {!! Form::hidden('advert_id', $advert->id) !!}
+                {!! Form::hidden('prof_user_id', $advert->user->id) !!}
 
                 <div class="clearfix"></div>
                 <div class="col-md-4 bold">

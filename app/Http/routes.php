@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     get('/mon-compte', 'ProfAccountController@index');
 
+    get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');
+    post('/reserver-un-cours', 'BookCourseController@postBookLesson');
 
 });
 
@@ -50,4 +52,3 @@ get( 'login','SessionsController@login');
 post('login','SessionsController@postLogin');
 get( 'logout', 'SessionsController@logout');
 get('/{slug}', 'SubmitAdvertController@view');
-get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');
