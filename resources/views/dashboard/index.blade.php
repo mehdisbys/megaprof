@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+    {!! HTML::script("js/readmore.min.js")!!}
+
 
     <div class="tabs tabs-alt tabs-justify clearfix ui-tabs ui-widget ui-widget-content ui-corner-all" id="tab-10">
 
@@ -49,7 +51,6 @@
                     <li><i class="icon-exclamation-sign"></i> E-mail</li>
                     <li><i class="icon-exclamation-sign"></i> Diplôme</li>
                 </ul>
-
             </div>
         </div>
 
@@ -65,32 +66,42 @@
                  style="display: none;">
                 <h4>Mes demandes de cours</h4>
 
-                @foreach($bookings as $booking)
+                <div>
+                    @foreach($bookings as $booking)
 
-                    <div class="gray-background">
-                        <div class="col-md-8">
-                            <div class="col-md-2">
-                                {!! HTML::image('images/question-mark-face.jpg', null, ["style" => "width:90px;", 'id' => 'img-question-mark']) !!}
-                                <div> {{ $booking->student->firstname }} </div>
+                        <article class="gray-background" id="booking_{{$booking->id}}">
+                            <div class="col-md-8 topmargin-sm">
+                                <div class="col-md-2">
+                                    {!! HTML::image('images/question-mark-face.jpg',
+                                    null, ["style" => "width:90px;", 'id' => 'img-question-mark']) !!}
+
+                                    <div> {{ $booking->student->firstname }} </div>
+                                </div>
+
+                                <em><strong>{{ $booking->student->firstname }}</strong> vous a contacté pour un cours</em>
+
+                                <div class="">{{ $booking->presentation }}</div>
+
+                                <div class="pull-right"><i class="icon-location"></i><strong>Paris</strong></div>
+
+                                <div class="col-md-12">
+                                    Reçue le {{$booking->created_at->format('m/d/Y à H:i') }}
+                                </div>
                             </div>
 
-                            <div>{{ str_limit($booking->presentation, 55)}}</div>
-
-                            <div class="pull-right topmargin-sm">
-                                <i class="icon-location"></i><strong>Paris</strong>
+                            <div class="col-md-2 topmargin-sm">
+                                <div id="booking_{{$booking->id}}_accept"
+                                     class="button button-small button-white button-rounded"><a
+                                            href="/demande/{{$booking->id}}/yes">Accepter</a>
+                                </div>
+                                <div id="booking_{{$booking->id}}_refuse"
+                                     class="button button-small button-gray button-rounded"><a
+                                            href="/demande/{{$booking->id}}/no">Refuser</a>
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                Reçue le {{$booking->created_at->format('m/d/Y à H:i') }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <div class="button button-small button-white button-rounded"><a
-                                    href="/demande/{{$booking->id}}/repondre">Répondre</a>
-                        </div>
-                    </div>
-            @endforeach
+                        </article>
+                    @endforeach
+                </div>
             </div>
         </div>
 
@@ -102,7 +113,7 @@
                 <h4>Mes annonces</h4>
                 @foreach($adverts as $advert)
 
-                    <div class="gray-backround">
+                    <div class="gray-backround" data-readmore aria-expanded="false">
                         <div class="col-md-2">
                             <img src="{{ $advert->getAvatar() }}" style="width:90px;">
                         </div>
@@ -146,6 +157,25 @@
         </div>
 
     </div>
-
     </div>
+    <script>
+        $(document).ready(function () {
+
+                    $('article').readmore({
+                        speed: 75,
+                        lessLink: '<a href="#">Read less</a>'
+                    });
+
+                    var toggleDisplay = function () {
+                        $('.booking_folded_request').on('click', function () {
+                            var id = $(this).attr('id');
+                            $('#' + id + "_snippet").toggleClass('no-visibility');
+                            $('#' + id + "_display").toggleClass('no-visibility');
+                        });
+                    };
+
+                    // toggleDisplay();
+                }
+        );
+    </script>
 @endsection

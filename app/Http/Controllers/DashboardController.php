@@ -18,7 +18,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
         $adverts = Advert::currentUserAdverts();
         $bookings = Booking::currentProfBookingRequests();
 

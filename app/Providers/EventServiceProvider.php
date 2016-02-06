@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\BookingRequestSent' =>
             [
                 'App\Listeners\NotifyBookingRequest'
+            ],
+        'App\Events\BookingRequestReply' =>
+            [
+                'App\Listeners\NotifyBookingReply'
             ]
     ];
 

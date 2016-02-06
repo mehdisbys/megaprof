@@ -33,4 +33,9 @@ class Booking extends Model
             ->with('prof')
             ->get();
     }
+
+    public static function bookingExists($booking_id)
+    {
+        return static::where('prof_user_id', \Auth::id())->where('id', $booking_id)->first();
+    }
 }

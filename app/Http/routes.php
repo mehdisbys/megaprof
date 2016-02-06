@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
     get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');
     post('/reserver-un-cours', 'BookCourseController@postBookLesson');
 
+    get('/demande/{booking_id}/repondre', 'BookCourseController@replyBookingRequest');
+    get('/demande/{booking_id}/{answer}', 'BookCourseController@replyBookingRequest');
+
 });
 
 Route::get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
