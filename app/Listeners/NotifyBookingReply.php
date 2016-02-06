@@ -32,6 +32,6 @@ class NotifyBookingReply
 
         //Mail student
         list($all, $config) = emailConfig($event->booking->student, 'votre demande a été acceptée');
-        $this->mailer->sendMail('emails.requests.bookingRequestStudent', $all, $config);
+        $this->mailer->sendMail('emails.replies.bookingReplyAccepted', $all, $config);
     }
 }
