@@ -78,7 +78,13 @@
                                     <div> {{ $booking->student->firstname }} </div>
                                 </div>
 
-                                <em><strong>{{ $booking->student->firstname }}</strong> vous a contacté pour un cours</em>
+                                @if($booking->isStudent())
+                                    <em> Vous avez contacté <strong>{{ $booking->prof->firstname }}</strong> pour un
+                                        cours</em>
+                                @else
+                                    <em><strong>{{ $booking->student->firstname }}</strong> vous a contacté pour un
+                                        cours</em>
+                                @endif
 
                                 <div class="">{{ $booking->presentation }}</div>
 
@@ -89,16 +95,37 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2 topmargin-sm">
-                                <div id="booking_{{$booking->id}}_accept"
-                                     class="button button-small button-white button-rounded"><a
-                                            href="/demande/{{$booking->id}}/yes">Accepter</a>
+                            @if($booking->isProf())
+                                <div class="col-md-2 topmargin-sm">
+                                    @if($booking->answer == 'yes')
+                                        <div class="green">Vous avez accepté cette demande</div>
+
+                                    @elseif($booking->answer == 'no')
+                                        <div class="">Vous avez refusé cette demande</div>
+
+                                    @else
+                                        <div id="booking_{{$booking->id}}_accept"
+                                             class="button button-small button-white button-rounded"><a
+                                                    href="/demande/{{$booking->id}}/yes">Accepter</a>
+                                        </div>
+
+                                        <div id="booking_{{$booking->id}}_refuse"
+                                             class="button button-small button-gray button-rounded"><a
+                                                    href="/demande/{{$booking->id}}/no">Refuser</a>
+                                        </div>
+                                    @endif
                                 </div>
-                                <div id="booking_{{$booking->id}}_refuse"
-                                     class="button button-small button-gray button-rounded"><a
-                                            href="/demande/{{$booking->id}}/no">Refuser</a>
-                                </div>
-                            </div>
+                            @elseif($booking->isStudent())
+                                @if($booking->answer == 'yes')
+                                    <div class="green">Votre demande a été acceptée</div>
+
+                                @elseif($booking->answer == 'no')
+                                    <div class="">Votre demande a été refusée</div>
+
+                                @else
+                                    <div class="">Demande en attente de réponse</div>
+                                @endif
+                            @endif
                         </article>
                     @endforeach
                 </div>

@@ -38,4 +38,14 @@ class Booking extends Model
     {
         return static::where('prof_user_id', \Auth::id())->where('id', $booking_id)->first();
     }
+
+    public function isStudent()
+    {
+        return $this->student->id == \Auth::id();
+    }
+
+    public function isProf()
+    {
+        return $this->prof->id == \Auth::id();
+    }
 }
