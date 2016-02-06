@@ -88,6 +88,15 @@
 
                                 <div class="">{{ $booking->presentation }}</div>
 
+                                @if($booking->isStudent() and $booking->wasAccepted())
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-12">Contactez votre professeur :</div>
+                                    <div class="col-md-12">E-mail: {{$booking->prof->email}}</div>
+                                    <!-- TODO put real telephone contact -->
+                                    <div class="col-md-12">Telephone: 06 01 02 03 04</div>
+
+                                @endif
+
                                 <div class="pull-right"><i class="icon-location"></i><strong>Paris</strong></div>
 
                                 <div class="col-md-12">
@@ -97,10 +106,10 @@
 
                             @if($booking->isProf())
                                 <div class="col-md-2 topmargin-sm">
-                                    @if($booking->answer == 'yes')
+                                    @if($booking->wasAccepted())
                                         <div class="green">Vous avez accepté cette demande</div>
 
-                                    @elseif($booking->answer == 'no')
+                                    @elseif($booking->wasRejected())
                                         <div class="">Vous avez refusé cette demande</div>
 
                                     @else
@@ -116,10 +125,10 @@
                                     @endif
                                 </div>
                             @elseif($booking->isStudent())
-                                @if($booking->answer == 'yes')
+                                @if($booking->wasAccepted())
                                     <div class="green">Votre demande a été acceptée</div>
 
-                                @elseif($booking->answer == 'no')
+                                @elseif($booking->wasRejected())
                                     <div class="">Votre demande a été refusée</div>
 
                                 @else

@@ -31,6 +31,7 @@ class Booking extends Model
             ->orWhere('student_user_id', \Auth::id())
             ->with('student')
             ->with('prof')
+            ->with('advert')
             ->get();
     }
 
@@ -47,5 +48,19 @@ class Booking extends Model
     public function isProf()
     {
         return $this->prof->id == \Auth::id();
+    }
+
+    public function wasAccepted()
+    {
+       return $this->answer == 'yes';
+    }
+    public function wasRejected()
+    {
+        return $this->answer == 'yes';
+    }
+
+    public function isWaitingReply()
+    {
+        return $this->answer == null;
     }
 }
