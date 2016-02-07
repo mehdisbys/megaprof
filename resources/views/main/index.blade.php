@@ -44,7 +44,7 @@
 
         </div>
 
-        @if(isset ($selectedCity))
+        @if(isset ($selectedCity) and !empty($selectedCity))
             <div class="clearfix"></div>
             <div class="col-md-3 pull-right">
                 <a class="button button-3d button-small button-rounded button-amber pull-right" href="/">
