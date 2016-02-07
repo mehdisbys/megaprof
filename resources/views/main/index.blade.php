@@ -13,7 +13,7 @@
 
         <div class="col-md-8">
 
-            @if($selectedSubject and isset($selectedCity))
+            @if($selectedSubject and isset($selectedCity) and !empty($selectedCity))
 
                 <div class="button button-3d button-small button-rounded button-aqua ">{{$selectedSubject}}</div>
                 <div class="button button-3d button-small button-rounded button-lime ">à {{$selectedCity}}</div>
