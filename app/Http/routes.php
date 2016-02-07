@@ -18,7 +18,6 @@ get('register/confirm/{code}', 'SignupController@confirmEmail');
 get('login', 'SessionsController@login');
 post('login', 'SessionsController@postLogin');
 get('logout', 'SessionsController@logout');
-get('/{slug}', 'SubmitAdvertController@view');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -49,3 +48,6 @@ Route::group(['middleware' => 'auth'], function () {
     get('/demande/{booking_id}/{answer}', 'BookCourseController@replyBookingRequest');
 
 });
+
+get('/{slug}', 'SubmitAdvertController@view');
+
