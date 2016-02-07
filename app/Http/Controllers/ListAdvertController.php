@@ -49,7 +49,8 @@ class ListAdvertController extends Controller
         $data->city = explode(',',$request->get('location'))[0];
         $adverts = $this->engine->search($data);
 
-
-        return view('main.index')->with(compact('adverts', 'subsubjects', 'selectedSubject'));
+        return view('main.index')
+            ->with(compact('adverts', 'subsubjects', 'selectedSubject'))
+            ->with(['selectedCity' => $data->city]);
     }
 }

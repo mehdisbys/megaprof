@@ -12,7 +12,13 @@
         {!! Form::open(['url' => '/search']) !!}
 
         <div class="col-md-8">
-            @if($selectedSubject)
+
+            @if($selectedSubject and isset($selectedCity))
+
+                <div class="button button-3d button-small button-rounded button-aqua ">{{$selectedSubject}}</div>
+                <div class="button button-3d button-small button-rounded button-lime ">à {{$selectedCity}}</div>
+
+            @elseif($selectedSubject)
                 {!! Form::hidden('subject', $selectedSubject) !!}
                 {!! Form::input('text', 'location', null,
                   [
@@ -22,7 +28,6 @@
                   ])!!}
 
                 <div class="clearfix topmargin-sm"></div>
-
                 <div class="button button-3d button-small button-rounded button-aqua ">{{$selectedSubject}}</div>
 
             @else
@@ -39,18 +44,29 @@
 
         </div>
 
-        <div class="col-md-3">
-            <button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
-                Chercher
-            </button>
-        </div>
+        @if(isset ($selectedCity))
+            <div class="clearfix"></div>
+            <div class="col-md-3 pull-right">
+                <a class="button button-3d button-small button-rounded button-amber pull-right" href="/">
+                    Nouvelle recherche
+                </a>
+            </div>
+        @else
+            <div class="col-md-3">
+                <button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
+                    Chercher
+                </button>
+            </div>
+        @endif
         {!! Form::close() !!}
     </div>
 
     <div class="col-md-10 col-md-offset-1 topmargin-lg">
 
         @if(count($adverts) == 0)
-            <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres options</div>
+            <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres
+                options
+            </div>
         @else
 
             @foreach($adverts as $advert)
