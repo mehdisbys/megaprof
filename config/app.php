@@ -145,6 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MailServiceProvider::class,
+        App\Providers\SearchAdvertServiceProvider::class,
+
         AdamWathan\BootForms\BootFormsServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,

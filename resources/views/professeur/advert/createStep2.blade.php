@@ -46,7 +46,6 @@
                                         >
                                 <label class="" for="{{$subject->id ."_". $subs->id}}">
                                     <span>{{$subs->name}}</span>
-                                </label>
                             </div>
                         @endforeach
                     </div>

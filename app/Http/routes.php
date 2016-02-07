@@ -1,17 +1,25 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
+//Main Page
 get('/', 'ListAdvertController@index');
+post('/search', 'ListAdvertController@search');
+
+
+get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
+
+// Signup
+get('inscription', 'SignupController@getSignup');
+post('inscription', 'SignupController@candidateSignup');
+
+// Confirm
+get('register/confirm/{code}', 'SignupController@confirmEmail');
+
+// Signing in
+get('login', 'SessionsController@login');
+post('login', 'SessionsController@postLogin');
+get('logout', 'SessionsController@logout');
+get('/{slug}', 'SubmitAdvertController@view');
+
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -41,17 +49,3 @@ Route::group(['middleware' => 'auth'], function () {
     get('/demande/{booking_id}/{answer}', 'BookCourseController@replyBookingRequest');
 
 });
-
-Route::get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
-
-// Signup
-get( 'inscription', 'SignupController@getSignup');
-post('inscription', 'SignupController@candidateSignup');
-// Confirm
-get( 'register/confirm/{code}','SignupController@confirmEmail' );
-
-// Signing in
-get( 'login','SessionsController@login');
-post('login','SessionsController@postLogin');
-get( 'logout', 'SessionsController@logout');
-get('/{slug}', 'SubmitAdvertController@view');
