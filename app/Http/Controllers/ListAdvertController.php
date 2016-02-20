@@ -25,7 +25,7 @@ class ListAdvertController extends Controller
 
     public function index()
     {
-        $adverts = Advert::all();
+        $adverts = Advert::liveAdverts();
 
         $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
 
