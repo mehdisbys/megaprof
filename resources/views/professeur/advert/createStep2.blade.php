@@ -4,7 +4,7 @@
     {!! HTML::script("js/parsley.min.js")!!}
 
     @if(isset($advert))
-        <form method="POST" action="/modifier-annonce-2" accept-charset="UTF-8" data-parsley-validate id="title_form">
+        <form method="POST" action="/modifier-annonce-2/{{$advert_id}}" accept-charset="UTF-8" data-parsley-validate id="title_form">
             {!! Form::hidden('advert_id', $advert_id) !!}
     @else
        <form method="POST" action="/nouvelle-annonce-2" accept-charset="UTF-8" data-parsley-validate id="title_form">

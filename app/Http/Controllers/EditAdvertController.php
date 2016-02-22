@@ -8,6 +8,10 @@ use App\Models\SubjectsPerAdvert;
 
 class EditAdvertController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('ownsAdvert');
+    }
 
     public function editStep1($advert_id)
     {
@@ -49,7 +53,6 @@ class EditAdvertController extends Controller
                 }
         }
         );
-        //dd($checked);
         $advert = Advert::findOrFail($advert_id);
 
         return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id', 'advert', 'checked'));

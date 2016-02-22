@@ -42,9 +42,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $dates = ['created_at', 'updated_at', 'trial_ends_at', 'subscription_ends_at'];
 
 
-    public function ownsAdvert($slug)
+    public function ownsAdvert($id)
     {
-        return Job::whereSlug($slug)->whereUserid($this->id)->exists();
+        return Advert::whereId($id)->where('user_id',$this->id)->exists();
     }
 
     public function hasAdvertsCredits($id = NULL)

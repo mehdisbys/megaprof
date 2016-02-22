@@ -3,12 +3,7 @@
 use App\Http\Requests;
 use App\Http\Requests\Signup ;
 use App\Models\User;
-use App\Models\Role;
-use App\Models\Company;
-use App\Models\CandidateProfile;
-use App\Models\CvCandidate;
 use App\Helpers\Contracts\MailerContract;
-use Lang;
 
 class SignupController extends Controller
 {
