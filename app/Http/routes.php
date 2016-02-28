@@ -33,10 +33,20 @@ Route::group(['middleware' => 'auth'], function () {
 
     get('/modifier-annonce-1/{advert_id}', 'EditAdvertController@editStep1');
     post('/modifier-annonce-1/{advert_id}', 'EditAdvertController@postEditStep1');
+
+    get('/modifier-annonce-2/{advert_id}', 'EditAdvertController@editStep2');
     post('/modifier-annonce-2/{advert_id}', 'EditAdvertController@postEditStep2');
+
+    get('/modifier-annonce-3/{advert_id}', 'EditAdvertController@editStep3');
     post('/modifier-annonce-3/{advert_id}', 'EditAdvertController@postEditStep3');
+
+    get('/modifier-annonce-4/{advert_id}', 'EditAdvertController@editStep4');
     post('/modifier-annonce-4/{advert_id}', 'EditAdvertController@postEditStep4');
+
+    get('/modifier-annonce-5/{advert_id}', 'EditAdvertController@editStep5');
     post('/modifier-annonce-5/{advert_id}', 'EditAdvertController@postEditStep5');
+
+    get('/modifier-annonce-6/{advert_id}', 'EditAdvertController@editStep6');
     post('/modifier-annonce-6/{advert_id}', 'EditAdvertController@postEditStep6');
 
     get('/mon-compte', 'DashboardController@index');

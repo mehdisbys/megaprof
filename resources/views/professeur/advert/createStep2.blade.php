@@ -44,7 +44,7 @@
                             <div class="ck-button">
                                 <input class="no-display" type="checkbox" name="levels[{{$subject->id}}][]"
                                        id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}" data-parsley-required data-parsley-required-message=""
-                                        @if(isset($checked) and in_array($subs->id, $checked[$subject->id]))
+                                        @if(isset($checked) and isset($checked[$subject->id]) and in_array($subs->id, $checked[$subject->id]))
                                         checked="on"
                                         @endif
                                         >
