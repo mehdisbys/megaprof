@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     post('/modifier-annonce-6/{advert_id}', 'EditAdvertController@postEditStep6');
 
     get('/mon-compte', 'DashboardController@index');
+    get('/mon-compte/annonce-{advert_id}', 'DashboardController@editAdvert');
 
     get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');
     post('/reserver-un-cours', 'BookCourseController@postBookLesson');

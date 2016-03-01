@@ -21,7 +21,13 @@ class DashboardController extends Controller
         $adverts = Advert::currentUserAdverts();
         $bookings = Booking::currentProfBookingRequests();
 
-        return view('dashboard.index')->with(compact('adverts', 'bookings'));
+        return view('dashboard.standard')->with(compact('adverts', 'bookings'));
+    }
+
+    public function editAdvert($advert_id)
+    {
+        $advert = Advert::findOrFail($advert_id);
+        return view('dashboard.edit')->with(compact('advert'));
     }
 
 
