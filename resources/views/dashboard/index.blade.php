@@ -30,7 +30,6 @@
             </ul>
 
             <div class="col-md-3 dashboard-left-sidebar topmargin-lg leftmargin-sm">
-
                 <div>
                     {!! HTML::image('images/question-mark-face.jpg', null, ["style" => "width:220px;", 'id' => 'img-question-mark']) !!}
                 </div>
@@ -44,7 +43,7 @@
                     </ul>
                 </div>
             </div>
-            <div>
+            <div class="col-md-8">
                 @section('dashboard-content')
 
                 @show

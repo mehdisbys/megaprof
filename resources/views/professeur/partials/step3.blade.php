@@ -1,7 +1,6 @@
 
 {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
 {!! HTML::script("js/locationpicker.jquery.js") !!}
-{!! HTML::style("css/jquery-ui.css") !!}
 {!! HTML::script("js/jquery-ui.js")!!}
 
 @if(isset($advert))

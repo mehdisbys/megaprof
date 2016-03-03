@@ -28,7 +28,8 @@ class EditAdvertController extends Controller
             ->pluck('subject_id')
             ->toArray();
 
-        return view('professeur.advert.createStep1')->with(compact('subjects', 'checkedSubjects', 'advert_id'));
+        $step = 1;
+        return view("dashboard.edit")->with(compact('subjects', 'checkedSubjects', 'advert_id', 'step', 'advert'));
     }
 
     public function postEditStep1($advert_id)
@@ -64,8 +65,9 @@ class EditAdvertController extends Controller
             );
         }
         $advert = Advert::findOrFail($advert_id);
+        $step = 2;
 
-        return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id', 'advert', 'checked'));
+        return view('dashboard.edit')->with(compact('subjects', 'levels', 'advert_id', 'advert', 'checked', 'step'));
     }
 
     public function postEditStep2($advert_id)
@@ -82,8 +84,9 @@ class EditAdvertController extends Controller
     public function editStep3($advert_id)
     {
         $advert = Advert::findOrFail($advert_id);
+        $step = 3;
 
-        return view('professeur.advert.createStep3')->with(compact('advert_id', 'advert'));
+        return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
     public function postEditStep3($advert_id)
@@ -106,9 +109,9 @@ class EditAdvertController extends Controller
     public function editStep4($advert_id)
     {
         $advert = Advert::findOrFail($advert_id);
+        $step = 4;
 
-        return view('professeur.advert.createStep4')->with(compact('advert_id', 'advert'));
-
+        return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
     public function postEditStep4($advert_id)
@@ -126,7 +129,9 @@ class EditAdvertController extends Controller
         $can_travel = $advert->can_travel;
         $can_webcam = $advert->can_webcam;
 
-        return view('professeur.advert.createStep5')->with(compact('advert_id', 'advert', 'can_travel', 'can_webcam'));
+        $step = 5;
+
+        return view('dashboard.edit')->with(compact('advert_id', 'advert', 'can_travel', 'can_webcam', 'step'));
     }
 
     public function postEditStep5($advert_id)
@@ -155,7 +160,9 @@ class EditAdvertController extends Controller
     {
         $advert = Advert::findOrFail($advert_id);
 
-        return view('professeur.advert.createStep6')->with(compact('advert_id', 'advert'));
+        $step = 6;
+
+        return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
     public function postEditStep6($advert_id)
