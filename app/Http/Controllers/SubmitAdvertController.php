@@ -152,4 +152,8 @@ class SubmitAdvertController extends Controller
         return Avatar::getAvatar($user_id, $advert_id);
     }
 
+    public function getDefaultAvatar($user_id)
+    {
+        return Avatar::getDefaultAvatar($user_id);
+    }
 }

@@ -21,6 +21,7 @@ get('logout', 'SessionsController@logout');
 
 
 Route::group(['middleware' => 'auth'], function () {
+    get('/avatar_dashboard/{user_id}', 'SubmitAdvertController@getDefaultAvatar');
 
     get('/nouvelle-annonce-1', 'SubmitAdvertController@getStep1');
     post('/nouvelle-annonce-1', 'SubmitAdvertController@postStep1');

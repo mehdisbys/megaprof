@@ -31,7 +31,8 @@
 
             <div class="col-md-3 dashboard-left-sidebar topmargin-lg leftmargin-sm">
                 <div>
-                    {!! HTML::image('images/question-mark-face.jpg', null, ["style" => "width:220px;", 'id' => 'img-question-mark']) !!}
+                    <img src="/avatar_dashboard/{{Auth::id()}}">
+
                 </div>
 
                 <div id="confirm-profile" class="topmargin-sm gray-backround col-md-11">
