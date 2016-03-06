@@ -67,11 +67,17 @@ function calculate_next_time($interval, $start_time = NULL)
 	return $start_time + $interval;
 }
 
-function savePicture($advert_id)
+function savePicture($advert_id, $type = 'advert')
 {
 	$coord = \Request::only(['w','h','x','y','r']);
 
-	$m = \App\Models\Avatar::firstOrCreate(['advert_id' => $advert_id, 'user_id' => \Auth::id()]);
+	if($type == 'advert') {
+        $m = \App\Models\Avatar::firstOrCreate(['advert_id' => $advert_id, 'user_id' => \Auth::id()]);
+    }
+    else
+    {
+        $m = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id(), 'type' => 'dashboard']);
+    }
 
 	$webcam = \Request::file('img_upload') ? false : true;
 

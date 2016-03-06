@@ -56,7 +56,7 @@ class Booking extends Model
     }
     public function wasRejected()
     {
-        return $this->answer == 'yes';
+        return $this->answer == 'no';
     }
 
     public function isWaitingReply()

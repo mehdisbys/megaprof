@@ -30,5 +30,8 @@ class DashboardController extends Controller
         return view('dashboard.edit')->with(compact('advert'));
     }
 
-
+    public function setPicture()
+    {
+        savePicture(null, 'dashboard');
+    }
 }

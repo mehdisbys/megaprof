@@ -62,7 +62,7 @@ class Avatar extends Model
         return static::defaultAvatar();
     }
 
-    public static function getDefaultAvatar($user_id)
+    public static function getDashboardAvatar($user_id)
     {
         $avatar = static::where(['user_id' => $user_id])->first();
 
