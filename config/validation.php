@@ -3,7 +3,7 @@
 return [
     'AdvertCreateStep2' =>
         [
-            'title' => 'required|max:128',
+            'title'             => 'required|max:128',
         ],
 
     'BookLesson' =>
@@ -23,8 +23,8 @@ return [
 
     'CommentProf' =>
         [
-            'content'           => 'required|max:255',
-            'prof_id'           => 'required'
+            'comment'           => 'required|max:255',
+            'comment_id'        => 'required'
         ]
 
 ];

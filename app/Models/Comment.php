@@ -29,4 +29,9 @@ class Comment extends Model
              ]
         );
     }
+
+    public static function resourceBelongsToLoggedUser(int $id)
+    {
+        return self::where(['id' => $id, 'source_user_id' => \Auth::id()])->exists();
+    }
 }

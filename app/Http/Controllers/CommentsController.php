@@ -7,13 +7,22 @@ use App\Models\Comment;
 class CommentsController extends Controller
 {
 
-    public function studentCommentsOnProf(CommentRequest $request)
+    public function getCommentForm($comment_id)
     {
-        Comment::create(
-            [
-                'comment'       => $request->get('comment'),
-                'student_id'    => \Auth::id(),
-                'prof_id'       => $request->get('prof_id')
-            ]);
+        $comment = Comment::find($comment_id);
+
+        return view('comment')->with(compact('comment'));
+    }
+
+    public function postComment(CommentRequest $request)
+    {
+        $comment = Comment::find($request->get('comment_id'));
+
+        if ($comment == null)
+            abort(404, 'Une erreur est survenue');
+
+        $comment->comment = $request->get('comment');
+
+        $comment->save();
     }
 }

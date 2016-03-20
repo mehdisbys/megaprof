@@ -4,7 +4,6 @@
 get('/', 'ListAdvertController@index');
 post('/search', 'ListAdvertController@search');
 
-
 get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
 
 // Signup
@@ -23,6 +22,7 @@ get('logout', 'SessionsController@logout');
 Route::group(['middleware' => 'auth'], function () {
     get('/avatar_dashboard/{user_id}', 'SubmitAdvertController@getDefaultAvatar');
 
+    // New advert
     get('/nouvelle-annonce-1', 'SubmitAdvertController@getStep1');
     post('/nouvelle-annonce-1', 'SubmitAdvertController@postStep1');
     post('/nouvelle-annonce-2', 'SubmitAdvertController@postStep2');
@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
     post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
 
+    // Edit Advert
     get('/modifier-annonce-1/{advert_id}', 'EditAdvertController@editStep1');
     post('/modifier-annonce-1/{advert_id}', 'EditAdvertController@postEditStep1');
 
@@ -50,18 +51,23 @@ Route::group(['middleware' => 'auth'], function () {
     get('/modifier-annonce-6/{advert_id}', 'EditAdvertController@editStep6');
     post('/modifier-annonce-6/{advert_id}', 'EditAdvertController@postEditStep6');
 
+    // Dashboard
     get('/mon-compte', 'DashboardController@index');
     get('/mon-compte/annonce-{advert_id}', 'DashboardController@editAdvert');
 
+    // Book a lesson
     get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');
     post('/reserver-un-cours', 'BookCourseController@postBookLesson');
 
+    // Answer a booking
     get('/demande/{booking_id}/repondre', 'BookCourseController@replyBookingRequest');
     get('/demande/{booking_id}/{answer}', 'BookCourseController@replyBookingRequest');
 
-    //get('/avis/{prof_id}');
-
+    // Comments
+    get('/laisser-un-commentaire/{comment_id}', 'CommentsController@formComment');
+    post('/laisser-un-commentaire', 'CommentsController@postComment');
 });
+
 
 get('/{slug}', 'SubmitAdvertController@view');
 

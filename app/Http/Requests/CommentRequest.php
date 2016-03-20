@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 
+use Illuminate\Support\Facades\Input;
+use App\Models\Comment;
+
 class CommentRequest extends Request
 {
     /**
@@ -12,7 +15,9 @@ class CommentRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        $id = Input::get('comment_id');
+
+        return Comment::resourceBelongsToLoggedUser($id);
     }
 
     /**
