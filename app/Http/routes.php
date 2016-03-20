@@ -59,6 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
     get('/demande/{booking_id}/repondre', 'BookCourseController@replyBookingRequest');
     get('/demande/{booking_id}/{answer}', 'BookCourseController@replyBookingRequest');
 
+    //get('/avis/{prof_id}');
+
 });
 
 get('/{slug}', 'SubmitAdvertController@view');
