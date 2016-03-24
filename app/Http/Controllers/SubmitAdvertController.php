@@ -8,8 +8,7 @@ use App\Models\SubjectsPerAdvert;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class SubmitAdvertController extends Controller
 {
@@ -134,6 +133,8 @@ class SubmitAdvertController extends Controller
         $advert_id = $request->input('advert_id');
 
         $advert = Advert::find($advert_id);
+
+        $advert->publish();
 
         return view('professeur.advert.view')->with(compact('advert'));
     }
