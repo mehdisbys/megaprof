@@ -9,6 +9,7 @@ use App\Models\Advert;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Event;
 
+
 class BookCourseController extends Controller
 {
     public function bookLesson($advert_id)
@@ -22,7 +23,7 @@ class BookCourseController extends Controller
     {
         $booking = $request->except('_token');
 
-        $booking['student_user_id'] = \Auth::id();
+        $booking['student_user_id'] =  \Auth::id();
 
         $bookModel = Booking::create($booking);
 
@@ -43,6 +44,7 @@ class BookCourseController extends Controller
         $booking->save();
 
         Event::fire(new BookingRequestReply($booking));
+
         return redirect('/mon-compte');
     }
 }

@@ -14,11 +14,6 @@ class SignupController extends Controller
 		$this->mailer = $mailer;
 	}
 
-	public function getRecruiterSignup()
-	{
-		return view('signup.candidateSignup');
-	}
-
 	public function getSignup()
 	{
 		return view('signup.signup');

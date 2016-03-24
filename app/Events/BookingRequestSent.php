@@ -18,14 +18,4 @@ class BookingRequestSent extends Event
     {
         $this->booking = $booking;
     }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
-    }
 }

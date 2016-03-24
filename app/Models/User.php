@@ -42,6 +42,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $dates = ['created_at', 'updated_at', 'trial_ends_at', 'subscription_ends_at'];
 
 
+    public function getAuthIdentifierName()
+    {
+        return 'id';
+    }
+
     public function ownsAdvert($id)
     {
         return Advert::whereId($id)->where('user_id',$this->id)->exists();

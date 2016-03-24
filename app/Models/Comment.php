@@ -13,20 +13,22 @@ class Comment extends Model
     {
         self::create(
             [
-                'source_user_id'    => $prof_id,
-                'target_user_id'    => $student_id,
-                'advert_id'         => $advert_id,
-                'comment_at'        => Carbon::now()->addWeek()
+                'source_user_id'     =>  $prof_id,
+                'owner_advert_id'    =>  $prof_id,
+                'target_user_id'     =>  $student_id,
+                'advert_id'          =>  $advert_id,
+                'comment_at'         =>  Carbon::now()->addWeek()
             ]
         );
 
         self::create(
             [
-            'source_user_id'        => $student_id,
-            'target_user_id'        => $prof_id,
-            'advert_id'             => $advert_id,
-            'comment_at'            => Carbon::now()->addWeek()
-             ]
+                'source_user_id'    =>  $student_id,
+                'owner_advert_id'   =>  $prof_id,
+                'target_user_id'    =>  $prof_id,
+                'advert_id'         =>  $advert_id,
+                'comment_at'        =>  Carbon::now()->addWeek()
+            ]
         );
     }
 
