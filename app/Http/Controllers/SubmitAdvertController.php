@@ -61,16 +61,16 @@ class SubmitAdvertController extends Controller
         $advert_id = $request->input('advert_id');
 
         $table = [
-            'location_lat' => 'latitude',
-            'location_long' => 'longitude',
-            'location_postcode' => 'postcode',
-            'location_city' => 'city',
-            'location_country' => 'country',
-            'location_street' => 'address',
-            'travel_radius' => 'radius',
-            'can_travel' => 'can_travel',
-            'can_receive' => 'can_receive',
-            'can_webcam' => 'can_webcam'
+            'location_postcode' =>  'postcode',
+            'location_country'  =>  'country',
+            'location_street'   =>  'address',
+            'location_long'     =>  'longitude',
+            'location_city'     =>  'city',
+            'travel_radius'     =>  'radius',
+            'location_lat'      =>  'latitude',
+            'can_receive'       =>  'can_receive',
+            'can_travel'        =>  'can_travel',
+            'can_webcam'        =>  'can_webcam'
         ];
 
         $values     =  $request->only(array_values($table));
