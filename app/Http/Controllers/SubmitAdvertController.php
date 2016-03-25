@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Helpers\AfterRequest;
@@ -12,7 +11,6 @@ use App\Models\Level;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
 
 //TODO
@@ -49,38 +47,43 @@ class SubmitAdvertController extends Controller
     {
         // 1. Create advert linked with userid
         $advert = Advert::create(['user_id' => $this->userId]);
+        $advert_id = $advert->id;
 
         // 2. Fill subjects_per_adverts  table
         $subjectsArray = $request->input('subjects');
         SubjectsPerAdvert::fillSubjectForAdvert($advert->id, $subjectsArray);
-
-        $advert_id = $advert->id;
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
     public function getStep2TitleAndLevels(Request $request)
     {
-        $subjectsArray = $request->input('subjectsArray');
-
-        $subjects   =  SubSubject::whereIn('id', $subjectsArray)->get();
-        $levels     =  Level::all();
-        $advert_id  =  $this->advertId;
+        $subjectsArray  = $request->session()->get('subjectsArray');
+        $subjects       =  SubSubject::whereIn('id', $subjectsArray)->get();
+        $levels         =  Level::all();
+        $advert_id      =  $this->advertId;
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
     public function postStep2TitleAndLevels(Request $request)
     {
-        $advert_id  =  $request->input('advert_id');
         $levels     =  $request->input('levels');
         $title      =  $request->input('title');
 
-        Advert::find($advert_id)->update(['title' => $title]);
+        dd($this->advertId);
+        Advert::find($this->advertId)->update(['title' => $title]);
 
-        SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $levels);
+        SubjectsPerAdvert::fillLevelsPerSubjects($this->advertId, $levels);
 
-        return view('professeur.advert.createStep3')->with(compact('advert_id'));
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    public function getStep3AddressAndTravel()
+    {
+        $advert = $this->advert;
+
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
     public function postStep3(Request $request)

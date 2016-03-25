@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Response;
 
 class AfterAdvert
 {
@@ -23,11 +24,15 @@ class AfterAdvert
 
         switch ($config['action']) {
             case 'view' :
-                return view($config['view']['create'])
-                    ->with($original->getArgs() + $config['args']);
+                return $response->setContent(view($config['view']['create'])
+                    ->with($original->getArgs() + $config['args']));
 
             case 'redirect':
-                return redirect()->action($config['next'], $original->getArgs());
+                $request->session()->put($original->getArgs());
+                return dd(redirect()->guest('/login'));
+
+
+                return redirect()->action($config['next']);
         }
 
     }

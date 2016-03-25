@@ -21,4 +21,19 @@ return [
             'args'   => ['step' => 2],
             'action' => 'view'
         ],
+
+    'postStep2TitleAndLevels' =>
+        [
+            'view'   => ['create' => 'professeur.advert.createStep1Subjects'],
+            'args'   => ['step' => 2],
+            'action' => 'redirect',
+            'next'   => 'SubmitAdvertController@getStep3AddressAndTravel'
+        ],
+
+//    'getStep3AddressAndTravel' =>
+//        [
+//            'view'   => ['create' => 'professeur.advert.createStep3AddressAndTravel'],
+//            'args'   => ['step' => 3],
+//            'action' => 'view'
+//        ]
 ];

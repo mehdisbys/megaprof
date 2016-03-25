@@ -35,7 +35,7 @@ class AfterRequest
      */
     public function getArgs(): array
     {
-        return $this->args;
+        return array_except($this->args, ['request']);
     }
 
     public function addArgs(array $args)
