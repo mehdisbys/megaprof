@@ -59,7 +59,7 @@ CREATE TABLE `adverts` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,8 +146,40 @@ CREATE TABLE `book_lesson` (
 
 LOCK TABLES `book_lesson` WRITE;
 /*!40000 ALTER TABLE `book_lesson` DISABLE KEYS */;
-INSERT INTO `book_lesson` VALUES (1,51,10,'10',NULL,'yes','Clojure for the Brave and True is the go-to book for learning to program in Clojure. The book distills passion, and it\'s funny, very well written and covers in great depth everything you need to start doing some serious programming. I think I\'ve bought the book more than once!','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','15 Rue de Dunkerque, Paris, France','2016-02-06 16:55:49','2016-01-31 12:08:32'),(2,51,10,'10',NULL,'yes','I am not especially brave, and I\'ve been known to not tell the truth. Nonetheless, this is the book I always recommend to people who are already programmers in another language and want a fun, lighthearted, yet solid introduction to Clojure\r\n','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','45 Rue du Président Wilson, Dunkerque, France','2016-03-06 13:03:35','2016-01-31 15:52:52'),(3,51,10,'10',NULL,'no','I am not especially brave, and I\'ve been known to not tell the truth. Nonetheless, this is the book I always recommend to people who are already programmers in another language and want a fun, lighthearted, yet solid introduction to Clojure\r\n','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','45 Rue du Président Wilson, Dunkerque, France','2016-03-06 13:03:41','2016-01-31 15:55:31'),(4,51,10,'10',NULL,'no','I am not especially brave, and I\'ve been known to not tell the truth. Nonetheless, this is the book I always recommend to people who are already programmers in another language and want a fun, lighthearted, yet solid introduction to Clojure\r\n','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','45 Rue du Président Wilson, Dunkerque, France','2016-03-06 13:03:14','2016-01-31 16:18:31'),(5,51,10,'6',NULL,'yes','Hi there,\r\n\r\nI have read a lot about the Curry-Howard isomorphism, but its relevance is not yet clear to me. I know there are experts on this topic here in this board, so please enlighten me :-)\r\n\r\nTechnically, I understand the relation between simply-typed lambda calculus and constructive logic and how the isomorphism between proofs and programs works.\r\n','asap','0000-00-00 00:00:00','any','','myself','','0000-00-00 00:00:00',NULL,'0601020304','34 Rue de Dunkerque, Paris, France','2016-02-06 22:20:13','2016-02-06 21:41:18');
+INSERT INTO `book_lesson` VALUES (1,51,10,'10',NULL,'yes','Clojure for the Brave and True is the go-to book for learning to program in Clojure. The book distills passion, and it\'s funny, very well written and covers in great depth everything you need to start doing some serious programming. I think I\'ve bought the book more than once!','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','15 Rue de Dunkerque, Paris, France','2016-02-06 16:55:49','2016-01-31 12:08:32'),(2,51,10,'10',NULL,'yes','I am not especially brave, and I\'ve been known to not tell the truth. Nonetheless, this is the book I always recommend to people who are already programmers in another language and want a fun, lighthearted, yet solid introduction to Clojure\r\n','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','45 Rue du Président Wilson, Dunkerque, France','2016-03-06 13:03:35','2016-01-31 15:52:52'),(3,51,10,'10',NULL,'no','I am not especially brave, and I\'ve been known to not tell the truth. Nonetheless, this is the book I always recommend to people who are already programmers in another language and want a fun, lighthearted, yet solid introduction to Clojure\r\n','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','45 Rue du Président Wilson, Dunkerque, France','2016-03-06 13:03:41','2016-01-31 15:55:31'),(4,51,10,'10',NULL,'no','I am not especially brave, and I\'ve been known to not tell the truth. Nonetheless, this is the book I always recommend to people who are already programmers in another language and want a fun, lighthearted, yet solid introduction to Clojure\r\n','this_week','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'01020304050','45 Rue du Président Wilson, Dunkerque, France','2016-03-06 13:03:14','2016-01-31 16:18:31'),(5,51,10,'6',NULL,'yes','Hi there,\r\n\r\nI have read a lot about the Curry-Howard isomorphism, but its relevance is not yet clear to me. I know there are experts on this topic here in this board, so please enlighten me :-)\r\n\r\nTechnically, I understand the relation between simply-typed lambda calculus and constructive logic and how the isomorphism between proofs and programs works.\r\n','asap','0000-00-00 00:00:00','any','','myself','','0000-00-00 00:00:00',NULL,'0601020304','34 Rue de Dunkerque, Paris, France','2016-02-06 22:20:13','2016-02-06 21:41:18'),(6,51,10,'6',NULL,'yes','With Clojure 1.5, edn has become a standard part of the language. Edn is like an extensible JSON where the keys of objects can be any value (not just strings). It is based on the Clojure literal syntax, much in the same way that JSON is based on Javascript literal syntax. It is a nice way to serialize data. And since you already have the JAR in your project, it\'s a no brainer to use it','asap','0000-00-00 00:00:00','teacher','','myself','','0000-00-00 00:00:00','man','1232344543512','131 Victoria Street, Londres, Royaume-Uni','2016-03-20 11:18:51','2016-03-20 11:18:06');
 /*!40000 ALTER TABLE `book_lesson` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comments`
+--
+
+DROP TABLE IF EXISTS `comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `source_user_id` int(11) NOT NULL,
+  `target_user_id` int(11) NOT NULL,
+  `advert_id` varchar(45) NOT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `stars` varchar(45) DEFAULT NULL,
+  `comment_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comments`
+--
+
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,10,6,'51',NULL,NULL,'2016-03-27 10:19:58','2016-03-20 11:19:58',NULL,'2016-03-20 11:19:58'),(2,6,10,'51',NULL,NULL,'2016-03-27 10:19:58','2016-03-20 11:19:58',NULL,'2016-03-20 11:19:58');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -513,7 +545,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (6,'Morgane','Test','ramses@yopmail.com',NULL,'$2y$10$45wxzzb4xk2nbp0Ndbz5TebX1YNMe5h9dodkWjLS7o1SEwsYUP8xu','LMkxiwHSKGmQk83IZwJRoDpPpi4BOV','zdQhNnFF9Lzt8qZtWDUsDw69YVe8Vl1fJngLFZVDz1ngVuioRfeNcyQQDbI8',NULL,1,NULL,'2016-01-09 13:53:11','2016-02-06 22:19:49',0,NULL,NULL,NULL,NULL,NULL),(10,'Mehdi','Test','mehdi.souihed@gmail.com',NULL,'$2y$10$Xkrhb8AwaQpNox8OM2U1p.QUMNtVQIRqT.67ZDoTMtDosV8xBA8J.','','aiG2YSvC16SZSU1NklAM0Ptof5ToZSmi8fPwDm5gNmEkyjrP8fChkQw7kC1N',NULL,1,NULL,'2016-01-09 15:01:15','2016-02-22 19:26:14',0,NULL,NULL,NULL,NULL,NULL),(11,'Stéphane','Charlie','chayeb.yacine@gmail.com',NULL,'$2y$10$K0ZnVtErqorHAXsqzxMF8OwcMWMOZdKhYw0N5bL/.DikM0iza0gEm','','o7MQ1tpW3Ix0Fd0yJPzaUTxv5w09N4QFjHFQ3UzJf5dL1sgSJvEOCwtIwwwf',NULL,1,NULL,'2016-01-29 21:30:14','2016-01-29 21:39:20',0,NULL,NULL,NULL,NULL,NULL),(12,'Stéphane','Charlie','chayebc2@msn.com',NULL,'$2y$10$kqjfwZ/cPKjxEvxZDmpYA.hkuHq7ixCoxkbYCGPgKpaLoUWjVpCCu','7K922anVnX4u1PyLGXOuVBUps5gT62',NULL,NULL,0,NULL,'2016-01-29 21:40:23','2016-01-29 21:40:23',0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (6,'Morgane','Test','ramses@yopmail.com',NULL,'$2y$10$45wxzzb4xk2nbp0Ndbz5TebX1YNMe5h9dodkWjLS7o1SEwsYUP8xu','LMkxiwHSKGmQk83IZwJRoDpPpi4BOV','4w66f5Dx4fFdcXWbGC0SvJYv0Fvs8mm8LFORTBFNtaXJiJHf4JKyjsH2DVaK',NULL,1,NULL,'2016-01-09 13:53:11','2016-03-20 11:18:22',0,NULL,NULL,NULL,NULL,NULL),(10,'Mehdi','Test','mehdi.souihed@gmail.com',NULL,'$2y$10$Xkrhb8AwaQpNox8OM2U1p.QUMNtVQIRqT.67ZDoTMtDosV8xBA8J.','','aiG2YSvC16SZSU1NklAM0Ptof5ToZSmi8fPwDm5gNmEkyjrP8fChkQw7kC1N',NULL,1,NULL,'2016-01-09 15:01:15','2016-02-22 19:26:14',0,NULL,NULL,NULL,NULL,NULL),(11,'Stéphane','Charlie','chayeb.yacine@gmail.com',NULL,'$2y$10$K0ZnVtErqorHAXsqzxMF8OwcMWMOZdKhYw0N5bL/.DikM0iza0gEm','','o7MQ1tpW3Ix0Fd0yJPzaUTxv5w09N4QFjHFQ3UzJf5dL1sgSJvEOCwtIwwwf',NULL,1,NULL,'2016-01-29 21:30:14','2016-01-29 21:39:20',0,NULL,NULL,NULL,NULL,NULL),(12,'Stéphane','Charlie','chayebc2@msn.com',NULL,'$2y$10$kqjfwZ/cPKjxEvxZDmpYA.hkuHq7ixCoxkbYCGPgKpaLoUWjVpCCu','7K922anVnX4u1PyLGXOuVBUps5gT62',NULL,NULL,0,NULL,'2016-01-29 21:40:23','2016-01-29 21:40:23',0,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -526,4 +558,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-06 13:17:16
+-- Dump completed on 2016-03-20 11:22:16

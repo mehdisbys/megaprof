@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Events\AdvertPublished;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
@@ -63,5 +65,20 @@ class Advert extends Model implements SluggableInterface {
     public static function liveAdverts()
     {
         return self::whereNotNull('published_at')->get();
+    }
+
+    public function publish ()
+    {
+        $this->published_at = Carbon::now();
+        $this->save();
+        \Event::fire(new AdvertPublished($this));
+        return $this;
+    }
+
+    public function unpublish()
+    {
+        $this->published_at = NULL;
+        $this->save();
+        return $this;
     }
 }

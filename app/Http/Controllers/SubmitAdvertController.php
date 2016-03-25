@@ -4,19 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\Avatar;
+use App\Models\SubSubject;
+use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
+use App\Models\Level;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use DB;
 
 class SubmitAdvertController extends Controller
 {
 
+    public function __construct()
+    {
+
+    }
+
     public function getStep1()
     {
-        $subjects = \App\Models\Subject::all();
+        $subjects = Subject::all();
 
         return view('professeur.advert.createStep1')->with(compact('subjects'));
     }
@@ -24,27 +29,27 @@ class SubmitAdvertController extends Controller
     public function postStep1(Request $request)
     {
         // 1. Create advert linked with userid
-        $advert = \App\Models\Advert::create(['user_id' => \Auth::id()]);
+        $advert = Advert::create(['user_id' => \Auth::id()]);
 
         // 2. Fill subjects_per_adverts  table
         $subjectsArray = $request->input('subjects');
         SubjectsPerAdvert::fillSubjectForAdvert($advert->id, $subjectsArray);
 
         // 3. Return data necessary for next step
-        $subjects = \App\Models\SubSubject::whereIn('id', $subjectsArray)->get();
-        $levels = \App\Models\Level::all();
-        $advert_id = $advert->id;
+        $subjects   =  SubSubject::whereIn('id', $subjectsArray)->get();
+        $levels     =  Level::all();
+        $advert_id  =  $advert->id;
 
         return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id'));
     }
 
     public function postStep2(Request $request)
     {
-        $advert_id = $request->input('advert_id');
-        $levels = $request->input('levels');
-        $title = $request->input('title');
+        $advert_id  =  $request->input('advert_id');
+        $levels     =  $request->input('levels');
+        $title      =  $request->input('title');
 
-        \App\Models\Advert::find($advert_id)->update(['title' => $title]);
+        Advert::find($advert_id)->update(['title' => $title]);
 
         SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $levels);
 
@@ -56,40 +61,40 @@ class SubmitAdvertController extends Controller
         $advert_id = $request->input('advert_id');
 
         $table = [
-            'location_lat' => 'latitude',
-            'location_long' => 'longitude',
-            'location_postcode' => 'postcode',
-            'location_city' => 'city',
-            'location_country' => 'country',
-            'location_street' => 'address',
-            'travel_radius' => 'radius',
-            'can_travel' => 'can_travel',
-            'can_receive' => 'can_receive',
-            'can_webcam' => 'can_webcam'
+            'location_postcode' =>  'postcode',
+            'location_country'  =>  'country',
+            'location_street'   =>  'address',
+            'location_long'     =>  'longitude',
+            'location_city'     =>  'city',
+            'travel_radius'     =>  'radius',
+            'location_lat'      =>  'latitude',
+            'can_receive'       =>  'can_receive',
+            'can_travel'        =>  'can_travel',
+            'can_webcam'        =>  'can_webcam'
         ];
 
-        $values = $request->only(array_values($table));
-        $keys = array_keys($table);
-        $loc_data = array_combine($keys, $values);
+        $values     =  $request->only(array_values($table));
+        $keys       =  array_keys($table);
+        $loc_data   =  array_combine($keys, $values);
 
-        \App\Models\Advert::find($advert_id)->update($loc_data);
+        Advert::find($advert_id)->update($loc_data);
 
         return view('professeur.advert.createStep4')->with(compact('advert_id'));
     }
 
     public function postStep4(Request $request)
     {
-        $advert_id = $request->input('advert_id');
+        $advert_id    =  $request->input('advert_id');
 
-        $content_data = $request->only(['presentation', 'content', 'experience']);
+        $content_data =  $request->only(['presentation', 'content', 'experience']);
 
-        \App\Models\Advert::find($advert_id)->update($content_data);
+        Advert::find($advert_id)->update($content_data);
 
-        $advert = \App\Models\Advert::find($advert_id);
+        $advert       =  Advert::find($advert_id);
 
-        $can_travel = $advert->can_travel;
+        $can_travel   =  $advert->can_travel;
 
-        $can_webcam = $advert->can_webcam;
+        $can_webcam   =  $advert->can_webcam;
 
         return view('professeur.advert.createStep5')->with(compact('advert_id','can_travel', 'can_webcam'));
     }
@@ -113,7 +118,7 @@ class SubmitAdvertController extends Controller
 
         $data = $request->only($only);
 
-        \App\Models\Advert::find($advert_id)->update($data);
+        Advert::find($advert_id)->update($data);
 
         return view('professeur.advert.createStep6')->with(compact('advert_id'));
     }
@@ -133,7 +138,9 @@ class SubmitAdvertController extends Controller
     {
         $advert_id = $request->input('advert_id');
 
-        $advert = Advert::find($advert_id);
+        $advert    = Advert::find($advert_id);
+
+        $advert->publish();
 
         return view('professeur.advert.view')->with(compact('advert'));
     }

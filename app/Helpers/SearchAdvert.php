@@ -13,7 +13,7 @@ class SearchAdvert implements SearchAdvertContract
         $subjects = new SubjectsPerAdvert();
 
         if (isset($data->subject) and !empty($data->subject)) {
-            $advert_ids = $subjects->where('subject_id', $data->subject)->get()->pluck('advert_id');
+            $advert_ids = $subjects->where('subject_id', $data->subject)->get()->pluck('advert_id')->toArray();
             $results = Advert::whereIn('id', $advert_ids);
 
             if (isset($data->city) and !empty($data->city))

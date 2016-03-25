@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Events;
 
-use App\Events\Event;
 use App\Models\Booking;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class BookingRequestSent extends Event
 {
@@ -14,18 +11,12 @@ class BookingRequestSent extends Event
     public $booking;
 
 
+    /**
+     * BookingRequestSent constructor.
+     * @param Booking $booking
+     */
     public function __construct(Booking $booking)
     {
         $this->booking = $booking;
-    }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
     }
 }

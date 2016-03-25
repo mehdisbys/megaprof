@@ -15,7 +15,6 @@
 
             <div>
                 @foreach($bookings as $booking)
-
                     <article class="gray-background" id="booking_{{$booking->id}}">
                         <div class="col-md-8 topmargin-sm">
                             <div class="col-md-2">
@@ -34,7 +33,6 @@
                             @endif
 
                             <div class="">{{ $booking->presentation }}</div>
-
                             @if($booking->isStudent() and $booking->wasAccepted())
                                 <div class="clearfix"></div>
                                 <div class="col-md-12">Contactez votre professeur :</div>
