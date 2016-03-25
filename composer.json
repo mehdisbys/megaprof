@@ -18,7 +18,8 @@
     "laravel/cashier": "~5.0",
     "stripe/stripe-php": "~2.0",
     "adamwathan/bootforms": "^0.7.1",
-    "intervention/image": "^2.3"
+    "intervention/image": "^2.3",
+    "predis/predis": "^1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
