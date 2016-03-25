@@ -23,9 +23,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/avatar_dashboard/{user_id}', 'SubmitAdvertController@getDefaultAvatar');
 
     // New advert
-    Route::get('/nouvelle-annonce-1', 'SubmitAdvertController@getStep1');
-    Route::post('/nouvelle-annonce-1', 'SubmitAdvertController@postStep1');
+    Route::get('/nouvelle-annonce-1',  'SubmitAdvertController@getStep1Subjects')->middleware(['afterAdvert']);
+    Route::post('/nouvelle-annonce-1', 'SubmitAdvertController@postStep1Subjects')->middleware(['afterAdvert']);
+
+    Route::get('/nouvelle-annonce-2', 'SubmitAdvertController@getStep2TitleAndLevels')->middleware(['afterAdvert']);
     Route::post('/nouvelle-annonce-2', 'SubmitAdvertController@postStep2');
+
     Route::post('/nouvelle-annonce-3', 'SubmitAdvertController@postStep3');
     Route::post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4');
     Route::post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5');

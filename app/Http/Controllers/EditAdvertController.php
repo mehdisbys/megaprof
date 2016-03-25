@@ -1,10 +1,10 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
-
-use App\Http\Requests\Request;
 use App\Models\Advert;
-use App\Models\Avatar;
 use App\Models\SubjectsPerAdvert;
+use App\Models\SubSubject;
+use App\Models\Level;
 
 class EditAdvertController extends Controller
 {
@@ -17,9 +17,6 @@ class EditAdvertController extends Controller
     {
         $subjects = \App\Models\Subject::all();
 
-        if (Advert::where(['id' => $advert_id, 'user_id' => \Auth::id()])->exists() == false)
-            return redirect()->back();
-
         $advert = Advert::findOrFail($advert_id);
 
         $checkedSubjects = SubjectsPerAdvert::select('subject_id')
@@ -29,7 +26,7 @@ class EditAdvertController extends Controller
             ->toArray();
 
         $step = 1;
-        return view("dashboard.edit")->with(compact('subjects', 'checkedSubjects', 'advert_id', 'step', 'advert'));
+        return view('dashboard.edit')->with(compact('subjects', 'checkedSubjects', 'advert_id', 'step', 'advert'));
     }
 
     public function postEditStep1($advert_id)
@@ -46,8 +43,8 @@ class EditAdvertController extends Controller
         $subjectsArray = [SubjectsPerAdvert::where('advert_id', $advert_id)->value('subject_id')];
 
         // 3. Return data necessary for next step
-        $subjects = \App\Models\SubSubject::whereIn('id', $subjectsArray)->get();
-        $levels = \App\Models\Level::all();
+        $subjects = SubSubject::whereIn('id', $subjectsArray)->get();
+        $levels   = Level::all();
 
         $checkedLevels = SubjectsPerAdvert::getLevelsPerSubjects($advert_id, $subjectsArray);
         $checked = [];

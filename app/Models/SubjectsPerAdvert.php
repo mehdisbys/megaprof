@@ -45,4 +45,13 @@ class SubjectsPerAdvert extends Model
             //->pluck('level_ids')
             ;
     }
+
+    public static function getSubjectsPerAdvert(int $advertId = NULL)
+    {
+        self::select('subject_id')
+            ->where('advert_id', $advertId)
+            ->get()
+            ->pluck('subject_id')
+            ->toArray();
+    }
 }

@@ -1,7 +1,7 @@
 
 {!! HTML::script("js/parsley.min.js")!!}
 
-@if(isset($checkedSubjects))
+@if(isset($checkedSubjects) and $checkedSubjects != NULL)
     <form method="POST" action="/modifier-annonce-1/{{$advert_id}}" accept-charset="UTF-8" data-parsley-validate id="subject_form">
         {!! Form::hidden('advert_id', $advert_id) !!}
         @else

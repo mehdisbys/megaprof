@@ -2,48 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AfterRequest;
 use App\Models\Advert;
 use App\Models\Avatar;
 use App\Models\SubSubject;
 use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
 use App\Models\Level;
+use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
+
+//TODO
+// 1. Refactor to have a get function for each step
+// 2. Decouple the core logic from input parameters and from views
+// 3. Give names to each step
+// 4. Use Form requests
 class SubmitAdvertController extends Controller
 {
+    private $advertId = NULL;
+    private $advert   = NULL;
+    private $afterRequest;
+    private $userId;
 
-    public function __construct()
+    public function __construct(Request $request, Advert $advert, AfterRequest $afterRequest, AuthManager $auth)
     {
-
+        $this->advertId     =  $request->input('advert_id');
+        $this->advert       =  $advert->find($request->input('advert_id'));
+        $this->afterRequest =  $afterRequest;
+        $this->userId       =  $auth->id();
     }
 
-    public function getStep1()
+    public function getStep1Subjects()
     {
-        $subjects = Subject::all();
+        $subjects        = Subject::all();
 
-        return view('professeur.advert.createStep1')->with(compact('subjects'));
+        $checkedSubjects = SubjectsPerAdvert::getSubjectsPerAdvert($this->advertId);
+
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
-    public function postStep1(Request $request)
+
+    public function postStep1Subjects(Request $request)
     {
         // 1. Create advert linked with userid
-        $advert = Advert::create(['user_id' => \Auth::id()]);
+        $advert = Advert::create(['user_id' => $this->userId]);
 
         // 2. Fill subjects_per_adverts  table
         $subjectsArray = $request->input('subjects');
         SubjectsPerAdvert::fillSubjectForAdvert($advert->id, $subjectsArray);
 
-        // 3. Return data necessary for next step
-        $subjects   =  SubSubject::whereIn('id', $subjectsArray)->get();
-        $levels     =  Level::all();
-        $advert_id  =  $advert->id;
+        $advert_id = $advert->id;
 
-        return view('professeur.advert.createStep2')->with(compact('subjects', 'levels', 'advert_id'));
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
-    public function postStep2(Request $request)
+    public function getStep2TitleAndLevels(Request $request)
+    {
+        $subjectsArray = $request->input('subjectsArray');
+
+        $subjects   =  SubSubject::whereIn('id', $subjectsArray)->get();
+        $levels     =  Level::all();
+        $advert_id  =  $this->advertId;
+
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    public function postStep2TitleAndLevels(Request $request)
     {
         $advert_id  =  $request->input('advert_id');
         $levels     =  $request->input('levels');
