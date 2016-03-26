@@ -27,8 +27,8 @@ class SubmitAdvertController extends Controller
 
     public function __construct(Request $request, Advert $advert, AfterRequest $afterRequest, AuthManager $auth)
     {
-        $this->advertId     =  $request->input('advert_id');
-        $this->advert       =  $advert->find($request->input('advert_id'));
+        $this->advertId     =  $request->input('advert_id') ?? $request->session()->get('advert_id');
+        $this->advert       =  $advert->find($this->advertId);
         $this->afterRequest =  $afterRequest;
         $this->userId       =  $auth->id();
     }
@@ -71,7 +71,6 @@ class SubmitAdvertController extends Controller
         $levels     =  $request->input('levels');
         $title      =  $request->input('title');
 
-        dd($this->advertId);
         Advert::find($this->advertId)->update(['title' => $title]);
 
         SubjectsPerAdvert::fillLevelsPerSubjects($this->advertId, $levels);
@@ -81,14 +80,14 @@ class SubmitAdvertController extends Controller
 
     public function getStep3AddressAndTravel()
     {
-        $advert = $this->advert;
+        $advert_id = $this->advertId;
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
-    public function postStep3(Request $request)
+    public function postStep3AddressAndTravel(Request $request)
     {
-        $advert_id = $request->input('advert_id');
+        $advert_id = $this->advertId;
 
         $table = [
             'location_postcode' =>  'postcode',
@@ -109,10 +108,18 @@ class SubmitAdvertController extends Controller
 
         Advert::find($advert_id)->update($loc_data);
 
-        return view('professeur.advert.createStep4')->with(compact('advert_id'));
+        return $this->afterRequest->init(__FUNCTION__, ['advert_id' => $this->advertId]);
     }
 
-    public function postStep4(Request $request)
+    public function getStep4ContentAndExperience()
+    {
+        $advert_id = $this->advertId;
+
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    //TODO refactor
+    public function postStep4ContentAndExperience(Request $request)
     {
         $advert_id    =  $request->input('advert_id');
 

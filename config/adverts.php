@@ -30,10 +30,25 @@ return [
             'next'   => 'SubmitAdvertController@getStep3AddressAndTravel'
         ],
 
-//    'getStep3AddressAndTravel' =>
-//        [
-//            'view'   => ['create' => 'professeur.advert.createStep3AddressAndTravel'],
-//            'args'   => ['step' => 3],
-//            'action' => 'view'
-//        ]
+    'getStep3AddressAndTravel' =>
+        [
+            'view'   => ['create' => 'professeur.advert.createStep3AddressAndTravel'],
+            'args'   => ['step' => 3],
+            'action' => 'view'
+        ],
+
+    'postStep3AddressAndTravel' =>
+        [
+            'view'   => ['create' => 'professeur.advert.createStep1Subjects'],
+            'args'   => ['step' => 3],
+            'action' => 'redirect',
+            'next'   => 'SubmitAdvertController@getStep4ContentAndExperience'
+        ],
+
+    'getStep4ContentAndExperience' =>
+        [
+            'view'   => ['create' => 'professeur.advert.createStep4ContentAndExperience'],
+            'args'   => ['step' => 4],
+            'action' => 'view'
+        ],
 ];

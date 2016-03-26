@@ -1,7 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+//TODO pull request to throw exception if two routes have the same name
+
 Route::group(['middleware' => ['web']], function () {
+
 //Main Page
     Route::get('/', 'ListAdvertController@index');
     Route::post('/search', 'ListAdvertController@search');
@@ -22,7 +25,6 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::group(['middleware' => ['auth']], function () {
-
         Route::get('/avatar_dashboard/{user_id}', 'SubmitAdvertController@getDefaultAvatar');
 
         Route::group(['middleware' => ['afterAdvert']], function () {
@@ -33,10 +35,12 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/nouvelle-annonce-2', 'SubmitAdvertController@getStep2TitleAndLevels');
             Route::post('/nouvelle-annonce-2', 'SubmitAdvertController@postStep2TitleAndLevels');
 
-            Route::get('/nouvelle-annonce-2', 'SubmitAdvertController@getStep3AddressAndTravel');
-            Route::post('/nouvelle-annonce-3', 'SubmitAdvertController@postStep3');
+            Route::get('/nouvelle-annonce-3', 'SubmitAdvertController@getStep3AddressAndTravel');
+            Route::post('/nouvelle-annonce-3', 'SubmitAdvertController@postStep3AddressAndTravel');
 
-            Route::post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4');
+            Route::get('/nouvelle-annonce-4', 'SubmitAdvertController@getStep4ContentAndExperience');
+            Route::post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4ContentAndExperience');
+
             Route::post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5');
             Route::post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
             Route::post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
