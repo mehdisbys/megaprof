@@ -195,14 +195,6 @@ class SubmitAdvertController extends Controller
     }
 
 
-    public function view($slug)
-    {
-        $advert = Advert::findBySlugOr404($slug);
-
-        return view('professeur.advert.view')->with(compact('advert'));
-    }
-
-
     public function getAvatar($user_id, $advert_id)
     {
         return Avatar::getAvatar($user_id, $advert_id);

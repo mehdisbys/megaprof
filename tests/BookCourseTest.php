@@ -4,20 +4,17 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Models\User;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Session;
 
 class BookCourseTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
+   // use WithoutMiddleware;
 
     private $prof;
 
     private $booking;
 
-    function __construct()
-    {
-        parent::setUp();
-    }
 
 
     /** @test */
@@ -33,8 +30,8 @@ class BookCourseTest extends TestCase
 
         $this->loginAsUser();
 
-        $this->visit("/$advert->slug")
-            ->see('réserver un cours')
+        $this->visit("/$advert->slug");
+        $this->see('réserver un cours')
             ->click('Réserver un cours')
             ->see('dites-en un peu plus à')
             ->submitForm('Envoyer ma demande', $bookingForm);
@@ -52,6 +49,9 @@ class BookCourseTest extends TestCase
      */
     public function test_accept_course_booking_request($booking)
     {
+        //Fucking laravel..
+        $booking = \App\Models\Booking::create($booking->toArray());
+
         $this->loginAsUser($this->prof);
 
         $this->visit("/mon-compte")
@@ -59,9 +59,11 @@ class BookCourseTest extends TestCase
 
         $this->visit("/demande/{$booking->id}/yes");
 
-        $this->booking = \App\Models\Booking::find($booking->id);
+        $id = $booking->id;
 
-        $this->assertNotNull($this->booking);
+        $this->booking = \App\Models\Booking::find($id);
+
+        $this->assertNotNull($this->booking, "Booking model with ID $id wasnt found");
 
         $this->assertEquals('yes', $this->booking->answer);
 
@@ -73,6 +75,9 @@ class BookCourseTest extends TestCase
      */
     public function test_reject_course_booking_request($booking)
     {
+        //Fucking laravel..
+        $booking = \App\Models\Booking::create($booking->toArray());
+
         $this->loginAsUser($this->prof);
 
         $this->visit("/mon-compte")

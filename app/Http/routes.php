@@ -89,6 +89,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/laisser-un-commentaire', 'CommentsController@postComment');
     });
 
-
-    Route::get('/{slug}', 'SubmitAdvertController@view');
+    Route::get('/{slug}', 'ListAdvertController@view');
 });
+
+

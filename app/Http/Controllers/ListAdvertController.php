@@ -46,4 +46,11 @@ class ListAdvertController extends Controller
             ->with(compact('adverts', 'subsubjects', 'selectedSubject'))
             ->with(['selectedCity' => $data->city]);
     }
+
+    public function view($slug)
+    {
+        $advert = Advert::findBySlugOr404($slug);
+
+        return view('professeur.advert.view')->with(compact('advert'));
+    }
 }
