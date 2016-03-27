@@ -25,6 +25,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::group(['middleware' => ['auth']], function () {
+
         Route::get('/avatar_dashboard/{user_id}', 'SubmitAdvertController@getDefaultAvatar');
 
         Route::group(['middleware' => ['afterAdvert']], function () {
@@ -41,9 +42,14 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/nouvelle-annonce-4', 'SubmitAdvertController@getStep4ContentAndExperience');
             Route::post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4ContentAndExperience');
 
-            Route::post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5');
-            Route::post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6');
-            Route::post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7');
+            Route::get('/nouvelle-annonce-5', 'SubmitAdvertController@getStep5PriceAndConditions');
+            Route::post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5PriceAndConditions');
+
+            Route::get('/nouvelle-annonce-6', 'SubmitAdvertController@getStep6Picture');
+            Route::post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6Picture');
+
+            Route::get('/nouvelle-annonce-7', 'SubmitAdvertController@getStep7Publish');
+            Route::post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7Publish');
         });
 
 

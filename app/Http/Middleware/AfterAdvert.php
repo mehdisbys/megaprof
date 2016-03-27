@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class AfterAdvert
 {
