@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Models\User;
 use Faker\Factory as Faker;
-use Illuminate\Support\Facades\Session;
 
 class BookCourseTest extends TestCase
 {
@@ -14,7 +12,6 @@ class BookCourseTest extends TestCase
     private $prof;
 
     private $booking;
-
 
 
     /** @test */
