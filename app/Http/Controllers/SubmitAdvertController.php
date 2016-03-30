@@ -27,9 +27,9 @@ class SubmitAdvertController extends Controller
 
     public function __construct(Request $request, Advert $advert, AfterRequest $afterRequest, AuthManager $auth)
     {
-        $this->advertId     =  $request->input('advert_id');
-        $this->advert       =  $advert->find($request->input('advert_id'));
-        $this->afterRequest =  $afterRequest;
+        $this->advertId     =  $request->input('advert_id') ?? $request->session()->get('advert_id');
+        $this->advert       =  $advert->find($this->advertId);
+        $this->afterRequest =  $afterRequest;//->addArgs(['advert_id' => $this->advertId]);
         $this->userId       =  $auth->id();
     }
 
@@ -71,7 +71,6 @@ class SubmitAdvertController extends Controller
         $levels     =  $request->input('levels');
         $title      =  $request->input('title');
 
-        dd($this->advertId);
         Advert::find($this->advertId)->update(['title' => $title]);
 
         SubjectsPerAdvert::fillLevelsPerSubjects($this->advertId, $levels);
@@ -81,14 +80,14 @@ class SubmitAdvertController extends Controller
 
     public function getStep3AddressAndTravel()
     {
-        $advert = $this->advert;
+        $advert_id = $this->advertId;
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
-    public function postStep3(Request $request)
+    public function postStep3AddressAndTravel(Request $request)
     {
-        $advert_id = $request->input('advert_id');
+        $advert_id = $this->advertId;
 
         $table = [
             'location_postcode' =>  'postcode',
@@ -109,30 +108,40 @@ class SubmitAdvertController extends Controller
 
         Advert::find($advert_id)->update($loc_data);
 
-        return view('professeur.advert.createStep4')->with(compact('advert_id'));
+        return $this->afterRequest->init(__FUNCTION__, ['advert_id' => $this->advertId]);
     }
 
-    public function postStep4(Request $request)
+    public function getStep4ContentAndExperience()
     {
-        $advert_id    =  $request->input('advert_id');
+        $advert_id = $this->advertId;
 
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    public function postStep4ContentAndExperience(Request $request)
+    {
         $content_data =  $request->only(['presentation', 'content', 'experience']);
 
-        Advert::find($advert_id)->update($content_data);
+        Advert::find($this->advertId)->update($content_data);
 
-        $advert       =  Advert::find($advert_id);
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    public function getStep5PriceAndConditions()
+    {
+        $advert       =  Advert::findOrFail($this->advertId);
+
+        $advert_id    =  $this->advertId;
 
         $can_travel   =  $advert->can_travel;
 
         $can_webcam   =  $advert->can_webcam;
 
-        return view('professeur.advert.createStep5')->with(compact('advert_id','can_travel', 'can_webcam'));
+        return $this->afterRequest->init(__FUNCTION__, array_except(get_defined_vars(), ['advert']));
     }
 
-    public function postStep5(Request $request)
+    public function postStep5PriceAndConditions(Request $request)
     {
-        $advert_id = $request->input('advert_id');
-
         $only = [
             "price" ,
             "price_travel_percentage",
@@ -148,39 +157,41 @@ class SubmitAdvertController extends Controller
 
         $data = $request->only($only);
 
-        Advert::find($advert_id)->update($data);
+        Advert::find($this->advertId)->update($data);
 
-        return view('professeur.advert.createStep6')->with(compact('advert_id'));
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
-    public function postStep6(Request $request)
+    public function getStep6Picture()
     {
-        $advert_id = $request->input('advert_id');
+        $advert_id       =  $this->advertId;
 
-        savePicture($advert_id);
-
-        $advert = Advert::find($advert_id);
-
-        return view('professeur.advert.createStep7')->with(compact('advert'));
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
-    public function postStep7(Request $request)
+    public function postStep6Picture(Request $request)
     {
-        $advert_id = $request->input('advert_id');
+        savePicture($this->advertId);
 
-        $advert    = Advert::find($advert_id);
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    public function getStep7Publish()
+    {
+        $advert_id       =  $this->advertId;
+
+        $advert = Advert::find($this->advertId);
+
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    public function postStep7Publish(Request $request)
+    {
+        $advert    = Advert::find($this->advertId);
 
         $advert->publish();
 
-        return view('professeur.advert.view')->with(compact('advert'));
-    }
-
-
-    public function view($slug)
-    {
-        $advert = Advert::findBySlugOr404($slug);
-
-        return view('professeur.advert.view')->with(compact('advert'));
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
 

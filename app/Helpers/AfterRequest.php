@@ -41,6 +41,8 @@ class AfterRequest
     public function addArgs(array $args)
     {
         array_merge($this->args, $args);
+
+        return $this;
     }
 
     public function __toString() : string

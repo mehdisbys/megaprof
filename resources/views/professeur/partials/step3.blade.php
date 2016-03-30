@@ -3,8 +3,6 @@
 {!! HTML::script("js/locationpicker.jquery.js") !!}
 {!! HTML::script("js/jquery-ui.js")!!}
 
-{{dd(get_defined_vars();}}
-
 @if(isset($advert) and isset($advert_id))
     {!! Form::open(['url' => "/modifier-annonce-3/{$advert_id}"]) !!}
 @else

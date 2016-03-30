@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Response;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class AfterAdvert
 {
@@ -29,9 +29,6 @@ class AfterAdvert
 
             case 'redirect':
                 $request->session()->put($original->getArgs());
-                return dd(redirect()->guest('/login'));
-
-
                 return redirect()->action($config['next']);
         }
 

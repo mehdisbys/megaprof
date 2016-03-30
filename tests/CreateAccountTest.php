@@ -1,20 +1,12 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Auth;
 
-
 class CreateAccountTest extends TestCase
 {
     use DatabaseTransactions;
-
-
-    function __construct()
-    {
-        parent::setUp();
-    }
 
     /** @test */
     public function a_user_may_register_for_an_account_but_must_confirm_their_email_address()

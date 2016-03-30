@@ -79,7 +79,7 @@ class Avatar extends Model
 
     public static function defaultAvatar()
     {
-        $response = \Response::make(\File::get(static::defaultLogo), 200);
+        $response = \Response::make(\File::get(static::$defaultAvatar), 200);
 
         $response->header('Content-Type', 'image/jpg');
 
