@@ -154,6 +154,8 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
@@ -206,6 +208,7 @@ return [
         'HTML'      => Collective\Html\HtmlFacade::class,
         'BootForm'  => AdamWathan\BootForms\Facades\BootForm::class,
         'Image'     => Intervention\Image\Facades\Image::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
