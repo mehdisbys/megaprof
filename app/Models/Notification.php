@@ -35,6 +35,6 @@ class Notification extends Model
 
     public static function currentUserNotifications()
     {
-        return static::where('user_id', \Auth::id())->get();
+        return static::where(['user_id' => \Auth::id(), 'hide' => 0])->get();
     }
 }

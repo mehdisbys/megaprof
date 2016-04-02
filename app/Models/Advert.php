@@ -22,12 +22,12 @@ class Advert extends Model implements SluggableInterface {
     protected $softDelete = true;
 
     protected $sluggable = [
-        'build_from' => 'title',
-        'save_to'    => 'slug',
-        'separator' => '-',
-        'unique' => true,
+        'build_from'      => 'title',
+        'save_to'         => 'slug',
+        'separator'       => '-',
+        'unique'          => true,
         'include_trashed' => true,
-        'on_update' => false,
+        'on_update'       => false,
     ];
 
 

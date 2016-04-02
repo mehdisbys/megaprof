@@ -7,6 +7,10 @@
              aria-labelledby="ui-id-25" role="tabpanel" aria-expanded="true" aria-hidden="false"
              style="display: block;">
             <h4>Notifications</h4>
+            @include('notifications.list', ['notifications' => $notifications])
+
+            <div class="clearfix"></div>
+
             <h4 class="topmargin-sm">Dernières demandes de cours</h4>
             @include('bookings.list', ['bookings' => $recentRequests, 'summary' => 'yes'])
         </div>

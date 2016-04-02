@@ -19,11 +19,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $notifications  = Notification::currentUserNotifications();
         $recentRequests = Booking::bookingRequestsUserReceived();
         $adverts        = Advert::currentUserAdverts();
         $bookings       = Booking::currentProfBookingRequests();
 
-        return view('dashboard.standard')->with(compact('adverts', 'bookings', 'recentRequests'));
+        return view('dashboard.standard')->with(compact('adverts', 'bookings', 'recentRequests', 'notifications'));
     }
 
     public function editAdvert($advert_id)
@@ -35,5 +36,10 @@ class DashboardController extends Controller
     public function setPicture()
     {
         savePicture(null, 'dashboard');
+    }
+
+    public function hideNotification($notificationId)
+    {
+        Notification::find($notificationId)->update(['hide' => 1]);
     }
 }
