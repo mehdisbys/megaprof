@@ -14,9 +14,6 @@ use App\Http\Requests;
 
 
 //TODO
-// 1. Refactor to have a get function for each step
-// 2. Decouple the core logic from input parameters and from views
-// 3. Give names to each step
 // 4. Use Form requests
 class SubmitAdvertController extends Controller
 {
@@ -27,16 +24,15 @@ class SubmitAdvertController extends Controller
 
     public function __construct(Request $request, Advert $advert, AfterRequest $afterRequest, AuthManager $auth)
     {
-        $this->advertId     =  $request->input('advert_id') ?? $request->session()->get('advert_id');
-        $this->advert       =  $advert->find($this->advertId);
-        $this->afterRequest =  $afterRequest;//->addArgs(['advert_id' => $this->advertId]);
-        $this->userId       =  $auth->id();
+        $this->advertId     = $request->input('advert_id') ?? $request->session()->get('advert_id');
+        $this->advert       = $advert->find($this->advertId);
+        $this->afterRequest = $afterRequest;//->addArgs(['advert_id' => $this->advertId]);
+        $this->userId       = $auth->id();
     }
 
     public function getStep1Subjects()
     {
         $subjects        = Subject::all();
-
         $checkedSubjects = SubjectsPerAdvert::getSubjectsPerAdvert($this->advertId);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
@@ -58,10 +54,10 @@ class SubmitAdvertController extends Controller
 
     public function getStep2TitleAndLevels(Request $request)
     {
-        $subjectsArray  = $request->session()->get('subjectsArray');
-        $subjects       =  SubSubject::whereIn('id', $subjectsArray)->get();
-        $levels         =  Level::all();
-        $advert_id      =  $this->advertId;
+        $subjectsArray = $request->session()->get('subjectsArray');
+        $subjects      = SubSubject::whereIn('id', $subjectsArray)->get();
+        $levels        = Level::all();
+        $advert_id     = $this->advertId;
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
@@ -71,7 +67,7 @@ class SubmitAdvertController extends Controller
         $levels     =  $request->input('levels');
         $title      =  $request->input('title');
 
-        Advert::find($this->advertId)->update(['title' => $title]);
+        $this->advert->update(['title' => $title]);
 
         SubjectsPerAdvert::fillLevelsPerSubjects($this->advertId, $levels);
 
@@ -129,13 +125,10 @@ class SubmitAdvertController extends Controller
 
     public function getStep5PriceAndConditions()
     {
-        $advert       =  Advert::findOrFail($this->advertId);
-
-        $advert_id    =  $this->advertId;
-
-        $can_travel   =  $advert->can_travel;
-
-        $can_webcam   =  $advert->can_webcam;
+        $advert     = Advert::findOrFail($this->advertId);
+        $advert_id  = $this->advertId;
+        $can_travel = $advert->can_travel;
+        $can_webcam = $advert->can_webcam;
 
         return $this->afterRequest->init(__FUNCTION__, array_except(get_defined_vars(), ['advert']));
     }
@@ -164,7 +157,7 @@ class SubmitAdvertController extends Controller
 
     public function getStep6Picture()
     {
-        $advert_id       =  $this->advertId;
+        $advert_id = $this->advertId;
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
@@ -178,9 +171,8 @@ class SubmitAdvertController extends Controller
 
     public function getStep7Publish()
     {
-        $advert_id       =  $this->advertId;
-
-        $advert = Advert::find($this->advertId);
+        $advert_id = $this->advertId;
+        $advert    = Advert::find($this->advertId);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }

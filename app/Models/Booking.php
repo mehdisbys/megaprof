@@ -2,6 +2,7 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
@@ -32,6 +33,21 @@ class Booking extends Model
             ->with('student')
             ->with('prof')
             ->with('advert')
+            ->get();
+    }
+
+
+    /**
+     * @return Collection
+     */
+    public static function bookingRequestsUserReceived()
+    {
+        return static::where('prof_user_id', \Auth::id())
+            ->with('student')
+            ->with('prof')
+            ->with('advert')
+            ->orderBy('created_at', 'desc')
+            ->limit(3)
             ->get();
     }
 

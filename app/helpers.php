@@ -52,7 +52,7 @@ function prepareFileUpload($path)
 
 	$mime = finfo_file($finfo, $path);
 
-	return new \Symfony\Component\HttpFoundation\File\UploadedFile ($path, null, $mime, null, null, true);
+	return new \Symfony\Component\HttpFoundation\File\UploadedFile($path, null, $mime, null, null, true);
 }
 
 function issetAndHasValue($var = NULL, $value = true)
