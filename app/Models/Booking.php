@@ -33,6 +33,7 @@ class Booking extends Model
             ->with('student')
             ->with('prof')
             ->with('advert')
+            ->orderBy('updated_at', 'desc')
             ->get();
     }
 

@@ -43,7 +43,7 @@ class Advert extends Model implements SluggableInterface {
 
     public static function currentUserAdverts()
     {
-        return static::where('user_id', \Auth::id())->with('subjectsPerAd')->get();
+        return static::where('user_id', \Auth::id())->with('subjectsPerAd')->orderBy('updated_at', 'desc')->get();
     }
 
     public static function getAllSubjectsForUser($user_id)
