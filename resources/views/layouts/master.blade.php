@@ -72,7 +72,7 @@
                         </ul>
                     @else
                         <ul>
-                            <li><a href="/inscription"><div>Créer une annonce</div></a></li>
+                            <li><a href="/login"><div>Créer une annonce</div></a></li>
 
                             <li><a href="/login"><div>Se connecter</div></a></li>
 
