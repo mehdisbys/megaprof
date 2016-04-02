@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Helpers\AfterRequest;
 use App\Models\Advert;
-use App\Models\Avatar;
 use App\Models\SubSubject;
 use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
@@ -11,7 +10,6 @@ use App\Models\Level;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
 
 //TODO
 // 4. Use Form requests
@@ -26,7 +24,7 @@ class SubmitAdvertController extends Controller
     {
         $this->advertId     = $request->input('advert_id') ?? $request->session()->get('advert_id');
         $this->advert       = $advert->find($this->advertId);
-        $this->afterRequest = $afterRequest;//->addArgs(['advert_id' => $this->advertId]);
+        $this->afterRequest = $afterRequest;
         $this->userId       = $auth->id();
     }
 
@@ -184,16 +182,5 @@ class SubmitAdvertController extends Controller
         $advert->publish();
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
-    }
-
-
-    public function getAvatar($user_id, $advert_id)
-    {
-        return Avatar::getAvatar($user_id, $advert_id);
-    }
-
-    public function getDefaultAvatar($user_id)
-    {
-        return Avatar::getDashboardAvatar($user_id);
     }
 }
