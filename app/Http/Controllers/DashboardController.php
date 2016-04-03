@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\Booking;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,10 +19,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $adverts = Advert::currentUserAdverts();
-        $bookings = Booking::currentProfBookingRequests();
+        $notifications  = Notification::currentUserNotifications();
+        $recentRequests = Booking::bookingRequestsUserReceived();
+        $adverts        = Advert::currentUserAdverts();
+        $bookings       = Booking::currentProfBookingRequests();
 
-        return view('dashboard.standard')->with(compact('adverts', 'bookings'));
+        return view('dashboard.standard')->with(compact('adverts', 'bookings', 'recentRequests', 'notifications'));
     }
 
     public function editAdvert($advert_id)
@@ -33,5 +36,10 @@ class DashboardController extends Controller
     public function setPicture()
     {
         savePicture(null, 'dashboard');
+    }
+
+    public function hideNotification($notificationId)
+    {
+        Notification::find($notificationId)->update(['hide' => 1]);
     }
 }

@@ -9,7 +9,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'ListAdvertController@index');
     Route::post('/search', 'ListAdvertController@search');
 
-    Route::get('/avatar/{user_id}/{advert_id}', 'SubmitAdvertController@getAvatar');
+    Route::get('/avatar/{user_id}/{advert_id}', 'AvatarController@getAvatar');
 
 // Signup
     Route::get('inscription', 'SignupController@getSignup');
@@ -26,7 +26,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth']], function () {
 
-        Route::get('/avatar_dashboard/{user_id}', 'SubmitAdvertController@getDefaultAvatar');
+        Route::get('/avatar_dashboard/{user_id}', 'AvatarController@getDefaultAvatar');
 
         Route::group(['middleware' => ['afterAdvert']], function () {
 
@@ -75,6 +75,7 @@ Route::group(['middleware' => ['web']], function () {
         // Dashboard
         Route::get('/mon-compte', 'DashboardController@index');
         Route::get('/mon-compte/annonce-{advert_id}', 'DashboardController@editAdvert');
+        Route::post('/hide-notification/{notification_id}', 'DashboardController@hideNotification');
 
         // Book a lesson
         Route::get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');

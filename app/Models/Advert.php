@@ -22,12 +22,12 @@ class Advert extends Model implements SluggableInterface {
     protected $softDelete = true;
 
     protected $sluggable = [
-        'build_from' => 'title',
-        'save_to'    => 'slug',
-        'separator' => '-',
-        'unique' => true,
+        'build_from'      => 'title',
+        'save_to'         => 'slug',
+        'separator'       => '-',
+        'unique'          => true,
         'include_trashed' => true,
-        'on_update' => false,
+        'on_update'       => false,
     ];
 
 
@@ -43,7 +43,7 @@ class Advert extends Model implements SluggableInterface {
 
     public static function currentUserAdverts()
     {
-        return static::where('user_id', \Auth::id())->with('subjectsPerAd')->get();
+        return static::where('user_id', \Auth::id())->with('subjectsPerAd')->orderBy('updated_at', 'desc')->get();
     }
 
     public static function getAllSubjectsForUser($user_id)
