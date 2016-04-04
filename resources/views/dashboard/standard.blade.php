@@ -17,8 +17,15 @@
         <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-38"
              aria-labelledby="ui-id-26" role="tabpanel" aria-expanded="false" aria-hidden="true"
              style="display: none;">
-            <h4>Mes demandes de cours</h4>
 
+            @if(isset($pendingComments) and $pendingComments->count() > 0 )
+                <h4>Commentez vos derniers cours</h4>
+
+                <div class="col-md-12 bottommargin-sm">
+                    @include('comments.pendingComments')
+                </div>
+            @endif
+            <h4>Mes demandes de cours</h4>
             <div class="col-md-12">
                 @include('bookings.list')
             </div>

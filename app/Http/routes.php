@@ -86,7 +86,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/demande/{booking_id}/{answer}', 'BookCourseController@replyBookingRequest');
 
         // Comments
-        Route::get('/laisser-un-commentaire/{comment_id}', 'CommentsController@formComment');
+        Route::get('/laisser-un-commentaire/{comment_id}', 'CommentsController@getCommentForm');
         Route::post('/laisser-un-commentaire', 'CommentsController@postComment');
     });
 

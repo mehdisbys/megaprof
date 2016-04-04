@@ -16,9 +16,9 @@ class Notification extends Model
             'channel'   =>  'advert',
             'name'      =>  $name,
             'message'   =>  $message,
+            'link'      =>  $link,
             'user_id'   =>  $authId,
             'advert_id' =>  $advertId,
-            'link'      =>  $link
         ]);
     }
 
@@ -28,6 +28,17 @@ class Notification extends Model
             'new_booking',
             'Nouvelle demande de cours',
             '',
+            $advertId,
+            $userId
+        );
+    }
+
+    public static function newCommentNotification(int $advertId, int $userId, string $username, string $link)
+    {
+        self::createAdvertNotification(
+            'new_comment',
+            "Nouveau commentaire de la part de {$username}",
+            $link,
             $advertId,
             $userId
         );

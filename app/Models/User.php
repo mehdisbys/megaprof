@@ -9,7 +9,6 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Laravel\Cashier\Billable;
 use Laravel\Cashier\Contracts\Billable as BillableContract;
 use App\Models\PaymentPackages;
-use App\Models\Job;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, BillableContract {
 
