@@ -24,7 +24,7 @@ class NotifyBookingRequest
     public function handle(BookingRequestSent $event)
     {
         // Dashboard Events
-        Notification::AddBookingsToDashboard($event->booking->advert->id, $event->booking->prof->id);
+        Notification::AddBookingToDashboard($event->booking->advert->id, $event->booking->prof->id);
 
         // Mail prof
         list($all, $config) = emailConfig($event->booking->prof, 'vous avez reçu une demande de cours');

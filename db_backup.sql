@@ -166,7 +166,7 @@ CREATE TABLE `comments` (
   `advert_id` varchar(45) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `stars` varchar(45) DEFAULT NULL,
-  `comment_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `comment_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,10,6,NULL,'51','C\'est un professeur fortiche !',NULL,'2016-03-20 21:05:05','2016-03-20 11:19:58',NULL,'2016-03-20 21:05:05'),(2,6,10,NULL,'51',NULL,NULL,'2016-03-27 10:19:58','2016-03-20 11:19:58',NULL,'2016-03-20 11:19:58'),(3,10,6,10,'51',NULL,NULL,'2016-04-09 09:19:34','2016-04-02 09:19:34',NULL,'2016-04-02 09:19:34'),(4,6,10,10,'51',NULL,NULL,'2016-04-09 09:19:34','2016-04-02 09:19:34',NULL,'2016-04-02 09:19:34');
+INSERT INTO `comments` VALUES (1,10,6,10,'51','Morgane est une élève motivée et sérieuse.',NULL,'2016-04-03 17:58:24','2016-03-20 11:19:58',NULL,'2016-04-03 16:58:24'),(2,6,10,NULL,'51',NULL,NULL,'2016-03-27 10:19:58','2016-03-20 11:19:58',NULL,'2016-03-20 11:19:58'),(3,6,10,10,'51','Mehdi est un professeur formidable !',NULL,'2016-04-04 18:17:43','2016-04-02 09:19:34',NULL,'2016-04-04 18:05:59'),(4,6,10,10,'51',NULL,NULL,'2016-04-09 09:19:34','2016-04-02 09:19:34',NULL,'2016-04-02 09:19:34');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -280,11 +280,11 @@ CREATE TABLE `notifications` (
   `channel` varchar(45) NOT NULL,
   `message` varchar(255) NOT NULL,
   `hide` int(11) DEFAULT '0',
-  `link` varchar(45) NOT NULL,
+  `link` varchar(455) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,7 +293,7 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
-INSERT INTO `notifications` VALUES (2,10,172,NULL,NULL,'webcam','advert','Donnez des cours à l\'autre bout du monde grâce aux cours via webcam',0,'/modifier-annonce-5/172','2016-04-02 21:42:56','2016-04-02 20:39:24'),(3,10,172,NULL,NULL,'marketing-video','advert','Rajoutez une vidéo à votre annonce pour vous présenter et communiquer votre passion',0,'','2016-04-02 18:44:01','2016-04-02 18:44:01'),(4,10,172,NULL,NULL,'social-networks','advert','Gagnez en visibilité dans les moteurs de recherches en faisant la promotion d\'une de vos annonces sur les réseaux sociaux',0,'','2016-04-02 21:42:56','2016-04-02 20:41:45'),(5,10,172,NULL,NULL,'degree-check','advert','Votre diplôme n\'est pas vérifié. Vérifiez votre diplôme, pour compléter votre profil',0,'','2016-04-02 21:42:56','2016-04-02 20:42:01'),(6,10,172,NULL,NULL,'group-course','advert','Créez une formation ou un stage sur une thématique particulière pour un groupe d\'élèves',0,'','2016-04-02 21:42:56','2016-04-02 20:42:03'),(7,10,172,NULL,NULL,'pro-offer','advert','Découvrez l\'offre professionelle pour booster votre annonce!',0,'','2016-04-02 18:44:01','2016-04-02 18:44:01');
+INSERT INTO `notifications` VALUES (2,10,172,NULL,NULL,'webcam','advert','Donnez des cours à l\'autre bout du monde grâce aux cours via webcam',0,'/modifier-annonce-5/172','2016-04-02 21:42:56','2016-04-02 20:39:24'),(3,10,172,NULL,NULL,'marketing-video','advert','Rajoutez une vidéo à votre annonce pour vous présenter et communiquer votre passion',0,'','2016-04-02 18:44:01','2016-04-02 18:44:01'),(4,10,172,NULL,NULL,'social-networks','advert','Gagnez en visibilité dans les moteurs de recherches en faisant la promotion d\'une de vos annonces sur les réseaux sociaux',0,'','2016-04-02 21:42:56','2016-04-02 20:41:45'),(5,10,172,NULL,NULL,'degree-check','advert','Votre diplôme n\'est pas vérifié. Vérifiez votre diplôme, pour compléter votre profil',0,'','2016-04-02 21:42:56','2016-04-02 20:42:01'),(6,10,172,NULL,NULL,'group-course','advert','Créez une formation ou un stage sur une thématique particulière pour un groupe d\'élèves',0,'','2016-04-02 21:42:56','2016-04-02 20:42:03'),(7,10,172,NULL,NULL,'pro-offer','advert','Découvrez l\'offre professionelle pour booster votre annonce!',0,'','2016-04-02 18:44:01','2016-04-02 18:44:01'),(8,6,51,NULL,NULL,'new_comment','advert','Nouveau commentaire',1,'','2016-04-04 19:08:04','2016-04-04 18:08:04'),(13,6,51,NULL,NULL,'new_comment','advert','Nouveau commentaire de la part de Mehdi',0,'/cours-et-soutien-en-francais-et-lettres-mode','2016-04-04 18:05:59','2016-04-04 18:05:59');
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -581,7 +581,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (6,'Morgane','Test','ramses@yopmail.com',NULL,'$2y$10$45wxzzb4xk2nbp0Ndbz5TebX1YNMe5h9dodkWjLS7o1SEwsYUP8xu','LMkxiwHSKGmQk83IZwJRoDpPpi4BOV','4w66f5Dx4fFdcXWbGC0SvJYv0Fvs8mm8LFORTBFNtaXJiJHf4JKyjsH2DVaK',NULL,1,NULL,'2016-01-09 13:53:11','2016-03-20 11:18:22',0,NULL,NULL,NULL,NULL,NULL),(10,'Mehdi','Test','mehdi.souihed@gmail.com',NULL,'$2y$10$Xkrhb8AwaQpNox8OM2U1p.QUMNtVQIRqT.67ZDoTMtDosV8xBA8J.','','gSwRRtJRFa5kTHC5SPKvM5VVbOqXFqyjBe5ls2YUfdB23260Yk4V81HgEHAE',NULL,1,NULL,'2016-01-09 15:01:15','2016-03-25 17:17:45',0,NULL,NULL,NULL,NULL,NULL),(11,'Stéphane','Charlie','chayeb.yacine@gmail.com',NULL,'$2y$10$K0ZnVtErqorHAXsqzxMF8OwcMWMOZdKhYw0N5bL/.DikM0iza0gEm','','o7MQ1tpW3Ix0Fd0yJPzaUTxv5w09N4QFjHFQ3UzJf5dL1sgSJvEOCwtIwwwf',NULL,1,NULL,'2016-01-29 21:30:14','2016-01-29 21:39:20',0,NULL,NULL,NULL,NULL,NULL),(12,'Stéphane','Charlie','chayebc2@msn.com',NULL,'$2y$10$kqjfwZ/cPKjxEvxZDmpYA.hkuHq7ixCoxkbYCGPgKpaLoUWjVpCCu','7K922anVnX4u1PyLGXOuVBUps5gT62',NULL,NULL,0,NULL,'2016-01-29 21:40:23','2016-01-29 21:40:23',0,NULL,NULL,NULL,NULL,NULL),(13,'Ramses2','Egyptien','ramses2@yopmail.com',NULL,'$2y$10$WW/N0L/pu67tPIQaFtdarOjHpAm2fFiI.rvoHJPyFghjVZPtcKabq','','i7A0qhhtBgoYRJy727u8HMOOleOMvaiXWAy32hBmmY3mwvJXaviU431kJrM0',NULL,1,NULL,'2016-03-23 17:07:07','2016-03-23 17:33:34',0,NULL,NULL,NULL,NULL,NULL),(14,'Ima Batz','Dortha Moen','Lloyd.Green@Lynch.biz',NULL,'$2y$10$UHTiyHmN3t8bqBYvnRuRV.rPdVQYVZzatAz1nuYRPe9SuGqk4YlFa','0j1DAlURaJXEh1TUUzWqAAYtBefqPI',NULL,NULL,0,NULL,'2016-03-23 17:39:17','2016-03-23 17:39:17',0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (6,'Morgane','Test','ramses@yopmail.com',NULL,'$2y$10$45wxzzb4xk2nbp0Ndbz5TebX1YNMe5h9dodkWjLS7o1SEwsYUP8xu','LMkxiwHSKGmQk83IZwJRoDpPpi4BOV','HcR9kRUuyl1AfTpESahYnnssjZFz2FGon9dv6GbAq0Hw4lOMW4CoyChbWWyU',NULL,1,NULL,'2016-01-09 13:53:11','2016-04-04 18:05:25',0,NULL,NULL,NULL,NULL,NULL),(10,'Mehdi','Test','mehdi.souihed@gmail.com',NULL,'$2y$10$Xkrhb8AwaQpNox8OM2U1p.QUMNtVQIRqT.67ZDoTMtDosV8xBA8J.','','PKrmVLyBP4QBPRHGg5w0G90tLlLNAi2skHJuJrM792NyFwApOtF6yy5nj6ov',NULL,1,NULL,'2016-01-09 15:01:15','2016-04-04 18:07:49',0,NULL,NULL,NULL,NULL,NULL),(11,'Stéphane','Charlie','chayeb.yacine@gmail.com',NULL,'$2y$10$K0ZnVtErqorHAXsqzxMF8OwcMWMOZdKhYw0N5bL/.DikM0iza0gEm','','o7MQ1tpW3Ix0Fd0yJPzaUTxv5w09N4QFjHFQ3UzJf5dL1sgSJvEOCwtIwwwf',NULL,1,NULL,'2016-01-29 21:30:14','2016-01-29 21:39:20',0,NULL,NULL,NULL,NULL,NULL),(12,'Stéphane','Charlie','chayebc2@msn.com',NULL,'$2y$10$kqjfwZ/cPKjxEvxZDmpYA.hkuHq7ixCoxkbYCGPgKpaLoUWjVpCCu','7K922anVnX4u1PyLGXOuVBUps5gT62',NULL,NULL,0,NULL,'2016-01-29 21:40:23','2016-01-29 21:40:23',0,NULL,NULL,NULL,NULL,NULL),(13,'Ramses2','Egyptien','ramses2@yopmail.com',NULL,'$2y$10$WW/N0L/pu67tPIQaFtdarOjHpAm2fFiI.rvoHJPyFghjVZPtcKabq','','i7A0qhhtBgoYRJy727u8HMOOleOMvaiXWAy32hBmmY3mwvJXaviU431kJrM0',NULL,1,NULL,'2016-03-23 17:07:07','2016-03-23 17:33:34',0,NULL,NULL,NULL,NULL,NULL),(14,'Ima Batz','Dortha Moen','Lloyd.Green@Lynch.biz',NULL,'$2y$10$UHTiyHmN3t8bqBYvnRuRV.rPdVQYVZzatAz1nuYRPe9SuGqk4YlFa','0j1DAlURaJXEh1TUUzWqAAYtBefqPI',NULL,NULL,0,NULL,'2016-03-23 17:39:17','2016-03-23 17:39:17',0,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -594,4 +594,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-02 22:45:27
+-- Dump completed on 2016-04-04 20:48:29

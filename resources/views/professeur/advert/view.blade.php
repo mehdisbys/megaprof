@@ -82,15 +82,17 @@
     </div>
     <div class="clearfix"></div>
 
-    <div id="validate_buttons" class="col-md-12 text-center topmargin-lg">
+    <div class="col-md-7 col-md-offset-4 topmargin-sm">
 
-        <button id="back_button" class="button button-3d button-large button-rounded button-teal">
-            Modifier
-        </button>
+        <h3>Avis des étudiants</h3>
 
-        <button type="submit" class="button button-3d button-large button-rounded button-green">
-            Publier l'annonce
-        </button>
+        @foreach($comments as $comment)
+
+            <div class="col-md-12">
+                <strong>{{$comment->sourceUser->firstname}}</strong> : {{$comment->comment}}
+            </div>
+
+        @endforeach
     </div>
 
     <script>

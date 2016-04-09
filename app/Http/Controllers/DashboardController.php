@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\Booking;
+use App\Models\Comment;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 
 class DashboardController extends Controller
 {
@@ -19,12 +21,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $notifications  = Notification::currentUserNotifications();
-        $recentRequests = Booking::bookingRequestsUserReceived();
-        $adverts        = Advert::currentUserAdverts();
-        $bookings       = Booking::currentProfBookingRequests();
+        $notifications   = Notification::currentUserNotifications();
+        $recentRequests  = Booking::bookingRequestsUserReceived();
+        $adverts         = Advert::currentUserAdverts();
+        $pendingComments = Comment::currentUserPendingComments();
+        $bookings        = Booking::currentProfBookingRequests();
 
-        return view('dashboard.standard')->with(compact('adverts', 'bookings', 'recentRequests', 'notifications'));
+        return view('dashboard.standard')->with(get_defined_vars());
     }
 
     public function editAdvert($advert_id)

@@ -17,8 +17,15 @@
         <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-38"
              aria-labelledby="ui-id-26" role="tabpanel" aria-expanded="false" aria-hidden="true"
              style="display: none;">
-            <h4>Mes demandes de cours</h4>
 
+            @if(isset($pendingComments) and $pendingComments->count() > 0 )
+                <h4>Commentez vos derniers cours</h4>
+
+                <div class="col-md-12 bottommargin-sm">
+                    @include('comments.pendingComments')
+                </div>
+            @endif
+            <h4>Mes demandes de cours</h4>
             <div class="col-md-12">
                 @include('bookings.list')
             </div>
@@ -33,13 +40,13 @@
             <h4>Mes annonces</h4>
             @foreach($adverts as $advert)
 
-                <div class="gray-backround" data-readmore aria-expanded="false">
+                <div class="col-md-10 bottommargin-sm border1px" data-readmore aria-expanded="false">
                     <div class="col-md-2">
                         <img src="{{ $advert->getAvatar() }}" style="width:90px;">
                     </div>
 
-                    <div class="col-md-6">
-                        <div>{{ str_limit($advert->title, 55)}}</div>
+                    <div class="col-md-10">
+                        <div>{{ $advert->title}}</div>
 
                         <div class="col-md-12 topmargin-sm">
                             @foreach($advert->subjectsPerAd as $subject)
@@ -52,20 +59,19 @@
                             <i class="icon-location"></i><strong>{{ $advert->location_city }}</strong>
                         </div>
 
-                        <div class="col-md-12"> Dernière
-                            modification: {{$advert->updated_at->format('m/d/Y H:i') }}</div>
+                        <div class="col-md-12">{{$advert->updated_at->format('d/m/Y H:i') }}</div>
                     </div>
-
-                    <div class="col-md-2">
-                        <div class="button button-small button-white button-rounded"><a
-                                    href="/deactivate/{{$advert->id}}/">Désactiver</a></div>
-                        <div class="button button-small button-leaf button-rounded"><a
-                                    href="/{{$advert->slug}}">Voir</a>
-                        </div>
-                        <div class="button button-yellow button-rounded">
-                            <a href="/modifier-annonce-1/{{$advert->id}}">Modifier</a></div>
+                </div>
+                <div class="col-md-2">
+                    <div class="button button-small button-white button-rounded">
+                        <a href="/deactivate/{{$advert->id}}/">Désactiver</a>
                     </div>
-
+                    <div class="button button-small button-leaf button-rounded">
+                        <a href="/{{$advert->slug}}">Voir</a>
+                    </div>
+                    <div class="button button-yellow button-rounded">
+                        <a href="/modifier-annonce-1/{{$advert->id}}">Modifier</a>
+                    </div>
                 </div>
             @endforeach
         </div>

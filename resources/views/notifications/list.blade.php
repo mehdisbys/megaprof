@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="col-md-2 pull-right topmargin-sm">
-                    <a class="btn btn-warning btn-md ">
+                    <a class="btn btn-warning btn-md" href="{{$notification->link}}">
                         Lire
                     </a>
                 </div>
