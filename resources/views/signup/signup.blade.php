@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.__master')
 
 @section('content')
     <h2 class="col-md-12">Inscription sur Mégaprof</h2>

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.__master')
 
 @section('login-button')
 @stop

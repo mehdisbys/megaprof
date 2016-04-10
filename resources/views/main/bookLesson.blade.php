@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.__master')
 
 @section('content')
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}

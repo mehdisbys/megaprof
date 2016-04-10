@@ -7,6 +7,7 @@ Route::group(['middleware' => ['web']], function () {
 
 //Main Page
     Route::get('/', 'ListAdvertController@index');
+    Route::get('/annonces', 'ListAdvertController@allAdverts');
     Route::post('/search', 'ListAdvertController@search');
 
     Route::get('/avatar/{user_id}/{advert_id}', 'AvatarController@getAvatar');

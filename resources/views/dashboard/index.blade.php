@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.__master')
 
 @section('content')
     {!! HTML::script("js/readmore.min.js")!!}
