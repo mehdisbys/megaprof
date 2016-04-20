@@ -14,6 +14,7 @@ class CreateAdvertsTable extends Migration {
 	{
 		Schema::create('adverts', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->integer('id')->unsigned()->primary();
 			$table->integer('user_id')->unsigned()->index('fk_userid_idx');
 			$table->string('slug')->nullable();
