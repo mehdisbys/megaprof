@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Events\BookingRequestSent;
 use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
@@ -12,14 +11,16 @@ class Notification extends Model
 
     public static function createAdvertNotification(string $name, string $message, string $link, string $advertId, string $authId)
     {
-       return self::create([
-            'channel'   =>  'advert',
-            'name'      =>  $name,
-            'message'   =>  $message,
-            'link'      =>  $link,
-            'user_id'   =>  $authId,
-            'advert_id' =>  $advertId,
-        ]);
+        if(self::where(['name' =>  $name, 'message' =>  $message, 'user_id'   =>  $authId ])->exists() == false ) {
+            return self::create([
+                'channel'   => 'advert',
+                'name'      => $name,
+                'message'   => $message,
+                'link'      => $link,
+                'user_id'   => $authId,
+                'advert_id' => $advertId,
+            ]);
+        }
     }
 
     public static function AddBookingToDashboard(int $advertId, int $userId)

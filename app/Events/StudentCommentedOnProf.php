@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Comment;
 use Illuminate\Queue\SerializesModels;
 
 class StudentCommentedOnProf extends Event

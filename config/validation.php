@@ -23,7 +23,7 @@ return [
 
     'CommentProf' =>
         [
-            'comment'           => 'required|max:255',
+            'comment'           => 'required',
             'comment_id'        => 'required'
         ]
 
