@@ -10,13 +10,16 @@ class AdvertsTableSeeder extends Seeder
     public function run()
     {
         //   \DB::table('adverts')->delete();
-        $faker = Faker::create();
+        $faker = Faker::create('fr_FR');
 
         for ($i = 0; $i < 50; $i++) {
 
+            $title = $faker->sentence(12);
+
             \DB::table('adverts')->insert([
                     'user_id'                   => 6,
-                    'title'                     => $faker->sentence(12),
+                    'slug'                      => str_slug($title, "-"),
+                    'title'                     => $title,
                     'presentation'              => $faker->paragraph(15),
                     'content'                   => $faker->paragraph(15),
                     'experience'                => $faker->paragraph(15),
@@ -31,8 +34,8 @@ class AdvertsTableSeeder extends Seeder
                     'price_webcam'              => $faker->numberBetween(300, 700),
                     'price_more'                => '',
                     'location'                  => '',
-                    'location_lat'              => $faker->latitude,
-                    'location_long'             => $faker->longitude,
+                    'location_lat'              => $faker->latitude(48,51),
+                    'location_long'             => $faker->longitude(2,5),
                     'travel_radius'             => 1000,
                     'location_postcode'         => $faker->postcode,
                     'location_city'             => $faker->city,

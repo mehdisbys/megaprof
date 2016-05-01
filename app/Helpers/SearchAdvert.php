@@ -14,12 +14,17 @@ class SearchAdvert implements SearchAdvertContract
 
         if (isset($data->subject) and !empty($data->subject)) {
             $advert_ids = $subjects->where('subject_id', $data->subject)->get()->pluck('advert_id')->toArray();
-            $results = Advert::whereIn('id', $advert_ids);
+            $results    = Advert::whereIn('id', $advert_ids);
 
-            if (isset($data->city) and !empty($data->city))
-               $results = $results->where('location_city', $data->city);
+            $byLocation = $data->lgn ?? null;
 
-            return $results->get();
+            if ($byLocation) {
+                $results = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius ?? 10);
+                $advert_ids = array_pluck($results, 'id');
+                $results = Advert::whereIn('id', $advert_ids);
+            }
+
+            return $results;
         }
 
         return null;
@@ -27,15 +32,15 @@ class SearchAdvert implements SearchAdvertContract
 
     public function dataFromInput()
     {
-        $data = new \stdClass();
-        $data->type = Input::get('type');
-        $data->time = Input::get('time');
-        $data->keywords = Input::get('keywords');
-        $data->location = Input::get('location');
-        $data->company = Input::get('company');
-        $data->industry = $this->__ifNotArrayMakeArray(Input::get('industry'));
-        $data->experience = $this->__ifNotArrayMakeArray(Input::get('experience'));
-        $data->education = $this->__ifNotArrayMakeArray(Input::get('education'));
+        $data               = new \stdClass();
+        $data->type         = Input::get('type');
+        $data->time         = Input::get('time');
+        $data->keywords     = Input::get('keywords');
+        $data->location     = Input::get('location');
+        $data->company      = Input::get('company');
+        $data->industry     = $this->__ifNotArrayMakeArray(Input::get('industry'));
+        $data->experience   = $this->__ifNotArrayMakeArray(Input::get('experience'));
+        $data->education    = $this->__ifNotArrayMakeArray(Input::get('education'));
         $data->inputChecked = ['industry' => $data->industry, 'experience' => $data->experience, 'education' => $data->education];
 
         return $data;

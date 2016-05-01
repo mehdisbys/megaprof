@@ -6,26 +6,52 @@
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
     {!! HTML::script("js/locationpicker.jquery.js") !!}
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
+    {!! HTML::script("js/jquery.form.min.js") !!}
 
     <div class="col-md-6 col-md-offset-3">
 
-        {!! Form::open(['url' => '/search']) !!}
+        {!! Form::open(['url' => '/search', 'id' => 'search_form']) !!}
 
         <div class="col-md-8">
 
             @if($selectedSubject and isset($selectedCity) and !empty($selectedCity))
+                {!! Form::hidden('subject', $selectedSubject) !!}
 
                 <div class="button button-3d button-small button-rounded button-aqua ">{{$selectedSubject}}</div>
                 <div class="button button-3d button-small button-rounded button-lime ">à {{$selectedCity}}</div>
+                <div class="button button-3d button-small button-rounded button-blue ">dans un rayon de {{$radius}} km</div>
+
 
             @elseif($selectedSubject)
                 {!! Form::hidden('subject', $selectedSubject) !!}
+                <div class="location-details no-visibility">
+                    {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
+                    {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
+                </div>
                 {!! Form::input('text', 'location', null,
                   [
                     'class' => 'awesomplete sm-form-control',
                     'placeholder' => 'Dans quelle ville souhaitez-vous apprendre ?',
                     'id' => 'location'
                   ])!!}
+
+                <div class="clearfix"></div>
+                <label class="search-radio radio">
+                    <input name="radius" value="1" type="radio">
+                    Dans un rayon de 5 km
+                </label>
+                <label class="search-radio radio">
+                    <input name="radius" value="2" type="radio">
+                    Dans un rayon de 10 km
+                </label>
+                <label class="search-radio radio">
+                    <input name="radius" value="3" type="radio">
+                    Dans un rayon de 20 km
+                </label>
+                <label class="search-radio radio">
+                    <input name="radius" value="4" type="radio">
+                    Uniquement à domicile
+                </label>
 
                 <div class="clearfix topmargin-sm"></div>
                 <div class="button button-3d button-small button-rounded button-aqua ">{{$selectedSubject}}</div>
@@ -64,22 +90,24 @@
     <div class="col-md-10 col-md-offset-1 topmargin-lg">
 
         @if(count($adverts) == 0)
-            <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres
-                options
-            </div>
+            <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres options</div>
         @else
-
-            @foreach($adverts as $advert)
-                @include('main.advertPreview')
-                <div class="clear topmargin-sm "></div>
-            @endforeach
+            <div class="topmargin-sm bottommargin-sm">{{count($adverts)}} professeurs correspondent à vos critères.</div>
+            @include('main.multipleAdvertPreview')
         @endif
 
     </div>
     <script>
 
         $(document).ready(function () {
-            $('#location').geocomplete({types: ['(cities)']});
+
+          //  $('#search_form').ajaxForm(function() {});
+
+            $('#location').geocomplete(
+                    {
+                        types: ['(cities)'],
+                        details: ".location-details",
+                    });
         });
 
     </script>
