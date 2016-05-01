@@ -8,82 +8,64 @@
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::script("js/jquery.form.min.js") !!}
 
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-10 col-md-offset-3">
 
         {!! Form::open(['url' => '/search', 'id' => 'search_form']) !!}
 
         <div class="col-md-8">
 
-            @if($selectedSubject and isset($selectedCity) and !empty($selectedCity))
-                {!! Form::hidden('subject', $selectedSubject) !!}
+            {!! Form::input('text', 'subject', $selectedSubject,
+            [
+            'class' => 'awesomplete sm-form-control',
+            'placeholder' => 'Que souhaitez-vous apprendre ?',
+            'data-minchars' => 1,
+            'data-autofirst' => true,
+            'data-list' => $subsubjects,
+            'style' => 'width:100%;',
+            'id' => 'subject_input'
+            ]) !!}
 
-                <div class="button button-3d button-small button-rounded button-aqua ">{{$selectedSubject}}</div>
-                <div class="button button-3d button-small button-rounded button-lime ">à {{$selectedCity}}</div>
-                <div class="button button-3d button-small button-rounded button-blue ">dans un rayon de {{$radius}} km</div>
+            {!! Form::input('text', 'location', null,
+                [
+                  'class' => 'awesomplete sm-form-control no-visibility',
+                  'placeholder' => 'Dans quelle ville souhaitez-vous apprendre ?',
+                  'id' => 'location'
+                ])!!}
 
-
-            @elseif($selectedSubject)
-                {!! Form::hidden('subject', $selectedSubject) !!}
-                <div class="location-details no-visibility">
-                    {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
-                    {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
-                </div>
-                {!! Form::input('text', 'location', null,
-                  [
-                    'class' => 'awesomplete sm-form-control',
-                    'placeholder' => 'Dans quelle ville souhaitez-vous apprendre ?',
-                    'id' => 'location'
-                  ])!!}
-
-                <div class="clearfix"></div>
-                <label class="search-radio radio">
+            <div id="radius_input" class="no-visibility">
+                <label class="search-radio">
                     <input name="radius" value="1" type="radio">
-                    Dans un rayon de 5 km
+                   5 km
                 </label>
-                <label class="search-radio radio">
+                <label class="search-radio">
                     <input name="radius" value="2" type="radio">
-                    Dans un rayon de 10 km
+                   10 km
                 </label>
-                <label class="search-radio radio">
+                <label class="search-radio">
                     <input name="radius" value="3" type="radio">
-                    Dans un rayon de 20 km
+                   20 km
                 </label>
-                <label class="search-radio radio">
+                <label class="search-radio">
                     <input name="radius" value="4" type="radio">
                     Uniquement à domicile
                 </label>
+            </div>
 
-                <div class="clearfix topmargin-sm"></div>
-                <div class="button button-3d button-small button-rounded button-aqua ">{{$selectedSubject}}</div>
+                <span><button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
+                    <span class="icon-search3"></span>
+                </button></span>
 
-            @else
-                {!! Form::input('text', 'subject', $selectedSubject,
-                [
-                'class' => 'awesomplete sm-form-control',
-                'placeholder' => 'Que souhaitez-vous apprendre ?',
-                'data-minchars' => 1,
-                'data-autofirst' => true,
-                'data-list' => $subsubjects,
-                'style' => 'width:100%;'
-                ]) !!}
-            @endif
+            <div class="location-details no-visibility">
+                {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
+                {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
+            </div>
+
+            <div id="subject" class="button button-3d button-small button-rounded button-aqua no-visibility"></div>
+            <div id="city" class="button button-3d button-small button-rounded button-yellow no-visibility"></div>
+            <div id="radius" class="button button-3d button-small button-rounded button-amber no-visibility"></div>
 
         </div>
 
-        @if(isset ($selectedCity) and !empty($selectedCity))
-            <div class="clearfix"></div>
-            <div class="col-md-3 pull-right">
-                <a class="button button-3d button-small button-rounded button-amber pull-right" href="/">
-                    Nouvelle recherche
-                </a>
-            </div>
-        @else
-            <div class="col-md-3">
-                <button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
-                    Chercher
-                </button>
-            </div>
-        @endif
         {!! Form::close() !!}
     </div>
 
@@ -92,8 +74,12 @@
         @if(count($adverts) == 0)
             <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres options</div>
         @else
-            <div class="topmargin-sm bottommargin-sm">{{count($adverts)}} professeurs correspondent à vos critères.</div>
-            @include('main.multipleAdvertPreview')
+
+            <div id="count_results" class="topmargin-sm bottommargin-sm"><span id="count_value"></span><span id="count_text"> professeurs correspondent à vos critères.</span> </div>
+
+            <div id="search_results">
+                @include('main.multipleAdvertPreview')
+            </div>
         @endif
 
     </div>
@@ -101,7 +87,38 @@
 
         $(document).ready(function () {
 
-          //  $('#search_form').ajaxForm(function() {});
+            $('#search_form').ajaxForm(updatePage);
+
+            function updatePage(data)
+            {
+                $("#count_value").html(data.count);
+                $("#search_results").html(data.results);
+
+                updateForm(data);
+            }
+
+            function updateForm(data)
+            {
+                if(data.params.selectedSubject)
+                {
+                    $("#subject").removeClass('no-visibility').html(data.params.selectedSubject);
+                    $("#subject_input").addClass('no-visibility');
+                    $("#location").removeClass('no-visibility');
+                }
+
+                if(data.params.city)
+                {
+                    $("#city").removeClass('no-visibility').html(data.params.city);
+                    $("#location").addClass('no-visibility');
+                    $("#radius_input").removeClass('no-visibility');
+                }
+
+                if(data.params.selectedRadius)
+                {
+                    $("#radius").removeClass('no-visibility').html(data.params.selectedRadius);
+                    $("#radius_input").addClass('no-visibility');
+                }
+            }
 
             $('#location').geocomplete(
                     {

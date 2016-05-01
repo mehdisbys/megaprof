@@ -66,7 +66,7 @@ class Advert extends Model implements SluggableInterface
 
     public static function liveAdverts()
     {
-        return self::whereNotNull('published_at')->get();
+        return self::whereNotNull('published_at')->limit(10)->get();
     }
 
     public function publish()
@@ -84,13 +84,15 @@ class Advert extends Model implements SluggableInterface
         return $this;
     }
 
-    public static function radiusSearch(array $advertIds, float $lat, float $lng, int $radius)
+    public static function radiusSearch(array $advertIds, float $lat, float $lng, int $radius = null)
     {
         $query = DB::table('adverts')
                    ->select(DB::raw("id, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
     COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance"))
-                   ->having('distance', '<', $radius)
                    ->orderBy('distance', 'ASC');
+
+        if($radius)
+            $query->having('distance', '<', $radius);
 
         if ($advertIds) {
             $query->whereIn('id', $advertIds);

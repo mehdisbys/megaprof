@@ -13,7 +13,10 @@
             <h5>{{ $advert->title }}</h5>
             <div id="presentation"> {{ str_limit($advert->presentation, 345) }}</div>
             <div class="pull-right">
-                <i class="icon-location"></i> Habite à <strong>{{ $advert->location_city }}</strong>
+                <i class="icon-location"></i><strong>{{ $advert->location_city }}</strong>
+                @if(isset($distances) and isset($distances[$advert->id]))
+                <i>, à {{ round($distances[$advert->id],1) }} km</i>
+                @endif
             </div>
 
         </div>

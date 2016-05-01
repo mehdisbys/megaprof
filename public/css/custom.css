@@ -90,3 +90,20 @@ img{
 .bold {
     font-weight: 800;
 }
+
+.search-radio {
+    position: relative;
+    display: inline-block;
+    min-width: 90px;
+    padding: 5px 15px;
+    font-weight: 600;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
+    opacity: 0.35;
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+}

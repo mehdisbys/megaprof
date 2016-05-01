@@ -41,22 +41,33 @@ class ListAdvertController extends Controller
 
         $data            = new \stdClass();
         $selectedSubject = $request->get('subject');
+        //TODO send id directly
         $subject         = SubSubject::where('name', $selectedSubject)->first();
+        $city            = explode(',', $request->get('location'))[0];
 
-        if ($subject == null)
-            return view('main.index')->with(['adverts' => []])->with(compact('subsubjects', 'selectedSubject'));
+        if ($subject == null) return response()->json([]);
 
-        $data->subject = $subject->id;
-        $data->lat     = $request->get('lat');
-        $data->lgn     = $request->get('lng');
-        $data->radius  = $this->mapRadius($request->get('radius'));
-        $data->city    = explode(',', $request->get('location'))[0];
+        $data->selectedSubject = $selectedSubject;
+        $data->subject         = $subject->id;
+        $data->lat             = $request->get('lat');
+        $data->lgn             = $request->get('lng');
+        $data->radius          = $this->mapRadius($request->get('radius'))[0];
+        $data->selectedRadius  = $this->mapRadius($request->get('radius'))[1];
+        $data->city            = empty($city) ? null : $city;
 
-        $adverts       = $this->engine->search($data)->get();
+        list($adverts, $distances) = $this->engine->search($data);
 
-        return view('main.index')
-            ->with(compact('adverts', 'subsubjects', 'selectedSubject'))
-            ->with(['selectedCity' => $data->city, 'radius' => $data->radius]);
+        $results = view('main.multipleAdvertPreview')
+            ->with(compact('adverts', 'subsubjects', 'selectedSubject', 'distances'))
+            ->with(['selectedCity' => $data->city, 'radius' => $data->radius])->render();
+
+        return response()->json(
+            [
+                'params'    => $data,
+                'count'     => $adverts->count(),
+                'results'   => $results,
+                'distances' => $distances
+            ]);
     }
 
     public function view($slug)
@@ -67,18 +78,18 @@ class ListAdvertController extends Controller
         return view('professeur.advert.view')->with(compact('advert', 'comments'));
     }
 
-    private function mapRadius(int $radius = null): int
+    private function mapRadius(int $radius = null)
     {
         $map = [
-          1 => 5,
-          2 => 10,
-          3 => 20,
-          4 => 1
+          1 => [5, '5 km'],
+          2 => [10,'10 km'],
+          3 => [20,'20 km'],
+          4 => [1,'à domicile']
         ];
 
         if (isset($map[$radius]))
             return $map[$radius];
 
-        return 1;
+        return [null,null];
     }
 }

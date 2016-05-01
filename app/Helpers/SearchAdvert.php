@@ -11,6 +11,7 @@ class SearchAdvert implements SearchAdvertContract
     public function search(\stdClass $data)
     {
         $subjects = new SubjectsPerAdvert();
+        $rawResults = null;
 
         if (isset($data->subject) and !empty($data->subject)) {
             $advert_ids = $subjects->where('subject_id', $data->subject)->get()->pluck('advert_id')->toArray();
@@ -19,12 +20,13 @@ class SearchAdvert implements SearchAdvertContract
             $byLocation = $data->lgn ?? null;
 
             if ($byLocation) {
-                $results = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius ?? 10);
-                $advert_ids = array_pluck($results, 'id');
+                $rawResults = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius);
+                $advert_ids = array_pluck($rawResults, 'id');
+                $rawResults = array_pluck($rawResults, 'distance','id');
                 $results = Advert::whereIn('id', $advert_ids);
             }
 
-            return $results;
+            return [$results->get(), $rawResults];
         }
 
         return null;
