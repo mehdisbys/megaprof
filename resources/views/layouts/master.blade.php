@@ -15,49 +15,58 @@
     <title>Cours particuliers Megaprof - Trouvez un professeur particulier</title>
     <meta name="Description" lang="fr" content="Trouvez votre professeur particulier parmi"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" type="text/css" href="/main.css"/>
-    <link rel="apple-touch-icon" sizes="57x57" href=""/>
-    <link rel="apple-touch-icon" sizes="60x60" href=""/>
-    <link rel="icon" sizes="32x32" type="image/png" href=""/>
-    <link rel="icon" sizes="16x16" type="image/png" href=""/>
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="theme-color" content="#ffffff"/>
     <meta property="og:title" content="MegaPROF - La plateforme des professeurs particuliers"/>
     <meta property="og:image" content="/temp-image/megaprof@2x.png"/>
     <meta property="og:site_name" content="Megaprof"/>
     <meta property="og:description" content="Trouvez votre professeur pour des cours particuliers ou collectifs parmi"/>
+
+    <link rel="apple-touch-icon" sizes="57x57" href=""/>
+    <link rel="apple-touch-icon" sizes="60x60" href=""/>
+    <link rel="icon" sizes="32x32" type="image/png" href=""/>
+    <link rel="icon" sizes="16x16" type="image/png" href=""/>
+    {!! HTML::style('/main.css') !!}
+
 </head>
 <body>
 <div id="fb-root"></div>
 <div class="header">
     <div class="header-burger-dropshadow"></div>
     <div class="wrapper">
+
         <div class="header-inner">
+
             <div class="header-inner-cell header-inner-cell-logo">
                 <button class="header-burger-button"> Menu<span class="header-burger-icon"> </span></button>
                 <a class="header-logo header-logo-normal" href="/" title="Revenir à l'accueil de Megaprof">
-                    <img src="/temp-images/megaprof.png"
+                <img src="/temp-images/megaprof.png"
                          srcset="/temp-images/megatprof.png 1x, /temp-images/megatprof@2x.png 2x" width="170"
                          alt="Cours particuliers avec Megaprof"/>
                 </a>
             </div>
+
             <div class="header-inner-cell header-inner-cell-menu">
                 <button class="header-burger-close"></button>
-                <div class="header-menu-inner">
-                    <button class="header-item a-js">S'inscrire</button>
-                    <button class="header-item a-js">Se connecter</button>
-                    <a class="header-item " href="#">Aide</a></div>
-                <button class="favourites-button a-js"><span class="favourites-button-icon">
-                    <span class="favourites-button-nb">0</span> </span> Favoris
-                </button>
-            </div>
-            <div class="header-inner-cell header-inner-cell-button">
-                <button class="favourites-button a-js">
-                    <span class="favourites-button-icon">
-                    <span class="favourites-button-nb">0</span> </span> Favoris
-                </button>
-                <a class="button" href="#">Donner des cours</a>
-            </div>
+                        <div class="header-menu-inner">
+
+                    @if(Auth::check())
+                            <a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a>
+                            <a class="header-item" href="/mon-compte">Mon Compte</a>
+                            <a class="header-item" href="/mes-messages">Messages</a>
+                            <a class="header-item" href="/logout">Se déconnecter</a>
+                            <a class="header-item" href="/aide">Aide</a>
+                    @else
+                            <a class="header-item" href="/login">Créer une annonce</a>
+                            <a class="header-item" href="/login">Se connecter</a>
+                            <a class="header-item" href="/inscription">S'inscrire</a>
+                            <a class="header-item" href="/aide">Aide</a>
+                    @endif
+                        </div>
+
+            <!-- <div class="header&#45;inner&#45;cell header&#45;inner&#45;cell&#45;button"> -->
+            <!--     <a class="button" href="#">Donner des cours</a> -->
+            <!-- </div> -->
         </div>
     </div>
 </div>
