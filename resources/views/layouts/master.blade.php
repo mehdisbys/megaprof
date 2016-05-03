@@ -34,9 +34,7 @@
 <div class="header">
     <div class="header-burger-dropshadow"></div>
     <div class="wrapper">
-
         <div class="header-inner">
-
             <div class="header-inner-cell header-inner-cell-logo">
                 <button class="header-burger-button"> Menu<span class="header-burger-icon"> </span></button>
                 <a class="header-logo header-logo-normal" href="/" title="Revenir à l'accueil de Megaprof">
@@ -48,31 +46,35 @@
 
             <div class="header-inner-cell header-inner-cell-menu">
                 <button class="header-burger-close"></button>
-                        <div class="header-menu-inner">
-
+                <div class="header-menu-inner">
                     @if(Auth::check())
-                            <a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a>
-                            <a class="header-item" href="/mon-compte">Mon Compte</a>
-                            <a class="header-item" href="/mes-messages">Messages</a>
-                            <a class="header-item" href="/logout">Se déconnecter</a>
-                            <a class="header-item" href="/aide">Aide</a>
+                    <a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a>
+                    <a class="header-item" href="/mon-compte">Mon Compte</a>
+                    <a class="header-item" href="/mes-messages">Messages</a>
+                    <a class="header-item" href="/logout">Se déconnecter</a>
+                    <a class="header-item" href="/aide">Aide</a>
                     @else
-                            <a class="header-item" href="/login">Créer une annonce</a>
-                            <a class="header-item" href="/login">Se connecter</a>
-                            <a class="header-item" href="/inscription">S'inscrire</a>
-                            <a class="header-item" href="/aide">Aide</a>
-                    @endif
-                        </div>
-
-            <!-- <div class="header&#45;inner&#45;cell header&#45;inner&#45;cell&#45;button"> -->
-            <!--     <a class="button" href="#">Donner des cours</a> -->
-            <!-- </div> -->
+                    <a class="header-item" href="/login">Créer une annonce</a>
+                    <a class="header-item" href="/login">Se connecter</a>
+                    <a class="header-item" href="/inscription">S'inscrire</a>
+                    <a class="header-item" href="/aide">Aide</a>
+                @endif
+                <a class="button" href="/nouvelle-annonce-1">Donner des cours</a>
+            </div>
         </div>
-    </div>
+
+
+<!-- <div class="header&#45;inner&#45;cell header&#45;inner&#45;cell&#45;button"> -->
+<!--     <a class="button" href="#">Donner des cours</a> -->
+<!-- </div> -->
+        </div>
 </div>
+</div>
+</div>
+<!-- start dust  -->
+
 <div class="page">
     @section('content')
-
         <div class="home-search">
             <h1 class="search-title">Trouvez le professeur parfait</h1>
             <form class="home-search-form autocomplete-form" method="post" action="/search">
