@@ -41,9 +41,9 @@ class ListAdvertController extends Controller
 
         $data            = new \stdClass();
         $selectedSubject = $request->get('subject');
-        //TODO send id directly
+        //TODO send subject id directly
         $subject         = SubSubject::where('name', $selectedSubject)->first();
-        $city            = explode(',', $request->get('location'))[0];
+        $city            = explode(',', $request->get('city'))[0];
 
         if ($subject == null) return response()->json([]);
 
@@ -64,7 +64,7 @@ class ListAdvertController extends Controller
         return response()->json(
             [
                 'params'    => $data,
-                'count'     => $adverts->count(),
+                'count'     => $adverts->count() . " professeurs correspondent à vos critères.",
                 'results'   => $results,
                 'distances' => $distances
             ]);

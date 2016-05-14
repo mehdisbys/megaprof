@@ -25,11 +25,11 @@
             'id' => 'subject_input'
             ]) !!}
 
-            {!! Form::input('text', 'location', null,
+            {!! Form::input('text', 'city', null,
                 [
                   'class' => 'awesomplete sm-form-control no-visibility',
                   'placeholder' => 'Dans quelle ville souhaitez-vous apprendre ?',
-                  'id' => 'location'
+                  'id' => 'city_input'
                 ])!!}
 
             <div id="radius_input" class="no-visibility">
@@ -60,6 +60,8 @@
                 {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
             </div>
 
+            <div class="topmargin-lg"></div>
+
             <div id="subject" class="button button-3d button-small button-rounded button-aqua no-visibility"></div>
             <div id="city" class="button button-3d button-small button-rounded button-yellow no-visibility"></div>
             <div id="radius" class="button button-3d button-small button-rounded button-amber no-visibility"></div>
@@ -75,7 +77,9 @@
             <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres options</div>
         @else
 
-            <div id="count_results" class="topmargin-sm bottommargin-sm"><span id="count_value"></span><span id="count_text"> professeurs correspondent à vos critères.</span> </div>
+            <div id="count_results" class="topmargin-sm bottommargin-sm">
+                <span id="count_text"></span>
+            </div>
 
             <div id="search_results">
                 @include('main.multipleAdvertPreview')
@@ -89,11 +93,36 @@
 
             $('#search_form').ajaxForm(updatePage);
 
+            function makeVisible(selectors)
+            {
+               selectors.map(function (item) {
+                    $('#' + item).removeClass('no-visibility');
+                });
+            }
+
+            function makeInvisible(selectors)
+            {
+                selectors.map(function (item) {
+                    $('#' + item).addClass('no-visibility');
+                });
+            }
+
+            $('#subject').on('click', function(){
+                $(this).addClass('no-visibility');
+                makeVisible(['subject_input']);
+                makeInvisible(['city_input', 'radius_input']);
+            });
+
+            $('#city').on('click', function(){
+                $(this).addClass('no-visibility');
+                makeVisible(['city_input']);
+                makeInvisible(['subject_input', 'radius_input']);
+            });
+
             function updatePage(data)
             {
-                $("#count_value").html(data.count);
+                $("#count_text").html(data.count);
                 $("#search_results").html(data.results);
-
                 updateForm(data);
             }
 
@@ -101,26 +130,28 @@
             {
                 if(data.params.selectedSubject)
                 {
-                    $("#subject").removeClass('no-visibility').html(data.params.selectedSubject);
-                    $("#subject_input").addClass('no-visibility');
-                    $("#location").removeClass('no-visibility');
+                    $("#subject").html(data.params.selectedSubject);
+                    makeVisible(['subject','city_input']);
+                    makeInvisible(['subject_input']);
                 }
 
                 if(data.params.city)
                 {
-                    $("#city").removeClass('no-visibility').html(data.params.city);
-                    $("#location").addClass('no-visibility');
-                    $("#radius_input").removeClass('no-visibility');
+                    $("#city").html(data.params.city);
+                    makeVisible(['city','radius_input']);
+                    makeInvisible(['city_input']);
                 }
 
                 if(data.params.selectedRadius)
                 {
-                    $("#radius").removeClass('no-visibility').html(data.params.selectedRadius);
-                    $("#radius_input").addClass('no-visibility');
+                    $("#radius").html(data.params.selectedRadius);
+                    makeVisible(['radius']);
+                    makeInvisible(['radius_input']);
                 }
             }
 
-            $('#location').geocomplete(
+            // Geocompletion
+            $('#city_input').geocomplete(
                     {
                         types: ['(cities)'],
                         details: ".location-details",
