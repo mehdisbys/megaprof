@@ -82,7 +82,53 @@
              aria-labelledby="ui-id-28" role="tabpanel" aria-expanded="false" aria-hidden="true"
              style="display: none;">
             <h4>Modifier mon profil</h4>
+            <div class="col-md-8">
+                {!! Form::model($user, ['url' => '/editer-profil']) !!}
 
+                <div class="form-group col-md-12">
+                    <div class="col-md-6">
+                        {!! Form::label('gender_man', 'Homme') !!}
+                        {!! Form::radio('gender','man', $user->gender,['class' => '', 'id' => 'gender_man']) !!}
+                    </div>
+
+                    <div class="col-md-6">
+                        {!! Form::label('gender_woman', 'Femme') !!}
+                        {!! Form::radio('gender','woman', $user->gender,['class' => '', 'id' => 'gender_woman']) !!}
+                    </div>
+
+                </div>
+
+                <div class="form-group col-md-12">
+                    {!! Form::label('firstname', 'Prénom') !!}
+                    {!! Form::text('firstname', $user->firstname, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group col-md-12">
+                    {!! Form::label('lastname', 'Nom') !!}
+                    {!! Form::text('lastname', $user->lastname, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group col-md-12">
+                    {!! Form::label('birthdate', 'Date de naissance') !!}
+                    {!! Form::text('birthdate', $user->birthdate, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group col-md-12">
+                    {!! Form::label('email', 'Email') !!}
+                    {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group col-md-12">
+                    {!! Form::label('telephone', 'Mobile') !!}
+                    {!! Form::text('telephone', $user->telephone, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="col-md-10">
+                    <button class="btn btn-success" type="submit">Mettre mon profil à jour</button>
+                </div>
+
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
 @stop

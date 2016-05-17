@@ -6,11 +6,10 @@ use App\Models\Advert;
 use App\Models\Booking;
 use App\Models\Comment;
 use App\Models\Notification;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Collection;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class DashboardController extends Controller
 {
@@ -26,6 +25,7 @@ class DashboardController extends Controller
         $adverts         = Advert::currentUserAdverts();
         $pendingComments = Comment::currentUserPendingComments();
         $bookings        = Booking::currentProfBookingRequests();
+        $user            = User::find(Auth::id());
 
         return view('dashboard.standard')->with(get_defined_vars());
     }
@@ -44,5 +44,13 @@ class DashboardController extends Controller
     public function hideNotification($notificationId)
     {
         Notification::find($notificationId)->update(['hide' => 1]);
+    }
+
+    public function updateProfile()
+    {
+        $data = array_only(Input::all(), ['gender', 'firstname', 'lastname', 'birthdate', 'email', 'telephone']);
+        $user            = User::find(Auth::id());
+        $user->update($data);
+        return $this->index();
     }
 }

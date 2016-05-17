@@ -77,6 +77,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/mon-compte', 'DashboardController@index');
         Route::get('/mon-compte/annonce-{advert_id}', 'DashboardController@editAdvert');
         Route::post('/hide-notification/{notification_id}', 'DashboardController@hideNotification');
+        Route::post('/editer-profil', 'DashboardController@updateProfile');
 
         // Book a lesson
         Route::get('/mise-en-relation/{advert_id}', 'BookCourseController@bookLesson');
