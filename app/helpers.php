@@ -105,3 +105,9 @@ function emailConfig(\App\Models\User $user, $subject)
 
 	return [$all, $config];
 }
+
+function getAvatar($userId, $advertId)
+{
+	return "/avatar/{$userId}/{$advertId}";
+}
+

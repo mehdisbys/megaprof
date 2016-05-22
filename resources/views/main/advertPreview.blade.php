@@ -3,9 +3,9 @@
     <div class="">
         <div id="author" class="col-md-3">
             <div id="leftside">
-                <img src="{{ $advert->getAvatar() }}" alt="">
+                <img src="{{ getAvatar($advert->user_id, $advert->id) }}" alt="">
 
-                <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
+                <h3><a href="#" class=" center">{{ \App\Models\User::find($advert->user_id)->firstname}}</a></h3>
             </div>
         </div>
 

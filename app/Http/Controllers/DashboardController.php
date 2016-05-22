@@ -49,7 +49,7 @@ class DashboardController extends Controller
     public function updateProfile()
     {
         $data = array_only(Input::all(), ['gender', 'firstname', 'lastname', 'birthdate', 'email', 'telephone']);
-        $user            = User::find(Auth::id());
+        $user = User::find(Auth::id());
         $user->update($data);
         return $this->index();
     }

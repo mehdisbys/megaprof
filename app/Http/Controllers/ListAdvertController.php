@@ -24,7 +24,7 @@ class ListAdvertController extends Controller
 
     public function allAdverts()
     {
-        $adverts = Advert::liveAdverts();
+        $adverts = Advert::liveAdverts(20);
 
         $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
 
@@ -64,7 +64,7 @@ class ListAdvertController extends Controller
         return response()->json(
             [
                 'params'    => $data,
-                'count'     => $adverts->count() . " professeurs correspondent à vos critères.",
+                'count'     => count($adverts) . " professeurs correspondent à vos critères.",
                 'results'   => $results,
                 'distances' => $distances
             ]);
