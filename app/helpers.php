@@ -67,12 +67,12 @@ function calculate_next_time($interval, $start_time = NULL)
 	return $start_time + $interval;
 }
 
-function savePicture($advert_id, $type = 'advert')
+function savePicture($type = 'advert')
 {
 	$coord = \Request::only(['w','h','x','y','r']);
 
 	if($type == 'advert') {
-        $m = \App\Models\Avatar::firstOrCreate(['advert_id' => $advert_id, 'user_id' => \Auth::id()]);
+        $m = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id()]);
     }
     else
     {
@@ -106,8 +106,8 @@ function emailConfig(\App\Models\User $user, $subject)
 	return [$all, $config];
 }
 
-function getAvatar($userId, $advertId)
+function getAvatar($userId)
 {
-	return "/avatar/{$userId}/{$advertId}";
+	return "/avatar/{$userId}";
 }
 

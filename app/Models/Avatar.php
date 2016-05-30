@@ -48,9 +48,10 @@ class Avatar extends Model
         $this->img_cropped = $cropped->encode('png');
     }
 
-    public static function getAvatar($user_id, $advert_id)
+    public static function getAvatar($user_id)
     {
-        $avatar = static::where(['user_id' => $user_id, 'advert_id' => $advert_id])->first();
+      // We allow only one advert per profile - no support for one picture per advert
+        $avatar = static::where(['user_id' => $user_id])->first();
 
         if ($avatar && $avatar->img_cropped != null) {
             $response = \Response::make($avatar->img_cropped, 200);
@@ -68,9 +69,7 @@ class Avatar extends Model
 
         if ($avatar && $avatar->img_cropped != null) {
             $response = \Response::make($avatar->img_cropped, 200);
-
             $response->header('Content-Type', $avatar->img_mime);
-
             return $response;
         }
         return static::defaultAvatar();

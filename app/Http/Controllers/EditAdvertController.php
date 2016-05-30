@@ -164,7 +164,7 @@ class EditAdvertController extends Controller
 
     public function postEditStep6($advert_id)
     {
-        savePicture($advert_id);
+        savePicture();
 
         $advert = Advert::find($advert_id);
 

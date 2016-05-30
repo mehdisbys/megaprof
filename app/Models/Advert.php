@@ -55,7 +55,7 @@ class Advert extends Model implements SluggableInterface
 
     public function getAvatar()
     {
-        return "/avatar/{$this->user_id}/{$this->id}";
+        return "/avatar/{$this->user_id}";
     }
 
     public static function findBySlugOr404($slug)
@@ -101,7 +101,7 @@ class Advert extends Model implements SluggableInterface
         return $query->get();
     }
 
-    public static function searchBySubjectByGender(array $advert_ids, string $gender)
+    public static function searchAdvertIdsByGender(array $advert_ids, string $gender)
     {
         $query = self::whereIn('id', $advert_ids);
 

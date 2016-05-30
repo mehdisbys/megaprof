@@ -10,7 +10,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/annonces', 'ListAdvertController@allAdverts');
     Route::post('/search', 'ListAdvertController@search');
 
-    Route::get('/avatar/{user_id}/{advert_id}', 'AvatarController@getAvatar');
+    // Avatar
+    Route::get('/avatar/{user_id}', 'AvatarController@getAvatar');
 
 // Signup
     Route::get('inscription', 'SignupController@getSignup');

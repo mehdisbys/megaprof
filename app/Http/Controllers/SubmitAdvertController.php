@@ -162,7 +162,7 @@ class SubmitAdvertController extends Controller
 
     public function postStep6Picture(Request $request)
     {
-        savePicture($this->advertId);
+        savePicture();
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }

@@ -22,8 +22,11 @@
                 <div class="col-md-12 center topmargin-sm">
 
                     <div id="img-container">
-
-                        <img src="{{ getAvatar(\Auth::id()) }}" alt="">
+                        @if(isset($advert))
+                            <img src="{{ $advert->getAvatar() }}" alt="">
+                        @else
+                            {!! HTML::image('images/question-mark-face.jpg', null, ["style" => "width:350px; height:200px;", 'id' => 'img-question-mark']) !!}
+                        @endif
 
                         <div class="clearfix"></div>
 
