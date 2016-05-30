@@ -57,11 +57,11 @@
                 <span>Je préfère un professeur</span>
 
                 <label class="search-radio">
-                    <input name="gender" value="male" type="radio">
+                    <input name="gender" value="man" type="radio">
                      Homme
                 </label>
                 <label class="search-radio">
-                    <input name="gender" value="female" type="radio">
+                    <input name="gender" value="woman" type="radio">
                     Femme
                 </label>
 

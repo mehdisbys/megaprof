@@ -53,6 +53,7 @@ class ListAdvertController extends Controller
         $data->radius          = $this->mapRadius($request->get('radius'))[0];
         $data->selectedRadius  = $this->mapRadius($request->get('radius'))[1];
         $data->city            = empty($city) ? null : $city;
+        $data->gender          = $request->get('gender');
 
         list($adverts, $distances) = $this->engine->search($data);
 

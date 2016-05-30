@@ -100,4 +100,17 @@ class Advert extends Model implements SluggableInterface
 
         return $query->get();
     }
+
+    public static function searchBySubjectByGender(array $advert_ids, string $gender)
+    {
+        $query = self::whereIn('id', $advert_ids);
+
+        if (in_array($gender, ['man', 'woman'])) {
+            $query = $query->whereHas('user', function ($q) use ($gender) {
+                $q->where('gender', '=', $gender);
+            });
+        }
+
+        return $query->get();
+    }
 }
