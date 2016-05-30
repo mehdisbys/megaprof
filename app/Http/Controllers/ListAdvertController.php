@@ -33,7 +33,6 @@ class ListAdvertController extends Controller
         return view('main.index')->with(compact('adverts', 'subsubjects', 'selectedSubject'));
     }
 
-
     //TODO TEST search location by radius
     public function search(Request $request)
     {

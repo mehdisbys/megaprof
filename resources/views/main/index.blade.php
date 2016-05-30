@@ -33,6 +33,8 @@
                 ])!!}
 
             <div id="radius_input" class="no-visibility">
+                <span> Je peux me déplacer dans un rayon de </span>
+                <div class="clearfix"></div>
                 <label class="search-radio">
                     <input name="radius" value="1" type="radio">
                    5 km
@@ -51,9 +53,23 @@
                 </label>
             </div>
 
-                <span><button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
-                    <span class="icon-search3"></span>
-                </button></span>
+            <div id="teacher_gender" class="topmargin-sm">
+                <span>Je préfère un professeur</span>
+
+                <label class="search-radio">
+                    <input name="gender" value="male" type="radio">
+                     Homme
+                </label>
+                <label class="search-radio">
+                    <input name="gender" value="female" type="radio">
+                    Femme
+                </label>
+
+                <label class="search-radio">
+                    <input name="gender" value="both" type="radio">
+                    Les deux me vont
+                </label>
+            </div>
 
             <div class="location-details no-visibility">
                 {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
@@ -65,7 +81,10 @@
             <div id="subject" class="button button-3d button-small button-rounded button-aqua no-visibility"></div>
             <div id="city" class="button button-3d button-small button-rounded button-yellow no-visibility"></div>
             <div id="radius" class="button button-3d button-small button-rounded button-amber no-visibility"></div>
-
+        </div>
+        <div class="col-md-1 pull-left"> <span><button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
+                    <span class="icon-search3"></span>
+                </button></span>
         </div>
 
         {!! Form::close() !!}
@@ -88,24 +107,9 @@
 
     </div>
     <script>
-
         $(document).ready(function () {
 
             $('#search_form').ajaxForm(updatePage);
-
-            function makeVisible(selectors)
-            {
-               selectors.map(function (item) {
-                    $('#' + item).removeClass('no-visibility');
-                });
-            }
-
-            function makeInvisible(selectors)
-            {
-                selectors.map(function (item) {
-                    $('#' + item).addClass('no-visibility');
-                });
-            }
 
             $('#subject').on('click', function(){
                 $(this).addClass('no-visibility');
@@ -117,6 +121,12 @@
                 $(this).addClass('no-visibility');
                 makeVisible(['city_input']);
                 makeInvisible(['subject_input', 'radius_input']);
+            });
+
+            $('#radius').on('click', function(){
+                $(this).addClass('no-visibility');
+                makeVisible(['radius_input']);
+                makeInvisible(['subject_input', 'city_input']);
             });
 
             function updatePage(data)
@@ -150,6 +160,21 @@
                 }
             }
 
+            // helpers
+
+            function makeVisible(selectors)
+            {
+                selectors.map(function (item) {
+                    $('#' + item).removeClass('no-visibility');
+                });
+            }
+
+            function makeInvisible(selectors)
+            {
+                selectors.map(function (item) {
+                    $('#' + item).addClass('no-visibility');
+                });
+            }
             // Geocompletion
             $('#city_input').geocomplete(
                     {
