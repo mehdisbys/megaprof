@@ -82,6 +82,39 @@
     </div>
     <div class="clearfix"></div>
 
+    <div class="col-md-5 col-md-offset-4 topmargin-sm table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Chez {{$advert->user->firstname}}</th>
+                <th>À domicile</th>
+                <th>Par webcam</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1 heure</td>
+                <td>{{$advert->price}}Dh</td>
+                <td>{{$advert->price_travel}}Dh</td>
+                <td>{{$advert->price * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>
+            </tr>
+            <tr>
+                <td>5 heures</td>
+                <td>{{$advert->price_5_hours}}Dh</td>
+                <td>{{$advert->price_5_hours + $advert->price_travel}}Dh</td>
+                <td>{{$advert->price_5_hours * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>
+            </tr>
+            <tr>
+                <td>10 heures</td>
+                <td>{{$advert->price_10_hours}}Dh</td>
+                <td>{{$advert->price_10_hours + $advert->price_travel}}Dh</td>
+                <td>{{$advert->price_10_hours * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
     <div class="col-md-7 col-md-offset-4 topmargin-sm">
 
         <h3>Avis des étudiants</h3>
