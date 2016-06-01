@@ -1,0 +1,213 @@
+.help_page .visual {
+    height: 215px;
+    background-image: url("/temp-images/backgrounds/help.jpg");
+    background-position: center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    color: #fff
+}
+.help_page .visual h1 {
+    margin: 0;
+    padding: 70px 0 5px;
+    font-weight: 600;
+    font-size: 30px
+}
+.help_page .visual p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 20px
+}
+.help_page h2 {
+    margin: 0;
+    padding: 40px 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: #1e1e1e;
+    text-align: center
+}
+.help_page .table {
+    display: table;
+    width: 100%
+}
+.help_page .table .cell {
+    display: table-cell
+}
+.help_page .comparison {
+    padding-bottom: 100px;
+    table-layout: fixed;
+    background: #f7f7f7
+}
+.help_page .comparison .mobile-select {
+    display: none
+}
+.help_page .comparison .table {
+    table-layout: fixed
+}
+.help_page .comparison .table .cell {
+    padding-left: 30px;
+    vertical-align: top
+}
+.help_page .comparison .table .cell:first-child {
+    padding-right: 30px;
+    padding-left: 0
+}
+.help_page .comparison .table .cell>ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none
+}
+.help_page .comparison .table .cell>ul>li {
+    position: relative;
+    margin: 40px 0 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+.help_page .comparison .table .cell>ul>li:first-child {
+    margin: 0
+}
+.help_page .comparison .table .cell>ul>li.open>div {
+    height: auto;
+    opacity: 1
+}
+.help_page .comparison .table .cell>ul>li.open>div>p {
+    opacity: 1
+}
+.help_page .comparison .table .cell>ul>li.open>div>.dot:after {
+    content: '-';
+    line-height: 16px
+}
+.help_page .comparison .table .cell>ul>li>div {
+    position: relative;
+    height: 0;
+    padding: 0 0 0 30px;
+    -webkit-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+    opacity: 0;
+    overflow: hidden
+}
+.help_page .comparison .table .cell>ul>li>div:first-child {
+    height: auto;
+    opacity: 1
+}
+.help_page .comparison .table .cell>ul>li>div>span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    line-height: 16px;
+    cursor: pointer
+}
+.help_page .comparison .table .cell>ul>li>div>.dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #2c2c2c;
+    -webkit-border-radius: 9px;
+    border-radius: 9px;
+    cursor: pointer
+}
+.help_page .comparison .table .cell>ul>li>div>.dot:after {
+    content: '+';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    font-weight: 600;
+    color: #f7f7f7;
+    line-height: 18px;
+    text-align: center
+}
+.help_page .comparison .table .cell>ul>li>div>ul li {
+    margin: 0;
+    padding: 5px 0 0;
+    font-size: 12px;
+    line-height: 20px;
+    color: #777777
+}
+.help_page .comparison .table .cell>ul>li>div>p {
+    margin: 0;
+    padding: 5px 0 0;
+    font-size: 12px;
+    line-height: 20px;
+    color: #777777
+}
+@media all and (max-width: 980px) {
+    .help_page .visual {
+        height: auto
+    }
+    .help_page .visual p {
+        padding: 0 10px 70px
+    }
+    .help_page .table {
+        display: block;
+        width: auto
+    }
+    .help_page .table .cell {
+        display: block
+    }
+    .help_page .how_it_works .cell:first-child {
+        display: none
+    }
+    .help_page .how_it_works .cell ul li {
+        margin-top: 35px;
+        padding-left: 0;
+        text-align: center
+    }
+    .help_page .how_it_works .cell ul li .number {
+        position: static;
+        display: block;
+        margin: 0 auto 10px
+    }
+    .help_page .comparison .mobile-select {
+        display: block;
+        padding: 50px 0;
+        text-align: center
+    }
+    .help_page .comparison .table .cell {
+        height: 0;
+        padding-left: 0;
+        -webkit-transition: opacity 0.5s ease-out;
+        transition: opacity 0.5s ease-out;
+        opacity: 0;
+        overflow: hidden
+    }
+    .help_page .comparison .table .cell.visible {
+        height: auto;
+        opacity: 1
+    }
+    .help_page .comparison .table .cell:first-child {
+        padding-right: 0
+    }
+    .help_page .comparison .table .cell h2 {
+        display: none
+    }
+    .help_page .comparison .table .cell ul li {
+        padding-left: 0
+    }
+    .help_page .comparison .table .cell ul li>div {
+        padding: 0
+    }
+    .help_page .comparison .table .cell ul li>div>.dot {
+        top: 50%;
+        margin-top: -9px
+    }
+    .help_page .comparison .table .cell ul li>div:first-child {
+        padding-left: 30px
+    }
+    .help_page .comparison .table .cell ul li>div p {
+        padding-top: 20px
+    }
+    .help_page .comparison .table .cell ul li>div li {
+        padding-top: 20px
+    }
+}

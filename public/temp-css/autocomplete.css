@@ -1,0 +1,62 @@
+.autocomplete {
+    position: relative
+}
+.autocomplete-results {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    display: none;
+    width: 100%;
+    background: #fff;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    overflow: hidden;
+    z-index: 10
+}
+.autocomplete-results.show {
+    display: block
+}
+.autocomplete-results div {
+    height: 35px;
+    padding: 0 0 0 20px;
+    border: 1px solid #f4f4f4;
+    line-height: 35px;
+    color: #5b5b5b;
+    border-top-color: transparent;
+    cursor: pointer;
+    -webkit-transition: all .15s linear;
+    transition: all .15s linear
+}
+.autocomplete-results div strong {
+    font-weight: 600;
+    color: #090909
+}
+.autocomplete-results div.active,
+.autocomplete-results div:hover {
+    border-color: #fcc5d0;
+    color: #e3647f;
+    background: #fcf6f7
+}
+.autocomplete-results div.active strong,
+.autocomplete-results div:hover strong {
+    color: #e3647f
+}
+.autocomplete-input-wrapper {
+    position: relative
+}
+.autocomplete-submit {
+    cursor: pointer
+}
+.autocomplete-reset {
+    background: url("/temp-images/sprite.png") no-repeat transparent;
+    background-position: -80px -320px;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -9px;
+    border-width: 0;
+    cursor: pointer
+}
+

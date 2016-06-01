@@ -1,0 +1,122 @@
+.pictures-family {
+    position: relative;
+    height: 470px
+}
+.pictures-family img {
+    position: absolute;
+    border: 6px solid #fff;
+    -webkit-box-shadow: 2px 2px 8px #aaa;
+    box-shadow: 2px 2px 8px #aaa
+}
+.pictures-family .top-right-picture {
+    top: 10px;
+    left: 230px;
+    width: 120px;
+    height: 120px
+}
+.pictures-family .bottom-right-picture {
+    z-index: 2;
+    top: 110px;
+    left: 220px;
+    width: 170px;
+    height: 170px
+}
+.pictures-family .bottom-left-picture {
+    top: 190px;
+    left: 90px;
+    width: 140px;
+    height: 140px
+}
+.pictures-family .top-left-picture {
+    z-index: 1;
+    top: 80px;
+    left: 120px;
+    width: 120px;
+    height: 120px
+}
+.pictures-informations {
+    position: absolute;
+    top: 310px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px
+}
+.pictures-informations span {
+    display: block;
+    font-size: 24px;
+    font-weight: 600
+}
+.pictures-informations:before {
+    content: '';
+    display: inline-block;
+    background: url("/temp-images/sprite.png") no-repeat transparent;
+    background-position: -400px -640px;
+    width: 23px;
+    height: 60px
+}
+
+@media all and (max-width: 980px) {
+    .landing-prof-header .section-title {
+        font-size: 20px;
+        width: 100%;
+        margin-bottom: 20px
+    }
+    .landing-prof-header .column-header {
+        display: none
+    }
+    .commercial-asset {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px
+    }
+    .commercial-asset .title,
+    .commercial-asset .description,
+    .commercial-asset.prices .description,
+    .commercial-asset.join-us .title,
+    .commercial-asset.join-us .description {
+        width: 90%
+    }
+    .commercial-asset .title br {
+        display: none
+    }
+    .column-working {
+        display: block;
+        width: 100%
+    }
+    .join-our-family .section-title {
+        text-align: center
+    }
+    .join-our-family .section-title br {
+        display: none
+    }
+    .join-our-family .column-join {
+        display: block;
+        width: 100%;
+        padding: 0
+    }
+    .pictures-family {
+        width: 280px;
+        margin: 0 auto
+    }
+    .pictures-family .top-right-picture {
+        left: 120px
+    }
+    .pictures-family .top-left-picture {
+        left: 20px
+    }
+    .pictures-family .bottom-right-picture {
+        left: 110px
+    }
+    .pictures-family .bottom-left-picture {
+        left: 0
+    }
+    .pictures-informations {
+        margin-left: 20px
+    }
+    .landing-testimonies,
+    .section-stories {
+        display: none
+    }
+}
+
+

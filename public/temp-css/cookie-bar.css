@@ -1,0 +1,54 @@
+#cookiebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    background-color: #000;
+    overflow: hidden;
+    z-index: 3
+}
+#cookiebar.show {
+    max-height: 500px
+}
+.cookiebar-message {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 14px 40px;
+    font-size: 0.7em;
+    color: #a5a5a5;
+    text-align: center
+}
+.cookiebar-close {
+    background: url("/temp-images/sprite.png") no-repeat transparent;
+    background-position: -80px 0px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    height: 11px;
+    width: 11px;
+    padding: 0;
+    margin-top: -6px;
+    border-width: 0;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: transparent;
+    color: #fff;
+    text-indent: -9999px;
+    cursor: pointer
+}
+@media all and (max-width: 980px) {
+    #cookiebar {
+        display: none
+    }
+    .cookiebar-message {
+        padding-left: 11px;
+        text-align: left
+    }
+    .cookiebar-close {
+        margin-top: -13px;
+        text-indent: 0;
+        background-image: none
+    }
+}
+

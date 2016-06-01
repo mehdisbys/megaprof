@@ -1,0 +1,203 @@
+/* -------------------
+/* footer
+/* ------------------- */
+.footer {
+    position: relative;
+    padding: 50px 0;
+    background: #2d2e30;
+    color: #fff;
+    z-index: 2
+}
+.footer-buttons {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    width: 100%
+}
+.footer-buttons button+button {
+    margin-left: 18px
+}
+.footer-inner-cell {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+    text-align: left
+}
+.footer-inner-top {
+    text-align: center;
+    font-size: 0
+}
+.footer-inner-bottom {
+    margin-top: 45px;
+    font-size: 14px
+}
+.footer-inner-bottom .footer-inner-cell {
+    width: 100%
+}
+.footer-inner-bottom li {
+    display: inline-block;
+    width: 50%
+}
+.footer-inner-cell-confidence .rating {
+    margin-top: 0;
+    margin-bottom: 0
+}
+.footer-inner-cell-confidence p {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 2.2
+}
+.footer-inner h3 {
+    margin-bottom: 16px;
+    font-size: 14px;
+    text-align: left;
+    font-weight: normal
+}
+.footer-inner .list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0
+}
+.footer-inner .list li+li {
+    margin-top: 12px
+}
+.footer-inner p,
+.footer-inner a {
+    font-size: 11px;
+    color: #7a7a7a
+}
+.footer-inner a {
+    text-decoration: none;
+    -webkit-transition: color 0.2s ease-in;
+    transition: color 0.2s ease-in
+}
+.footer-inner a:hover {
+    color: #fff
+}
+.footer-inner strong {
+    font-weight: normal;
+    color: #fff
+}
+.footer-socials {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0
+}
+.footer-socials li+li {
+    margin-top: 13px
+}
+.footer-socials .social-facebook,
+.footer-socials .social-google-plus {
+    display: block;
+    padding: 0;
+    border: 0
+}
+.footer-socials .social-facebook {
+    background: url("/temp-images/sprite.png") no-repeat transparent;
+    background-position: 0px -40px;
+    width: 60px;
+    height: 12px
+}
+.footer-socials .social-facebook:hover {
+    background: url("/temp-images/sprite.png") no-repeat transparent;
+    background-position: -80px -40px
+}
+.footer-socials .social-google-plus {
+    background: url("/temp-images/sprite.png") no-repeat transparent;
+    background-position: -160px -40px;
+    width: 51px;
+    height: 16px
+}
+.footer-socials .social-google-plus:hover {
+    background: url("/temp-images/sprite.png") no-repeat transparent;
+    background-position: -240px -40px
+}
+.footer-socials .social-facebook-like {
+    padding: 0;
+    border: 0;
+    background: transparent
+}
+.footer-socials .social-facebook-like .button {
+    position: relative;
+    display: inline-block;
+    padding: 0 16px;
+    border: 0;
+    font-size: 9px;
+    background: #3b5998;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    vertical-align: middle;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1)
+}
+.footer-socials .social-facebook-like:hover .button {
+    background-color: #324c82
+}
+.footer-socials .social-facebook-like .nb {
+    position: relative;
+    display: inline-block;
+    margin-left: 6px;
+    padding: 0 10px;
+    font-size: 11px;
+    font-weight: 600;
+    vertical-align: middle;
+    background: #fff;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    color: #3a383a;
+    line-height: 22px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1)
+}
+.footer-socials .social-facebook-like .nb:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -6px;
+    width: 0;
+    height: 0;
+    margin-top: -5px;
+    border-width: 5px 6px 5px 0;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent
+}
+@media all and (max-width: 980px) {
+    .footer {
+        padding-top: 35px
+    }
+    .footer-buttons {
+        position: relative;
+        top: 0;
+        width: 200px;
+        margin: 0 auto 20px
+    }
+    .footer-buttons .button {
+        margin-left: 0;
+        margin-bottom: 10px;
+        width: 100%
+    }
+    .footer-inner h3 {
+        margin-bottom: 10px;
+        text-align: center
+    }
+    .footer-inner-cell {
+        display: block;
+        margin: 0 auto 40px;
+        width: 100%;
+        text-align: center
+    }
+    .footer-inner-cell-socials,
+    .footer-inner-cell-profs {
+        display: none
+    }
+    .footer-inner-bottom {
+        display: none
+    }
+}
+

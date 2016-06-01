@@ -1,0 +1,45 @@
+.landing-prof {
+    background-color: #f7f7f7
+}
+.landing-prof-header {
+    background-image: url("/temp-images/backgrounds/musicians-background.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff
+}
+.landing-prof-header .wrapper {
+    padding: 20px 0
+}
+.landing-prof-header .section-title {
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 30px;
+    width: 60%;
+    margin: 20px auto;
+    margin-bottom: 40px
+}
+.landing-prof-header .column-header {
+    display: table-cell
+}
+.landing-prof-header .register-column {
+    width: 480px;
+    text-align: center
+}
+.landing-prof-header .form-wrapper {
+    width: 250px;
+    margin: 0 auto;
+    color: #000
+}
+.landing-prof-header .form-wrapper .button {
+    width: 100%
+}
+.landing-prof-header .form-wrapper .text-separator {
+    color: #fff;
+    display: block;
+    padding: 10px 0;
+    font-size: 12px
+}
+.landing-prof-header .form-wrapper>p {
+    font-size: 13px
+}
+
