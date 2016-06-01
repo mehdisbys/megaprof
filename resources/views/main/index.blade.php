@@ -1,4 +1,4 @@
-@extends('layouts.__master')
+@extends('layouts.master')
 
 @section('content')
     {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
