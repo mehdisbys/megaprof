@@ -9,8 +9,7 @@
     <div class="col-md-6 col-md-offset-3 margin-top-sm box-shadow">
 
         {!! BootForm::open()->action('/inscription')->class('col-md-8') !!}
-        {!! BootForm::text('Prénom', 'firstname') !!}
-        {!! BootForm::text('Nom', 'lastname') !!}
+        {!! BootForm::text('Prénom', 'firstname') !!} {!! BootForm::text('Nom', 'lastname') !!}
         {!! BootForm::email('Email', 'email') !!}
         {!! BootForm::password('Mot de passe', 'password') !!}
         {!! BootForm::password('Confirmation du mot de passe', 'password_confirmation') !!}
