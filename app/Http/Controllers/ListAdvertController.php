@@ -47,7 +47,7 @@ class ListAdvertController extends Controller
         if ($subject == null) return response()->json([]);
 
         $data->selectedSubject = $selectedSubject;
-        $data->subject         = $subject->id;
+        $data->subjectId       = $subject->id;
         $data->lat             = $request->get('lat');
         $data->lgn             = $request->get('lng');
         $data->radius          = $this->mapRadius($request->get('radius'))[0];
@@ -72,10 +72,24 @@ class ListAdvertController extends Controller
 
     public function view($slug)
     {
-        $advert   = Advert::findBySlugOr404($slug);
-        $comments = Comment::where(['advert_id' => $advert->id])->whereNotNull('comment')->get();
+        $advert         = Advert::findBySlugOr404($slug);
+        $comments       = Comment::where(['advert_id' => $advert->id])->whereNotNull('comment')->get();
+        $similarAdverts = $this->findSimilarAdverts($advert);
 
-        return view('professeur.advert.view')->with(compact('advert', 'comments'));
+        return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts'));
+    }
+
+    public function findSimilarAdverts(Advert $advert)
+    {
+        $data = new \stdClass();
+
+        $data->subjectId = $advert->getSubjectId();
+        $data->lat       = $advert->location_lat;
+        $data->long      = $advert->location_long;
+        $data->radius    = null;
+
+        list($adverts, $distances) = $this->engine->search($data);
+        return $adverts;
     }
 
     private function mapRadius(int $radius = null)

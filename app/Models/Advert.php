@@ -87,11 +87,11 @@ class Advert extends Model implements SluggableInterface
     public static function radiusSearch(array $advertIds, float $lat, float $lng, int $radius = null)
     {
         $query = DB::table('adverts')
-                   ->selectRaw ("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
+                   ->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
     COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance")
                    ->orderBy('distance', 'ASC');
 
-        if($radius)
+        if ($radius)
             $query->having('distance', '<', $radius);
 
         if ($advertIds) {
@@ -110,7 +110,12 @@ class Advert extends Model implements SluggableInterface
                 $q->where('gender', '=', $gender);
             });
         }
-
         return $query->get();
     }
+
+public function getSubjectId()
+{
+     return $this->subjectsPerAd->first()->subject_id ?? null;
+}
+
 }

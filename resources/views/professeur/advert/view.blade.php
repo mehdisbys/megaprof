@@ -128,6 +128,19 @@
         @endforeach
     </div>
 
+    <div class="col-md-7 col-md-offset-4 topmargin-sm">
+
+        <h3>Les professeurs similaires</h3>
+
+        @foreach($similarAdverts as $advert)
+
+            <div class="col-md-12">
+                <strong>{{$advert->user->firstname}}</strong> : {{$advert->title}}
+            </div>
+
+        @endforeach
+    </div>
+
     <script>
 
         $( document ).ready(function() {

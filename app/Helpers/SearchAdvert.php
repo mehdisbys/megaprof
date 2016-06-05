@@ -10,12 +10,11 @@ class SearchAdvert implements SearchAdvertContract
 
     public function search(\stdClass $data)
     {
-        $subjects   = new SubjectsPerAdvert();
         $rawResults = null;
         $distances  = null;
 
-        if (isset($data->subject) and !empty($data->subject)) {
-            $advert_ids = $subjects->where('subject_id', $data->subject)->get()->pluck('advert_id')->toArray();
+        if (isset($data->subjectId) and !empty($data->subjectId)) {
+            $advert_ids = SubjectsPerAdvert::getAllAdvertIdsForSubject($data->subjectId);
             $rawResults = Advert::searchAdvertIdsByGender($advert_ids, $data->gender ?? 'both');
             $byLocation = $data->lgn ?? null;
 
@@ -26,8 +25,7 @@ class SearchAdvert implements SearchAdvertContract
 
             return [$rawResults, $distances];
         }
-
-        return null;
+        return [null, null];
     }
 
     public function dataFromInput()
