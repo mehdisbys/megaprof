@@ -131,11 +131,17 @@
     <div class="col-md-7 col-md-offset-4 topmargin-sm">
 
         <h3>Les professeurs similaires</h3>
-
+        <div class="clearfix"></div>
         @foreach($similarAdverts as $advert)
 
-            <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="col-md-6">
+                    <img src="{{ $advert->getAvatar() }}" alt="">
+                </div>
                 <strong>{{$advert->user->firstname}}</strong> : {{$advert->title}}
+                <div class="clearfix"></div>
+               <i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong>
+
             </div>
 
         @endforeach
