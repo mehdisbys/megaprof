@@ -19,15 +19,16 @@ class ListAdvertController extends Controller
 
     public function index()
     {
-        return view('layouts.index');
+        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $selectedSubject = null;
+
+        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject'));
     }
 
     public function allAdverts()
     {
         $adverts = Advert::liveAdverts(20);
-
         $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
-
         $selectedSubject = null;
 
         return view('main.index')->with(compact('adverts', 'subsubjects', 'selectedSubject'));
@@ -73,7 +74,7 @@ class ListAdvertController extends Controller
     public function view($slug)
     {
         $advert         = Advert::findBySlugOr404($slug);
-        $comments       = Comment::where(['advert_id' => $advert->id])->whereNotNull('comment')->get();
+        $comments       = Comment::commentsForAdvertId($advert->id);
         $similarAdverts = $this->findSimilarAdverts($advert);
 
         return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts'));

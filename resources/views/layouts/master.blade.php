@@ -48,6 +48,7 @@
     {!! HTML::style('temp-css/pictures.css') !!}
     {!! HTML::style('temp-css/popin.css') !!}
     {!! HTML::style('temp-css/main.css') !!}
+    {!! HTML::script("js/jquery.js") !!}
 
 </head>
 <body>

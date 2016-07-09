@@ -26,16 +26,7 @@ class Comment extends Model
 
     public static function createStubComments($prof_id, $student_id, $advert_id)
     {
-        self::create(
-            [
-                'source_user_id'  => $prof_id,
-                'owner_advert_id' => $prof_id,
-                'target_user_id'  => $student_id,
-                'advert_id'       => $advert_id,
-                'comment_at'      => Carbon::now()->addWeek()
-            ]
-        );
-
+        //Student
         self::create(
             [
                 'source_user_id'  => $student_id,
@@ -76,5 +67,10 @@ class Comment extends Model
     public function iWasTheStudent(): bool
     {
         return $this->source_user_id != $this->owner_advert_id;
+    }
+
+    public static function commentsForAdvertId(int $advertId)
+    {
+        return Comment::where(['advert_id' => $advertId])->whereNotNull('comment')->get();
     }
 }

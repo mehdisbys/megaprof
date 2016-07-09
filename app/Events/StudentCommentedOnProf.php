@@ -9,7 +9,7 @@ class StudentCommentedOnProf extends Event
 {
     use SerializesModels;
 
-    private $comment;
+    public $comment;
 
     /**
      * ProfCommentedOnStudent constructor.

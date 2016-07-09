@@ -7,29 +7,30 @@
     {!! HTML::script("js/locationpicker.jquery.js") !!}
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::script("js/jquery.form.min.js") !!}
+
 <div class="home-search">
-  <form class="home-search-form autocomplete-form" method="post" action="/search">
-    {!! csrf_field() !!}
     <div class="home-search-form-inner autocomplete awesomplete">
         {!! Form::open(['url' => '/search', 'id' => 'search_form']) !!}
-        {!! Form::input('text', 'subject', $selectedSubject,
-            [ 'class' => 'awesomplete sm-form-control home-search-input autocomplete-input',
-                'placeholder' => 'Que souhaitez-vous apprendre ?',
-                'data-minchars' => 1, 'data-autofirst' => true,
-                'data-list' => $subsubjects,
-                'style' => 'width:100%;',
-                'id' => 'subject_input'
-            ]) 
-        !!}
+        {!! csrf_field() !!}
+
+      {!! Form::input('text', 'subject', $selectedSubject,
+          [ 'class' => 'awesomplete home-search-input autocomplete-input',
+              'placeholder' => 'Que souhaitez-vous apprendre ?',
+              'data-minchars' => 1,
+              'data-autofirst' => true,
+              'data-list' => $subsubjects,
+              'style' => 'width:100%;',
+              'id' => 'subject_input'
+          ])
+      !!}
     <button class="home-search-submit" type="submit"></button>
     <ul hidden="">
         <li aria-selected="true">holder</li>
     </ul>
-</form>
 </div>
 
     <div class="">
-        {!! Form::open(['url' => '/search', 'id' => 'search_form']) !!}
+        {!! Form::open(['url' => '/search', 'id' => 'search_form2']) !!}
         <div class="">
             <div id="radius_input" class="no-visibility">
                 <span> Je peux me déplacer dans un rayon de </span>
@@ -132,9 +133,10 @@
                 <div id="count_results" class="topmargin-sm bottommargin-sm">
                     <span id="count_text">{{ count($adverts) }} Items found</span>
                 </div>
-                <div id="search_results"></div>
-                @include('main.multipleAdvertPreview')
-        @endif
+                <div id="search_results">
+                  @include('main.multipleAdvertPreview')
+                </div>
+            @endif
             </div>
         <!-- optional to show advert count  -->
 
@@ -522,14 +524,14 @@
 
 
 <script>
-/** 
- * TODO -- refactor javascript 
+/**
+ * TODO -- refactor javascript
  * there is a bit too much going on here
  *
  * */
 
 $(document).ready(function () {
-    return;
+
     $('#search_form').ajaxForm(updatePage);
 
             $('#subject').on('click', function(){
@@ -552,7 +554,7 @@ $(document).ready(function () {
 
             function updatePage(data)
             {
-                $("#count_text").html(data.count);
+              $("#count_text").html(data.count);
                 $("#search_results").html(data.results);
                 updateForm(data);
             }

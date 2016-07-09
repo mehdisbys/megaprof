@@ -26,6 +26,19 @@ class NotifyProfOfPostedComment
      */
     public function handle(StudentCommentedOnProf $event)
     {
-        //
+        Notification::newCommentNotification(
+            $event->comment->advert->id,
+            $event->comment->targetUser->id,
+            $event->comment->sourceUser->firstname,
+            '/' . $event->comment->advert->slug
+        );
+
+        list($all, $config) = emailConfig(
+            $event->comment->targetUser,
+            'Vous avez un nouveau commentaire de la part de ' . $event->comment->sourceUser->firstname
+        );
+
+        $all['link']        = url('/mon-compte');
+        $this->mailer->sendMail('emails.comment.StudentCommented', $all, $config);
     }
 }

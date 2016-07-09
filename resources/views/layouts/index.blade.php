@@ -1,17 +1,35 @@
 @extends('layouts.master')
 
 @section('content')
+  {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
+  {!! HTML::style("js/awesomplete/awesomplete.css") !!}
+  {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
+  {!! HTML::script("js/locationpicker.jquery.js") !!}
+  {!! HTML::script("js/jquery.geocomplete.min.js") !!}
+  {!! HTML::script("js/jquery.form.min.js") !!}
+
 <div class="home-search">
   <h1 class="search-title">Trouvez le professeur parfait</h1>
+
   <form class="home-search-form autocomplete-form" method="post" action="/search">
     {!! csrf_field() !!}
     <div class="home-search-form-inner autocomplete">
-      <input class="home-search-input autocomplete-input" type="text"
-      placeholder="Que souhaitez-vous apprendre ?" name="search" autocomplete="off"/>
+      {!! Form::open(['url' => '/search', 'id' => 'search_form']) !!}
+      {!! Form::input('text', 'subject', $selectedSubject,
+          [ 'class' => 'awesomplete home-search-input autocomplete-input',
+              'placeholder' => 'Que souhaitez-vous apprendre ?',
+              'data-minchars' => 1,
+              'data-autofirst' => true,
+              'data-list' => $subsubjects,
+              'style' => 'width:100%;',
+              'id' => 'subject_input'
+          ])
+      !!}
       <button class="home-search-submit" type="submit"></button>
       <div class="home-search-results autocomplete-results"></div>
     </div>
   </form>
+
 </div>
 <div class="section reinsurance">
   <div class="wrapper">
@@ -269,7 +287,7 @@
               <div class="component-testimony-more">
                 <div class="component-testimony-author">
                   <span>
-                    <a href=""><strong>Medhi S</strong></a>
+                    <a href=""><strong>Mehdi S</strong></a>
                   </span>
                 </div>
                 <div class="component-testimony-date">Il y a 1 jour</div>

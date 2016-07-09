@@ -120,11 +120,9 @@
         <h3>Avis des étudiants</h3>
 
         @foreach($comments as $comment)
-
             <div class="col-md-12">
                 <strong>{{$comment->sourceUser->firstname}}</strong> : {{$comment->comment}}
             </div>
-
         @endforeach
     </div>
 
