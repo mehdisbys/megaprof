@@ -23,7 +23,8 @@
     "adamwathan/bootforms": "^0.7.1",
     "intervention/image": "^2.3",
     "predis/predis": "^1.0",
-    "orangehill/iseed": "dev-master"
+    "orangehill/iseed": "dev-master",
+    "laravel/socialite": "^2.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
