@@ -7415,8 +7415,6 @@ ul.profil_statut li span.verified:before {
     min-width: 170px;
     padding: 5px 15px;
     font-weight: 600;
-    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
-    opacity: 0.35;
     text-align: center;
     color: #000;
     background-color: #fff;
@@ -7441,10 +7439,7 @@ ul.profil_statut li span.verified:before {
 .search-radio+.search-radio {
     margin-left: 20px
 }
-.search-checkbox input,
-.search-radio input {
-    display: none
-}
+
 .search-other-desktop {
     position: relative;
     display: inline-block;
