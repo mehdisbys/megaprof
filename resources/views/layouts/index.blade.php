@@ -11,10 +11,9 @@
 <div class="home-search">
   <h1 class="search-title">Trouvez le professeur parfait</h1>
 
-  <form class="home-search-form autocomplete-form" method="post" action="/search">
-    {!! csrf_field() !!}
     <div class="home-search-form-inner autocomplete">
-      {!! Form::open(['url' => '/search', 'id' => 'search_form']) !!}
+      {!! Form::open(['url' => '/search', 'id' => 'search_form', 'class' =>"home-search-form autocomplete-form" ]) !!}
+      {!! csrf_field() !!}
       {!! Form::input('text', 'subject', $selectedSubject,
           [ 'class' => 'awesomplete home-search-input autocomplete-input',
               'placeholder' => 'Que souhaitez-vous apprendre ?',

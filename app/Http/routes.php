@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
 
+//Social
+    Route::get('/redirect', 'SocialAuthController@redirect');
+    Route::get('/callback', 'SocialAuthController@callback');
+
 //Main Page
     Route::get('/', 'ListAdvertController@index');
     Route::get('/annonces', 'ListAdvertController@allAdverts');

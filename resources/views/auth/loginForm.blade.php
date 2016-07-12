@@ -25,6 +25,7 @@
         </div>
       </form>
       <a href="/reset_password">Forgot Your Password?</a>
+      <a href="redirect">FB Login</a>
     </div>
   </div>
 </div>
