@@ -33,7 +33,8 @@
         {!! Form::open(['url' => '/search', 'id' => 'search_form2']) !!}
         <div class="">
             <div id="radius_input" class="no-visibility">
-                <span> Je peux me déplacer dans un rayon de </span>
+                <h3> Je peux me déplacer dans un rayon de </h3>
+
                 <div class="clearfix"></div>
                 <label class="search-radio">
                     <input name="radius" value="1" type="radio"/> 5 km
@@ -50,12 +51,13 @@
             </div>
 
             <div id="teacher_gender" class="topmargin-sm">
-                <span>Je préfère un professeur</span>
+                <h3>Je préfère un professeur:</h3>
 
                 <label class="search-radio">
                     <input name="gender" value="man" type="radio">
                      Homme
                 </label>
+
                 <label class="search-radio">
                     <input name="gender" value="woman" type="radio">
                     Femme
@@ -65,6 +67,7 @@
                     <input name="gender" value="both" type="radio">
                     Les deux me vont
                 </label>
+
             </div>
 
             <div class="location-details no-visibility">
@@ -74,14 +77,15 @@
 
             <div class="topmargin-lg"></div>
 
-            <div id="subject" class="button button-3d button-small button-rounded button-aqua no-visibility"></div>
-            <div id="city" class="button button-3d button-small button-rounded button-yellow no-visibility"></div>
-            <div id="radius" class="button button-3d button-small button-rounded button-amber no-visibility"></div>
+            <div id="subject" class="button button-3d button-small button-rounded button-aqua no-visibility">Subject</div>
+            <div id="city" class="button button-3d button-small button-rounded button-yellow no-visibility">City</div>
+            <div id="radius" class="button button-3d button-small button-rounded button-amber no-visibility">Radius</div>
         </div>
-        <div class="col-md-1 pull-left">
+
+        <div >
             <span>
                 <button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
-                    <span class="icon-search3"></span>
+                    <span class="icon-search3">Submit</span>
                 </button>
             </span>
         </div>
