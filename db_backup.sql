@@ -147,7 +147,7 @@ CREATE TABLE `book_lesson` (
   CONSTRAINT `fk_studentid_booking` FOREIGN KEY (`student_user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_subjectid_booking` FOREIGN KEY (`subject_id`) REFERENCES `sub_subjects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_userid_booking` FOREIGN KEY (`prof_user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `book_lesson` (
 
 LOCK TABLES `book_lesson` WRITE;
 /*!40000 ALTER TABLE `book_lesson` DISABLE KEYS */;
-INSERT INTO `book_lesson` VALUES (1,385,6,6,NULL,NULL,'Qu\'attendez vous de ses cours ?\r\nQuel type/niveau de cours recherchez-vous ?\r\nA quelle fréquence souhaitez-vous prendre vos cours ?','asap','0000-00-00 00:00:00','teacher','','myself','','0000-00-00 00:00:00','man','0601020304','34 Rue de Dunkerque, Paris, France','2016-05-26 16:22:14','2016-05-26 16:22:14');
+INSERT INTO `book_lesson` VALUES (1,385,6,6,NULL,NULL,'Qu\'attendez vous de ses cours ?\r\nQuel type/niveau de cours recherchez-vous ?\r\nA quelle fréquence souhaitez-vous prendre vos cours ?','asap','0000-00-00 00:00:00','teacher','','myself','','0000-00-00 00:00:00','man','0601020304','34 Rue de Dunkerque, Paris, France','2016-05-26 16:22:14','2016-05-26 16:22:14'),(2,382,6,6,NULL,'yes','Présentez-vous à Morgane et dites-lui ce que vous souhaitez apprendre Dites-en un peu plus à Morgane sur votre recherche de cours. Plus vous donnerez d\'informations à votre professeur, plus il sera susceptible d\'accepter votre demande\r\nQu\'attendez vous de ses cours ?\r\nQuel type/niveau de cours recherchez-vous ?\r\nA quelle fréquence souhaitez-vous prendre vos cours ?','asap','0000-00-00 00:00:00','my_place','','myself','','0000-00-00 00:00:00',NULL,'0601020304','45 Boulevard Voltaire, Paris, France','2016-06-12 09:45:07','2016-06-12 09:41:43'),(3,383,6,15,NULL,'yes','Présentez-vous à Morgane et dites-lui ce que vous souhaitez apprendre Dites-en un peu plus à Morgane sur votre recherche de cours. Plus vous donnerez d\'informations à votre professeur, plus il sera susceptible d\'accepter votre demande\r\nQu\'attendez vous de ses cours ?\r\nQuel type/niveau de cours recherchez-vous ?\r\nA quelle fréquence souhaitez-vous prendre vos cours ?','this_week','0000-00-00 00:00:00','webcam','','myself','','0000-00-00 00:00:00',NULL,'0601020304','56 Blossom Street, York, Royaume-Uni','2016-06-12 09:56:35','2016-06-12 09:48:42');
 /*!40000 ALTER TABLE `book_lesson` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +184,7 @@ CREATE TABLE `comments` (
   KEY `fk_targetuserid_comments_idx` (`target_user_id`),
   CONSTRAINT `fk_sourceuserid_comments` FOREIGN KEY (`source_user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_targetuserid_comments` FOREIGN KEY (`target_user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,6 +193,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,6,6,6,'382',NULL,NULL,'2016-06-19 09:45:07','2016-06-12 09:45:07',NULL,'2016-06-12 09:45:07'),(2,6,6,6,'382',NULL,NULL,'2016-06-19 09:45:07','2016-06-12 09:45:07',NULL,'2016-06-12 09:45:07'),(3,6,15,6,'383',NULL,NULL,'2016-06-19 09:56:35','2016-06-12 09:56:35',NULL,'2016-06-12 09:56:35'),(4,15,6,6,'383',NULL,NULL,'2016-06-19 09:56:35','2016-06-12 09:56:35',NULL,'2016-06-12 09:56:35');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -573,8 +574,9 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `telephone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `gender` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `birthdate` datetime DEFAULT NULL,
+  `birthdate` datetime DEFAULT CURRENT_TIMESTAMP,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `facebook_id` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `confirmation_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `forgotten_token` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -590,7 +592,7 @@ CREATE TABLE `users` (
   `brand` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -599,7 +601,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (6,'Morgane','Test','ramses@yopmail.com',NULL,'man',NULL,'$2y$10$45wxzzb4xk2nbp0Ndbz5TebX1YNMe5h9dodkWjLS7o1SEwsYUP8xu','LMkxiwHSKGmQk83IZwJRoDpPpi4BOV','4JBzUGK6gt5d6JGIfIijD4OmT6yMrfhS7Ormcm5mQm0ne6FUFsWBJtZyxhCc',NULL,1,NULL,'2016-01-09 13:53:11','2016-04-10 18:28:10',0,NULL,NULL,NULL,NULL,NULL),(10,'Mehdi','Testos','mehdi.souihed@gmail.com.com','074531877456666','man','0000-00-00 00:00:00','$2y$10$Xkrhb8AwaQpNox8OM2U1p.QUMNtVQIRqT.67ZDoTMtDosV8xBA8J.','','mYuRdJmTDV2OfRdbaT6iaRNV162IY2hkSXJpTB1PwGX7YAKM5XdpAU5slSnf',NULL,1,NULL,'2016-01-09 15:01:15','2016-05-17 20:20:50',0,NULL,NULL,NULL,NULL,NULL),(11,'Stéphane','Charlie','chayeb.yacine@gmail.com',NULL,NULL,NULL,'$2y$10$K0ZnVtErqorHAXsqzxMF8OwcMWMOZdKhYw0N5bL/.DikM0iza0gEm','','o7MQ1tpW3Ix0Fd0yJPzaUTxv5w09N4QFjHFQ3UzJf5dL1sgSJvEOCwtIwwwf',NULL,1,NULL,'2016-01-29 21:30:14','2016-01-29 21:39:20',0,NULL,NULL,NULL,NULL,NULL),(12,'Stéphane','Charlie','chayebc2@msn.com',NULL,NULL,NULL,'$2y$10$kqjfwZ/cPKjxEvxZDmpYA.hkuHq7ixCoxkbYCGPgKpaLoUWjVpCCu','7K922anVnX4u1PyLGXOuVBUps5gT62',NULL,NULL,0,NULL,'2016-01-29 21:40:23','2016-01-29 21:40:23',0,NULL,NULL,NULL,NULL,NULL),(13,'Ramses2','Egyptien','ramses2@yopmail.com',NULL,NULL,NULL,'$2y$10$WW/N0L/pu67tPIQaFtdarOjHpAm2fFiI.rvoHJPyFghjVZPtcKabq','','i7A0qhhtBgoYRJy727u8HMOOleOMvaiXWAy32hBmmY3mwvJXaviU431kJrM0',NULL,1,NULL,'2016-03-23 17:07:07','2016-03-23 17:33:34',0,NULL,NULL,NULL,NULL,NULL),(14,'Ima Batz','Dortha Moen','Lloyd.Green@Lynch.biz',NULL,NULL,NULL,'$2y$10$UHTiyHmN3t8bqBYvnRuRV.rPdVQYVZzatAz1nuYRPe9SuGqk4YlFa','0j1DAlURaJXEh1TUUzWqAAYtBefqPI',NULL,NULL,0,NULL,'2016-03-23 17:39:17','2016-03-23 17:39:17',0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (6,'Morgane','Test','ramses@yopmail.com',NULL,'man',NULL,'$2y$10$45wxzzb4xk2nbp0Ndbz5TebX1YNMe5h9dodkWjLS7o1SEwsYUP8xu',NULL,'LMkxiwHSKGmQk83IZwJRoDpPpi4BOV','F0dJf7wqvFD3xtIQ52Nq3TZ9QkrEXfKcfDYXzhgvniQbdleOfz1J2CbVwH99',NULL,1,NULL,'2016-01-09 13:53:11','2016-06-12 10:08:10',0,NULL,NULL,NULL,NULL,NULL),(10,'Mehdi','Testos','mehdi.souihed@gmail.com1','074531877456666','man',NULL,'$2y$10$Xkrhb8AwaQpNox8OM2U1p.QUMNtVQIRqT.67ZDoTMtDosV8xBA8J.',NULL,'','prtebRnphWRvnXuSNQA2QL574Kg6XGk8NtPmrfknhGR8EVwrhfiLKbZJxQgX',NULL,1,NULL,'2016-01-09 15:01:15','2016-07-12 19:27:06',0,NULL,NULL,NULL,NULL,NULL),(11,'Stéphane','Charlie','chayeb.yacine@gmail.com',NULL,NULL,NULL,'$2y$10$K0ZnVtErqorHAXsqzxMF8OwcMWMOZdKhYw0N5bL/.DikM0iza0gEm',NULL,'','o7MQ1tpW3Ix0Fd0yJPzaUTxv5w09N4QFjHFQ3UzJf5dL1sgSJvEOCwtIwwwf',NULL,1,NULL,'2016-01-29 21:30:14','2016-01-29 21:39:20',0,NULL,NULL,NULL,NULL,NULL),(12,'Stéphane','Charlie','chayebc2@msn.com',NULL,NULL,NULL,'$2y$10$kqjfwZ/cPKjxEvxZDmpYA.hkuHq7ixCoxkbYCGPgKpaLoUWjVpCCu',NULL,'7K922anVnX4u1PyLGXOuVBUps5gT62',NULL,NULL,0,NULL,'2016-01-29 21:40:23','2016-01-29 21:40:23',0,NULL,NULL,NULL,NULL,NULL),(13,'Ramses2','Egyptien','ramses2@yopmail.com',NULL,NULL,NULL,'$2y$10$WW/N0L/pu67tPIQaFtdarOjHpAm2fFiI.rvoHJPyFghjVZPtcKabq',NULL,'','i7A0qhhtBgoYRJy727u8HMOOleOMvaiXWAy32hBmmY3mwvJXaviU431kJrM0',NULL,1,NULL,'2016-03-23 17:07:07','2016-03-23 17:33:34',0,NULL,NULL,NULL,NULL,NULL),(14,'Ima Batz','Dortha Moen','Lloyd.Green@Lynch.biz',NULL,NULL,NULL,'$2y$10$UHTiyHmN3t8bqBYvnRuRV.rPdVQYVZzatAz1nuYRPe9SuGqk4YlFa',NULL,'0j1DAlURaJXEh1TUUzWqAAYtBefqPI',NULL,NULL,0,NULL,'2016-03-23 17:39:17','2016-03-23 17:39:17',0,NULL,NULL,NULL,NULL,NULL),(15,'Tester','Testos','megatest@yopmail.com',NULL,NULL,NULL,'$2y$10$yNualPTOThJptbpOjzaM5.BioYOVcBi.p.RmJ7ug4c.q0uVxvEvlu',NULL,'','fAAmB7oBV5QQSk7E64TnTIOTD4hVdowvOEIMDX0hJOXb2yqnFvTF0Bix527s',NULL,1,NULL,'2016-06-01 21:35:51','2016-06-12 09:55:29',0,NULL,NULL,NULL,NULL,NULL),(20,'Mehdi Souihed','','mehdi.souihed@gmail.com',NULL,NULL,'2016-07-12 21:35:46','$2y$10$tS2Fn6Y8IPNzo4rVMsBi3Onfow3ZmUFmvFZXmPNawr.qnxCkC6Eta','10209310919757200','',NULL,NULL,1,1,'2016-07-12 19:35:46','2016-07-12 19:35:46',0,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -612,4 +614,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-30 21:00:18
+-- Dump completed on 2016-07-12 21:37:51
