@@ -55,16 +55,12 @@
                             <a class="btn btn-danger btn-block btn-md" href="/mise-en-relation/{{$advert->id}}">Réserver un cours</a>
                         </div>
                         <div class="col-md-10 topmargin-sm">
-                            <a href="#" class="social-icon si-colored si-facebook">
+                            <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank" class="social-icon si-colored si-facebook">
+                                <i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i>
                             </a>
 
-                            <a href="#" class="social-icon si-colored si-gplus"  >
-                                <i class="icon-gplus"></i>
-                                <i class="icon-gplus"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-colored si-twitter"  >
+                            <a href="http://twitter.com/share" data-count="vertical" rel="nofollow" target="_blank" class="social-icon si-colored si-twitter">
                                 <i class="icon-twitter"></i>
                                 <i class="icon-twitter"></i>
                             </a>
