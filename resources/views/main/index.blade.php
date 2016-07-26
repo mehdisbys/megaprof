@@ -15,7 +15,7 @@
 
       {!! Form::input('text', 'subject', $selectedSubject,
           [ 'class' => 'awesomplete home-search-input autocomplete-input',
-              'placeholder' => 'Que souhaitez-vous apprendre ?',
+              'placeholder' => 'Ques souhaitez-vous apprendre ?',
               'data-minchars' => 1,
               'data-autofirst' => true,
               'data-list' => $subsubjects,
@@ -161,8 +161,55 @@
  * */
 
 $(document).ready(function () {
+            function updatePage(data) {
+              $("#count_text").html(data.count);
+                $("#search_results").html(data.results);
+                updateForm(data);
+            }
 
-    $('#search_form').ajaxForm(updatePage);
+            function updateForm(data) {
+                if(data.params.selectedSubject) {
+                    $("#subject").html(data.params.selectedSubject);
+                    makeVisible(['subject','city_input']);
+                    makeInvisible(['subject_input']);
+                }
+
+                if(data.params.city) {
+                    $("#city").html(data.params.city);
+                    makeVisible(['city','radius_input']);
+                    makeInvisible(['city_input']);
+                }
+
+                if(data.params.selectedRadius) {
+                    $("#radius").html(data.params.selectedRadius);
+                    makeVisible(['radius']);
+                    makeInvisible(['radius_input']);
+                }
+            }
+
+            // helpers
+            function makeVisible(selectors) {
+                selectors.map(function (item) {
+                    $('#' + item).removeClass('no-visibility');
+                });
+            }
+
+            function makeInvisible(selectors)
+            {
+                selectors.map(function (item) {
+                    $('#' + item).addClass('no-visibility');
+                });
+            }
+
+            $(".home-search-submit").click(function (event) {
+                event.preventDefault();
+                var subject = $(".autocomplete-input").val();
+                var token =  $("[name='_token']").val();
+                if (subject.length < 2 ) return;
+                    $.post('/search', {'subject': subject, '_token': token}, function (data) {
+                        updatePage(data);
+                    });
+            });
 
             $('#subject').on('click', function(){
                 $(this).addClass('no-visibility');
@@ -182,59 +229,8 @@ $(document).ready(function () {
                 makeInvisible(['subject_input', 'city_input']);
             });
 
-            function updatePage(data)
-            {
-              $("#count_text").html(data.count);
-                $("#search_results").html(data.results);
-                updateForm(data);
-            }
-
-            function updateForm(data)
-            {
-                if(data.params.selectedSubject)
-                {
-                    $("#subject").html(data.params.selectedSubject);
-                    makeVisible(['subject','city_input']);
-                    makeInvisible(['subject_input']);
-                }
-
-                if(data.params.city)
-                {
-                    $("#city").html(data.params.city);
-                    makeVisible(['city','radius_input']);
-                    makeInvisible(['city_input']);
-                }
-
-                if(data.params.selectedRadius)
-                {
-                    $("#radius").html(data.params.selectedRadius);
-                    makeVisible(['radius']);
-                    makeInvisible(['radius_input']);
-                }
-            }
-
-            // helpers
-
-            function makeVisible(selectors)
-            {
-                selectors.map(function (item) {
-                    $('#' + item).removeClass('no-visibility');
-                });
-            }
-
-            function makeInvisible(selectors)
-            {
-                selectors.map(function (item) {
-                    $('#' + item).addClass('no-visibility');
-                });
-            }
             // Geocompletion
-            $('#city_input').geocomplete(
-                    {
-                        types: ['(cities)'],
-                        details: ".location-details",
-                    });
+            $('#city_input').geocomplete({types: ['(cities)'], details: ".location-details", });
         });
-
     </script>
 @endsection

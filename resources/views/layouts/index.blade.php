@@ -14,21 +14,38 @@
     <div class="home-search-form-inner autocomplete">
       {!! Form::open(['url' => '/search', 'id' => 'search_form', 'class' =>"home-search-form autocomplete-form" ]) !!}
       {!! csrf_field() !!}
-      {!! Form::input('text', 'subject', $selectedSubject,
-          [ 'class' => 'awesomplete home-search-input autocomplete-input',
-              'placeholder' => 'Que souhaitez-vous apprendre ?',
-              'data-minchars' => 1,
-              'data-autofirst' => true,
-              'data-list' => $subsubjects,
-              'style' => 'width:100%;',
-              'id' => 'subject_input'
-          ])
-      !!}
-      <button class="home-search-submit" type="submit"></button>
+
+        <div class="awesomplete">
+
+            <input  id="subject_input" class="awesomplete home-search-input autocomplete-input" placeholder="Que souhaitez-vous apprendre ?" data-minchars="1" data-autofirst="1"
+            data-list="{!! $subsubjects !!}" name="subject" type="text" autocomplete="off" aria-autocomplete="list"/>
+
+            <span class="visually-hidden" role="status" aria-live="assertive" aria-relevant="additions">FCE</span>
+        </div>
+
+        <div class="awesomplete">
+            <input id="location_input" class="home-search-input" placeholder="Location please" name="subject" type="text" />
+        </div>
+
       <div class="home-search-results autocomplete-results"></div>
+      <button id="submit-btn" class="" type="submit"> submit</button>
     </div>
   </form>
+<script> 
 
+$(document).ready(function () {
+    $("#submit-btn").click(function (event) {
+        event.preventDefault();
+        var subject = $("#subject_input").val();
+        var loc = $("#location_input").val();
+        if (subject.length < 2 || loc.length < 2) return;
+        url = "/annonces/" +  subject  + "/" + loc; 
+        url = url.replace(/ /g, '-'); 
+        window.location.assign(url);
+    });
+});
+
+</script>
 </div>
 <div class="section reinsurance">
   <div class="wrapper">
