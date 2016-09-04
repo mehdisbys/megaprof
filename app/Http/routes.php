@@ -12,6 +12,8 @@ Route::group(['middleware' => ['web']], function () {
 //Main Page
     Route::get('/', 'ListAdvertController@index');
     Route::get('/annonces', 'ListAdvertController@allAdverts');
+    Route::get('/annonces/{subject}/{town}', 'ListAdvertController@searchByURL');
+
     Route::post('/search', 'ListAdvertController@search');
 
     // Avatar

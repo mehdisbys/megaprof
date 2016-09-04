@@ -34,42 +34,76 @@ class ListAdvertController extends Controller
         return view('main.index')->with(compact('adverts', 'subsubjects', 'selectedSubject'));
     }
 
+    public function searchByURL($subject, $city)
+    {
+        $data                  = new \stdClass();
+        $data->selectedSubject = SubSubject::where('name', $subject)->first();
+        $data->subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $data->subjectId       = $data->selectedSubject->id ?? null;
+        $data->city            = empty($city) ? null : $city;
+
+        // TODO update this to use the world_cities_database
+        // Casablanca coordinates default for now
+        $data->lat = 33.5914950;
+        $data->lgn = -7.6012452;
+
+        list($adverts, $distances) = $this->engine->search($data);
+
+       // dd($distances);
+
+        return view('main.index')->with(
+            [
+                'adverts'         => $adverts,
+                'subsubjects'     => $data->subsubjects,
+                'selectedSubject' => $data->selectedSubject,
+                'distances'       => $distances,
+                'selectedCity'    => $data->city ?? null,
+            ]
+        );
+
+    }
+
     //TODO TEST search location by radius
     public function search(Request $request)
     {
-        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $data                  = new \stdClass();
+        $data->selectedSubject = $request->get('subject');
+        $subject               = SubSubject::where('name', $data->selectedSubject)->first();
 
-        $data            = new \stdClass();
-        $selectedSubject = $request->get('subject');
-        //TODO send subject id directly
-        $subject         = SubSubject::where('name', $selectedSubject)->first();
-        $city            = explode(',', $request->get('city'))[0];
+        if ($data->selectedSubject == null)
+            return response()->json([]);
 
-        if ($subject == null) return response()->json([]);
-
-        $data->selectedSubject = $selectedSubject;
-        $data->subjectId       = $subject->id;
-        $data->lat             = $request->get('lat');
-        $data->lgn             = $request->get('lng');
-        $data->radius          = $this->mapRadius($request->get('radius'))[0];
-        $data->selectedRadius  = $this->mapRadius($request->get('radius'))[1];
-        $data->city            = empty($city) ? null : $city;
-        $data->gender          = $request->get('gender');
+        $data->subsubjects    = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $data->subjectId      = $subject->id;
+        $data->lat            = $request->get('lat');
+        $data->lgn            = $request->get('lng');
+        $data->radius         = $this->mapRadius($request->get('radius'))[0];
+        $data->selectedRadius = $this->mapRadius($request->get('radius'))[1];
+        $data->city           = explode(',', $request->get('city'))[0] ?? null;
+        $data->gender         = $request->get('gender');
 
         list($adverts, $distances) = $this->engine->search($data);
 
         $results = view('main.multipleAdvertPreview')
-            ->with(compact('adverts', 'subsubjects', 'selectedSubject', 'distances'))
-            ->with(['selectedCity' => $data->city, 'radius' => $data->radius])->render();
+            ->with([
+                       'adverts'         => $adverts,
+                       'subsubjects'     => $data->subsubjects,
+                       'selectedSubject' => $data->selectedSubject,
+                       'distances'       => $distances,
+                       'selectedCity'    => $data->city ?? null,
+                       'radius'          => $data->radius ?? null
+                   ]
+            )->render();
 
         return response()->json(
             [
                 'params'    => $data,
                 'count'     => count($adverts) . " professeurs correspondent à vos critères.",
+                'distances' => $distances,
                 'results'   => $results,
-                'distances' => $distances
             ]);
     }
+
 
     public function view($slug)
     {
