@@ -60,7 +60,7 @@
             <div class="header-inner-cell header-inner-cell-logo">
                 <button class="header-burger-button"> Menu<span class="header-burger-icon"> </span></button>
                 <a class="header-logo header-logo-normal" href="/" title="Revenir à l'accueil de Megaprof">
-                <img src="/temp-images/megaprof.png" srcset="/temp-images/megaprof.png 1x, /temp-images/megaprof@2x.png 2x" width="170"
+                <img src="/temp-images/megaprof.png" width="170"
                          alt="Cours particuliers avec Megaprof"/>
                 </a>
             </div>
