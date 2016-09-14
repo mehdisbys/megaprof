@@ -33,3 +33,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ` mysql.server start`
 ` ./dumps/apply.sh `
 ` php artisan serve &`
+`./startm.sh`
