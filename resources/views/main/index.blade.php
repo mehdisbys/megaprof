@@ -2,7 +2,7 @@
 
 @section('content')
     {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
-    {!! HTML::style("js/awesomplete/awesomplete.css") !!}
+    {!! HTML::style("temp-css/awesomplete.css") !!}
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
     {!! HTML::script("js/locationpicker.jquery.js") !!}
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
@@ -10,27 +10,32 @@
 
 <div class="home-search">
     <div class="home-search-form-inner autocomplete awesomplete">
-        {!! Form::open(['url' => '/search', 'id' => 'search_form']) !!}
+<form action="/search" id="search_form">
         {!! csrf_field() !!}
 
-      {!! Form::input('text', 'subject', $selectedSubject,
-          [ 'class' => 'awesomplete home-search-input autocomplete-input',
-              'placeholder' => 'Ques souhaitez-vous apprendre ?',
-              'data-minchars' => 1,
-              'data-autofirst' => true,
-              'data-list' => $subsubjects,
-              'style' => 'width:100%;',
-              'id' => 'subject_input'
-          ])
-      !!}
-    <button class="home-search-submit" type="submit"></button>
-    <ul hidden="">
-        <li aria-selected="true">holder</li>
-    </ul>
+<div class="anouncement-field-wrapper">
+    <input
+                id="subject_input"
+                class="awesomplete anoucement-search-input autocomplete-input" 
+                placeholder="Que souhaitez-vous apprendre ?"
+                data-minchars="1"
+                data-autofirst="true"
+                data-list="{!! $subsubjects !!}" 
+                name="subject"
+                type="text"
+                autocomplete="off"
+                aria-autocomplete="list"/>
+
+</div>
+    <button class="home-search-submit button" type="submit">Submit</button>
 </div>
 
-    <div class="">
-        {!! Form::open(['url' => '/search', 'id' => 'search_form2']) !!}
+</form>
+
+<div class="">
+<form action="/search" id="search_form2">
+
+        {!! csrf_field() !!}
         <div class="">
             <div id="radius_input" class="no-visibility">
                 <h3> Je peux me déplacer dans un rayon de </h3>
@@ -78,20 +83,17 @@
             <div class="topmargin-lg"></div>
 
             <div id="subject" class="button button-3d button-small button-rounded button-aqua no-visibility">Subject</div>
+
             <div id="city" class="button button-3d button-small button-rounded button-yellow no-visibility">City</div>
+
             <div id="radius" class="button button-3d button-small button-rounded button-amber no-visibility">Radius</div>
         </div>
 
-        <div >
-            <span>
-                <button type="submit" class="button button-3d button-small button-rounded button-green pull-right">
-                    <span class="icon-search3">Submit</span>
-                </button>
-            </span>
+        <div>
+                <button type="submit" class="button "> Submit </button>
         </div>
-        {!! Form::close() !!}
-    </div>
-
+    </form>
+</div>
 
 <div class="section section-odd home-profs">
   <div class="wrapper">
@@ -161,10 +163,10 @@
  * */
 
 $(document).ready(function () {
-            function updatePage(data) {
-              $("#count_text").html(data.count);
-                $("#search_results").html(data.results);
-                updateForm(data);
+    function updatePage(data) {
+        $("#count_text").html(data.count);
+        $("#search_results").html(data.results);
+        updateForm(data);
             }
 
             function updateForm(data) {
@@ -206,8 +208,8 @@ $(document).ready(function () {
                 var subject = $(".autocomplete-input").val();
                 var token =  $("[name='_token']").val();
                 if (subject.length < 2 ) return;
-                    $.post('/search', {'subject': subject, '_token': token}, function (data) {
-                        updatePage(data);
+                $.post('/search', {'subject': subject, '_token': token}, function (data) {
+                    updatePage(data);
                     });
             });
 
