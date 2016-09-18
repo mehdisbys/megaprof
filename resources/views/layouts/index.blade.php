@@ -2,7 +2,7 @@
 
 @section('content')
   {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
-  {!! HTML::style("js/awesomplete/awesomplete.css") !!}
+  {!! HTML::style("temp-css/awesomplete.css") !!}
   {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
   {!! HTML::script("js/locationpicker.jquery.js") !!}
   {!! HTML::script("js/jquery.geocomplete.min.js") !!}

@@ -4489,6 +4489,9 @@ ul.profil_statut li span.verified:before {
     position: relative
 }
 
+.home-search-field-wrapper {
+    position: relative;
+}
 
 .home-search-button-wrapper .button {
     padding: 18px;
@@ -5151,6 +5154,14 @@ ul.profil_statut li span.verified:before {
     }
     .home-search-form {
         width: 87.5%
+    }
+
+    .home-search-field-wrapper {
+        width: 100%;
+    }
+
+    .home-search-button-wrapper .button {
+        padding: 18px;
     }
     .home-search-input {
         padding-left: 12px;
