@@ -984,7 +984,22 @@ a.component-pagination-item:hover {
     background-position: -440px -120px;
     margin-left: 5px
 }
+
 @media all and (max-width: 980px) {
+
+    .home-search-field-wrapper {
+        margin-bottom: 10px;
+        display: inline-block;
+        clear: both;
+    }
+    .home-search-button-wrapper {
+        display: inline-block;
+    }
+    .home-search-button-wrapper .button {
+        padding: 18px;
+        width: 100%;
+    }
+
     .component-pagination {
         position: relative
     }
@@ -2147,7 +2162,22 @@ a.component-pagination-item:hover {
     background-color: #4d585d;
     color: #fff
 }
+/* desktop
+ */
 @media all and (min-width: 980px) {
+
+.home-search-field-wrapper {
+    width: calc((100% - 120px) / 2);
+    margin-right: 10px;
+    display: inline-block;
+}
+.home-search-button-wrapper {
+    display: inline-block;
+}
+.home-search-button-wrapper .button {
+    padding: 18px;
+}
+
     .component-search-results.min.double {
         font-size: 0
     }
@@ -2184,6 +2214,7 @@ a.component-pagination-item:hover {
         height: auto
     }
 }
+
 @media all and (max-width: 980px) {
     .component-search-results .component-search-result {
         width: 100%;
@@ -2366,6 +2397,7 @@ a.component-pagination-item:hover {
         color: #fff
     }
 }
+
 .component-search-results-list .component-search-results {
     list-style: none;
     padding-left: 0;
@@ -4441,6 +4473,7 @@ ul.profil_statut li span.verified:before {
         white-space: nowrap
     }
 }
+
 .home-search {
     padding: 65px;
     background-image: url("/temp-images/backgrounds/home-search.jpg");
@@ -4449,11 +4482,16 @@ ul.profil_statut li span.verified:before {
     background-position: center
 }
 .home-search-form {
-    max-width: 570px;
-    margin: 0 auto
+    max-width: 80%;
+    margin: 0 auto;
 }
 .home-search-form-inner {
     position: relative
+}
+
+
+.home-search-button-wrapper .button {
+    padding: 18px;
 }
 .home-search-input {
     padding: 17px 77px 17px 23px;
@@ -5183,7 +5221,7 @@ ul.profil_statut li span.verified:before {
         border-top-right-radius: 4px;
         -webkit-border-bottom-right-radius: 4px;
         border-bottom-right-radius: 4px;
-        background-image: url("/temp-images/pictos/dropdown.png");
+        background-image: url("/temp-images/dropdown.png");
         background-repeat: no-repeat;
         background-position: center;
         -webkit-background-size: 10px 7px;
@@ -5365,6 +5403,7 @@ ul.profil_statut li span.verified:before {
 #landing-intro .landing-intro-col-right .button {
     width: 100%
 }
+
 @media all and (max-width: 980px) {
     #landing-intro {
         padding: 30px 0
@@ -5377,6 +5416,7 @@ ul.profil_statut li span.verified:before {
         display: none
     }
 }
+
 #landing-results {
     padding-top: 15px;
     padding-bottom: 30px

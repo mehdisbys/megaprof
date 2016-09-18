@@ -12,25 +12,34 @@
   <h1 class="search-title">Trouvez le professeur parfait</h1>
 
     <div class="home-search-form-inner autocomplete">
-      {!! Form::open(['url' => '/search', 'id' => 'search_form', 'class' =>"home-search-form autocomplete-form" ]) !!}
+    <form action="/search" id="search_form" class="home-search-form autocomplete-form">
       {!! csrf_field() !!}
-
-        <div class="awesomplete">
-
-            <input  id="subject_input" class="awesomplete home-search-input autocomplete-input" placeholder="Que souhaitez-vous apprendre ?" data-minchars="1" data-autofirst="1"
-            data-list="{!! $subsubjects !!}" name="subject" type="text" autocomplete="off" aria-autocomplete="list"/>
-
-            <span class="visually-hidden" role="status" aria-live="assertive" aria-relevant="additions">FCE</span>
+        <div class="home-search-field-wrapper">
+            <input
+                id="subject_input"
+                class="awesomplete home-search-input autocomplete-input" 
+                placeholder="Que souhaitez-vous apprendre ?"
+                data-minchars="1"
+                data-autofirst="1"
+                data-list="{!! $subsubjects !!}" 
+                name="subject"
+                type="text"
+                autocomplete="off"
+                aria-autocomplete="list"/>
         </div>
 
-        <div class="awesomplete">
-            <input id="location_input" class="home-search-input" placeholder="Location please" name="subject" type="text" />
+        <div class="home-search-field-wrapper">
+            <input id="location_input"
+                class="home-search-input"
+                placeholder="Location please" 
+                name="subject" type="text" />
         </div>
 
-      <div class="home-search-results autocomplete-results"></div>
-      <button id="submit-btn" class="" type="submit"> submit</button>
-    </div>
-  </form>
+        <div class="home-search-button-wrapper">
+            <button id="submit-btn" class="button" type="submit"> submit</button>
+        </div>
+        </div>
+    </form>
 <script> 
 
 $(document).ready(function () {
