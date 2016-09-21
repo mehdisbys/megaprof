@@ -6,17 +6,19 @@
 
 - [x] Have 2 search fields : subjects and location
 
-- [ ] Have a slider to select the radius
+- [x] Have a slider to select the radius
 
 - [x] Remove blue breadcrumbs
 
 - [x] Fix link to individual advert page
 
-- [ ] Sorting drop down : by date, by price, by radius
+- [x] Sorting drop down : by date, by price, by radius
 
 - [ ] Link location form field to google maps
 
 - [ ] Pagination (backend)
+
+- [x] Fixing price layout
 
 
 - [ ] Layout the adverts
