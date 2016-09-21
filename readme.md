@@ -1,6 +1,8 @@
 ### TODO
 
-- [ ] Have a summary of the search parameters at the top to results page
+- [x] Have a summary of the search parameters at the top to results page
+	- need variables from the backend, template string is been implemented
+
 
 - [x] Have 2 search fields : subjects and location
 
@@ -8,7 +10,7 @@
 
 - [x] Remove blue breadcrumbs
 
-- [ ] Fix link to individual advert page
+- [x] Fix link to individual advert page
 
 - [ ] Sorting drop down : by date, by price, by radius
 

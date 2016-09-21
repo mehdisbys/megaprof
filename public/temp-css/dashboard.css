@@ -1354,7 +1354,9 @@ a.component-pagination-item:hover {
     }
 }
 .component-profile-sidebar {
-    width: 200px
+    @include clearfix;
+    width: 200px;
+    clear: both;
 }
 .component-profile-sidebar .component-profile-section {
     margin-bottom: 10px;
@@ -1362,18 +1364,25 @@ a.component-pagination-item:hover {
     -webkit-border-radius: 5px;
     border-radius: 5px
 }
-.component-profile-sidebar .component-profile-author-profile {
+
+.profile-author-profile {
     position: relative;
-    height: 200px;
-    width: 200px
+    width: 200px;
+    float: left;
 }
-.component-profile-sidebar .component-profile-author-profile img {
+.profile-author-description {
+    position: relative;
+    width: calc(100% - 240px);
+    float: right;
+}
+
+.component-profile-author-profile img {
     min-height: 100%;
     min-width: 100%;
     -webkit-border-radius: 5px;
     border-radius: 5px
 }
-.component-profile-sidebar .component-profile-author-profile .component-profile-author-profile-content {
+.component-profile-author-profile .component-profile-author-profile-content {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1382,24 +1391,24 @@ a.component-pagination-item:hover {
     z-index: 2;
     color: #fff
 }
-.component-profile-sidebar .component-profile-author-profile .component-profile-author-profile-content ul {
+.component-profile-author-profile .component-profile-author-profile-content ul {
     position: relative;
     top: 4px;
     margin: 0
 }
-.component-profile-sidebar .component-profile-author-profile .component-profile-author-profile-content .rating li.star-full {
+.component-profile-author-profile .component-profile-author-profile-content .rating li.star-full {
     margin-left: 0
 }
-.component-profile-sidebar .component-profile-author-profile .component-profile-author-profile-content .component-profile-author-rating {
+.component-profile-author-profile .component-profile-author-profile-content .component-profile-author-rating {
     font-size: 14px
 }
-.component-profile-sidebar .component-profile-author-profile .component-profile-author-profile-content .component-profile-author-name {
+.component-profile-author-profile .component-profile-author-profile-content .component-profile-author-name {
     font-size: 18px
 }
-.component-profile-sidebar .component-profile-author-profile .component-profile-author-profile-content .component-profile-author-status {
+.component-profile-author-profile .component-profile-author-profile-content .component-profile-author-status {
     font-size: 14px
 }
-.component-profile-sidebar .component-profile-author-profile:before {
+.component-profile-author-profile:before {
     content: '';
     position: absolute;
     top: 0;
@@ -1413,7 +1422,7 @@ a.component-pagination-item:hover {
     -webkit-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px
 }
-.component-profile-sidebar .component-profile-author-profile.verified:after {
+.component-profile-author-profile.verified:after {
     background: url("/temp-images/sprite.png") no-repeat transparent;
     background-position: -440px -360px;
     content: '';
@@ -4475,7 +4484,7 @@ ul.profil_statut li span.verified:before {
 }
 
 .home-search {
-    padding: 65px;
+    padding: 20px 65px;
     background-image: url("/temp-images/backgrounds/home-search.jpg");
     -webkit-background-size: cover;
     background-size: cover;
@@ -5385,42 +5394,11 @@ ul.profil_statut li span.verified:before {
     font-size: 12px;
     vertical-align: top
 }
-#landing-intro .landing-intro-col-left {
-    width: 465px;
-    color: #fff
+.row {
+    margin-top: 10px;
 }
-#landing-intro .landing-intro-col-left ul {
-    margin: 0;
-    padding: 0;
-    list-style: none
-}
-#landing-intro .landing-intro-col-left li {
-    margin-top: 35px
-}
-#landing-intro .landing-intro-col-left li:first-child {
-    margin-top: 0px
-}
-#landing-intro .landing-intro-col-left p {
-    margin: 0;
-    font-size: 12px
-}
-#landing-intro .landing-intro-col-right {
-    width: 310px;
-    margin-left: 205px
-}
-#landing-intro .landing-intro-col-right .title {
-    text-align: center
-}
-#landing-intro .landing-intro-col-right .row {
-    margin-top: 10px
-}
-#landing-intro .landing-intro-col-right .row:first-child {
+.row:first-child {
     margin-top: 0
-}
-#landing-intro .landing-intro-col-right input,
-#landing-intro .landing-intro-col-right select,
-#landing-intro .landing-intro-col-right .button {
-    width: 100%
 }
 
 @media all and (max-width: 980px) {
@@ -9046,6 +9024,7 @@ ul.profil_statut li span.verified:before {
     right: 0;
     color: #777
 }
+
 .recommandation-author {
     padding: 0 10px;
     font-size: 16px;

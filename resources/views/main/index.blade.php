@@ -6,8 +6,8 @@
 {!! HTML::script("js/locationpicker.jquery.js") !!}
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
-
 <div class="home-search">
+<h2> Search results for {!! 'Mathématiques' !!} within {!! 'paris' !!}</h2>
   <div class="home-search-form-inner autocomplete awesomplete">
     <div class="">
       <form action="/search" id="search_form2">
