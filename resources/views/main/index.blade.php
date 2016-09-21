@@ -7,10 +7,10 @@
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
 <div class="home-search">
-<h2> Search results for {!! 'Mathématiques' !!} within {!! 'paris' !!}</h2>
+  <h2> Search results for {!! 'Mathématiques' !!} within {!! 'paris' !!}</h2>
   <div class="home-search-form-inner autocomplete awesomplete">
     <div class="">
-      <form action="/search" id="search_form2">
+      <form action="/search" method="post" id="search_form2">
         {!! csrf_field() !!}
         <div class="home-search-field-wrapper">
           <input
@@ -39,19 +39,10 @@
     <div class="radius-group">
       <div id="radius_input" class="no-visibility">
         <h3> Je peux me déplacer dans un rayon de </h3>
-        <div class="clearfix"></div>
-        <label class="search-radio">
-          <input name="radius" value="1" type="radio"/> 5 km
-        </label>
-        <label class="search-radio">
-          <input name="radius" value="2" type="radio"/> 10 km
-        </label>
-        <label class="search-radio">
-          <input name="radius" value="3" type="radio"/> 20 km
-        </label>
-        <label class="search-radio">
-          <input name="radius" value="4" type="radio"/> Uniquement à domicile
-        </label>
+        <div class="sorting-field">
+          <label>Select radius</label>
+          <input type="range"/>
+        </div>
       </div>
       <div id="teacher_gender" class="topmargin-sm">
         <h3>Je préfère un professeur:</h3>
@@ -72,20 +63,27 @@
         {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
         {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
       </div>
-    </div>
-  </form>
+        </div>
+   </form>
 </div>
 
 <div class="section section-odd home-profs">
   <div class="wrapper">
+    <div class="sorting-field">
+      <label>Sort by</label>
+      <select name="sorting">
+        <option value="date">Date</option>
+        <option value="price">Price</option>
+        <option value="distance">Distance</option>
+      </select>
+    </div>
     <div class="home-profs-items-container">
       <ul class="home-profs-items inline-block-grid filters-results"></ul>
-
       <!-- optional to show advert count  -->
       @if(count($adverts) == 0)
       <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres options</div>
       @else
-      <div id="count_results" class="topmargin-sm bottommargin-sm">
+      <div class="count_results" class="topmargin-sm bottommargin-sm">
         <span id="count_text">{{ count($adverts) }} Items found</span>
       </div>
       <div id="search_results">
@@ -105,81 +103,81 @@
 </div>
 <script>
   /**
- * TODO -- refactor javascript
- * there is a bit too much going on here
- *
- * */
+   * TODO -- refactor javascript
+   * there is a bit too much going on here
+   *
+   * */
 $(document).ready(function () {
-    function updatePage(data) {
-        $("#count_text").html(data.count);
-        $("#search_results").html(data.results);
-        updateForm(data);
-            }
+  function updatePage(data) {
+    $("#count_text").html(data.count);
+    $("#search_results").html(data.results);
+    updateForm(data);
+  }
 
-            function updateForm(data) {
-                if(data.params.selectedSubject) {
-                    $("#subject").html(data.params.selectedSubject);
-                    makeVisible(['subject','city_input']);
-                    makeInvisible(['subject_input']);
-                }
+  function updateForm(data) {
+    if(data.params.selectedSubject) {
+      $("#subject").html(data.params.selectedSubject);
+      makeVisible(['subject','city_input']);
+      makeInvisible(['subject_input']);
+    }
 
-                if(data.params.city) {
-                    $("#city").html(data.params.city);
-                    makeVisible(['city','radius_input']);
-                    makeInvisible(['city_input']);
-                }
+    if(data.params.city) {
+      $("#city").html(data.params.city);
+      makeVisible(['city','radius_input']);
+      makeInvisible(['city_input']);
+    }
 
-                if(data.params.selectedRadius) {
-                    $("#radius").html(data.params.selectedRadius);
-                    makeVisible(['radius']);
-                    makeInvisible(['radius_input']);
-                }
-            }
+    if(data.params.selectedRadius) {
+      $("#radius").html(data.params.selectedRadius);
+      makeVisible(['radius']);
+      makeInvisible(['radius_input']);
+    }
+  }
 
-            // helpers
-            function makeVisible(selectors) {
-                selectors.map(function (item) {
-                    $('#' + item).removeClass('no-visibility');
-                });
-            }
+  // helpers
+  function makeVisible(selectors) {
+    selectors.map(function (item) {
+      $('#' + item).removeClass('no-visibility');
+    });
+  }
 
-            function makeInvisible(selectors)
-            {
-                selectors.map(function (item) {
-                    $('#' + item).addClass('no-visibility');
-                });
-            }
+  function makeInvisible(selectors)
+  {
+    selectors.map(function (item) {
+      $('#' + item).addClass('no-visibility');
+    });
+  }
 
-            $(".home-search-submit").click(function (event) {
-                event.preventDefault();
-                var subject = $(".autocomplete-input").val();
-                var token =  $("[name='_token']").val();
-                if (subject.length < 2 ) return;
-$.post('/search', {'subject': subject, '_token': token}, function (data) {
-  updatePage(data);
-});
-            });
+  $(".home-search-submit").click(function (event) {
+    event.preventDefault();
+    var subject = $(".autocomplete-input").val();
+    var token =  $("[name='_token']").val();
+    if (subject.length < 2 ) return;
+    $.post('/search', {'subject': subject, '_token': token}, function (data) {
+      updatePage(data);
+    });
+  });
 
-$('#subject').on('click', function(){
-  $(this).addClass('no-visibility');
-  makeVisible(['subject_input']);
-  makeInvisible(['city_input', 'radius_input']);
+  $('#subject').on('click', function(){
+    $(this).addClass('no-visibility');
+    makeVisible(['subject_input']);
+    makeInvisible(['city_input', 'radius_input']);
   });
 
   $('#city').on('click', function(){
     $(this).addClass('no-visibility');
     makeVisible(['city_input']);
     makeInvisible(['subject_input', 'radius_input']);
-    });
+  });
 
-    $('#radius').on('click', function(){
-      $(this).addClass('no-visibility');
-      makeVisible(['radius_input']);
-      makeInvisible(['subject_input', 'city_input']);
-      });
+  $('#radius').on('click', function(){
+    $(this).addClass('no-visibility');
+    makeVisible(['radius_input']);
+    makeInvisible(['subject_input', 'city_input']);
+  });
 
-      // Geocompletion
-      $('#city_input').geocomplete({types: ['(cities)'], details: ".location-details", });
-    });
+  // Geocompletion
+  $('#city_input').geocomplete({types: ['(cities)'], details: ".location-details", });
+});
 </script>
 @endsection

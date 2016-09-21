@@ -10526,7 +10526,15 @@ a.traduction_annonce {
     }
 }
 
+.count_results {
+    font-size: 2em;
+}
+
 .radius-group {
     background: rgba(200,200,200,0.5);
     padding: 20px;
+}
+
+.sorting-field {
+    float: right;
 }
