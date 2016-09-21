@@ -1,27 +1,25 @@
 ### TODO
 
-[] Have a summary of the search parameters at the top to results page
+- [ ] Have a summary of the search parameters at the top to results page
 
-[] Have 2 search fields : subjects and location
+- [x] Have 2 search fields : subjects and location
 
-[] Have a slider to select the radius
+- [ ] Have a slider to select the radius
 
-[] Remove blue breadcrumbs
+- [x] Remove blue breadcrumbs
 
-[] Fix link to individual advert page
+- [ ] Fix link to individual advert page
 
-[] Sorting drop down : by date, by price, by radius
+- [ ] Sorting drop down : by date, by price, by radius
 
-[] Link location form field to google maps
+- [ ] Link location form field to google maps
 
-[] Pagination (backend)
-
-
-
-[] Layout the adverts
+- [ ] Pagination (backend)
 
 
-[] Apply styling to single page advert
+- [ ] Layout the adverts
+
+- [ ] Apply styling to single page advert
 
 ### NOTE:
 
