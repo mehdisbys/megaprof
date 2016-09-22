@@ -1,29 +1,23 @@
 ### TODO
 
 - [x] Have a summary of the search parameters at the top to results page
-	- need variables from the backend, template string is been implemented
-
-
 - [x] Have 2 search fields : subjects and location
-
 - [x] Have a slider to select the radius
-
 - [x] Remove blue breadcrumbs
-
 - [x] Fix link to individual advert page
-
 - [x] Sorting drop down : by date, by price, by radius
-
-- [ ] Link location form field to google maps
-
-- [ ] Pagination (backend)
-
 - [x] Fixing price layout
-
-
-- [ ] Layout the adverts
-
+- [x] Layout the adverts
+- [ ] Need variables from the backend, for search summary
+- [ ] Link location form field to google maps
+- [ ] Pagination (backend)
 - [ ] Apply styling to single page advert
+- [ ] Second tab on dashboard after login needs a bit of magic
+- [ ] Have a simpler front page
+- [ ] Backend to provide featured/latest teachers
+- [ ] Backend to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
+- [ ] "Trouvez votre professeur" button to link to search form page '/annonces'
+
 
 ### NOTE:
 
