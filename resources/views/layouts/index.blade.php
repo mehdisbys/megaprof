@@ -82,37 +82,6 @@ $(document).ready(function () {
 </div>
 <div class="section section-odd home-profs">
   <div class="wrapper">
-    <div class="filters">
-      <div class="home-profs-filters inline-block-grid filters-buttons">
-        <button class="home-profs-filter" type="button" data-filter="#82b8eb">
-          <span class="category-marker" style="color:#82b8eb;"> </span>Scolaire
-        </button>
-        <button class="home-profs-filter" type="button" data-filter="#ffd267">
-          <span class="category-marker" style="color:#ffd267;"> </span>Langues
-        </button>
-        <button class="home-profs-filter" type="button" data-filter="#e88f67">
-          <span class="category-marker" style="color:#e88f67;"> </span>Musique
-        </button>
-        <button class="home-profs-filter" type="button" data-filter="#8743d1">
-          <span class="category-marker" style="color:#8743d1;"> </span>Sports
-        </button>
-        <button class="home-profs-filter" type="button" data-filter="#ff328e">
-          <span class="category-marker" style="color:#ff328e;"> </span>Art & loisirs
-        </button>
-        <button class="home-profs-filter active" type="button"><span
-            class="category-marker neutral"> </span>Tous
-        </button>
-      </div>
-      <div class="home-profs-filters-dropdown">
-        <select class="filters-dropdown">
-          <option>Tous</option>
-          <option value="#82b8eb">Scolaire</option>
-          <option value="#ffd267">Langues</option>
-          <option value="#e88f67">Musique</option>
-          <option value="#8743d1">Sports</option>
-          <option value="#ff328e">Art & loisirs</option>
-        </select>
-      </div>
       <div class="home-profs-items-container">
         <ul class="home-profs-items inline-block-grid filters-results"></ul>
         <ul class="filters-items-wrapper">
@@ -193,7 +162,7 @@ $(document).ready(function () {
     <p class="align-center">Sélectionnez vous-même et librement vos professeurs parmi plus de 250 000
       profils vérifiés et recommandés.</p>
     <div class="align-center">
-      <button class="button a-js" type="button" data-href="/search.html">Trouvez votre professeur</button>
+      <a class="button a-js" href="/annonces">Trouvez votre professeur</a>
     </div>
   </div>
 </div>

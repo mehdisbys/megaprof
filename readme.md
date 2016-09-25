@@ -8,6 +8,8 @@
 - [x] Sorting drop down : by date, by price, by radius
 - [x] Fixing price layout
 - [x] Layout the adverts
+- [x] "Trouvez votre professeur" button to link to search form page '/annonces'
+
 - [ ] Need variables from the backend, for search summary
 - [ ] Link location form field to google maps
 - [ ] Pagination (backend)
@@ -16,7 +18,6 @@
 - [ ] Have a simpler front page
 - [ ] Backend to provide featured/latest teachers
 - [ ] Backend to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
-- [ ] "Trouvez votre professeur" button to link to search form page '/annonces'
 
 
 ### NOTE:
