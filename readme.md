@@ -1,15 +1,5 @@
 ### TODO
 
-- [x] Have a summary of the search parameters at the top to results page
-- [x] Have 2 search fields : subjects and location
-- [x] Have a slider to select the radius
-- [x] Remove blue breadcrumbs
-- [x] Fix link to individual advert page
-- [x] Sorting drop down : by date, by price, by radius
-- [x] Fixing price layout
-- [x] Layout the adverts
-- [x] "Trouvez votre professeur" button to link to search form page '/annonces'
-
 - [ ] Need variables from the backend, for search summary
 - [ ] Link location form field to google maps
 - [ ] Pagination (backend)
