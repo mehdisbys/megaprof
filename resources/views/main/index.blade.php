@@ -2,7 +2,7 @@
 @section('content')
 {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
 {!! HTML::style("temp-css/awesomplete.css") !!}
-{!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
+{!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
 {!! HTML::script("js/locationpicker.jquery.js") !!}
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
@@ -178,7 +178,7 @@ $(document).ready(function () {
   });
 
   // Geocompletion
-  $('#city_input').geocomplete({types: ['(cities)'], details: ".location-details", });
+  $('#location_input').geocomplete({types: ['(cities)'], details: ".location-details", });
 });
 </script>
 @endsection
