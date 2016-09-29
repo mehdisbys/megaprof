@@ -7,7 +7,7 @@
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
 <div class="home-search">
-  <h2> Search results for {!! 'Mathématiques' !!} within {!! 'paris' !!}</h2>
+  <h2> <span id="search_result_text"></span> <span id="search_subject"></span> <span id="search_city"></span></h2>
   <div class="home-search-form-inner autocomplete awesomplete">
     <div class="">
       <form action="/search" method="post" id="search_form2">
@@ -111,6 +111,13 @@ $(document).ready(function () {
   function updatePage(data) {
     $("#count_text").html(data.count);
     $("#search_results").html(data.results);
+    $("#search_subject").html(data.params.selectedSubject);
+
+    if (data.params.city)
+      $("#search_city").html('à ' + data.params.city);
+
+    $("#search_result_text").html("Résultats de recherche pour ");
+
     updateForm(data);
   }
 

@@ -94,7 +94,7 @@ class Advert extends Model implements SluggableInterface
         if ($radius)
             $query->having('distance', '<', $radius);
 
-        if ($advertIds) {
+        if (isset($advertIds)) {
             $query->whereIn('id', $advertIds);
         }
 
