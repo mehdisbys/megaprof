@@ -13,6 +13,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'ListAdvertController@index');
     Route::get('/annonces', 'ListAdvertController@allAdverts');
     Route::get('/annonces/{subject}/{town}', 'ListAdvertController@searchByURL');
+    Route::get('/annonces/{subject}', 'ListAdvertController@searchByURL');
 
     Route::post('/search', 'ListAdvertController@search');
 

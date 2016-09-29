@@ -15,7 +15,7 @@
         <div class="home-search-field-wrapper">
           <input
           id="subject_input"
-          class="awesomplete home-search-input autocomplete-input" 
+          class="awesomplete home-search-input autocomplete-input-subject"
           placeholder="Que souhaitez-vous apprendre ?"
           data-minchars="1"
           data-autofirst="1"
@@ -27,11 +27,11 @@
         </div>
         <div class="home-search-field-wrapper">
           <input id="location_input"
-          class="home-search-input"
-          placeholder="Location please" 
-          name="subject" type="text" />
+          class="home-search-input autocomplete-input-city"
+          placeholder="Ville où le cours a lieu"
+          name="city" type="text" />
         </div>
-        <div class="home-search-button-wrapper">
+        <div class="home-search-button-wrapper home-search-submit">
           <button id="submit-btn" class="button" type="submit"> submit</button>
         </div>
       </div>
@@ -150,10 +150,11 @@ $(document).ready(function () {
 
   $(".home-search-submit").click(function (event) {
     event.preventDefault();
-    var subject = $(".autocomplete-input").val();
+    var subject = $(".autocomplete-input-subject").val();
+    var city = $(".autocomplete-input-city").val();
     var token =  $("[name='_token']").val();
     if (subject.length < 2 ) return;
-    $.post('/search', {'subject': subject, '_token': token}, function (data) {
+    $.post('/search', {'subject': subject, 'city': city, '_token': token}, function (data) {
       updatePage(data);
     });
   });

@@ -34,7 +34,7 @@ class ListAdvertController extends Controller
         return view('main.index')->with(compact('adverts', 'subsubjects', 'selectedSubject'));
     }
 
-    public function searchByURL($subject, $city)
+    public function searchByURL($subject, $city = null)
     {
         $data                  = new \stdClass();
         $data->selectedSubject = SubSubject::where('name', $subject)->first();
@@ -75,8 +75,8 @@ class ListAdvertController extends Controller
 
         $data->subsubjects    = implode(',', SubSubject::all()->pluck('name')->toArray());
         $data->subjectId      = $subject->id;
-        $data->lat            = $request->get('lat');
-        $data->lgn            = $request->get('lng');
+        $data->lat            = $request->get('lat') ?? 33.5914950 ;
+        $data->lgn            = $request->get('lng') ?? -7.6012452;
         $data->radius         = $this->mapRadius($request->get('radius'))[0];
         $data->selectedRadius = $this->mapRadius($request->get('radius'))[1];
         $data->city           = explode(',', $request->get('city'))[0] ?? null;
