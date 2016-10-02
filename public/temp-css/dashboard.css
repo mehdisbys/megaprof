@@ -2176,7 +2176,7 @@ a.component-pagination-item:hover {
 @media all and (min-width: 980px) {
 
 .home-search-field-wrapper {
-    width: calc((100% - 120px) / 2);
+    width: calc((100% - 110px) / 2);
     margin-right: 10px;
     display: inline-block;
 }
@@ -4531,11 +4531,11 @@ ul.profil_statut li span.verified:before {
 .home-search-submit {
     display: inline-block;
     transition: background-color 0.2s ease-in;
-    padding: 18px;
+    /* padding: 18px; */
 }
 .anouncement-field-wrapper {
     display: inline-block;
-    width: calc(100% - 120px);
+    width: calc(100% - 110px);
     margin-right: 10px;
 }
 .home-search-submit:before {
