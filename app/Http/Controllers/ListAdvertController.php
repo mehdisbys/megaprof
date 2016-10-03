@@ -6,6 +6,8 @@ use App\Helpers\Contracts\SearchAdvertContract;
 use App\Models\Advert;
 use App\Models\Comment;
 use App\Models\SubSubject;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class ListAdvertController extends Controller
@@ -68,6 +70,7 @@ class ListAdvertController extends Controller
     {
         $data                  = new \stdClass();
         $data->selectedSubject = $request->get('subject');
+        $sortBy                = $request->get('sortBy') ?? 'date';
         $subject               = SubSubject::where('name', $data->selectedSubject)->first();
 
         if ($data->selectedSubject == null)
@@ -84,7 +87,15 @@ class ListAdvertController extends Controller
 
         list($adverts, $distances) = $this->engine->search($data);
 
-        $results = view('main.multipleAdvertPreview')
+        if($sortBy === 'date'){
+            $adverts = array_sort($adverts, function ($value){ return Carbon::createFromFormat("Y-m-d H:i:s",$value->updated_at)->timestamp;});
+        }
+
+        if($sortBy === 'price') {
+            $adverts = array_sort($adverts, function ($value){ return $value->price;});
+        }
+
+            $results = view('main.multipleAdvertPreview')
             ->with([
                        'adverts'         => $adverts,
                        'subsubjects'     => $data->subsubjects,

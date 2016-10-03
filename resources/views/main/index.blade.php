@@ -7,7 +7,16 @@
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
 <div class="home-search">
-  <h2> <span id="search_result_text"></span> <span id="search_subject"></span> <span id="search_city"></span></h2>
+  <h2> <span id="search_result_text">
+      @if(isset($selectedSubject))
+        {{count($adverts) > 0 ? count($adverts):'Aucun '}} résultat{{count($adverts) > 1 ? 's' : ''}} pour {{$selectedSubject->name}}
+
+        @if(isset($selectedCity))
+          {{ " à " . $selectedCity}}
+        @endif
+
+      @endif
+    </span></h2>
   <div class="home-search-form-inner autocomplete awesomplete">
     <div class="">
       <form action="/search" method="post" id="search_form2">
@@ -70,11 +79,11 @@
 <div class="section section-odd home-profs">
   <div class="wrapper">
     <div class="sorting-field">
-      <label>Sort by</label>
-      <select name="sorting">
+      <label>Trier par</label>
+      <select name="sortBy" class="autocomplete-input-sortby">
+        <option value="distance">Distance</option>
         <option value="date">Date</option>
         <option value="price">Price</option>
-        <option value="distance">Distance</option>
       </select>
     </div>
     <div class="home-profs-items-container">
@@ -84,7 +93,7 @@
       <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec d'autres options</div>
       @else
       <div class="count_results" class="topmargin-sm bottommargin-sm">
-        <span id="count_text">{{ count($adverts) }} Items found</span>
+        <span id="count_text">{{ count($adverts) }} Annonce{{count($adverts) > 1 ? 's' : ''}} trouvées</span>
       </div>
       <div id="search_results">
         @include('main.multipleAdvertPreview')
@@ -94,12 +103,7 @@
     <!-- optional to show advert count  -->
   </div>
 </div>
-<p class="align-center">Sélectionnez vous-même et librement vos professeurs parmi plus de 250 000
-  profils vérifiés et recommandés.</p>
-<div class="align-center">
-  <button class="button a-js" type="button" data-href="/search.html">Trouvez votre professeur</button>
-</div>
-  </div>
+ </div>
 </div>
 <script>
   /**
@@ -113,10 +117,20 @@ $(document).ready(function () {
     $("#search_results").html(data.results);
     $("#search_subject").html(data.params.selectedSubject);
 
+    var searchText = '';
+
     if (data.params.city)
       $("#search_city").html('à ' + data.params.city);
 
-    $("#search_result_text").html("Résultats de recherche pour ");
+    if(data.params.selectedSubject){
+      searchText = 'Résultats de recherche pour ' + data.params.selectedSubject;
+    }
+
+    if (data.params.city){
+    searchText += ' à ' +  data.params.city;
+    }
+
+    $("#search_result_text").html(searchText);
 
     updateForm(data);
   }
@@ -158,10 +172,11 @@ $(document).ready(function () {
   $(".home-search-submit").click(function (event) {
     event.preventDefault();
     var subject = $(".autocomplete-input-subject").val();
+    if (subject.length < 2 ) return;
     var city = $(".autocomplete-input-city").val();
     var token =  $("[name='_token']").val();
-    if (subject.length < 2 ) return;
-    $.post('/search', {'subject': subject, 'city': city, '_token': token}, function (data) {
+    var sortBy = $(".autocomplete-input-sortby").val();
+    $.post('/search', {'subject': subject, 'city': city, '_token': token, 'sortBy' : sortBy}, function (data) {
       updatePage(data);
     });
   });
