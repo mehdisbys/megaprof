@@ -9,7 +9,7 @@
 <div class="home-search">
   <h2> <span id="search_result_text">
       @if(isset($selectedSubject))
-        {{count($adverts) > 0 ? count($adverts):'Aucun '}} résultat{{count($adverts) > 1 ? 's' : ''}} pour {{$selectedSubject->name}}
+        {{count($adverts) > 0 ? count($adverts):'Aucun '}} Résultat{{count($adverts) > 1 ? 's' : ''}} pour {{$selectedSubject->name}}
 
         @if(isset($selectedCity))
           {{ " à " . $selectedCity}}
@@ -32,16 +32,17 @@
           name="subject"
           type="text"
           autocomplete="off"
-          aria-autocomplete="list"/>
+          aria-autocomplete="list"
+          value="{{$selectedSubject->name or ''}}" />
         </div>
         <div class="home-search-field-wrapper">
           <input id="location_input"
           class="home-search-input autocomplete-input-city"
           placeholder="Ville où le cours a lieu"
-          name="city" type="text" />
+          name="city" type="text" value="{{$selectedCity or ''}}"/>
         </div>
         <div class="home-search-button-wrapper home-search-submit">
-          <button id="submit-btn" class="button" type="submit"> submit</button>
+          <button id="submit-btn" class="button" type="submit"> Chercher</button>
         </div>
       </div>
     </div>
@@ -55,6 +56,7 @@
       </div>
       <div id="teacher_gender" class="topmargin-sm">
         <h3>Je préfère un professeur:</h3>
+
         <label class="search-radio">
           <input name="gender" value="man" type="radio"> Homme
         </label>
@@ -113,7 +115,7 @@
    * */
 $(document).ready(function () {
   function updatePage(data) {
-    $("#count_text").html(data.count);
+    $("#count_text").html(data.count + ' Annonces trouvées');
     $("#search_results").html(data.results);
     $("#search_subject").html(data.params.selectedSubject);
 
@@ -123,7 +125,7 @@ $(document).ready(function () {
       $("#search_city").html('à ' + data.params.city);
 
     if(data.params.selectedSubject){
-      searchText = 'Résultats de recherche pour ' + data.params.selectedSubject;
+      searchText = data.count + ' Résultats pour ' + data.params.selectedSubject;
     }
 
     if (data.params.city){
@@ -169,17 +171,29 @@ $(document).ready(function () {
     });
   }
 
-  $(".home-search-submit").click(function (event) {
+  var sendForm = function (event) {
     event.preventDefault();
     var subject = $(".autocomplete-input-subject").val();
     if (subject.length < 2 ) return;
     var city = $(".autocomplete-input-city").val();
     var token =  $("[name='_token']").val();
     var sortBy = $(".autocomplete-input-sortby").val();
-    $.post('/search', {'subject': subject, 'city': city, '_token': token, 'sortBy' : sortBy}, function (data) {
-      updatePage(data);
-    });
-  });
+    var gender = $("[name='gender']:checked").val();
+    $.post('/search',
+            {
+              'subject': subject,
+              'city': city,
+              '_token': token,
+              'sortBy': sortBy,
+              'gender': gender
+            },
+            function (data) {
+              updatePage(data);
+            });
+  };
+
+  $(".home-search-submit").click(sendForm);
+  $(".autocomplete-input-sortby").change(sendForm);
 
   $('#subject').on('click', function(){
     $(this).addClass('no-visibility');

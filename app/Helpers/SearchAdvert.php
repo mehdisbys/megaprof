@@ -16,6 +16,7 @@ class SearchAdvert implements SearchAdvertContract
         if (isset($data->subjectId) and !empty($data->subjectId)) {
             $advert_ids = SubjectsPerAdvert::getAllAdvertIdsForSubject($data->subjectId);
             $rawResults = Advert::searchAdvertIdsByGender($advert_ids, $data->gender ?? 'both');
+            $advert_ids = array_pluck($rawResults, 'id');
             $byLocation = $data->lgn ?? null;
 
             if ($byLocation) {

@@ -83,7 +83,7 @@ class ListAdvertController extends Controller
         $data->radius         = $this->mapRadius($request->get('radius'))[0];
         $data->selectedRadius = $this->mapRadius($request->get('radius'))[1];
         $data->city           = explode(',', $request->get('city'))[0] ?? null;
-        $data->gender         = $request->get('gender');
+        $data->gender         = $request->get('gender') ?? 'both';
 
         list($adverts, $distances) = $this->engine->search($data);
 
@@ -109,7 +109,7 @@ class ListAdvertController extends Controller
         return response()->json(
             [
                 'params'    => $data,
-                'count'     => count($adverts) . " professeurs correspondent à vos critères.",
+                'count'     => count($adverts),
                 'distances' => $distances,
                 'results'   => $results,
             ]);
