@@ -238,3 +238,7 @@ h3 {
         font-size: 14px
     }
 
+    .avatar{
+        max-width: 200px;
+    }
+

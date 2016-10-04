@@ -3,7 +3,7 @@
   <div  class="component-profile-sidebar">
     <div class="profile-author-profile">
       <h3><a href="/{{$advert->slug}}">{{ \App\Models\User::find($advert->user_id)->firstname}}</a></h3>
-      <a href="/{{$advert->slug}}"><img src="{{ getAvatar($advert->user_id) }}" alt=""/></a>
+      <a href="/{{$advert->slug}}"><img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/></a>
     </div>
   </div>
 

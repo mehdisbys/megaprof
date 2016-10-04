@@ -6,7 +6,7 @@ use Faker\Factory as Faker;
 
 class AdvertsTableSeeder extends Seeder
 {
-
+    const NUMBER_OF_ADVERTS_TO_CREATE = 10000;
 
 
     public function run()
@@ -14,17 +14,21 @@ class AdvertsTableSeeder extends Seeder
         $filename = './public/addresses.csv';
         $row = array_map('str_getcsv', file($filename));
 
-        //   \DB::table('adverts')->delete();
+       //   \DB::table('adverts')->delete();
         $faker = Faker::create('fr_FR');
 
-        for ($i = 0; $i < 19; $i++) {
+        $userIds = array_pluck(\App\Models\User::all(['id'])->toArray(), 'id');
+
+        for ($i = 0; $i < self::NUMBER_OF_ADVERTS_TO_CREATE; $i++) {
 
             $title       = $faker->sentence(12);
-            $subjectId   = $faker->numberBetween(125, 129);
+            $subjectId   = $faker->numberBetween(79, 200);
             $subjectName = \App\Models\SubSubject::find($subjectId)->name;
 
+            $addressIndex = random_int(0,19);
+
             $advertId = \DB::table('adverts')->insertGetId([
-                'user_id'                   => 6,
+                'user_id'                   => $faker->randomElement($userIds) ,
                 'slug'                      => str_slug($title, "-"),
                 'title'                     => $subjectName . " - " .$title,
                 'presentation'              => $faker->paragraph(15),
@@ -41,13 +45,13 @@ class AdvertsTableSeeder extends Seeder
                 'price_webcam'              => $faker->numberBetween(300, 700),
                 'price_more'                => '',
                 'location'                  => '',
-                'location_lat'              => $row[$i][3],
-                'location_long'             => $row[$i][4],
+                'location_lat'              => $row[$addressIndex][3],
+                'location_long'             => $row[$addressIndex][4],
                 'travel_radius'             => 1000,
-                'location_postcode'         => $row[$i][2],
-                'location_city'             => $row[$i][0],
+                'location_postcode'         => $row[$addressIndex][2],
+                'location_city'             => $row[$addressIndex][0],
                 'location_country'          => 'MA',
-                'location_street'           => $row[$i][1],
+                'location_street'           => $row[$addressIndex][1],
                 'location_house_number'     => NULL,
                 'location_more_details'     => NULL,
                 'can_receive'               => $faker->randomKey(['on', 'off']),
@@ -68,5 +72,7 @@ class AdvertsTableSeeder extends Seeder
                 ]
             );
         }
+
+        echo "Created " . self::NUMBER_OF_ADVERTS_TO_CREATE . " adverts" . PHP_EOL;
     }
 }
