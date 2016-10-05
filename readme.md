@@ -2,7 +2,8 @@
 
 - [x] Need variables from the backend, for search summary
 - [x] Link location form field to google maps
-- [ ] Pagination (backend)
+- [x] Pagination (backend)
+- [ ] Pagination styling (frontend)
 - [ ] Apply styling to single page advert
 - [ ] Second tab on dashboard after login needs a bit of magic
 - [ ] Have a simpler front page
