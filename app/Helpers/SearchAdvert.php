@@ -20,7 +20,7 @@ class SearchAdvert implements SearchAdvertContract
             $byLocation = $data->lgn ?? null;
 
             if ($byLocation) {
-                $rawResults = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius ?? null);
+                $rawResults = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius ?? null, $data->sortBy ?? 'distance');
                 $distances  = array_pluck($rawResults, 'distance', 'id');
             }
 

@@ -84,21 +84,28 @@ class Advert extends Model implements SluggableInterface
         return $this;
     }
 
-    public static function radiusSearch(array $advertIds, float $lat, float $lng, int $radius = null)
+    public static function radiusSearch(array $advertIds, float $lat, float $lng, int $radius = null, string $sortBy = 'distance')
     {
         $query = DB::table('adverts')
                    ->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
-    COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance")
-                   ->orderBy('distance', 'ASC');
+    COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
 
-        if ($radius)
+        if (isset($radius))
             $query->having('distance', '<', $radius);
 
         if (isset($advertIds)) {
             $query->whereIn('id', $advertIds);
         }
 
-        return $query->get();
+        if($sortBy === 'date'){
+            $query->orderBy('updated_at', 'ASC');
+        }
+
+        if($sortBy === 'price') {
+            $query->orderBy('price', 'ASC');
+        }
+
+        return $query->paginate(20);
     }
 
     public static function searchAdvertIdsByGender(array $advert_ids, string $gender)

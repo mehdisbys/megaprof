@@ -70,7 +70,6 @@ class ListAdvertController extends Controller
     {
         $data                  = new \stdClass();
         $data->selectedSubject = $request->get('subject');
-        $sortBy                = $request->get('sortBy') ?? 'date';
         $subject               = SubSubject::where('name', $data->selectedSubject)->first();
 
         if ($data->selectedSubject == null)
@@ -84,16 +83,9 @@ class ListAdvertController extends Controller
         $data->selectedRadius = $this->mapRadius($request->get('radius'))[1];
         $data->city           = explode(',', $request->get('city'))[0] ?? null;
         $data->gender         = $request->get('gender') ?? 'both';
+        $data->sortBy         = $request->get('sortBy') ?? 'date';
 
         list($adverts, $distances) = $this->engine->search($data);
-
-        if($sortBy === 'date'){
-            $adverts = array_sort($adverts, function ($value){ return Carbon::createFromFormat("Y-m-d H:i:s",$value->updated_at)->timestamp;});
-        }
-
-        if($sortBy === 'price') {
-            $adverts = array_sort($adverts, function ($value){ return $value->price;});
-        }
 
             $results = view('main.multipleAdvertPreview')
             ->with([
