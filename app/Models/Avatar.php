@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
+
 
 class Avatar extends Model
 {
@@ -10,7 +12,7 @@ class Avatar extends Model
     protected $table = 'avatar';
 
     protected static $defaultAvatar = 'images/question-mark-face.jpg';
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
 
     public function handleFile($name)
