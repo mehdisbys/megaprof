@@ -7,7 +7,9 @@
 - [ ] Apply styling to single page advert
 - [ ] Second tab on dashboard after login needs a bit of magic
 - [ ] Have a simpler front page
-- [ ] Backend to provide featured/latest teachers
+- [x] Backend to provide featured/latest teachers
+- [ ] Frontend to style latest teachers, currently reusing search form layout
+- [ ] Backend to provide the most popular subjects
 - [ ] Backend to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 
 
