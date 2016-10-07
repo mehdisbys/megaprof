@@ -200,4 +200,12 @@
         display: none
     }
 }
+.pagination {
+    clear: both;
+    text-align: center;
+}
 
+.pagination a {
+    display: inline-block;
+    margin-right: 10px;
+}
