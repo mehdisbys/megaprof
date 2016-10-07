@@ -32,6 +32,7 @@ class Advert extends Model implements SluggableInterface
         'on_update'       => false,
     ];
 
+    private static $paginateCount = 20;
 
     public function user()
     {
@@ -105,7 +106,7 @@ class Advert extends Model implements SluggableInterface
             $query->orderBy('price', 'ASC');
         }
 
-        return $query->paginate(20);
+        return $query->paginate(self::$paginateCount);
     }
 
     public static function searchAdvertIdsByGender(array $advert_ids, string $gender)
@@ -117,7 +118,13 @@ class Advert extends Model implements SluggableInterface
                 $q->where('gender', '=', $gender);
             });
         }
-        return $query->get();
+        return $query->paginate(self::$paginateCount);
+    }
+
+    public static function paginateCount(int $count)
+    {
+        self::$paginateCount = $count;
+
     }
 
 public function getSubjectId()

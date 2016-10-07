@@ -126,6 +126,7 @@ class ListAdvertController extends Controller
         $data->long      = $advert->location_long;
         $data->radius    = null;
 
+        Advert::paginateCount(6);
         list($adverts, $distances) = $this->engine->search($data);
         return $adverts;
     }
