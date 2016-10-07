@@ -94,8 +94,10 @@
                 <ul class="home-profs-items inline-block-grid filters-results"></ul>
                 <!-- optional to show advert count  -->
                 @if(count($adverts) == 0)
-                    <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec
-                        d'autres options
+                    <div id="search_results" class="">
+                        <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec
+                            d'autres options
+                        </div>
                     </div>
                 @else
                     <div class="count_results" class="topmargin-sm bottommargin-sm">
@@ -119,6 +121,7 @@
          *
          * */
         $(document).ready(function () {
+
             function updatePage(data) {
                 $("#count_text").html(data.count + ' Annonces trouvées');
                 $("#search_results").html(data.results);
@@ -167,7 +170,7 @@
                         return sendForm;
                     }
 
-            $(".home-search-submit").click(sendFormBy(null));
+            $(document).on('click', '.home-search-submit', sendFormBy(null));
             $(".autocomplete-input-sortby").change(sendFormBy(null));
             $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
 

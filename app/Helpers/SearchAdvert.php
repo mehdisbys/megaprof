@@ -28,42 +28,4 @@ class SearchAdvert implements SearchAdvertContract
         }
         return [null, null];
     }
-
-    public function dataFromInput()
-    {
-        $data               = new \stdClass();
-        $data->type         = Input::get('type');
-        $data->time         = Input::get('time');
-        $data->keywords     = Input::get('keywords');
-        $data->location     = Input::get('location');
-        $data->company      = Input::get('company');
-        $data->industry     = $this->__ifNotArrayMakeArray(Input::get('industry'));
-        $data->experience   = $this->__ifNotArrayMakeArray(Input::get('experience'));
-        $data->education    = $this->__ifNotArrayMakeArray(Input::get('education'));
-        $data->inputChecked = ['industry' => $data->industry, 'experience' => $data->experience, 'education' => $data->education];
-
-        return $data;
-    }
-
-    public function dataFromInputDecorated()
-    {
-        $data = $this->dataFromInput();
-
-        $data->includeAlreadyApplied = Input::has('alreadyApplied');
-
-        return $data;
-
-    }
-
-    private function __ifNotArrayMakeArray($value)
-    {
-        if (is_array($value)) return $value;
-
-        if (is_numeric($value)) return [$value];
-
-        if (empty($value)) return [];
-
-        throw new \InvalidArgumentException("value '$value' should be an integer.");
-    }
-
 }

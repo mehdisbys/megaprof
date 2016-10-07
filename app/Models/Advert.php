@@ -98,6 +98,11 @@ class Advert extends Model implements SluggableInterface
             $query->whereIn('id', $advertIds);
         }
 
+        if($sortBy === 'distance'){
+            $query->orderBy('distance', 'ASC');
+        }
+
+
         if($sortBy === 'date'){
             $query->orderBy('updated_at', 'ASC');
         }
@@ -118,13 +123,12 @@ class Advert extends Model implements SluggableInterface
                 $q->where('gender', '=', $gender);
             });
         }
-        return $query->paginate(self::$paginateCount);
+        return $query->get();
     }
 
     public static function paginateCount(int $count)
     {
         self::$paginateCount = $count;
-
     }
 
 public function getSubjectId()

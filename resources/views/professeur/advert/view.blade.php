@@ -137,7 +137,6 @@
                <i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong>
 
             </div>
-
         @endforeach
     </div>
 

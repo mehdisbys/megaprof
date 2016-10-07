@@ -3,7 +3,7 @@
 @section('content')
   {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
   {!! HTML::style("temp-css/awesomplete.css") !!}
-  {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
+  {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
   {!! HTML::script("js/locationpicker.jquery.js") !!}
   {!! HTML::script("js/jquery.geocomplete.min.js") !!}
   {!! HTML::script("js/jquery.form.min.js") !!}
@@ -17,11 +17,11 @@
         <div class="home-search-field-wrapper">
             <input
                 id="subject_input"
-                class="awesomplete home-search-input autocomplete-input" 
+                class="awesomplete home-search-input autocomplete-input"
                 placeholder="Que souhaitez-vous apprendre ?"
                 data-minchars="1"
                 data-autofirst="1"
-                data-list="{!! $subsubjects !!}" 
+                data-list="{!! $subsubjects !!}"
                 name="subject"
                 type="text"
                 autocomplete="off"
@@ -31,7 +31,7 @@
         <div class="home-search-field-wrapper">
             <input id="location_input"
                 class="home-search-input"
-                placeholder="Location please" 
+                placeholder="Ville où le cours a lieu"
                 name="subject" type="text" />
         </div>
 
@@ -39,8 +39,12 @@
             <button id="submit-btn" class="button" type="submit"> submit</button>
         </div>
         </div>
+        <div class="location-details no-visibility">
+          {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
+          {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
+        </div>
     </form>
-<script> 
+<script>
 
 $(document).ready(function () {
     $("#submit-btn").click(function (event) {
@@ -48,35 +52,26 @@ $(document).ready(function () {
         var subject = $("#subject_input").val();
         var loc = $("#location_input").val();
         if (subject.length < 2 || loc.length < 2) return;
-        url = "/annonces/" +  subject  + "/" + loc; 
-        url = url.replace(/ /g, '-'); 
+        url = "/annonces/" +  subject  + "/" + loc;
+        url = url.replace(/ /g, '-');
         window.location.assign(url);
     });
+
+  // Geocompletion
+  $('#location_input').geocomplete({types: ['(cities)'], details: ".location-details",});
 });
 
 </script>
 </div>
 <div class="section reinsurance">
   <div class="wrapper">
-    <div class="reinsurance-inner">
-      <div class="reinsurance-title">
-        <h2>Vous allez <br/> aimer apprendre</h2>
-      </div>
-      <div class="reinsurance-item measure">
-        <div class="reinsurance-item-icon"></div>
-        <h3 class="reinsurance-item-title">Sur mesure</h3>
-        <p class="reinsurance-item-description">153 212 élèves ont déjà appris avec Megaprof</p>
-      </div>
-      <div class="reinsurance-item fast">
-        <div class="reinsurance-item-icon"></div>
-        <h3 class="reinsurance-item-title">Rapide</h3>
-        <p class="reinsurance-item-description">Trouvez votre professeur dans la journée</p>
-      </div>
-      <div class="reinsurance-item economical">
-        <div class="reinsurance-item-icon"></div>
-        <h3 class="reinsurance-item-title">Économique</h3>
-        <p class="reinsurance-item-description">Travaillez en direct, sans intermédiaire</p>
-      </div>
+    <div class="col-md-7 col-md-offset-4 topmargin-sm">
+
+      <h2>Les dernières annonces publiées</h2>
+      <div class="clearfix"></div>
+        @foreach($latestAdverts as $advert)
+            @include('main.advertPreview', ['trimChar' => 150])
+        @endforeach
     </div>
   </div>
 </div>

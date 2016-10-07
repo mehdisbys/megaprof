@@ -23,8 +23,9 @@ class ListAdvertController extends Controller
     {
         $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
         $selectedSubject = null;
+        $latestAdverts = $this->latestAdverts();
 
-        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject'));
+        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'latestAdverts'));
     }
 
     public function allAdverts()
@@ -51,7 +52,6 @@ class ListAdvertController extends Controller
 
         list($adverts, $distances) = $this->engine->search($data);
 
-       // dd($distances);
 
         return view('main.index')->with(
             [
@@ -87,6 +87,7 @@ class ListAdvertController extends Controller
 
         list($adverts, $distances) = $this->engine->search($data);
 
+
             $results = view('main.multipleAdvertPreview')
             ->with([
                        'adverts'         => $adverts,
@@ -101,7 +102,7 @@ class ListAdvertController extends Controller
         return response()->json(
             [
                 'params'    => $data,
-                'count'     => count($adverts),
+                'count'     => $adverts->total(),
                 'distances' => $distances,
                 'results'   => $results,
             ]);
@@ -126,9 +127,14 @@ class ListAdvertController extends Controller
         $data->long      = $advert->location_long;
         $data->radius    = null;
 
-        Advert::paginateCount(6);
+        Advert::paginateCount(5);
         list($adverts, $distances) = $this->engine->search($data);
         return $adverts;
+    }
+
+    public function latestAdverts()
+    {
+        return Advert::orderBy('created_at','DESC')->paginate(5);
     }
 
     private function mapRadius(int $radius = null)

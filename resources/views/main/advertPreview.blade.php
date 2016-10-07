@@ -11,7 +11,7 @@
   <div class="profile-author-description">
     <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
 
-    <div id="presentation"> {{ str_limit($advert->presentation, 345) }}</div>
+    <div id="presentation"> {{ str_limit($advert->presentation, $trimChar ?? 345) }}</div>
     <p>
       <i class=""></i><strong>{{ $advert->location_city }}</strong>
       @if(isset($distances) and isset($distances[$advert->id]))
