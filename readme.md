@@ -9,7 +9,8 @@
 - [ ] Have a simpler front page
 - [x] Backend to provide featured/latest teachers
 - [ ] Frontend to style latest teachers, currently reusing search form layout
-- [ ] Backend to provide the most popular subjects
+- [x] Backend to provide the most popular subjects
+- [ ] Backend to fix facebook login
 - [ ] Backend to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 
 

@@ -67,7 +67,7 @@ class Advert extends Model implements SluggableInterface
 
     public static function liveAdverts($limit = 10)
     {
-        return self::whereNotNull('published_at')->limit($limit)->get();
+        return self::whereNotNull('published_at')->paginate($limit);
     }
 
     public function publish()

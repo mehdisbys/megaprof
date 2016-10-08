@@ -73,6 +73,16 @@ $(document).ready(function () {
             @include('main.advertPreview', ['trimChar' => 150])
         @endforeach
     </div>
+
+
+    <div class="col-md-7 col-md-offset-4 topmargin-sm">
+      <h2>Les matières les plus populaires</h2>
+      <div class="clearfix"></div>
+      @foreach($popularSubjects as $subject)
+        <div class="subject-{{$subject['subject_id']}}"> <a href="/annonces/{{$subject['name']}}">{{ $subject['name'] }}</a>  - {{$subject['count']}} annonces</div>
+      @endforeach
+    </div>
+
   </div>
 </div>
 <div class="section section-odd home-profs">

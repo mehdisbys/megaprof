@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Contracts\SearchAdvertContract;
 use App\Models\Advert;
 use App\Models\Comment;
+use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -24,8 +25,9 @@ class ListAdvertController extends Controller
         $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
         $selectedSubject = null;
         $latestAdverts = $this->latestAdverts();
+        $popularSubjects = $this->mostPopularSubjects();
 
-        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'latestAdverts'));
+        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'latestAdverts', 'popularSubjects'));
     }
 
     public function allAdverts()
@@ -87,7 +89,6 @@ class ListAdvertController extends Controller
 
         list($adverts, $distances) = $this->engine->search($data);
 
-
             $results = view('main.multipleAdvertPreview')
             ->with([
                        'adverts'         => $adverts,
@@ -135,6 +136,25 @@ class ListAdvertController extends Controller
     public function latestAdverts()
     {
         return Advert::orderBy('created_at','DESC')->paginate(5);
+    }
+
+    public function mostPopularSubjects(int $limit = 10)
+    {
+        $popularSubjects = SubjectsPerAdvert::selectRaw('subject_id, count(*) as count')
+            ->groupBy('subject_id')
+            ->orderBy('count', 'DESC')
+            ->limit($limit)
+            ->get()
+            ->toArray();
+
+        $s = SubSubject::selectRaw('name')->whereIn('id', array_pluck($popularSubjects, 'subject_id'))->get()->toArray();
+        $r = [];
+
+        foreach ($popularSubjects as $key => $value) {
+            $r[] = array_merge($value, $s[$key]);
+        }
+
+        return collect($r);
     }
 
     private function mapRadius(int $radius = null)
