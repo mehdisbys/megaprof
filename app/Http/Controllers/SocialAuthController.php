@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
 use App\Models\User;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
@@ -21,13 +22,13 @@ class SocialAuthController extends Controller
     {
         $providerUser = Socialite::driver('facebook')->user();
         $token = $providerUser->token;
-     //   dd($providerUser);
         $user = $this->createOrGetUser($providerUser);
+        $this->getAndSaveAvatar($providerUser, $user);
         Auth::login($user);
         return redirect('/mon-compte');
     }
 
-    public function createOrGetUser(\Laravel\Socialite\Two\User $providerUser)
+    public function createOrGetUser(\Laravel\Socialite\Two\User $providerUser): User
     {
         $account = User::where('facebook_id', $providerUser->id)->first();
 
@@ -38,17 +39,28 @@ class SocialAuthController extends Controller
             $user = User::where('email', $providerUser->getEmail())->first();
 
             if (!$user) {
-                $user = User::create([
-                    'firstname'    => $providerUser->getName(),
-                    'lastname'     => '',
-                    'email'        => $providerUser->getEmail(),
-                    'password'     => bcrypt(bin2hex(random_bytes(10))),
-                    'facebook_id'  => $providerUser->id,
-                    'confirmed'    => 1,
-                    'auto_created' => 1
-                ]);
+                $user = User::create(
+                    [
+                        'firstname'    => $providerUser->getName(),
+                        'lastname'     => '',
+                        'gender'       => $providerUser->user['gender'],
+                        'email'        => $providerUser->getEmail(),
+                        'password'     => bcrypt(bin2hex(random_bytes(10))),
+                        'facebook_id'  => $providerUser->id,
+                        'confirmed'    => 1,
+                        'auto_created' => 1,
+                    ]
+                );
             }
             return $user;
         }
+    }
+
+    public function getAndSaveAvatar(\Laravel\Socialite\Two\User $providerUser, User $user)
+    {
+        $avatar = Avatar::firstOrCreate(['user_id' => $user->id]);
+        $avatar->handleFacebookAvatar($providerUser->avatar_original);
+        $avatar->user_id = $user->id;
+        $avatar->save();
     }
 }
