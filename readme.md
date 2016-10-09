@@ -1,20 +1,13 @@
 ### TODO
 
-- [x] Need variables from the backend, for search summary
-- [x] Link location form field to google maps
-- [x] Pagination (backend)
-- [ ] Pagination styling (frontend)
-- [ ] Apply styling to single page advert
-- [ ] Second tab on dashboard after login needs a bit of magic
-- [ ] Have a simpler front page
-- [x] Backend to provide featured/latest teachers
-- [ ] Frontend to style latest teachers, currently reusing search form layout
-- [x] Backend to provide the most popular subjects
-- [x] Backend to fix facebook login
-- [x] Backend, import profile picture from Facebook
-- [ ] Fix google map location : it should populate the city only, not the region
-- [ ] Add facebook button to share advert before publishing
-- [ ] Backend to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
+- [ ] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout -> should be an auto-slide / carousel layout showing 3 adverts at the time
+- [ ] Frontend : style "Les matières les plus populaires" on front page, each subject should have a circle of a different color, if possible show them 5 by 5 and make them fade in and out in a loop (just css)
+- [ ] Frontend : Submit button "Chercher" in both search form should be aligned and when responsive should be centered under the two inputs
+- [ ] Frontend : Apply styling to single page advert
+- [ ] Backend : fix taking pictures via webcam functionality
+- [ ] Backend : add facebook button to share advert before publishing
+- [ ] Backend : fix google map location : it should populate the city only, not the region
+- [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 
 
 ### NOTE

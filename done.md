@@ -7,3 +7,11 @@
 - [x] Fixing price layout
 - [x] Layout the adverts
 - [x] "Trouvez votre professeur" button to link to search form page '/annonces'
+- [x] Need variables from the backend, for search summary
+- [x] Link location form field to google maps
+- [x] Pagination (backend)
+- [x] Backend to provide featured/latest teachers
+- [x] Backend to provide the most popular subjects
+- [x] Backend to fix facebook login
+- [x] Backend, import profile picture from Facebook
+- [x] Pagination styling (frontend)
