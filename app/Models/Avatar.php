@@ -27,6 +27,19 @@ class Avatar extends Model
         }
     }
 
+    public function handleFacebookAvatar($imgUrl)
+    {
+        if ($imgUrl) {
+            ini_set('allow_url_fopen', 1);
+            $img               = \Intervention\Image\Facades\Image::make($imgUrl);
+            $this->img         = $img->encode('png');
+            $this->img_cropped = $img->resize(190,190)->encode('png');
+            $this->img_name    = 'facebook_avatar';
+            $this->img_mime    = $img->mime();
+            $this->img_size    = $img->filesize();
+        }
+    }
+
     public function cropAvatar($name, array $c, $webcam = false)
     {
         if ($webcam) {
@@ -70,7 +83,7 @@ class Avatar extends Model
         $avatar = static::where(['user_id' => $user_id])->first();
 
         if ($avatar && $avatar->img_cropped != null) {
-            $response = \Response::make($avatar->img_cropped, 200);
+            $response = \Response::make($avatar->img, 200);
             $response->header('Content-Type', $avatar->img_mime);
             return $response;
         }

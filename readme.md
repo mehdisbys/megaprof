@@ -11,6 +11,7 @@
 - [ ] Frontend to style latest teachers, currently reusing search form layout
 - [x] Backend to provide the most popular subjects
 - [x] Backend to fix facebook login
+- [x] Backend, import profile picture from Facebook
 - [ ] Fix google map location : it should populate the city only, not the region
 - [ ] Add facebook button to share advert before publishing
 - [ ] Backend to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
