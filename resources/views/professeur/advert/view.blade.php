@@ -130,9 +130,9 @@
 
             <div class="col-md-4">
                 <div class="col-md-6">
-                    <img src="{{ $advert->getAvatar() }}" alt="">
+                    <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
                 </div>
-                <strong>{{$advert->user->firstname}}</strong> : {{$advert->title}}
+                <strong>{{ \App\Models\User::find($advert->user_id)->firstname}}</strong> : <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
                 <div class="clearfix"></div>
                <i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong>
 

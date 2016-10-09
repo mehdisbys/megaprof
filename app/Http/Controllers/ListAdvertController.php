@@ -125,7 +125,7 @@ class ListAdvertController extends Controller
 
         $data->subjectId = $advert->getSubjectId();
         $data->lat       = $advert->location_lat;
-        $data->long      = $advert->location_long;
+        $data->lgn      = $advert->location_long;
         $data->radius    = null;
 
         Advert::paginateCount(5);
