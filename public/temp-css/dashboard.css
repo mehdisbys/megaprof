@@ -4485,7 +4485,7 @@ ul.profil_statut li span.verified:before {
 
 .home-search {
     padding: 20px 65px;
-    background-image: url("/temp-images/backgrounds/home-search.jpg");
+    background-image: url("/temp-images/backgrounds/header-banner-bg.jpg");
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center
@@ -5396,6 +5396,7 @@ ul.profil_statut li span.verified:before {
 }
 .row {
     margin-top: 10px;
+    background-color: cornsilk;
 }
 .row:first-child {
     margin-top: 0
