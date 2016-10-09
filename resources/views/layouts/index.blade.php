@@ -36,7 +36,7 @@
         </div>
 
         <div class="home-search-button-wrapper">
-            <button id="submit-btn" class="button" type="submit"> submit</button>
+            <button id="submit-btn" class="button" type="submit"> Chercher</button>
         </div>
         </div>
         <div class="location-details no-visibility">
