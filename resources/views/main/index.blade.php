@@ -87,7 +87,7 @@
                 <select name="sortBy" class="autocomplete-input-sortby">
                     <option value="distance">Distance</option>
                     <option value="date">Date</option>
-                    <option value="price">Price</option>
+                    <option value="price">Prix</option>
                 </select>
             </div>
             <div class="home-profs-items-container">
