@@ -65,7 +65,7 @@ $(document).ready(function () {
 </div>
 <div class="section reinsurance">
   <div class="wrapper">
-    <div class="col-md-7 col-md-offset-4 topmargin-sm">
+    <div class="">
 
       <h2>Les dernières annonces publiées</h2>
       <div class="clearfix"></div>
@@ -75,7 +75,7 @@ $(document).ready(function () {
     </div>
 
 
-    <div class="col-md-7 col-md-offset-4 topmargin-sm">
+    <div class="">
       <h2>Les matières les plus populaires</h2>
       <div class="clearfix"></div>
       @foreach($popularSubjects as $subject)

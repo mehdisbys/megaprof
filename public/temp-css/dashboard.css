@@ -994,9 +994,10 @@ a.component-pagination-item:hover {
     }
     .home-search-button-wrapper {
         display: inline-block;
+        width: 100%;
     }
     .home-search-button-wrapper .button {
-        padding: 18px;
+        margin: 20px auto;
         width: 100%;
     }
 
@@ -2176,7 +2177,7 @@ a.component-pagination-item:hover {
 @media all and (min-width: 980px) {
 
 .home-search-field-wrapper {
-    width: calc((100% - 110px) / 2);
+    width: calc((100% - 140px) / 2);
     margin-right: 10px;
     display: inline-block;
 }
@@ -2185,6 +2186,7 @@ a.component-pagination-item:hover {
 }
 .home-search-button-wrapper .button {
     padding: 18px;
+    margin: 0px;
 }
 
     .component-search-results.min.double {

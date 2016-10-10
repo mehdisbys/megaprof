@@ -42,8 +42,8 @@
                                placeholder="Ville où le cours a lieu"
                                name="city" type="text" value="{{$selectedCity or ''}}"/>
                     </div>
-                    <div class="home-search-button-wrapper home-search-submit">
-                        <button id="submit-btn" class="button" type="submit"> Chercher</button>
+                    <div class="home-search-button-wrapper ">
+                        <button id="submit-btn" class="button home-search-submit" type="submit"> Chercher</button>
                     </div>
             </div>
         </div>
