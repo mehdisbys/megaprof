@@ -1,77 +1,60 @@
 @extends('layouts.master')
 
 @section('content')
-  {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
-  {!! HTML::style("temp-css/awesomplete.css") !!}
-  {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
-  {!! HTML::script("js/locationpicker.jquery.js") !!}
-  {!! HTML::script("js/jquery.geocomplete.min.js") !!}
-  {!! HTML::script("js/jquery.form.min.js") !!}
-
+{!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
+{!! HTML::style("temp-css/awesomplete.css") !!}
+{!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
+{!! HTML::script("js/locationpicker.jquery.js") !!}
+{!! HTML::script("js/jquery.geocomplete.min.js") !!}
+{!! HTML::script("js/jquery.form.min.js") !!}
+<!-- one ============= -->
 <div class="home-search">
   <h1 class="search-title">Trouvez le professeur parfait</h1>
-
-    <div class="home-search-form-inner autocomplete">
+  <div class="home-search-form-inner autocomplete">
     <form action="/search" id="search_form" class="home-search-form autocomplete-form">
       {!! csrf_field() !!}
-        <div class="home-search-field-wrapper">
-            <input
-                id="subject_input"
-                class="awesomplete home-search-input autocomplete-input"
-                placeholder="Que souhaitez-vous apprendre ?"
-                data-minchars="1"
-                data-autofirst="1"
-                data-list="{!! $subsubjects !!}"
-                name="subject"
-                type="text"
-                autocomplete="off"
-                aria-autocomplete="list"/>
-        </div>
 
-        <div class="home-search-field-wrapper">
-            <input id="location_input"
-                class="home-search-input"
-                placeholder="Ville où le cours a lieu"
-                name="subject" type="text" />
-        </div>
+      <div class="home-search-field-wrapper">
+        <input
+        id="subject_input"
+        class="awesomplete home-search-input autocomplete-input"
+        placeholder="Que souhaitez-vous apprendre ?"
+        data-minchars="1"
+        data-autofirst="1"
+        data-list="{!! $subsubjects !!}"
+        name="subject"
+        type="text"
+        autocomplete="off"
+        aria-autocomplete="list"/>
+      </div>
 
-        <div class="home-search-button-wrapper">
-            <button id="submit-btn" class="button" type="submit"> Chercher</button>
-        </div>
-        </div>
-        <div class="location-details no-visibility">
-          {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
-          {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
-        </div>
+      <div class="home-search-field-wrapper">
+        <input id="location_input"
+        class="home-search-input"
+        placeholder="Ville où le cours a lieu"
+        name="subject" type="text" />
+      </div>
+
+      <div class="home-search-button-wrapper">
+        <button id="submit-btn" class="button" type="submit"> Chercher</button>
+      </div>
+      <div class="location-details no-visibility">
+        {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
+        {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
+      </div>
     </form>
-<script>
-
-$(document).ready(function () {
-    $("#submit-btn").click(function (event) {
-        event.preventDefault();
-        var subject = $("#subject_input").val();
-        var loc = $("#location_input").val();
-        if (subject.length < 2 || loc.length < 2) return;
-        url = "/annonces/" +  subject  + "/" + loc;
-        url = url.replace(/ /g, '-');
-        window.location.assign(url);
-    });
-
-  // Geocompletion
-  $('#location_input').geocomplete({types: ['(cities)'], details: ".location-details",});
-});
-
-</script>
+  </div>
 </div>
+
+<!-- two ============= -->
 <div class="section reinsurance">
   <div class="wrapper">
-    <div class="">
 
+    <div class="">
       <h2>Les dernières annonces publiées</h2>
-      <div class="clearfix"></div>
-        @foreach($latestAdverts as $advert)
-            @include('main.advertPreview', ['trimChar' => 150])
-        @endforeach
+      @foreach($latestAdverts as $advert)
+      @include('main.advertPreview', ['trimChar' => 150])
+      @endforeach
     </div>
 
     <!-- start of components  -->
@@ -98,106 +81,105 @@ $(document).ready(function () {
     <!-- end of components  -->
   </div>
 </div>
+
+<!-- three ============= -->
 <div class="section section-odd home-profs">
   <div class="wrapper">
-      <div class="home-profs-items-container">
-        <ul class="home-profs-items inline-block-grid filters-results"></ul>
-        <ul class="filters-items-wrapper">
-
-          <li class="home-profs-item">
-            <a class="home-profs-item-anchor" href="" title="Professeur de Mathématiques à Paris">
-              <span class="home-profs-item-gradient"> </span>
-              <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
-              src="/temp-images/professeur.jpg"/>
-            </a>
-            <div class="home-profs-item-description">
-              <div class="home-profs-item-name">Professeur Name</div>
-              <div class="home-profs-item-subject">
-                <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
-              </div>
+    <div class="home-profs-items-container">
+      <ul class="filters-items-wrapper">
+        <li class="home-profs-item">
+          <a class="home-profs-item-anchor" href="/" title="Professeur de Mathématiques à Paris">
+            <span class="home-profs-item-gradient"> </span>
+            <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
+            src="/temp-images/professeur.jpg"/>
+          </a>
+          <div class="home-profs-item-description">
+            <div class="home-profs-item-name">Professeur Name</div>
+            <div class="home-profs-item-subject">
+              <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
             </div>
-          </li>
+          </div>
+        </li>
 
-          <li class="home-profs-item">
-            <a class="home-profs-item-anchor" href="" title="Professeur de Mathématiques à Paris">
-              <span class="home-profs-item-gradient"> </span>
-              <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
-              src="/temp-images/professeur.jpg"/>
-            </a>
-            <div class="home-profs-item-description">
-              <div class="home-profs-item-name">Professeur Name</div>
-              <div class="home-profs-item-subject">
-                <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
-              </div>
+        <li class="home-profs-item">
+          <a class="home-profs-item-anchor" href="/" title="Professeur de Mathématiques à Paris">
+            <span class="home-profs-item-gradient"> </span>
+            <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
+            src="/temp-images/professeur.jpg"/>
+          </a>
+          <div class="home-profs-item-description">
+            <div class="home-profs-item-name">Professeur Name</div>
+            <div class="home-profs-item-subject">
+              <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
             </div>
-          </li>
+          </div>
+        </li>
 
-          <li class="home-profs-item">
-            <a class="home-profs-item-anchor" href="" title="Professeur de Mathématiques à Paris">
-              <span class="home-profs-item-gradient"> </span>
-              <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
-              src="/temp-images/professeur.jpg"/>
-            </a>
-            <div class="home-profs-item-description">
-              <div class="home-profs-item-name">Professeur Name</div>
-              <div class="home-profs-item-subject">
-                <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
-              </div>
+        <li class="home-profs-item">
+          <a class="home-profs-item-anchor" href="/" title="Professeur de Mathématiques à Paris">
+            <span class="home-profs-item-gradient"> </span>
+            <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
+            src="/temp-images/professeur.jpg"/>
+          </a>
+          <div class="home-profs-item-description">
+            <div class="home-profs-item-name">Professeur Name</div>
+            <div class="home-profs-item-subject">
+              <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
             </div>
-          </li>
+          </div>
+        </li>
 
-          <li class="home-profs-item">
-            <a class="home-profs-item-anchor" href="" title="Professeur de Mathématiques à Paris">
-              <span class="home-profs-item-gradient"> </span>
-              <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
-              src="/temp-images/professeur.jpg"/>
-            </a>
-            <div class="home-profs-item-description">
-              <div class="home-profs-item-name">Professeur Name</div>
-              <div class="home-profs-item-subject">
-                <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
-              </div>
+        <li class="home-profs-item">
+          <a class="home-profs-item-anchor" href="/" title="Professeur de Mathématiques à Paris">
+            <span class="home-profs-item-gradient"> </span>
+            <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
+            src="/temp-images/professeur.jpg"/>
+          </a>
+          <div class="home-profs-item-description">
+            <div class="home-profs-item-name">Professeur Name</div>
+            <div class="home-profs-item-subject">
+              <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
             </div>
-          </li>
+          </div>
+        </li>
 
-          <li class="home-profs-item">
-            <a class="home-profs-item-anchor" href="" title="Professeur de Mathématiques à Paris">
-              <span class="home-profs-item-gradient"> </span>
-              <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
-              src="/temp-images/professeur.jpg"/>
-            </a>
-            <div class="home-profs-item-description">
-              <div class="home-profs-item-name">Professeur Name</div>
-              <div class="home-profs-item-subject">
-                <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
-              </div>
+        <li class="home-profs-item">
+          <a class="home-profs-item-anchor" href="/" title="Professeur de Mathématiques à Paris">
+            <span class="home-profs-item-gradient"> </span>
+            <img class="home-profs-item-img" alt="Professeur de Mathématiques à Paris"
+            src="/temp-images/professeur.jpg"/>
+          </a>
+          <div class="home-profs-item-description">
+            <div class="home-profs-item-name">Professeur Name</div>
+            <div class="home-profs-item-subject">
+              <span class="category-marker" style="color:#82b8eb;"> </span> Mathématiques
             </div>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-    <p class="align-center">Sélectionnez vous-même et librement vos professeurs parmi plus de 250 000
-      profils vérifiés et recommandés.</p>
-    <div class="align-center">
-      <a class="button a-js" href="/annonces">Trouvez votre professeur</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+
+  <p class="align-center">
+    Sélectionnez vous-même et librement vos professeurs parmi plus de 250 000
+    profils vérifiés et recommandés.
+ </p>
+
+  <div class="align-center">
+    <a class="button a-js" href="/annonces">Trouvez votre professeur</a>
+  </div>
 </div>
+
+<!-- four ============= -->
 <div class="section home-how">
   <div class="wrapper">
     <h2 class="section-title">Megaprof, comment ça marche ?</h2>
     <div class="table how_it_works">
-      <div class="cell">
-        <span class="cupcake">
-        </span>
-      </div>
+      <div class="cell"> <span class="cupcake"> </span> </div>
       <div class="cell">
         <ul>
           <li>
-            <span
-              class="number">1</span>
-            <div>
+            <span class="number">1</span> <div>
               <span>Trouvez des professeurs incroyables</span>
             </div>
             <div>
@@ -234,14 +216,15 @@ $(document).ready(function () {
     </div>
   </div>
 </div>
-<div
-  id="home-testimonies" class="component-testimonies section">
-  <div
-    class="wrapper">
+
+<!-- five ============= -->
+<div id="home-testimonies" class="component-testimonies section">
+  <div class="wrapper">
     <h2 class="section-title">Nos anciens élèves évaluent leurs professeurs</h2>
-    <p
-      class="align-center">Pour être certain de la qualité de nos professeurs, nous collectons les
-      avis des anciens élèves.</p>
+    <p class="align-center">
+      Pour être certain de la qualité de nos professeurs, nous collectons les
+      avis des anciens élèves.
+    </p>
     <ul>
       <li>
         <div class="component-testimony component-testimony-student">
@@ -277,7 +260,7 @@ $(document).ready(function () {
               <div class="component-testimony-more">
                 <div class="component-testimony-author">
                   <span>
-                    <a href="">
+                    <a href="/">
                       <strong>Jane Smith</strong>, Professeur</a>
                   </span>
                 </div>
@@ -299,7 +282,7 @@ $(document).ready(function () {
               <div class="component-testimony-more">
                 <div class="component-testimony-author">
                   <span>
-                    <a href=""><strong>Mehdi S</strong></a>
+                    <a href="/"><strong>Mehdi S</strong></a>
                   </span>
                 </div>
                 <div class="component-testimony-date">Il y a 1 jour</div>
@@ -318,7 +301,7 @@ $(document).ready(function () {
               <div class="component-testimony-more">
                 <div class="component-testimony-author">
                   <span>
-                    <a href="">
+                    <a href="/">
                       <strong>Maxi priest</strong>, Professeur</a>
                   </span>
                 </div>
@@ -332,18 +315,18 @@ $(document).ready(function () {
     </ul>
   </div>
 </div>
-<div
-  class="section home-share">
-  <div
-    class="wrapper">
+
+<!-- six ============= -->
+<div class="section home-share">
+  <div class="wrapper">
     <h2 class="section-title">Partagez vos connaissances avec Megaprof</h2>
     <div class="home-share-opinion">
       <ul class="rating align-center">
-        <li class="star-full"></li>
-        <li class="star-full"></li>
-        <li class="star-full"></li>
-        <li class="star-full"></li>
-        <li class="star-full"></li>
+        <li class="star-full">&nbsp;</li>
+        <li class="star-full">&nbsp;</li>
+        <li class="star-full">&nbsp;</li>
+        <li class="star-full">&nbsp;</li>
+        <li class="star-full">&nbsp;</li>
       </ul>
       <blockquote>
         <p class="home-share-opinion-content">
@@ -356,22 +339,17 @@ $(document).ready(function () {
           Merci encore à toute l'équipe !
         </p>
       </blockquote>
-      <div class="home-share-opinion-author"></div>
     </div>
-    <div
-      class="home-share-arguments">
-      <div
-        class="component-cols component-cols-big">
-        <div
-          class="wrapper">
+    <div class="home-share-arguments">
+      <div class="component-cols component-cols-big">
+        <div class="wrapper">
           <ul>
             <li class="component-col">
               <div class=" component-col-icon">
                 <div class="icon icon-watch"></div>
               </div>
               <h3 class="component-col-title">Gain de temps pour<br/> trouver des élèves</h3>
-              <p class="component-col-content"> 12 000 recherches d'élèves<b/> chaque jour.
-                </p>
+              <p class="component-col-content"> 12 000 recherches d'élèves<br/> chaque jour.  </p>
               </li>
               <li class="component-col">
                 <div class=" component-col-icon">
@@ -392,7 +370,7 @@ $(document).ready(function () {
                 <p class="component-col-content"> Inscription gratuite<br/> pour les professeurs
                 </p>
               </li>
-            </ul>
+          </ul>
           </div>
         </div>
       </div>
@@ -402,7 +380,9 @@ $(document).ready(function () {
       <p class="align-center">Vous souhaitez donner des cours ? Partagez vos connaissances ou votre
         passion</p>
     </div>
-  </div>
+</div>
+
+<!-- seven ============= -->
   <div class="section section-odd home-subjects">
     <div class="wrapper">
       <h2 class="section-title">Les cours particuliers par matières</h2>
@@ -457,10 +437,10 @@ $(document).ready(function () {
       </ul>
     </div>
   </div>
-  <div
-    class="section home-cities">
-    <div
-      class="wrapper">
+
+<!-- eight ============= -->
+  <div class="section home-cities">
+    <div class="wrapper">
       <h2 class="section-title">Les cours particuliers par ville</h2>
       <p class="align-center">
         <span>Les principales villes, </span>
@@ -470,45 +450,42 @@ $(document).ready(function () {
         <li class="home-cities-main-item  first">
           <a class="home-cities-main-anchor" href="#" title="Cours particuliers Paris">
             <span class="home-cities-main-img first"> </span>
-            <div class="home-cities-main-name">Paris</div>
-            <div class="home-cities-main-profs">0 professeurs</div>
+            <span class="home-cities-main-name">Paris</span>
+            <span class="home-cities-main-profs">0 professeurs</span>
           </a>
         </li>
         <li class="home-cities-main-item ">
           <a class="home-cities-main-anchor" href="#" title="Cours particuliers Lille">
-            <span class="home-cities-main-img second">
-            </span>
-            <div class="home-cities-main-name">Lille</div>
-            <div class="home-cities-main-profs">0 professeurs</div>
+            <span class="home-cities-main-img second"> </span>
+            <span class="home-cities-main-name">Lille</span>
+            <span class="home-cities-main-profs">0 professeurs</span>
           </a>
         </li>
         <li class="home-cities-main-item ">
           <a class="home-cities-main-anchor" href="#" title="Cours particuliers Bordeaux">
             <span class="home-cities-main-img third"> </span>
-            <div class="home-cities-main-name">Bordeaux</div>
-            <div class="home-cities-main-profs">0 professeurs</div>
+            <span class="home-cities-main-name">Bordeaux</span>
+            <span class="home-cities-main-profs">0 professeurs</span>
           </a>
         </li>
         <li class="home-cities-main-item ">
           <a class="home-cities-main-anchor" href="#" title="Cours particuliers Lyon">
             <span class="home-cities-main-img fourth"></span>
-            <div class="home-cities-main-name">Lyon</div>
-            <div class="home-cities-main-profs">0 professeurs</div>
+            <span class="home-cities-main-name">Lyon</span>
+            <span class="home-cities-main-profs">0 professeurs</span>
           </a>
         </li>
         <li class="home-cities-main-item ">
           <a class="home-cities-main-anchor" href="#" title="Cours particuliers Marseille">
             <span class="home-cities-main-img fifth"> </span>
-            <div class="home-cities-main-name">Marseille</div>
-            <div class="home-cities-main-profs">0 professeurs</div>
+            <span class="home-cities-main-name">Marseille</span>
+            <span class="home-cities-main-profs">0 professeurs</span>
           </a>
         </li>
       </ul>
       <ul class="home-cities-others-items inline-block-grid">
         <li class="home-cities-others-item  first">
-          <h3 class="home-cities-others-title first"> Nord-Ouest
-            <span class="home-cities-others-picto"> </span>
-          </h3>
+          <h3 class="home-cities-others-title first"> Nord-Ouest </h3>
           <ul class="unstyled-list">
             <li>
               <a class="home-cities-others-city" href="#" title="Cours particuliers Le Havre">
@@ -530,8 +507,7 @@ $(document).ready(function () {
             </li>
           </ul>
         </li>
-        <li
-          class="home-cities-others-item ">
+        <li class="home-cities-others-item ">
           <h3 class="home-cities-others-title third">
             Centre
             <span class="home-cities-others-picto"></span>
@@ -544,16 +520,12 @@ $(document).ready(function () {
             </li>
           </ul>
         </li>
-        <li
-          class="home-cities-others-item ">
-          <h3 class="home-cities-others-title fourth">
-            Sud-Ouest
+        <li class="home-cities-others-item"> <h3 class="home-cities-others-title fourth"> Sud-Ouest
             <span
               class="home-cities-others-picto">
             </span>
           </h3>
-          <ul class="unstyled-list">
-            <li>
+          <ul class="unstyled-list"> <li>
               <a class="home-cities-others-city" href="#" title="Cours particuliers Montpellier">
                 <strong>Montpellier</strong> <em>(0 profs)</em>
               </a>
@@ -561,8 +533,7 @@ $(document).ready(function () {
           </ul>
         </li>
         <li class="home-cities-others-item ">
-          <h3 class="home-cities-others-title fifth">
-            Sud-Est
+          <h3 class="home-cities-others-title fifth"> Sud-Est
             <span class="home-cities-others-picto"> </span>
           </h3>
           <ul class="unstyled-list">
@@ -576,18 +547,19 @@ $(document).ready(function () {
       </ul>
     </div>
   </div>
+
+<!-- nine ============= -->
   <div class="section-odd home-mag">
     <div class="wrapper">
       <h2 class="section-title">Megaprof </h2>
       <p class="align-center">
         <p>Le magazine qui aime <strong>les profs</strong>, les élèves, les cours particuliers et le partage de
           connaissances</p>
-      </p>
 
       <div class="home-mag-cells">
         <div class="home-mag-cell growing-card">
           <div class="home-mag-cell-content">
-            <a class="home-mag-cell-question" href="">Où Apprendre l’Allemand à Lille ?</a>
+            <a class="home-mag-cell-question" href="/">Où Apprendre l’Allemand à Lille ?</a>
             <div class="home-mag-cell-answer"> La ville de Lille est souvent</div>
           </div>
         </div>
@@ -608,5 +580,25 @@ $(document).ready(function () {
       <button class="button a-js" type="button" data-href="/inscription.html">Donner des cours</button>
     </div>
   </div>
+
+<!-- ten ============= -->
+<script>
+    $(document).ready(function () {
+      $("#submit-btn").click(function (event) {
+        event.preventDefault();
+        var subject = $("#subject_input").val();
+        var loc = $("#location_input").val();
+        if (subject.length < 2 || loc.length < 2) return;
+        url = "/annonces/" +  subject  + "/" + loc;
+        url = url.replace(/ /g, '-');
+        window.location.assign(url);
+      });
+
+      // Geocompletion
+      $('#location_input').geocomplete({types: ['(cities)'], details: ".location-details",});
+    });
+
+  </script>
+
   @endsection
 

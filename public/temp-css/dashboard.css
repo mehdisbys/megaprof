@@ -2177,7 +2177,7 @@ a.component-pagination-item:hover {
 @media all and (min-width: 980px) {
 
 .home-search-field-wrapper {
-    width: calc((100% - 140px) / 2);
+    width: calc((100% - 123px) / 2);
     margin-right: 10px;
     display: inline-block;
 }
@@ -5396,11 +5396,13 @@ ul.profil_statut li span.verified:before {
     font-size: 12px;
     vertical-align: top
 }
-.row {
+.temp-row {
     margin-top: 10px;
     background-color: cornsilk;
+    float: left;
+    padding: 20px
 }
-.row:first-child {
+.temp-row:first-child {
     margin-top: 0
 }
 
@@ -10534,6 +10536,7 @@ a.traduction_annonce {
 }
 
 .radius-group {
+    margin-top: 20px;
     background: rgba(200,200,200,0.5);
     padding: 20px;
 }
@@ -10543,21 +10546,24 @@ a.traduction_annonce {
 }
 
 .scrolling-pane {
-    background-color: pink;
+    background-color: #f7f7f7;
     clear:both;
+    padding 20px;
 }
 
 .scrolling-pane ul{
     display: inline-block;
     width: 100%;
     padding: 0px;
+    margin: 0px 20px;
 }
 
 .scrolling-pane ul li{
     float:left;
-    list-style: none;
     margin-right: 20px;
-    width: calc((100% - 80px) / 5);
+    margin-bottom: 20px;
+    list-style: none;
+    width: calc((100% - 120px) / 5);
     height: 140px;
     background-color: white;
     text-align: center;
