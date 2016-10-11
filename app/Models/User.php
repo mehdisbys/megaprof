@@ -177,4 +177,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return User::where('forgotten_token', $token)->first();
     }
 
+
+    public function isMandatoryProfileInComplete() : bool
+    {
+        return ($this->gender != null) or ($this->birthdate != null) or ($this->telephone != null);
+    }
 }

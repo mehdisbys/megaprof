@@ -25,12 +25,17 @@ class SocialAuthController extends Controller
         $user = $this->createOrGetUser($providerUser);
         $this->getAndSaveAvatar($providerUser, $user);
         Auth::login($user);
-        return redirect('/mon-compte');
+        if($user->isMandatoryProfileInComplete()) {
+        }
+        // if missing information -> ask for personal information
+        return redirect()->intended('/annonces');
     }
 
     public function createOrGetUser(\Laravel\Socialite\Two\User $providerUser): User
     {
         $account = User::where('facebook_id', $providerUser->id)->first();
+
+        $gender = ['male' => 'man', 'female' => 'woman'];
 
         if ($account) {
             return $account;
@@ -43,7 +48,7 @@ class SocialAuthController extends Controller
                     [
                         'firstname'    => $providerUser->getName(),
                         'lastname'     => '',
-                        'gender'       => $providerUser->user['gender'],
+                        'gender'       => $gender[$providerUser->user['gender']] ?? null,
                         'email'        => $providerUser->getEmail(),
                         'password'     => bcrypt(bin2hex(random_bytes(10))),
                         'facebook_id'  => $providerUser->id,
