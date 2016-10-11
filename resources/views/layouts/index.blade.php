@@ -74,15 +74,28 @@ $(document).ready(function () {
         @endforeach
     </div>
 
-
-    <div class="">
+    <!-- start of components  -->
+    <div class="scrolling-pane">
       <h2>Les matières les plus populaires</h2>
-      <div class="clearfix"></div>
-      @foreach($popularSubjects as $subject)
-        <div class="subject-{{$subject['subject_id']}}"> <a href="/annonces/{{$subject['name']}}">{{ $subject['name'] }}</a>  - {{$subject['count']}} annonces</div>
-      @endforeach
-    </div>
+      <ul class="pane-a">
+        @foreach($popularSubjects->take(5) as $subject)
+        <li class="scroll-items" id="subject-{{$subject['subject_id']}}">
+          <div class="subject-icon"></div>
+          <a href="/annonces/{{$subject['name']}}">{{ $subject['name'] }} - {{$subject['count']}} annonces </a>
+        </li>
+        @endforeach
+      </ul>
 
+      <ul id="pane-b">
+        @foreach($popularSubjects->take(-5) as $subject)
+        <li class="scroll-items" id="subject-{{$subject['subject_id']}}">
+          <div class="subject-icon"></div>
+          <a href="/annonces/{{$subject['name']}}">{{ $subject['name'] }} - {{$subject['count']}} annonces </a>
+        </li>
+        @endforeach
+      </ul>
+    </div>
+    <!-- end of components  -->
   </div>
 </div>
 <div class="section section-odd home-profs">

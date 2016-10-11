@@ -10541,3 +10541,35 @@ a.traduction_annonce {
 .sorting-field {
     float: right;
 }
+
+.scrolling-pane {
+    background-color: pink;
+    clear:both;
+}
+
+.scrolling-pane ul{
+    display: inline-block;
+    width: 100%;
+    padding: 0px;
+}
+
+.scrolling-pane ul li{
+    float:left;
+    list-style: none;
+    margin-right: 20px;
+    width: calc((100% - 80px) / 5);
+    height: 140px;
+    background-color: white;
+    text-align: center;
+}
+.scrolling-pane ul li:last-child{
+    margin-right: 0px;
+}
+
+.scrolling-pane ul li .subject-icon {
+    background-color: #008FF9;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 10px auto;
+}
