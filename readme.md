@@ -1,8 +1,8 @@
 ### TODO
 
+- [x] Frontend : Submit button "Chercher" in both search form should be aligned and when responsive should be centered under the two inputs
 - [ ] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout -> should be an auto-slide / carousel layout showing 3 adverts at the time
 - [ ] Frontend : style "Les matières les plus populaires" on front page, each subject should have a circle of a different color, if possible show them 5 by 5 and make them fade in and out in a loop (just css)
-- [ ] Frontend : Submit button "Chercher" in both search form should be aligned and when responsive should be centered under the two inputs
 - [ ] Frontend : Apply styling to single page advert
 - [ ] Backend : when logging-in check that phone number / date-of-birth are populated
 - [ ] Backend : when logging-in check that address is populated
