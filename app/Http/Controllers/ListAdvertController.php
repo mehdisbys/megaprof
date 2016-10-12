@@ -150,10 +150,22 @@ class ListAdvertController extends Controller
         $s = SubSubject::selectRaw('name, parent_id')->whereIn('id', array_pluck($popularSubjects, 'subject_id'))->get()->toArray();
         $r = [];
 
+        $icons = [
+            1  => 'fa-graduation-cap',
+            2  => 'fa-flask',
+            3  => 'fa-line-chart',
+            4  => 'fa-language',
+            5  => 'fa-balance-scale',
+            6  => 'fa-group',
+            7  => 'fa-laptop',
+            8  => 'fa-music',
+            9  => 'fa-futbol-o',
+            10 => 'fa-paint-brush',
+            11 => 'fa-fort-awesome',
+        ];
         foreach ($popularSubjects as $key => $value) {
-            $r[] = array_merge($value, $s[$key]);
+            $r[] = array_merge(array_merge($value, $s[$key]), ['class' => $icons[$s[$key]['parent_id']]]);
         }
-
         return collect($r);
     }
 
