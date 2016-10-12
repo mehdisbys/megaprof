@@ -53,4 +53,10 @@ class DashboardController extends Controller
         $user->update($data);
         return $this->index();
     }
+
+    public function completeProfile()
+    {
+        $user = User::find(Auth::id());
+        return view('dashboard.complete-profile')->with(get_defined_vars());
+    }
 }

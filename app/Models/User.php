@@ -180,6 +180,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function isMandatoryProfileInComplete() : bool
     {
-        return ($this->gender != null) or ($this->birthdate != null) or ($this->telephone != null);
+        return ($this->gender == null) or ($this->birthdate == null) or ($this->telephone == null);
     }
 }

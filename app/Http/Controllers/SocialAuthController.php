@@ -26,6 +26,7 @@ class SocialAuthController extends Controller
         $this->getAndSaveAvatar($providerUser, $user);
         Auth::login($user);
         if($user->isMandatoryProfileInComplete()) {
+            return redirect('/completer-profil');
         }
         // if missing information -> ask for personal information
         return redirect()->intended('/annonces');

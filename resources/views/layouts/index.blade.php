@@ -32,7 +32,7 @@
         <input id="location_input"
         class="home-search-input"
         placeholder="Ville où le cours a lieu"
-        name="subject" type="text" />
+        name="city" type="text" />
       </div>
 
       <div class="home-search-button-wrapper">
@@ -596,9 +596,9 @@
       });
 
       // Geocompletion
-      $('#location_input').geocomplete({types: ['(cities)'], details: ".location-details",});
+      $('#location_input').geocomplete({types: ['(cities)'], componentRestrictions: {country: "ma"},  details: ".location-details"});
 
-      var abba = false;
+      var abba = true;
       $('#pane-b').hide();
       function toggleFade () {
         if (abba) {

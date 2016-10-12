@@ -174,7 +174,7 @@ $(document).on('click', '.home-search-submit', sendFormBy(null));
   $(".autocomplete-input-sortby").change(sendFormBy(null));
   $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
   // Geocompletion
-    $('#location_input').geocomplete({types: ['(cities)'], details: ".location-details",});
+          $('#location_input').geocomplete({types: ['(cities)'], componentRestrictions: {country: "ma"},  details: ".location-details"});
   });
 </script>
 @endsection
