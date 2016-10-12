@@ -60,7 +60,7 @@
     <!-- start of components  -->
     <div class="scrolling-pane">
       <h2>Les matières les plus populaires</h2>
-      <ul class="pane-a">
+      <ul id="pane-a">
         @foreach($popularSubjects->take(5) as $subject)
         <li class="scroll-items" id="subject-{{$subject['subject_id']}}">
           <div class="subject-icon"></div>
@@ -584,6 +584,7 @@
 <!-- ten ============= -->
 <script>
     $(document).ready(function () {
+
       $("#submit-btn").click(function (event) {
         event.preventDefault();
         var subject = $("#subject_input").val();
@@ -596,9 +597,26 @@
 
       // Geocompletion
       $('#location_input').geocomplete({types: ['(cities)'], details: ".location-details",});
+
+      var abba = false;
+      $('#pane-b').hide();
+      function toggleFade () {
+        if (abba) {
+          $('#pane-a').fadeOut('slow', function (){
+            $('#pane-b').fadeIn('slow');
+            abba = false;
+          });
+        } else {
+          $('#pane-b').fadeOut('slow', function () {
+            $('#pane-a').fadeIn('slow');
+            abba = true;
+          });
+        }
+      };
+      setInterval(toggleFade, 7000);
     });
 
-  </script>
+</script>
 
-  @endsection
+@endsection
 
