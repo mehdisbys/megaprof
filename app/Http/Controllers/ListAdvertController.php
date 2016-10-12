@@ -147,7 +147,7 @@ class ListAdvertController extends Controller
             ->get()
             ->toArray();
 
-        $s = SubSubject::selectRaw('name')->whereIn('id', array_pluck($popularSubjects, 'subject_id'))->get()->toArray();
+        $s = SubSubject::selectRaw('name, parent_id')->whereIn('id', array_pluck($popularSubjects, 'subject_id'))->get()->toArray();
         $r = [];
 
         foreach ($popularSubjects as $key => $value) {

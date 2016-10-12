@@ -62,7 +62,7 @@
       <h2>Les matières les plus populaires</h2>
       <ul id="pane-a">
         @foreach($popularSubjects->take(5) as $subject)
-        <li class="scroll-items" id="subject-{{$subject['subject_id']}}">
+        <li class="scroll-items" id="subject-{{$subject['parent_id']}}">
           <div class="subject-icon"></div>
           <a href="/annonces/{{$subject['name']}}">{{ $subject['name'] }} - {{$subject['count']}} annonces </a>
         </li>
@@ -71,7 +71,7 @@
 
       <ul id="pane-b">
         @foreach($popularSubjects->take(-5) as $subject)
-        <li class="scroll-items" id="subject-{{$subject['subject_id']}}">
+        <li class="scroll-items" id="subject-{{$subject['parent_id']}}">
           <div class="subject-icon"></div>
           <a href="/annonces/{{$subject['name']}}">{{ $subject['name'] }} - {{$subject['count']}} annonces </a>
         </li>

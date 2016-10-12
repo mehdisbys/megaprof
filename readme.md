@@ -7,12 +7,12 @@
 
 --------------------------------------------------------------------------------
 
-- [ ] Backend : when logging-in check that phone number / date-of-birth are populated
+- [x] Backend : when logging-in check that phone number / date-of-birth are populated
+- [x] Backend : fix google map location : it should populate the city only, not the region
 - [ ] Backend : when logging-in check that address is populated
 - [ ] Backend : add percentage of completion when creating an advert
 - [ ] Backend : fix taking pictures via webcam functionality
-- [ ] Backend : add facebook button to share advert before publishing
-- [ ] Backend : fix google map location : it should populate the city only, not the region
+- [ ] Backend : add facebook button to share advert after publishing
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 
 
