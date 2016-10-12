@@ -1,15 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-
-<div class="row" data-spy="scroll" data-target=".scrollspy">
-  <div id="author" class="col-md-3 col-md-offset-1 scrollspy">
-    <div id="leftside" data-spy="affix">
-      <img src="{{ $advert->getAvatar() }}" alt="avatar">
+<!-- 1 -->
+<div class="temp-row single-view">
+  <div id="author" class="component-profile-sidebar">
+    <div id="leftside" class="profile-author-profile">
+      <img src="{{ $advert->getAvatar() }}" alt="avatar" width="140">
       <div id="info-author">
         <div class="entry-overlay-meta">
           <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
-          <div class="clearfix"></div>
           <ul class="iconlist">
             <li><i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong> </li>
             <li><i class="icon-study green"></i> <strong>Diplôme vérifié</strong></li>
@@ -20,9 +19,8 @@
     </div>
   </div>
 
-  <div class="col-md-5">
+  <div class="profile-author-description">
     <h3>{{ $advert->title }}</h3>
-
     <div id="presentation"> {{ $advert->presentation  }}</div>
     <div class="divider divider-center"><i class="icon-circle"></i></div>
     <div class="">
@@ -35,36 +33,49 @@
       <div id="curriculum"> {{ $advert->content }}</div>
     </div>
   </div>
+
   <div class="col-md-3 scrollspy">
     <div id="rightside" data-spy="affix" class="">
       <div id="info-price" >
         <div class="entry-overlay-meta">
           <h3><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h3>
           <h4>Premier cours offert !</h4>
-          <div class="col-md-8">
+          <div class="">
             <a class="btn btn-danger btn-block btn-md" href="/mise-en-relation/{{$advert->id}}">Réserver un cours</a>
           </div>
-          <div class="col-md-10 topmargin-sm">
-            <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank" class="social-icon si-colored si-facebook">
+
+          <div class="">
+            <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}"
+              data-send="false" 
+              data-layout="box_count" 
+              data-width="60" data-show-faces="false" 
+              rel="nofollow" target="_blank" 
+              class="social-icon si-colored si-facebook">
               <i class="icon-facebook"></i>
               <i class="icon-facebook"></i>
             </a>
-            <a href="http://twitter.com/share" data-count="vertical" rel="nofollow" target="_blank" class="social-icon si-colored si-twitter">
+
+            <a href="http://twitter.com/share" 
+              data-count="vertical" rel="nofollow" 
+              target="_blank" class="social-icon si-colored si-twitter">
               <i class="icon-twitter"></i>
               <i class="icon-twitter"></i>
             </a>
+
             <a href="#" class="social-icon si-colored si-email3"  >
               <i class="icon-email3"></i>
               <i class="icon-email3"></i>
             </a>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="clearfix"></div>
-<div class="col-md-5 col-md-offset-4 topmargin-sm table-responsive">
+
+<!-- 2 -->
+
   <table class="table">
     <thead>
       <tr>
@@ -95,37 +106,36 @@
       </tr>
     </tbody>
   </table>
-</div>
 
-<div class="col-md-7 col-md-offset-4 topmargin-sm">
 
+<!-- 3 -->
+<div class="">
   <h3>Avis des étudiants</h3>
-
   @foreach($comments as $comment)
-  <div class="col-md-12">
+  <div class="">
     <strong>{{$comment->sourceUser->firstname}}</strong> : {{$comment->comment}}
   </div>
   @endforeach
 </div>
 
-<div class="col-md-7 col-md-offset-4 topmargin-sm">
-
+<!-- 4 -->
+<div class="">
   <h3>Les professeurs similaires</h3>
-  <div class="clearfix"></div>
   @foreach($similarAdverts as $advert)
 
-  <div class="col-md-4">
-    <div class="col-md-6">
+  <div class="">
+    <div class="">
       <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
     </div>
-    <strong>{{ \App\Models\User::find($advert->user_id)->firstname}}</strong> : <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
-    <div class="clearfix"></div>
-    <i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong>
-
+    <strong>{{ \App\Models\User::find($advert->user_id)->firstname}}</strong> : 
+    <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
+    <i class="icon-location"></i>
+    <strong>{{ $advert->location_city }}</strong>
   </div>
   @endforeach
 </div>
 
+<!-- 5 -->
 <script>
   $( document ).ready(function() {
     $("#leftside").affix({
