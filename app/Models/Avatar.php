@@ -42,12 +42,22 @@ class Avatar extends Model
 
     public function cropAvatar($name, array $c, $webcam = false)
     {
+        if(is_dir('webcam_avatar') == false) {
+            mkdir('webcam_avatar');
+        }
+
         if ($webcam) {
-            $filename = "webcam_avatar/webcam_" . time() . '.jpg';
 
-            file_put_contents('webcam_avatar/webcam_' . time() . '.jpg', base64_decode($_POST[$name]));
+            $time = time();
+            $filename = "webcam_avatar/webcam_" . $time . '.jpg';
 
-            $this->img_cropped = \Image::make($filename)->resize(190, 190);
+            file_put_contents('webcam_avatar/webcam_' . $time . '.jpg', base64_decode($_POST[$name]));
+
+            $avatar = \Image::make($filename);
+
+            $this->img_cropped = $avatar->resize(190, 190);
+
+            $this->img = $this->img_cropped;
 
             return $this->img_cropped->response();
         }
@@ -83,7 +93,7 @@ class Avatar extends Model
         $avatar = static::where(['user_id' => $user_id])->first();
 
         if ($avatar && $avatar->img_cropped != null) {
-            $response = \Response::make($avatar->img, 200);
+            $response = \Response::make($avatar->img_cropped, 200);
             $response->header('Content-Type', $avatar->img_mime);
             return $response;
         }

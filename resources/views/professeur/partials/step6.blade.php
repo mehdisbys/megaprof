@@ -23,7 +23,7 @@
 
                     <div id="img-container">
 
-                        <img src="{{ getAvatar(\Auth::id()) }}" alt="">
+                        <img  id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
 
                         <div class="clearfix"></div>
 
@@ -34,7 +34,7 @@
 
                         </div>
 
-                        <div id="capture" class="col-md-3 no-visibility">
+                        <div id="capture" class="col-md no-visibility">
                             <div id="my_result" style="" class=""></div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                     <input type="file" id="img_upload" name="img_upload" class="no-visibility" accept="image/*">
                     <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
 
-                    <div class="row" data-spy="scroll" data-target=".scrollspy">
+                    <div class="row-spy" data-spy="scroll" data-target=".scrollspy">
 
                         <div class="col-md-8">
                             <!-- <h3 class="page-header">Demo:</h3> -->
@@ -77,7 +77,7 @@
                         <a class="button" href="#" id="use-webcam"><i class="icon-facetime-video"></i>Utilisez votre webcam</a>
                     </div>
 
-                    <div id="validate_buttons" class="col-md-12 text-center topmargin-sm no-visibility">
+                    <div id="validate_buttons" class="col-md-12 text-center no-visibility">
 
                         <button id="back_button" class="button button-3d button-large button-rounded button-teal">
                             Retour
@@ -117,8 +117,8 @@
 
                         $("#use-webcam").click(function(){
                             Webcam.set({
-                                width: 190,
-                                height: 170,
+                                width: 210,
+                                height: 190,
                                 dest_width: 190,
                                 dest_height: 170
                             });
@@ -128,6 +128,7 @@
                             $("#validate_buttons").removeClass('no-visibility');
                             $("#img-question-mark").addClass('no-visibility');
                             $("#my_buttons").addClass('no-visibility');
+                            $("#current_picture").addClass('no-visibility');
                         });
 
                         $("#back_button").click(function(e){
