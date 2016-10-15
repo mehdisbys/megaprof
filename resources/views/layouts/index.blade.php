@@ -4,10 +4,14 @@
 {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
 {!! HTML::style("temp-css/awesomplete.css") !!}
 {!! HTML::style("css/fa/css/font-awesome.css") !!}
+{!! HTML::style("css/slick.css") !!}
+{!! HTML::style("css/slick-theme.css") !!}
+
 {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
 {!! HTML::script("js/locationpicker.jquery.js") !!}
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
+
 <!-- one ============= -->
 <div class="home-search">
   <h1 class="search-title">Trouvez le professeur parfait</h1>
@@ -53,13 +57,15 @@
 
     <div class="">
       <h2>Les dernières annonces publiées</h2>
+      <div class="carousel">
       @foreach($latestAdverts as $advert)
-      @include('main.advertPreview', ['trimChar' => 150])
+      @include('main.advertPreview', ['trimChar' => 350])
       @endforeach
+      </div>
     </div>
 
     <!-- start of components  -->
-    <div class="scrolling-pane">
+    <div class="scrolling-pane topmargin-lg">
       <h2>Les matières les plus populaires</h2>
       <ul id="pane-a">
       @foreach($popularSubjects->take(5) as $subject)
@@ -582,9 +588,24 @@
     </div>
   </div>
 
+{!! HTML::script("js/slick.min.js") !!}
+
+
 <!-- ten ============= -->
 <script>
     $(document).ready(function () {
+
+      $('.carousel').slick({
+        autoplay : true,
+        autoplaySpeed : 5000,
+        arrows: false,
+        dots: true,
+        fade: true,
+        cssEase: 'linear',
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite : true
+      });
 
       $("#submit-btn").click(function (event) {
         event.preventDefault();
