@@ -12,7 +12,7 @@
 - [x] Backend : fix google map location : it should populate the city only, not the region
 - [x] Backend : fix taking pictures via webcam functionality
 - [x] Backend : Fix login error partial includes
-- [ ] Backend : Fix forgotten password functionality
+- [x] Backend : Fix forgotten password functionality
 - [ ] Backend : In "Gérer mon profil", fix birthdate
 - [ ] Backend : Ability to deactivate an advert
 - [ ] Backend : add facebook button to share advert after publishing

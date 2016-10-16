@@ -32,6 +32,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('login', 'SessionsController@postLogin');
     Route::get('logout', 'SessionsController@logout');
 
+    // Password Reset
+    Route::get( 'reset_password','SignupController@resetPasswordForm');
+    Route::post('reset_password','SignupController@resetPassword');
+    Route::get( 'reset_token/{token}','SignupController@resetPasswordSecondForm');
+    Route::post('reset/try', 'SignupController@tryResettingPassword');
 
     Route::group(['middleware' => ['auth']], function () {
 

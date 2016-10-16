@@ -2,7 +2,7 @@
 
 use App\Helpers\Contracts\MailerContract;
 use App\Models\Job;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class MyMailer implements MailerContract
 {
