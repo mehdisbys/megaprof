@@ -11,10 +11,23 @@
 - [x] Backend : when logging-in check that phone number / date-of-birth are populated
 - [x] Backend : fix google map location : it should populate the city only, not the region
 - [x] Backend : fix taking pictures via webcam functionality
-- [ ] Backend : when logging-in check that address is populated
-- [ ] Backend : add percentage of completion when creating an advert
+- [ ] Backend : Fix login error partial includes
+- [ ] Backend : Fix forgotten password functionality
+- [ ] Backend : In "Gérer mon profil", fix birthdate
+- [ ] Backend : Ability to deactivate an advert
 - [ ] Backend : add facebook button to share advert after publishing
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
+- [ ] Backend : Review Lesson booking form
+- [ ] Backend : add captcha at login time
+
+- [ ] Backend : get total number of facebook friends
+- [ ] Backend : For teachers, offer to link their facebook account so that it gives more confidence to students
+- [ ] Backend : Ability for student to give a rating to a teacher
+- [ ] Backend : Count the number of reviews and include in the advert
+- [ ] Backend : when logging-in check that address is populated
+- [ ] Backend : add percentage of completion when creating an advert
+
+
 
 
 ### NOTE
