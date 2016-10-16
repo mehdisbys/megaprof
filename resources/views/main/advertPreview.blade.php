@@ -1,18 +1,20 @@
 <div class="temp-row">
   <div  class="component-profile-sidebar">
     <div class="profile-author-profile">
-      <h3>
-        <a href="/{{$advert->slug}}">{{ \App\Models\User::find($advert->user_id)->firstname}}</a>
-      </h3>
       <a href="/{{$advert->slug}}">
         <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt="avatar"/>
       </a>
+      <h3>
+        <a href="/{{$advert->slug}}">
+            {{ \App\Models\User::find($advert->user_id)->firstname}}
+        </a>
+      </h3>
     </div>
   </div>
   <div class="profile-author-description">
-    <h5>
+    <h2>
       <a href="/{{$advert->slug}}"> {{ $advert->title }}</a>
-    </h5>
+    </h2>
 
     <div id="presentation"> {{ str_limit($advert->presentation, $trimChar ?? 345) }}</div>
 
