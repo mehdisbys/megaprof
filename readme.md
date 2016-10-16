@@ -11,7 +11,7 @@
 - [x] Backend : when logging-in check that phone number / date-of-birth are populated
 - [x] Backend : fix google map location : it should populate the city only, not the region
 - [x] Backend : fix taking pictures via webcam functionality
-- [ ] Backend : Fix login error partial includes
+- [x] Backend : Fix login error partial includes
 - [ ] Backend : Fix forgotten password functionality
 - [ ] Backend : In "Gérer mon profil", fix birthdate
 - [ ] Backend : Ability to deactivate an advert
