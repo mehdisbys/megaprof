@@ -39,7 +39,7 @@
     {!! HTML::style('temp-css/main.css') !!}
     {!! HTML::style('/css/bootstrap.css') !!}
     {!! HTML::script("js/jquery.js") !!}
-    {!! HTML::script("js/bootstrap.min.js") !!}
+    <!-- {!! HTML::script("js/bootstrap.min.js") !!} -->
 
   <!-- TODO convert to sass files   -->
   </head>

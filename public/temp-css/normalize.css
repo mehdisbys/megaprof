@@ -45,6 +45,7 @@ a {
 a:active,
 a:hover {
     outline: 0
+    text-decoration: none;
 }
 abbr[title] {
     border-bottom: 1px dotted
@@ -228,7 +229,8 @@ h3 {
         margin: 0 auto
     }
     a {
-        color: #0da5fd
+        color: #0da5fd;
+        text-decoration: none
     }
     a:focus,
     a:hover {

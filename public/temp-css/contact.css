@@ -39,7 +39,7 @@
     text-decoration: none
 }
 .contact-link:hover {
-    text-decoration: underline
+    /* text-decoration: underline */
 }
 .contact-social-list {
     list-style: none;

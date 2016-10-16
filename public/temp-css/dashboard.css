@@ -1377,6 +1377,11 @@ a.component-pagination-item:hover {
     float: right;
 }
 
+.profile-author-description h2 {
+    margin: 0px 0px 20px 0px;
+    line-height: 30px;
+}
+
 .component-profile-author-profile img {
     min-height: 100%;
     min-width: 100%;
@@ -2177,7 +2182,7 @@ a.component-pagination-item:hover {
 @media all and (min-width: 980px) {
 
 .home-search-field-wrapper {
-    width: calc((100% - 123px) / 2);
+    width: calc((100% - 124px) / 2);
     margin-right: 10px;
     display: inline-block;
 }
@@ -4610,6 +4615,12 @@ ul.profil_statut li span.verified:before {
     width: 100%;
     overflow-x: auto
 }
+
+.view-profs-items-container {
+    width: 100%;
+    padding: 20px 10% 20px;
+}
+
 .home-profs-items {
     overflow: hidden;
     list-style: none;
@@ -5398,12 +5409,18 @@ ul.profil_statut li span.verified:before {
 }
 .temp-row {
     margin-top: 10px;
-    background-color: cornsilk;
+    background-color: #eef9ff;
     float: left;
-    padding: 20px
+    padding: 20px;
+    border-bottom: #0da5fd 1px solid; 
 }
 .temp-row:first-child {
     margin-top: 0
+}
+
+.carousel .temp-row {
+    min-height: 370px !important;
+    max-height: 370px !important;
 }
 
 @media all and (max-width: 980px) {
@@ -10550,7 +10567,9 @@ a.traduction_annonce {
     clear:both;
     padding 20px;
 }
-
+.scrolling-pane  h2{
+    padding: 20px;
+}
 .scrolling-pane ul{
     display: inline-block;
     width: 100%;
@@ -10568,6 +10587,18 @@ a.traduction_annonce {
     background-color: white;
     text-align: center;
 }
+
+.scrolling-pane ul li .fa{
+    background-color: #008FF9;
+    display: block;
+    color:white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 10px auto;
+    line-height: 60px;
+}
+
 .scrolling-pane ul li:last-child{
     margin-right: 0px;
 }
@@ -10580,14 +10611,81 @@ a.traduction_annonce {
     margin: 10px auto;
 }
 
-.temp-row .single-view {}
-.single-view {}
+.single-view {
+}
+.single-view .profile-author-profile {
+}
 .component-profile-sidebar {}
-.profile-author-profile img 
+.profile-author-profile img {
+ width: 100%;
+}
+
+.single-view .info-author {
+}
+
+.single-view .info-author ul{
+padding: 0px;
+margin: 0px 0px 20px 0px;
+}
+
+.single-view .info-author ul li{
+    list-style: none;
+}
+
+
 .entry-overlay-meta {}
 
 .single-view {
 
+
+}
+
+.view-table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #008FF9;
+    color: white;
+}
+
+
+.similar-adverts-wrapper {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.similar-advert {
+  padding: 5px;
+  width: 200px;
+  margin-top: 10px;
+  text-align: center;
+}
+.avatar-wrapper {
+    width: 100%;
+}
+
+.avatar-wrapper .avatar{
+    width: 100%;
+}
+
+.similar-advert .location {
 
 }
 

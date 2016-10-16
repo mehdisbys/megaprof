@@ -107,7 +107,6 @@
       <div id="search_results" class="">
         @include('main.multipleAdvertPreview')
       </div>
-
       @endif
     </div>
     <!-- optional to show advert count  -->
@@ -120,61 +119,55 @@
    * there is a bit too much going on here
    *
    * */
-        $(document).ready(function () {
+  $(document).ready(function () {
+    function updatePage(data) {
+      $("#count_text").html(data.count + ' Annonces trouvées');
+      $("#search_results").html(data.results);
+      $("#search_subject").html(data.params.selectedSubject);
+      var searchText = '';
+      if (data.params.city)
+        $("#search_city").html('à ' + data.params.city);
+      if (data.params.selectedSubject) {
+        searchText = data.count + ' Résultats pour ' + data.params.selectedSubject;
+      }
 
-            function updatePage(data) {
-                $("#count_text").html(data.count + ' Annonces trouvées');
-                $("#search_results").html(data.results);
-                $("#search_subject").html(data.params.selectedSubject);
+      if (data.params.city) {
+        searchText += ' à ' + data.params.city;
+      }
+      $("#search_result_text").html(searchText);
+    }
 
-                var searchText = '';
+    var sendFormBy = function sortBySendForm(page) {
 
-                if (data.params.city)
-                    $("#search_city").html('à ' + data.params.city);
+      function sendForm(event) {
+        event.preventDefault();
+        var subject = $(".autocomplete-input-subject").val();
+        var city = $(".autocomplete-input-city").val();
+        var token = $("[name='_token']").val();
+        var sortBy = $(".autocomplete-input-sortby").val();
+        var gender = $("[name='gender']:checked").val();
 
-                if (data.params.selectedSubject) {
-                    searchText = data.count + ' Résultats pour ' + data.params.selectedSubject;
-                }
+        $.post('/search',
+          {
+            'subject': subject,
+            'city': city,
+            '_token': token,
+            'sortBy': sortBy,
+            'gender': gender,
+            'page': page ? page.replace(/[^0-9]/g,'') : null
+          },
+          function (data) {
+            updatePage(data);
+          });
+      };
+      return sendForm;
+    }
 
-  if (data.params.city) {
-    searchText += ' à ' + data.params.city;
-  }
-
-$("#search_result_text").html(searchText);
-
-            }
-
-var sendFormBy = function sortBySendForm(page) {
-
-  function sendForm(event) {
-    event.preventDefault();
-    var subject = $(".autocomplete-input-subject").val();
-    var city = $(".autocomplete-input-city").val();
-    var token = $("[name='_token']").val();
-    var sortBy = $(".autocomplete-input-sortby").val();
-    var gender = $("[name='gender']:checked").val();
-
-    $.post('/search',
-      {
-        'subject': subject,
-        'city': city,
-        '_token': token,
-        'sortBy': sortBy,
-        'gender': gender,
-        'page': page ? page.replace(/[^0-9]/g,'') : null
-      },
-      function (data) {
-        updatePage(data);
-      });
-  };
-  return sendForm;
-}
-
-$(document).on('click', '.home-search-submit', sendFormBy(null));
-  $(".autocomplete-input-sortby").change(sendFormBy(null));
-  $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
-  // Geocompletion
-          $('#location_input').geocomplete({types: ['(cities)'], componentRestrictions: {country: "ma"},  details: ".location-details"});
+    $(document).on('click', '.home-search-submit', sendFormBy(null));
+    $(".autocomplete-input-sortby").change(sendFormBy(null));
+    $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
+    // Geocompletion
+    $('#location_input').geocomplete({types: ['(cities)'], componentRestrictions: {country: "ma"},  details: ".location-details"});
   });
 </script>
 @endsection

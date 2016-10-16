@@ -58,9 +58,9 @@
     <div class="">
       <h2>Les dernières annonces publiées</h2>
       <div class="carousel">
-      @foreach($latestAdverts as $advert)
-      @include('main.advertPreview', ['trimChar' => 350])
-      @endforeach
+        @foreach($latestAdverts as $advert)
+        @include('main.advertPreview', ['trimChar' => 350])
+        @endforeach
       </div>
     </div>
 
@@ -68,8 +68,8 @@
     <div class="scrolling-pane topmargin-lg">
       <h2>Les matières les plus populaires</h2>
       <ul id="pane-a">
-      @foreach($popularSubjects->take(5) as $subject)
-          <li class="scroll-items" id="subject-{{$subject['parent_id']}}">
+        @foreach($popularSubjects->take(5) as $subject)
+        <li class="scroll-items" id="subject-{{$subject['parent_id']}}">
           <div class="fa {{$subject['class']}} fa-3x"></div>
           <a href="/annonces/{{$subject['name']}}">{{ $subject['name'] }} - {{$subject['count']}} annonces </a>
         </li>
@@ -170,7 +170,7 @@
   <p class="align-center">
     Sélectionnez vous-même et librement vos professeurs parmi plus de 250 000
     profils vérifiés et recommandés.
- </p>
+  </p>
 
   <div class="align-center">
     <a class="button a-js" href="/annonces">Trouvez votre professeur</a>
@@ -209,8 +209,7 @@
           <li>
             <span
               class="number">3</span>
-            <div>
-              <span>Apprenez en toute confiance</span>
+            <div> <span>Apprenez en toute confiance</span>
             </div>
             <div>
               <p>Vous ne payez rien tant que vous n’avez pas trouvé votre professeur idéal. Une
@@ -357,211 +356,211 @@
               </div>
               <h3 class="component-col-title">Gain de temps pour<br/> trouver des élèves</h3>
               <p class="component-col-content"> 12 000 recherches d'élèves<br/> chaque jour.  </p>
-              </li>
-              <li class="component-col">
-                <div class=" component-col-icon">
-                  <div class="icon icon-coins">
-                  </div>
+            </li>
+            <li class="component-col">
+              <div class=" component-col-icon">
+                <div class="icon icon-coins">
                 </div>
-                <h3 class="component-col-title">Fixez<br/>vos tarifs</h3>
-                <p class="component-col-content">
-                  Travaillez en direct<br/>
-                  avec vos élèves
-                </p>
-              </li>
-              <li class="component-col">
-                <div class=" component-col-icon">
-                  <div class="icon icon-cloth"></div>
-                </div>
-                <h3 class="component-col-title">Rejoignez<br/>l'aventure</h3>
-                <p class="component-col-content"> Inscription gratuite<br/> pour les professeurs
-                </p>
-              </li>
+              </div>
+              <h3 class="component-col-title">Fixez<br/>vos tarifs</h3>
+              <p class="component-col-content">
+                Travaillez en direct<br/>
+                avec vos élèves
+              </p>
+            </li>
+            <li class="component-col">
+              <div class=" component-col-icon">
+                <div class="icon icon-cloth"></div>
+              </div>
+              <h3 class="component-col-title">Rejoignez<br/>l'aventure</h3>
+              <p class="component-col-content"> Inscription gratuite<br/> pour les professeurs
+              </p>
+            </li>
           </ul>
-          </div>
         </div>
       </div>
-      <div class="align-center">
-        <button class="button a-js" type="button" data-href="/inscription.html">Devenez professeur</button>
-      </div>
-      <p class="align-center">Vous souhaitez donner des cours ? Partagez vos connaissances ou votre
-        passion</p>
     </div>
+    <div class="align-center">
+      <button class="button a-js" type="button" data-href="/inscription.html">Devenez professeur</button>
+    </div>
+    <p class="align-center">Vous souhaitez donner des cours ? Partagez vos connaissances ou votre
+      passion</p>
+  </div>
 </div>
 
 <!-- seven ============= -->
-  <div class="section section-odd home-subjects">
-    <div class="wrapper">
-      <h2 class="section-title">Les cours particuliers par matières</h2>
-      <ul class="home-subjects-items">
-        <li class="home-subjects-item growing-card no-margin">
-          <div class="home-subjects-item-img fourth">
-          </div>
-          <h3 class="home-subjects-item-title">Scolaire</h3>
-          <p class="home-subjects-item-description">
-            La littérature n'est pas en reste avec les.
-          </p>
-        </li>
-        <li class="home-subjects-item growing-card ">
-          <div class="home-subjects-item-img second">
-          </div>
-          <h3 class="home-subjects-item-title">Langues</h3>
-          <p class="home-subjects-item-description">
-            Envie d'apprendre une langue, un dialecte
-          </p>
-        </li>
-        <li class="home-subjects-item growing-card ">
-          <div class="home-subjects-item-img third">
-          </div>
-          <h3 class="home-subjects-item-title">Musique</h3>
-          <p class="home-subjects-item-description">
-            Vous serez le prochain Mozart!
-          </p>
-        </li>
-        <li class="home-subjects-item growing-card no-margin">
-          <div
-            class="home-subjects-item-img fifth">
-          </div>
-          <h3 class="home-subjects-item-title">Sports</h3>
-          <p class="home-subjects-item-description">
-            Un esprit sain dans un corps sain !
-          </p>
-        </li>
-        <li class="home-subjects-item growing-card ">
-          <div class="home-subjects-item-img first"></div>
-          <h3 class="home-subjects-item-title">Art & loisirs</h3>
-          <p class="home-subjects-item-description">
-            Les arts et les loisirs peuvent faire l'objet de cours particuliers.
-          </p>
-        </li>
-        <li class="home-subjects-item growing-card ">
-          <div class="home-subjects-item-img sixth"></div>
-          <h3 class="home-subjects-item-title">Danse</h3>
-          <div class="home-subjects-item-description">
-            <p>De nombreuses danses sont enseignées par nos professeurs.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
+<div class="section section-odd home-subjects">
+  <div class="wrapper">
+    <h2 class="section-title">Les cours particuliers par matières</h2>
+    <ul class="home-subjects-items">
+      <li class="home-subjects-item growing-card no-margin">
+        <div class="home-subjects-item-img fourth">
+        </div>
+        <h3 class="home-subjects-item-title">Scolaire</h3>
+        <p class="home-subjects-item-description">
+          La littérature n'est pas en reste avec les.
+        </p>
+      </li>
+      <li class="home-subjects-item growing-card ">
+        <div class="home-subjects-item-img second">
+        </div>
+        <h3 class="home-subjects-item-title">Langues</h3>
+        <p class="home-subjects-item-description">
+          Envie d'apprendre une langue, un dialecte
+        </p>
+      </li>
+      <li class="home-subjects-item growing-card ">
+        <div class="home-subjects-item-img third">
+        </div>
+        <h3 class="home-subjects-item-title">Musique</h3>
+        <p class="home-subjects-item-description">
+          Vous serez le prochain Mozart!
+        </p>
+      </li>
+      <li class="home-subjects-item growing-card no-margin">
+        <div
+          class="home-subjects-item-img fifth">
+        </div>
+        <h3 class="home-subjects-item-title">Sports</h3>
+        <p class="home-subjects-item-description">
+          Un esprit sain dans un corps sain !
+        </p>
+      </li>
+      <li class="home-subjects-item growing-card ">
+        <div class="home-subjects-item-img first"></div>
+        <h3 class="home-subjects-item-title">Art & loisirs</h3>
+        <p class="home-subjects-item-description">
+          Les arts et les loisirs peuvent faire l'objet de cours particuliers.
+        </p>
+      </li>
+      <li class="home-subjects-item growing-card ">
+        <div class="home-subjects-item-img sixth"></div>
+        <h3 class="home-subjects-item-title">Danse</h3>
+        <div class="home-subjects-item-description">
+          <p>De nombreuses danses sont enseignées par nos professeurs.</p>
+        </div>
+      </li>
+    </ul>
   </div>
+</div>
 
 <!-- eight ============= -->
-  <div class="section home-cities">
-    <div class="wrapper">
-      <h2 class="section-title">Les cours particuliers par ville</h2>
-      <p class="align-center">
-        <span>Les principales villes, </span>
-        <span> <strong>en France</strong> </span>
-      </p>
-      <ul class="home-cities-main-items inline-block-grid">
-        <li class="home-cities-main-item  first">
-          <a class="home-cities-main-anchor" href="#" title="Cours particuliers Paris">
-            <span class="home-cities-main-img first"> </span>
-            <span class="home-cities-main-name">Paris</span>
-            <span class="home-cities-main-profs">0 professeurs</span>
-          </a>
-        </li>
-        <li class="home-cities-main-item ">
-          <a class="home-cities-main-anchor" href="#" title="Cours particuliers Lille">
-            <span class="home-cities-main-img second"> </span>
-            <span class="home-cities-main-name">Lille</span>
-            <span class="home-cities-main-profs">0 professeurs</span>
-          </a>
-        </li>
-        <li class="home-cities-main-item ">
-          <a class="home-cities-main-anchor" href="#" title="Cours particuliers Bordeaux">
-            <span class="home-cities-main-img third"> </span>
-            <span class="home-cities-main-name">Bordeaux</span>
-            <span class="home-cities-main-profs">0 professeurs</span>
-          </a>
-        </li>
-        <li class="home-cities-main-item ">
-          <a class="home-cities-main-anchor" href="#" title="Cours particuliers Lyon">
-            <span class="home-cities-main-img fourth"></span>
-            <span class="home-cities-main-name">Lyon</span>
-            <span class="home-cities-main-profs">0 professeurs</span>
-          </a>
-        </li>
-        <li class="home-cities-main-item ">
-          <a class="home-cities-main-anchor" href="#" title="Cours particuliers Marseille">
-            <span class="home-cities-main-img fifth"> </span>
-            <span class="home-cities-main-name">Marseille</span>
-            <span class="home-cities-main-profs">0 professeurs</span>
-          </a>
-        </li>
-      </ul>
-      <ul class="home-cities-others-items inline-block-grid">
-        <li class="home-cities-others-item  first">
-          <h3 class="home-cities-others-title first"> Nord-Ouest </h3>
-          <ul class="unstyled-list">
-            <li>
-              <a class="home-cities-others-city" href="#" title="Cours particuliers Le Havre">
-                <strong>Le Havre</strong> <em>(0 profs)</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="home-cities-others-item">
-          <h3 class="home-cities-others-title second">
-            Nord-Est
-            <span class="home-cities-others-picto"> </span>
-          </h3>
-          <ul class="unstyled-list">
-            <li>
-              <a class="home-cities-others-city" href="#" title="Cours particuliers Amiens">
-                <strong>Amiens</strong> <em>(0 profs)</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="home-cities-others-item ">
-          <h3 class="home-cities-others-title third">
-            Centre
-            <span class="home-cities-others-picto"></span>
-          </h3>
-          <ul class="unstyled-list">
-            <li>
-              <a class="home-cities-others-city" href="#" title="Cours particuliers Clermont-Ferrand">
-                <strong>Clermont-Ferrand</strong> <em>(0 profs)</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="home-cities-others-item"> <h3 class="home-cities-others-title fourth"> Sud-Ouest
-            <span
-              class="home-cities-others-picto">
-            </span>
-          </h3>
-          <ul class="unstyled-list"> <li>
-              <a class="home-cities-others-city" href="#" title="Cours particuliers Montpellier">
-                <strong>Montpellier</strong> <em>(0 profs)</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="home-cities-others-item ">
-          <h3 class="home-cities-others-title fifth"> Sud-Est
-            <span class="home-cities-others-picto"> </span>
-          </h3>
-          <ul class="unstyled-list">
-            <li>
-              <a class="home-cities-others-city" href="#" title="Cours particuliers Toulon">
-                <strong>Toulon</strong> <em>(0 profs)</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+<div class="section home-cities">
+  <div class="wrapper">
+    <h2 class="section-title">Les cours particuliers par ville</h2>
+    <p class="align-center">
+      <span>Les principales villes, </span>
+      <span> <strong>en France</strong> </span>
+    </p>
+    <ul class="home-cities-main-items inline-block-grid">
+      <li class="home-cities-main-item  first">
+        <a class="home-cities-main-anchor" href="#" title="Cours particuliers Paris">
+          <span class="home-cities-main-img first"> </span>
+          <span class="home-cities-main-name">Paris</span>
+          <span class="home-cities-main-profs">0 professeurs</span>
+        </a>
+      </li>
+      <li class="home-cities-main-item ">
+        <a class="home-cities-main-anchor" href="#" title="Cours particuliers Lille">
+          <span class="home-cities-main-img second"> </span>
+          <span class="home-cities-main-name">Lille</span>
+          <span class="home-cities-main-profs">0 professeurs</span>
+        </a>
+      </li>
+      <li class="home-cities-main-item ">
+        <a class="home-cities-main-anchor" href="#" title="Cours particuliers Bordeaux">
+          <span class="home-cities-main-img third"> </span>
+          <span class="home-cities-main-name">Bordeaux</span>
+          <span class="home-cities-main-profs">0 professeurs</span>
+        </a>
+      </li>
+      <li class="home-cities-main-item ">
+        <a class="home-cities-main-anchor" href="#" title="Cours particuliers Lyon">
+          <span class="home-cities-main-img fourth"></span>
+          <span class="home-cities-main-name">Lyon</span>
+          <span class="home-cities-main-profs">0 professeurs</span>
+        </a>
+      </li>
+      <li class="home-cities-main-item ">
+        <a class="home-cities-main-anchor" href="#" title="Cours particuliers Marseille">
+          <span class="home-cities-main-img fifth"> </span>
+          <span class="home-cities-main-name">Marseille</span>
+          <span class="home-cities-main-profs">0 professeurs</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="home-cities-others-items inline-block-grid">
+      <li class="home-cities-others-item  first">
+        <h3 class="home-cities-others-title first"> Nord-Ouest </h3>
+        <ul class="unstyled-list">
+          <li>
+            <a class="home-cities-others-city" href="#" title="Cours particuliers Le Havre">
+              <strong>Le Havre</strong> <em>(0 profs)</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="home-cities-others-item">
+        <h3 class="home-cities-others-title second">
+          Nord-Est
+          <span class="home-cities-others-picto"> </span>
+        </h3>
+        <ul class="unstyled-list">
+          <li>
+            <a class="home-cities-others-city" href="#" title="Cours particuliers Amiens">
+              <strong>Amiens</strong> <em>(0 profs)</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="home-cities-others-item ">
+        <h3 class="home-cities-others-title third">
+          Centre
+          <span class="home-cities-others-picto"></span>
+        </h3>
+        <ul class="unstyled-list">
+          <li>
+            <a class="home-cities-others-city" href="#" title="Cours particuliers Clermont-Ferrand">
+              <strong>Clermont-Ferrand</strong> <em>(0 profs)</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="home-cities-others-item"> <h3 class="home-cities-others-title fourth"> Sud-Ouest
+          <span
+            class="home-cities-others-picto">
+          </span>
+        </h3>
+        <ul class="unstyled-list"> <li>
+            <a class="home-cities-others-city" href="#" title="Cours particuliers Montpellier">
+              <strong>Montpellier</strong> <em>(0 profs)</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="home-cities-others-item ">
+        <h3 class="home-cities-others-title fifth"> Sud-Est
+          <span class="home-cities-others-picto"> </span>
+        </h3>
+        <ul class="unstyled-list">
+          <li>
+            <a class="home-cities-others-city" href="#" title="Cours particuliers Toulon">
+              <strong>Toulon</strong> <em>(0 profs)</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
+</div>
 
 <!-- nine ============= -->
-  <div class="section-odd home-mag">
-    <div class="wrapper">
-      <h2 class="section-title">Megaprof </h2>
-      <p class="align-center">
-        <p>Le magazine qui aime <strong>les profs</strong>, les élèves, les cours particuliers et le partage de
-          connaissances</p>
+<div class="section-odd home-mag">
+  <div class="wrapper">
+    <h2 class="section-title">Megaprof </h2>
+    <p class="align-center">
+      <p>Le magazine qui aime <strong>les profs</strong>, les élèves, les cours particuliers et le partage de
+        connaissances</p>
 
       <div class="home-mag-cells">
         <div class="home-mag-cell growing-card">
@@ -588,19 +587,18 @@
     </div>
   </div>
 
-{!! HTML::script("js/slick.min.js") !!}
+  {!! HTML::script("js/slick.min.js") !!}
 
 
-<!-- ten ============= -->
-<script>
+  <!-- ten ============= -->
+  <script>
     $(document).ready(function () {
 
       $('.carousel').slick({
         autoplay : true,
-        autoplaySpeed : 5000,
+        autoplaySpeed : 50000,
         arrows: false,
         dots: true,
-        fade: true,
         cssEase: 'linear',
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -638,7 +636,7 @@
       setInterval(toggleFade, 7000);
     });
 
-</script>
+  </script>
 
-@endsection
+  @endsection
 
