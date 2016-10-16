@@ -2182,7 +2182,7 @@ a.component-pagination-item:hover {
 @media all and (min-width: 980px) {
 
 .home-search-field-wrapper {
-    width: calc((100% - 123px) / 2);
+    width: calc((100% - 124px) / 2);
     margin-right: 10px;
     display: inline-block;
 }

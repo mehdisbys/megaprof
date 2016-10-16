@@ -39,7 +39,7 @@ class SessionsController extends Controller
 		    return redirect()->intended(session('redirectPath'));
 	    }
 
-	    error(trans('copy.errors.signin'));
+	    error("Votre addresse email et/ou votre mot de passe sont invalides. Veuillez réessayer s'il vous plaît.");
 
 	    return redirect('login');
     }

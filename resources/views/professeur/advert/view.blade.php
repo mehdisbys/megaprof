@@ -4,11 +4,8 @@
 <div class="view-profs-items-container">
 <div class="temp-row single-view">
   <div id="author" class="component-profile-sidebar">
-
-    <div id="leftside" class="profile-author-profile">
-
+    <div id="" class="profile-author-profile">
       <img src="{{ $advert->getAvatar() }}" alt="avatar">
-
       <div class="info-author">
           <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
           <ul class="iconlist">
