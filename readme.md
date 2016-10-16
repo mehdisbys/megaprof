@@ -5,7 +5,8 @@
 - [x] Frontend : Apply styling to single page advert
 - [x] should be an auto-slide / carousel layout showing 3 adverts at the time
 - [ ] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout 
-
+- [ ] Frontend : New logo
+- [ ] Frontend : Final site name is "Taelam" instead of Megaprof
 
 --------------------------------------------------------------------------------
 
