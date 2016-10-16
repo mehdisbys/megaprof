@@ -15,3 +15,12 @@
 - [x] Backend to fix facebook login
 - [x] Backend, import profile picture from Facebook
 - [x] Pagination styling (frontend)
+- [x] Frontend : Submit button "Chercher" in both search form should be aligned and when responsive should be centered under the two inputs
+- [x] Frontend : style "Les matières les plus populaires" on front page, each subject should have a circle of a different color, if possible show them 5 by 5 and make them fade in and out in a loop (just css)
+- [x] Frontend : Apply styling to single page advert
+- [x] should be an auto-slide / carousel layout showing 3 adverts at the time
+- [x] Backend : when logging-in check that phone number / date-of-birth are populated
+- [x] Backend : fix google map location : it should populate the city only, not the region
+- [x] Backend : fix taking pictures via webcam functionality
+- [x] Backend : Fix login error partial includes
+- [x] Backend : Fix forgotten password functionality
