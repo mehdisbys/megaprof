@@ -11,7 +11,7 @@
 
 #### High priority
 
-- [ ] Backend : In "Gérer mon profil", fix birthdate
+- [x] Backend : In "Gérer mon profil", fix birthdate
 - [ ] Backend : Ability to deactivate an advert
 - [ ] Backend : add facebook button to share advert after publishing
 - [ ] Backend : Feature : if selected subject is not in the list do a search by word

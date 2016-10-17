@@ -38,7 +38,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'confirmation_code', 'confirmed', 'remember_token', 'token'];
 
 
-    protected $dates = ['created_at', 'updated_at', 'trial_ends_at', 'subscription_ends_at'];
+    protected $dates = ['created_at', 'updated_at', 'trial_ends_at', 'subscription_ends_at', 'birthdate'];
 
 
     public function getAuthIdentifierName()

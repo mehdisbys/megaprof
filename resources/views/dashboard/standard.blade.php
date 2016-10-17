@@ -110,7 +110,7 @@
 
                 <div class="form-group col-md-12">
                     {!! Form::label('birthdate', 'Date de naissance') !!}
-                    {!! Form::text('birthdate', $user->birthdate, ['class' => 'form-control']) !!}
+                    <input class="form-control" name="birthdate" type="date" value="{{$user->birthdate->format("Y-m-d")}}" id="birthdate">
                 </div>
 
                 <div class="form-group col-md-12">
