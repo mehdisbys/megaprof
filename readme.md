@@ -5,6 +5,7 @@
 - [ ] Frontend : New logo should be approching the more islamic type SVG example : (http://www.clker.com/clipart-24308.html)
 - [ ] Frontend : Final site name is "Taelam" instead of Megaprof
 - [ ] Frontend : On single page have a right page where social buttons, bookings and ratings can appear
+- [ ] Frontend : When logged in the button "Donner des cours" in the header needs re-aligning
 
 --------------------------------------------------------------------------------
 
