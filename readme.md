@@ -13,7 +13,7 @@
 
 - [x] Backend : In "Gérer mon profil", fix birthdate
 - [x] Backend : Ability to deactivate / reactivate an advert
-- [ ] Backend : add 404 and 500 page
+- [x] Backend : add 404 and 500 page
 - [ ] Backend : add facebook button to share advert after publishing
 - [ ] Backend : Feature : if selected subject is not in the list do a search by word
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
