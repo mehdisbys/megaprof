@@ -66,9 +66,11 @@ class SessionsController extends Controller
      */
     public function logout()
     {
+        $user = Auth::user();
+
         Auth::logout();
 
-        thanks('You have now been signed out. See ya.');
+        thanks('Vous êtes maintenant déconnecté. À bientôt ' . $user->firstname . ' !');
 
         return redirect('login');
     }

@@ -173,4 +173,18 @@ class EditAdvertController extends Controller
 
         return view('professeur.advert.createStep7')->with(compact('advert'));
     }
+
+    public function deactivateAdvert($advert_id){
+        $advert = Advert::find($advert_id);
+        $advert->unpublish();
+        thanks("Votre annonce a été désactivée, elle ne sera plus visible sur le site. Vous pouvez la réactiver à partir de votre tableau de bord.");
+        return redirect()->back();
+    }
+
+    public function activateAdvert($advert_id){
+        $advert = Advert::find($advert_id);
+        $advert->publish();
+        thanks("Votre annonce a publiée, elle sera désormais visible par tous les élèves.");
+        return redirect()->back();
+    }
 }

@@ -32,6 +32,8 @@ class Advert extends Model implements SluggableInterface
         'on_update'       => false,
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'published_at'];
+
     private static $paginateCount = 20;
 
     public function user()
@@ -61,7 +63,7 @@ class Advert extends Model implements SluggableInterface
 
     public static function findBySlugOr404($slug)
     {
-        $advert = self::where('slug', '=', $slug)->first();
+        $advert = self::where(['slug' =>  $slug])->whereNotNull('published_at')->first();
         return $advert ? $advert : \App::abort(404);
     }
 

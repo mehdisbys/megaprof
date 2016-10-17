@@ -1,6 +1,9 @@
 @extends('dashboard.index')
 
 @section('dashboard-content')
+    @include('includes.success')
+    @include('includes.error')
+
     <div class="tab-container col-md-12 topmargin-lg">
 
         <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-37"
@@ -63,9 +66,17 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <div class="button button-small button-white button-rounded">
-                        <a href="/deactivate/{{$advert->id}}/">Désactiver</a>
-                    </div>
+
+                @if($advert->published_at != null)
+                        <div class="button button-small button-red button-rounded">
+                            <a href="/desactiver-annonce/{{$advert->id}}/">Désactiver</a>
+                        </div>
+                    @else
+                        <div class="button button-small button-lime button-rounded">
+                            <a href="/activer-annonce/{{$advert->id}}/">Activer</a>
+                        </div>
+                    @endif
+
                     <div class="button button-small button-leaf button-rounded">
                         <a href="/{{$advert->slug}}">Voir</a>
                     </div>
@@ -110,7 +121,7 @@
 
                 <div class="form-group col-md-12">
                     {!! Form::label('birthdate', 'Date de naissance') !!}
-                    <input class="form-control" name="birthdate" type="date" value="{{$user->birthdate->format("Y-m-d")}}" id="birthdate">
+                    <input class="form-control" name="birthdate" type="date" value="{{$user->birtdate ? $user->birthdate->format("Y-m-d") : ''}}" id="birthdate">
                 </div>
 
                 <div class="form-group col-md-12">
