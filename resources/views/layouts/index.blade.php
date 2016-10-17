@@ -211,13 +211,11 @@
 
       $('.carousel').slick({
         autoplay : true,
-        autoplaySpeed : 50000,
+        autoplaySpeed : 5000,
         arrows: false,
         dots: true,
         cssEase: 'linear',
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite : true
+
       });
 
       $("#submit-btn").click(function (event) {
