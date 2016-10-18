@@ -14,11 +14,11 @@
 - [x] Backend : In "Gérer mon profil", fix birthdate
 - [x] Backend : Ability to deactivate / reactivate an advert
 - [x] Backend : add 404 and 500 page
-- [ ] Backend : add facebook button to share advert after publishing
+- [x] Backend : add facebook button to share advert after publishing
+- [ ] Backend : add captcha at login time
 - [ ] Backend : Feature : if selected subject is not in the list do a search by word
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 - [ ] Backend : Review Lesson booking form
-- [ ] Backend : add captcha at login time
 
 #### Low priority
 - [ ] Backend : get total number of facebook friends

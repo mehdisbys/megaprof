@@ -46,7 +46,7 @@ class DashboardNotificationsAfterAdSubmission
         // TODO Social networks sharing
             Notification::createAdvertNotification(
                 'social-networks',
-                config('notifications.social-networks'),
+                "Touchez le maximum d'élèves potentiels en faisant la promotion de votre annonce : " . str_limit($event->advert->title, 55),
                 "",
                 $advertId,
                 \Auth::id()
