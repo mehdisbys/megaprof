@@ -14,7 +14,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     use Billable;
     use Authenticatable, CanResetPassword;
-    use EntrustUserTrait;
 
     /**
      * The database table used by the model.

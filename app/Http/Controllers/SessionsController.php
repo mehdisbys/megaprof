@@ -31,11 +31,17 @@ class SessionsController extends Controller
      */
     public function postLogin(Request $request)
     {
-	    $this->validate($request, ['email' => 'required|email', 'password' => 'required']);
+	    $this->validate($request, ['email' => 'required|email', 'password' => 'required', 'captcha' => 'required']);
+
+        if(isCaptchaCodeCorrect($request->get('captcha')) == false)
+        {
+            error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
+            return redirect('login');
+        }
 
 	    if ($this->checkUserisConfirmed($request->input('email')) &&  $this->signIn($request)) 
 	    {
-		    thanks(trans('copy.success.welcome', ['username' => \Auth::user()->username]));
+		    //thanks(trans('copy.success.welcome', ['username' => \Auth::user()->username]));
 		    return redirect()->intended(session('redirectPath'));
 	    }
 
@@ -72,7 +78,7 @@ class SessionsController extends Controller
 
         thanks('Vous êtes maintenant déconnecté. À bientôt ' . $user->firstname . ' !');
 
-        return redirect('login');
+        return redirect('/');
     }
 
     /**

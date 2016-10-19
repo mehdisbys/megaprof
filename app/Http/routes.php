@@ -38,6 +38,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get( 'reset_token/{token}','SignupController@resetPasswordSecondForm');
     Route::post('reset/try', 'SignupController@tryResettingPassword');
 
+    Route::get('captcha', 'c@generate');
+
     Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/avatar_dashboard/{user_id}', 'AvatarController@getDefaultAvatar');

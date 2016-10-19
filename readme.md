@@ -15,7 +15,7 @@
 - [x] Backend : Ability to deactivate / reactivate an advert
 - [x] Backend : add 404 and 500 page
 - [x] Backend : add facebook button to share advert after publishing
-- [ ] Backend : add captcha at login time
+- [x] Backend : add captcha at login time
 - [ ] Backend : Feature : if selected subject is not in the list do a search by word
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 - [ ] Backend : Review Lesson booking form

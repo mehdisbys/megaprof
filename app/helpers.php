@@ -111,3 +111,14 @@ function getAvatar($userId)
 	return "/avatar/{$userId}";
 }
 
+function saveCaptchaCode(string $code)
+{
+    session(['captchaCode' => $code]);
+}
+
+function isCaptchaCodeCorrect(string $codeToValidate)
+{
+    $code = session('captchaCode');
+
+    return $code === $codeToValidate;
+}
