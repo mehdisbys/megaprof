@@ -6,7 +6,7 @@
 - [ ] Frontend : Final site name is "Taelam" instead of Megaprof
 - [ ] Frontend : On single page have a right side panel where social buttons, bookings and ratings can appear
 - [ ] Frontend : standardise pictures size - some pictures have bigger length than others
-- [ ] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout
+- [x] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout
 
 --------------------------------------------------------------------------------
 

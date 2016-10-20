@@ -1371,6 +1371,13 @@ a.component-pagination-item:hover {
     width: 200px;
     float: left;
 }
+
+.profile-author-profile .fa {
+    display : inline-block;
+    padding-right: 4px;
+    font-size: 20px;
+}
+
 .profile-author-description {
     position: relative;
     width: calc(100% - 240px);
