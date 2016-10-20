@@ -1,11 +1,12 @@
 ### TODO
 
-- [ ] Frontend : New logo should be approching the more islamic type SVG example : (http://www.clker.com/clipart-24308.html)
+- [x] Frontend : New logo should be approching the more islamic type SVG example : (http://www.clker.com/clipart-24308.html)
+- [x] Frontend : When logged in the button "Donner des cours" in the header needs re-aligning
+
 - [ ] Frontend : Final site name is "Taelam" instead of Megaprof
 - [ ] Frontend : On single page have a right side panel where social buttons, bookings and ratings can appear
 - [ ] Frontend : standardise pictures size - some pictures have bigger length than others
-- [ ] Frontend : When logged in the button "Donner des cours" in the header needs re-aligning
-- [ ] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout 
+- [ ] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout
 
 --------------------------------------------------------------------------------
 
