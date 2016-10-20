@@ -148,7 +148,7 @@
     vertical-align: middle;
     text-align: center;
     line-height: 10px;
-    color: #0da5fd
+    color: #f57009
 }
 .dashboard-sidebar-pro-informations .button {
     width: 100%
@@ -1975,7 +1975,7 @@ a.component-pagination-item:hover {
 .component-search-result-giveaway {
     font-size: 12px;
     font-weight: 600;
-    color: #0da5fd
+    color: #f57009
 }
 .component-search-result-price {
     margin-top: 5px;
@@ -2451,7 +2451,7 @@ a.component-pagination-item:hover {
     border: solid 4px #f7f7f7;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    background-color: #0da5fd
+    background-color: #f57009
 }
 .component-slider-min {
     position: absolute;
@@ -2473,7 +2473,7 @@ a.component-pagination-item:hover {
     margin-left: -20px;
     font-size: 14px;
     white-space: nowrap;
-    color: #0da5fd
+    color: #f57009
 }
 .component-slider-minus,
 .component-slider-plus {
@@ -2920,7 +2920,7 @@ a.component-pagination-item:hover {
     border-radius: 50%
 }
 .course-demand-item.not-read:before {
-    background-color: #0da5fd
+    background-color: #f57009
 }
 .course-demand-state {
     position: absolute;
@@ -2960,10 +2960,10 @@ a.component-pagination-item:hover {
     border-top-color: #dadada
 }
 .payment .course-demand-state {
-    color: #0da5fd
+    color: #f57009
 }
 .payment .course-demand-state:after {
-    border-top-color: #0da5fd
+    border-top-color: #f57009
 }
 .course-demand-item-column {
     display: table-cell;
@@ -2999,7 +2999,7 @@ a.component-pagination-item:hover {
 }
 .course-demand-item-field .item-prices .item-highlight {
     display: block;
-    color: #0da5fd
+    color: #f57009
 }
 .course-demand-item-profile {
     width: 80px;
@@ -3754,7 +3754,7 @@ ul.profil_statut li span.verified:before {
     margin: 5px 0;
     font-weight: 600;
     font-size: 14px;
-    color: #0da5fd
+    color: #f57009
 }
 .announce-satisfaction {
     display: block;
@@ -4235,7 +4235,7 @@ ul.profil_statut li span.verified:before {
         right: 0px;
         margin: 2px;
         text-decoration: none;
-        color: #0da5fd
+        color: #f57009
     }
     #announce .announce-profile-verified .announce-profile-verified-button:after {
         background: url("/temp-images/sprite.png") no-repeat transparent;
@@ -4566,7 +4566,7 @@ ul.profil_statut li span.verified:before {
 }
 .home-search-submit:focus,
 .home-search-submit:hover {
-    background-color: #0da5fd
+    background-color: #f57009
 }
 .autocomplete .autocomplete-results.home-search-results {
     top: 66px;
@@ -5130,7 +5130,7 @@ ul.profil_statut li span.verified:before {
     vertical-align: middle
 }
 .home-mag-cell:hover a {
-    color: #0da5fd
+    color: #f57009
 }
 .home-mag-cell-profile-picture {
     position: relative;
@@ -5166,7 +5166,7 @@ ul.profil_statut li span.verified:before {
     z-index: 2
 }
 .home-mag-cell-question:hover {
-    color: #0da5fd
+    color: #f57009
 }
 .home-mag-cell-answer {
     position: relative;
@@ -5264,7 +5264,7 @@ ul.profil_statut li span.verified:before {
         bottom: 0;
         right: 0;
         width: 50px;
-        background-color: #0da5fd;
+        background-color: #f57009;
         -webkit-border-top-right-radius: 4px;
         border-top-right-radius: 4px;
         -webkit-border-bottom-right-radius: 4px;
@@ -5419,7 +5419,7 @@ ul.profil_statut li span.verified:before {
     background-color: #eef9ff;
     float: left;
     padding: 20px;
-    border-bottom: #0da5fd 1px solid; 
+    border-bottom: #f57009 1px solid; 
 }
 .temp-row:first-child {
     margin-top: 0
@@ -7803,7 +7803,7 @@ ul.profil_statut li span.verified:before {
     left: 50%
 }
 .search-text-picto.basic {
-    background-color: #0da5fd
+    background-color: #f57009
 }
 .search-text-picto.basic:before {
     background: url("/temp-images/sprite.png") no-repeat transparent;
@@ -8084,7 +8084,7 @@ ul.profil_statut li span.verified:before {
     border: 2px solid #fff;
     font-size: 15px;
     font-weight: 600;
-    background-color: #0da5fd;
+    background-color: #f57009;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     color: #fff;
@@ -8390,7 +8390,7 @@ ul.profil_statut li span.verified:before {
     .button .search-mobile-overlay-filter-count {
         float: left;
         background-color: #fff;
-        color: #0da5fd
+        color: #f57009
     }
     .search-mobile-overlay-filter .search-mobile-overlay-filter-icon {
         right: 0;
@@ -8446,7 +8446,7 @@ ul.profil_statut li span.verified:before {
         height: 20px;
         padding-top: 3px;
         background-color: #fff;
-        color: #0da5fd;
+        color: #f57009;
         -webkit-border-radius: 50%;
         border-radius: 50%;
         text-align: center
@@ -8538,7 +8538,7 @@ ul.profil_statut li span.verified:before {
         border-width: 0;
         font-size: 12px;
         font-weight: 600;
-        color: #0da5fd;
+        color: #f57009;
         background-color: transparent;
         z-index: 2
     }
@@ -8636,7 +8636,7 @@ ul.profil_statut li span.verified:before {
     width: 20px;
     height: 20px;
     font-size: 12px;
-    background-color: #0da5fd;
+    background-color: #f57009;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     line-height: 20px;
@@ -8719,7 +8719,7 @@ ul.profil_statut li span.verified:before {
     left: 0;
     max-width: 100%;
     height: 5px;
-    background-color: #0da5fd;
+    background-color: #f57009;
     z-index: 2
 }
 .dot-timeline {
@@ -8758,7 +8758,7 @@ ul.profil_statut li span.verified:before {
 }
 .dot-timeline.current .dot-title {
     top: 29px;
-    color: #0da5fd
+    color: #f57009
 }
 .dot-timeline.current .dot-information {
     top: 44px
@@ -9224,10 +9224,10 @@ ul.profil_statut li span.verified:before {
     width: 30px;
     height: 30px;
     margin: 0 auto 10px;
-    border: 2px solid #0da5fd;
+    border: 2px solid #f57009;
     font-size: 22px;
     font-weight: bold;
-    color: #0da5fd;
+    color: #f57009;
     text-align: center;
     line-height: 25px;
     -webkit-border-radius: 50%;
@@ -9303,7 +9303,7 @@ ul.profil_statut li span.verified:before {
     vertical-align: top
 }
 .dashboard-highlight {
-    color: #0da5fd
+    color: #f57009
 }
 .dashboard-statistics-info {
     list-style: none;
@@ -9371,7 +9371,7 @@ ul.profil_statut li span.verified:before {
 .dashboard-statistics-info-item .item-number {
     font-weight: 600;
     font-size: 13px;
-    color: #0da5fd
+    color: #f57009
 }
 .dashboard-home-alert-container {
     list-style: none;
@@ -9617,7 +9617,7 @@ ul.profil_statut li span.verified:before {
     font-size: 22px
 }
 .course-demand-page-sidebar .item-highlight {
-    color: #0da5fd
+    color: #f57009
 }
 .course-demand-page-sidebar .button {
     display: block;
@@ -9642,9 +9642,9 @@ ul.profil_statut li span.verified:before {
     padding: 10px 0
 }
 .need-check {
-    outline: 1px solid #0da5fd;
-    -webkit-box-shadow: 0 0 1px 1px #0da5fd, inset 0 0 1px 1px #0da5fd;
-    box-shadow: 0 0 1px 1px #0da5fd, inset 0 0 1px 1px #0da5fd
+    outline: 1px solid #f57009;
+    -webkit-box-shadow: 0 0 1px 1px #f57009, inset 0 0 1px 1px #f57009;
+    box-shadow: 0 0 1px 1px #f57009, inset 0 0 1px 1px #f57009
 }
 .input-container.textarea-refuse {
     width: 500px;
@@ -9942,7 +9942,7 @@ ul.profil_statut li span.verified:before {
     font-size: 13px;
     font-weight: 600;
     vertical-align: middle;
-    background-color: #0da5fd;
+    background-color: #f57009;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     text-align: center;
@@ -10069,7 +10069,7 @@ ul.profil_statut li span.verified:before {
     font-size: 13px;
     font-weight: 600;
     vertical-align: middle;
-    background-color: #0da5fd;
+    background-color: #f57009;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     text-align: center;
@@ -10593,10 +10593,11 @@ a.traduction_annonce {
     height: 140px;
     background-color: white;
     text-align: center;
+    padding: 5px;
 }
 
 .scrolling-pane ul li .fa{
-    background-color: #008FF9;
+    background-color: #f57009;
     display: block;
     color:white;
     width: 60px;
@@ -10611,7 +10612,7 @@ a.traduction_annonce {
 }
 
 .scrolling-pane ul li .subject-icon {
-    background-color: #008FF9;
+    background-color: #f57009;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -10672,7 +10673,7 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-    background-color: #008FF9;
+    background-color: #f57009;
     color: white;
 }
 
