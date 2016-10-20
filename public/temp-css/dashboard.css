@@ -4498,7 +4498,7 @@ ul.profil_statut li span.verified:before {
 }
 
 .home-search {
-    padding: 20px 65px;
+    padding: 120px 20px;
     background-image: url("/temp-images/backgrounds/header-banner-bg.jpg");
     -webkit-background-size: cover;
     background-size: cover;
@@ -10621,10 +10621,21 @@ a.traduction_annonce {
 .single-view {
 }
 .single-view .profile-author-profile {
+
 }
-.component-profile-sidebar {}
+
+.component-profile-sidebar {
+    }
+
 .profile-author-profile img {
- width: 100%;
+    width: 100%;
+}
+
+.profile-image-wrapper {
+    display: block;
+    max-height: 200px;
+    overflow: hidden;
+
 }
 
 .single-view .info-author {

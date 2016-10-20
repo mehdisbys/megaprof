@@ -5,7 +5,9 @@
 <div class="temp-row single-view">
   <div id="author" class="component-profile-sidebar">
     <div id="" class="profile-author-profile">
+<div class="profile-image-wrapper">
       <img src="{{ $advert->getAvatar() }}" alt="avatar">
+</div>
       <div class="info-author">
           <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
           <ul class="iconlist">

@@ -1,7 +1,7 @@
 <div class="temp-row">
     <div class="component-profile-sidebar">
         <div class="profile-author-profile">
-            <a href="/{{$advert->slug}}">
+            <a href="/{{$advert->slug}}" class="profile-image-wrapper">
                 <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt="avatar"/>
             </a>
             <h3>
