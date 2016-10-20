@@ -21,8 +21,6 @@ class SignupController extends Controller
 	
 	public function candidateSignup(Signup $request)
 	{
-		$role = \App\Models\Role::whereName('test')->first();
-
 		$user = User::newUser($request->all());
 
         //TODO generate event UserRegistered
