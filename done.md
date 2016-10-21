@@ -24,3 +24,12 @@
 - [x] Backend : fix taking pictures via webcam functionality
 - [x] Backend : Fix login error partial includes
 - [x] Backend : Fix forgotten password functionality
+- [x] Frontend : New logo should be approching the more islamic type SVG example : (http://www.clker.com/clipart-24308.html)
+- [x] Frontend : When logged in the button "Donner des cours" in the header needs re-aligning
+- [x] Frontend : style latest teachers : "Les dernières annonces publiées"(front page), currently reusing search results layout
+- [x] Backend : In "Gérer mon profil", fix birthdate
+- [x] Backend : Ability to deactivate / reactivate an advert
+- [x] Backend : add 404 and 500 page
+- [x] Backend : add facebook button to share advert after publishing
+- [x] Backend : add captcha at login time
+- [x] Backend : Ability for student to give a rating to a teacher
