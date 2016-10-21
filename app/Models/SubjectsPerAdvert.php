@@ -55,7 +55,7 @@ class SubjectsPerAdvert extends Model
             ->toArray();
     }
 
-    public static function getAllAdvertIdsForSubject(int $subjectId)
+    public static function getAllAdvertIdsForSubject(int $subjectId): array
     {
        return self::where('subject_id', $subjectId)
            ->get()

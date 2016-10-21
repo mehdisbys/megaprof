@@ -23,9 +23,9 @@ class ListAdvertController extends Controller
 
     public function index()
     {
-        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
         $selectedSubject = null;
-        $latestAdverts = $this->latestAdverts();
+        $latestAdverts   = $this->latestAdverts();
         $popularSubjects = $this->mostPopularSubjects();
 
         return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'latestAdverts', 'popularSubjects'));
@@ -33,8 +33,8 @@ class ListAdvertController extends Controller
 
     public function allAdverts()
     {
-        $adverts = Advert::liveAdverts(20);
-        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $adverts         = Advert::liveAdverts(20);
+        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
         $selectedSubject = null;
 
         return view('main.index')->with(compact('adverts', 'subsubjects', 'selectedSubject'));
@@ -80,7 +80,7 @@ class ListAdvertController extends Controller
 
         $data->subsubjects    = implode(',', SubSubject::all()->pluck('name')->toArray());
         $data->subjectId      = $subject->id;
-        $data->lat            = $request->get('lat') ?? 33.5914950 ;
+        $data->lat            = $request->get('lat') ?? 33.5914950;
         $data->lgn            = $request->get('lng') ?? -7.6012452;
         $data->radius         = $this->mapRadius($request->get('radius'))[0];
         $data->selectedRadius = $this->mapRadius($request->get('radius'))[1];
@@ -90,14 +90,14 @@ class ListAdvertController extends Controller
 
         list($adverts, $distances) = $this->engine->search($data);
 
-            $results = view('main.multipleAdvertPreview')
+        $results = view('main.multipleAdvertPreview')
             ->with([
                        'adverts'         => $adverts,
                        'subsubjects'     => $data->subsubjects,
                        'selectedSubject' => $data->selectedSubject,
                        'distances'       => $distances,
                        'selectedCity'    => $data->city ?? null,
-                       'radius'          => $data->radius ?? null
+                       'radius'          => $data->radius ?? null,
                    ]
             )->render();
 
@@ -116,7 +116,7 @@ class ListAdvertController extends Controller
         $advert         = Advert::findBySlugOr404($slug);
         $comments       = Comment::commentsForAdvertId($advert->id);
         $similarAdverts = $this->findSimilarAdverts($advert);
-        $ratings = UserRatings::where(['user_id' => $advert->user->id])->first();
+        $ratings        = UserRatings::where(['user_id' => $advert->user->id])->first();
 
         return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts', 'ratings'));
     }
@@ -125,10 +125,11 @@ class ListAdvertController extends Controller
     {
         $data = new \stdClass();
 
-        $data->subjectId = $advert->getSubjectId();
-        $data->lat       = $advert->location_lat;
-        $data->lgn      = $advert->location_long;
-        $data->radius    = null;
+        $data->subjectId       = $advert->getSubjectId();
+        $data->lat             = $advert->location_lat;
+        $data->lgn             = $advert->location_long;
+        $data->radius          = null;
+        $data->exceptAdvertIds = [$advert->id];
 
         Advert::paginateCount(5);
         list($adverts, $distances) = $this->engine->search($data);
@@ -137,7 +138,7 @@ class ListAdvertController extends Controller
 
     public function latestAdverts()
     {
-        return Advert::orderBy('created_at','DESC')->paginate(5);
+        return Advert::orderBy('created_at', 'DESC')->paginate(5);
     }
 
     public function mostPopularSubjects(int $limit = 10)
@@ -174,15 +175,20 @@ class ListAdvertController extends Controller
     private function mapRadius(int $radius = null)
     {
         $map = [
-          1 => [5, '5 km'],
-          2 => [10,'10 km'],
-          3 => [20,'20 km'],
-          4 => [1,'à domicile']
+            1 => [5,
+                '5 km'],
+            2 => [10,
+                '10 km'],
+            3 => [20,
+                '20 km'],
+            4 => [1,
+                'à domicile'],
         ];
 
         if (isset($map[$radius]))
             return $map[$radius];
 
-        return [null,null];
+        return [null,
+            null];
     }
 }
