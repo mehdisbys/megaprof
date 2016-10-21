@@ -24,11 +24,13 @@
                 <div class="col-md-8 topmargin-sm">
 
                     <div class="col-md-4">
-                        @foreach($booking->advert->subjectsPerAd as $subject)
+                        @if(isset($booking->advert->subjectsPerAd))
+                        @foreach($booking->advert->subjectsPerAd ?? [] as $subject)
                             <div class="btn btn-info btn-md ">
                                 {{\App\Models\SubSubject::find($subject->subject_id)->name}}
                             </div>
                         @endforeach
+                        @endif
                             <div class=""><strong>{{$booking->advert->price}}Dh/h</strong></div>
                     </div>
 

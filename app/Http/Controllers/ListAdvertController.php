@@ -138,7 +138,7 @@ class ListAdvertController extends Controller
 
     public function latestAdverts()
     {
-        return Advert::orderBy('created_at', 'DESC')->paginate(5);
+        return Advert::whereNotNull('published_at')->orderBy('created_at', 'DESC')->paginate(5);
     }
 
     public function mostPopularSubjects(int $limit = 10)
