@@ -38,7 +38,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get( 'reset_token/{token}','SignupController@resetPasswordSecondForm');
     Route::post('reset/try', 'SignupController@tryResettingPassword');
 
-    Route::get('captcha', 'c@generate');
+    Route::get('captcha', 'CaptchaController@generate');
 
     Route::group(['middleware' => ['auth']], function () {
 

@@ -3,6 +3,7 @@ namespace App\Listeners;
 
 use App\Events\StudentCommentedOnProf;
 use App\Helpers\Contracts\MailerContract;
+use App\Models\Notification;
 
 class NotifyProfOfPostedComment
 {

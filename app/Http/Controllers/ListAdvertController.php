@@ -7,6 +7,7 @@ use App\Models\Advert;
 use App\Models\Comment;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
+use App\Models\UserRatings;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -115,8 +116,9 @@ class ListAdvertController extends Controller
         $advert         = Advert::findBySlugOr404($slug);
         $comments       = Comment::commentsForAdvertId($advert->id);
         $similarAdverts = $this->findSimilarAdverts($advert);
+        $ratings = UserRatings::where(['user_id' => $advert->user->id])->first();
 
-        return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts'));
+        return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts', 'ratings'));
     }
 
     public function findSimilarAdverts(Advert $advert)

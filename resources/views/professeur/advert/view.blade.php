@@ -12,11 +12,20 @@
           <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
           <ul class="iconlist">
             <li>
-              <i class="icon-location"></i> 
+              <i class="fa fa-map-marker"></i>
               <strong>{{ $advert->location_city }}</strong>
             </li>
             <li>
-              <i class="icon-study green"></i>
+              <i class="fa fa-star"></i>
+              <strong>Noté {{ $ratings->ratings_average}}/5</strong>
+            </li>
+            <li>
+              <i class="fa fa-star"></i>
+              <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
+            </li>
+
+            <li>
+              <i class="fa fa-asterisk"></i>
               <strong>Diplôme vérifié</strong>
             </li>
             <li>
@@ -28,8 +37,6 @@
           <div id="info-price" >
             <div class="entry-overlay-meta">
               <h3><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h3>
-              <h4>Premier cours offert !</h4>
-
               <div class="">
                 <a class="btn btn-danger btn-block btn-md"
                   href="/mise-en-relation/{{$advert->id}}">Réserver un cours</a>
@@ -37,17 +44,17 @@
 
               <div>
                 <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}"
-                  data-send="false" 
-                  data-layout="box_count" 
-                  data-width="60" data-show-faces="false" 
-                  rel="nofollow" target="_blank" 
+                  data-send="false"
+                  data-layout="box_count"
+                  data-width="60" data-show-faces="false"
+                  rel="nofollow" target="_blank"
                   class="social-icon si-colored si-facebook">
                   <i class="icon-facebook"></i>
                   <i class="icon-facebook"></i>
                 </a>
 
-                <a href="http://twitter.com/share" 
-                  data-count="vertical" rel="nofollow" 
+                <a href="http://twitter.com/share"
+                  data-count="vertical" rel="nofollow"
                   target="_blank" class="social-icon si-colored si-twitter">
                   <i class="icon-twitter"></i>
                   <i class="icon-twitter"></i>
@@ -116,12 +123,15 @@
 
 <!-- 3 -->
 <div class="view-comments">
+
+  @if($comments->count())
   <h3>Avis des étudiants</h3>
   @foreach($comments as $comment)
   <div class="view-comment">
-    <strong>{{$comment->sourceUser->firstname}}</strong> : {{$comment->comment}}
+    <strong>{{$comment->sourceUser->firstname}}</strong> : <div>{{$comment->comment}}</div>
   </div>
   @endforeach
+    @endif
 </div>
 
 <!-- 4 -->
@@ -134,7 +144,7 @@
       <div class="avatar-wrapper">
         <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
       </div>
-      <div>{{ \App\Models\User::find($advert->user_id)->firstname}}</div> 
+      <div>{{ \App\Models\User::find($advert->user_id)->firstname}}</div>
       <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
       <div class="location">
         <i class="icon-location"></i> {{ $advert->location_city }}
