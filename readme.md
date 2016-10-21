@@ -18,6 +18,8 @@
 - [x] Backend : add facebook button to share advert after publishing
 - [x] Backend : add captcha at login time
 - [ ] Backend : Feature : if selected subject is not in the list do a search by word
+- [ ] Backend : create bookings database seeder 
+- [ ] Backend : create comments database seeder
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 - [ ] Backend : Review Lesson booking form
 
