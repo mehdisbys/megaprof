@@ -1,20 +1,20 @@
 ### TODO
 
+- [ ] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
 - [ ] Frontend : Final site name is "Taelam" instead of Megaprof
-- [ ] Frontend : On single page implement the mobile first and the desktop layout
-- [ ] Frontend : standardise pictures size - some pictures have bigger length than others
 - [ ] Frontend : Make slider responsive in front page
-- [ ] Frontend : Login and registration page are defaulted to responsive view
+- [ ] Frontend : Fix : Login and registration page are defaulted to responsive view
+- [x] Frontend : Add spin loader on search results page
 
 
 --------------------------------------------------------------------------------
 
 #### High priority
 
-- [ ] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
 - [x] Backend : Do not show advert if not fully completed
-- [ ] Backend : Teachers should enter a tagline when creating their advert
+- [ ] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
 - [ ] Backend : Feature : if selected subject is not in the list do a search by word
+- [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
