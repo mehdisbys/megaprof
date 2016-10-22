@@ -2,6 +2,7 @@
 @section('content')
 {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
 {!! HTML::style("temp-css/awesomplete.css") !!}
+{!! HTML::style("temp-css/loader.css") !!}
 {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
 {!! HTML::script("js/locationpicker.jquery.js") !!}
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
@@ -109,6 +110,7 @@
       </div>
       @endif
     </div>
+    <div id="loader" class='loader-animation-css show' style='-webkit-transform:scale(0.21)'><div></div><div></div><div></div></div>
     <!-- optional to show advert count  -->
   </div>
 </div>
@@ -119,7 +121,12 @@
    * there is a bit too much going on here
    *
    * */
+
+
+
   $(document).ready(function () {
+    $("#loader").removeClass('show');
+
     function updatePage(data) {
       $("#count_text").html(data.count + ' Annonces trouvées');
       $("#search_results").html(data.results);
@@ -135,6 +142,7 @@
         searchText += ' à ' + data.params.city;
       }
       $("#search_result_text").html(searchText);
+      $("#loader").removeClass('show');
     }
 
     var sendFormBy = function sortBySendForm(page) {
@@ -146,6 +154,8 @@
         var token = $("[name='_token']").val();
         var sortBy = $(".autocomplete-input-sortby").val();
         var gender = $("[name='gender']:checked").val();
+
+        $("#loader").addClass('show');
 
         $.post('/search',
           {
