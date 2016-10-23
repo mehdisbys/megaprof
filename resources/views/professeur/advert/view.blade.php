@@ -15,15 +15,16 @@
               <i class="fa fa-map-marker"></i>
               <strong>{{ $advert->location_city }}</strong>
             </li>
-            <li>
-              <i class="fa fa-star"></i>
-              <strong>Noté {{ $ratings->ratings_average}}/5</strong>
-            </li>
-            <li>
-              <i class="fa fa-star"></i>
-              <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
-            </li>
-
+            @if($ratings)
+                <li>
+                  <i class="fa fa-star"></i>
+                  <strong>Noté {{ $ratings->ratings_average}}/5</strong>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                  <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
+                </li>
+            @endif
             <li>
               <i class="fa fa-asterisk"></i>
               <strong>Diplôme vérifié</strong>
