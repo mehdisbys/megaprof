@@ -12,7 +12,7 @@
   <h2 id="search_result_text">
     @if(isset($selectedSubject))
     {{$adverts->total() > 0 ? $adverts->total():'Aucun '}} Résultat{{$adverts->total() > 1 ? 's' : ''}}
-    pour {{$selectedSubject->name}}
+    pour {{$selectedSubject}}
     @if(isset($selectedCity))
     {{ " à " . $selectedCity}}
     @endif
@@ -34,7 +34,7 @@
           type="text"
           autocomplete="off"
           aria-autocomplete="list"
-          value="{{$selectedSubject->name or ''}}"/>
+          value="{{$selectedSubject or ''}}"/>
         </div>
 
         <div class="home-search-field-wrapper">

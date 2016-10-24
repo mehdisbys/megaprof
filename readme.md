@@ -15,8 +15,8 @@
 - [x] Backend : Do not show advert if not fully completed
 - [x] Backend : Count the number of reviews and include in the advert
 - [x] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
+- [x] Backend : Feature : if selected subject is not in the list do a search by word
 
-- [ ] Backend : Feature : if selected subject is not in the list do a search by word
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder

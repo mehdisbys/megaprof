@@ -43,14 +43,15 @@ class ListAdvertController extends Controller
     public function searchByURL($subject, $city = null)
     {
         $data                  = new \stdClass();
-        $data->selectedSubject = SubSubject::where('name', $subject)->first();
+        $subjectObject         = SubSubject::where('name', $subject)->first();
+        $data->selectedSubject = $subject;
         $data->subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $data->subjectId       = $data->selectedSubject->id ?? null;
+        $data->subjectId       = $subjectObject->id ?? null;
         $data->city            = empty($city) ? null : $city;
 
         $coord = $this->geocode($city);
 
-        if(count($coord)){
+        if (count($coord)) {
             $data->lat = $coord[0];
             $data->lgn = $coord[1];
         }
@@ -80,7 +81,7 @@ class ListAdvertController extends Controller
             return response()->json([]);
 
         $data->subsubjects    = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $data->subjectId      = $subject->id;
+        $data->subjectId      = $subject->id ?? null;
         $data->lat            = $request->get('lat') ?? null;
         $data->lgn            = $request->get('lng') ?? null;
         $data->radius         = $this->mapRadius($request->get('radius'))[0];

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 
@@ -19,7 +20,9 @@ class Advert extends Model implements SluggableInterface
 
     protected $table = 'adverts';
 
-    protected $guarded = ['id', 'created_at', 'deleted_at'];
+    protected $guarded = ['id',
+        'created_at',
+        'deleted_at'];
 
     protected $softDelete = true;
 
@@ -32,7 +35,9 @@ class Advert extends Model implements SluggableInterface
         'on_update'       => false,
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'published_at'];
+    protected $dates = ['created_at',
+        'updated_at',
+        'published_at'];
 
     private static $paginateCount = 20;
 
@@ -63,7 +68,7 @@ class Advert extends Model implements SluggableInterface
 
     public static function findBySlugOr404($slug)
     {
-        $advert = self::where(['slug' =>  $slug])->whereNotNull('published_at')->first();
+        $advert = self::where(['slug' => $slug])->whereNotNull('published_at')->first();
         return $advert ? $advert : \App::abort(404);
     }
 
@@ -87,35 +92,6 @@ class Advert extends Model implements SluggableInterface
         return $this;
     }
 
-    public static function radiusSearch(array $advertIds, float $lat, float $lng, int $radius = null, string $sortBy = 'distance')
-    {
-        $query = DB::table('adverts')
-                   ->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
-    COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
-
-        if (isset($radius))
-            $query->having('distance', '<', $radius);
-
-        if (isset($advertIds)) {
-            $query->whereIn('id', $advertIds);
-        }
-
-        if($sortBy === 'distance'){
-            $query->orderBy('distance', 'ASC');
-        }
-
-
-        if($sortBy === 'date'){
-            $query->orderBy('updated_at', 'ASC');
-        }
-
-        if($sortBy === 'price') {
-            $query->orderBy('price', 'ASC');
-        }
-
-        return $query->paginate(self::$paginateCount);
-    }
-
     public static function searchAdvertIdsByGender(array $advert_ids, string $gender)
     {
         $query = self::whereIn('id', $advert_ids);
@@ -128,14 +104,64 @@ class Advert extends Model implements SluggableInterface
         return $query->get();
     }
 
+    public static function radiusSearch(array $advertIds, $lat, $lng, int $radius = null, string $sortBy = 'distance', $gender)
+    {
+        $query = DB::table('adverts');
+
+        if (in_array($gender, ['man', 'woman'])) {
+            $query = $query->whereHas('user', function ($q) use ($gender) {
+                $q->where('gender', '=', $gender);
+            });
+        }
+
+        if ($lat and $lng) {
+            $query->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
+    COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
+        }
+
+        if (isset($radius))
+            $query->having('distance', '<', $radius);
+
+        if (isset($advertIds))
+            $query->whereIn('id', $advertIds);
+
+        if ($sortBy === 'distance')
+            $query->orderBy('distance', 'ASC');
+
+        if ($sortBy === 'date')
+            $query->orderBy('updated_at', 'ASC');
+
+        if ($sortBy === 'price')
+            $query->orderBy('price', 'ASC');
+
+        return $query->paginate(self::$paginateCount);
+    }
+
+
+    public static function paginateResults(Collection $adverts )
+    {
+        return self::whereIn('id', $adverts->pluck('id'))->paginate(self::$paginateCount);
+    }
+
     public static function paginateCount(int $count)
     {
         self::$paginateCount = $count;
     }
 
-public function getSubjectId()
-{
-     return $this->subjectsPerAd->first()->subject_id ?? null;
-}
+    public function getSubjectId()
+    {
+        return $this->subjectsPerAd->first()->subject_id ?? null;
+    }
+
+    public static function fullTextSearch(string $keyword)
+    {
+        return self::select(['id'])
+            ->where('title', 'LIKE', "%{$keyword}%")
+            ->orWhere('presentation', 'LIKE', "%{$keyword}%")
+            ->orWhere('content', 'LIKE', "%{$keyword}%")
+            ->orWhere('experience', 'LIKE', "%{$keyword}%")
+            ->get()
+            ->toArray();
+    }
 
 }

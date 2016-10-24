@@ -13,27 +13,41 @@ class SearchAdvert implements SearchAdvertContract
         $rawResults = null;
         $distances  = null;
 
-        if (isset($data->subjectId) and !empty($data->subjectId)) {
-            $advert_ids = SubjectsPerAdvert::getAllAdvertIdsForSubject($data->subjectId);
+        $advert_ids = $this->getRelevantAdvertIds($data);
 
-            if (isset($data->exceptAdvertIds) and count($advert_ids) > 0) {
+        if (isset($data->exceptAdvertIds) and count($advert_ids) > 0) {
 
-                $advert_ids = array_where($advert_ids, function ($key, $value) use ($data) {
-                    return in_array($value, $data->exceptAdvertIds) == false;
-                });
-            }
-
-            $rawResults = Advert::searchAdvertIdsByGender($advert_ids, $data->gender ?? 'both');
-            $advert_ids = array_pluck($rawResults, 'id');
-            $byLocation = $data->lgn ?? null;
-
-            if ($byLocation) {
-                $rawResults = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius ?? null, $data->sortBy ?? 'distance');
-                $distances  = array_pluck($rawResults, 'distance', 'id');
-            }
-
-            return [$rawResults, $distances];
+            $advert_ids = array_where($advert_ids, function ($key, $value) use ($data) {
+                return in_array($value, $data->exceptAdvertIds) == false;
+            });
         }
-        return [null, null];
+
+        $rawResults = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius ?? null, $data->sortBy ?? 'distance', $data->gender ?? 'both');
+        $distances  = array_pluck($rawResults, 'distance', 'id');
+
+        return [$rawResults, $distances];
+    }
+
+    private function getRelevantAdvertIds(\stdClass $data)
+    {
+        if (isset($data->subjectId) and !empty($data->subjectId)) {
+            return $this->selectAdvertsForSubject($data->subjectId);
+        }
+
+        if (isset($data->selectedSubject)) {
+            return $this->doFullTextSearchOnAdverts($data->selectedSubject);
+        }
+
+        return [];
+    }
+
+    private function selectAdvertsForSubject(int $subjectId): array
+    {
+        return SubjectsPerAdvert::getAllAdvertIdsForSubject($subjectId);
+    }
+
+    private function doFullTextSearchOnAdverts(string $keyword): array
+    {
+        return Advert::fullTextSearch(strtolower($keyword));
     }
 }
