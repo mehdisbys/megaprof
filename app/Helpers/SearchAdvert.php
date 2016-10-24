@@ -22,8 +22,9 @@ class SearchAdvert implements SearchAdvertContract
             });
         }
 
-        $rawResults = Advert::radiusSearch($advert_ids, $data->lat, $data->lgn, $data->radius ?? null, $data->sortBy ?? 'distance', $data->gender ?? 'both');
+        $rawResults = Advert::radiusSearch($advert_ids, $data->lat ?? null, $data->lgn ?? null, $data->radius ?? null, $data->sortBy ?? 'distance', $data->gender ?? 'both');
         $distances  = array_pluck($rawResults, 'distance', 'id');
+
 
         return [$rawResults, $distances];
     }

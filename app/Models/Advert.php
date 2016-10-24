@@ -114,6 +114,8 @@ class Advert extends Model implements SluggableInterface
             });
         }
 
+
+
         if ($lat and $lng) {
             $query->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
     COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
@@ -125,7 +127,7 @@ class Advert extends Model implements SluggableInterface
         if (isset($advertIds))
             $query->whereIn('id', $advertIds);
 
-        if ($sortBy === 'distance')
+        if ($lat and $lng and $sortBy === 'distance')
             $query->orderBy('distance', 'ASC');
 
         if ($sortBy === 'date')

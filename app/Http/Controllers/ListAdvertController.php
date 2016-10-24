@@ -48,7 +48,9 @@ class ListAdvertController extends Controller
         $data->subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
         $data->subjectId       = $subjectObject->id ?? null;
         $data->city            = empty($city) ? null : $city;
+        $coord                 = [];
 
+        if($city)
         $coord = $this->geocode($city);
 
         if (count($coord)) {
