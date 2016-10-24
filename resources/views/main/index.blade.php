@@ -154,6 +154,8 @@
         var token = $("[name='_token']").val();
         var sortBy = $(".autocomplete-input-sortby").val();
         var gender = $("[name='gender']:checked").val();
+        var lng = $("#longitude").val();
+        var lat = $("#latitude").val()
 
         $("#loader").addClass('show');
 
@@ -164,6 +166,8 @@
             '_token': token,
             'sortBy': sortBy,
             'gender': gender,
+            'lng' : lng,
+            'lat' : lat,
             'page': page ? page.replace(/[^0-9]/g,'') : null
           },
           function (data) {

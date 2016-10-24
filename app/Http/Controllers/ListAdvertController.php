@@ -48,13 +48,14 @@ class ListAdvertController extends Controller
         $data->subjectId       = $data->selectedSubject->id ?? null;
         $data->city            = empty($city) ? null : $city;
 
-        // TODO update this to use the world_cities_database
-        // Casablanca coordinates default for now
-        $data->lat = 33.5914950;
-        $data->lgn = -7.6012452;
+        $coord = $this->geocode($city);
+
+        if(count($coord)){
+            $data->lat = $coord[0];
+            $data->lgn = $coord[1];
+        }
 
         list($adverts, $distances) = $this->engine->search($data);
-
 
         return view('main.index')->with(
             [
@@ -80,8 +81,8 @@ class ListAdvertController extends Controller
 
         $data->subsubjects    = implode(',', SubSubject::all()->pluck('name')->toArray());
         $data->subjectId      = $subject->id;
-        $data->lat            = $request->get('lat') ?? 33.5914950;
-        $data->lgn            = $request->get('lng') ?? -7.6012452;
+        $data->lat            = $request->get('lat') ?? null;
+        $data->lgn            = $request->get('lng') ?? null;
         $data->radius         = $this->mapRadius($request->get('radius'))[0];
         $data->selectedRadius = $this->mapRadius($request->get('radius'))[1];
         $data->city           = explode(',', $request->get('city'))[0] ?? null;
@@ -190,5 +191,51 @@ class ListAdvertController extends Controller
 
         return [null,
             null];
+    }
+
+    function geocode($address){
+
+        // url encode the address
+        $address = urlencode($address);
+
+        // google map geocode api url
+        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc";
+
+        // get the json response
+        $resp_json = file_get_contents($url);
+
+        // decode the json
+        $resp = json_decode($resp_json, true);
+
+        // response status will be 'OK', if able to geocode given address
+        if($resp['status']=='OK'){
+
+            // get the important data
+            $lati = $resp['results'][0]['geometry']['location']['lat'];
+            $longi = $resp['results'][0]['geometry']['location']['lng'];
+            $formatted_address = $resp['results'][0]['formatted_address'];
+
+            // verify if data is complete
+            if($lati && $longi && $formatted_address){
+
+                // put the data in the array
+                $data_arr = array();
+
+                array_push(
+                    $data_arr,
+                    $lati,
+                    $longi,
+                    $formatted_address
+                );
+
+                return [$lati, $longi];
+
+            }else{
+                return [];
+            }
+
+        }else{
+            return [];
+        }
     }
 }

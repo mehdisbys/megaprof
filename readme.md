@@ -5,6 +5,7 @@
 - [ ] Frontend : Make slider responsive in front page
 - [ ] Frontend : Fix : Login and registration page are defaulted to responsive view
 - [x] Frontend : Add spin loader on search results page
+- [ ] Frontend : Have an error message when no location/ no subject is selected
 
 
 --------------------------------------------------------------------------------
@@ -12,7 +13,9 @@
 #### High priority
 
 - [x] Backend : Do not show advert if not fully completed
-- [ ] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
+- [x] Backend : Count the number of reviews and include in the advert
+- [x] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
+
 - [ ] Backend : Feature : if selected subject is not in the list do a search by word
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
@@ -23,7 +26,6 @@
 #### Low priority
 - [ ] Backend : get total number of facebook friends
 - [ ] Backend : For teachers, offer to link their facebook account so that it gives more confidence to students
-- [ ] Backend : Count the number of reviews and include in the advert
 - [ ] Backend : when logging-in check that address is populated
 - [ ] Backend : add percentage of completion when creating an advert
 
