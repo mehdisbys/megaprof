@@ -38,7 +38,9 @@
     {!! HTML::style('temp-css/popin.css') !!}
     {!! HTML::style('temp-css/main.css') !!}
     {!! HTML::style('/css/bootstrap.css') !!}
-  {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
+    {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
+    {!! HTML::style("/css/toastr.min.css") !!}
+
 
   {!! HTML::script("js/jquery.js") !!}
     <!-- {!! HTML::script("js/bootstrap.min.js") !!} -->
@@ -93,6 +95,8 @@
         </div>
       </div>
     </div>
+    @include('includes.success')
+    @include('includes.error')
   <div class="page">
     @section('content')
     @show
@@ -155,4 +159,6 @@
     </div>
   </div>
 </body>
+  @include('includes/toastr/toastr')
+
 </html> 

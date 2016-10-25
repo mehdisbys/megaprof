@@ -14,6 +14,7 @@
     {!! HTML::style('/css/checkbox-button.css')!!}
     {!! HTML::style('/css/custom.css')!!}
     {!! HTML::style("/css/responsive.css") !!}
+    {!! HTML::style("/css/toastr.min.css") !!}
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,6 +24,7 @@
     ============================================= -->
     {!! HTML::script("/js/jquery.js") !!}
     {!! HTML::script("/js/plugins.js") !!}
+
 
     <!-- Document Title
     ============================================= -->
@@ -376,5 +378,6 @@
 ============================================= -->
 {!! HTML::script("js/functions.js") !!}
 
+@include('includes/toastr/toastr')
 </body>
 </html>

@@ -41,7 +41,8 @@ class SessionsController extends Controller
 
 	    if ($this->checkUserisConfirmed($request->input('email')) &&  $this->signIn($request)) 
 	    {
-		    //thanks(trans('copy.success.welcome', ['username' => \Auth::user()->username]));
+		    thanks("Bonjour " . Auth::user()->firstname . " vous avez été identifié avec succés");
+
 		    return redirect()->intended(session('redirectPath'));
 	    }
 

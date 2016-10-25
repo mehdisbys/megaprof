@@ -27,7 +27,7 @@ class SignupController extends Controller
 
 		$this->sendConfirmationEmail($user);
 
-		thanks('Un email de confirmation vient de vous être envoyé');
+		thanks('Un email de confirmation vient de vous être envoyé. Veuillez cliquer sur le lien inclus pour finaliser la création de votre compte');
 
 		return redirect('/');
 	}
