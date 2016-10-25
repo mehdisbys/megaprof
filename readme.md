@@ -17,6 +17,8 @@
 - [x] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
 - [x] Backend : Feature : if selected subject is not in the list do a search by word
 
+- [ ] Backend : Add captcha at account creation time
+
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder

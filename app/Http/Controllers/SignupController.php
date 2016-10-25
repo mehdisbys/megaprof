@@ -27,8 +27,6 @@ class SignupController extends Controller
 
 		$this->sendConfirmationEmail($user);
 
-		//$user->attachRole($role);
-
 		thanks('Un email de confirmation vient de vous être envoyé');
 
 		return redirect('/');
@@ -40,7 +38,7 @@ class SignupController extends Controller
 		$view = 'emails.auth.confirmEmail';
 		$config['to'] = $user->email;
 		$config['name'] = $user->firstname;
-		$config['subject'] = ucfirst($user->firstname) . ' bienvenue sur Megaprof';
+		$config['subject'] = ucfirst($user->firstname) . ' bienvenue sur Taelam';
 		$all['name'] = $user->firstname;
 		$all['link'] = url('register/confirm/' . $user->confirmation_code); 
 
