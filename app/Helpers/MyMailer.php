@@ -1,7 +1,7 @@
 <?php namespace App\Helpers;
 
 use App\Helpers\Contracts\MailerContract;
-use App\Models\Job;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class MyMailer implements MailerContract
@@ -18,8 +18,8 @@ class MyMailer implements MailerContract
     public function queueMail($view, $data, $config, $queue = NULL)
     {
         if ($this->redirectQueuetoSend) {
-            \Log::info("Mail going to: " . json_encode($config));
-            \Log::info("Instead of queuing email, we will send it directly");
+            Log::info("Mail going to: " . json_encode($config));
+            Log::info("Instead of queuing email, we will send it directly");
             return $this->sendMail($view, $data, $config);
         }
         try {
@@ -27,7 +27,7 @@ class MyMailer implements MailerContract
 
             Mail::queue($view, $data, $callback);
         } catch (\Exception $e) {
-            \Log::error($e->getMessage());
+            Log::error($e->getMessage());
         }
 
     }
@@ -36,10 +36,10 @@ class MyMailer implements MailerContract
     {
         try {
             $callback = $this->__mail($config);
-
+            Log::info("Mail going to: " . json_encode($config));
             Mail::send($view, $data, $callback);
         } catch (\Exception $e) {
-            \Log::error($e->getMessage());
+            Log::error($e->getMessage());
         }
     }
 
@@ -56,15 +56,6 @@ class MyMailer implements MailerContract
                         'mime' => $config['mime'],
                     ]
                 );
-            }
-
-            if (isset($config['has_cv_blob']) and $config['has_cv_blob']) {
-
-                $cv = \App\Models\CvCandidate::find($config['cvid'])->cv;
-
-                $message->attachData($cv,
-                    $config['as'],
-                    ['mime' => $config['mime']]);
             }
         };
     }
