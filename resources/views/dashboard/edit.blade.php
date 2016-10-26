@@ -16,12 +16,12 @@
 
             <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-140"
                 aria-labelledby="ui-id-140" aria-selected="false">
-                <a href="/modifier-annonce-3/{{$advert->id}}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-140">Texte</a>
+                <a href="/modifier-annonce-3/{{$advert->id}}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-140">Lieux</a>
             </li>
 
             <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-141"
                 aria-labelledby="ui-id-141" aria-selected="false">
-                <a href="/modifier-annonce-4/{{$advert->id}}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-141">Lieux</a>
+                <a href="/modifier-annonce-4/{{$advert->id}}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-141">Texte</a>
             </li>
 
             <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-142"
