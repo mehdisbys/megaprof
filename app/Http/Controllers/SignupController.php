@@ -59,7 +59,7 @@ class SignupController extends Controller
 			
 		$user->confirmEmail();
 		
-		thanks(trans('copy.success.signup.confirmed'));
+		thanks("Bienvenue sur Taelam, votre compte a été crée avec succès !");
 		
 		return redirect('login');
 	}
