@@ -11,7 +11,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="form-wrapper">
           <a class="facebook-connect" style="display:block" data-href="#"
-            href="#" onclick="window.open('https://www.facebook.com', 'FBlogin', 'width=520, height=600');return false;">
+            href="redirect">
             Inscription avec Facebook
           </a>
           <span class="text-separator">ou</span>

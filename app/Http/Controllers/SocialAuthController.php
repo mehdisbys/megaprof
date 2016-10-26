@@ -25,7 +25,10 @@ class SocialAuthController extends Controller
         $user = $this->createOrGetUser($providerUser);
         $this->getAndSaveAvatar($providerUser, $user);
         Auth::login($user);
+        thanks("Bonjour " . $user->firstname . " vous avez été identifié avec succés");
+
         if($user->isMandatoryProfileInComplete()) {
+            info("Il reste à compléter quelques informations de votre profil");
             return redirect('/completer-profil');
         }
         // if missing information -> ask for personal information
@@ -57,6 +60,7 @@ class SocialAuthController extends Controller
                         'auto_created' => 1,
                     ]
                 );
+                thanks("Bonjour " . $user->firstname . " vous avez été identifié avec succés");
             }
             return $user;
         }

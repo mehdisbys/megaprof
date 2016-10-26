@@ -26,44 +26,44 @@ class SessionsController extends Controller
     /**
      * Perform the login.
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return \Redirect
      */
     public function postLogin(Request $request)
     {
-	    $this->validate($request, ['email' => 'required|email', 'password' => 'required', 'captcha' => 'required']);
+        $this->validate($request, ['email'    => 'required|email',
+                                   'password' => 'required',
+                                   'captcha'  => 'required']);
 
-        if(isCaptchaCodeCorrect($request->get('captcha')) == false)
-        {
+        if (isCaptchaCodeCorrect($request->get('captcha')) == false) {
             error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
             return redirect('login');
         }
 
-	    if ($this->checkUserisConfirmed($request->input('email')) &&  $this->signIn($request)) 
-	    {
-		    thanks("Bonjour " . Auth::user()->firstname . " vous avez été identifié avec succés");
+        if ($this->checkUserisConfirmed($request->input('email')) && $this->signIn($request)) {
+            thanks("Bonjour " . Auth::user()->firstname . " vous avez été identifié avec succés");
 
-		    return redirect()->intended(session('redirectPath'));
-	    }
+            return redirect()->intended(session('redirectPath'));
+        }
 
-	    error("Votre addresse email et/ou votre mot de passe sont invalides. Veuillez réessayer s'il vous plaît.");
+        error("Votre addresse email et/ou votre mot de passe sont invalides. Veuillez réessayer s'il vous plaît.");
 
-	    return redirect('login');
+        return redirect('login');
     }
 
     /**
-     * Check the user is confirmed 
+     * Check the user is confirmed
      *
      * @param $email
      * @return boolean
      */
     public function checkUserisConfirmed($email)
     {
-   	$user = \App\Models\User::whereEmail($email)->first(); 
-	
-	if (!$user) return false;
+        $user = \App\Models\User::whereEmail($email)->first();
 
-	return $user->confirmed ? true:false;
+        if (!$user) return false;
+
+        return $user->confirmed ? true : false;
     }
 
     /**
@@ -77,7 +77,9 @@ class SessionsController extends Controller
 
         Auth::logout();
 
-        thanks('Vous êtes maintenant déconnecté. À bientôt ' . $user->firstname . ' !');
+        if ($user) {
+            thanks('Vous êtes maintenant déconnecté. À bientôt ' . $user->firstname . ' !');
+        }
 
         return redirect('/');
     }
