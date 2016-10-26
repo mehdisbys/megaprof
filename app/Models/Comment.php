@@ -33,7 +33,7 @@ class Comment extends Model
                 'owner_advert_id' => $prof_id,
                 'target_user_id'  => $prof_id,
                 'advert_id'       => $advert_id,
-                'comment_at'      => Carbon::now()->addWeek()
+                'comment_at'      => Carbon::now()
             ]
         );
     }
