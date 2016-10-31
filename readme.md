@@ -1,11 +1,12 @@
 ### TODO
 
 - [ ] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
+- [ ] Frontend : Make slider/carousel responsive in front page
+
 - [ ] Frontend : Final site name is "Taelam" instead of Megaprof
-- [ ] Frontend : Make slider responsive in front page
 - [ ] Frontend : Fix : Login and registration page are defaulted to responsive view
-- [x] Frontend : Add spin loader on search results page
 - [ ] Frontend : Have an error message when no location/ no subject is selected
+- [x] Frontend : Add spin loader on search results page
 
 
 --------------------------------------------------------------------------------
@@ -18,7 +19,7 @@
 - [x] Backend : Feature : if selected subject is not in the list do a search by word
 
 - [ ] Backend : Add captcha at account creation time
-
+- [ ] Backend : Location radius slider does not work when creating an advert
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder
