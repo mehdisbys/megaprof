@@ -19,6 +19,9 @@
 - [x] Backend : Feature : if selected subject is not in the list do a search by word
 - [x] Backend : Add captcha at account creation time
 
+- [ ] Backend : Problem with dates on update profile page
+- [ ] Backend : Ability to flag and advert as inappropriate (Button), select the reason why the advert is offending, leave an optional feedback
+- [ ] Backend : Ability to list flagged advert and suspend an advert or account
 - [ ] Backend : Location radius slider does not work when creating an advert
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
