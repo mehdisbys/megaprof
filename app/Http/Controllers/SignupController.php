@@ -21,6 +21,11 @@ class SignupController extends Controller
 	
 	public function candidateSignup(Signup $request)
 	{
+        if (isCaptchaCodeCorrect($request->get('captcha')) == false) {
+            error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
+            return redirect('register');
+        }
+
 		$user = User::newUser($request->all());
 
         //TODO generate event UserRegistered

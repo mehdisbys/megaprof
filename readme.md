@@ -17,8 +17,8 @@
 - [x] Backend : Count the number of reviews and include in the advert
 - [x] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
 - [x] Backend : Feature : if selected subject is not in the list do a search by word
+- [x] Backend : Add captcha at account creation time
 
-- [ ] Backend : Add captcha at account creation time
 - [ ] Backend : Location radius slider does not work when creating an advert
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
