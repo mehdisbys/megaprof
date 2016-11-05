@@ -72,7 +72,7 @@
       </div>
     </div>
       <a class="button btn-succes temp-btn-block "
-        href="/mise-en-relation/{{$advert->id}}">Réserver un cours</a>
+        href="/mise-en-relation/{{$advert->slug}}">Réserver un cours</a>
   </div>
     <div class="profile-author-description">
       <h2>{{ $advert->title }}</h2>

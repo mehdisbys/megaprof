@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Event;
 
 class BookCourseController extends Controller
 {
-    public function bookLesson($advert_id)
+    public function bookLesson($slug)
     {
-        $advert = Advert::find($advert_id);
+        $advert = Advert::findBySlugOr404($slug);
 
         return view('main.bookLesson')->with(compact('advert'));
     }
