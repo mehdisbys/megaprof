@@ -4,6 +4,7 @@
     @include('includes.success')
     @include('includes.error')
 
+
     <div class="tab-container col-md-12 topmargin-lg">
 
         <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-37"
@@ -121,7 +122,8 @@
 
                 <div class="form-group col-md-12">
                     {!! Form::label('birthdate', 'Date de naissance') !!}
-                    <input class="form-control" name="birthdate" type="date" value="{{$user->birtdate ? $user->birthdate->format("Y-m-d") : ''}}" id="birthdate">
+                    <input class="form-control pikaday-field" name="birthdate" type="text" value="{{$user->birthdate ? $user->birthdate->format("d/m/Y") : ''}}" id="birthdate">
+
                 </div>
 
                 <div class="form-group col-md-12">
@@ -142,5 +144,7 @@
             </div>
         </div>
     </div>
+
+  @include('dates.dates')
 @stop
 

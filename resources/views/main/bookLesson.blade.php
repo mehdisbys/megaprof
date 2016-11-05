@@ -84,7 +84,7 @@
                         </label>
                     </div>
                     <div class="col-md-12 no-visibility" id="date_custom_display">
-                        {!! Form::input('text','pick_a_date', null, ['id' => 'pick_a_date', 'placeholder' => 'Choisir une date']) !!}
+                        {!! Form::input('text','pick_a_date', null, ['id' => 'pick_a_date', 'placeholder' => 'Choisir une date', 'class' => 'pikaday-field']) !!}
                     </div>
                 </div>
 
@@ -159,7 +159,7 @@
                         </label>
                     </div>
                     <div class="col-md-12" id="birthdate_display">
-                        {!! Form::input('text','birthdate', null, ['id' => 'birthdate', 'placeholder' => "Date de naissance"]) !!}
+                        {!! Form::input('text','birthdate', null, ['id' => 'birthdate', 'placeholder' => "Date de naissance", 'class' => 'pikaday-field']) !!}
                     </div>
                 </div>
                 <div class="clearfix topmargin-sm"></div>
@@ -224,6 +224,6 @@
         });
     </script>
 
-
+    @include('dates.dates')
 
 @endsection

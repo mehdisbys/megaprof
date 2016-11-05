@@ -31,6 +31,8 @@
             <input type="password" required="required" placeholder="Confirmation mot de passe" name="password_confirmation" class="input" value="" />
           </div>
 
+          @include('auth.captcha')
+
           <input type="submit" value="S'inscrire" class="button" />
           <p class="register-member">Déjà membre SuperProf ? 
             <a href="connection-form" class="register-member-link register-switch-panel">Connexion</a>
