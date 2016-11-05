@@ -34,13 +34,13 @@
     display: block;
     width: 24px;
     height: 24px;
-    border: 2px solid #0da5fd;
+    border: 2px solid #f57009;
     font-size: 12px;
     font-weight: 600;
     -webkit-border-radius: 12px;
     border-radius: 12px;
     text-align: center;
-    color: #0da5fd;
+    color: #f57009;
     line-height: 22px
 }
 

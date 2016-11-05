@@ -1,7 +1,7 @@
 .button {
     display: inline-block;
     padding: 5px 5px;
-    border: 1px solid #d47006;
+    border: 1px solid #f7900a;
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
@@ -10,10 +10,10 @@
     border-radius: 4px;
     background-color: #f57009;
     color: #fff;
-    margin-left: 25px;
     -webkit-transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in;
     transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in
 }
+
 .button:focus,
 .button:hover {
     background-color: #f7900a;;
@@ -56,6 +56,7 @@
 }
 .button-discreet:focus,
 .button-discreet:hover,
+
 .button-discreet.active {
     background-color: #313131;
     border-color: #313131;
