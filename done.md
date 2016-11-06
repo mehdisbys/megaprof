@@ -33,3 +33,9 @@
 - [x] Backend : add facebook button to share advert after publishing
 - [x] Backend : add captcha at login time
 - [x] Backend : Ability for student to give a rating to a teacher
+- [x] Backend : Do not show advert if not fully completed
+- [x] Backend : Count the number of reviews and include in the advert
+- [x] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
+- [x] Backend : Feature : if selected subject is not in the list do a search by word
+- [x] Backend : Add captcha at account creation time
+- [x] Backend : Use calendar for dates fields : profile page + booking page 

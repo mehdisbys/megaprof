@@ -15,13 +15,6 @@
 
 #### High priority
 
-- [x] Backend : Do not show advert if not fully completed
-- [x] Backend : Count the number of reviews and include in the advert
-- [x] Backend : Distances are hardcoded to Casablanca, fix it to make it dynamic
-- [x] Backend : Feature : if selected subject is not in the list do a search by word
-- [x] Backend : Add captcha at account creation time
-- [x] Backend : Use calendar for dates fields : profile page + booking page 
-
 - [ ] Backend : Ability to flag and advert as inappropriate (Button), select the reason why the advert is offending, leave an optional feedback
 - [ ] Backend : Ability to list flagged advert and suspend an advert or account
 - [ ] Backend : Location radius slider does not work when creating an advert
