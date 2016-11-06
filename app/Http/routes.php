@@ -40,6 +40,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('captcha', 'CaptchaController@generate');
 
+    Route::get('signaler/{slug}', 'FlaggedAdvertsController@getForm');
+    Route::post('signaler', 'FlaggedAdvertsController@postForm');
+
     Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/avatar_dashboard/{user_id}', 'AvatarController@getDefaultAvatar');

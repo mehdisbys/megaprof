@@ -5660,7 +5660,7 @@ ul.profil_statut li span.verified:before {
 .register-step-title {
     text-align: center;
     font-weight: 600;
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 50px;
     line-height: 30px
@@ -5674,7 +5674,7 @@ ul.profil_statut li span.verified:before {
     vertical-align: top
 }
 .register-column:first-child {
-    padding-right: 40px
+    padding-left: 55%;
 }
 .register-form,
 .connection-form {
@@ -10752,3 +10752,7 @@ th {
     width: 70%;
     padding: 10px;
 } 
+
+.flag-advert{
+    padding-left:37%;
+}
