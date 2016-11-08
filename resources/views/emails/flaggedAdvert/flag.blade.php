@@ -13,10 +13,5 @@
 <p>Yacine et Mehdi : jetons y un coup d'oeil le plus rapidement possible.</p>
 
 <p>Merci, petit con !</p>
-
-<p>L'Équipe Taelam</p>
-
 </body>
 </html>
-
-
