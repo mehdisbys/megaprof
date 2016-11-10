@@ -112,7 +112,13 @@ Route::group(['middleware' => ['web']], function () {
         // Comments
         Route::get('/laisser-un-commentaire/{comment_id}', 'CommentsController@getCommentForm');
         Route::post('/laisser-un-commentaire', 'CommentsController@postComment');
-    });
+
+        Route::group(['middleware' => ['isAdmin']], function () {
+
+            Route::get('/suspendre-annonce/{slug}', 'FlaggedAdvertsController@suspendAdvert');
+        });
+
+        });
 
     Route::get('/{slug}', 'ListAdvertController@view');
 });

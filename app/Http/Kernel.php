@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\IfIsAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -48,6 +49,7 @@ class Kernel extends HttpKernel
         'permission'    => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability'       => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'ownsAdvert'    => \App\Http\Middleware\IfOwnsAdvert::class,
-        'afterAdvert'   => \App\Http\Middleware\AfterAdvert::class
+        'afterAdvert'   => \App\Http\Middleware\AfterAdvert::class,
+        'isAdmin'       => IfIsAdmin::class
     ];
 }

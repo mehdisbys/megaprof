@@ -53,4 +53,17 @@ class FlaggedAdvertsController extends Controller
 
         $this->mailer->sendMail($view, $all, $config);
     }
+
+    public function suspendAdvert($slug)
+    {
+       if( \Auth::user()->isAdmin())
+       {
+           /** @var Advert $advert */
+           $advert = Advert::findBySlugOr404($slug);
+           $advert->suspend();
+           thanks("L'annonce {$advert->title} a été suspendue.");
+           return redirect('/');
+       }
+
+    }
 }

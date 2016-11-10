@@ -92,6 +92,12 @@ class Advert extends Model implements SluggableInterface
         return $this;
     }
 
+    public function suspend()
+    {
+        $this->deleted_at = Carbon::now();
+        $this->save();
+    }
+
     public static function searchAdvertIdsByGender(array $advert_ids, string $gender)
     {
         $query = self::whereIn('id', $advert_ids);
@@ -113,8 +119,6 @@ class Advert extends Model implements SluggableInterface
                 $q->where('gender', '=', $gender);
             });
         }
-
-
 
         if ($lat and $lng) {
             $query->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *

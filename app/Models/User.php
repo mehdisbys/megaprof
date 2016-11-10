@@ -179,4 +179,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return ($this->gender == null) or ($this->birthdate == null) or ($this->telephone == null);
     }
+
+    public function isAdmin()
+    {
+        return $this->is_admin == 1;
+    }
 }
