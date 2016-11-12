@@ -258,7 +258,7 @@
         return new RegExp("^" + removeDiacritics(input.trim()), "i").test(removeDiacritics(text));
       }
     });
-    
+
   });
 
 </script>

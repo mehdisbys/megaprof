@@ -33,6 +33,20 @@ class EditAdvertController extends Controller
     {
         $subjectsArray = \Input::get('subjects');
 
+        // 3. Get Subject Names
+        $subjectsText  = explode(',', \Input::get('subjects_text'));
+
+        // 4 . Input cleaning
+        $subjectsText = array_filter(array_map(function ($item) {
+            return trim($item);
+        }, $subjectsText), function ($item) {
+            if (empty($item) == false) return true;
+        });
+
+        $subjectObjects = SubSubject::whereIn('name', $subjectsText)->get()->pluck('id')->toArray();
+
+        $subjectsArray =  array_merge($subjectsArray, $subjectObjects);
+
         SubjectsPerAdvert::fillSubjectForAdvert($advert_id, $subjectsArray);
 
         return redirect("modifier-annonce-2/{$advert_id}");

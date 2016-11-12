@@ -30,7 +30,8 @@ class SubmitAdvertController extends Controller
 
     public function getStep1Subjects()
     {
-        $subjects        = Subject::all();
+        $subjects        = Subject::orderBy('name', 'ASC')->get();
+        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
         $checkedSubjects = SubjectsPerAdvert::getSubjectsPerAdvert($this->advertId);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
@@ -40,11 +41,27 @@ class SubmitAdvertController extends Controller
     public function postStep1Subjects(Request $request)
     {
         // 1. Create advert linked with userid
-        $advert = Advert::create(['user_id' => $this->userId]);
+        $advert    = Advert::create(['user_id' => $this->userId]);
         $advert_id = $advert->id;
 
-        // 2. Fill subjects_per_adverts  table
+        // 2. Get subjects ids
         $subjectsArray = $request->input('subjects');
+
+        // 3. Get Subject Names
+        $subjectsText  = explode(',', $request->input('subjects_text'));
+
+        // 4 . Input cleaning
+        $subjectsText = array_filter(array_map(function ($item) {
+            return trim($item);
+        }, $subjectsText), function ($item) {
+            if (empty($item) == false) return true;
+        });
+
+        $subjectObjects = SubSubject::whereIn('name', $subjectsText)->get()->pluck('id')->toArray();
+
+        $subjectsArray =  array_merge($subjectsArray, $subjectObjects);
+
+        // 5. Fill subjects_per_advert table
         SubjectsPerAdvert::fillSubjectForAdvert($advert->id, $subjectsArray);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
