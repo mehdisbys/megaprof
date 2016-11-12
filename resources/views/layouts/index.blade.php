@@ -22,7 +22,7 @@
       <div class="home-search-field-wrapper">
         <input
         id="subject_input"
-        class="awesomplete home-search-input autocomplete-input"
+        class="home-search-input autocomplete-input"
         placeholder="Que souhaitez-vous apprendre ?"
         data-minchars="1"
         data-autofirst="1"
@@ -206,50 +206,61 @@
   {!! HTML::script("js/slick.min.js") !!}
 
   <!-- five ============= -->
-  <script>
-    $(document).ready(function () {
+@include('includes.awesomeplete.diacritics')
+<script>
+  $(document).ready(function () {
 
-      $('.carousel').slick({
-        autoplay : true,
-        autoplaySpeed : 5000,
-        arrows: false,
-        dots: true,
-        cssEase: 'linear',
+    $('.carousel').slick({
+      autoplay: true,
+      autoplaySpeed: 5000,
+      arrows: false,
+      dots: true,
+      cssEase: 'linear',
 
-      });
-
-      $("#submit-btn").click(function (event) {
-        event.preventDefault();
-        var subject = $("#subject_input").val();
-        var loc = $("#location_input").val();
-        if (subject.length < 2 || loc.length < 2) return;
-        url = "/annonces/" +  subject  + "/" + loc;
-        url = url.replace(/ /g, '-');
-        window.location.assign(url);
-      });
-
-      // Geocompletion
-      $('#location_input').geocomplete({types: ['(cities)'], componentRestrictions: {country: "ma"},  details: ".location-details"});
-
-      var abba = true;
-      $('#pane-b').hide();
-      function toggleFade () {
-        if (abba) {
-          $('#pane-a').fadeOut('slow', function (){
-            $('#pane-b').fadeIn('slow');
-            abba = false;
-          });
-        } else {
-          $('#pane-b').fadeOut('slow', function () {
-            $('#pane-a').fadeIn('slow');
-            abba = true;
-          });
-        }
-      };
-      setInterval(toggleFade, 7000);
     });
 
-  </script>
+    $("#submit-btn").click(function (event) {
+      event.preventDefault();
+      var subject = $("#subject_input").val();
+      var loc = $("#location_input").val();
+      if (subject.length < 2 || loc.length < 2) return;
+      url = "/annonces/" + subject + "/" + loc;
+      url = url.replace(/ /g, '-');
+      window.location.assign(url);
+    });
 
+    // Geocompletion
+    $('#location_input').geocomplete({
+      types: ['(cities)'],
+      componentRestrictions: {country: "ma"},
+      details: ".location-details"
+    });
+
+    var abba = true;
+    $('#pane-b').hide();
+    function toggleFade() {
+      if (abba) {
+        $('#pane-a').fadeOut('slow', function () {
+          $('#pane-b').fadeIn('slow');
+          abba = false;
+        });
+      } else {
+        $('#pane-b').fadeOut('slow', function () {
+          $('#pane-a').fadeIn('slow');
+          abba = true;
+        });
+      }
+    };
+    setInterval(toggleFade, 7000);
+
+    new Awesomplete(document.getElementById('subject_input'), {
+      filter: function (text, input) {
+        return new RegExp("^" + removeDiacritics(input.trim()), "i").test(removeDiacritics(text));
+      }
+    });
+    
+  });
+
+</script>
   @endsection
 
