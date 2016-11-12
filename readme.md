@@ -2,22 +2,21 @@
 
 - [ ] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
 
+- [ ] Frontend : Modify how subjects are selected when creating an advert
+- [ ] Frontend : Create simple email master template with logo
+
 - [ ] Frontend : Booking form revamping to new design
 - [ ] Frontend : Dashboard revamping to new design
-- [ ] Frontend : Create simple email master template with logo
 - [ ] Frontend : Make slider/carousel responsive in front page
 - [ ] Frontend : Fix : Login and registration page are defaulted to responsive view
 - [ ] Frontend : Have an error message when no location/ no subject is selected
-- [x] Frontend : Add spin loader on search results page
 
 
 --------------------------------------------------------------------------------
 
 #### High priority
 
-- [x] Backend : Ability to flag and advert as inappropriate (Button), select the reason why the advert is offending, leave an optional feedback
-- [ ] Backend : (WIP) Ability to list flagged advert and suspend an advert or account
-
+- [ ] Backend : Add Button to suspend an advert to single advert page
 - [ ] Backend : Location radius slider does not work when creating an advert
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 

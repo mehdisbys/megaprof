@@ -39,3 +39,6 @@
 - [x] Backend : Feature : if selected subject is not in the list do a search by word
 - [x] Backend : Add captcha at account creation time
 - [x] Backend : Use calendar for dates fields : profile page + booking page 
+- [x] Backend : Ability to flag and advert as inappropriate (Button), select the reason why the advert is offending, leave an optional feedback
+- [x] Backend : Ability to list flagged advert and suspend an advert or account
+- [x] Frontend : Add spin loader on search results page

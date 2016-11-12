@@ -23,12 +23,7 @@ class SessionsController extends Controller
         return view('auth.login');
     }
 
-    /**
-     * Perform the login.
-     *
-     * @param  Request $request
-     * @return \Redirect
-     */
+
     public function postLogin(Request $request)
     {
         $this->validate($request, ['email'    => 'required|email',
@@ -37,7 +32,7 @@ class SessionsController extends Controller
 
         if (isCaptchaCodeCorrect($request->get('captcha')) == false) {
             error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
-            return redirect('login');
+            return view('auth.login')->with(['email' => $request->get('email')]);
         }
 
         if ($this->checkUserisConfirmed($request->input('email')) && $this->signIn($request)) {
@@ -48,7 +43,7 @@ class SessionsController extends Controller
 
         error("Votre addresse email et/ou votre mot de passe sont invalides. Veuillez réessayer s'il vous plaît.");
 
-        return redirect('login');
+        return view('auth.login')->with(['email' => $request->get('email')]);
     }
 
     /**

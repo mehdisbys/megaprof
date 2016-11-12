@@ -60,8 +60,12 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <h1><a href="/">Megaprof</a></h1>
-                </div><!-- #logo end -->
+                        <a class="header-logo header-logo-normal"
+                           href="/" title="Revenir à l'accueil de Megaprof">
+                            <img src="/temp-images/megaprof.png" width="170"
+                                 alt="Cours particuliers avec Taelam"/>
+                        </a>
+            </div><!-- #logo end -->
 
                 <!-- Primary Navigation
                 ============================================= -->
@@ -72,8 +76,6 @@
                             <li><a href="/nouvelle-annonce-1"><div>Créer une annonce</div></a></li>
 
                             <li><a href="/mon-compte"><div>Mon Compte</div></a></li>
-
-                            <li><a href="/mes-messages"><div>Messages</div></a></li>
 
                             <li><a href="/logout"><div>Se déconnecter</div></a></li>
 

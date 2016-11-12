@@ -10,7 +10,7 @@
                     <span class="text-separator">ou</span>
                     <div class="input-text input-container">
                         <input type="email" data-type="email" placeholder="Email" name="email" class="input"
-                               value="{{ old('email') }}"/>
+                               value="{{ $email or '' }}"/>
                         <span class="required-tooltip">Champ à renseigner</span>
                         <span class="error-tooltip">Email incorrect</span>
                     </div>

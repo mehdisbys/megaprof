@@ -70,7 +70,7 @@
             <a class="header-logo header-logo-normal"
               href="/" title="Revenir à l'accueil de Megaprof">
               <img src="/temp-images/megaprof.png" width="170"
-              alt="Cours particuliers avec Megaprof"/>
+              alt="Cours particuliers avec Taelam"/>
             </a>
           </div>
 
@@ -79,7 +79,6 @@
               @if(Auth::check())
               <a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a>
               <a class="header-item" href="/mon-compte">Mon Compte</a>
-              <a class="header-item" href="/mes-messages">Messages</a>
               <a class="header-item" href="/logout">Se déconnecter</a>
               <a class="header-item" href="/aide">Aide</a>
               @else
