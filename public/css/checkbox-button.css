@@ -4,7 +4,7 @@
 
 .ck-button input:checked ~ label {
     color: white;
-    background-color: #068054;
+    background-color: #F79011;
 }
 
 .ck-button label {

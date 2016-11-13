@@ -4499,7 +4499,7 @@ ul.profil_statut li span.verified:before {
     background-image: url("/temp-images/backgrounds/header-banner-bg.jpg");
     -webkit-background-size: cover;
     background-size: cover;
-    background-position: center
+    background-position: center;
 }
 .home-search-form {
     max-width: 80%;

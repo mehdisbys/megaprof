@@ -21,6 +21,8 @@
                     {!! Form::hidden('advert_id', $advert_id) !!}
                     <div class="clear topmargin-sm"></div>
 
+                    <div class="col-md-10 col-md-offset-2 bottommargin-sm clearfix">Indiquez le niveau enseigné pour chaque matière</div>
+
 
                     @foreach ($subjects as $subject)
 
@@ -30,7 +32,7 @@
 
                             <div class="toggle toggle-bg clearfix">
 
-                                <div class="togglet">
+                                <div class="togglet" style="background-color: transparent; border: 1px dashed black;">
                                     <i class="toggle-closed icon-ok-circle"></i>
                                     <i class="toggle-open icon-remove-circle"></i>
                                     {{$level->name}}
@@ -38,14 +40,14 @@
 
                                 <div class="togglec" style="display: none;">
                                     @foreach ($level->subLevels as $subs)
-                                        <div class="ck-button">
-                                            <input class="no-display" type="checkbox" name="levels[{{$subject->id}}][]"
+                                        <div class="">
+                                            <input class="" type="checkbox" name="levels[{{$subject->id}}][]"
                                                    id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}" data-parsley-required data-parsley-required-message=""
                                                    @if(isset($checked) and isset($checked[$subject->id]) and in_array($subs->id, $checked[$subject->id]))
                                                    checked="on"
                                                     @endif
                                             >
-                                            <label class="" for="{{$subject->id ."_". $subs->id}}">
+                                            <label class="" for="{{$subject->id ."_". $subs->id}}" style="text-transform: none; font-weight: 100">
                                                 <span>{{$subs->name}}</span>
                                         </div>
                                     @endforeach

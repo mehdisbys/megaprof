@@ -17,7 +17,7 @@
 #### High priority
 
 - [ ] Backend : Add Button to suspend an advert to single advert page
-- [ ] Backend : Location radius slider does not work when creating an advert
+- [x] Backend : Location radius slider does not work when creating an advert
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder
