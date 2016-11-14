@@ -3,6 +3,9 @@
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 {!! HTML::style('css/cropper.min.css')!!}
 
+@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'complete', 'step6' => 'active'])
+
+
 @if(isset($advert))
     <form id="presentation-content"  accept-charset="UTF-8"
           action="/modifier-annonce-6/{{$advert->id}}" method="POST" enctype="multipart/form-data" data-parsley-validate>

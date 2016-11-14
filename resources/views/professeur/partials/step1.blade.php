@@ -2,6 +2,8 @@
 {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
 {!! HTML::style("temp-css/awesomplete.css") !!}
 
+@include('professeur.process-steps.process-steps')
+
 @if(isset($checkedSubjects) and $checkedSubjects != NULL)
     <form method="POST" action="/modifier-annonce-1/{{$advert_id}}" accept-charset="UTF-8" data-parsley-validate
           id="subject_form">

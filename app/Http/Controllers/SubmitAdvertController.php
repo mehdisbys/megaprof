@@ -45,7 +45,7 @@ class SubmitAdvertController extends Controller
         $advert_id = $advert->id;
 
         // 2. Get subjects ids
-        $subjectsArray = $request->input('subjects');
+        $subjectsArray = $request->input('subjects') ?? [];
 
         // 3. Get Subject Names
         $subjectsText  = explode(',', $request->input('subjects_text'));

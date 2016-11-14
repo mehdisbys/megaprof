@@ -16,8 +16,10 @@
 
 #### High priority
 
-- [ ] Backend : Add Button to suspend an advert to single advert page
 - [x] Backend : Location radius slider does not work when creating an advert
+- [x] Backend : add percentage of completion when creating an advert
+
+- [ ] Backend : Add Button to suspend an advert to single advert page
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder
@@ -26,10 +28,7 @@
 
 #### Low priority
 - [ ] Backend : get total number of facebook friends
-- [ ] Backend : For teachers, offer to link their facebook account so that it gives more confidence to students
 - [ ] Backend : when logging-in check that address is populated
-- [ ] Backend : add percentage of completion when creating an advert
-
 
 
 

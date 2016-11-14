@@ -4,6 +4,8 @@
 {!! HTML::script("js/jquery-ui.js")!!}
 {!! HTML::style("css/fa/css/font-awesome.css") !!}
 
+@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'active'])
+
 
 @if(isset($advert) and isset($advert_id))
     {!! Form::open(['url' => "/modifier-annonce-3/{$advert_id}"]) !!}
@@ -76,7 +78,7 @@
 
     <div class="col-md-12 topmargin-sm no-visibility" id="map-and-radius">
         <div class="col-md-4 form-group">
-            Radius:
+            Dans un rayon de:
             <select id="radius" name="radius" class="form-control">
                 <option value="1000" selected>1 Km</option>
                 <option value="3000">3 Km</option>
