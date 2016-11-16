@@ -19,6 +19,7 @@
 - [x] Backend : Location radius slider does not work when creating an advert
 - [x] Backend : add percentage of completion when creating an advert
 
+- [ ] Backend : add general conditions upon registration
 - [ ] Backend : Add Button to suspend an advert to single advert page
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
@@ -29,6 +30,8 @@
 #### Low priority
 - [ ] Backend : get total number of facebook friends
 - [ ] Backend : when logging-in check that address is populated
+- [ ] Backend : Count page views for advert and make it available to prof
+
 
 
 
