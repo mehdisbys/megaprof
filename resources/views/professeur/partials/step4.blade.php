@@ -17,7 +17,7 @@
 
                 <div class="col-md-1"></div>
 
-                <div class="col-md-8  tabs side-tabs">
+                <div class="col-md-8 tabs side-tabs">
 
                     <ul class="tab-nav tab-nav2"
                         role="tablist">

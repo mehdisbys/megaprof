@@ -16,7 +16,6 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -27,7 +26,7 @@ class DashboardController extends Controller
         $bookings        = Booking::currentProfBookingRequests();
         $user            = User::find(Auth::id());
 
-        return view('dashboard.standard')->with(get_defined_vars());
+        return view('dashboard.index')->with(get_defined_vars());
     }
 
     public function editAdvert($advert_id)

@@ -14,7 +14,6 @@
                 @endif
                 {!! csrf_field() !!}
 
-
                 <div class="col-md-10 col-md-offset-2">
 
                     <h2 class="col-md-12">Quelle(s) matière(s) enseignez-vous ?</h2>

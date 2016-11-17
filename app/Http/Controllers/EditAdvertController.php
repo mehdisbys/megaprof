@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advert;
+use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
 use App\Models\Level;
@@ -15,7 +16,8 @@ class EditAdvertController extends Controller
 
     public function editStep1($advert_id)
     {
-        $subjects = \App\Models\Subject::all();
+        $subjects        = Subject::orderBy('name', 'ASC')->get();
+        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
 
         $advert = Advert::findOrFail($advert_id);
 
@@ -26,7 +28,7 @@ class EditAdvertController extends Controller
             ->toArray();
 
         $step = 1;
-        return view('dashboard.edit')->with(compact('subjects', 'checkedSubjects', 'advert_id', 'step', 'advert'));
+        return view('dashboard.edit')->with(compact('subjects', 'subsubjects', 'checkedSubjects', 'advert_id', 'step', 'advert'));
     }
 
     public function postEditStep1($advert_id)
