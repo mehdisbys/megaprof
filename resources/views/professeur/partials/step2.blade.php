@@ -1,6 +1,8 @@
 {!! HTML::script("js/parsley.min.js")!!}
 
+@if(isset($advert) == false)
 @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'active'])
+@endif
 
 @if(isset($advert))
     <form method="POST" action="/modifier-annonce-2/{{$advert_id}}" accept-charset="UTF-8" data-parsley-validate id="title_form">

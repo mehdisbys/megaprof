@@ -35,35 +35,35 @@
             <div class="bs-wizard-info text-center"></div>
         </div>
 
-        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step2 or 'disabled'}}"><!-- complete -->
+        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step2 or 'disabled'}}">
             <div class="text-center bs-wizard-stepnum">Titre</div>
             <div class="progress"><div class="progress-bar"></div></div>
             <a href="#" class="bs-wizard-dot"></a>
             <div class="bs-wizard-info text-center"></div>
         </div>
 
-        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step3 or 'disabled'}}"><!-- complete -->
+        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step3 or 'disabled'}}">
             <div class="text-center bs-wizard-stepnum">Lieu</div>
             <div class="progress"><div class="progress-bar"></div></div>
             <a href="#" class="bs-wizard-dot"></a>
             <div class="bs-wizard-info text-center"></div>
         </div>
 
-        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step4 or 'disabled'}}"><!-- active -->
+        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step4 or 'disabled'}}">
             <div class="text-center bs-wizard-stepnum">Description</div>
             <div class="progress"><div class="progress-bar"></div></div>
             <a href="#" class="bs-wizard-dot"></a>
             <div class="bs-wizard-info text-center"></div>
         </div>
 
-        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step5 or 'disabled'}}"><!-- active -->
+        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step5 or 'disabled'}}">
             <div class="text-center bs-wizard-stepnum">Prix</div>
             <div class="progress"><div class="progress-bar"></div></div>
             <a href="#" class="bs-wizard-dot"></a>
             <div class="bs-wizard-info text-center"></div>
         </div>
 
-        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step6 or 'disabled'}}"><!-- active -->
+        <div class="col-xs-3 col-md-2 bs-wizard-step {{$step6 or 'disabled'}}">
             <div class="text-center bs-wizard-stepnum">Photo</div>
             <div class="progress"><div class="progress-bar"></div></div>
             <a href="#" class="bs-wizard-dot"></a>

@@ -1,7 +1,9 @@
 
 {!! HTML::script("js/parsley.min.js")!!}
-@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'active'])
 
+@if(isset($advert) == false)
+@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'active'])
+@endif
 
 @if(isset($advert))
     <form id="presentation-content"  accept-charset="UTF-8"

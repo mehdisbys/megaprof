@@ -31,6 +31,10 @@ dl, dt, dd, ol, ul, li {
     text-shadow: none;
 }
 
+.nice-orange{
+    color: #F79011;
+}
+
 ::-moz-selection {
     background: #1ABC9C; /* Firefox */
     color: #FFF;

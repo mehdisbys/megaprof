@@ -16,16 +16,14 @@
 
 #### High priority
 
-- [x] Backend : Location radius slider does not work when creating an advert
-- [x] Backend : add percentage of completion when creating an advert
-
-- [ ] Backend : add general conditions upon registration
+- [ ] Backend : Add general conditions upon registration
 - [ ] Backend : Add Button to suspend an advert to single advert page
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 - [ ] Backend : Review Lesson booking form
+- [ ] Backend : Dashboard make the ratings for teachers available
 
 #### Low priority
 - [ ] Backend : get total number of facebook friends

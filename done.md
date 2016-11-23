@@ -42,3 +42,5 @@
 - [x] Backend : Ability to flag and advert as inappropriate (Button), select the reason why the advert is offending, leave an optional feedback
 - [x] Backend : Ability to list flagged advert and suspend an advert or account
 - [x] Frontend : Add spin loader on search results page
+- [x] Backend : Location radius slider does not work when creating an advert
+- [x] Backend : add percentage of completion when creating an advert

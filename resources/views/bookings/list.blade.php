@@ -1,3 +1,4 @@
+@if(isset($bookings))
 @foreach($bookings as $booking)
     <article class="gray-background" id="booking_{{$booking->id}}">
         <div class="col-md-12 topmargin-sm">
@@ -99,3 +100,4 @@
         </div>
     </article>
 @endforeach
+@endif

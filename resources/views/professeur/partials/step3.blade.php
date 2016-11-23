@@ -4,8 +4,9 @@
 {!! HTML::script("js/jquery-ui.js")!!}
 {!! HTML::style("css/fa/css/font-awesome.css") !!}
 
+@if(isset($advert) == false)
 @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'active'])
-
+@endif
 
 @if(isset($advert) and isset($advert_id))
     {!! Form::open(['url' => "/modifier-annonce-3/{$advert_id}"]) !!}

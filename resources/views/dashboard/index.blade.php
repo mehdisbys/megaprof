@@ -1,7 +1,6 @@
 @extends('layouts.__master')
 
 @section('content')
-    {!! HTML::script("js/readmore.min.js")!!}
 
     <div class="col-md-12">
 
@@ -9,7 +8,6 @@
             <div class="col-md-3">
                 <img src="/avatar_dashboard/{{Auth::id()}}">
             </div>
-
         </div>
 
         <div class="col-md-12 tabs side-tabs">
@@ -19,14 +17,15 @@
 
                     <li class="ui-state-default ui-corner-top" role="tab" tabindex="0" aria-controls="tabs-37"
                         aria-labelledby="ui-id-25" aria-selected="true">
-                        <a href="#tabs-37" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-25">Notifications</a></li>
+                        <a href="#tabs-37" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-25">Notifications</a>
+                    </li>
 
                     <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-38"
                         aria-labelledby="ui-id-26" aria-selected="false">
                         <a href="#tabs-38" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
                             demandes de cours
-                        @if($bookings->count())
-                            ({{$bookings->count()}})
+                            @if(isset($bookings) and $bookings->count())
+                                ({{$bookings->count()}})
                             @endif
                         </a>
                     </li>
@@ -35,7 +34,7 @@
                         aria-labelledby="ui-id-46" aria-selected="false">
                         <a href="#tabs-48" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
                             commentaires
-                            @if($pendingComments->count())
+                            @if(isset($pendingComments) and $pendingComments->count())
                                 ({{$pendingComments->count()}})
                             @endif
                         </a>
@@ -45,7 +44,7 @@
                         aria-labelledby="ui-id-27" aria-selected="false">
                         <a href="#tabs-39" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-27">Mes
                             annonces
-                            @if ($adverts->count())
+                            @if (isset($adverts) and $adverts->count())
                                 ({{$adverts->count()}})
                             @endif
                         </a>
@@ -69,7 +68,7 @@
                              style="display: block;">
                             <h4>Notifications</h4>
 
-                            @if($notifications->count())
+                            @if(isset($notifications) and $notifications->count())
                                 @include('notifications.list', ['notifications' => $notifications])
                             @else
                                 Vous avez lu toutes vos notifications.
@@ -87,16 +86,17 @@
                         </div>
                     </div>
 
-                <div class="tab-content" id="tabs-48" aria-labelledby="ui-id-46" role="tabpanel" aria-expanded="false" aria-hidden="true"
-                     style="display: none;">
-                    @if(isset($pendingComments) and $pendingComments->count() > 0 )
-                        <h4>Commentez vos derniers cours</h4>
+                    <div class="tab-content" id="tabs-48" aria-labelledby="ui-id-46" role="tabpanel"
+                         aria-expanded="false" aria-hidden="true"
+                         style="display: none;">
+                        @if(isset($pendingComments) and $pendingComments->count() > 0 )
+                            <h4>Commentez vos derniers cours</h4>
 
-                        <div class="col-md-8 bottommargin-sm">
-                            @include('comments.pendingComments')
-                        </div>
-                    @endif
-                </div>
+                            <div class="col-md-8 bottommargin-sm">
+                                @include('comments.pendingComments')
+                            </div>
+                        @endif
+                    </div>
 
                     <div class="tab-container">
 
@@ -104,9 +104,11 @@
                              aria-labelledby="ui-id-27" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
                             <h4>Mes annonces</h4>
+                            @if(isset($adverts))
                             @foreach($adverts as $advert)
 
-                                <div class="col-md-6 clearfix bottommargin-sm border1px" data-readmore aria-expanded="false">
+                                <div class="col-md-6 clearfix bottommargin-sm border1px" data-readmore
+                                     aria-expanded="false">
                                     <div class="col-md-6 clearfix">
                                         <div class="bold">{{ $advert->title}}</div>
 
@@ -145,10 +147,11 @@
                                 </div>
                                 <div class="clearfix"></div>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="tab-container col-md-8">
-
+                        @if(isset($user))
                         <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-40"
                              aria-labelledby="ui-id-28" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
@@ -204,6 +207,7 @@
                                 {!! Form::close() !!}
                             </div>
                         </div>
+                        @endif
                     </div>
 
                     @include('dates.dates')
@@ -211,25 +215,5 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-
-                    $('article').readmore({
-                        speed: 75,
-                        lessLink: '<a href="#">Read less</a>'
-                    });
-
-                    var toggleDisplay = function () {
-                        $('.booking_folded_request').on('click', function () {
-                            var id = $(this).attr('id');
-                            $('#' + id + "_snippet").toggleClass('no-visibility');
-                            $('#' + id + "_display").toggleClass('no-visibility');
-                        });
-                    };
-
-                    // toggleDisplay();
-                }
-        );
-    </script>
 
 @endsection
