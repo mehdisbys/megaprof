@@ -51,12 +51,9 @@
     <div class="wrapper">
         <div class="header-inner">
             <div class="header-inner-cell header-inner-cell-logo">
-                <button class="header-burger-button">
-                    Menu<span class="header-burger-icon">&nbsp;</span>
-                </button>
                 <a class="header-logo header-logo-normal"
-                   href="/" title="Revenir à l'accueil de Megaprof">
-                    <img src="/temp-images/megaprof.png" width="170"
+                   href="/" title="Accueil Taelam">
+                    <img src="http://taelam.com/temp-images/megaprof.png" width="170"
                          alt="Cours particuliers avec Taelam"/>
                 </a>
             </div>

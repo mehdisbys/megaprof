@@ -1,7 +1,7 @@
 @extends('emails.master')
 @section('content')
 
-	<h1>Jean, bienvenue sur TAELAM ! – Confirmation de votre Inscription</h1>
+	<h1>{{$name}}, bienvenue sur TAELAM ! – Confirmation de votre Inscription</h1>
 	<br>
 
 	<p>Bonjour {{$name}},</p>

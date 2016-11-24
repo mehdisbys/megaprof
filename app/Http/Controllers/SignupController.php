@@ -30,7 +30,7 @@ class SignupController extends Controller
 
         //TODO generate event UserRegistered
 
-		$this->sendConfirmationEmail($user);
+		return $this->sendConfirmationEmail($user);
 
 		thanks('Un email de confirmation vient de vous être envoyé. Veuillez cliquer sur le lien inclus pour finaliser la création de votre compte');
 
@@ -45,9 +45,11 @@ class SignupController extends Controller
 		$config['name'] = $user->firstname;
 		$config['subject'] = ucfirst($user->firstname) . ' bienvenue sur Taelam';
 		$all['name'] = $user->firstname;
-		$all['link'] = url('register/confirm/' . $user->confirmation_code); 
+		$all['link'] = url('register/confirm/' . $user->confirmation_code);
 
 		$this->mailer->sendMail($view, $all, $config);
+
+        return view('emails.auth.confirmEmail', ['name' => $user->firstname, 'link' => $all['link']]);
 	}
 
 	/**
