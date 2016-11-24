@@ -3,14 +3,14 @@
   <head>
     <title>Cours particuliers Megaprof - Trouvez un professeur particulier</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta name="Description" lang="fr" content="Trouvez votre professeur particulier parmi"/>
+    <meta name="Description" lang="fr" content="Trouvez votre professeur particulier"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="theme-color" content="#ffffff"/>
-    <meta property="og:title" content="MegaPROF - La plateforme des professeurs particuliers"/>
+    <meta property="og:title" content="Taelam - La plateforme des professeurs particuliers"/>
     <meta property="og:image" content="/temp-image/megaprof@2x.png"/>
     <meta property="og:site_name" content="Megaprof"/>
-    <meta property="og:description" content="Trouvez votre professeur pour des cours particuliers ou collectifs parmi"/>
+    <meta property="og:description" content="Trouvez votre professeur pour des cours particuliers"/>
 
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 

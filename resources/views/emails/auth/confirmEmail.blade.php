@@ -1,21 +1,19 @@
-<html>
+@extends('emails.master')
+@section('content')
 
-<body>
-	<h1>Bienvenue !</h1>
-
-	<hr>
-
-	<p>Bonjour {{$name }},</p>
-	
+	<h1>Jean, bienvenue sur TAELAM ! – Confirmation de votre Inscription</h1>
 	<br>
 
-	<p>Veuillez confirmer la création de votre compte en cliquant sur le lien suivant <a href="{{$link}}">link</a> </p>
+	<p>Bonjour {{$name}},</p>
 
 	<br>
 
-    <p>Merci</p>
-	
-	<p>L'Équipe Mégaprof</p>
+	<p>Pour commencer à bénéficier de nos services, merci de confirmer la création de votre en compte en cliquant <a href="{{$link}}">ici</a>.</p>
+	<p>Nous vous remercions de votre confiance,
+	Et n’oubliez pas si vous souhaitez être au courant de toute l'actualité de TAELAM, n’hésitez pas à nous suivre sur les réseaux sociaux,
+	A très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
+	<br>
 
-</body>
-</html>
+	<p>L'Équipe Taelam</p>
+
+@stop
