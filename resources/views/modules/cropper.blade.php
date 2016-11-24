@@ -2,37 +2,14 @@
     <div class="col-md-9 docs-buttons">
         <!-- <h3 class="page-header">Toolbar:</h3> -->
 
-        <div class="btn-group"></div>
 
         <div class="btn-group">
-            <button type="button" class="btn btn-primary" data-method="crop" title="Crop">
-            <span class="docs-tooltip" data-toggle="tooltip" title="">
-              <span class="fa fa-check"></span>
-            </span>
-            </button>
-            <button type="button" class="btn btn-primary" data-method="clear" title="Clear">
-            <span class="docs-tooltip" data-toggle="tooltip" title="">
-              <span class="fa fa-remove"></span>
-            </span>
-            </button>
+
+
         </div>
 
         <div class="btn-group">
-            <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
-            <span class="docs-tooltip" data-toggle="tooltip" title="">
-              <span class="fa fa-refresh"></span>
-            </span>
-            </button>
-            <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
-            <span class="docs-tooltip" data-toggle="tooltip" title="Importer une image">
-              <span class="fa fa-upload"></span>
-            </span>
-            </label>
-            <button type="button" class="btn btn-primary" data-method="destroy" title="Destroy">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;destroy&quot;)">
-              <span class="fa fa-power-off"></span>
-            </span>
-            </button>
+
         </div>
 
         <div class="btn-group btn-group-crop">
@@ -90,10 +67,8 @@
         // Cropper
         $image.on({
             'crop.cropper': function (e) {
-               // $("#previewButton").trigger('click');
             },
             'zoom.cropper': function (e) {
-                console.log(e.type, e.ratio);
             }
         }).cropper(options);
 
@@ -132,7 +107,6 @@
                 options[name] = $this.val();
             }
 
-            $image.cropper('destroy').cropper(options);
         });
 
         // Methods

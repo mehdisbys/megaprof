@@ -1,7 +1,10 @@
 @extends('layouts.__master')
 
 @section('content')
-
+    {!! HTML::script("js/webcam.min.js") !!}
+    {!! HTML::script("js/cropper.js") !!}
+    {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
+    {!! HTML::style('css/cropper.min.css')!!}
     <div class="col-md-12">
 
         <div class="col-md-12 clearfix">
@@ -150,13 +153,13 @@
                             @endif
                         </div>
                     </div>
-                    <div class="tab-container col-md-8">
+                    <div class="tab-container col-md-10">
                         @if(isset($user))
                         <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-40"
                              aria-labelledby="ui-id-28" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
                             <h4>Modifier mon profil</h4>
-                            <div class="col-md-8">
+                            <div class="col-md-4">
                                 {!! Form::model($user, ['url' => '/editer-profil']) !!}
 
                                 <div class="form-group col-md-12">
@@ -204,6 +207,142 @@
                                     <button class="btn btn-success" type="submit">Mettre mon profil à jour</button>
                                 </div>
 
+                                {!! Form::close() !!}
+                            </div>
+                            <div class="col-md-8">
+                                <form id="presentation-content"  accept-charset="UTF-8"
+                                      action="/avatar" method="POST" enctype="multipart/form-data" data-parsley-validate>
+
+                                    {!! csrf_field() !!}
+
+                                    <div class="col-md-12 center topmargin-sm">
+
+                                        <div id="img-container">
+
+                                            <div id="webcam" class="no-visibility col-md-3 col-md-offset-3">
+                                                <div id="my_camera"></div>
+                                                <a href="javascript:void(take_snapshot())" class="button button-3d button-mini button-rounded button-blue">Prendre la photo</a>
+                                                <input type="hidden" name="webcam_img" id="webcam_img">
+                                            </div>
+
+                                            <div id="capture" class="col-md-12 no-visibility">
+                                                <div id="my_result" style="" class=""></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <input type="file" id="img_upload" name="img_upload" class="no-visibility" accept="image/*">
+                                        <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
+
+                                        <div class="row-spy" data-spy="scroll" data-target=".scrollspy">
+
+                                            <div class="col-md-12">
+                                                <div class="img-container no-visibility">
+                                                    <img id="image" src="" alt="Votre Image" name="image" class="no-visibility">
+                                                    <input name="x" id="x" type="text" class="no-visibility">
+                                                    <input name="y" id="y" type="text" class="no-visibility">
+                                                    <input name="w" id="w" type="text" class="no-visibility">
+                                                    <input name="h" id="h" type="text" class="no-visibility">
+                                                    <input name="r" id="r" type="text" class="no-visibility">
+                                                    <input name="scalex" id="scalex" type="text" class="no-visibility">
+                                                    <input name="scaley" id="scaley" type="text" class="no-visibility">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 scrollspy" >
+                                                <div id="img-preview" data-spy="" class="no-visibility " style="width: 190px; height: 190px;"></div>
+                                            </div>
+                                        </div>
+
+                                        <div id="cropper-module" class="no-visibility">
+                                            @include('modules/cropper')
+                                        </div>
+
+                                        <div id="my_buttons" class="col-md-8">
+                                            <label class="buttn" for="img_upload"><i class="icon-camera"></i>Téléchargez une photo</label>
+                                            <a class="butt  n" href="#" id="use-webcam"><i class="icon-facetime-video"></i>Utilisez votre webcam</a>
+                                        </div>
+
+                                        <div id="validate_buttons" class="col-md-12 text-center no-visibility">
+
+                                            <button id="back_button" class="button button-3d button-small button-rounded button-teal">
+                                                Retour
+                                            </button>
+
+                                            <button type="submit" class="button button-3d button-small button-rounded nice-orange">
+                                                Valider cette photo
+                                            </button>
+                                        </div>
+
+
+
+                                        <script>
+                                            $( document ).ready(function() {
+
+//                                            $("#img-preview").affix({
+//                                                offset: {
+//                                                    top: $("#img-preview").offset().top,
+//                                                    bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 150
+//                                                }
+//                                            });
+                                            });
+                                            //--------
+
+                                            function imgUpload(){
+                                                $("#validate_buttons").toggleClass('no-visibility');
+                                                $("#img-preview").toggleClass('no-visibility');
+                                                $("#cropper-module").toggleClass('no-visibility');
+                                                $("#image").toggleClass('no-visibility');
+                                                $("#my_buttons").toggleClass('no-visibility');
+                                                $("#img-question-mark").toggleClass('no-visibility');
+                                                $('.img-container').toggleClass('no-visibility');
+
+                                            }
+
+                                            $("#img_upload").change(function() { imgUpload(); });
+
+                                            $("#use-webcam").click(function(){
+                                                Webcam.set({
+                                                    width: 210,
+                                                    height: 190,
+                                                    dest_width: 190,
+                                                    dest_height: 170
+                                                });
+
+                                                Webcam.attach('#my_camera');
+                                                $("#webcam").removeClass('no-visibility');
+                                                $("#validate_buttons").removeClass('no-visibility');
+                                                $("#img-question-mark").addClass('no-visibility');
+                                                $("#my_buttons").addClass('no-visibility');
+                                                $("#current_picture").addClass('no-visibility');
+                                            });
+
+                                            $("#back_button").click(function(e){
+                                                e.preventDefault();
+                                                Webcam.reset();
+
+                                                $().cropper('destroy');
+                                                $('.cropper-container').html('');
+                                                $('.cropper-container').toggleClass('no-visibility');
+
+                                                imgUpload();
+                                            });
+
+                                            function take_snapshot() {
+                                                Webcam.snap(function (data_uri) {
+                                                    var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+
+                                                    document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+                                                    $("#webcam_img").val(raw_image_data);
+                                                    $('.img-container').removeClass('no-visibility');
+                                                    //$("#image").removeClass('no-visibility');
+                                                    $("#capture").removeClass('no-visibility');
+                                                });
+                                            }
+
+                                        </script>
+                                    </div>
                                 {!! Form::close() !!}
                             </div>
                         </div>

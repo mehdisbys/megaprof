@@ -26,7 +26,6 @@
                 <div class="col-md-12 center topmargin-sm">
 
                     <div id="img-container">
-
                         <img  id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
 
                         <div class="clearfix"></div>
@@ -35,7 +34,6 @@
                             <div id="my_camera"></div>
                             <a href="javascript:void(take_snapshot())" class="button button-3d button-mini button-rounded button-blue">Prendre la photo</a>
                             <input type="hidden" name="webcam_img" id="webcam_img">
-
                         </div>
 
                         <div id="capture" class="col-md no-visibility">
@@ -50,11 +48,9 @@
 
                     <div class="row-spy" data-spy="scroll" data-target=".scrollspy">
 
-                        <div class="col-md-8">
-                            <!-- <h3 class="page-header">Demo:</h3> -->
+                        <div class="col-md-6">
                             <div class="img-container no-visibility">
                                 <img id="image" src="" alt="Votre Image" name="image" class="no-visibility">
-
                                 <input name="x" id="x" type="text" class="no-visibility">
                                 <input name="y" id="y" type="text" class="no-visibility">
                                 <input name="w" id="w" type="text" class="no-visibility">
@@ -62,14 +58,12 @@
                                 <input name="r" id="r" type="text" class="no-visibility">
                                 <input name="scalex" id="scalex" type="text" class="no-visibility">
                                 <input name="scaley" id="scaley" type="text" class="no-visibility">
-
                             </div>
                         </div>
 
                         <div class="col-md-3 scrollspy" >
-                            <div id="img-preview" data-spy="affix" class="no-visibility topmargin-lg" style="width: 190px; height: 190px;"></div>
+                            <div id="img-preview" data-spy="affix" class="no-visibility " style="width: 190px; height: 190px;"></div>
                         </div>
-
                     </div>
 
                     <div id="cropper-module" class="no-visibility">

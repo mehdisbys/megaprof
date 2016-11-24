@@ -15,4 +15,13 @@ class AvatarController extends Controller
     {
         return Avatar::getDashboardAvatar($user_id);
     }
+
+    public function saveAvatar()
+    {
+        savePicture();
+
+        thanks('Votre image de profil a été mise à jour');
+
+        return redirect()->back();
+    }
 }

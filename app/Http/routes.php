@@ -46,6 +46,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/avatar_dashboard/{user_id}', 'AvatarController@getDefaultAvatar');
+        Route::post('/avatar', 'AvatarController@saveAvatar');
 
         Route::group(['middleware' => ['afterAdvert']], function () {
 
