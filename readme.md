@@ -6,7 +6,7 @@
 - [ ] Frontend : Create simple email master template with logo
 
 - [ ] Frontend : Booking form revamping to new design
-- [ ] Frontend : Dashboard revamping to new design
+- [x] Frontend : Dashboard revamping to new design
 - [ ] Frontend : Make slider/carousel responsive in front page
 - [ ] Frontend : Fix : Login and registration page are defaulted to responsive view
 - [ ] Frontend : Have an error message when no location/ no subject is selected
