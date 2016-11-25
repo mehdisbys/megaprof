@@ -93,7 +93,7 @@
 <!-- three ============= -->
 <div class="section home-how">
   <div class="wrapper">
-    <h2 class="section-title">Megaprof, comment ça marche ?</h2>
+    <h2 class="section-title">Taelam, comment ça marche ?</h2>
     <div class="table how_it_works">
       <div class="cell"> <span class="cupcake"> </span> </div>
       <div class="cell">
