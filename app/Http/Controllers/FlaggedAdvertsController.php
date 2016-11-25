@@ -36,14 +36,15 @@ class FlaggedAdvertsController extends Controller
         FlaggedAdvert::create($data);
         thanks('Merci de nous avoir signalé cette annonce. Nous allons traiter votre demande dans les plus brefs délais');
 
-        $this->sendEmail(User::where(['email' => 'mehdi.souihed@gmail.com'])->first(), Advert::find($data['advert_id']));
+        $advert = Advert::find($data['advert_id']);
+
+        $this->sendEmail(User::where(['email' => 'mehdi.souihed@gmail.com'])->first(), Advert::find($data['advert_id']), 'emails.flaggedAdvert.flag');
 
         return redirect('/');
     }
 
-    public function sendEmail(User $user, Advert $advert)
+    public function sendEmail(User $user, Advert $advert, string $view)
     {
-        $view = 'emails.flaggedAdvert.flag';
         $config['to'] = $user->email;
         $config['name'] = $user->firstname;
         $config['subject'] = "Signalement d'annonce non-conforme";
@@ -61,7 +62,10 @@ class FlaggedAdvertsController extends Controller
            /** @var Advert $advert */
            $advert = Advert::findBySlugOr404($slug);
            $advert->suspend();
-           thanks("L'annonce {$advert->title} a été suspendue.");
+           thanks("L'annonce {$advert->title} a été suspendue et un email vient d'être envoyé à l'utilisateur concerné");
+
+           $this->sendEmail($advert->user, $advert, 'emails.flaggedAdvert.notifyOwnerFlagged');
+
            return redirect('/');
        }
 

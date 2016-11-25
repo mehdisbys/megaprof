@@ -1,23 +1,25 @@
-<html>
+@extends('emails.master')
+@section('content')
 
-<body>
-<h1>Megaprof</h1>
+    <h2>{{$name}}, vous avez reçu une demande de cours </h2>
+    <br>
 
-<hr>
+    <p>Bonjour {{$name}},</p>
 
-<p>Bonjour {{$name }},</p>
+    <br>
 
-<br>
+    <p>Un élève souhaite réserver un cours avec vous.</p>
 
-<p>Vous venez de recevoir une demande de cours !</p>
-<br>
+    <p>Pour répondre à sa demande, connectez-vous dès maintenant sur <a href="http://www.taelam.com/mon-compte">votre compte Taelam</a></p>
 
-<p>Connectez-vous sur <a href="{{$link}}">Megaprof</a> afin d'y répondre.</p>
-<br>
+    <br>
 
-<p>Merci</p>
+    <p>Attention en cas de non réponse de votre part, votre profil sera suspendu donc même si c’est un refus pensez à y répondre.</p>
 
-<p>L'Équipe Mégaprof</p>
+    <br>
 
-</body>
-</html>
+    <p>A très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
+    <br>
+    <p>L'Équipe Taelam</p>
+
+@stop

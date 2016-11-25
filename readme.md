@@ -3,7 +3,7 @@
 - [ ] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
 
 - [x] Frontend : Modify how subjects are selected when creating an advert
-- [ ] Frontend : Create simple email master template with logo
+- [x] Frontend : Create simple email master template with logo
 
 - [ ] Frontend : Booking form revamping to new design
 - [x] Frontend : Dashboard revamping to new design

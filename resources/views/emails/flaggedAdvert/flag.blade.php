@@ -10,11 +10,13 @@
 <br>
 <p>L'annonce suivante a été signalée:  <a href="{{$link}}">{{$advert->title}}</a> </p>
 <br>
-<p>Jetons un coup d'oeil le plus rapidement possible.</p>
+<p>Yacine et Mehdi : jetons y un coup d'oeil le plus rapidement possible.</p>
 
-<p>Merci</p>
+<p>Merci, petit con !</p>
 
 <p>L'Équipe Taelam</p>
 
 </body>
 </html>
+
+

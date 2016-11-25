@@ -1,21 +1,21 @@
-<html>
-
-<body>
-<h1>Megaprof</h1>
-
-<hr>
-
+@extends('emails.master')
+@section('content')
 <p>Bonjour {{$name }},</p>
 
 <br>
+
 <p>Nous vous confirmons que votre demande de cours a bien été envoyée.</p>
+
 <br>
+
 <p>Nous vous enverrons un email lorsque le professeur aura répondu à votre demande.</p>
+
 <br>
 
-<p>Merci</p>
+<p>A très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
 
-<p>L'Équipe Mégaprof</p>
+<br>
 
-</body>
-</html>
+<p>L'Équipe Taelam</p>
+
+@stop

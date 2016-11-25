@@ -1,21 +1,17 @@
-<html>
-
-<body>
-<h1>Megaprof</h1>
-
-<hr>
+@extends('emails.master')
+@section('content')
 
 <p>Bonjour {{$name }},</p>
 
 <br>
 <p>Votre demande de cours a malheuresement été refusée par le professeur.</p>
 <br>
-<p>Connectez-vous sur Megaprof pour voir les offres d'autres professeurs.</p>
+<p>Connectez-vous sur <a href="http://www.taelam.com">Taelam</a> pour voir les offres d'autres professeurs.</p>
+
 <br>
 
-<p>Merci</p>
+<p>A très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
+<br>
 
-<p>L'Équipe Mégaprof</p>
-
-</body>
-</html>
+<p>L'Équipe Taelam</p>
+@stop
