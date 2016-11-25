@@ -126,7 +126,7 @@
             </div>
             <div>
               <p>Vous ne payez rien tant que vous n’avez pas trouvé votre professeur idéal. Une
-                fois trouvé, Megaprof prélèvera une seule et unique fois 19 euros, jamais
+                fois trouvé, Taelam prélèvera une seule et unique fois 19 euros, jamais
                 avant.</p>
             </div>
           </li>
@@ -140,7 +140,7 @@
 <!-- four ============= -->
 <div class="section home-share">
   <div class="wrapper">
-    <h2 class="section-title">Partagez vos connaissances avec Megaprof</h2>
+    <h2 class="section-title">Partagez vos connaissances avec Taelam</h2>
     <div class="home-share-opinion">
       <ul class="rating align-center">
         <li class="star-full">&nbsp;</li>
@@ -151,7 +151,7 @@
       </ul>
       <blockquote>
         <p class="home-share-opinion-content">
-          Je me suis inscrit sur Megaprof il y a un peu plus d’un an pour gagner quelques euros par
+          Je me suis inscrit sur Taelam il y a un peu plus d’un an pour gagner quelques euros par
           mois car je n’avais pas de travail.<br/>
           <br/>
           Je reçois aujourd'hui vos demandes de cours et j’ai la chance d’avoir des élèves très
