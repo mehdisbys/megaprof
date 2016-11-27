@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,24 @@ class SessionsController extends Controller
         return view('auth.login');
     }
 
+
+    public function loginAs($userId)
+    {
+        $user = User::find($userId);
+
+        if ($user == NULL) {
+            $user = User::where(['email' => $userId])->first();
+
+            if ($user == NULL) {
+                error("Pas d'utilisateur avec ID ou email {$userId} trouvé");
+                return redirect()->back();
+            }
+        }
+
+        Auth::login($user);
+
+        return redirect('/mon-compte');
+    }
 
     public function postLogin(Request $request)
     {

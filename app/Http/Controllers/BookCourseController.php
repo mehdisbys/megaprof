@@ -29,6 +29,8 @@ class BookCourseController extends Controller
 
         Event::fire(new BookingRequestSent($bookModel));
 
+        thanks('Votre demande de cours a été envoyée au professeur avec succès');
+
         return redirect('/mon-compte');
     }
 

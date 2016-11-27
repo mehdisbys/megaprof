@@ -1,7 +1,7 @@
 @extends('layouts.__master')
 
 @section('content')
-    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR') !!}
+    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
     {!! HTML::script("js/locationpicker.jquery.js") !!}
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::style("css/jquery-ui.css") !!}
@@ -172,6 +172,15 @@
                     <div class="clearfix"></div>
                     {!! Form::input('text','addresse', null, ['class' => 'col-md-8 topmargin-sm', 'id' => 'addresse', 'placeholder' => "Votre addresse"]) !!}
                 </div>
+                <div class="location-details no-visibility">
+
+                    {!! Form::hidden('lng',null, ['id' => 'lng']) !!}
+                    {!! Form::hidden('lat', null, ['id' => 'lat']) !!}
+                    {!! Form::hidden('administrative_area_level_1', null, ['id' => 'administrative_area_level_1']) !!}
+                    {!! Form::hidden('locality',   null, ['id' => 'locality']) !!}
+                    {!! Form::hidden('country',  null, ['id' => 'country']) !!}
+                </div>
+
                 <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
                     <button type="submit" class="button button-3d button-large button-rounded button-green">
                         Envoyer ma demande
@@ -199,7 +208,11 @@
                 }
             });
 
-            $('#addresse').geocomplete();
+            $('#addresse').geocomplete({
+            //    types: ['(street_address)'],
+                componentRestrictions: {country: "ma"},
+                details: ".location-details"
+            });
 
             var toggleRadioDisplays = function (inputs) {
 
