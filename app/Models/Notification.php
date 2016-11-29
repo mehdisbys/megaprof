@@ -23,12 +23,12 @@ class Notification extends Model
         }
     }
 
-    public static function AddBookingToDashboard(int $advertId, int $userId)
+    public static function AddBookingToDashboard(int $advertId, int $userId, User $user)
     {
         self::createAdvertNotification(
             'new_booking',
             'Nouvelle demande de cours',
-            '',
+            "{$user->username} souhaite réserver un cours avec vous, répondez à sa demande en allant dans \"Mes demandes de cours\"",
             $advertId,
             $userId
         );

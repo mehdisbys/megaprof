@@ -16,10 +16,12 @@
 
 #### High priority
 
-- [ ] Backend : Review Lesson booking form
+- [x] Backend : Review Lesson booking form
+   - [x] Provide age, chosen location, male/female to professeur
+         
+- [ ] Backend : (WIP) Add Button to suspend an advert to single advert page
 
 - [ ] Backend : Add general conditions upon registration
-- [ ] Backend : Add Button to suspend an advert to single advert page
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder
