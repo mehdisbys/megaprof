@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="fr">
   <head>
-    <title>Cours particuliers Megaprof - Trouvez un professeur particulier</title>
+    <title>Cours particuliers Taelam - Trouvez un professeur particulier</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <meta name="Description" lang="fr" content="Trouvez votre professeur particulier"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
