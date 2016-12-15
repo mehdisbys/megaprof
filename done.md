@@ -44,3 +44,6 @@
 - [x] Frontend : Add spin loader on search results page
 - [x] Backend : Location radius slider does not work when creating an advert
 - [x] Backend : add percentage of completion when creating an advert
+- [x] Backend : Review Lesson booking form
+   - [x] Provide age, chosen location, male/female to professeur
+
