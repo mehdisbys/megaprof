@@ -79,7 +79,7 @@
 
                             <li><a href="/logout"><div>Se déconnecter</div></a></li>
 
-                            <li><a href="/aide"><div>Aide</div></a></li>
+                            <li><a href="/faq"><div>Aide</div></a></li>
                         </ul>
                     @else
                         <ul>
@@ -89,7 +89,7 @@
 
                             <li><a href="/inscription"><div>S'inscrire</div></a></li>
 
-                            <li><a href="/aide"><div>Aide</div></a></li>
+                            <li><a href="/faq"><div>Aide</div></a></li>
                         </ul>
                     @endif
 

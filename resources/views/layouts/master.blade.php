@@ -70,12 +70,12 @@
               <a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a>
               <a class="header-item" href="/mon-compte">Mon Compte</a>
               <a class="header-item" href="/logout">Se déconnecter</a>
-              <a class="header-item" href="/aide">Aide</a>
+              <a class="header-item" href="/faq">Aide</a>
               @else
               <a class="header-item" href="/login">Créer une annonce</a>
               <a class="header-item" href="/login">Se connecter</a>
               <a class="header-item" href="/inscription">S'inscrire</a>
-              <a class="header-item" href="/aide">Aide</a>
+              <a class="header-item" href="/faq">Aide</a>
               @endif
               <a class="button" href="/nouvelle-annonce-1">Donner des cours</a>
             </div>
