@@ -84,7 +84,7 @@
         </div>
       </div>
     </div>
-    @include('includes.success')
+    @include('includes.success')Ø
     @include('includes.error')
   <div class="page">
     @section('content')

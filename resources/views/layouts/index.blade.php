@@ -14,6 +14,8 @@
 
 <!-- one ============= -->
 <div class="home-search">
+
+
   <h1 class="search-title">Trouvez le professeur parfait</h1>
   <div class="home-search-form-inner autocomplete">
     <form action="/search" id="search_form" class="home-search-form autocomplete-form">
@@ -49,6 +51,7 @@
       </div>
     </form>
   </div>
+  <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div>
 </div>
 
 <!-- two ============= -->
@@ -91,7 +94,7 @@
 
 
 <!-- three ============= -->
-<div class="section home-how">
+<div id="howto" class="section home-how">
   <div class="wrapper">
     <h2 class="section-title">Taelam, comment ça marche ?</h2>
     <div class="table how_it_works">
@@ -216,7 +219,6 @@
       arrows: false,
       dots: true,
       cssEase: 'linear',
-
     });
 
     $("#submit-btn").click(function (event) {
@@ -259,6 +261,12 @@
       }
     });
 
+  });
+
+  $("#howto-btn").click(function() {
+    $('html, body').animate({
+      scrollTop: $("#howto").offset().top
+    }, 1500);
   });
 
 </script>
