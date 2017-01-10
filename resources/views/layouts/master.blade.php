@@ -64,8 +64,8 @@
             </a>
           </div>
 
-          <div class="header-inner-cell header-inner-cell-menu">
-            <div class="header-menu-inner">
+            <div class="header-inner-cell header-inner-cell-menu">
+            <div class="header-menu-inner" style="text-align: right;">
               @if(Auth::check())
               <a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a>
               <a class="header-item" href="/mon-compte">Mon Compte</a>

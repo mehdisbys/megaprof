@@ -16,13 +16,13 @@
          
 - [ ] Backend : (WIP) Add Button to suspend an advert to single advert page
 
+- [ ] Backend : Teacher should be able to see his comments on the dashboard
 - [ ] Backend : Add general conditions upon registration
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 
 - [ ] Backend : create comments database seeder
 - [ ] Backend : to provide, "Nos anciens élèves évaluent leurs professeurs" comments data
 - [ ] Backend : Dashboard make the ratings for teachers available
-- [ ] Backend : Teacher should be able to see his comments on the dashboard
 
 #### Low priority
 - [ ] Backend : get total number of facebook friends

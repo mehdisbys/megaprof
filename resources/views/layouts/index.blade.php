@@ -55,7 +55,7 @@
 </div>
 
 <!-- two ============= -->
-<div class="section reinsurance">
+<div class="section reinsurance section-odd">
   <div class="wrapper">
 
     <div class="">
