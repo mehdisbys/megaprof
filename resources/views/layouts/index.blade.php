@@ -210,6 +210,9 @@
 
   <!-- five ============= -->
 @include('includes.awesomeplete.diacritics')
+
+
+
 <script>
   $(document).ready(function () {
 
@@ -221,22 +224,28 @@
       cssEase: 'linear',
     });
 
-    $("#submit-btn").click(function (event) {
+    var submitForm = function (event) {
       event.preventDefault();
       var subject = $("#subject_input").val();
-      var loc = $("#location_input").val();
-      if (subject.length < 2 || loc.length < 2) return;
+      var loc     = $("#location_input").val();
+      toastr.options.positionClass = "toast-top-full-width";
+
+      if (subject.length < 1) {
+        toastr.info("Veuillez saisir une matière");
+        return;
+      }
+
+      if (loc.length < 1) {
+        toastr.info("Veuillez sélectionner une ville");
+        return;
+      }
+
       url = "/annonces/" + subject + "/" + loc;
       url = url.replace(/ /g, '-');
       window.location.assign(url);
-    });
+    };
 
-    // Geocompletion
-    $('#location_input').geocomplete({
-      types: ['(cities)'],
-      componentRestrictions: {country: "ma"},
-      details: ".location-details"
-    });
+    $("#search_form").submit(submitForm);
 
     var abba = true;
     $('#pane-b').hide();
@@ -260,7 +269,6 @@
         return new RegExp("^" + removeDiacritics(input.trim()), "i").test(removeDiacritics(text));
       }
     });
-
   });
 
   $("#howto-btn").click(function() {
@@ -268,6 +276,67 @@
       scrollTop: $("#howto").offset().top
     }, 1500);
   });
+
+</script>
+
+<script>
+  var gmaps = {
+
+    init: function () {
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location_input'), {
+        types: ['(cities)'],
+        componentRestrictions: {country: "ma"},
+        details: ".location-details"
+      });
+
+      autocomplete.addListener('place_changed', function () {
+        $("#search_form").submit();
+      });
+
+      gmaps.setup();
+    },
+
+    displaySuggestions: function (predictions, status) {
+      gmaps.predictions = predictions ? predictions.length : 0;
+
+      if (status != google.maps.places.PlacesServiceStatus.OK) {
+        toastr.options.preventDuplicates = true;
+        toastr.info("Aucune ville ne correspond à votre saisie");
+        return;
+      }
+    },
+
+    predictions: 0,
+
+    autocomplete: new google.maps.places.AutocompleteService(),
+
+    setup: function () {
+      $("#location_input").on('keyup', function () {
+        if ($(this).val()) {
+          gmaps.autocomplete.getPlacePredictions({
+            input: $(this).val(),
+            types: ['(cities)'],
+            componentRestrictions: {country: "ma"}
+          }, gmaps.displaySuggestions)
+        }
+      });
+
+
+      var submitForm = function (event) {
+        event.preventDefault();
+        toastr.options.positionClass = "toast-top-full-width";
+        if (gmaps.predictions < 1) {
+          toastr.options.preventDuplicates = true;
+          toastr.info("Aucune ville ne correspond à votre saisie");
+          return;
+        }
+      };
+
+      $("#search_form").submit(submitForm);
+    }
+
+  };
+  $(document).ready(gmaps.init);
 
 </script>
   @endsection
