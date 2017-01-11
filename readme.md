@@ -17,6 +17,7 @@
 - [ ] Backend : (WIP) Add Button to suspend an advert to single advert page
 
 - [ ] Backend : Teacher should be able to see his comments on the dashboard
+- [ ] Backend : Teacher has to send us his photo ID
 - [ ] Backend : Add general conditions upon registration
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 

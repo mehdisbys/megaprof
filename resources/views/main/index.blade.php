@@ -20,7 +20,7 @@
   </h2>
   <div class="home-search-form-inner autocomplete awesomplete">
     <div class="search-form-wrapper">
-      <form action="/search" method="post" id="search_form2">
+      <form action="/search" method="post" id="search_form">
         {!! csrf_field() !!}
         <div class="home-search-field-wrapper">
           <input
@@ -115,15 +115,9 @@
   </div>
 </div>
 
+@include('includes.gmaps.autocomplete')
+
 <script>
-  /**
-   * TODO -- refactor javascript
-   * there is a bit too much going on here
-   *
-   * */
-
-
-
   $(document).ready(function () {
     $("#loader").removeClass('show');
 
@@ -131,57 +125,62 @@
       $("#count_text").html(data.count + ' Annonces trouvées');
       $("#search_results").html(data.results);
       $("#search_subject").html(data.params.selectedSubject);
-      var searchText = '';
-      if (data.params.city)
-        $("#search_city").html('à ' + data.params.city);
-      if (data.params.selectedSubject) {
-        searchText = data.count + ' Résultats pour ' + data.params.selectedSubject;
-      }
 
-      if (data.params.city) {
-        searchText += ' à ' + data.params.city;
-      }
+      var searchText = '';
+
+      if (data.params.city) $("#search_city").html('à ' + data.params.city);
+
+      if (data.params.selectedSubject) {searchText = data.count + ' Résultats pour ' + data.params.selectedSubject;}
+
+      if (data.params.city) {searchText += ' à ' + data.params.city;}
+
       $("#search_result_text").html(searchText);
+
       $("#loader").removeClass('show');
     }
 
     var sendFormBy = function sortBySendForm(page) {
 
       function sendForm(event) {
-        event.preventDefault();
+        if(event) event.preventDefault();
+
+        console.log('send formy');
+
         var subject = $(".autocomplete-input-subject").val();
-        var city = $(".autocomplete-input-city").val();
-        var token = $("[name='_token']").val();
-        var sortBy = $(".autocomplete-input-sortby").val();
-        var gender = $("[name='gender']:checked").val();
-        var lng = $("#longitude").val();
-        var lat = $("#latitude").val()
+        var city    = $(".autocomplete-input-city").val();
+        var token   = $("[name='_token']").val();
+        var sortBy  = $(".autocomplete-input-sortby").val();
+        var gender  = $("[name='gender']:checked").val();
+        var lng     = $("#longitude").val();
+        var lat     = $("#latitude").val()
 
         $("#loader").addClass('show');
 
         $.post('/search',
           {
             'subject': subject,
-            'city': city,
-            '_token': token,
-            'sortBy': sortBy,
-            'gender': gender,
-            'lng' : lng,
-            'lat' : lat,
-            'page': page ? page.replace(/[^0-9]/g,'') : null
+            'city'   : city,
+            '_token' : token,
+            'sortBy' : sortBy,
+            'gender' : gender,
+            'lng'    : lng,
+            'lat'    : lat,
+            'page'   : page ? page.replace(/[^0-9]/g,'') : null
           },
-          function (data) {
-            updatePage(data);
-          });
-      };
+          function (data) {updatePage(data);});};
       return sendForm;
-    }
+    };
 
     $(document).on('click', '.home-search-submit', sendFormBy(null));
+
     $(".autocomplete-input-sortby").change(sendFormBy(null));
+
     $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
-    // Geocompletion
-    $('#location_input').geocomplete({types: ['(cities)'], componentRestrictions: {country: "ma"},  details: ".location-details"});
+
+    gmaps.config.submitCallBack = sendFormBy($('.pagination-link').attr('href'));
+
   });
 </script>
+
+
 @endsection
