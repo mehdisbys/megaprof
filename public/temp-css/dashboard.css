@@ -4495,7 +4495,7 @@ ul.profil_statut li span.verified:before {
 }
 
 .home-search {
-    padding: 120px 20px;
+    padding: 12px 20px;
     background-image: url("/temp-images/backgrounds/header-banner-bg.jpg");
     -webkit-background-size: cover;
     background-size: cover;

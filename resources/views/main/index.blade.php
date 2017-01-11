@@ -177,7 +177,7 @@
 
     $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
 
-    gmaps.config.submitCallBack = sendFormBy($('.pagination-link').attr('href'));
+    gmaps.config.submitCallBack = sendFormBy();
 
   });
 </script>
