@@ -1,5 +1,5 @@
-<div class="temp-row">
-    <div class="component-profile-sidebar">
+<div class="temp-row col-md-8">
+    <div class="component-profile-sidebar col-md-3">
         <div class="profile-author-profile">
             <a href="/{{$advert->slug}}" class="profile-image-wrapper">
                 <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt="avatar"/>
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="profile-author-description">
+    <div class="profile-author-description col-md-9">
         <h2>
             <a href="/{{$advert->slug}}"> {{ $advert->title }}</a>
         </h2>
