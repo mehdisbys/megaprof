@@ -115,10 +115,11 @@ class Advert extends Model implements SluggableInterface
         $query = DB::table('adverts');
 
         if (in_array($gender, ['man', 'woman'])) {
-            $query = $query->whereHas('user', function ($q) use ($gender) {
-                $q->where('gender', '=', $gender);
+            $query = $query->join('users', function ($join) use ($gender) {
+                $join->on('adverts.user_id', '=', 'users.id')
+                    ->where('users.gender', '=', $gender);
             });
-        }
+        };
 
         if ($lat and $lng) {
             $query->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
@@ -129,7 +130,7 @@ class Advert extends Model implements SluggableInterface
             $query->having('distance', '<', $radius);
 
         if (isset($advertIds))
-            $query->whereIn('id', $advertIds);
+            $query->whereIn('adverts.id', $advertIds);
 
         if ($lat and $lng and $sortBy === 'distance')
             $query->orderBy('distance', 'ASC');

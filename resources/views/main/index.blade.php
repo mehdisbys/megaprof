@@ -8,16 +8,8 @@
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
 
-<div class="home-search">
-  <h2 id="search_result_text">
-    @if(isset($selectedSubject))
-    {{$adverts->total() > 0 ? $adverts->total():'Aucun '}} Résultat{{$adverts->total() > 1 ? 's' : ''}}
-    pour {{$selectedSubject}}
-    @if(isset($selectedCity))
-    {{ " à " . $selectedCity}}
-    @endif
-    @endif
-  </h2>
+<div class="page-search">
+
   <div class="home-search-form-inner autocomplete awesomplete">
     <div class="search-form-wrapper">
       <form action="/search" method="post" id="search_form">
@@ -50,13 +42,6 @@
         </div>
 
         <div class="radius-group">
-          <div id="radius_input" class="no-visibility">
-            <h3> Je peux me déplacer dans un rayon de </h3>
-            <div class="sorting-field">
-              <label>Select radius</label>
-              <input type="range"/>
-            </div>
-          </div>
           <div id="teacher_gender" class="topmargin-sm">
             <h3>Je préfère un professeur:</h3>
             <label class="search-radio">
@@ -101,9 +86,9 @@
         </div>
       </div>
       @else
-      <div class="count_results" class="topmargin-sm bottommargin-sm">
-        <span id="count_text">{{ $adverts->total() }} Annonce{{$adverts->total() > 1 ? 's' : ''}}
-          trouvées</span>
+      <div class="count_results" class="bottommargin-sm">
+        <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
+          trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{$selectedCity ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
       </div>
       <div id="search_results" class="">
         @include('main.multipleAdvertPreview')
@@ -122,7 +107,6 @@
     $("#loader").removeClass('show');
 
     function updatePage(data) {
-      $("#count_text").html(data.count + ' Annonces trouvées');
       $("#search_results").html(data.results);
       $("#search_subject").html(data.params.selectedSubject);
 
@@ -130,11 +114,11 @@
 
       if (data.params.city) $("#search_city").html('à ' + data.params.city);
 
-      if (data.params.selectedSubject) {searchText = data.count + ' Résultats pour ' + data.params.selectedSubject;}
+      if (data.params.selectedSubject) {searchText = data.count + ' Professeurs trouvés pour ' + data.params.selectedSubject;}
 
       if (data.params.city) {searchText += ' à ' + data.params.city;}
 
-      $("#search_result_text").html(searchText);
+      $("#count_text").html(searchText);
 
       $("#loader").removeClass('show');
     }
@@ -143,8 +127,6 @@
 
       function sendForm(event) {
         if(event) event.preventDefault();
-
-        console.log('send formy');
 
         var subject = $(".autocomplete-input-subject").val();
         var city    = $(".autocomplete-input-city").val();
