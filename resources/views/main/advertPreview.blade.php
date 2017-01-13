@@ -1,4 +1,4 @@
-<div class="temp-row col-md-8">
+<div class="temp-row col-md-12">
     <div class="component-profile-sidebar col-md-3">
         <div class="profile-author-profile">
             <a href="/{{$advert->slug}}" class="profile-image-wrapper">

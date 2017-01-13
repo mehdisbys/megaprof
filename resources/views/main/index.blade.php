@@ -8,7 +8,7 @@
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery.form.min.js") !!}
 
-<div class="page-search">
+<div class="home-search">
 
   <div class="home-search-form-inner autocomplete awesomplete">
     <div class="search-form-wrapper">
@@ -41,20 +41,6 @@
           <button id="submit-btn" class="button home-search-submit" type="submit"> Chercher</button>
         </div>
 
-        <div class="radius-group">
-          <div id="teacher_gender" class="topmargin-sm">
-            <h3>Je préfère un professeur:</h3>
-            <label class="search-radio">
-              <input name="gender" value="man" type="radio"> Homme
-            </label>
-            <label class="search-radio">
-              <input name="gender" value="woman" type="radio"> Femme
-            </label>
-            <label class="search-radio">
-              <input name="gender" value="both" type="radio"> Les deux me vont
-            </label>
-          </div>
-
           <div class="location-details no-visibility">
             {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
             {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
@@ -86,15 +72,31 @@
         </div>
       </div>
       @else
+        <div class="col-md-3">
+          <div id="teacher_gender" class="topmargin-sm teacher_gender">
+            <h3>Je préfère un professeur:</h3>
+            <label class="col-md-8">
+              <input name="gender" value="man" type="radio"> Homme
+            </label>
+            <label class="col-md-8">
+              <input name="gender" value="woman" type="radio"> Femme
+            </label>
+            <label class="col-md-10">
+              <input name="gender" value="both" type="radio"> Les deux me vont
+            </label>
+          </div>
+        </div>
+
       <div class="count_results" class="bottommargin-sm">
         <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
           trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{$selectedCity ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
       </div>
-      <div id="search_results" class="">
+      <div id="search_results" class="col-md-9">
         @include('main.multipleAdvertPreview')
       </div>
       @endif
     </div>
+
     <div id="loader" class='loader-animation-css show' style='-webkit-transform:scale(0.21)'><div></div><div></div><div></div></div>
     <!-- optional to show advert count  -->
   </div>
@@ -134,7 +136,19 @@
         var sortBy  = $(".autocomplete-input-sortby").val();
         var gender  = $("[name='gender']:checked").val();
         var lng     = $("#longitude").val();
-        var lat     = $("#latitude").val()
+        var lat     = $("#latitude").val();
+
+        toastr.options.positionClass = "toast-top-full-width";
+
+        if (subject.length < 1) {
+          toastr.info("Veuillez saisir une matière");
+          return;
+        }
+
+        if (city.length < 1) {
+          toastr.info("Veuillez sélectionner une ville");
+          return;
+        }
 
         $("#loader").addClass('show');
 
@@ -155,7 +169,7 @@
 
     $(document).on('click', '.home-search-submit', sendFormBy(null));
 
-    $(".autocomplete-input-sortby").change(sendFormBy(null));
+    $(".autocomplete-input-sortby, .teacher_gender").change(sendFormBy(null));
 
     $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
 

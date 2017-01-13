@@ -136,7 +136,7 @@ class Advert extends Model implements SluggableInterface
             $query->orderBy('distance', 'ASC');
 
         if ($sortBy === 'date')
-            $query->orderBy('updated_at', 'ASC');
+            $query->orderBy('adverts.updated_at', 'ASC');
 
         if ($sortBy === 'price')
             $query->orderBy('price', 'ASC');

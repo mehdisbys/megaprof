@@ -1,6 +1,8 @@
-@foreach($adverts as $advert)
-    @include('main.advertPreview')
-@endforeach
+<div class="col-md-12">
+    @foreach($adverts as $advert)
+        @include('main.advertPreview')
+    @endforeach
+</div>
 
 <div id="pagination" class="pagination col-md-12">
     @if($adverts->previousPageUrl())
