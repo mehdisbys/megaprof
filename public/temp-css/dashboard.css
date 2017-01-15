@@ -4625,8 +4625,8 @@ ul.profil_statut li span.verified:before {
 }
 
 .view-profs-items-container {
-    width: 600px;
-    margin: 0px auto;
+    max-width: 55%;
+    margin: auto;
 }
 
 .home-profs-items {
@@ -5415,10 +5415,9 @@ ul.profil_statut li span.verified:before {
     font-size: 12px;
     vertical-align: top
 }
-.temp-row {
+.advert-header{
     margin-top: 10px;
     background-color: #fff;
-    float: left;
     padding: 20px;
     border-radius: 2%;
 }
@@ -5432,15 +5431,36 @@ ul.profil_statut li span.verified:before {
 }
 
 @media all and (max-width: 980px) {
-    .temp-row{
-        width: 85%;
-        margin: auto;
+
+    .view-profs-items-container{
+        max-width: 85% !important;
+    }
+
+    .advert-header{
+        padding: 0px !important;
+    }
+
+    .single-view-profile-author-profile {
+        margin : auto;
+        clear: both;
+        width: 100%;
     }
 
     .single-view-profile-info {
-        max-width:
-        float: none;
+        clear: both;
+        float: none !important;
+        margin: auto;
     }
+
+    .single-view-info-author {
+        float: none !important;
+        max-width: 100% !important;
+        width: 90% !important;
+        border-left: none !important;
+        padding-left: 0px !important;
+        min-height: 50px !important;
+    }
+
     #landing-intro {
         padding: 30px 0
     }
@@ -10656,11 +10676,7 @@ a.traduction_annonce {
     margin-bottom: 20px;
 }
 
-.single-view-profile-author-profile {
-    float: left;
-    clear: both;
-    width: 100%;
-}
+
 
 .single-view-profile-author-profile ul li{
     list-style: none;
@@ -10717,7 +10733,7 @@ a.traduction_annonce {
 }
 
 .single-view-info-author {
-    float: left;
+    float: right;
     width: calc(100% - 230px);
     border-left: 1px solid #f57009;
     margin-left: 15px;

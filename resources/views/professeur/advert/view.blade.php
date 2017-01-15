@@ -3,11 +3,12 @@
     <!-- 1 -->
     <div class="top-container">
         <div class="view-profs-items-container">
-            <div class="temp-row">
+            <div class="advert-header">
 
-                <div id="author" class="view-component-profile-sidebar">
-                    <div id="" class="single-view-profile-author-profile">
-
+                <div class="single-view-info-author">
+                    <h3>{{ $advert->title }}</h3>
+                </div>
+                    <div id="profile-author" class="single-view-profile-author-profile">
                         <div class="single-view-profile-info">
                             <div class="single-view-profile-image-wrapper">
                                 <img src="{{ $advert->getAvatar() }}" alt="avatar">
@@ -31,12 +32,9 @@
                             </ul>
                             <h3><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h3>
                         </div>
-
-                        <div class="single-view-info-author">
-                            <h3>{{ $advert->title }}</h3>
-                        </div>
                     </div>
-                </div>
+
+
                 <a class="button btn-succes temp-btn-block "
                    href="/mise-en-relation/{{$advert->slug}}">Réserver un cours</a>
             </div>
