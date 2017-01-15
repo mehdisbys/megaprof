@@ -5421,6 +5421,14 @@ ul.profil_statut li span.verified:before {
     padding: 20px;
     border-radius: 2%;
 }
+
+.temp-row{
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 2%;
+}
+
 .temp-row:first-child {
     margin-top: 0
 }
