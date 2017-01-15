@@ -4620,8 +4620,12 @@ ul.profil_statut li span.verified:before {
     overflow-x: auto
 }
 
+.top-container{
+    background-color: #f7f7f7;
+}
+
 .view-profs-items-container {
-    width: 700px;
+    width: 600px;
     margin: 0px auto;
 }
 
@@ -5428,6 +5432,15 @@ ul.profil_statut li span.verified:before {
 }
 
 @media all and (max-width: 980px) {
+    .temp-row{
+        width: 85%;
+        margin: auto;
+    }
+
+    .single-view-profile-info {
+        max-width:
+        float: none;
+    }
     #landing-intro {
         padding: 30px 0
     }
@@ -10649,6 +10662,14 @@ a.traduction_annonce {
     width: 100%;
 }
 
+.single-view-profile-author-profile ul li{
+    list-style: none;
+}
+
+.iconlist-info {
+    padding: 0px;
+}
+
 .carousel .profile-author-profile {
     position: relative;
     width: 200px;
@@ -10674,12 +10695,11 @@ a.traduction_annonce {
 .single-view-profile-info {
     max-width: 200px;
     float: left;
-
 }
 
 .single-view-profile-image-wrapper {
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 250px;
+    max-width: 250px;
     overflow: hidden;
     float: left;
     margin-bottom: 20px;
@@ -10714,6 +10734,31 @@ a.traduction_annonce {
     list-style: none;
 }
 
+.social-icons{
+    width: 140px;
+    margin : auto;
+    
+}
+
+.social-icon{
+    margin-right: 25px;
+}
+
+.social-icon:hover{
+    color: #ffbe69;
+}
+
+.single-advert-text{
+    background-color: white;
+    margin: 20px 10px 0px 10px;
+    padding: 20px;
+    border-radius: 5%;
+}
+
+.single-advert-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
 
 .entry-overlay-meta {}
 
