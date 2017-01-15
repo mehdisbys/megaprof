@@ -61,7 +61,7 @@
       <h2>les dernières annonces publiées</h2>
       <div class="carousel">
         @foreach($latestAdverts as $advert)
-        @include('main.advertpreview', ['trimchar' => 350])
+        @include('main.advertPreview', ['trimchar' => 350])
         @endforeach
       </div>
     </div>
