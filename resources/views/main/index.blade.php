@@ -54,14 +54,7 @@
 </div>
 <div class="section section-odd home-profs">
   <div class="wrapper">
-    <div class="sorting-field">
-      <label>Trier par</label>
-      <select name="sortBy" class="autocomplete-input-sortby">
-        <option value="distance">Distance</option>
-        <option value="date">Date</option>
-        <option value="price">Prix</option>
-      </select>
-    </div>
+
     <div class="home-profs-items-container">
       <ul class="home-profs-items inline-block-grid filters-results"></ul>
       <!-- optional to show advert count  -->
@@ -72,25 +65,36 @@
         </div>
       </div>
       @else
-        <div class="col-md-3">
-          <div id="teacher_gender" class="topmargin-sm teacher_gender">
-            <h3>Je préfère un professeur:</h3>
-            <label class="col-md-8">
-              <input name="gender" value="man" type="radio"> Homme
-            </label>
-            <label class="col-md-8">
-              <input name="gender" value="woman" type="radio"> Femme
-            </label>
-            <label class="col-md-10">
-              <input name="gender" value="both" type="radio"> Les deux me vont
-            </label>
+        <div class="col-md-3"></div>
+        <div class="count_results" class="bottommargin-sm col-md-9">
+        <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
+          trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{$selectedCity ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
+        </div>
+        <div class="search-options col-md-3">
+          <div class="sorting-field col-md-12 topmargin-sm">
+            <label>Trier par</label>
+            <select name="sortBy" class="autocomplete-input-sortby">
+              <option value="distance">Distance</option>
+              <option value="date">Date</option>
+              <option value="price">Prix</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <div id="teacher_gender" class="topmargin-sm teacher_gender">
+              <h3>Je préfère un professeur:</h3>
+              <label class="col-md-8">
+                <input name="gender" value="man" type="radio"> Homme
+              </label>
+              <label class="col-md-8">
+                <input name="gender" value="woman" type="radio"> Femme
+              </label>
+              <label class="col-md-10">
+                <input name="gender" value="both" type="radio"> Les deux me vont
+              </label>
+            </div>
           </div>
         </div>
 
-      <div class="count_results" class="bottommargin-sm">
-        <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
-          trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{$selectedCity ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
-      </div>
       <div id="search_results" class="col-md-9">
         @include('main.multipleAdvertPreview')
       </div>
@@ -139,6 +143,7 @@
         var lat     = $("#latitude").val();
 
         toastr.options.positionClass = "toast-top-full-width";
+        toastr.options.preventDuplicates = true;
 
         if (subject.length < 1) {
           toastr.info("Veuillez saisir une matière");

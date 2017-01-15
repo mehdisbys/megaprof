@@ -1,13 +1,15 @@
 ### TODO
 
+- [ ] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
+- [ ] Frontend : Add social buttons on single page advert
+
 - [x] Frontend : Dashboard revamping to new design
 - [x] Frontend : Modify how subjects are selected when creating an advert
 - [x] Frontend : Create simple email master template with logo
-- [ ] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
 - [ ] Frontend : Booking form revamping to new design
 - [ ] Frontend : Make slider/carousel responsive in front page
 - [ ] Frontend : Fix : Login and registration page are defaulted to responsive view
-- [ ] Frontend : Have an error message when no location/ no subject is selected
+- [x] Frontend : Have an error message when no location/ no subject is selected
 
 
 --------------------------------------------------------------------------------

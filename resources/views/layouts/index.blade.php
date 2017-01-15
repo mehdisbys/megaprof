@@ -57,12 +57,11 @@
 <!-- two ============= -->
 <div class="section reinsurance section-odd">
   <div class="wrapper">
-
     <div class="col-md-12">
-      <h2>Les dernières annonces publiées</h2>
+      <h2>les dernières annonces publiées</h2>
       <div class="carousel">
         @foreach($latestAdverts as $advert)
-        @include('main.advertPreview', ['trimChar' => 350])
+        @include('main.advertpreview', ['trimchar' => 350])
         @endforeach
       </div>
     </div>

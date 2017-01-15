@@ -5423,8 +5423,8 @@ ul.profil_statut li span.verified:before {
 }
 
 .carousel .temp-row {
-    min-height: 370px !important;
-    max-height: 370px !important;
+    min-height: 280px !important;
+    max-height: 280px !important;
 }
 
 @media all and (max-width: 980px) {
@@ -10582,6 +10582,7 @@ a.traduction_annonce {
 }
 
 .sorting-field {
+    margin-top: 15px;
 }
 
 .scrolling-pane {
@@ -10781,3 +10782,9 @@ th {
     margin-top: -1px;
     vertical-align: middle;
 }
+
+ .search-options{
+     border-radius: 25px;
+     background-color: #fff;
+
+ }

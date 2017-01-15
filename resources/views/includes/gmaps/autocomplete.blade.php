@@ -57,9 +57,9 @@
             var submitForm = function (event) {
                 event.preventDefault();
                 toastr.options.positionClass = "toast-top-full-width";
-                console.log('we are alive');
+                toastr.options.preventDuplicates = true;
+
                 if (gmaps.predictions < 1) {
-                    toastr.options.preventDuplicates = true;
                     toastr.info(gmaps.config.noPredictionsMsg);
                     return;
                 }
