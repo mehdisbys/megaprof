@@ -10761,7 +10761,7 @@ a.traduction_annonce {
 .social-icons{
     width: 140px;
     margin : auto;
-
+   margin-top: 25px;
 }
 
 .social-icon{

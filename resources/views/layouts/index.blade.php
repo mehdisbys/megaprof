@@ -58,7 +58,7 @@
 <div class="section reinsurance section-odd">
   <div class="wrapper">
     <div class="col-md-12">
-      <h2>les dernières annonces publiées</h2>
+      <h2>Les dernières annonces publiées</h2>
       <div class="carousel">
         @foreach($latestAdverts as $advert)
         @include('main.advertPreview', ['trimchar' => 350])
