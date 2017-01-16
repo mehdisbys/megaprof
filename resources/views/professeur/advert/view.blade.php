@@ -8,31 +8,31 @@
                 <div class="single-view-info-author">
                     <h3>{{ $advert->title }}</h3>
                 </div>
-                    <div id="profile-author" class="single-view-profile-author-profile">
-                        <div class="single-view-profile-info">
-                            <div class="single-view-profile-image-wrapper">
-                                <img src="{{ $advert->getAvatar() }}" alt="avatar">
-                            </div>
-                            <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
-                            <ul class="iconlist-info">
-                                <li>
-                                    <i class="fa fa-map-marker"></i>
-                                    <strong>{{ $advert->location_city }}</strong>
-                                </li>
-                                @if($ratings)
-                                    <li>
-                                        <i class="fa fa-star"></i>
-                                        <strong>Noté {{ $ratings->ratings_average}}/5</strong>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i>
-                                        <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
-                                    </li>
-                                @endif
-                            </ul>
-                            <h3><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h3>
+                <div id="profile-author" class="single-view-profile-author-profile">
+                    <div class="single-view-profile-info">
+                        <div class="single-view-profile-image-wrapper">
+                            <img src="{{ $advert->getAvatar() }}" alt="avatar">
                         </div>
+                        <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
+                        <ul class="iconlist-info">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                <strong>{{ $advert->location_city }}</strong>
+                            </li>
+                            @if($ratings)
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                    <strong>Noté {{ $ratings->ratings_average}}/5</strong>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                    <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
+                                </li>
+                            @endif
+                        </ul>
+                        <h3><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h3>
                     </div>
+                </div>
 
 
                 <a class="button btn-succes temp-btn-block "
@@ -70,13 +70,13 @@
                 </div>
 
                 <div id="experience" class="single-advert-text">
-                        <h4 id="experience-title" class="single-advert-title">Expérience</h4>
-                        <div id="experience-text"> {{ $advert->experience }}</div>
+                    <h4 id="experience-title" class="single-advert-title">Expérience</h4>
+                    <div id="experience-text"> {{ $advert->experience }}</div>
                 </div>
 
                 <div id="curriculum" class="single-advert-text">
-                        <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
-                        <div id="curriculum-text"> {{ $advert->content }}</div>
+                    <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
+                    <div id="curriculum-text"> {{ $advert->content }}</div>
                 </div>
 
             </div>
@@ -130,19 +130,26 @@
 
             <!-- 4 -->
             <div class="similar-adverts">
-                <h3>Les professeurs similaires</h3>
-
                 <div class="similar-adverts-wrapper">
+                    <h3>Les professeurs similaires</h3>
+
                     @foreach($similarAdverts as $advert)
                         <div class="similar-advert">
-                            <div class="avatar-wrapper">
+
+                            <div class="avatar-wrapper"><a href="/{{$advert->slug}}">
                                 <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
+                                    </a>
+                                <h5><a href="#" class=""> {{$advert->price}} Dhs/h</a></h5>
                             </div>
-                            <div>{{ \App\Models\User::find($advert->user_id)->firstname}}</div>
-                            <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
+
+                            <h4 class="firstname"><a href="/{{$advert->slug}}">{{ \App\Models\User::find($advert->user_id)->firstname}}</a></h4>
+
                             <div class="location">
-                                <i class="icon-location"></i> {{ $advert->location_city }}
+                                <i class="fa fa-map-marker"></i> {{ $advert->location_city }}
                             </div>
+
+                            <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
+
                         </div>
                     @endforeach
                 </div>
