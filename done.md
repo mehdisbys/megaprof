@@ -46,4 +46,11 @@
 - [x] Backend : add percentage of completion when creating an advert
 - [x] Backend : Review Lesson booking form
    - [x] Provide age, chosen location, male/female to professeur
+- [x] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
+- [x] Frontend : Add social buttons on single page advert
+
+- [x] Frontend : Dashboard revamping to new design
+- [x] Frontend : Modify how subjects are selected when creating an advert
+- [x] Frontend : Create simple email master template with logo
+- [x] Frontend : Have an error message when no location/ no subject is selected
 

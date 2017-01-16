@@ -1,7 +1,5 @@
-<div id="fb-root"></div>
-<div class="section section-odd inscription-connexion">
     <div class="wrapper">
-        <div class="register-column connection-form">
+        <div class="connection-form">
             <h1 class="register-step-title">Se connecter</h1>
             <form role="form" method="POST" action="/login" class="component-form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
@@ -33,4 +31,3 @@
             <a href="/reset_password">Mot de passe oublié ?</a>
         </div>
     </div>
-</div>

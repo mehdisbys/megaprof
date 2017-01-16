@@ -1,12 +1,10 @@
 @extends('layouts.master')
 @section('content')
 @include('includes.inputErrors')
-<div id="fb-root"></div>
-<div class="section section-odd inscription-connexion">
   <div class="wrapper">
-    <div class="register-column register-form">
-      <h2 class="register-step-title">Inscription sur Mégaprof</h2>
-      <p class="register-step-subtitle">Pour rejoindre la grande famille du partage de connaissances</p>
+    <div class="register-form">
+      <h2 class="register-step-title">Créer un compte Taelam</h2>
+      <p class="register-step-subtitle">Pour rencontrer des professeurs et des élèves formidables</p>
       <form role="form" method="POST" action="/inscription" class="component-form">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="form-wrapper">
@@ -34,13 +32,12 @@
           @include('auth.captcha')
 
           <input type="submit" value="S'inscrire" class="button" />
-          <p class="register-member">Déjà membre SuperProf ? 
-            <a href="connection-form" class="register-member-link register-switch-panel">Connexion</a>
+          <p class="register-member">Déjà membre Taelam ?
+            <a href="login" class="register-member-link register-switch-panel">Connexion</a>
           </p>
         </div>
       </form>
     </div>
   </div>
-</div>
 
 @endsection

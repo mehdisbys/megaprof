@@ -1,22 +1,15 @@
 ### TODO
 
-- [ ] Frontend : On single page implement the mobile first and the desktop layout as per discussed in meeting room
-- [ ] Frontend : Add social buttons on single page advert
+- [x] Frontend : Fix : Login and registration page are defaulted to responsive view
 
-- [x] Frontend : Dashboard revamping to new design
-- [x] Frontend : Modify how subjects are selected when creating an advert
-- [x] Frontend : Create simple email master template with logo
+
 - [ ] Frontend : Booking form revamping to new design
 - [ ] Frontend : Make slider/carousel responsive in front page
-- [ ] Frontend : Fix : Login and registration page are defaulted to responsive view
-- [x] Frontend : Have an error message when no location/ no subject is selected
 
 
 --------------------------------------------------------------------------------
 
-#### High priority
-         
-- [ ] Backend : (WIP) Add Button to suspend an advert to single advert page
+#### High priority    
 
 - [ ] Backend : Teacher should be able to see his comments on the dashboard
 
@@ -26,7 +19,8 @@
 
 - [ ] Backend : Add general conditions upon registration
 
-- [ ] 
+- [ ] Backend : (WIP) Add Button to suspend an advert to single advert page
+
 
 - [ ] Backend : Teachers should enter a tagline when creating their advert
 - [ ] Backend : create bookings database seeder 

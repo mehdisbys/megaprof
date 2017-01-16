@@ -5714,11 +5714,11 @@ ul.profil_statut li span.verified:before {
     display: table-cell;
     vertical-align: top
 }
-.register-column:first-child {
-    padding-left: 55%;
-}
+
 .register-form,
 .connection-form {
+    margin: auto;
+    max-width: 220px;
     text-align: center
 }
 .register-form .text-separator,
