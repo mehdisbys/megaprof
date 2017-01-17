@@ -1,24 +1,19 @@
 ### TODO
 
-- [x] Frontend : Fix : Login and registration page are defaulted to responsive view
-
+- [x] Frontend : Make slider/carousel responsive in front page
 
 - [ ] Frontend : Booking form revamping to new design
-- [ ] Frontend : Make slider/carousel responsive in front page
 
+- [ ] Frontend : Remove all mentions of Megaprof in titles etc..
 
 --------------------------------------------------------------------------------
 
 #### High priority    
 
 - [ ] Backend : Teacher should be able to see his comments on the dashboard
-
 - [ ] Backend : Dashboard make the ratings for teachers available
-
 - [ ] Backend : Teacher has to send us his photo ID
-
 - [ ] Backend : Add general conditions upon registration
-
 - [ ] Backend : (WIP) Add Button to suspend an advert to single advert page
 
 

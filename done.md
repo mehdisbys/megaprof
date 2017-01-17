@@ -53,4 +53,6 @@
 - [x] Frontend : Modify how subjects are selected when creating an advert
 - [x] Frontend : Create simple email master template with logo
 - [x] Frontend : Have an error message when no location/ no subject is selected
+- [x] Frontend : Fix : Login and registration page are defaulted to responsive view
+
 

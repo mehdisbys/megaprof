@@ -145,7 +145,7 @@ class ListAdvertController extends Controller
         return Advert::whereNotNull('published_at')->orderBy('created_at', 'DESC')->paginate(5);
     }
 
-    public function mostPopularSubjects(int $limit = 10)
+    public function mostPopularSubjects(int $limit = 12)
     {
         $popularSubjects = SubjectsPerAdvert::selectRaw('subject_id, count(*) as count')
             ->groupBy('subject_id')
