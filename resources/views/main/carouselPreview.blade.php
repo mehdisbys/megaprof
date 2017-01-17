@@ -2,14 +2,21 @@
     <div class="advert-header carousel-preview">
 
         <div class="single-view-info-author">
-            <h3>{{ $advert->title }}</h3>
+            <h3>{{ str_limit($advert->title,100) }}</h3>
+
+            <ul class="icon-list">
+                @foreach($advert->subjectsPerAd as $subject)
+                    <li>{{\App\Models\SubSubject::find($subject->subject_id)->name}}</li>
+                @endforeach
+
+            </ul>
             <ul class="iconlist-info">
                 @if($advert->location_city)
-                <li>
-                    <i class="fa fa-map-marker"></i>
-                    <strong>{{ $advert->location_city }}</strong>
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        <strong>{{ $advert->location_city }}</strong>
 
-                </li>
+                    </li>
                 @endif
                 @if(isset($ratings))
                     <li>
