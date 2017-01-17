@@ -68,7 +68,7 @@
         <div class="col-md-3"></div>
         <div class="count_results" class="bottommargin-sm col-md-9">
         <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
-          trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{$selectedCity ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
+          trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{isset($selectedCity) ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
         </div>
         <div class="search-options col-md-3">
           <div class="sorting-field col-md-12 topmargin-sm">

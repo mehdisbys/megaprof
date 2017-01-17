@@ -5438,6 +5438,11 @@ ul.profil_statut li span.verified:before {
     max-height: 280px !important;
 }
 
+.carousel-preview{
+    min-height: 220px !important;
+    max-height: 380px !important;
+}
+
 @media all and (max-width: 980px) {
 
     .view-profs-items-container{
@@ -10629,7 +10634,7 @@ a.traduction_annonce {
 .scrolling-pane {
     background-color: #f7f7f7;
     clear:both;
-    padding 20px;
+    padding: 20px;
 }
 .scrolling-pane  h2{
     padding: 20px;
@@ -10646,11 +10651,12 @@ a.traduction_annonce {
     margin-right: 20px;
     margin-bottom: 20px;
     list-style: none;
-    width: calc((100% - 120px) / 5);
+    width: calc((100% - 120px) / 3);
     height: 140px;
     background-color: white;
     text-align: center;
     padding: 5px;
+    border-radius: 3%;
 }
 
 .scrolling-pane ul li .fa{
@@ -10730,8 +10736,8 @@ a.traduction_annonce {
 
 }
 
-.single-view-profile-image-wrapper img {
-    width: 100%;
+.single-view-profile-image-wrapper-carousel img {
+    max-width: 135px;
 }
 
 .view-component-profile-sidebar {
