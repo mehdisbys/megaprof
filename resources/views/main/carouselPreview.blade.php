@@ -2,7 +2,7 @@
     <div class="advert-header carousel-preview">
 
         <div class="single-view-info-author">
-            <h3>{{ str_limit($advert->title,100) }}</h3>
+            <h3><a href="/{{$advert->slug}}">{{ str_limit($advert->title,100) }}</a></h3>
 
             <ul class="icon-list">
                 @foreach($advert->subjectsPerAd as $subject)
@@ -29,14 +29,14 @@
                     </li>
                 @endif
             </ul>
-            <h4><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h4>
+            <h4><a href="/{{$advert->slug}}"> {{$advert->price}} Dhs/h</a></h4>
         </div>
         <div id="profile-author" class="single-view-profile-author-profile">
             <div class="single-view-profile-info">
                 <div class="single-view-profile-image-wrapper-carousel">
-                    <img src="{{ $advert->getAvatar() }}" alt="avatar">
+                    <a href="/{{$advert->slug}}"> <img src="{{ $advert->getAvatar() }}" alt="avatar"></a>
                 </div>
-                <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
+                <h3><a href="/{{$advert->slug}}">{{$advert->user->firstname }}</a></h3>
 
             </div>
         </div>
