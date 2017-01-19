@@ -10,9 +10,11 @@
                     {{$notification->message}}
                 </div>
 
-                @if($notification->name === 'social-networks')
+                <?php $advert = \App\Models\Advert::find($notification->advert_id)?>
+
+                @if($notification->name === 'social-networks' and $advert)
                     <div class="col-md-2 pull-right topmargin-sm">
-                        <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{\App\Models\Advert::find($notification->advert_id)->slug}}"
+                        <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}"
                            data-send="false"
                            data-layout="box_count"
                            data-width="60"
@@ -22,12 +24,6 @@
                            class="social-icon si-colored si-facebook">
                             <i class="icon-facebook"></i>
                             <i class="icon-facebook"></i>
-                        </a>
-                    </div>
-                @else
-                    <div class="col-md-2 pull-right topmargin-sm">
-                        <a class="btn btn-warning btn-md" href="{{$notification->link}}">
-                            Lire
                         </a>
                     </div>
                 @endif

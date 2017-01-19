@@ -27,8 +27,8 @@ class Notification extends Model
     {
         self::createAdvertNotification(
             'new_booking',
-            'Nouvelle demande de cours',
-            "{$user->username} souhaite réserver un cours avec vous, répondez à sa demande en allant dans \"Mes demandes de cours\"",
+            'Nouvelle demande de cours : '. "{$user->firstname} souhaite réserver un cours avec vous, répondez à sa demande en allant dans \"Mes demandes de cours\"",
+            "/" . Advert::find($advertId)->slug,
             $advertId,
             $userId
         );
