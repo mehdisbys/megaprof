@@ -2,6 +2,8 @@
 
 - [x] Frontend : Make slider/carousel responsive in front page
 
+- [x] Frontend : Diacritics filter for awesomeplete
+
 - [ ] Frontend : Booking form revamping to new design
 
 - [ ] Frontend : Remove all mentions of Megaprof in titles etc..

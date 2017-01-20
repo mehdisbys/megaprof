@@ -107,6 +107,8 @@
 </div>
 
 @include('includes.gmaps.autocomplete')
+@include('includes.awesomeplete.diacritics')
+
 
 <script>
   $(document).ready(function () {
@@ -179,6 +181,12 @@
     $(document).on("click", '.pagination-link', function(event) {sendFormBy($(this).attr('href'))(event);});
 
     gmaps.config.submitCallBack = sendFormBy();
+
+    new Awesomplete(document.getElementById('subject_input'), {
+      filter: function (text, input) {
+        return new RegExp("^" + removeDiacritics(input.trim()), "i").test(removeDiacritics(text));
+      }
+    });
 
   });
 </script>

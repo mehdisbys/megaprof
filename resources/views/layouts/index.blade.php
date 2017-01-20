@@ -217,8 +217,6 @@
     <!-- five ============= -->
     @include('includes.awesomeplete.diacritics')
 
-
-
     <script>
         $(document).ready(function () {
 
