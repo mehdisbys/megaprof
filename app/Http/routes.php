@@ -95,6 +95,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/desactiver-annonce/{advert_id}', 'EditAdvertController@deactivateAdvert');
         Route::get('/activer-annonce/{advert_id}', 'EditAdvertController@activateAdvert');
 
+        Route::get('/preview/{slug}', 'ListAdvertController@preview');
+
+
         // Dashboard
         Route::get('/mon-compte', 'DashboardController@index');
         Route::get('/mon-compte/annonce-{advert_id}', 'DashboardController@editAdvert');

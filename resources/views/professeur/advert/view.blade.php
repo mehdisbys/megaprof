@@ -2,7 +2,12 @@
 @section('content')
     <!-- 1 -->
     <div class="top-container">
+
+
         <div class="view-profs-items-container">
+            @if(isset($info))
+                <h4><span><i class="fa fa-warning"></i> </span>{{$info}}</h4>
+            @endif
             <div class="advert-header">
 
                 <div class="single-view-info-author">
@@ -19,7 +24,7 @@
                                 <i class="fa fa-map-marker"></i>
                                 <strong>{{ $advert->location_city }}</strong>
                             </li>
-                            @if($ratings)
+                            @if(isset($ratings))
                                 <li>
                                     <i class="fa fa-star"></i>
                                     <strong>Noté {{ $ratings->ratings_average}}/5</strong>
@@ -117,7 +122,7 @@
             <!-- 3 -->
             <div class="view-comments">
 
-                @if($comments->count())
+                @if(isset($comments) and $comments->count())
                     <h3>Avis des étudiants</h3>
                     @foreach($comments as $comment)
                         <div class="view-comment">
@@ -128,34 +133,35 @@
                 @endif
             </div>
 
-            <!-- 4 -->
-            <div class="similar-adverts">
-                <div class="similar-adverts-wrapper">
-                    <h3>Les professeurs similaires</h3>
+        @if(isset($similarAdverts))
+                <div class="similar-adverts">
+                    <div class="similar-adverts-wrapper">
+                        <h3>Les professeurs similaires</h3>
 
-                    @foreach($similarAdverts as $advert)
-                        <div class="similar-advert">
+                        @foreach($similarAdverts as $advert)
+                            <div class="similar-advert">
 
-                            <div class="avatar-wrapper"><a href="/{{$advert->slug}}">
-                                <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
+                                <div class="avatar-wrapper"><a href="/{{$advert->slug}}">
+                                        <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
                                     </a>
-                                <h5><a href="#" class=""> {{$advert->price}} Dhs/h</a></h5>
+                                    <h5><a href="#" class=""> {{$advert->price}} Dhs/h</a></h5>
+                                </div>
+
+                                <h4 class="firstname"><a
+                                            href="/{{$advert->slug}}">{{ \App\Models\User::find($advert->user_id)->firstname}}</a>
+                                </h4>
+
+                                <div class="location">
+                                    <i class="fa fa-map-marker"></i> {{ $advert->location_city }}
+                                </div>
+
+                                <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
+
                             </div>
-
-                            <h4 class="firstname"><a href="/{{$advert->slug}}">{{ \App\Models\User::find($advert->user_id)->firstname}}</a></h4>
-
-                            <div class="location">
-                                <i class="fa fa-map-marker"></i> {{ $advert->location_city }}
-                            </div>
-
-                            <h5><a href="/{{$advert->slug}}"> {{ $advert->title }}</a></h5>
-
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-
-            <!-- 5 -->
+        @endif
         </div>
     </div>
 @endsection

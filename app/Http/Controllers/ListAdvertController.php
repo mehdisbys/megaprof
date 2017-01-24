@@ -125,6 +125,25 @@ class ListAdvertController extends Controller
         return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts', 'ratings'));
     }
 
+    public function preview($slug)
+    {
+        $advert = Advert::findBySlug($slug);
+
+        if($advert == NULL)
+        {
+            \App::abort(404);
+        }
+
+        $view = view('professeur.advert.view')->with(compact('advert'));
+
+        if ($advert->published_at == NULL)
+        {
+            $view->with(['info' => "Cette annonce n'est pas encore publiée et n'est pas visible des élèves"]);
+        }
+
+        return $view;
+    }
+
     public function findSimilarAdverts(Advert $advert)
     {
         $data = new \stdClass();

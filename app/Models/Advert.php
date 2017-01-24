@@ -72,6 +72,11 @@ class Advert extends Model implements SluggableInterface
         return $advert ? $advert : \App::abort(404);
     }
 
+    public static function findBySlug($slug)
+    {
+        return self::where(['slug' => $slug])->first();
+    }
+
     public static function liveAdverts($limit = 10)
     {
         return self::whereNotNull('published_at')->paginate($limit);

@@ -5,7 +5,7 @@
         <h5>Félicitations votre annonce est prête à être publiée!</h5>
     </div>
 
-    @include('main.advertPreview')
+    @include('main.advertPreview', ['urlPreview' => true])
 
     <div class="clearfix"></div>
 

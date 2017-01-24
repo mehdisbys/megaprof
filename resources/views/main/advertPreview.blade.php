@@ -32,8 +32,15 @@
 
         <div id="presentation"> {{ str_limit($advert->presentation, $trimChar ?? 345) }}</div>
 
-        <div class="entry-overlay-meta">
-            <h4><a href="/{{$advert->slug}}"> Voir l'annonce </a></h4>
-        </div>
+        @if(isset($urlPreview))
+            <div class="entry-overlay-meta">
+                <h4><a href="/preview/{{$advert->slug}}"> Voir un aperçu </a></h4>
+            </div>
+        @else
+
+            <div class="entry-overlay-meta">
+                <h4><a href="/{{$advert->slug}}"> Voir l'annonce </a></h4>
+            </div>
+        @endif
     </div>
 </div>

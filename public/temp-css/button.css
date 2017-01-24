@@ -1,14 +1,14 @@
 .button {
     display: inline-block;
     padding: 5px 5px;
-    border: 1px solid #f7900a;
+    border: 1px solid #fd875e;
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
     text-align: center;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    background-color: #f57009;
+    background-color: #fd875e;
     color: #fff;
     -webkit-transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in;
     transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in
