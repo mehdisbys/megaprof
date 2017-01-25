@@ -26,6 +26,8 @@ class DashboardController extends Controller
         $bookings        = Booking::currentProfBookingRequests();
         $user            = User::find(Auth::id());
 
+        $user->birthdate ? list($dobday, $dobmonth, $dobyear) = explode('/', $user->birthdate):null;
+
         return view('dashboard.index')->with(get_defined_vars());
     }
 
@@ -47,8 +49,9 @@ class DashboardController extends Controller
 
     public function updateProfile()
     {
-        $data = array_only(Input::all(), ['gender', 'firstname', 'lastname', 'birthdate', 'email', 'telephone']);
+        $data = array_only(Input::all(), ['gender', 'firstname', 'lastname', 'dobday', 'dobmonth', 'dobyear', 'email', 'telephone']);
         $user = User::find(Auth::id());
+        $data['birthdate'] = implode('/', [$data["dobday"], $data["dobmonth"], $data["dobyear"]]);
         $user->update($data);
         return $this->index();
     }

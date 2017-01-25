@@ -102,6 +102,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/mon-compte', 'DashboardController@index');
         Route::get('/mon-compte/annonce-{advert_id}', 'DashboardController@editAdvert');
         Route::post('/hide-notification/{notification_id}', 'DashboardController@hideNotification');
+        Route::get('/editer-profil', 'DashboardController@index');
         Route::post('/editer-profil', 'DashboardController@updateProfile');
         Route::get('/completer-profil', 'DashboardController@completeProfile');
 
