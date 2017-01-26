@@ -10728,16 +10728,22 @@ a.traduction_annonce {
 }
 
 .single-view-profile-image-wrapper {
-    max-height: 250px;
-    max-width: 250px;
+    height: 190px;
+    width: 190px;
     overflow: hidden;
     float: left;
     margin-bottom: 20px;
 
 }
 
+.single-view-profile-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .single-view-profile-image-wrapper-carousel img {
-    max-width: 135px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .view-component-profile-sidebar {

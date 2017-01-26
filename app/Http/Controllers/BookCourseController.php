@@ -21,9 +21,13 @@ class BookCourseController extends Controller
 
     public function postBookLesson(BookLesson $request)
     {
-        $booking = $request->except('_token');
+        $booking = $request->only(['prof_user_id', 'advert_id', 'presentation','date','location','client','mobile','addresse', 'pick_a_date','pick_a_location']);
 
-        $booking['student_user_id'] =  \Auth::id();
+        $date = $request->only([ 'dobday', 'dobmonth','dobyear']);
+
+        $booking['student_user_id'] = \Auth::id();
+
+        $booking['birthdate'] = implode('/', [$date["dobday"], $date["dobmonth"], $date["dobyear"]]);
 
         $bookModel = Booking::create($booking);
 

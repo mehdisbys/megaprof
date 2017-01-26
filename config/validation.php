@@ -14,7 +14,9 @@ return [
             'date'            => 'required',
             'location'        => 'required',
             'client'          => 'required',
-            'birthdate'       => 'required',
+            'dobday'          => 'required',
+            'dobmonth'        => 'required',
+            'dobyear'         => 'required',
             'mobile'          => 'required',
             'addresse'        => 'required',
             'pick_a_date'     => 'required_if:date,custom',
@@ -34,8 +36,8 @@ return [
         ],
 
     'resetPasswordForm' => [
-        'token' => 'required',
-        'password' => 'required|min:4|confirmed',
-        'password_confirmation' => 'required|min:4'
+        'token'                 => 'required',
+        'password'              => 'required|min:4|confirmed',
+        'password_confirmation' => 'required|min:4',
     ],
 ];

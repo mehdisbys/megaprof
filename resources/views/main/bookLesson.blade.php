@@ -20,8 +20,6 @@
                         <div class="clearfix"></div>
                         <ul class="iconlist">
                             <li><i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong></li>
-                            <li><i class="icon-study green"></i> <strong>Diplôme vérifié</strong></li>
-                            <li><i class="icon-check green"></i> <strong>Coordonnées vérifiées</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -30,7 +28,6 @@
 
         <div class="col-md-7">
             <h2 class="col-md-10">Réservez votre première heure de cours avec {{ $advert->user->firstname}}</h2>
-            <h2 class="col-md-10">1er Cours Offert !</h2>
 
             <form id="book-a-lesson" accept-charset="UTF-8"
                   action="/reserver-un-cours" method="POST" data-parsley-validate>
@@ -159,7 +156,7 @@
                         </label>
                     </div>
                     <div class="col-md-12" id="birthdate_display">
-                        {!! Form::input('text','birthdate', null, ['id' => 'birthdate', 'placeholder' => "Date de naissance", 'class' => 'pikaday-field']) !!}
+                        @include('includes.date-of-birth')
                     </div>
                 </div>
                 <div class="clearfix topmargin-sm"></div>
