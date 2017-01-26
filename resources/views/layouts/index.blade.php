@@ -16,7 +16,7 @@
     <div class="home-search">
 
 
-        <h1 class="search-title">Trouvez le professeur parfait</h1>
+        <h1 class="search-title">Apprenez sans limites</h1>
         <div class="home-search-form-inner autocomplete">
             <form action="/search" id="search_form" class="home-search-form autocomplete-form">
                 {!! csrf_field() !!}
