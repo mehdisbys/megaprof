@@ -27,11 +27,11 @@ class SocialAuthController extends Controller
         Auth::login($user);
         thanks("Bonjour " . $user->firstname . " vous avez été identifié avec succés");
 
-        if($user->isMandatoryProfileInComplete()) {
-            info("Il reste à compléter quelques informations de votre profil");
-            return redirect('/completer-profil');
-        }
-        // if missing information -> ask for personal information
+//        if($user->isMandatoryProfileInComplete()) {
+//            info("Il reste à compléter quelques informations de votre profil");
+//            return redirect('/completer-profil');
+//        }
+//        // if missing information -> ask for personal information
         return redirect()->intended('/annonces');
     }
 
