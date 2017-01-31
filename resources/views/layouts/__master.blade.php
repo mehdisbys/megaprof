@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="fr">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <!-- Stylesheets
     ============================================= -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+          rel="stylesheet" type="text/css"/>
     {!! HTML::style('/css/bootstrap.css') !!}
     {!! HTML::style('/css/style.css')!!}
     {!! HTML::style('/css/dark.css')!!}
@@ -17,18 +18,18 @@
     {!! HTML::style("/css/toastr.min.css") !!}
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <![endif]-->
 
     <!-- External JavaScripts
     ============================================= -->
-    {!! HTML::script("/js/jquery.js") !!}
-    {!! HTML::script("/js/plugins.js") !!}
+{!! HTML::script("/js/jquery.js") !!}
+{!! HTML::script("/js/plugins.js") !!}
 
 
-    <!-- Document Title
+<!-- Document Title
     ============================================= -->
-    <title>Megaprof</title>
+    <title>Taelam</title>
 
 </head>
 
@@ -44,57 +45,44 @@
 
         <div id="header-wrap">
 
-            <div class="container clearfix">
+            <div class="header">
+                <nav class="navbar   navbar-site navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                                        class="icon-bar"></span> <span class="icon-bar"></span></button>
+                            <a class="header-logo header-logo-normal"
+                               href="/" title="Revenir à l'accueil de Taelam">
+                                <img src="/temp-images/megaprof.png" width="170"
+                                     alt="Cours particuliers avec Taelam"/>
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse">
 
-                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+                            <ul class="nav navbar-nav navbar-right">
 
-                <!-- Logo
-                ============================================= -->
-                <div id="logo">
-                        <a class="header-logo header-logo-normal"
-                           href="/" title="Revenir à l'accueil de Megaprof">
-                            <img src="/temp-images/megaprof.png" width="170"
-                                 alt="Cours particuliers avec Taelam"/>
-                        </a>
-            </div><!-- #logo end -->
+                                @if(Auth::check())
+                                    <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
+                                    <li><a class="header-item" href="/mon-compte">Mon Compte</a></li>
+                                    <li><a class="header-item" href="/logout">Se déconnecter</a></li>
+                                    <li><a class="header-item" href="/faq">Aide</a></li>
 
-                <!-- Primary Navigation
-                ============================================= -->
-                <nav id="primary-menu">
+                                @else
+                                    <li><a class="header-item" href="/login">Créer une annonce</a></li>
+                                    <li><a class="header-item" href="/login">Se connecter</a></li>
+                                    <li><a class="header-item" href="/inscription">S'inscrire</a></li>
+                                    <li><a class="header-item" href="/faq">Aide</a></li>
+                                    <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des cours</a></li>
+                                @endif
 
-                    @if(Auth::check())
-                        <ul>
-                            <li><a href="/nouvelle-annonce-1"><div>Créer une annonce</div></a></li>
 
-                            <li><a href="/mon-compte"><div>Mon Compte</div></a></li>
-
-                            <li><a href="/logout"><div>Se déconnecter</div></a></li>
-
-                            <li><a href="/faq"><div>Aide</div></a></li>
-                        </ul>
-                    @else
-                        <ul>
-                            <li><a href="/login"><div>Créer une annonce</div></a></li>
-
-                            <li><a href="/login"><div>Se connecter</div></a></li>
-
-                            <li><a href="/inscription"><div>S'inscrire</div></a></li>
-
-                            <li><a href="/faq"><div>Aide</div></a></li>
-                        </ul>
-                    @endif
-
-                    <!-- Top Search
-                    ============================================= -->
-                    <div id="top-search">
-                        <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                        <form action="search.html" method="get">
-                            <input type="text" name="q" class="form-control" value="" placeholder="Recherchez et appuyez sur Entrée">
-                        </form>
-                    </div><!-- #top-search end -->
-
-                </nav><!-- #primary-menu end -->
-
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
             </div>
 
         </div>
@@ -130,9 +118,6 @@
             <!-- Footer Widgets
             ============================================= -->
             <div class="footer-widgets-wrap clearfix">
-
-
-
 
 
             </div><!-- .footer-widgets-wrap end -->
@@ -195,7 +180,9 @@
 
                     <div class="clear"></div>
 
-                    <i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+                    <i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i
+                            class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i
+                            class="icon-skype2"></i> CanvasOnSkype
                 </div>
             </div>
         </div><!-- #copyrights end -->
@@ -212,10 +199,17 @@
 
 @include('includes/toastr/toastr')
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-90487629-1', 'auto');
     ga('send', 'pageview');

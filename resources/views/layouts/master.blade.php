@@ -19,6 +19,7 @@
     <link rel="icon" sizes="32x32" type="image/png" href="/"/>
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
     <!-- TODO convert to sass files   -->
+    {!! HTML::style('/css/bootstrap.css') !!}
     {!! HTML::style('temp-css/normalize.css') !!}
     {!! HTML::style('temp-css/autocomplete.css') !!}
     {!! HTML::style('temp-css/button.css') !!}
@@ -37,53 +38,56 @@
     {!! HTML::style('temp-css/pictures.css') !!}
     {!! HTML::style('temp-css/popin.css') !!}
     {!! HTML::style('temp-css/main.css') !!}
-    {!! HTML::style('/css/bootstrap.css') !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
     {!! HTML::style("/css/toastr.min.css") !!}
 
 
   {!! HTML::script("js/jquery.js") !!}
-    <!-- {!! HTML::script("js/bootstrap.min.js") !!} -->
+  {!! HTML::script("js/bootstrap.min.js") !!}
 
   <!-- TODO convert to sass files   -->
   </head>
 
   <body>
-    <div id="fb-root"></div>
     <div class="header">
-      <div class="wrapper">
-        <div class="header-inner">
-          <div class="header-inner-cell header-inner-cell-logo">
-            <button class="header-burger-button"> 
-              Menu<span class="header-burger-icon">&nbsp;</span>
-            </button>
+      <nav class="navbar   navbar-site navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                      class="icon-bar"></span> <span class="icon-bar"></span></button>
             <a class="header-logo header-logo-normal"
-              href="/" title="Revenir à l'accueil de Megaprof">
+               href="/" title="Revenir à l'accueil de Taelam">
               <img src="/temp-images/megaprof.png" width="170"
-              alt="Cours particuliers avec Taelam"/>
+                   alt="Cours particuliers avec Taelam"/>
             </a>
           </div>
+          <div id="navbar-header" class="navbar-collapse collapse">
 
-            <div class="header-inner-cell header-inner-cell-menu">
-            <div class="header-menu-inner" style="text-align: right;">
+            <ul class="nav navbar-nav navbar-right">
+
               @if(Auth::check())
-              <a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a>
-              <a class="header-item" href="/mon-compte">Mon Compte</a>
-              <a class="header-item" href="/logout">Se déconnecter</a>
-              <a class="header-item" href="/faq">Aide</a>
+                <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
+                <li><a class="header-item" href="/mon-compte">Mon Compte</a></li>
+                <li><a class="header-item" href="/logout">Se déconnecter</a></li>
+                <li><a class="header-item" href="/faq">Aide</a></li>
               @else
-              <a class="header-item" href="/login">Créer une annonce</a>
-              <a class="header-item" href="/login">Se connecter</a>
-              <a class="header-item" href="/inscription">S'inscrire</a>
-              <a class="header-item" href="/faq">Aide</a>
+                <li><a class="header-item" href="/login">Créer une annonce</a></li>
+                <li><a class="header-item" href="/login">Se connecter</a></li>
+                <li><a class="header-item" href="/inscription">S'inscrire</a></li>
+                <li><a class="header-item" href="/faq">Aide</a></li>
               @endif
-              <a class="button" href="/nouvelle-annonce-1">Donner des cours</a>
-            </div>
-          </div>
+              <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des cours</a></li>
 
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
         </div>
-      </div>
+        <!-- /.container-fluid -->
+      </nav>
     </div>
+
+
     @include('includes.success')Ø
     @include('includes.error')
   <div class="page">
@@ -135,9 +139,7 @@
               <li>
                 <a href="/" title="">Mentions légales</a>
               </li>
-              <li>
-                <a href="/" title="">Le mag We Love Prof</a>
-              </li>
+
               <li>
                 <a href="/" title="">Contact</a>
               </li>

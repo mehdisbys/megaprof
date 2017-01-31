@@ -636,10 +636,7 @@
 	#primary-menu-trigger {
 		opacity: 1;
 		pointer-events: auto;
-		top: 25px;
-		margin-top: 0;
-		left: 0;
-		z-index: 1;
+		float : right;
 	}
 
 	#primary-menu .container #primary-menu-trigger {

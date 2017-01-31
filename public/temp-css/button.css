@@ -1,8 +1,9 @@
-.button {
+#donner-des-cours , #submit-btn, .button{
+    margin-top: 7px;
     display: inline-block;
     padding: 5px 5px;
     border: 1px solid #fd875e;
-    font-size: 13px;
+    font-size: 100%;
     font-weight: 600;
     text-decoration: none;
     text-align: center;
@@ -12,6 +13,10 @@
     color: #fff;
     -webkit-transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in;
     transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in
+}
+
+#submit-btn{
+    padding: 16px 16px;
 }
 
 .button:focus,
