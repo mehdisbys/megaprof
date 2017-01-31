@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'noreply@megaprof.com', 'name' => 'Megaprof'],
+    'from' => ['address' => 'noreply@taelam.com', 'name' => 'Taelam'],
 
     /*
     |--------------------------------------------------------------------------

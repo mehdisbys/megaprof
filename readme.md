@@ -6,8 +6,6 @@
 
 - [ ] Frontend : Booking form revamping to new design
 
-- [ ] Frontend : Remove all mentions of Megaprof in titles etc..
-
 --------------------------------------------------------------------------------
 
 #### High priority    

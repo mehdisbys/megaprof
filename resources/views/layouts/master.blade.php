@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#ffffff"/>
     <meta property="og:title" content="Taelam - La plateforme des professeurs particuliers"/>
     <meta property="og:image" content="/temp-image/megaprof@2x.png"/>
-    <meta property="og:site_name" content="Megaprof"/>
+    <meta property="og:site_name" content="Taelam"/>
     <meta property="og:description" content="Trouvez votre professeur pour des cours particuliers"/>
 
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
@@ -121,7 +121,7 @@
               </li>
               <li>
                 <a class="social-google-plus a-js"
-                  href="https://plus.google.com/+Megaprof/">Google</a>
+                  href="https://plus.google.com/+Taelam/">Google</a>
               </li>
             </ul>
           </div>

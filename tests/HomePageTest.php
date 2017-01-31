@@ -14,7 +14,7 @@ class HomePageTest extends TestCase
     public function testExample()
     {
         $this->visit('/')
-            ->see('Megaprof')
+            ->see('Taelam')
             ->see('se connecter')
             ->see('créer une annonce')
             ->see("s'inscrire");

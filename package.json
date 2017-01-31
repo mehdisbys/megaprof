@@ -1,5 +1,5 @@
 {
-  "name": "megaprof",
+  "name": "Taelam",
   "version": "1.0.0",
   "description": "An education platform",
   "main": "gulpfile.js",
@@ -11,8 +11,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "aaron@jobs.souihed.com:/var/www/repo/megaprof.git"
+    "url": "mehdi@taelam.com:/var/www/repo/megaprof.git"
   },
-  "author": "Aaron Goshine",
+  "author": "Mehdi Souihed",
   "license": "ISC"
 }
