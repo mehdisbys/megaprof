@@ -1,7 +1,7 @@
 {!! HTML::script("js/parsley.min.js")!!}
 
 @if(isset($advert) == false)
-@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'active'])
+    @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'active'])
 @endif
 
 @if(isset($advert))
@@ -27,21 +27,21 @@
                             aria-selected="true" aria-expanded="true">
                             <a href="#description" class="ui-tabs-anchor"
                                role="presentation" tabindex="-1"
-                               id="ui-id-37">Description et Expertise</a></li>
+                               id="ui-id-37">Description et Expertise*</a></li>
                         <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-22"
                             aria-labelledby="ui-id-38" aria-selected="false" aria-expanded="false">
                             <a href="#experience"
                                class="ui-tabs-anchor"
                                role="presentation"
                                tabindex="-1"
-                               id="ui-id-38">Expérience</a></li>
+                               id="ui-id-38">Expérience*</a></li>
                         <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-23"
-                            aria-labelledby="ui-id-39" aria-selected="false" aria-expanded="false">
+                            aria-labelledby="ui-id-39" aria-selected="false" aria-expanded="false" id="education-tab">
                             <a href="#education"
                                class="ui-tabs-anchor"
                                role="presentation"
                                tabindex="-1"
-                               id="ui-id-39">CV et Formation</a></li>
+                               id="ui-id-39">CV et Formation*</a></li>
                     </ul>
 
                     <div class="tab-container">
@@ -138,6 +138,10 @@
 
 
                 <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
+                    <div class="bs-callout bs-callout-warning hidden">
+                        <h4>Erreur :-(</h4>
+                        <p>Veuillez remplir toutes les sections comportant une astérisque(*) avant de continuer.</p>
+                    </div>
                     <button type="submit" class="button button-3d button-large button-rounded button-green">
                         J'ai défini le contenu de mes cours
                     </button>
@@ -168,6 +172,7 @@
                             }
                             return nb;
                         };
+
                         var count40 = function (el) {
                             return updateCount(el, 40);
                         };
@@ -180,12 +185,23 @@
                                 .addValidator('minimumwords', {
                                     requirementType: 'string',
                                     validateString: function (value, requirement) {
-                                        console.log('test');
                                         return countWords(value) > requirement;
                                     },
                                     messages: {
                                         en: 'Veuillez entrer au minimum %s mots dans cette section'
                                     }
+                                });
+
+
+                        $('#presentation-content').parsley()
+                                .on('field:validated', function () {
+
+                                    var ok = $('.parsley-error').length === 0;
+
+                                    $('.bs-callout-warning').toggleClass('hidden', ok);
+                                })
+                                .on('form:submit', function () {
+                                    return true;
                                 });
                     });
                 </script>

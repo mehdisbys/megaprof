@@ -1,14 +1,16 @@
 {!! HTML::script("js/parsley.min.js")!!}
 
 @if(isset($advert) == false)
-@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'active'])
+    @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'active'])
 @endif
 
 @if(isset($advert))
-    <form method="POST" action="/modifier-annonce-2/{{$advert_id}}" accept-charset="UTF-8" data-parsley-validate id="title_form">
+    <form method="POST" action="/modifier-annonce-2/{{$advert_id}}" accept-charset="UTF-8" data-parsley-validate
+          id="title_form">
         {!! Form::hidden('advert_id', $advert_id) !!}
         @else
-            <form method="POST" action="/nouvelle-annonce-2" accept-charset="UTF-8" data-parsley-validate id="title_form">
+            <form method="POST" action="/nouvelle-annonce-2" accept-charset="UTF-8" data-parsley-validate
+                  id="title_form">
                 @endif
 
                 {!! csrf_field() !!}
@@ -25,7 +27,9 @@
                     {!! Form::hidden('advert_id', $advert_id) !!}
                     <div class="clear topmargin-sm"></div>
 
-                    <div class="col-md-10 col-md-offset-2 bottommargin-sm clearfix">Indiquez le niveau enseigné pour chaque matière</div>
+                    <div class="col-md-10 col-md-offset-2 bottommargin-sm clearfix">Indiquez le niveau enseigné pour
+                        chaque matière
+                    </div>
 
 
                     @foreach ($subjects as $subject)
@@ -46,12 +50,14 @@
                                     @foreach ($level->subLevels as $subs)
                                         <div class="">
                                             <input class="" type="checkbox" name="levels[{{$subject->id}}][]"
-                                                   id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}" data-parsley-required data-parsley-required-message=""
+                                                   id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}"
+                                                   data-parsley-required data-parsley-required-message=""
                                                    @if(isset($checked) and isset($checked[$subject->id]) and in_array($subs->id, $checked[$subject->id]))
                                                    checked="on"
                                                     @endif
                                             >
-                                            <label class="" for="{{$subject->id ."_". $subs->id}}" style="text-transform: none; font-weight: 100">
+                                            <label class="" for="{{$subject->id ."_". $subs->id}}"
+                                                   style="text-transform: none; font-weight: 100">
                                                 <span>{{$subs->name}}</span>
                                         </div>
                                     @endforeach
@@ -74,20 +80,21 @@
                 {!! Form::close() !!}
                 <script type="text/javascript">
                     $(function () {
-                        $('#title_form').parsley().on('field:validated', function() {
+
+                        $('#title_form').parsley()
+                                .on('field:validated', function () {
 
                                     var ok = $('.parsley-error').length === 0;
 
-                                    $('.bs-callout-warning').toggleClass('hidden', ok);
-                                })
-                                .on('form:submit', function() {
-                                    return true; // Don't submit form for this demo
+                                    $('.bs-callout-warning').toggleClass('hidden', ok);})
+                                .on('form:submit', function () {
+                                    return true;
                                 });
+
                         window.Parsley
                                 .addValidator('titre-requis', {
                                     requirementType: 'string',
-                                    validateString: function(value, requirement) {
-                                        console.log('test');
+                                    validateString: function (value, requirement) {
                                         return countWords(value) > requirement;
                                     },
                                     messages: {
