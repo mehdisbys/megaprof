@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class Comment extends Model
 {
@@ -24,8 +25,9 @@ class Comment extends Model
         return $this->belongsTo(Advert::class, 'advert_id', 'id');
     }
 
-    public static function createStubComments($prof_id, $student_id, $advert_id)
+    public static function createStubComments($prof_id, $student_id, $advert_id, $booking)
     {
+        $daysBeforeCommenting = Config::get('settings.comment_notification_after_successful_booking');
         //Student
         self::create(
             [
@@ -33,7 +35,7 @@ class Comment extends Model
                 'owner_advert_id' => $prof_id,
                 'target_user_id'  => $prof_id,
                 'advert_id'       => $advert_id,
-                'comment_at'      => Carbon::now()
+                'comment_at'      =>  $daysBeforeCommenting ? Carbon::now()->addDays($daysBeforeCommenting) : Carbon::now()
             ]
         );
     }

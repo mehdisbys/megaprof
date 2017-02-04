@@ -30,7 +30,7 @@ class NotifyBookingReply
         if ($event->booking->answer == 'yes') {
             list($all, $config) = emailConfig($event->booking->student, 'votre demande a été acceptée');
             $this->mailer->sendMail('emails.replies.bookingReplyAccepted', $all, $config);
-            Comment::createStubComments($event->booking->prof->id, $event->booking->student->id, $event->booking->advert->id);
+            Comment::createStubComments($event->booking->prof->id, $event->booking->student->id, $event->booking->advert->id, $event->booking);
         }
         if ($event->booking->answer == 'no') {
             list($all, $config) = emailConfig($event->booking->student, 'votre demande a été refusée');

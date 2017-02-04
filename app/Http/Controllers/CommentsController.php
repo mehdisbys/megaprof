@@ -15,11 +15,12 @@ class CommentsController extends Controller
     public function getCommentForm($commentId)
     {
         $comment = Comment::retrieve($commentId)->first();
-        $advert  = Advert::find($comment->first()->advert->id);
 
-        if ($comment->comment != NULL) {
+        if (isset($comment) == false or $comment->comment != NULL) {
             return redirect('/mon-compte');
         }
+
+        $advert  = Advert::find($comment->first()->advert->id);
 
         return view('comments.form')
             ->with(compact('comment', 'advert'));
