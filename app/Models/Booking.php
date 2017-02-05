@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $table = 'book_lesson';
+    protected $table   = 'book_lesson';
     protected $guarded = ['id'];
 
 
@@ -28,8 +28,25 @@ class Booking extends Model
 
     public static function currentProfBookingRequests()
     {
-        return static::where('prof_user_id', \Auth::id())
-            ->orWhere('student_user_id', \Auth::id())
+        return static::where(function ($q) {
+            $q->where('prof_user_id', \Auth::id())
+                ->orWhere('student_user_id', \Auth::id());
+        })
+            ->whereNull('answer')
+            ->with('student')
+            ->with('prof')
+            ->with('advert')
+            ->orderBy('updated_at', 'desc')
+            ->get();
+    }
+
+    public static function archivedBookingRequests()
+    {
+        return static::where(function ($q) {
+            $q->where('prof_user_id', \Auth::id())
+                ->orWhere('student_user_id', \Auth::id());
+        })
+            ->whereNotNull('answer')
             ->with('student')
             ->with('prof')
             ->with('advert')
@@ -48,7 +65,6 @@ class Booking extends Model
             ->with('prof')
             ->with('advert')
             ->orderBy('created_at', 'desc')
-            ->limit(3)
             ->get();
     }
 
@@ -69,8 +85,9 @@ class Booking extends Model
 
     public function wasAccepted()
     {
-       return $this->answer == 'yes';
+        return $this->answer == 'yes';
     }
+
     public function wasRejected()
     {
         return $this->answer == 'no';

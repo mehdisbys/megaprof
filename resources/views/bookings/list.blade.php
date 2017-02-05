@@ -1,7 +1,7 @@
 @if(isset($bookings))
     @foreach($bookings as $booking)
         <article class="gray-background" id="booking_{{$booking->id}}">
-            <div class="col-md-10 topmargin-sm well">
+            <div class="col-md-10 well">
 
                 @if($booking->isStudent())
 

@@ -82,9 +82,13 @@
                              style="display: none;">
 
                             <div class="clearfix"></div>
-                            <h4>Mes demandes de cours</h4>
+                            <h4>Mes demandes de cours en attente de réponse</h4>
                             <div class="col-md-12">
                                 @include('bookings.list')
+                            </div>
+                            <h4>Mes demandes de cours déjà traitées</h4>
+                            <div class="col-md-12">
+                                @include('bookings.list', ['bookings' => $archivedBookings])
                             </div>
                         </div>
                     </div>

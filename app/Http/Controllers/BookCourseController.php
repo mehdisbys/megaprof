@@ -51,6 +51,8 @@ class BookCourseController extends Controller
 
         Event::fire(new BookingRequestReply($booking));
 
+        thanks("Votre réponse a été envoyée à l'élève avec succès");
+
         return redirect('/mon-compte');
     }
 }
