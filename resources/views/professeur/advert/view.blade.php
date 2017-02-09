@@ -12,6 +12,7 @@
 
                 <div class="single-view-info-author">
                     <h3>{{ $advert->title }}</h3>
+
                 </div>
                 <div id="profile-author" class="single-view-profile-author-profile">
                     <div class="single-view-profile-info">
@@ -39,9 +40,9 @@
                     </div>
                 </div>
 
+                <div><a class="button temp-btn-block "
+                        href="/mise-en-relation/{{$advert->slug}}">Réserver un cours</a></div>
 
-                <a class="button btn-succes temp-btn-block "
-                   href="/mise-en-relation/{{$advert->slug}}">Réserver un cours</a>
             </div>
             <div class="social-icons">
                 <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}"
@@ -125,7 +126,7 @@
                 @if(isset($comments) and $comments->count())
                     <h3>Avis des étudiants</h3>
                     @foreach($comments as $comment)
-                        <div class="view-comment">
+                        <div class="single-advert-text">
                             <strong>{{$comment->sourceUser->firstname}}</strong> :
                             <div>{{$comment->comment}}</div>
                         </div>
@@ -133,7 +134,7 @@
                 @endif
             </div>
 
-        @if(isset($similarAdverts))
+            @if(isset($similarAdverts))
                 <div class="similar-adverts">
                     <div class="similar-adverts-wrapper">
                         <h3>Les professeurs similaires</h3>
@@ -161,7 +162,7 @@
                         @endforeach
                     </div>
                 </div>
-        @endif
+            @endif
         </div>
     </div>
 @endsection

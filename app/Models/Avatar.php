@@ -73,6 +73,11 @@ class Avatar extends Model
         $this->img_cropped = $cropped->encode('png');
     }
 
+    public static function hasAvatar($user_id)
+    {
+        return static::where(['user_id' => $user_id])->exists();
+    }
+
     public static function getAvatar($user_id)
     {
       // We allow only one advert per profile - no support for one picture per advert

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\AfterRequest;
 use App\Models\Advert;
+use App\Models\Avatar;
 use App\Models\SubSubject;
 use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
@@ -173,6 +174,9 @@ class SubmitAdvertController extends Controller
 
     public function getStep6Picture()
     {
+        if (Avatar::hasAvatar($this->userId))
+        return $this->afterRequest->init('postStep6Picture', get_defined_vars());
+
         $advert_id = $this->advertId;
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
