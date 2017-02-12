@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\IdDocumentSent;
+use App\Listeners\NotifyAdminIdDocumentSent;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\App;
@@ -16,24 +18,27 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\BookingRequestSent'     =>
             [
-                'App\Listeners\NotifyBookingRequest'
+                'App\Listeners\NotifyBookingRequest',
             ],
         'App\Events\BookingRequestReply'    =>
             [
-                'App\Listeners\NotifyBookingReply'
+                'App\Listeners\NotifyBookingReply',
             ],
         'App\Events\AdvertPublished'        =>
             [
-                'App\Listeners\DashboardNotificationsAfterAdSubmission'
+                'App\Listeners\DashboardNotificationsAfterAdSubmission',
             ],
         'App\Events\ProfCommentedOnStudent' =>
             [
-                'App\Listeners\NotifyStudentOfPostedComment'
+                'App\Listeners\NotifyStudentOfPostedComment',
             ],
         'App\Events\StudentCommentedOnProf' =>
             [
-                'App\Listeners\NotifyProfOfPostedComment'
+                'App\Listeners\NotifyProfOfPostedComment',
             ],
+        IdDocumentSent::class               => [
+            NotifyAdminIdDocumentSent::class
+        ],
     ];
 
     /**

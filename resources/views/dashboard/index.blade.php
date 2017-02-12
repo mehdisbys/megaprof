@@ -320,7 +320,7 @@
                                 <div class="col-md-10 topmargin-lg">
                                     <h4>Mettre à jour mes informations</h4>
 
-                                    {!! Form::model($user, ['url' => '/editer-profil']) !!}
+                                    {!! Form::model($user, ['url' => '/editer-profil', 'files' => true]) !!}
 
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
@@ -357,6 +357,11 @@
                                     <div class="form-group col-md-12">
                                         {!! Form::label('telephone', 'Mobile') !!}
                                         {!! Form::text('telephone', $user->telephone, ['class' => 'form-control']) !!}
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        {!! Form::label('id_document', "Pièce d'identité") !!}
+                                        {!! Form::file('id_document', $user->telephone, ['class' => 'form-control']) !!}
                                     </div>
 
                                     <div class="col-md-10">

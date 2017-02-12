@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Advert;
 use App\Models\Booking;
 use App\Models\Comment;
+use App\Models\IdDocument;
 use App\Models\Notification;
 use App\Http\Requests;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -49,7 +51,7 @@ class DashboardController extends Controller
 
     public function updateProfile()
     {
-        $data              = array_only(Input::all(), ['gender',
+        $data = array_only(Input::all(), ['gender',
             'firstname',
             'lastname',
             'dobday',
