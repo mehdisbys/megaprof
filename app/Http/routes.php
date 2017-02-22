@@ -1,8 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-//TODO pull request to throw exception if two routes have the same name
-
 Route::group(['middleware' => ['web']], function () {
 
 //Social
@@ -33,9 +31,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('logout', 'SessionsController@logout');
 
     // Password Reset
-    Route::get( 'reset_password','SignupController@resetPasswordForm');
-    Route::post('reset_password','SignupController@resetPassword');
-    Route::get( 'reset_token/{token}','SignupController@resetPasswordSecondForm');
+    Route::get('reset_password', 'SignupController@resetPasswordForm');
+    Route::post('reset_password', 'SignupController@resetPassword');
+    Route::get('reset_token/{token}', 'SignupController@resetPasswordSecondForm');
     Route::post('reset/try', 'SignupController@tryResettingPassword');
 
     Route::get('captcha', 'CaptchaController@generate');
@@ -118,14 +116,17 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/laisser-un-commentaire/{comment_id}', 'CommentsController@getCommentForm');
         Route::post('/laisser-un-commentaire', 'CommentsController@postComment');
 
+
         Route::group(['middleware' => ['isAdmin']], function () {
 
             Route::get('/suspendre-annonce/{slug}', 'FlaggedAdvertsController@suspendAdvert');
             Route::get('/login-as/{userId}', 'SessionsController@loginAs');
+            Route::get('/valider-utilisateurs', 'IDdocumentController@listAllIdDocumentsWaitingForApproval');
+            Route::get('/validate-user-identification/{documentId}', 'IDdocumentController@validateDocumentId');
 
         });
 
-        });
+    });
 
     Route::get('/{slug}', 'ListAdvertController@view');
 });

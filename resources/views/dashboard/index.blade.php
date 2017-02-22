@@ -360,7 +360,7 @@
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        {!! Form::label('id_document', "Pièce d'identité") !!}
+                                        {!! Form::label('id_document', "Pièce d'identité (Professeurs Uniquement)") !!}
                                         {!! Form::file('id_document', $user->telephone, ['class' => 'form-control']) !!}
                                     </div>
 

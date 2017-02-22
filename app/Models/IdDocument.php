@@ -11,6 +11,12 @@ class IdDocument extends Model
 
     protected $guarded = ['id', 'created_at', 'deleted_at'];
 
+    protected $dates = ['created_at', 'updated_at'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public static function hasIdDocument(int $userid)
     {

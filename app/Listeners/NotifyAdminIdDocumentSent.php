@@ -16,8 +16,6 @@ class NotifyAdminIdDocumentSent
 
     public function handle(IdDocumentSent $event)
     {
-        list($all, $config) = emailConfig($event->booking->student, 'votre demande a été acceptée');
-
         $config['to']      = 'mehdi.souihed@gmail.com, mehdi.souihed@sainsburys.co.uk';
         $config['name']    = 'Taelam';
         $config['subject'] = "Une pièce d'identité de professeur nécessite une validation";
