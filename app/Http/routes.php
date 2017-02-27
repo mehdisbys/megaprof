@@ -123,12 +123,13 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/login-as/{userId}', 'SessionsController@loginAs');
             Route::get('/valider-utilisateurs', 'IDdocumentController@listAllIdDocumentsWaitingForApproval');
             Route::get('/validate-user-identification/{documentId}', 'IDdocumentController@validateDocumentId');
-
+            Route::get('/annonces-en-attente-de-moderation', 'AdminController@listWaitingForApprovalAdverts');
+            Route::post('/rejeter-annonce/{advert_id}', 'AdminController@advertRejected');
         });
 
     });
 
-    Route::get('/{slug}', 'ListAdvertController@view');
+    Route::get('/{slug}', 'ViewController@view');
 });
 
 

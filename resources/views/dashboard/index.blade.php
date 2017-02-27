@@ -7,6 +7,8 @@
     {!! HTML::style('css/cropper.min.css')!!}
     <div class="col-md-12">
 
+        @include('includes.info')
+
         <div class="col-md-12 clearfix">
             <div class="col-md-3">
                 <img src="/avatar_dashboard/{{Auth::id()}}">
@@ -361,7 +363,7 @@
 
                                     <div class="form-group col-md-12">
                                         {!! Form::label('id_document', "Pièce d'identité (Professeurs Uniquement)") !!}
-                                        {!! Form::file('id_document', $user->telephone, ['class' => 'form-control']) !!}
+                                        {!! Form::file('id_document', old('id_document'), ['class' => 'form-control']) !!}
                                     </div>
 
                                     <div class="col-md-10">

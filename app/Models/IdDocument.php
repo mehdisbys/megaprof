@@ -22,4 +22,14 @@ class IdDocument extends Model
     {
         return self::where('user_id', $userid)->exists();
     }
+
+    public static function getByUserId(int $userid)
+    {
+        return self::where('user_id', $userid)->first();
+    }
+
+    public static function isVerified(int $userid)
+    {
+        return self::where(['user_id' => $userid, 'verified' => true])->exists();
+    }
 }

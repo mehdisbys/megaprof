@@ -3,11 +3,44 @@
     <!-- 1 -->
     <div class="top-container">
 
-
         <div class="view-profs-items-container">
             @if(isset($info))
                 <h4><span><i class="fa fa-warning"></i> </span>{{$info}}</h4>
             @endif
+
+                @if(Auth::user() and Auth::user()->isAdmin() and $advert->published_at != NULL and $advert->approved_at == NULL)
+                    <div class="advert-header">
+                        <form action="/rejeter-annonce/{{$advert->id}}" method="post">
+
+                            {{csrf_field()}}
+
+                            <a href="/annonces-en-attente-de-moderation"> < Retour aux annonces à valider</a>
+                            
+                            <h4> <i class="fa fa-info-circle"></i> Annonce en attente de validation</h4>
+                            <i>Cet encadré n'est visible que des administrateurs. Le motif de rejet sera envoyé par e-mail au professeur.</i>
+                            <div class="">
+                                Motif de rejet :
+                                <p>
+                                    <textarea cols="75" rows="8" name="message"></textarea>
+                                </p>
+                            </div>
+
+                            <div class="">
+
+                                <a class="button-green btn btn-success pull-right"
+                                   href="/validate-advert/{{$advert->id}}">Valider l'annonce</a>
+                            </div>
+
+                            <div class="col-md2 ">
+
+                                <button class="button-red btn btn-danger" type="submit"
+                                   href="/reject-advert/{{$advert->id}}">Refuser</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                @endif
             <div class="advert-header">
 
                 <div class="single-view-info-author">
@@ -120,6 +153,7 @@
             </table>
 
 
+
             <!-- 3 -->
             <div class="view-comments">
 
@@ -134,7 +168,7 @@
                 @endif
             </div>
 
-            @if(isset($similarAdverts))
+            @if(isset($similarAdverts) and count($similarAdverts) > 0)
                 <div class="similar-adverts">
                     <div class="similar-adverts-wrapper">
                         <h3>Les professeurs similaires</h3>

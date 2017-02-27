@@ -115,16 +115,6 @@ class ListAdvertController extends Controller
     }
 
 
-    public function view($slug)
-    {
-        $advert         = Advert::findBySlugOr404($slug);
-        $comments       = Comment::commentsForAdvertId($advert->id);
-        $similarAdverts = $this->findSimilarAdverts($advert);
-        $ratings        = UserRatings::where(['user_id' => $advert->user->id])->first();
-
-        return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts', 'ratings'));
-    }
-
     public function preview($slug)
     {
         $advert = Advert::findBySlug($slug);
@@ -144,24 +134,10 @@ class ListAdvertController extends Controller
         return $view;
     }
 
-    public function findSimilarAdverts(Advert $advert)
-    {
-        $data = new \stdClass();
-
-        $data->subjectId       = $advert->getSubjectId();
-        $data->lat             = $advert->location_lat;
-        $data->lgn             = $advert->location_long;
-        $data->radius          = null;
-        $data->exceptAdvertIds = [$advert->id];
-
-        Advert::paginateCount(5);
-        list($adverts, $distances) = $this->engine->search($data);
-        return $adverts;
-    }
 
     public function latestAdverts()
     {
-        return Advert::whereNotNull('published_at')->orderBy('created_at', 'DESC')->paginate(5);
+        return Advert::whereNotNull('published_at')->whereNotNull('approved_at')->orderBy('created_at', 'DESC')->paginate(5);
     }
 
     public function mostPopularSubjects(int $limit = 12)

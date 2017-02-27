@@ -47,7 +47,7 @@ class CreateAdvertsTable extends Migration {
 			$table->string('can_webcam', 45)->nullable();
 			$table->string('marketing_video', 512)->nullable();
 			$table->dateTime('published_at')->nullable();
-			$table->integer('currently_online')->nullable();
+			$table->dateTime('approved_at')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

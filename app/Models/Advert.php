@@ -20,9 +20,7 @@ class Advert extends Model implements SluggableInterface
 
     protected $table = 'adverts';
 
-    protected $guarded = ['id',
-        'created_at',
-        'deleted_at'];
+    protected $guarded = ['id', 'created_at', 'deleted_at'];
 
     protected $softDelete = true;
 
@@ -35,9 +33,7 @@ class Advert extends Model implements SluggableInterface
         'on_update'       => false,
     ];
 
-    protected $dates = ['created_at',
-        'updated_at',
-        'published_at'];
+    protected $dates = ['created_at', 'updated_at', 'published_at'];
 
     private static $paginateCount = 20;
 
@@ -69,6 +65,7 @@ class Advert extends Model implements SluggableInterface
     public static function findBySlugOr404($slug)
     {
         $advert = self::where(['slug' => $slug])->whereNotNull('published_at')->first();
+
         return $advert ? $advert : \App::abort(404);
     }
 
@@ -79,7 +76,7 @@ class Advert extends Model implements SluggableInterface
 
     public static function liveAdverts($limit = 10)
     {
-        return self::whereNotNull('published_at')->paginate($limit);
+        return self::whereNotNull('published_at')->whereNotNull('approved_at')->paginate($limit);
     }
 
     public function publish()
