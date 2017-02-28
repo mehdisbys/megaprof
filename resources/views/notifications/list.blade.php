@@ -5,14 +5,15 @@
 
         <div class="content">
             <div class="col-md-10 border1px topmargin-sm content-message" id="{{$notification->id}}">
-                <button type="button" class="close">&times;</button>
-                <div class="col-md-10 topmargin-sm bottommargin-sm">
-                    {{$notification->message}}
-                </div>
+
 
                 <?php $advert = \App\Models\Advert::find($notification->advert_id)?>
 
                 @if($notification->name === 'social-networks' and $advert)
+                    <button type="button" class="close">&times;</button>
+                    <div class="col-md-10 topmargin-sm bottommargin-sm">
+                        {{$notification->message}}
+                    </div>
                     <div class="col-md-2 pull-right topmargin-sm">
                         <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}"
                            data-send="false"
@@ -26,8 +27,21 @@
                             <i class="icon-facebook"></i>
                         </a>
                     </div>
-                @endif
 
+                @elseif($notification->name === 'advert_rejected' and $advert)
+                        <button type="button" class="close">&times;</button>
+                        <h5>Votre annonce a été modérée : {{$advert->title}}</h5>
+                        <div><u>Raison:</u></div>
+                        <div class="col-md-10 bottommargin-sm">
+                            {{$notification->message}}
+                        </div>
+                        <small class="col-md-10"><i class="fa fa-info-circle"> </i> Allez dans mes annonces et effectuez les modifications nécessaires afin que votre annonce soit publiée au plus vite.</small>
+                @else
+                    <button type="button" class="close">&times;</button>
+                    <div class="col-md-10 topmargin-sm bottommargin-sm">
+                        {{$notification->message}}
+                    </div>
+                @endif
 
             </div>
         </div>

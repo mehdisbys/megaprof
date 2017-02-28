@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AdvertWasRejectedByAdmin;
 use App\Models\Advert;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class AdminController extends Controller
 
         $advert->save();
 
-        //event(new AdvertWasRejected($advert, $request->input('message'));
+        event(new AdvertWasRejectedByAdmin($advert, $request->input('message')));
 
         return redirect('/annonces-en-attente-de-moderation');
     }

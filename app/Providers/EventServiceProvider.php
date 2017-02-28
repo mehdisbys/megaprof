@@ -2,11 +2,22 @@
 
 namespace App\Providers;
 
+use App\Events\AdvertPublished;
+use App\Events\AdvertWasRejectedByAdmin;
+use App\Events\BookingRequestReply;
+use App\Events\BookingRequestSent;
 use App\Events\IdDocumentSent;
+use App\Events\ProfCommentedOnStudent;
+use App\Events\StudentCommentedOnProf;
+use App\Listeners\DashboardNotificationsAfterAdSubmission;
 use App\Listeners\NotifyAdminIdDocumentSent;
+use App\Listeners\NotifyBookingReply;
+use App\Listeners\NotifyBookingRequest;
+use App\Listeners\NotifyProfAdvertWasRejected;
+use App\Listeners\NotifyProfOfPostedComment;
+use App\Listeners\NotifyStudentOfPostedComment;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\App;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -16,29 +27,35 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\BookingRequestSent'     =>
+        BookingRequestSent::class     =>
             [
-                'App\Listeners\NotifyBookingRequest',
+                NotifyBookingRequest::class,
             ],
-        'App\Events\BookingRequestReply'    =>
+        BookingRequestReply::class    =>
             [
-                'App\Listeners\NotifyBookingReply',
+                NotifyBookingReply::class,
             ],
-        'App\Events\AdvertPublished'        =>
+        AdvertPublished::class        =>
             [
-                'App\Listeners\DashboardNotificationsAfterAdSubmission',
+                DashboardNotificationsAfterAdSubmission::class,
             ],
-        'App\Events\ProfCommentedOnStudent' =>
+        ProfCommentedOnStudent::class =>
             [
-                'App\Listeners\NotifyStudentOfPostedComment',
+                NotifyStudentOfPostedComment::class,
             ],
-        'App\Events\StudentCommentedOnProf' =>
+        StudentCommentedOnProf::class =>
             [
-                'App\Listeners\NotifyProfOfPostedComment',
+                NotifyProfOfPostedComment::class,
             ],
-        IdDocumentSent::class               => [
-            NotifyAdminIdDocumentSent::class
-        ],
+        IdDocumentSent::class         =>
+            [
+                NotifyAdminIdDocumentSent::class,
+            ],
+
+        AdvertWasRejectedByAdmin::class =>
+            [
+                NotifyProfAdvertWasRejected::class,
+            ],
     ];
 
     /**
@@ -50,7 +67,5 @@ class EventServiceProvider extends ServiceProvider
     public function boot(DispatcherContract $events)
     {
         parent::boot($events);
-
-        //
     }
 }
