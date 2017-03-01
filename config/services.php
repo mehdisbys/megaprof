@@ -44,9 +44,10 @@ return [
     'sparkpost' => [
         'secret'  => env('SPARKPOST_KEY'),
         'options' => [
-            'open_tracking'  => false,
-            'click_tracking' => false,
-            'transactional'  => true,
+            'options' => [
+                'open_tracking'  => false,
+                'click_tracking' => false,
+            ],
         ],
     ],
 
