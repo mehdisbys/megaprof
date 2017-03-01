@@ -150,9 +150,8 @@ return [
         App\Providers\MailServiceProvider::class,
         App\Providers\SearchAdvertServiceProvider::class,
 
-        AdamWathan\BootForms\BootFormsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class
     ],
@@ -202,10 +201,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
-        'BootForm'  => AdamWathan\BootForms\Facades\BootForm::class,
         'Image'     => Intervention\Image\Facades\Image::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,

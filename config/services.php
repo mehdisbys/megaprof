@@ -41,4 +41,8 @@ return [
         'redirect'      => env('FACEBOOK_CALLBACK'),
     ],
 
+    'sparkpost' => [
+        'secret' => 'a36820f47e339ee06f8d9eb3458647c936808ccf'
+    ]
+
 ];

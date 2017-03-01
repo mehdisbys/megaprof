@@ -23,7 +23,12 @@ class SignupController extends Controller
 	{
         if (isCaptchaCodeCorrect($request->get('captcha')) == false) {
             error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
-            return redirect('register');
+            return view('signup.signup')->with(
+                [
+                    'email'     => $request->get('email'),
+                    'firstname' => $request->get('firstname'),
+                    'lastname'  => $request->get('lastname'),
+                ]);
         }
 
 		$user = User::newUser($request->all());

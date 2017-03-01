@@ -14,13 +14,13 @@
           </a>
           <span class="text-separator">ou</span>
           <div class="input-text input-container">
-            <input type="text" required="required" placeholder="Prénom" name="firstname" class="input" value="" />
+            <input type="text" required="required" placeholder="Prénom" name="firstname" class="input" value="{{$firstname ?? ''}}" />
           </div>
           <div class="input-text input-container">
-            <input type="text" required="required" placeholder="Nom" name="lastname" class="input" value="" />
+            <input type="text" required="required" placeholder="Nom" name="lastname" class="input" value="{{$lastname ?? ''}}" />
           </div>
           <div class="input-text input-container">
-            <input type="email" placeholder="Email" name="email" class="input" value="" />
+            <input type="email" placeholder="Email" name="email" class="input" value="{{$email ?? ''}}" />
           </div>
           <div class="input-text input-container">
             <input type="password" required="required" placeholder="Mot de passe" name="password" class="input" value="" />

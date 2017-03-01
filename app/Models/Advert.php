@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Events\AdvertPublished;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
@@ -12,10 +13,10 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 
-class Advert extends Model implements SluggableInterface
+class Advert extends Model
 {
 
-    use SluggableTrait;
+    use Sluggable;
     use SoftDeletes;
 
     protected $table = 'adverts';
@@ -32,6 +33,15 @@ class Advert extends Model implements SluggableInterface
         'include_trashed' => true,
         'on_update'       => false,
     ];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
