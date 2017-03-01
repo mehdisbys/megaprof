@@ -42,7 +42,7 @@ return [
     ],
 
     'sparkpost' => [
-        'secret' => 'a36820f47e339ee06f8d9eb3458647c936808ccf'
+        'secret' =>  env('SPARKPOST_KEY')
     ]
 
 ];
