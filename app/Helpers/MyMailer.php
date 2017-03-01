@@ -1,6 +1,7 @@
 <?php namespace App\Helpers;
 
 use App\Helpers\Contracts\MailerContract;
+use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -9,8 +10,11 @@ class MyMailer implements MailerContract
     //trivial
     protected $redirectQueuetoSend;
 
-    public function __construct()
+    private $client;
+
+    public function __construct(ClientInterface $client)
     {
+        $this->client              = $client;
         $this->redirectQueuetoSend = env('MAIL_DISABLE_QUEUING_OVH', true);
 
     }
@@ -36,8 +40,35 @@ class MyMailer implements MailerContract
     {
         try {
             $callback = $this->__mail($config);
+
             Log::info("Mail going to: " . json_encode($config));
-            Mail::send($view, $data, $callback);
+
+            $html = view($view)->with($data)->render();
+
+            $this->client->post('https://api.sparkpost.com/api/v1/transmissions', [
+                'headers' => [
+                    'Authorization' => env('SPARKPOST_KEY'),
+                ],
+                'json'    => [
+                    'recipients' => [['address' => ['email' => $config['to']]]],
+                    'content'    => [
+                        'from' => [
+                            'name'  => 'Taelam',
+                            'email' => 'noreply@taelam.com',
+                        ],
+
+                        'subject' => $config['subject'],
+                        'html'    => $html,
+                    ],
+                ],
+                'options' => [
+                    'open_tracking'  => false,
+                    'click_tracking' => false,
+                    'transactional'  => true,
+                ],
+            ]);
+
+            //Mail::send($view, $data, $callback);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
         }
@@ -52,9 +83,9 @@ class MyMailer implements MailerContract
 
             if (isset($config['has_cv']) and $config['has_cv']) {
                 $message->attach($config['cv_path'],
-                    ['as' => $config['as'],
-                        'mime' => $config['mime'],
-                    ]
+                                 ['as'   => $config['as'],
+                                  'mime' => $config['mime'],
+                                 ]
                 );
             }
         };

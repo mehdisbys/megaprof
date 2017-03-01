@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Helpers\MyMailer;
 
@@ -27,7 +29,7 @@ class MailServiceProvider extends ServiceProvider
     {
 	    $this->app->bind('App\Helpers\Contracts\MailerContract', function(){
 
-		    return new MyMailer();
+		    return new MyMailer(new Client());
 
 	    });
     }
