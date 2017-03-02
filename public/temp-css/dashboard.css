@@ -5300,11 +5300,12 @@ ul.profil_statut li span.verified:before {
 }
 
 .home-search {
-    padding: 12px 20px;
+    padding: 1px 20px;
     background-image: url("/temp-images/backgrounds/header-banner-bg.jpg");
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center;
+    height: 370px;
 }
 
 .home-search-form {
