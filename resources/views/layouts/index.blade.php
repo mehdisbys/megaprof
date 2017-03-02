@@ -3,7 +3,7 @@
 @section('content')
     {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
     {!! HTML::style("temp-css/awesomplete.css") !!}
-    {!! HTML::style("css/fa/css/font-awesome.css") !!}
+    {!! HTML::style("css/fa/css/font-awesome.min.css") !!}
     {!! HTML::style("css/slick.css") !!}
     {!! HTML::style("css/slick-theme.css") !!}
 
@@ -118,7 +118,7 @@
 
 
     <!-- four ============= -->
-    <div class="topmargin-xtra-big">
+    <div class="topmargin-xtra-big section">
         <div class="wrapper">
             <div class="home-share-opinion">
                 <div class="col-md-12 topmargin-big"><h2 class="section-title">Avec Taelam, c'est facile !</h2></div>
@@ -193,6 +193,42 @@
         </div>
     </div>
 
+
+    <div>
+        <div class="scrolling-pane topmargin-lg">
+            <h2 class="section-title">Pourquoi choisir Taelam ?</h2>
+
+            <div class="row">
+                <ul id="bubbles">
+                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
+                        <div class="fa fa-refresh fa-3x"></div>
+                        <a href="">Flexibilité</a>
+                    </li>
+                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
+                        <div class="fa fa-check fa-3x"></div>
+                        <a href="">Profils vérifiés</a>
+                    </li>
+                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
+                        <div class="fa fa-handshake-o fa-3x"></div>
+                        <a href="">Sans intermédiaire</a>
+                    </li>
+                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
+                        <div class="fa fa-money fa-3x"></div>
+                        <a href="">Économique</a>
+                    </li>
+                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
+                        <div class="fa fa-lock fa-3x"></div>
+                        <a href="">Sécurisé</a>
+                    </li>
+                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
+                        <div class="fa fa-flask fa-3x"></div>
+                        <a href="">Des activités variées</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     {!! HTML::script("js/slick.min.js") !!}
 
     <!-- five ============= -->
@@ -233,21 +269,23 @@
             $("#search_form").submit(submitForm);
 
             var abba = true;
-            $('#pane-b').hide();
+
+            $('.pane-b').hide();
+
             function toggleFade() {
                 if (abba) {
-                    $('#pane-a').fadeOut('slow', function () {
-                        $('#pane-b').fadeIn('slow');
+                    $('.pane-a').fadeOut('slow', function () {
+                        $('.pane-b').fadeIn('slow');
                         abba = false;
                     });
                 } else {
-                    $('#pane-b').fadeOut('slow', function () {
-                        $('#pane-a').fadeIn('slow');
+                    $('.pane-b').fadeOut('slow', function () {
+                        $('.pane-a').fadeIn('slow');
                         abba = true;
                     });
                 }
             };
-            setInterval(toggleFade, 7000);
+            setInterval(toggleFade, 5000);
 
             new Awesomplete(document.getElementById('subject_input'), {
                 filter: function (text, input) {

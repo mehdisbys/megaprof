@@ -12572,7 +12572,7 @@ a.traduction_annonce {
 }
 
 .scrolling-pane {
-    background-color: #f7f7f7;
+    background-color: white;
     clear: both;
     padding: 20px;
 }
@@ -12589,32 +12589,30 @@ a.traduction_annonce {
 }
 
 .scrolling-pane ul li {
-    float: left;
-    margin-right: 20px;
+    float: right;
+    padding-top: 15px;
+    margin-right: calc(100% / 6);
     margin-bottom: 20px;
     list-style: none;
-    width: calc((100% - 120px) / 3);
+    width: 140px;
     height: 140px;
-    background-color: white;
+    background-color: #f7f7f7;
     text-align: center;
     padding: 5px;
-    border-radius: 3%;
+    border-radius: 50%;
 }
 
 .scrolling-pane ul li .fa {
-    background-color: #f57009;
+    background-color: #fd875e;
     display: block;
     color: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin: 10px auto;
+    margin: 15px auto;
     line-height: 60px;
 }
 
-.scrolling-pane ul li:last-child {
-    margin-right: 0px;
-}
 
 .scrolling-pane ul li .subject-icon {
     background-color: #f57009;
