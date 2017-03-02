@@ -12827,3 +12827,27 @@ input[type="radio"] {
     background-color: #fff;
 
 }
+
+.topmargin-big {
+    margin-top: 30px;
+}
+
+.topmargin-small {
+    margin-top: 15px;
+}
+
+.bottommargin-small {
+    margin-bottom: 15px;
+}
+
+.bottommargin-big {
+    margin-bottom: 30px;
+}
+
+.bottommargin-xtra-big {
+    margin-bottom: 50px;
+}
+
+.topmargin-xtra-big {
+    margin-bottom: 50px;
+}

@@ -42,33 +42,6 @@ class MyMailer implements MailerContract
             $callback = $this->__mail($config);
 
             Log::info("Mail going to: " . json_encode($config));
-
-//            $html = view($view)->with($data)->render();
-//
-//
-//            $this->client->post('https://api.sparkpost.com/api/v1/transmissions', [
-//                'headers' => [
-//                    'Authorization' => env('SPARKPOST_KEY'),
-//                ],
-//                'json'    => [
-//                    'recipients' => [['address' => ['email' => $config['to']]]],
-//                    'content'    => [
-//                        'from' => [
-//                            'name'  => 'Taelam',
-//                            'email' => 'noreply@taelam.com',
-//                        ],
-//
-//                        'subject' => $config['subject'],
-//                        'html'    => $html,
-//                    ],
-//                ],
-//                'options' => [
-//                    'open_tracking'  => false,
-//                    'click_tracking' => false,
-//                    'transactional'  => true,
-//                ],
-//            ]);
-
             Mail::send($view, $data, $callback);
         } catch (\Exception $e) {
             Log::error($e->getMessage());

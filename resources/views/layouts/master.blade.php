@@ -94,61 +94,6 @@
     @section('content')
     @show
   </div>
-
-  <div class="footer">
-    <div class="wrapper">
-      <div class="footer-inner">
-        <div class="footer-inner-top">
-          <div class="footer-inner-cell footer-inner-cell-confidence"
-            itemtype="http://data-vocabulary.org/Review-aggregate" itemscope="">
-            <h3>Confiance</h3>
-            <ul class="rating" style="padding: 0 0 5px 0">
-              <li class="star-full">&nbsp;</li>
-              <li class="star-full">&nbsp;</li>
-              <li class="star-full">&nbsp;</li>
-              <li class="star-full">&nbsp;</li>
-              <li class="star-half">&nbsp;</li>
-            </ul>
-            <p>
-              <a href="#" target="_blank"> est évalué </a>
-            </p>
-          </div>
-          <div class="footer-inner-cell footer-inner-cell-socials">
-            <h3>Social</h3>
-            <ul class="footer-socials">
-              <li>
-                <a class="social-facebook a-js" href="https://www.facebook.com/">Faceboook</a>
-              </li>
-              <li>
-                <a class="social-google-plus a-js"
-                  href="https://plus.google.com/+Taelam/">Google</a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-inner-cell footer-inner-cell-profs">
-            <h3>Professeurs</h3>
-            <ul class="list">
-              <li>
-                <a href="/" title="">Toutes les matières</a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-inner-cell footer-inner-cell-about">
-            <h3>A propos</h3>
-            <ul class="list">
-              <li>
-                <a href="/" title="">Mentions légales</a>
-              </li>
-
-              <li>
-                <a href="/" title="">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
   @include('includes/toastr/toastr')
   <script>

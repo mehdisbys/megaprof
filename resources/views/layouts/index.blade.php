@@ -55,91 +55,62 @@
     </div>
 
     <!-- two ============= -->
-    <div class="section reinsurance section-odd">
-        <div class="wrapper">
-            <div class="col-md-12">
-                <h2>Les dernières annonces publiées</h2>
-                <div class="carousel">
-                    @foreach($latestAdverts as $advert)
-                        @include('main.carouselPreview', ['trimchar' => 350])
-                    @endforeach
-                </div>
-            </div>
-
-            <!-- start of components  -->
-            <div class="scrolling-pane topmargin-lg">
-                <h2>Les matières les plus populaires</h2>
-                <div class="row">
-                    <ul id="pane-a">
-                        @foreach($popularSubjects->take(6) as $subject)
-                            <li class="scroll-items col-md-2" id="subject-{{$subject['parent_id']}}">
-                                <div class="fa {{$subject['class']}} fa-3x"></div>
-                                <a href="/annonces/{{$subject['name']}}">{{ str_limit($subject['name'],22) }} - {{$subject['count']}}
-                                    annonces </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-
-                <div class="row">
-                    <ul id="pane-b">
-                        @foreach($popularSubjects->take(-6) as $subject)
-                            <li class="scroll-items col-md-2" id="subject-{{$subject['parent_id']}}">
-                                <div class="fa {{$subject['class']}} fa-3x "></div>
-                                <a href="/annonces/{{$subject['name']}}">{{ str_limit($subject['name'],22) }} - {{$subject['count']}}
-                                    annonces </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            <!-- end of components  -->
-        </div>
-    </div>
 
 
     <!-- three ============= -->
-    <div id="howto" class="section home-how">
+
+    <div class="">
         <div class="wrapper">
-            <h2 class="section-title">Taelam, comment ça marche ?</h2>
-            <div class="table how_it_works">
-                <div class="cell"><span class="cupcake"> </span></div>
-                <div class="cell">
-                    <ul>
-                        <li>
-                            <span class="number">1</span>
-                            <div>
-                                <span>Trouvez des professeurs incroyables</span>
-                            </div>
-                            <div>
-                                <p>Sélectionnez la perle rare parmi une liste d’enseignants vérifiés par nos soins,
-                                    évalués par leurs anciens élèves et à proximité de chez vous.</p>
-                            </div>
-                        </li>
-                        <li>
-            <span
-                    class="number">2</span>
-                            <div>
-                                <span>Réservez un cours facilement</span>
-                            </div>
-                            <div>
-                                <p>Contactez les professeurs directement : présentez-vous, décrivez vos attentes et
-                                    réservez votre premier cours. Les professeurs confirment et planifient les cours
-                                    directement avec vous.</p>
-                            </div>
-                        </li>
-                        <li>
-            <span
-                    class="number">3</span>
-                            <div><span>Apprenez en toute confiance</span>
-                            </div>
-                            <div>
-                                <p>Vous ne payez rien tant que vous n’avez pas trouvé votre professeur idéal. Une
-                                    fois trouvé, Taelam prélèvera une seule et unique fois 19 euros, jamais
-                                    avant.</p>
-                            </div>
-                        </li>
-                    </ul>
+            <div class="col-md-12">
+                <div class="col-md-12 topmargin-big"><h2 class="section-title">Vous souhaitez partager votre savoir ?</h2></div>
+                <div class="topmargin-big col-md-12">
+                    <div class="col-md-12">
+                        <div class="col-md-3"><h4> 1. Créer une annonce gratuitement</h4></div>
+                        <div class="col-md-3"><h4>2. Fixez vos propres tarifs</h4></div>
+                        <div class="col-md-3"><h4>3. Répondez aux demandes de vos élèves</h4></div>
+                        <div class="col-md-3"><h4>4. Construisez votre business</h4></div>
+                    </div>
+
+                    <div class="col-md-12 topmargin-small bottommargin-big">
+                        <div class="col-md-3">
+                            <small>Des milliers de personnes cherchent
+
+                                des professeurs particuliers chaque
+
+                                jour. TAELAM vous donne la
+
+                                possibilité de créer un compte
+                            </small>
+                        </div>
+
+                        <div class="col-md-3">
+                            <small>Pas d’intermédiaire, c’est à votre
+
+                                guise ! Vous déterminez le prix de
+
+                                votre cours, votre disponibilité et
+
+                                le choix de vos élèves
+                            </small>
+                        </div>
+
+                        <div class="col-md-3">
+                            <small>Des élèves vous contactent, échangez avec
+
+                                eux et acceptez ou refusez leurs demandes
+                            </small>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <small>Consultez et suivez vos cours,
+
+                                organisez-vous grâce à votre
+
+                                tableau de bord
+                            </small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,68 +118,78 @@
 
 
     <!-- four ============= -->
-    <div class="section home-share">
+    <div class="topmargin-xtra-big">
         <div class="wrapper">
-            <h2 class="section-title">Partagez vos connaissances avec Taelam</h2>
             <div class="home-share-opinion">
-                <ul class="rating align-center">
-                    <li class="star-full">&nbsp;</li>
-                    <li class="star-full">&nbsp;</li>
-                    <li class="star-full">&nbsp;</li>
-                    <li class="star-full">&nbsp;</li>
-                    <li class="star-full">&nbsp;</li>
-                </ul>
-                <blockquote>
-                    <p class="home-share-opinion-content">
-                        Je me suis inscrit sur Taelam il y a un peu plus d’un an pour gagner quelques euros par
-                        mois car je n’avais pas de travail.<br/>
-                        <br/>
-                        Je reçois aujourd'hui vos demandes de cours et j’ai la chance d’avoir des élèves très
-                        satisfaits et réguliers. J’ai en général 5 à 10 rendez-vous avec chacun.<br/>
-                        <br/>
-                        Merci encore à toute l'équipe !
-                    </p>
-                </blockquote>
-            </div>
-            <div class="home-share-arguments">
-                <div class="component-cols component-cols-big">
-                    <div class="wrapper">
-                        <ul>
-                            <li class="component-col">
-                                <div class=" component-col-icon">
-                                    <div class="icon icon-watch"></div>
-                                </div>
-                                <h3 class="component-col-title">Gain de temps pour<br/> trouver des élèves</h3>
-                                <p class="component-col-content"> 12 000 recherches d'élèves<br/> chaque jour. </p>
-                            </li>
-                            <li class="component-col">
-                                <div class=" component-col-icon">
-                                    <div class="icon icon-coins">
-                                    </div>
-                                </div>
-                                <h3 class="component-col-title">Fixez<br/>vos tarifs</h3>
-                                <p class="component-col-content">
-                                    Travaillez en direct<br/>
-                                    avec vos élèves
-                                </p>
-                            </li>
-                            <li class="component-col">
-                                <div class=" component-col-icon">
-                                    <div class="icon icon-cloth"></div>
-                                </div>
-                                <h3 class="component-col-title">Rejoignez<br/>l'aventure</h3>
-                                <p class="component-col-content"> Inscription gratuite<br/> pour les professeurs
-                                </p>
-                            </li>
-                        </ul>
+                <div class="col-md-12 topmargin-big"><h2 class="section-title">Avec Taelam, c'est facile !</h2></div>
+                <div class="topmargin-big col-md-12">
+                    <div class="col-md-12">
+                        <div class="col-md-3"><i style="color:#7663ff;"class="fa fa-binoculars fa-5x clearfix"></i></div>
+                        <div class="col-md-3"><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i></div>
+                        <div class="col-md-3"><i style="color:#6a91ff;" class="fa fa-calendar-check-o fa-5x clearfix"></i></div>
+                        <div class="col-md-3"><i style="color:#ffcc66;"class="fa fa-thumbs-o-up fa-5x clearfix"></i></div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-3">Découvrez des activités et des professeurs partout au Maroc</div>
+                        <div class="col-md-3">Trouvez parmi les professeurs sélectionnés, Votre professeur</div>
+                        <div class="col-md-3">Réservez votre activité</div>
+                        <div class="col-md-3">Commencez à apprendre !</div>
+                    </div>
+
+                    <div class="col-md-12 topmargin-small">
+                        <div class="col-md-3">
+                            <small>En un clic, Taelam vous
+
+                                propose une liste de professeurs
+
+                                et d’activités multiples pour tous
+
+                                les goûts et les budgets près de
+
+                                chez vous
+                            </small>
+                        </div>
+
+                        <div class="col-md-3">
+                            <small>Choisissez des professeurs
+
+                                sélectionnés et vérifiés par nos
+
+                                soins. Fixez vos objectifs avec votre
+
+                                professeur et atteignez-les grâce à
+
+                                un suivi personnalisé
+                            </small>
+                        </div>
+
+                        <div class="col-md-3">
+                            <small>Après avoir sélectionné une
+
+                                matière et un lieu, réservez
+
+                                un cours avec le professeur
+
+                                qui correspond le mieux à
+
+                                vos attentes
+                            </small>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <small>Apprenez, échangez
+
+                                ou perfectionnez vos
+
+                                connaissances
+                            </small>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="align-center">
-                <button class="button a-js" type="button" data-href="/inscription.html">Devenez professeur</button>
-            </div>
-            <p class="align-center">Vous souhaitez donner des cours ? Partagez vos connaissances ou votre
-                passion</p>
+
         </div>
     </div>
 
