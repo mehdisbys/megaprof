@@ -202,27 +202,27 @@
                 <ul id="bubbles">
                     <li class="scroll-items col-md-2 pane-a" id="subject-1">
                         <div class="fa fa-refresh fa-3x"></div>
-                        <a href="/annonces/Français">Flexibilité</a>
+                        <a href="">Flexibilité</a>
                     </li>
                     <li class="scroll-items col-md-2 pane-a" id="subject-1">
                         <div class="fa fa-check fa-3x"></div>
-                        <a href="/annonces/Lecture">Profils vérifiés</a>
+                        <a href="">Profils vérifiés</a>
                     </li>
                     <li class="scroll-items col-md-2 pane-a" id="subject-1">
                         <div class="fa fa-handshake-o fa-3x"></div>
-                        <a href="/annonces/Orthographe">Sans intermédiaire</a>
+                        <a href="">Sans intermédiaire</a>
                     </li>
                     <li class="scroll-items col-md-2 pane-b" id="subject-1">
                         <div class="fa fa-money fa-3x"></div>
-                        <a href="/annonces/Aide à la rédaction de CV - lettre de motivation">Économique</a>
+                        <a href="">Économique</a>
                     </li>
                     <li class="scroll-items col-md-2 pane-b" id="subject-1">
                         <div class="fa fa-lock fa-3x"></div>
-                        <a href="/annonces/Graphothérapie">Sécurisé</a>
+                        <a href="">Sécurisé</a>
                     </li>
                     <li class="scroll-items col-md-2 pane-b" id="subject-1">
                         <div class="fa fa-flask fa-3x"></div>
-                        <a href="/annonces/Écologie">Des activités variées</a>
+                        <a href="">Des activités variées</a>
                     </li>
                 </ul>
             </div>
