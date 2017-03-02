@@ -5305,7 +5305,7 @@ ul.profil_statut li span.verified:before {
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center;
-    height: 370px;
+    height: 400px;
 }
 
 .home-search-form {
@@ -8875,7 +8875,7 @@ ul.profil_statut li span.verified:before {
 }
 
 .search-title {
-    margin-top: 0;
+    margin-top: 90px;
     margin-bottom: 30px;
     font-size: 36px;
     font-weight: normal;
