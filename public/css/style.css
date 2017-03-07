@@ -13175,8 +13175,19 @@ body:not(.no-transition) #wrapper,
     opacity: 0.0; }
 }
 
-
-
 .green{
     color: #1ABC9C;
+}
+
+
+.blue-badge {
+    background-color: cornflowerblue;
+}
+
+.green-badge {
+    background-color: forestgreen;
+}
+
+.red-badge {
+    background-color: orangered;
 }

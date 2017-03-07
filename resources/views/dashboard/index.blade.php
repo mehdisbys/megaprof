@@ -22,15 +22,14 @@
 
                     <li class="ui-state-default ui-corner-top" role="tab" tabindex="0" aria-controls="tabs-37"
                         aria-labelledby="ui-id-25" aria-selected="true">
-                        <a href="#tabs-37" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-25">Notifications</a>
+                        <a href="#tabs-37" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-25"> Notifications <span class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                     </li>
 
                     <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-38"
                         aria-labelledby="ui-id-26" aria-selected="false">
-                        <a href="#tabs-38" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
-                            demandes de cours
+                        <a href="#tabs-38" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Demandes de cours
                             @if(isset($bookings) and $bookings->count())
-                                ({{$bookings->count()}})
+                                <span class="badge red-badge">{{$bookings->count()}}</span>
                             @endif
                         </a>
                     </li>
@@ -40,7 +39,7 @@
                         <a href="#tabs-48" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
                             commentaires
                             @if(isset($pendingComments) and $pendingComments->count())
-                                ({{$pendingComments->count()}})
+                                <span class="badge green-badge">{{$pendingComments->count()}}</span>
                             @endif
                         </a>
                     </li>
@@ -50,7 +49,7 @@
                         <a href="#tabs-39" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-27">Mes
                             annonces
                             @if (isset($adverts) and $adverts->count())
-                                ({{$adverts->count()}})
+                                <span class="badge">{{$adverts->count()}}</span>
                             @endif
                         </a>
                     </li>
