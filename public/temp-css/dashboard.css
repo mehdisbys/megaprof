@@ -12873,17 +12873,28 @@ input[type="radio"] {
     border-bottom-right-radius: 100px;
 }
 
-.btn-student {
-    width:20%;
-    margin-left: 20%;
+
+.teacher-btn-div {
+    margin-top: 40px !important;
 }
 
-.btn-teacher {
-    width:17%;
+@media all and (max-width: 980px) {
+
+   .teacher-btn-div {
+        margin-left : 23%;
+       margin-top: 60px !important;
+    }
+
+    .student-btn-div {
+        margin-left : 23%;
+    }
 }
+
+
 
 .btns {
     margin-top: 25%;
+    text-align: center;
 }
 
 .btn-welcome{
