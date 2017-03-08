@@ -19,9 +19,12 @@
         <h1 class="search-title">Apprenez sans limites</h1>
 
         <div class="col-md-12 btns">
-            <div class="col-md-4 col-md-offset-2"><a id="student-btn" href="#student-info"
-                                                     class="btn-welcome btn-student">Trouver un Professeur</a></div>
-            <div class="col-md-3"><a href="/professeur" class="btn-welcome btn-teacher ">Donner des Cours</a></div>
+            <div class="student-btn-div">
+                <a id="student-btn" href="#student-info" class="btn-welcome btn-student ">Trouver un Professeur</a>
+            </div>
+            <div class=" teacher-btn-div">
+                <a href="/professeur" class="btn-welcome btn-teacher">Donner des Cours</a>
+            </div>
         </div>
 
         <div class="home-search-form-inner autocomplete">
@@ -36,72 +39,77 @@
                 <div class="col-md-12"><h2 class="section-title">Trouver un professeur, c'est facile !</h2></div>
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12">
-                        <div class="col-md-3"><i style="color:#7663ff;" class="fa fa-binoculars fa-5x clearfix"></i>
-                        </div>
-                        <div class="col-md-3"><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i>
-                        </div>
-                        <div class="col-md-3"><i style="color:#6a91ff;"
-                                                 class="fa fa-calendar-check-o fa-5x clearfix"></i></div>
-                        <div class="col-md-3"><i style="color:#ffcc66;"
-                                                 class="fa fa-thumbs-o-up fa-5x clearfix"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="col-md-3">Découvrez des activités et des professeurs partout au Maroc</div>
-                        <div class="col-md-3">Trouvez parmi les professeurs sélectionnés, Votre professeur</div>
-                        <div class="col-md-3">Réservez votre activité</div>
-                        <div class="col-md-3">Commencez à apprendre !</div>
-                    </div>
-
-                    <div class="col-md-12 topmargin-small">
                         <div class="col-md-3">
-                            <small>En un clic, Taelam vous
+                            <div class="col-md-12"><i style="color:#7663ff;"
+                                                      class="fa fa-binoculars fa-5x clearfix"></i></div>
+                            <div class="col-md-12">Découvrez des activités et des professeurs partout au Maroc</div>
+                            <div class="col-md-12">
+                                <small>En un clic, Taelam vous
 
-                                propose une liste de professeurs
+                                    propose une liste de professeurs
 
-                                et d’activités multiples pour tous
+                                    et d’activités multiples pour tous
 
-                                les goûts et les budgets près de
+                                    les goûts et les budgets près de
 
-                                chez vous
-                            </small>
-                        </div>
-
-                        <div class="col-md-3">
-                            <small>Choisissez des professeurs
-
-                                sélectionnés et vérifiés par nos
-
-                                soins. Fixez vos objectifs avec votre
-
-                                professeur et atteignez-les grâce à
-
-                                un suivi personnalisé
-                            </small>
-                        </div>
-
-                        <div class="col-md-3">
-                            <small>Après avoir sélectionné une
-
-                                matière et un lieu, réservez
-
-                                un cours avec le professeur
-
-                                qui correspond le mieux à
-
-                                vos attentes
-                            </small>
+                                    chez vous
+                                </small>
+                            </div>
                         </div>
 
 
                         <div class="col-md-3">
-                            <small>Apprenez, échangez
+                            <div class="col-md-12"><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i>
+                            </div>
+                            <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, Votre professeur</div>
+                            <div class="col-md-12">
+                                <small>Choisissez des professeurs
 
-                                ou perfectionnez vos
+                                    sélectionnés et vérifiés par nos
 
-                                connaissances
-                            </small>
+                                    soins. Fixez vos objectifs avec votre
+
+                                    professeur et atteignez-les grâce à
+
+                                    un suivi personnalisé
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="col-md-12"><i style="color:#6a91ff;"
+                                                      class="fa fa-calendar-check-o fa-5x clearfix"></i>
+                            </div>
+                            <div class="col-md-12">Réservez votre activité</div>
+                            <div class="col-md-12">
+                                <small>Après avoir sélectionné une
+
+                                    matière et un lieu, réservez
+
+                                    un cours avec le professeur
+
+                                    qui correspond le mieux à
+
+                                    vos attentes
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="col-md-12"><i style="color:#ffcc66;"
+                                                      class="fa fa-thumbs-o-up fa-5x clearfix"></i>
+                            </div>
+                            <div class="col-md-12">
+
+                                <div class="col-md-12">Commencez à apprendre !</div>
+                            </div>
+                            <div class="col-md-12">
+                                <small>Apprenez, échangez
+
+                                    ou perfectionnez vos
+
+                                    connaissances
+                                </small>
+                            </div>
                         </div>
                     </div>
                 </div>
