@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Contracts\SearchAdvertContract;
 use App\Models\Advert;
 use App\Models\Comment;
+use App\Models\Notification;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
 use App\Models\UserRatings;
@@ -21,14 +22,21 @@ class ListAdvertController extends Controller
         $this->engine = $engine;
     }
 
+    public function welcomeProfesseur()
+    {
+        return view('layouts.prof-accueil');
+    }
+
+
     public function index()
     {
-        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $selectedSubject = null;
-        $latestAdverts   = $this->latestAdverts();
-        $popularSubjects = $this->mostPopularSubjects();
+        $subsubjects        = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $selectedSubject    = null;
+        $latestAdverts      = $this->latestAdverts();
+        $popularSubjects    = $this->mostPopularSubjects();
+        $notificationsCount = Notification::currentUserNotificationsCount();
 
-        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'latestAdverts', 'popularSubjects'));
+        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'latestAdverts', 'popularSubjects', 'notificationsCount'));
     }
 
     public function allAdverts()

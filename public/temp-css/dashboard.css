@@ -5301,11 +5301,11 @@ ul.profil_statut li span.verified:before {
 
 .home-search {
     padding: 1px 20px;
-    background-image: url("/temp-images/backgrounds/header-banner-bg3.jpg");
+    background-image: url("/temp-images/backgrounds/header-banner-bg4.jpeg");
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 650px;
 }
 
 .home-search-form {
@@ -8877,10 +8877,11 @@ ul.profil_statut li span.verified:before {
 .search-title {
     margin-top: 90px;
     margin-bottom: 30px;
-    font-size: 36px;
-    font-weight: normal;
+    font-size: 44px;
+    letter-spacing: 5px;
+    font-weight: bold;
     text-align: center;
-    color: #fff
+    color: darkorange;
 }
 
 .search-end-message .search-title {
@@ -12848,4 +12849,85 @@ input[type="radio"] {
 
 .topmargin-xtra-big {
     margin-bottom: 50px;
+}
+
+.student-welcome {
+    background-image: url("../temp-images/backgrounds/student-accueil.jpeg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 4px solid white;
+    margin-right: 4px;
+    width: auto;
+    height: 200px;
+    border-radius: 100px;
+}
+
+.teacher-welcome {
+    background-image: url("../temp-images/backgrounds/teacher-accueil.jpeg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 4px solid white;
+    margin-right: 4px;
+    width: auto;
+    height: 200px;
+    border-bottom-right-radius: 100px;
+}
+
+.btn-student {
+    width:20%;
+    margin-left: 20%;
+}
+
+.btn-teacher {
+    width:17%;
+}
+
+.btns {
+    margin-top: 25%;
+}
+
+.btn-welcome{
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    -webkit-box-shadow: 0px 1px 3px #0d060d;
+    -moz-box-shadow: 0px 1px 3px #0d060d;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    background: lightslategrey;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.btn-welcome a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
+
+.btn-welcome:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}
+
+.student-info {
+    background-color: darkorange;
+    min-height: 400px;
+    color: white;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.student-input {
+    margin: 5px;
+}
+
+.student-get-interest {
+    margin-top: 50px;
+}
+
+.well-get-in-touch {
+    margin-top: 150px;
+    margin-bottom: 40px;
 }

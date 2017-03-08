@@ -50,7 +50,7 @@
 
   <body>
     <div class="header">
-      <nav class="navbar   navbar-site navbar-default" role="navigation">
+      <nav class="navbar   navbar-site" role="navigation">
         <div class="container">
           <div class="navbar-header">
             <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
@@ -68,7 +68,7 @@
 
               @if(Auth::check())
                 <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
-                <li><a class="header-item" href="/mon-compte">Mon Compte</a></li>
+                <li><a class="header-item" href="/mon-compte">Mon Compte <span class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a></li>
                 <li><a class="header-item" href="/logout">Se déconnecter</a></li>
                 <li><a class="header-item" href="/faq">Aide</a></li>
               @else

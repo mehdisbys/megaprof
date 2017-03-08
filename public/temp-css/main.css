@@ -53,7 +53,7 @@
 
 .page {
     position: relative;
-    padding-top: 95px;
+    padding-top: 50px;
     z-index: 1
 }
 @media all and (max-width: 980px) {
@@ -246,4 +246,8 @@
 
 .green{
     color: #1ABC9C;
+}
+
+.blue-badge {
+    background-color: cornflowerblue;
 }
