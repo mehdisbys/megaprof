@@ -12875,12 +12875,11 @@ input[type="radio"] {
 
 .btn-student {
     width:20%;
-    margin-right : 3%
+    margin-left: 20%;
 }
 
 .btn-teacher {
     width:17%;
-    margin-left: 5%
 }
 
 .btns {
@@ -12893,12 +12892,10 @@ input[type="radio"] {
     border-radius: 28px;
     -webkit-box-shadow: 0px 1px 3px #0d060d;
     -moz-box-shadow: 0px 1px 3px #0d060d;
-    box-shadow: 0px 1px 3px #0d060d;
-    font-family: Arial;
     color: #ffffff;
     font-size: 20px;
-    font-weight: 500;
-    background: #fd875e;
+    font-weight: bold;
+    background: lightslategrey;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
@@ -12911,4 +12908,26 @@ input[type="radio"] {
 .btn-welcome:hover {
     background: #3cb0fd;
     text-decoration: none;
+}
+
+.student-info {
+    background-color: darkorange;
+    min-height: 400px;
+    color: white;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.student-input {
+    margin: 5px;
+}
+
+.student-get-interest {
+    margin-top: 50px;
+}
+
+.well-get-in-touch {
+    margin-top: 150px;
+    margin-bottom: 40px;
 }
