@@ -22,6 +22,12 @@ class ListAdvertController extends Controller
         $this->engine = $engine;
     }
 
+    public function welcomeProfesseur()
+    {
+        return view('layouts.prof-accueil');
+    }
+
+
     public function index()
     {
         $subsubjects        = implode(',', SubSubject::all()->pluck('name')->toArray());

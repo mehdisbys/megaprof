@@ -13,221 +13,44 @@
     {!! HTML::script("js/jquery.form.min.js") !!}
 
     <!-- one ============= -->
-    <div class="home-search">
+    <div class="home-search ">
 
 
         <h1 class="search-title">Apprenez sans limites</h1>
+
+        <div class="col-md-12 btns">
+            <div class="col-md-3 col-md-offset-3"><a id="student-btn" href="#student" class="btn-welcome btn-student" >Trouver un Professeur</a></div>
+            <div class="col-md-3"><a href="/professeur" class="btn-welcome btn-teacher ">Donner des Cours</a></div>
+        </div>
+
         <div class="home-search-form-inner autocomplete">
-            <form action="/search" id="search_form" class="home-search-form autocomplete-form">
-                {!! csrf_field() !!}
-
-                <div class="home-search-field-wrapper">
-                    <input
-                            id="subject_input"
-                            class="home-search-input autocomplete-input"
-                            placeholder="Que souhaitez-vous apprendre ?"
-                            data-minchars="1"
-                            data-autofirst="1"
-                            data-list="{!! $subsubjects !!}"
-                            name="subject"
-                            type="text"
-                            autocomplete="off"
-                            aria-autocomplete="list"/>
-                </div>
-
-                <div class="home-search-field-wrapper">
-                    <input id="location_input"
-                           class="home-search-input"
-                           placeholder="Ville où le cours a lieu"
-                           name="city" type="text"/>
-                </div>
-
-                <div class="home-search-button-wrapper">
-                    <button id="submit-btn" class="button" type="submit"> Chercher</button>
-                </div>
-                <div class="location-details no-visibility">
-                    {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
-                    {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
-                </div>
-            </form>
         </div>
-        <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div>
+        <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
 
-    <!-- two ============= -->
+    <div class="topmargin-big">
+        <div class="wraper">
+            <div class="home-share-pinion col-md-12">
+                <h2 class="section-title">Apprendre en profondeur avec le Dr. Chayoub</h2>
+                <a href="/etudiant">
+                    <div class="col-md- student-welcome"></div>
+                </a>
+                <a href="/professeur">
+                    <div class="col-md- teacher-welcome"></div>
+                </a>
+            </div>
+        </div>
+    </div>
 
-
-    <!-- three ============= -->
-
-    <div class="">
-        <div class="wrapper">
-            <div class="col-md-12">
-                <div class="col-md-12 topmargin-big"><h2 class="section-title">Vous souhaitez partager votre savoir ?</h2></div>
-                <div class="topmargin-big col-md-12">
-                    <div class="col-md-12">
-                        <div class="col-md-3"><h4> 1. Créer une annonce gratuitement</h4></div>
-                        <div class="col-md-3"><h4>2. Fixez vos propres tarifs</h4></div>
-                        <div class="col-md-3"><h4>3. Répondez aux demandes de vos élèves</h4></div>
-                        <div class="col-md-3"><h4>4. Construisez votre business</h4></div>
-                    </div>
-
-                    <div class="col-md-12 topmargin-small bottommargin-big">
-                        <div class="col-md-3">
-                            <small>Des milliers de personnes cherchent
-
-                                des professeurs particuliers chaque
-
-                                jour. TAELAM vous donne la
-
-                                possibilité de créer un compte
-                            </small>
-                        </div>
-
-                        <div class="col-md-3">
-                            <small>Pas d’intermédiaire, c’est à votre
-
-                                guise ! Vous déterminez le prix de
-
-                                votre cours, votre disponibilité et
-
-                                le choix de vos élèves
-                            </small>
-                        </div>
-
-                        <div class="col-md-3">
-                            <small>Des élèves vous contactent, échangez avec
-
-                                eux et acceptez ou refusez leurs demandes
-                            </small>
-                        </div>
-
-
-                        <div class="col-md-3">
-                            <small>Consultez et suivez vos cours,
-
-                                organisez-vous grâce à votre
-
-                                tableau de bord
-                            </small>
-                        </div>
-                    </div>
-                </div>
+    <div class="topmargin-big">
+        <div class="wraper">
+            <div class="home-share-pinion col-md-12">
+                <h2 id="student" class="section-title">Plateforme de partage de connaissances entre particuliers</h2>
             </div>
         </div>
     </div>
 
 
-    <!-- four ============= -->
-    <div class="topmargin-xtra-big section">
-        <div class="wrapper">
-            <div class="home-share-opinion">
-                <div class="col-md-12 topmargin-big"><h2 class="section-title">Avec Taelam, c'est facile !</h2></div>
-                <div class="topmargin-big col-md-12">
-                    <div class="col-md-12">
-                        <div class="col-md-3"><i style="color:#7663ff;"class="fa fa-binoculars fa-5x clearfix"></i></div>
-                        <div class="col-md-3"><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i></div>
-                        <div class="col-md-3"><i style="color:#6a91ff;" class="fa fa-calendar-check-o fa-5x clearfix"></i></div>
-                        <div class="col-md-3"><i style="color:#ffcc66;"class="fa fa-thumbs-o-up fa-5x clearfix"></i></div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="col-md-3">Découvrez des activités et des professeurs partout au Maroc</div>
-                        <div class="col-md-3">Trouvez parmi les professeurs sélectionnés, Votre professeur</div>
-                        <div class="col-md-3">Réservez votre activité</div>
-                        <div class="col-md-3">Commencez à apprendre !</div>
-                    </div>
-
-                    <div class="col-md-12 topmargin-small">
-                        <div class="col-md-3">
-                            <small>En un clic, Taelam vous
-
-                                propose une liste de professeurs
-
-                                et d’activités multiples pour tous
-
-                                les goûts et les budgets près de
-
-                                chez vous
-                            </small>
-                        </div>
-
-                        <div class="col-md-3">
-                            <small>Choisissez des professeurs
-
-                                sélectionnés et vérifiés par nos
-
-                                soins. Fixez vos objectifs avec votre
-
-                                professeur et atteignez-les grâce à
-
-                                un suivi personnalisé
-                            </small>
-                        </div>
-
-                        <div class="col-md-3">
-                            <small>Après avoir sélectionné une
-
-                                matière et un lieu, réservez
-
-                                un cours avec le professeur
-
-                                qui correspond le mieux à
-
-                                vos attentes
-                            </small>
-                        </div>
-
-
-                        <div class="col-md-3">
-                            <small>Apprenez, échangez
-
-                                ou perfectionnez vos
-
-                                connaissances
-                            </small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div>
-        <div class="scrolling-pane topmargin-lg">
-            <h2 class="section-title">Pourquoi choisir Taelam ?</h2>
-
-            <div class="row">
-                <ul id="bubbles">
-                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
-                        <div class="fa fa-refresh fa-3x"></div>
-                        <a href="">Flexibilité</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
-                        <div class="fa fa-check fa-3x"></div>
-                        <a href="">Profils vérifiés</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
-                        <div class="fa fa-handshake-o fa-3x"></div>
-                        <a href="">Sans intermédiaire</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
-                        <div class="fa fa-money fa-3x"></div>
-                        <a href="">Économique</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
-                        <div class="fa fa-lock fa-3x"></div>
-                        <a href="">Sécurisé</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
-                        <div class="fa fa-flask fa-3x"></div>
-                        <a href="">Des activités variées</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     {!! HTML::script("js/slick.min.js") !!}
 
@@ -294,9 +117,9 @@
             });
         });
 
-        $("#howto-btn").click(function () {
+        $("#student-btn").click(function () {
             $('html, body').animate({
-                scrollTop: $("#howto").offset().top
+                scrollTop: $("#student").offset().top
             }, 1500);
         });
 

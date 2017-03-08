@@ -50,7 +50,7 @@
 
   <body>
     <div class="header">
-      <nav class="navbar   navbar-site navbar-default" role="navigation">
+      <nav class="navbar   navbar-site" role="navigation">
         <div class="container">
           <div class="navbar-header">
             <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">

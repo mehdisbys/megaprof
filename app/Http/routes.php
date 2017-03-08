@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
 
+    Route::get('/professeur', 'ListAdvertController@welcomeProfesseur');
+
 //Social
     Route::get('/redirect', 'SocialAuthController@redirect');
     Route::get('/callback', 'SocialAuthController@callback');
