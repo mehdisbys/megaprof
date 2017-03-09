@@ -1,5 +1,5 @@
 
-{!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
+{!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
 {!! HTML::script("js/jquery.geocomplete.min.js") !!}
 {!! HTML::script("js/jquery-ui.js")!!}
 {!! HTML::style("css/fa/css/font-awesome.css") !!}
