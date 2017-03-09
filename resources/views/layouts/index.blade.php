@@ -23,10 +23,10 @@
 
         <div class="col-md-12 btns">
             <div class="student-btn-div">
-                <a id="student-btn" href="#student-info" class="btn-welcome btn-student ">Trouver un Professeur</a>
+                <a id="student-btn" href="#student-info" class="btn btn-info btn-lg ">Trouver un Professeur</a>
             </div>
             <div class=" teacher-btn-div">
-                <a href="/professeur" class="btn-welcome btn-teacher">Donner des Cours</a>
+                <a href="/professeur" class="btn btn-warning btn-lg ">Donner des Cours</a>
             </div>
         </div>
 
@@ -128,7 +128,7 @@
 
             <div class="col-md-12 row student-get-interest">
 
-                <form action="/register_student_interest" method="post" id="search_form" data-parsley-validate>
+                <form id="search_form" action="student" method="POST">
                     {!! csrf_field() !!}
 
                     <div class="col-md-1">
@@ -158,6 +158,12 @@
                     <div class="student-input-submit-button">
                         <button id="submit-bttn" class="btn btn-info btn-lg" type="submit">Envoyer</button>
                     </div>
+                    <div class="location-details no-visibility">
+                        {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
+                        {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
+                        {!! Form::hidden('loc_name', null, ['id' => 'loc_name']) !!}
+                    </div>
+
                 </form>
 
             </div>
@@ -201,8 +207,12 @@
                     return;
                 }
 
+                //TODO @postlaunch remove following line
+                this.submit();
+
                 url = "/annonces/" + subject + "/" + loc;
                 url = url.replace(/ /g, '-');
+
                 window.location.assign(url);
             };
 
@@ -240,7 +250,7 @@
 
         $("#student-btn").click(function () {
             $('html, body').animate({
-                scrollTop: $("#student").offset().top
+                scrollTop: $("#search_form").offset().top
             }, 1500);
         });
 

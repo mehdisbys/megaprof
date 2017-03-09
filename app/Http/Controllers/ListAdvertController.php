@@ -6,6 +6,7 @@ use App\Helpers\Contracts\SearchAdvertContract;
 use App\Models\Advert;
 use App\Models\Comment;
 use App\Models\Notification;
+use App\Models\RegisterStudentInterest;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
 use App\Models\UserRatings;
@@ -37,6 +38,21 @@ class ListAdvertController extends Controller
         $notificationsCount = Notification::currentUserNotificationsCount();
 
         return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'notificationsCount'));
+    }
+
+    public function registerStudentInterest(Request $request)
+    {
+        $spam = (!empty($request->input('location_city_lat'))) or (!empty($request->input('location_city_long')));
+
+        if($spam == false){
+            $inputs = $request->only(["city" , "subject" , "email", "lng", "lat", "loc_name"]);
+            $interest = RegisterStudentInterest::create($inputs);
+            $interest->save();
+        }
+
+        thanks('Nous avons enregistré vos préférences. Merci de votre aide !');
+
+        return redirect()->back();
     }
 
     public function allAdverts()

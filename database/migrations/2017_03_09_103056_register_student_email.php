@@ -16,8 +16,11 @@ class RegisterStudentEmail extends Migration
         Schema::create('register_student_interest', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email', 125);
-            $table->string('subjects', 325);
+            $table->string('subject', 325);
             $table->string('city', 325);
+            $table->string('loc_name', 325);
+            $table->string('lat', 20);
+            $table->string('lng', 20);
             $table->timestamps();
         });
     }

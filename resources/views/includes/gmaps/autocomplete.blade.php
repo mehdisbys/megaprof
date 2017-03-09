@@ -3,11 +3,11 @@
 
         init: function (settings) {
             gmaps.config = {
-                noPredictionsMsg  : "Aucune ville ne correspond à votre saisie",
-                locationInput     : 'location_input',
-                locationDetails   : '.location-details',
-                formID            : 'search_form',
-                submitCallBack    : null
+                noPredictionsMsg: "Aucune ville ne correspond à votre saisie",
+                locationInput: 'location_input',
+                locationDetails: '.location-details',
+                formID: 'search_form',
+                submitCallBack: null
             };
 
             $.extend(gmaps.config, settings);
@@ -39,10 +39,22 @@
 
             autocomplete.addListener('place_changed', function () {
                 var place = autocomplete.getPlace();
-                document.getElementById('latitude').value = place.geometry.location.lat();
-                document.getElementById('longitude').value = place.geometry.location.lng();
 
-                $("#" + gmaps.config.formID).submit();});
+                var latitude = document.getElementById('latitude');
+                var longitude = document.getElementById('longitude');
+                var loc_name = document.getElementById('loc_name');
+
+                if (latitude)
+                    latitude.value = place.geometry.location.lat();
+
+                if (longitude)
+                    longitude.value = place.geometry.location.lat();
+
+                if (loc_name)
+                    loc_name.value = place.name;
+
+                $("#" + gmaps.config.formID).submit();
+            });
 
             $("#location_input").on('keyup', function () {
                 if ($(this).val()) {
@@ -63,7 +75,7 @@
                     toastr.info(gmaps.config.noPredictionsMsg);
                     return;
                 }
-                if(gmaps.config.submitCallBack){
+                if (gmaps.config.submitCallBack) {
                     gmaps.config.submitCallBack();
                 }
             };

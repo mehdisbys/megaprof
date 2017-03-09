@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
-
+//Lancement
     Route::get('/professeur', 'ListAdvertController@welcomeProfesseur');
 
 //Social
@@ -11,6 +11,7 @@ Route::group(['middleware' => ['web']], function () {
 
 //Main Page
     Route::get('/', 'ListAdvertController@index');
+    Route::post('/student','ListAdvertController@registerStudentInterest');
     Route::get('/annonces', 'ListAdvertController@allAdverts');
     Route::get('/annonces/{subject}/{town}', 'ListAdvertController@searchByURL');
     Route::get('/annonces/{subject}', 'ListAdvertController@searchByURL');
