@@ -52,6 +52,7 @@ class Notification extends Model
 
     public static function currentUserNotificationsCount()
     {
-        return static::where(['user_id' => \Auth::id(), 'hide' => 0])->count();
+        $count = static::where(['user_id' => \Auth::id(), 'hide' => 0])->count();
+        return  $count > 0 ? $count : null;
     }
 }
