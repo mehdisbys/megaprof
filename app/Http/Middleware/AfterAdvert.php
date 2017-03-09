@@ -20,6 +20,7 @@ class AfterAdvert
 
         $original = $response->getOriginalContent();
 
+
         $config = \Config::get("adverts.{$original->getMethod()}");
 
         switch ($config['action']) {
