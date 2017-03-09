@@ -7,16 +7,19 @@
     {!! HTML::style("css/slick.css") !!}
     {!! HTML::style("css/slick-theme.css") !!}
 
-    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
+    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
     {!! HTML::script("js/locationpicker.jquery.js") !!}
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::script("js/jquery.form.min.js") !!}
+    {!! HTML::script("js/parsley.min.js")!!}
+
 
     <!-- one ============= -->
     <div class="home-search ">
 
 
         <h1 class="search-title">Apprenez sans limites</h1>
+
 
         <div class="col-md-12 btns">
             <div class="student-btn-div">
@@ -124,18 +127,39 @@
             <div class="student-presentation">Entrez votre ville, l'activité de votre choix et votre email</div>
 
             <div class="col-md-12 row student-get-interest">
-                <div class="col-md-2"></div>
-                <div class="student-input  col-md-3">
-                    <input type="text" class="home-search-input " placeholder="Ville">
-                </div>
-                <div class="student-input  col-md-3">
 
-                    <input type="text" class="home-search-input " placeholder="Activité">
-                </div>
-                <div class="student-input  col-md-3 ">
+                <form action="/register_student_interest" method="post" id="search_form" data-parsley-validate>
+                    {!! csrf_field() !!}
 
-                    <input type="text" class="home-search-input " placeholder="Email">
-                </div>
+                    <div class="col-md-1">
+                        <input type="hidden" class="" name="location_city_lat">
+                        <input type="hidden" class="" name="location_city_long">
+                    </div>
+
+                    <div class="student-input  col-md-3">
+                        <input type="text" class="home-search-input " placeholder="Ville" name="city"
+                               id="location_input">
+                    </div>
+
+                    <div class="student-input  col-md-3">
+
+                        <input id="subject_input" type="text" class="home-search-input "
+                               placeholder="Ex: Anglais, Piano, Yoga" name="subject"
+                               data-minchars="1"
+                               data-autofirst="1"
+                               data-list="{!! $subsubjects !!}">
+                    </div>
+
+                    <div class="student-input col-md-3">
+                        <input type="email" class="home-search-input" placeholder="Email" name="email" required
+                               data-parsley-required-message="Un email valide est requis." data-parsley-type="email">
+                    </div>
+
+                    <div class="student-input-submit-button">
+                        <button id="submit-bttn" class="btn btn-info btn-lg" type="submit">Envoyer</button>
+                    </div>
+                </form>
+
             </div>
 
             <div class="student-presentation well-get-in-touch">Nous vous contacterons dès que des professeurs dans la
@@ -205,7 +229,11 @@
 
             new Awesomplete(document.getElementById('subject_input'), {
                 filter: function (text, input) {
-                    return new RegExp("^" + removeDiacritics(input.trim()), "i").test(removeDiacritics(text));
+                    return new RegExp("^" + removeDiacritics(input.match(/[^,]*$/)[0].trim()), "i").test(removeDiacritics(text));
+                },
+                replace: function (text) {
+                    var before = this.input.value.match(/^.+,\s*|/)[0];
+                    this.input.value = before + text + ", ";
                 }
             });
         });
