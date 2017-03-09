@@ -5326,7 +5326,7 @@ ul.profil_statut li span.verified:before {
 }
 
 .home-search-input {
-    padding: 17px 77px 17px 23px;
+    padding: 17px 5px 17px 10px;
     width: 100%;
     font-size: 16px;
     border-width: 0;
@@ -12936,6 +12936,14 @@ input[type="radio"] {
 
 .student-get-interest {
     margin-top: 50px;
+}
+
+.student-get-interest, .home-search-input {
+    color: black;
+}
+
+#submit-bttn {
+    padding: 18px;
 }
 
 .well-get-in-touch {
