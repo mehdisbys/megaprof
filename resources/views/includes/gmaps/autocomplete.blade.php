@@ -40,15 +40,15 @@
             autocomplete.addListener('place_changed', function () {
                 var place = autocomplete.getPlace();
 
-                var latitude = document.getElementById('latitude');
+                var latitude  = document.getElementById('latitude');
                 var longitude = document.getElementById('longitude');
-                var loc_name = document.getElementById('loc_name');
+                var loc_name  = document.getElementById('loc_name');
 
                 if (latitude)
                     latitude.value = place.geometry.location.lat();
 
                 if (longitude)
-                    longitude.value = place.geometry.location.lat();
+                    longitude.value = place.geometry.location.lng();
 
                 if (loc_name)
                     loc_name.value = place.name;

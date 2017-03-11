@@ -12,6 +12,7 @@
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::script("js/jquery.form.min.js") !!}
     {!! HTML::script("js/parsley.min.js")!!}
+    {!! HTML::script("js/jquery.vticker.min.js")!!}
 
 
     <!-- one ============= -->
@@ -20,6 +21,18 @@
 
         <h1 class="search-title">Apprenez sans limites</h1>
 
+        <div id="matieres" class="matieres-scroller">
+            <ul>
+                <li>Anglais</li>
+                <li>Yoga</li>
+                <li>Piano</li>
+                <li>Surf</li>
+                <li>Français</li>
+                <li>Cuisine</li>
+                <li>Théâtre</li>
+                <li>Mathématiques</li>
+            </ul>
+        </div>
 
         <div class="col-md-12 btns">
             <div class="student-btn-div">
@@ -254,6 +267,9 @@
             }, 1500);
         });
 
+        $(function() {
+            $('#matieres').vTicker('init',{pause: 3000});
+        });
     </script>
 
     @include('includes.gmaps.autocomplete')

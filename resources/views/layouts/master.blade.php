@@ -72,10 +72,7 @@
                 <li><a class="header-item" href="/logout">Se déconnecter</a></li>
                 <li><a class="header-item" href="/faq">Aide</a></li>
               @else
-                <li><a class="header-item" href="/login">Créer une annonce</a></li>
-                <li><a class="header-item" href="/login">Se connecter</a></li>
-                <li><a class="header-item" href="/inscription">S'inscrire</a></li>
-                <li><a class="header-item" href="/faq">Aide</a></li>
+                  <li><a class="header-item" href="/faq">Comment Ça Marche</a></li>
               @endif
               <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des cours</a></li>
 

@@ -12950,3 +12950,14 @@ input[type="radio"] {
     margin-top: 150px;
     margin-bottom: 40px;
 }
+
+.matieres-scroller {
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    margin: auto;
+    width:20%;
+    margin-top: 50px;
+    font-weight: bold;
+
+}
