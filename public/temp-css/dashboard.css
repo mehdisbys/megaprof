@@ -12878,17 +12878,7 @@ input[type="radio"] {
     margin-top: 40px !important;
 }
 
-@media all and (max-width: 980px) {
 
-   .teacher-btn-div {
-        margin-left : 23%;
-       margin-top: 60px !important;
-    }
-
-    .student-btn-div {
-        margin-left : 23%;
-    }
-}
 
 
 
@@ -12959,5 +12949,15 @@ input[type="radio"] {
     width:20%;
     margin-top: 50px;
     font-weight: bold;
+
+}
+
+
+@media all and (max-width: 980px) {
+
+    .matieres-scroller {
+        width:60%;
+
+    }
 
 }
