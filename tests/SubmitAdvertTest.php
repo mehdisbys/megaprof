@@ -1,4 +1,6 @@
 <?php
+namespace Tests;
+
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Faker\Factory as Faker;

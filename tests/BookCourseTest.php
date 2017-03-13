@@ -1,13 +1,18 @@
 <?php
+namespace Tests;
 
+
+use Illuminate\Auth\AuthManager;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Models\User;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Dusk\Browser;
 
-class BookCourseTest extends TestCase
+class BookCourseTest extends DuskTestCase
 {
     use DatabaseTransactions;
-   // use WithoutMiddleware;
+    // use WithoutMiddleware;
 
     private $prof;
 
@@ -17,21 +22,20 @@ class BookCourseTest extends TestCase
     /** @test */
     public function test_book_course()
     {
-        //$this->expectsEvents([\App\Events\BookingRequestSent::class]);
-
         $advert = $this->exampleAdvert();
 
         $this->prof = $advert->prof;
 
-        $bookingForm = $this->fakebookingform($advert);
+        $bookingForm = $this->fakeBookingForm($advert);
 
-        $this->loginAsUser();
-
-        $this->visit("/$advert->slug");
-        $this->see('réserver un cours')
-            ->click('Réserver un cours')
-            ->see('dites-en un peu plus à')
-            ->submitForm('Envoyer ma demande', $bookingForm);
+        $this->browse(function (Browser $browser) use ($advert, $bookingForm) {
+            $this->loginAsUser();
+            $browser->visit("/$advert->slug")
+                ->assertSee('Réserver un cours')
+                ->clickLink('Réserver un cours')
+                ->assertSee('dites-en un peu plus à')
+                ->submitForm('Envoyer ma demande', $bookingForm);
+        });
 
         $this->booking = \App\Models\Booking::where(['presentation' => $bookingForm['presentation']])->get();
         $this->assertNotNull($this->booking);
@@ -52,7 +56,7 @@ class BookCourseTest extends TestCase
         $this->loginAsUser($this->prof);
 
         $this->visit("/mon-compte")
-             ->see("Mes demandes de cours");
+            ->see("Mes demandes de cours");
 
         $this->visit("/demande/{$booking->id}/yes");
 
@@ -95,16 +99,16 @@ class BookCourseTest extends TestCase
 
         return
             [
-                'advert_id' => $advert->id,
+                'advert_id'    => $advert->id,
                 'prof_user_id' => $advert->user->id,
                 'presentation' => $faker->paragraph,
-                'date' => 'this_week',
-                'location' => 'any',
-                'client' => 'myself',
-                'gender' => 'man',
-                'mobile' => '0623435324',
-                'birthdate' => '06/12/1984',
-                'addresse' => '131 Victoria Street, Londres, Royaume-Uni'
+                'date'         => 'this_week',
+                'location'     => 'any',
+                'client'       => 'myself',
+                'gender'       => 'man',
+                'mobile'       => '0623435324',
+                'birthdate'    => '06/12/1984',
+                'addresse'     => '131 Victoria Street, Londres, Royaume-Uni',
             ];
     }
 
@@ -117,7 +121,7 @@ class BookCourseTest extends TestCase
     {
         $user = $usr ?? User::first();
 
-        \Auth::login($user);
+        Auth::loginUsingId($user->id);
 
         return $user;
     }

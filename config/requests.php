@@ -8,6 +8,5 @@ return [
         'email' => 'required|email|unique:users',
         'password' => 'required|confirmed',
         'password_confirmation' => 'required',
-        'captcha' => 'required',
     ]
 ];

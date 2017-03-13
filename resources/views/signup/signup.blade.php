@@ -31,7 +31,7 @@
 
           @include('auth.captcha')
 
-          <input type="submit" value="S'inscrire" class="button" />
+          <input type="submit" value="S'inscrire" class="button" id="submit-btn-register"/>
           <p class="register-member">Déjà membre Taelam ?
             <a href="login" class="register-member-link register-switch-panel">Connexion</a>
           </p>
