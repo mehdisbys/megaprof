@@ -6742,7 +6742,8 @@ ul.profil_statut li span.verified:before {
 .connection-form {
     margin: auto;
     max-width: 220px;
-    text-align: center
+    text-align: center;
+    margin-top: 50px;
 }
 
 .register-form .text-separator,
@@ -12894,7 +12895,7 @@ input[type="radio"] {
 
 
 .teacher-btn-div {
-    margin-top: 40px !important;
+    margin-top: 40px;
 }
 
 
@@ -12979,4 +12980,26 @@ input[type="radio"] {
 
     }
 
+}
+
+.prof-info {
+    background-color: white;
+    min-height: 500px;
+    color: black;
+    text-align: center;
+    font-size: 16px;
+}
+
+.prof-short-presentation {
+    font-size: 18px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(0,0,0,0.2);
+
+    color: white;
+}
+
+#prof-register {
+    margin-top: 25%;
 }

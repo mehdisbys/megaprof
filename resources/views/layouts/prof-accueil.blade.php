@@ -17,6 +17,10 @@
 
 
         <h1 class="search-title-prof">Partagez vos compétences</h1>
+
+        <p class="prof-short-presentation">Partager sa passion ou ses compétences et être rémunéré c'est facile avec
+            Taelam.
+            Des dizaines de matières et activités variées sont disponibles !</p>
         <div class="home-search-form-inner autocomplete">
 
         </div>
@@ -28,58 +32,68 @@
     <!-- three ============= -->
 
 
-    <div class="">
-        <div class="wrapper">
-            <div class="col-md-12">
-                <div class="col-md-12 topmargin-big"><h2 class="section-title">Vous souhaitez partager votre savoir
-                        ?</h2></div>
+    <div class="prof-info col-md-12">
+        <div class="wraper">
+            <div class="comd-12">
+                <div class="col-md-12 topmargin-big"><h2 class="section-title">Diffusez votre annonce en quelques
+                        clics</h2></div>
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12">
-                        <div class="col-md-3"><h4> 1. Créer une annonce gratuitement</h4></div>
-                        <div class="col-md-3"><h4>2. Fixez vos propres tarifs</h4></div>
-                        <div class="col-md-3"><h4>3. Répondez aux demandes de vos élèves</h4></div>
-                        <div class="col-md-3"><h4>4. Construisez votre business</h4></div>
-                    </div>
-
-                    <div class="col-md-12 topmargin-small bottommargin-big">
                         <div class="col-md-3">
-                            <small>Des milliers de personnes cherchent
+
+                            <div class="col-md-12"><i style="color:#6a91ff;"
+                                                      class="fa fa-pencil-square-o fa-5x clearfix"></i></div>
+                            <div class="col-md-12"> <h4> Créer une annonce gratuitement</h4></div>
+                            <div class="col-md-12"><small>Des milliers de personnes cherchent
 
                                 des professeurs particuliers chaque
 
                                 jour. TAELAM vous donne la
 
                                 possibilité de créer un compte
-                            </small>
-                        </div>
+                            </small></div>
 
+                        </div>
                         <div class="col-md-3">
-                            <small>Pas d’intermédiaire, c’est à votre
+                            <div class="col-md-12"><i style="color:#b0ed7c;"
+                                                      class="fa fa-money fa-5x clearfix"></i></div>
+                            <div class="col-md-12"> <h4>Fixez vos propres tarifs</h4></div>
+                            <div class="col-md-12"> <small>Pas d’intermédiaire, c’est à votre
 
                                 guise ! Vous déterminez le prix de
 
                                 votre cours, votre disponibilité et
 
                                 le choix de vos élèves
-                            </small>
+                            </small></div>
                         </div>
-
                         <div class="col-md-3">
-                            <small>Des élèves vous contactent, échangez avec
+                            <div class="col-md-12"><i style="color:#fd875e;"
+                                                      class="fa fa-users fa-5x clearfix"></i></div>
+
+                            <div class="col-md-12"> <h4>Répondez aux demandes de vos élèves</h4></div>
+                            <div class="col-md-12"> <small>Des élèves vous contactent, échangez avec
 
                                 eux et acceptez ou refusez leurs demandes
-                            </small>
+                            </small></div>
                         </div>
-
-
                         <div class="col-md-3">
+                            <div class="col-md-12"><i style="color:#ffcc66;"
+                                                      class="fa fa-dashboard fa-5x clearfix"></i></div>
+
+                            <div class="col-md-12"><h4>Construisez votre business</h4></div>
+                            <div class="col-md-12">
                             <small>Consultez et suivez vos cours,
 
                                 organisez-vous grâce à votre
 
                                 tableau de bord
-                            </small>
+                            </small></div>
                         </div>
+                    </div>
+
+                    <div id="prof-register" class="teacher-btn-div">
+                        <a href="/inscription" class="btn btn-success btn-lg "><i class="fa fa-sign-in"></i> Créer un compte gratuitement</a>
                     </div>
                 </div>
             </div>
