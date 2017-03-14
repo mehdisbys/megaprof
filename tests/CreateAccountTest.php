@@ -15,10 +15,11 @@ class CreateAccountTest extends DuskTestCase
     public function testAccountCreation()
     {
         $email = 'Ali.zaoua@ma.com';
-        $user = User::where(['email' => $email])->first();
+        $user  = User::where(['email' => $email])->first();
 
-        if($user)
+        if ($user) {
             $user->delete();
+        }
 
         $this->browse(function (Browser $browser) {
             // When we register...
@@ -51,9 +52,15 @@ class CreateAccountTest extends DuskTestCase
 
         });
 
-        
+
         $this->assertDatabaseHas('users', ['email'     => $email,
                                            'confirmed' => 1]);
+
+        $user = User::where(['email' => $email])->first();
+
+        if ($user) {
+            $user->delete();
+        }
 
 //        $u = \App\Models\User::whereEmail($email)->first();
 //

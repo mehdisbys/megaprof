@@ -13,14 +13,13 @@
     {!! HTML::script("js/jquery.form.min.js") !!}
 
     <!-- one ============= -->
-    <div class="home-search">
+    <div class="home-search-prof">
 
 
-        <h1 class="search-title">Apprenez sans limites</h1>
+        <h1 class="search-title-prof">Partagez vos compétences</h1>
         <div class="home-search-form-inner autocomplete">
 
         </div>
-        <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div>
     </div>
 
     <!-- two ============= -->
