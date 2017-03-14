@@ -21,8 +21,9 @@
         <p class="prof-short-presentation">Partager sa passion ou ses compétences et être rémunéré c'est facile avec
             Taelam.
             Des dizaines de matières et activités variées sont disponibles !</p>
-        <div class="home-search-form-inner autocomplete">
 
+        <div id="prof-register" class="teacher-btn-div">
+            <a href="/inscription" class="btn btn-success btn-lg "><i class="fa fa-pencil-square-o"></i> Créer une annonce</a>
         </div>
     </div>
 
@@ -43,39 +44,45 @@
 
                             <div class="col-md-12"><i style="color:#6a91ff;"
                                                       class="fa fa-pencil-square-o fa-5x clearfix"></i></div>
-                            <div class="col-md-12"> <h4> Créer une annonce gratuitement</h4></div>
-                            <div class="col-md-12"><small>Des milliers de personnes cherchent
+                            <div class="col-md-12"><h4> Créer une annonce gratuitement</h4></div>
+                            <div class="col-md-12">
+                                <small>Des milliers de personnes cherchent
 
-                                des professeurs particuliers chaque
+                                    des professeurs particuliers chaque
 
-                                jour. TAELAM vous donne la
+                                    jour. TAELAM vous donne la
 
-                                possibilité de créer un compte
-                            </small></div>
+                                    possibilité de créer un compte
+                                </small>
+                            </div>
 
                         </div>
                         <div class="col-md-3">
                             <div class="col-md-12"><i style="color:#b0ed7c;"
                                                       class="fa fa-money fa-5x clearfix"></i></div>
-                            <div class="col-md-12"> <h4>Fixez vos propres tarifs</h4></div>
-                            <div class="col-md-12"> <small>Pas d’intermédiaire, c’est à votre
+                            <div class="col-md-12"><h4>Fixez vos propres tarifs</h4></div>
+                            <div class="col-md-12">
+                                <small>Pas d’intermédiaire, c’est à votre
 
-                                guise ! Vous déterminez le prix de
+                                    guise ! Vous déterminez le prix de
 
-                                votre cours, votre disponibilité et
+                                    votre cours, votre disponibilité et
 
-                                le choix de vos élèves
-                            </small></div>
+                                    le choix de vos élèves
+                                </small>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <div class="col-md-12"><i style="color:#fd875e;"
                                                       class="fa fa-users fa-5x clearfix"></i></div>
 
-                            <div class="col-md-12"> <h4>Répondez aux demandes de vos élèves</h4></div>
-                            <div class="col-md-12"> <small>Des élèves vous contactent, échangez avec
+                            <div class="col-md-12"><h4>Répondez aux demandes de vos élèves</h4></div>
+                            <div class="col-md-12">
+                                <small>Des élèves vous contactent, échangez avec
 
-                                eux et acceptez ou refusez leurs demandes
-                            </small></div>
+                                    eux et acceptez ou refusez leurs demandes
+                                </small>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <div class="col-md-12"><i style="color:#ffcc66;"
@@ -83,18 +90,17 @@
 
                             <div class="col-md-12"><h4>Construisez votre business</h4></div>
                             <div class="col-md-12">
-                            <small>Consultez et suivez vos cours,
+                                <small>Consultez et suivez vos cours,
 
-                                organisez-vous grâce à votre
+                                    organisez-vous grâce à votre
 
-                                tableau de bord
-                            </small></div>
+                                    tableau de bord
+                                </small>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="prof-register" class="teacher-btn-div">
-                        <a href="/inscription" class="btn btn-success btn-lg "><i class="fa fa-sign-in"></i> Créer un compte gratuitement</a>
-                    </div>
+
                 </div>
             </div>
         </div>

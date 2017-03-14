@@ -8901,7 +8901,7 @@ ul.profil_statut li span.verified:before {
     letter-spacing: 5px;
     font-weight: bold;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .search-end-message .search-title {
@@ -12634,7 +12634,6 @@ a.traduction_annonce {
     line-height: 60px;
 }
 
-
 .scrolling-pane ul li .subject-icon {
     background-color: #f57009;
     width: 60px;
@@ -12893,21 +12892,16 @@ input[type="radio"] {
     border-bottom-right-radius: 100px;
 }
 
-
 .teacher-btn-div {
     margin-top: 40px;
 }
-
-
-
-
 
 .btns {
     margin-top: 15%;
     text-align: center;
 }
 
-.btn-welcome{
+.btn-welcome {
     -webkit-border-radius: 28px;
     -moz-border-radius: 28px;
     border-radius: 28px;
@@ -12966,20 +12960,18 @@ input[type="radio"] {
     color: black;
     text-align: center;
     margin: auto;
-    width:20%;
+    width: 20%;
     margin-top: 50px;
     font-weight: bold;
 
 }
 
-
 @media all and (max-width: 980px) {
 
     .matieres-scroller {
-        width:60%;
+        width: 60%;
 
     }
-
 }
 
 .prof-info {
@@ -12995,11 +12987,12 @@ input[type="radio"] {
     width: 40%;
     margin-left: auto;
     margin-right: auto;
-    background: rgba(0,0,0,0.2);
-
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
     color: white;
 }
 
 #prof-register {
-    margin-top: 25%;
+    margin-top: 10%;
+    text-align: center;
 }
