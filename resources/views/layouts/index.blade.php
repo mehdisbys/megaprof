@@ -21,7 +21,7 @@
 
         <h1 class="search-title">Apprenez sans limites</h1>
 
-        <div id="matieres" class="matieres-scroller">
+        <div id="matieres" class="matieres-scroller hidden">
             <ul>
                 <li>Anglais</li>
                 <li>Yoga</li>
@@ -268,7 +268,8 @@
         });
 
         $(function() {
-            $('#matieres').vTicker('init',{pause: 3000});
+            $('#matieres').removeClass('hidden');
+            $('#matieres').vTicker('init',{pause: 2000, mousePause:false});
         });
     </script>
 
