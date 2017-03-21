@@ -10,7 +10,7 @@
 
     <p>Pour commencer à bénéficier de nos services, merci de confirmer la création de votre compte en vous cliquant sur le bouton suivant :</p>
     <div class="" style="text-align: center">
-        <a href="{{$link}}" class="btn btn-success btn-lg ">Se Connecter</a>
+        <a href="{{$link}}" class="btn btn-success">Se Connecter</a>
     </div>
     <br>
     <p>Nous vous remercions de votre confiance,suivez-nous sur les réseaux sociaux pour être au courant de l'actualité

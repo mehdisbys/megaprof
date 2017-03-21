@@ -8,7 +8,8 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Laravel\Cashier\Billable;
 use Laravel\Cashier\Contracts\Billable as BillableContract;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
 
     use Authenticatable, CanResetPassword;
 
@@ -24,17 +25,34 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['gender', 'birthdate', 'firstname', 'lastname', 'email', 'telephone', 'password', 'confirmation_code', 'auto_created', 'confirmed', 'facebook_id'];
+    protected $fillable = ['gender',
+        'birthdate',
+        'firstname',
+        'lastname',
+        'email',
+        'telephone',
+        'password',
+        'confirmation_code',
+        'auto_created',
+        'confirmed',
+        'facebook_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'confirmation_code', 'confirmed', 'remember_token', 'token'];
+    protected $hidden = ['password',
+        'confirmation_code',
+        'confirmed',
+        'remember_token',
+        'token'];
 
 
-    protected $dates = ['created_at', 'updated_at', 'trial_ends_at', 'subscription_ends_at'];
+    protected $dates = ['created_at',
+        'updated_at',
+        'trial_ends_at',
+        'subscription_ends_at'];
 
 
     public function getAuthIdentifierName()
@@ -44,12 +62,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function ownsAdvert($id)
     {
-        return Advert::whereId($id)->where('user_id',$this->id)->exists();
+        return Advert::whereId($id)->where('user_id', $this->id)->exists();
     }
 
     public function ownsAdvertBySlug(string $slug)
     {
-        return Advert::whereSlug($slug)->where('user_id',$this->id)->exists();
+        return Advert::whereSlug($slug)->where('user_id', $this->id)->exists();
     }
 
     public function hasAdvertsCredits($id = NULL)
@@ -115,20 +133,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
 
         return User::firstOrCreate([
-            'username' => $userData->name,
-            'email' => $userData->email,
-        ]);
+                                       'username' => $userData->name,
+                                       'email'    => $userData->email,
+                                   ]);
     }
 
     public static function newUser(array $data)
     {
         return User::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'confirmation_code' => str_random(30)
-        ]);
+                                'firstname'         => $data['firstname'],
+                                'lastname'          => $data['lastname'],
+                                'email'             => $data['email'],
+                                'password'          => bcrypt($data['password']),
+                                'confirmation_code' => str_random(30),
+                            ]);
     }
 
     public function updateUser(array $data)
@@ -140,8 +158,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             if ($alreadyTaken) return false;
         }
 
-        $this->username = $data['username'];
-        $this->email = $data['email'];
+        $this->username  = $data['username'];
+        $this->email     = $data['email'];
         $this->telephone = $data['telephone'];
 
         return $this->save();
@@ -154,9 +172,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function confirmEmail()
     {
-        $this->confirmed = true;
-        $this->confirmation_code = null;
-        $this->save();
+        if ($this->confirmed == 0) {
+            $this->confirmed = -1;
+            $this->save();
+            return;
+        }
+
+        if ($this->confirmed == -1) {
+            $this->confirmed         = true;
+            $this->confirmation_code = null;
+            $this->save();
+        }
     }
 
     public function generateForgottenToken()
@@ -167,7 +193,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function confirmResetPassword(array $data)
     {
-        $this->password = bcrypt($data['password']);
+        $this->password        = bcrypt($data['password']);
         $this->forgotten_token = NULL;
         $this->save();
     }
