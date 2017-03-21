@@ -78,7 +78,7 @@
 
             </div>
             <div class="social-icons">
-                <a href="http://www.facebook.com/sharer.php?u=http://localhost:8000/{{$advert->slug}}"
+                <a href="http://www.facebook.com/sharer.php?u={{env('APP_URL')}}{{$advert->slug}}"
                    data-send="false"
                    data-layout="box_count"
                    data-width="60"
