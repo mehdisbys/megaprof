@@ -11,7 +11,7 @@ Route::group(['middleware' => ['web']], function () {
 
 //Main Page
     Route::get('/', 'ListAdvertController@index');
-    Route::post('/student','ListAdvertController@registerStudentInterest');
+    Route::post('/student', 'ListAdvertController@registerStudentInterest');
     Route::get('/annonces', 'ListAdvertController@allAdverts');
     Route::get('/annonces/{subject}/{town}', 'ListAdvertController@searchByURL');
     Route::get('/annonces/{subject}', 'ListAdvertController@searchByURL');
@@ -128,6 +128,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/validate-user-identification/{documentId}', 'IDdocumentController@validateDocumentId');
             Route::get('/annonces-en-attente-de-moderation', 'AdminController@listWaitingForApprovalAdverts');
             Route::post('/rejeter-annonce/{advert_id}', 'AdminController@advertRejected');
+            Route::get('/validate-advert/{advert_id}', 'AdminController@advertAccepted');
         });
 
     });

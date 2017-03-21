@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\AdvertPublished;
+use App\Events\AdvertWasAcceptedByAdmin;
 use App\Events\AdvertWasRejectedByAdmin;
 use App\Events\BookingRequestReply;
 use App\Events\BookingRequestSent;
@@ -56,6 +57,10 @@ class EventServiceProvider extends ServiceProvider
             [
                 NotifyProfAdvertWasRejected::class,
             ],
+
+        AdvertWasAcceptedByAdmin::class => [
+
+        ]
     ];
 
     /**

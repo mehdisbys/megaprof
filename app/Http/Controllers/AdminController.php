@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AdvertWasAcceptedByAdmin;
 use App\Events\AdvertWasRejectedByAdmin;
 use App\Models\Advert;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,6 +30,21 @@ class AdminController extends Controller
         $advert->save();
 
         event(new AdvertWasRejectedByAdmin($advert, $request->input('message')));
+
+        return redirect('/annonces-en-attente-de-moderation');
+    }
+
+    public function advertAccepted(int $advert_id)
+    {
+        $advert = Advert::find($advert_id);
+
+        $advert->approved_at = Carbon::now();
+
+        $advert->save();
+
+        event(new AdvertWasAcceptedByAdmin($advert));
+
+        thanks("L'annonce vient d'être mise en ligne");
 
         return redirect('/annonces-en-attente-de-moderation');
     }
