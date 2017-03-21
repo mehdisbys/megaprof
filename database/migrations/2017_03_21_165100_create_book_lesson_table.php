@@ -15,7 +15,7 @@ class CreateBookLessonTable extends Migration {
 		Schema::create('book_lesson', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('advert_id')->unsigned()->index('fk_advert_id_idx');
+			$table->integer('advert_id')->unsigned();
 			$table->integer('prof_user_id')->unsigned()->index('fk_userid_booking_idx');
 			$table->integer('student_user_id')->unsigned()->nullable()->index('fk_studentid_booking_idx');
 			$table->integer('subject_id')->unsigned()->nullable()->index('fk_subjectid_booking_idx');
@@ -27,11 +27,16 @@ class CreateBookLessonTable extends Migration {
 			$table->string('pick_a_location')->nullable();
 			$table->string('client', 45)->nullable();
 			$table->string('pick_a_client', 45)->nullable();
-			$table->dateTime('birthdate')->nullable();
+			$table->string('birthdate', 45)->nullable();
 			$table->string('gender', 45)->nullable();
 			$table->string('mobile', 45)->nullable();
 			$table->string('addresse')->nullable();
 			$table->timestamps();
+			$table->string('lng', 45)->nullable();
+			$table->string('lat', 45)->nullable();
+			$table->string('administrative_area_level_1')->nullable();
+			$table->string('locality')->nullable();
+			$table->string('country')->nullable();
 		});
 	}
 

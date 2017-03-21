@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration {
 			$table->increments('id');
 			$table->integer('source_user_id')->unsigned()->index('fk_sourceuserid_comments_idx');
 			$table->integer('target_user_id')->unsigned()->index('fk_targetuserid_comments_idx');
-			$table->integer('owner_advert_id')->unsigned()->nullable()->index('fk_owner_advertid_comments_idx');
+			$table->integer('owner_advert_id')->unsigned()->nullable();
 			$table->string('advert_id', 45);
 			$table->string('comment')->nullable();
 			$table->string('stars', 45)->nullable();

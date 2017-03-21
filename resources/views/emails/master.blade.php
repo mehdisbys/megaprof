@@ -35,7 +35,6 @@
 </head>
 
 <body>
-<div id="fb-root"></div>
 <div class="header">
     <div class="wrapper">
         <div class="header-inner">
@@ -54,8 +53,6 @@
         </div>
     </div>
 </div>
-@include('includes.success')
-@include('includes.error')
 <div class="page">
     @section('content')
     @show

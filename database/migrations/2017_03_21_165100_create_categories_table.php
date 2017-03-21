@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePermissionsTable extends Migration {
+class CreateCategoriesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,13 @@ class CreatePermissionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('permissions', function(Blueprint $table)
+		Schema::create('categories', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name')->unique();
-			$table->string('display_name')->nullable();
-			$table->string('description')->nullable();
+			$table->integer('parent_id')->unsigned()->nullable()->index('categories_parent_id_foreign');
+			$table->integer('order')->default(1);
+			$table->string('name');
+			$table->string('slug')->unique();
 			$table->timestamps();
 		});
 	}
@@ -30,7 +31,7 @@ class CreatePermissionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('permissions');
+		Schema::drop('categories');
 	}
 
 }

@@ -16,7 +16,7 @@ class CreateNotificationsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->index('fk_userid_notif_idx');
-			$table->integer('advert_id')->unsigned()->nullable()->index('fk_advertid_notif_idx');
+			$table->integer('advert_id')->unsigned()->nullable();
 			$table->string('table', 45)->nullable();
 			$table->string('item_id', 45)->nullable();
 			$table->string('name', 45);

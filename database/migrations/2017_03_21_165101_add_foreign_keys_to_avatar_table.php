@@ -14,7 +14,6 @@ class AddForeignKeysToAvatarTable extends Migration {
 	{
 		Schema::table('avatar', function(Blueprint $table)
 		{
-			$table->foreign('advert_id', 'fk_advertid_avatar')->references('id')->on('adverts')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('user_id', 'fk_userid_avatar')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
@@ -29,7 +28,6 @@ class AddForeignKeysToAvatarTable extends Migration {
 	{
 		Schema::table('avatar', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_advertid_avatar');
 			$table->dropForeign('fk_userid_avatar');
 		});
 	}
