@@ -39,7 +39,7 @@
                 @else
                     <button type="button" class="close">&times;</button>
                     <div class="col-md-10 topmargin-sm bottommargin-sm">
-                        {{$notification->message}}
+                        {!!  $notification->message !!}
                     </div>
                 @endif
 

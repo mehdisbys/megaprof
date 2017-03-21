@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Events\UserConfirmedAccountAndFirstLogin;
 use App\Http\Requests;
 use App\Http\Requests\Signup ;
 use App\Models\User;
@@ -75,6 +76,8 @@ class SignupController extends Controller
 		thanks("Bienvenue sur Taelam, votre compte a été crée avec succès !");
 
         Auth::login($user);
+
+        event(new UserConfirmedAccountAndFirstLogin($user));
 		
 		return redirect('/mon-compte');
 	}

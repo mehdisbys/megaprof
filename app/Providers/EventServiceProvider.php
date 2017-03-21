@@ -10,7 +10,9 @@ use App\Events\BookingRequestSent;
 use App\Events\IdDocumentSent;
 use App\Events\ProfCommentedOnStudent;
 use App\Events\StudentCommentedOnProf;
+use App\Events\UserConfirmedAccountAndFirstLogin;
 use App\Listeners\DashboardNotificationsAfterAdSubmission;
+use App\Listeners\FirstLoginListener;
 use App\Listeners\NotifyAdminIdDocumentSent;
 use App\Listeners\NotifyBookingReply;
 use App\Listeners\NotifyBookingRequest;
@@ -60,6 +62,10 @@ class EventServiceProvider extends ServiceProvider
 
         AdvertWasAcceptedByAdmin::class => [
 
+        ],
+        UserConfirmedAccountAndFirstLogin::class =>
+        [
+            FirstLoginListener::class
         ]
     ];
 

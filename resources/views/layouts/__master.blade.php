@@ -6,8 +6,11 @@
     ============================================= -->
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
           rel="stylesheet" type="text/css"/>
+
+
     {!! HTML::style('/css/bootstrap.css') !!}
     {!! HTML::style('/css/style.css')!!}
+    {!! HTML::style('/temp-css/dashboard.css') !!}
     {!! HTML::style('/css/dark.css')!!}
     {!! HTML::style('/css/font-icons.css')!!}
     {!! HTML::style('/css/animate.css')!!}
@@ -49,7 +52,8 @@
                 <nav class="navbar   navbar-site navbar-default" role="navigation">
                     <div class="container">
                         <div class="navbar-header">
-                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
+                                    type="button">
                                 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
                                         class="icon-bar"></span> <span class="icon-bar"></span></button>
                             <a class="header-logo header-logo-normal"
@@ -64,7 +68,9 @@
 
                                 @if(Auth::check())
                                     <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
-                                    <li><a class="header-item" href="/mon-compte">Mon Compte <span class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a></li>
+                                    <li><a class="header-item" href="/mon-compte">Mon Compte <span
+                                                    class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
+                                    </li>
                                     <li><a class="header-item" href="/logout">Se déconnecter</a></li>
                                     <li><a class="header-item" href="/faq">Aide</a></li>
 
@@ -73,7 +79,8 @@
                                     <li><a class="header-item" href="/login">Se connecter</a></li>
                                     <li><a class="header-item" href="/inscription">S'inscrire</a></li>
                                     <li><a class="header-item" href="/faq">Aide</a></li>
-                                    <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des cours</a></li>
+                                    <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
+                                            cours</a></li>
                                 @endif
 
 
