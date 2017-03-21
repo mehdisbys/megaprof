@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Requests\Signup ;
 use App\Models\User;
 use App\Helpers\Contracts\MailerContract;
+use Illuminate\Auth\AuthManager;
+use Illuminate\Support\Facades\Auth;
 
 class SignupController extends Controller
 {
@@ -71,8 +73,10 @@ class SignupController extends Controller
 		$user->confirmEmail();
 		
 		thanks("Bienvenue sur Taelam, votre compte a été crée avec succès !");
+
+        Auth::login($user);
 		
-		return redirect('login');
+		return redirect('/mon-compte');
 	}
 
     // Step 1 of password recovery
