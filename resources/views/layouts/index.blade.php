@@ -56,11 +56,7 @@
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <div class="col-md-12"><i style="color:#7663ff;"
-                                                      class="fa fa-binoculars fa-5x clearfix"></i></div>
-                            <div class="col-md-12">Découvrez des activités et des professeurs partout au Maroc</div>
-                            <div class="col-md-12">
-                                <small>En un clic, Taelam vous
+                            <div class="col-md-12" data-tooltip="En un clic, Taelam vous
 
                                     propose une liste de professeurs
 
@@ -69,17 +65,15 @@
                                     les goûts et les budgets près de
 
                                     chez vous
-                                </small>
-                            </div>
+                                "><i style="color:#7663ff;"
+                                                      class="fa fa-binoculars fa-5x clearfix"></i></div>
+                            <div class="col-md-12">Découvrez des activités et des professeurs partout au Maroc</div>
+
                         </div>
 
 
                         <div class="col-md-3">
-                            <div class="col-md-12"><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i>
-                            </div>
-                            <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, Votre professeur</div>
-                            <div class="col-md-12">
-                                <small>Choisissez des professeurs
+                            <div class="col-md-12" data-tooltip="Choisissez des professeurs
 
                                     sélectionnés et vérifiés par nos
 
@@ -88,16 +82,13 @@
                                     professeur et atteignez-les grâce à
 
                                     un suivi personnalisé
-                                </small>
+                                "><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i>
                             </div>
+                            <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, Votre professeur</div>
+
                         </div>
                         <div class="col-md-3">
-                            <div class="col-md-12"><i style="color:#6a91ff;"
-                                                      class="fa fa-calendar-check-o fa-5x clearfix"></i>
-                            </div>
-                            <div class="col-md-12">Réservez votre activité</div>
-                            <div class="col-md-12">
-                                <small>Après avoir sélectionné une
+                            <div class="col-md-12" data-tooltip="Après avoir sélectionné une
 
                                     matière et un lieu, réservez
 
@@ -106,25 +97,25 @@
                                     qui correspond le mieux à
 
                                     vos attentes
-                                </small>
+                                "><i style="color:#6a91ff;"
+                                                      class="fa fa-calendar-check-o fa-5x clearfix"></i>
                             </div>
+                            <div class="col-md-12">Réservez votre activité</div>
+
                         </div>
 
                         <div class="col-md-3">
-                            <div class="col-md-12"><i style="color:#ffcc66;"
+                            <div class="col-md-12" data-tooltip="Apprenez, échangez
+
+                                    ou perfectionnez vos
+
+                                    connaissances
+                                "><i style="color:#ffcc66;"
                                                       class="fa fa-thumbs-o-up fa-5x clearfix"></i>
                             </div>
                             <div class="col-md-12">
 
                                 <div class="col-md-12">Commencez à apprendre !</div>
-                            </div>
-                            <div class="col-md-12">
-                                <small>Apprenez, échangez
-
-                                    ou perfectionnez vos
-
-                                    connaissances
-                                </small>
                             </div>
                         </div>
                     </div>
