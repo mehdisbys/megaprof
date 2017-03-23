@@ -21,17 +21,9 @@
     <label for='location' class="topmargin-sm">Où se dérouleront vos cours ?</label>
     {!! Form::hidden('advert_id', $advert_id) !!}
 
-    <?php $location = isset($advert) ? $advert->location_street .','. $advert->location_city : null; ?>
+    <?php $location = isset($advert) ? $advert->location_street .', '. $advert->location_city : null; ?>
 
-    @if(isset($advert))
-        <div class="address"><strong>Addresse :</strong> {{  $advert->location_street }} </div>
-        <div class="address"><strong>Code Postal :</strong> {{  $advert->location_postcode }} </div>
-        <div class="address"><strong>Ville :</strong> {{  $advert->location_city }} </div>
-        <div class="address"><strong>Pays :</strong> {{  $advert->location_country }} </div>
-
-    @else
-        {!! Form::input('text','location',$location,['class' => 'alert_location sm-form-control', 'id' => 'location']) !!}
-    @endif
+    {!! Form::input('text','location',$location,['class' => 'alert_location sm-form-control', 'id' => 'location']) !!}
 
     <div class="location-details no-visibility">
 
