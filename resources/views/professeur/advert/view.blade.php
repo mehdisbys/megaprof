@@ -8,43 +8,59 @@
                 <h4><span><i class="fa fa-warning"></i> </span>{{$info}}</h4>
             @endif
 
-                @if(Auth::user() and Auth::user()->isAdmin() and $advert->published_at != NULL and $advert->approved_at == NULL)
-                    <div class="advert-header">
-                        <form action="/rejeter-annonce/{{$advert->id}}" method="post">
+            @if(Auth::user() and Auth::user()->isAdmin() and $advert->published_at != NULL and $advert->approved_at == NULL)
+                <div class="advert-header">
+                    <form action="/rejeter-annonce/{{$advert->id}}" method="post">
 
-                            {{csrf_field()}}
+                        {{csrf_field()}}
 
-                            <a href="/annonces-en-attente-de-moderation"> < Retour aux annonces à valider</a>
-                            
-                            <h4> <i class="fa fa-info-circle"></i> Annonce en attente de validation</h4>
-                            <i>Cet encadré n'est visible que des administrateurs. Le motif de rejet sera envoyé par e-mail au professeur.</i>
-                            <div class="">
-                                Motif de rejet :
-                                <p>
-                                    <textarea cols="75" rows="8" name="message"></textarea>
-                                </p>
-                            </div>
+                        <a href="/annonces-en-attente-de-moderation"> < Retour aux annonces à valider</a>
 
-                            <div class="">
+                        <h4><i class="fa fa-info-circle"></i> Annonce en attente de validation</h4>
+                        <i>Cet encadré n'est visible que des administrateurs. Le motif de rejet sera envoyé par e-mail
+                            au professeur.</i>
+                        <div class="">
+                            Motif de rejet :
+                            <p>
+                                <textarea cols="75" rows="8" name="message"></textarea>
+                            </p>
+                        </div>
 
-                                <a class="button-green btn btn-success pull-right"
-                                   href="/validate-advert/{{$advert->id}}">Valider l'annonce</a>
-                            </div>
+                        <div class="">
 
-                            <div class="col-md2 ">
+                            <a class="button-green btn btn-success pull-right"
+                               href="/validate-advert/{{$advert->id}}">Valider l'annonce</a>
+                        </div>
 
-                                <button class="button-red btn btn-danger" type="submit"
-                                   href="/reject-advert/{{$advert->id}}">Refuser</button>
-                            </div>
+                        <div class="col-md2 ">
 
-                        </form>
-                    </div>
+                            <button class="button-red btn btn-danger" type="submit"
+                                    href="/reject-advert/{{$advert->id}}">Refuser
+                            </button>
+                        </div>
 
-                @endif
+                    </form>
+                </div>
+
+            @endif
             <div class="advert-header">
+
 
                 <div class="single-view-info-author">
                     <h3>{{ $advert->title }}</h3>
+
+                    <div class="pull-left">
+                        @foreach($advert->subjectsPerAd as $subject)
+                            <div class="label label-info">{{\App\Models\SubSubject::find($subject->subject_id)->name}}</div>
+                            <div class="clearfix"></div>
+                        @endforeach
+                    </div>
+
+                    <div class="pull-right">
+                        @foreach(json_decode(\App\Models\SubjectsPerAdvert::getLevelsPerAdvert($advert->id)[0],true) as $level_id)
+                            <div class="label label-primary">{{\App\Models\SubLevel::find($level_id)->name}}</div>
+                        @endforeach
+                    </div>
 
                 </div>
                 <div id="profile-author" class="single-view-profile-author-profile">
@@ -68,13 +84,17 @@
                                     <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
                                 </li>
                             @endif
+                            <li><h3><a href="#" class=" center"> </a></h3></li>
                         </ul>
-                        <h3><a href="#" class=" center"> {{$advert->price}} Dhs/h</a></h3>
                     </div>
                 </div>
 
-                <div><a class="button temp-btn-block "
-                        href="/mise-en-relation/{{$advert->slug}}">Réserver un cours</a></div>
+                <div>
+                    <a class="booking-button temp-btn-block "
+                       href="/mise-en-relation/{{$advert->slug}}">Réserver un cours : {{$advert->price}} Dhs/h</a>
+                </div>
+
+
 
             </div>
             <div class="social-icons">
@@ -151,7 +171,6 @@
                 </tr>
                 </tbody>
             </table>
-
 
 
             <!-- 3 -->

@@ -3,7 +3,13 @@
 
         <div class="col-md-8 clearfix bottommargin-sm border1px">
             <div>
-                <div class="bold col-md-12">{{ $advert->title == '' ? 'Brouillon - (Annonce sans titre)' : $advert->title}}</div>
+
+                @if($advert->title == '')
+                    <div class="bold col-md-12"><span class="fa fa-warning"></span> Brouillon - (Annonce sans titre)
+                    </div>
+                @else
+                    <div class="bold col-md-12">{{$advert->title}}</div>
+                @endif
 
                 <div class="col-md-12 topmargin-sm">
                     @foreach($advert->subjectsPerAd as $subject)
@@ -12,7 +18,7 @@
                     @endforeach
                 </div>
 
-                <div class="col-md-12 topmargin-sm">
+                <div class="col-md-12 topmargin-sm bottommargin-sm">
                     <div class="col-md-4">
                         <i class="fa fa-map-marker"></i><strong> {{ $advert->location_city ?? 'Non renseigné' }}</strong>
                     </div>

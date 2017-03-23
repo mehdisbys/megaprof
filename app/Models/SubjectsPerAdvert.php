@@ -40,11 +40,18 @@ class SubjectsPerAdvert extends Model
         return static::whereIn('subject_id', $subjects)
             ->where('advert_id', $advert_id)
             ->select('subject_id', 'level_ids')
-          //  ->select('level_ids')
-            ->get()
-            //->pluck('level_ids')
-            ;
+            ->get();
     }
+
+    public static function getLevelsPerAdvert($advert_id)
+    {
+        return static::where('advert_id', $advert_id)
+            ->select('level_ids')
+            ->get()
+            ->pluck('level_ids')
+            ->toArray();
+    }
+
 
     public static function getSubjectsPerAdvert(int $advertId = NULL)
     {

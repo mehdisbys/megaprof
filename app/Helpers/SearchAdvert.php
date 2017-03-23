@@ -17,9 +17,10 @@ class SearchAdvert implements SearchAdvertContract
 
         if (isset($data->exceptAdvertIds) and count($advert_ids) > 0) {
 
-            $advert_ids = array_where($advert_ids, function ($key, $value) use ($data) {
+            $advert_ids = array_filter($advert_ids, function ($value, $key) use ($data) {
                 return in_array($value, $data->exceptAdvertIds) == false;
-            });
+            }, ARRAY_FILTER_USE_BOTH);
+
         }
 
         $rawResults = Advert::radiusSearch($advert_ids, $data->lat ?? null, $data->lgn ?? null, $data->radius ?? null, $data->sortBy ?? 'distance', $data->gender ?? 'both');
