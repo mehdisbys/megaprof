@@ -1,4 +1,4 @@
-@if($booking->isStudent())
+@if(isset($booking) and $booking->isStudent())
 
     <div class="col-md-2">
         {!! HTML::image(getAvatar($booking->prof->id),null, ["style" => "width:190px;", 'id' => 'img-question-mark']) !!}

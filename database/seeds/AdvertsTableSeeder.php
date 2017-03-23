@@ -6,7 +6,7 @@ use Faker\Factory as Faker;
 
 class AdvertsTableSeeder extends Seeder
 {
-    const NUMBER_OF_ADVERTS_TO_CREATE = 10000;
+    const NUMBER_OF_ADVERTS_TO_CREATE = 100;
 
 
     public function run()
@@ -59,7 +59,6 @@ class AdvertsTableSeeder extends Seeder
                 'can_webcam'                => $faker->randomKey(['on', 'off']),
                 'marketing_video'           => NULL,
                 'published_at'              => $faker->dateTime,
-                'currently_online'          => NULL,
                 'created_at'                => $faker->dateTime,
                 'updated_at'                => $faker->dateTime,
                 'deleted_at'                => NULL,

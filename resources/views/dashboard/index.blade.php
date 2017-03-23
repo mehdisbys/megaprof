@@ -3,8 +3,10 @@
 @section('content')
     {!! HTML::script("js/webcam.min.js") !!}
     {!! HTML::script("js/cropper.js") !!}
+    {!! HTML::script("js/jquery-confirm.js") !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
     {!! HTML::style('css/cropper.min.css')!!}
+    {!! HTML::style('css/jquery-confirm.css')!!}
     <div class="col-md-12">
 
         @include('includes.info')
@@ -22,12 +24,15 @@
 
                     <li class="ui-state-default ui-corner-top" role="tab" tabindex="0" aria-controls="tabs-37"
                         aria-labelledby="ui-id-25" aria-selected="true">
-                        <a href="#tabs-37" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-25"> Notifications <span class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
+                        <a href="#tabs-37" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-25">
+                            Notifications <span
+                                    class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                     </li>
 
                     <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-38"
                         aria-labelledby="ui-id-26" aria-selected="false">
-                        <a href="#tabs-38" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Demandes de cours
+                        <a href="#tabs-38" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Demandes
+                            de cours
                             @if(isset($bookings) and $bookings->count())
                                 <span class="badge red-badge">{{$bookings->count()}}</span>
                             @endif
@@ -111,50 +116,19 @@
                         <div class="tab-content " id="tabs-39"
                              aria-labelledby="ui-id-27" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
-                            <h4>Mes annonces</h4>
+                            <h4>Mes annonces publiées</h4>
                             @if(isset($adverts))
-                                @foreach($adverts as $advert)
+                                @include('dashboard.adverts-list',['adverts' => $adverts])
+                            @else
+                                <p>Vous n'avez pas encore créé d'annonces</p>
+                                <p><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
+                                        cours</a></p>
+                            @endif
 
-                                    <div class="col-md-6 clearfix bottommargin-sm border1px" data-readmore
-                                         aria-expanded="false">
-                                        <div class="col-md-6 clearfix">
-                                            <div class="bold">{{ $advert->title}}</div>
+                            @if(isset($archivedAdverts) and $archivedAdverts->count())
+                                <h4>Mes annonces hors-ligne</h4>
+                                @include('dashboard.adverts-list',['adverts' => $archivedAdverts])
 
-                                            <div class="col-md-12 topmargin-sm">
-                                                @foreach($advert->subjectsPerAd as $subject)
-                                                    <div class="btn btn-default btn-xs">{{\App\Models\SubSubject::find($subject->subject_id)->name}}</div>
-                                                    <div class="clearfix"></div>
-                                                @endforeach
-                                            </div>
-
-                                            <div class="pull-right topmargin-sm">
-                                                <i class="icon-location"></i><strong>{{ $advert->location_city }}</strong>
-                                            </div>
-
-                                            <div class="col-md-12">{{$advert->updated_at->format('d/m/Y H:i') }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-
-                                        @if($advert->published_at != null)
-                                            <div class="button button-small button-red button-rounded">
-                                                <a href="/desactiver-annonce/{{$advert->id}}/">Désactiver</a>
-                                            </div>
-                                        @else
-                                            <div class="button button-small button-lime button-rounded">
-                                                <a href="/activer-annonce/{{$advert->id}}/">Activer</a>
-                                            </div>
-                                        @endif
-
-                                        <div class="button button-small button-leaf button-rounded">
-                                            <a href="/{{$advert->slug}}">Voir</a>
-                                        </div>
-                                        <div class="button button-yellow button-rounded">
-                                            <a href="/modifier-annonce-1/{{$advert->id}}">Modifier</a>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -226,11 +200,14 @@
 
                                             <div id="my_buttons" class="col-md-12">
                                                 <div class="col-md-4">
-                                                    <label class="buttn" for="img_upload"><i class="icon-camera"></i>Téléchargez une photo</label>
+                                                    <label class="buttn" for="img_upload"><i class="icon-camera"></i>Téléchargez
+                                                        une photo</label>
                                                 </div>
                                                 <div class="col-md-4">
 
-                                                    <a class="butt  n" href="#" id="use-webcam"><i class="icon-facetime-video"></i>Utilisez votre webcam</a>
+                                                    <a class="butt  n" href="#" id="use-webcam"><i
+                                                                class="icon-facetime-video"></i>Utilisez votre
+                                                        webcam</a>
                                                 </div>
                                             </div>
 
@@ -251,12 +228,32 @@
                                             <script>
                                                 $(document).ready(function () {
 
-//                                            $("#img-preview").affix({
-//                                                offset: {
-//                                                    top: $("#img-preview").offset().top,
-//                                                    bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 150
-//                                                }
-//                                            });
+                                                    $('.delete-advert').on('click', function (e) {
+
+                                                               var link = $(this).attr('href');
+
+                                                                e.preventDefault();
+                                                                $.confirm({
+                                                                    title: 'Suppression d\'annonce',
+                                                                    content: "Êtes-vous sûr de vouloir supprimer cette annonce ?",
+                                                                    buttons: {
+                                                                        annuler: {
+                                                                            text: 'Annuler',
+                                                                            action: function () {
+                                                                            }
+                                                                        },
+                                                                        confirmer: {
+                                                                            text: 'Supprimer',
+                                                                            btnClass: 'btn-red',
+                                                                            action: function () {
+                                                                                window.location.href = link;
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                })
+                                                                ;
+                                                            }
+                                                    );
                                                 });
                                                 //--------
 

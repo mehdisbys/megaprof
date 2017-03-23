@@ -197,6 +197,13 @@ class EditAdvertController extends Controller
         return redirect()->back();
     }
 
+    public function deleteAdvert($advert_id){
+        $advert = Advert::find($advert_id);
+        $advert->delete();
+        thanks("Votre annonce a été supprimée avec succès");
+        return redirect()->back();
+    }
+
     public function activateAdvert($advert_id){
         $advert = Advert::find($advert_id);
         $advert->publish();

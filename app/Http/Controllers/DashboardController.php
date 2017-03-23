@@ -25,6 +25,7 @@ class DashboardController extends Controller
     {
         $notifications    = Notification::currentUserNotifications();
         $adverts          = Advert::currentUserAdverts();
+        $archivedAdverts  = Advert::archivedUserAdverts();
         $pendingComments  = Comment::currentUserPendingComments();
         $bookings         = Booking::currentProfBookingRequests();
         $archivedBookings = Booking::archivedBookingRequests();
