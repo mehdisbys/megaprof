@@ -1,8 +1,8 @@
 @if(isset($adverts))
     @foreach($adverts as $advert)
 
-        <div class="col-md-8 clearfix bottommargin-sm border1px" data-readmore aria-expanded="false">
-            <div class="col-md-12 clearfix">
+        <div class="col-md-8 clearfix bottommargin-sm border1px">
+            <div>
                 <div class="bold col-md-12">{{ $advert->title == '' ? 'Brouillon - (Annonce sans titre)' : $advert->title}}</div>
 
                 <div class="col-md-12 topmargin-sm">
@@ -14,7 +14,7 @@
 
                 <div class="col-md-12 topmargin-sm">
                     <div class="col-md-4">
-                        <i class="fa fa-map-marker"></i><strong> {{ $advert->location_city }}</strong>
+                        <i class="fa fa-map-marker"></i><strong> {{ $advert->location_city ?? 'Non renseigné' }}</strong>
                     </div>
 
                     <div class="col-md-8 pull-right">
