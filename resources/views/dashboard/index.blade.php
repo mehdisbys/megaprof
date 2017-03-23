@@ -113,7 +113,7 @@
 
                     <div class="tab-container">
 
-                        <div class="tab-content " id="tabs-39"
+                        <div class="tab-content col-md-12" id="tabs-39"
                              aria-labelledby="ui-id-27" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
                             <h4>Mes annonces publiées</h4>

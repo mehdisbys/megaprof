@@ -64,7 +64,7 @@ body {
 
 a {
     text-decoration: none !important;
-    color: #1ABC9C;
+    color: white;
 }
 
 a:hover { color: #222; }
@@ -211,6 +211,7 @@ span.middot {
 .rightmargin-sm { margin-right: 30px !important; }
 
 .topmargin-sm { margin-top: 30px !important; }
+.topmargin-xsm { margin-top: 7px !important; }
 
 .bottommargin-sm { margin-bottom: 30px !important; }
 
