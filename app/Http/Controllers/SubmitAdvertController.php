@@ -11,6 +11,7 @@ use App\Models\Level;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 //TODO
 // 4. Use Form requests
@@ -177,8 +178,8 @@ class SubmitAdvertController extends Controller
 
     public function getStep6Picture()
     {
-        if (Avatar::hasAvatar(Auth::id()))
-            return $this->afterRequest->init('postStep6Picture', get_defined_vars());
+       // if (Avatar::hasAvatar(Auth::id()))
+       //     return $this->afterRequest->init('postStep6Picture', get_defined_vars());
 
         $advert_id = session('advert_id');
 
@@ -187,10 +188,25 @@ class SubmitAdvertController extends Controller
 
     public function postStep6Picture(Request $request)
     {
-        savePicture();
+        $avatar = json_decode(Input::get('img_upload'));
+
+        if ($avatar) {
+            $output   = $avatar->output;
+            $filename = str_random(10);
+            base64_to_jpeg($output->image, $filename);
+
+            $m              = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id()]);
+            $m->img         = file_get_contents($filename);
+            $m->img_cropped = file_get_contents($filename);
+            $m->img_name    = $output->name;
+            $m->img_mime    = $output->type;
+            $m->img_size    = filesize($filename);
+            $m->save();
+        }
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
+
 
     public function getStep7Publish()
     {
@@ -202,7 +218,8 @@ class SubmitAdvertController extends Controller
 
     public function postStep7Publish(Request $request)
     {
-        $advert = Advert::find(session('advert_id'));
+        $request->input('advert_id');
+        $advert = Advert::find(session('advert_id') ?? $request->input('advert_id'));
 
         $advert->publish();
 

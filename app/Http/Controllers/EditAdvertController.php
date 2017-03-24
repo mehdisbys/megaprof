@@ -6,6 +6,7 @@ use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
 use App\Models\Level;
+use Illuminate\Support\Facades\Input;
 
 class EditAdvertController extends Controller
 {
@@ -16,8 +17,8 @@ class EditAdvertController extends Controller
 
     public function editStep1($advert_id)
     {
-        $subjects        = Subject::orderBy('name', 'ASC')->get();
-        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $subjects    = Subject::orderBy('name', 'ASC')->get();
+        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
 
         $advert = Advert::findOrFail($advert_id);
 
@@ -36,7 +37,7 @@ class EditAdvertController extends Controller
         $subjectsArray = \Input::get('subjects');
 
         // 3. Get Subject Names
-        $subjectsText  = explode(',', \Input::get('subjects_text'));
+        $subjectsText = explode(',', \Input::get('subjects_text'));
 
         // 4 . Input cleaning
         $subjectsText = array_filter(array_map(function ($item) {
@@ -47,7 +48,7 @@ class EditAdvertController extends Controller
 
         $subjectObjects = SubSubject::whereIn('name', $subjectsText)->get()->pluck('id')->toArray();
 
-        $subjectsArray =  array_merge($subjectsArray, $subjectObjects);
+        $subjectsArray = array_merge($subjectsArray, $subjectObjects);
 
         SubjectsPerAdvert::fillSubjectForAdvert($advert_id, $subjectsArray);
 
@@ -63,8 +64,8 @@ class EditAdvertController extends Controller
         $levels   = Level::all();
 
         $checkedLevels = SubjectsPerAdvert::getLevelsPerSubjects($advert_id, $subjectsArray);
-        $checked = [];
-        if($checkedLevels) {
+        $checked       = [];
+        if ($checkedLevels) {
             $checkedLevels->filter(function ($item) use ($subjects, $levels, &$checked) {
                 foreach ($subjects as $subject)
                     foreach ($levels as $level) {
@@ -78,7 +79,7 @@ class EditAdvertController extends Controller
             );
         }
         $advert = Advert::findOrFail($advert_id);
-        $step = 2;
+        $step   = 2;
 
         return view('dashboard.edit')->with(compact('subjects', 'levels', 'advert_id', 'advert', 'checked', 'step'));
     }
@@ -86,7 +87,7 @@ class EditAdvertController extends Controller
     public function postEditStep2($advert_id)
     {
         $levels = \Input::get('levels');
-        $title = \Input::get('title');
+        $title  = \Input::get('title');
 
         \App\Models\Advert::find($advert_id)->update(['title' => $title]);
         SubjectsPerAdvert::fillLevelsPerSubjects($advert_id, $levels);
@@ -97,7 +98,7 @@ class EditAdvertController extends Controller
     public function editStep3($advert_id)
     {
         $advert = Advert::findOrFail($advert_id);
-        $step = 3;
+        $step   = 3;
 
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
@@ -105,13 +106,13 @@ class EditAdvertController extends Controller
     public function postEditStep3($advert_id)
     {
         $table = [
-            'can_travel' => 'can_travel',
+            'can_travel'  => 'can_travel',
             'can_receive' => 'can_receive',
-            'can_webcam' => 'can_webcam'
+            'can_webcam'  => 'can_webcam',
         ];
 
-        $values = \Request::only(array_values($table));
-        $keys = array_keys($table);
+        $values   = \Request::only(array_values($table));
+        $keys     = array_keys($table);
         $loc_data = array_combine($keys, $values);
 
         \App\Models\Advert::find($advert_id)->update($loc_data);
@@ -122,23 +123,25 @@ class EditAdvertController extends Controller
     public function editStep4($advert_id)
     {
         $advert = Advert::findOrFail($advert_id);
-        $step = 4;
+        $step   = 4;
 
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
     public function postEditStep4($advert_id)
     {
-        $content_data = \Request::only(['presentation', 'content', 'experience']);
+        $content_data = \Request::only(['presentation',
+                                           'content',
+                                           'experience']);
 
         \App\Models\Advert::find($advert_id)->update($content_data);
 
-       return redirect("modifier-annonce-5/{$advert_id}");
+        return redirect("modifier-annonce-5/{$advert_id}");
     }
 
     public function editStep5($advert_id)
     {
-        $advert = Advert::findOrFail($advert_id);
+        $advert     = Advert::findOrFail($advert_id);
         $can_travel = $advert->can_travel;
         $can_webcam = $advert->can_webcam;
 
@@ -159,14 +162,14 @@ class EditAdvertController extends Controller
             "price_10_hours_percentage",
             "price_5_hours",
             "price_10_hours",
-            "price_more"
+            "price_more",
         ];
 
         $data = \Request::only($only);
 
         \App\Models\Advert::find($advert_id)->update($data);
 
-      return redirect("modifier-annonce-6/{$advert_id}");
+        return redirect("modifier-annonce-6/{$advert_id}");
     }
 
     public function editStep6($advert_id)
@@ -180,31 +183,46 @@ class EditAdvertController extends Controller
 
     public function postEditStep6($advert_id)
     {
+        $avatar = json_decode(Input::get('img_upload'));
 
-        try {
-            savePicture();
-        } catch (\Exception $e) {}
+        if ($avatar) {
+            $output   = $avatar->output;
+            $filename = '/tmp/'.str_random(10);
+            base64_to_jpeg($output->image, $filename);
+
+            $m              = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id()]);
+            $m->img         = file_get_contents($filename);
+            $m->img_cropped = file_get_contents($filename);
+            $m->img_name    = $output->name;
+            $m->img_mime    = $output->type;
+            $m->img_size    = filesize($filename);
+            $m->save();
+        }
 
         $advert = Advert::find($advert_id);
 
         return view('professeur.advert.createStep7')->with(compact('advert'));
     }
 
-    public function deactivateAdvert($advert_id){
+
+    public function deactivateAdvert($advert_id)
+    {
         $advert = Advert::find($advert_id);
         $advert->unpublish();
         thanks("Votre annonce a été désactivée, elle ne sera plus visible sur le site. Vous pouvez la réactiver à partir de votre tableau de bord.");
         return redirect()->back();
     }
 
-    public function deAdvert($advert_id){
+    public function deleteAdvert($advert_id)
+    {
         $advert = Advert::find($advert_id);
-        $advert->unpublish();
-        thanks("Votre annonce a été désactivée, elle ne sera plus visible sur le site. Vous pouvez la réactiver à partir de votre tableau de bord.");
+        $advert->delete();
+        thanks("Votre annonce a été supprimée avec succès");
         return redirect()->back();
     }
 
-    public function activateAdvert($advert_id){
+    public function activateAdvert($advert_id)
+    {
         $advert = Advert::find($advert_id);
         $advert->publish();
         thanks("Votre annonce vient d'être publiée, elle sera désormais visible par tous les élèves.");
