@@ -2,10 +2,8 @@
 
 @section('content')
     {!! HTML::script("js/webcam.min.js") !!}
-    {!! HTML::script("js/cropper.js") !!}
     {!! HTML::script("js/jquery-confirm.js") !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
-    {!! HTML::style('css/cropper.min.css')!!}
     {!! HTML::style('css/jquery-confirm.css')!!}
     <div class="col-md-12">
 
@@ -194,10 +192,6 @@
                                                 </div>
                                             </div>
 
-                                            <div id="cropper-module" class="no-visibility">
-                                                @include('modules/cropper')
-                                            </div>
-
                                             <div id="my_buttons" class="col-md-12">
                                                 <div class="col-md-4">
                                                     <label class="buttn" for="img_upload"><i class="icon-camera"></i>Téléchargez
@@ -256,48 +250,6 @@
                                                     );
                                                 });
                                                 //--------
-
-                                                function imgUpload() {
-                                                    $("#validate_buttons").toggleClass('no-visibility');
-                                                    $("#img-preview").toggleClass('no-visibility');
-                                                    $("#cropper-module").toggleClass('no-visibility');
-                                                    $("#image").toggleClass('no-visibility');
-                                                    $("#my_buttons").toggleClass('no-visibility');
-                                                    $("#img-question-mark").toggleClass('no-visibility');
-                                                    $('.img-container').toggleClass('no-visibility');
-
-                                                }
-
-                                                $("#img_upload").change(function () {
-                                                    imgUpload();
-                                                });
-
-                                                $("#use-webcam").click(function () {
-                                                    Webcam.set({
-                                                        width: 210,
-                                                        height: 190,
-                                                        dest_width: 190,
-                                                        dest_height: 170
-                                                    });
-
-                                                    Webcam.attach('#my_camera');
-                                                    $("#webcam").removeClass('no-visibility');
-                                                    $("#validate_buttons").removeClass('no-visibility');
-                                                    $("#img-question-mark").addClass('no-visibility');
-                                                    $("#my_buttons").addClass('no-visibility');
-                                                    $("#current_picture").addClass('no-visibility');
-                                                });
-
-                                                $("#back_button").click(function (e) {
-                                                    e.preventDefault();
-                                                    Webcam.reset();
-
-                                                    $().cropper('destroy');
-                                                    $('.cropper-container').html('');
-                                                    $('.cropper-container').toggleClass('no-visibility');
-
-                                                    imgUpload();
-                                                });
 
                                                 function take_snapshot() {
                                                     Webcam.snap(function (data_uri) {

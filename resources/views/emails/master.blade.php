@@ -20,7 +20,6 @@
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
 
 {!! HTML::style('temp-css/normalize.css') !!}
-{!! HTML::style('temp-css/cropper.css') !!}
 {!! HTML::style('temp-css/dashboard.css') !!}
 {!! HTML::style('temp-css/fonts.css') !!}
 {!! HTML::style('temp-css/footer.css') !!}

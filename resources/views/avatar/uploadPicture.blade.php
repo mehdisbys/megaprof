@@ -1,7 +1,5 @@
 {!! HTML::script("js/webcam.min.js") !!}
-{!! HTML::script("js/cropper.js") !!}
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
-{!! HTML::style('css/cropper.min.css')!!}
 
 @if(isset($advert))
     <form id="presentation-content"  accept-charset="UTF-8"
@@ -93,69 +91,6 @@
 
 
 
-                    <script>
-                        $( document ).ready(function() {
-
-                            $("#img-preview").affix({
-                                offset: {
-                                    top: $("#img-preview").offset().top,
-                                    bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 150
-                                }
-                            });
-                        });
-                        //--------
-
-                        function imgUpload(){
-                            $("#validate_buttons").toggleClass('no-visibility');
-                            $("#img-preview").toggleClass('no-visibility');
-                            $("#cropper-module").toggleClass('no-visibility');
-                            $("#image").toggleClass('no-visibility');
-                            $("#my_buttons").toggleClass('no-visibility');
-                            $("#img-question-mark").toggleClass('no-visibility');
-                            $('.img-container').toggleClass('no-visibility');
-
-                        }
-
-                        $("#img_upload").change(function() { imgUpload(); });
-
-                        $("#use-webcam").click(function(){
-                            Webcam.set({
-                                width: 190,
-                                height: 170,
-                                dest_width: 190,
-                                dest_height: 170
-                            });
-
-                            Webcam.attach('#my_camera');
-                            $("#webcam").removeClass('no-visibility');
-                            $("#validate_buttons").removeClass('no-visibility');
-                            $("#img-question-mark").addClass('no-visibility');
-                            $("#my_buttons").addClass('no-visibility');
-                        });
-
-                        $("#back_button").click(function(e){
-                            e.preventDefault();
-                            Webcam.reset();
-
-                            $().cropper('destroy');
-                            $('.cropper-container').html('');
-                            $('.cropper-container').toggleClass('no-visibility');
-
-                            imgUpload();
-                        });
-
-                        function take_snapshot() {
-                            Webcam.snap(function (data_uri) {
-                                var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-
-                                document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
-                                $("#webcam_img").val(raw_image_data);
-                                $('.img-container').removeClass('no-visibility');
-                                //$("#image").removeClass('no-visibility');
-                                $("#capture").removeClass('no-visibility');
-                            });
-                        }
-
-                    </script>
+                    <script></script>
                 </div>
     {!! Form::close() !!}
