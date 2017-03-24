@@ -5,6 +5,9 @@
     {!! HTML::script("js/jquery-confirm.js") !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
     {!! HTML::style('css/jquery-confirm.css')!!}
+    {!! HTML::script("js/slim.jquery.min.js") !!}
+    {!! HTML::style('css/slim.min.css')!!}
+
     <div class="col-md-12">
 
         @include('includes.info')
@@ -146,77 +149,17 @@
 
                                         <div class="col-md-12 center topmargin-sm">
 
-                                            <div id="img-container">
-
-                                                <div id="webcam" class="no-visibility col-md-3 col-md-offset-3">
-                                                    <div id="my_camera"></div>
-                                                    <a href="javascript:void(take_snapshot())"
-                                                       class="button button-3d button-mini button-rounded button-blue">Prendre
-                                                        la photo</a>
-                                                    <input type="hidden" name="webcam_img" id="webcam_img">
-                                                </div>
-
-                                                <div id="capture" class="col-md-12 no-visibility">
-                                                    <div id="my_result" style="" class=""></div>
-                                                </div>
+                                            <div id="upload"
+                                                 style="width: 190px; height: auto; text-align: center; margin: auto">
+                                                <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
+                                                <input type="file" name="img_upload" id="img_upload">
                                             </div>
 
-                                            <div class="clearfix"></div>
 
-                                            <input type="file" id="img_upload" name="img_upload" class="no-visibility"
-                                                   accept="image/*">
-                                            <input type="file" class="sr-only" id="inputImage" name="file"
-                                                   accept="image/*">
-
-                                            <div class="row-spy" data-spy="scroll" data-target=".scrollspy">
-
-                                                <div class="col-md-12">
-                                                    <div class="img-container no-visibility col-md-9">
-                                                        <img id="image" src="" alt="Votre Image" name="image"
-                                                             class="no-visibility">
-                                                        <input name="x" id="x" type="text" class="no-visibility">
-                                                        <input name="y" id="y" type="text" class="no-visibility">
-                                                        <input name="w" id="w" type="text" class="no-visibility">
-                                                        <input name="h" id="h" type="text" class="no-visibility">
-                                                        <input name="r" id="r" type="text" class="no-visibility">
-                                                        <input name="scalex" id="scalex" type="text"
-                                                               class="no-visibility">
-                                                        <input name="scaley" id="scaley" type="text"
-                                                               class="no-visibility">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-3 scrollspy">
-                                                    <div id="img-preview" data-spy="" class="no-visibility "
-                                                         style="width: 190px; height: 190px;"></div>
-                                                </div>
-                                            </div>
-
-                                            <div id="my_buttons" class="col-md-12">
-                                                <div class="col-md-4">
-                                                    <label class="buttn" for="img_upload"><i class="icon-camera"></i>Téléchargez
-                                                        une photo</label>
-                                                </div>
-                                                <div class="col-md-4">
-
-                                                    <a class="butt  n" href="#" id="use-webcam"><i
-                                                                class="icon-facetime-video"></i>Utilisez votre
-                                                        webcam</a>
-                                                </div>
-                                            </div>
-
-                                            <div id="validate_buttons" class="col-md-12 text-center no-visibility">
-
-                                                <button id="back_button"
-                                                        class="button button-3d button-small button-rounded button-teal">
-                                                    Retour
-                                                </button>
-
-                                                <button type="submit"
-                                                        class="button button-3d button-small button-rounded nice-orange">
-                                                    Valider cette photo
-                                                </button>
-                                            </div>
+                                            <button type="submit"
+                                                    class="button button-3d button-small button-rounded nice-orange">
+                                                Valider cette photo
+                                            </button>
 
 
                                             <script>
@@ -224,7 +167,7 @@
 
                                                     $('.delete-advert').on('click', function (e) {
 
-                                                               var link = $(this).attr('href');
+                                                                var link = $(this).attr('href');
 
                                                                 e.preventDefault();
                                                                 $.confirm({
@@ -250,6 +193,14 @@
                                                     );
                                                 });
                                                 //--------
+
+                                                $('#upload').slim({
+                                                    ratio: '1:1',
+                                                    label: 'Déposez votre image ici ou cliquez',
+                                                    uploadBase64: false,
+                                                    jpegCompression: 70
+                                                });
+
 
                                                 function take_snapshot() {
                                                     Webcam.snap(function (data_uri) {

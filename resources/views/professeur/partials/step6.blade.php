@@ -1,6 +1,6 @@
 {!! HTML::script("js/webcam.min.js") !!}
-{!! HTML::script("js/slim.jquery.min.js") !!}
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
+{!! HTML::script("js/slim.jquery.min.js") !!}
 {!! HTML::style('css/slim.min.css')!!}
 
 @if(isset($advert) == false)
@@ -42,35 +42,14 @@
                         J'ai choisi ma photo
                     </button>
 
-                    <div class="row-spy" data-spy="scroll" data-target=".scrollspy">
-
-                        <div class="col-md-6">
-                            <div class="img-container no-visibility">
-                                <img id="image" src="" alt="Votre Image" name="image" class="no-visibility">
-                                <input name="x" id="x" type="text" class="no-visibility">
-                                <input name="y" id="y" type="text" class="no-visibility">
-                                <input name="w" id="w" type="text" class="no-visibility">
-                                <input name="h" id="h" type="text" class="no-visibility">
-                                <input name="r" id="r" type="text" class="no-visibility">
-                                <input name="scalex" id="scalex" type="text" class="no-visibility">
-                                <input name="scaley" id="scaley" type="text" class="no-visibility">
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 scrollspy">
-                            <div id="img-preview" data-spy="affix" class="no-visibility "
-                                 style="width: 190px; height: 190px;"></div>
-                        </div>
-                    </div>
-
-
                     <script>
                         $(document).ready(function () {
 
                             $('#upload').slim({
                                 ratio: '1:1',
                                 label: 'Déposez votre image ici ou cliquez',
-                                uploadBase64: false
+                                uploadBase64: false,
+                                jpegCompression: 70
                             })
                             ;
 
