@@ -80,6 +80,49 @@
     @section('content')
     @show
   </div>
+
+    <!--footer start from here-->
+    <footer class="footer-div topmargin-sm" id="footer-div">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-2 col-sm-6 paddingtop-bottom col-md-offset-1" >
+            <h6 class="heading7">À PROPOS</h6>
+              <div><a href="#"> Foire Aux Questions</a></div>
+              <div><a href="#"> Créer une annonce</a></div>
+              <div><a href="#"> Conditions Générales</a></div>
+              <div><a href="#"> Devenir Professeur</a></div>
+              <div><a href="#"> Qui sommes-nous</a></div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 paddingtop-bottom">
+
+            <div class="text-center center-block">
+              <h6 class="heading7">SUIVEZ-NOUS</h6>
+              <br />
+              <a href="https://www.facebook.com/taelam"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+              <a href="https://twitter.com/taelam"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+              <a href="https://plus.google.com/+taelam"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 footerleft">
+            <h6 class="heading7">TAELAM</h6>
+
+            <p><em><small>Taelam est le premier site Marocain de partage de connaissances.
+                  Apprenez sans limites ! Trouvez des professeurs dans tout le Maroc dans des dizaines de matières différentes.</small></em></p>
+          </div>
+
+          <div class="col-md-3 col-sm-6 ">
+            <h6 class="heading7">CONTACT</h6>
+
+            <p><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></p>
+            <p><i class="fa fa-envelope"></i> <a href="">Contactez-nous</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
 </body>
   @include('includes/toastr/toastr')
   <script>

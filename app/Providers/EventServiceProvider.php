@@ -13,6 +13,7 @@ use App\Events\StudentCommentedOnProf;
 use App\Events\UserConfirmedAccountAndFirstLogin;
 use App\Listeners\DashboardNotificationsAfterAdSubmission;
 use App\Listeners\FirstLoginListener;
+use App\Listeners\NotifiyProfAdvertWasApproved;
 use App\Listeners\NotifyAdminIdDocumentSent;
 use App\Listeners\NotifyBookingReply;
 use App\Listeners\NotifyBookingRequest;
@@ -60,13 +61,15 @@ class EventServiceProvider extends ServiceProvider
                 NotifyProfAdvertWasRejected::class,
             ],
 
-        AdvertWasAcceptedByAdmin::class => [
+        AdvertWasAcceptedByAdmin::class =>
+            [
+                NotifiyProfAdvertWasApproved::class,
+            ],
 
-        ],
         UserConfirmedAccountAndFirstLogin::class =>
-        [
-            FirstLoginListener::class
-        ]
+            [
+                FirstLoginListener::class,
+            ],
     ];
 
     /**
