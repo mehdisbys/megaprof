@@ -123,13 +123,13 @@
             <div class="row">
 
                 <div class="col-md-3 col-sm-6 paddingtop-bottom">
-                    <div class="" style="text-align: center">
+                    <div class="">
                         <h6 class="heading7" style="color: white">À PROPOS</h6>
-                        <a href="#"> Foire Aux Questions</a>
-                        <a href="#"> Créer une annonce</a>
-                        <a href="#"> Conditions Générales</a>
-                        <a href="#"> Devenir Professeur</a>
-                        <a href="#"> Qui sommes-nous</a>
+                        <div><a href="#"> Foire Aux Questions</a></div>
+                        <div><a href="#"> Créer une annonce</a></div>
+                        <div><a href="#"> Conditions Générales</a></div>
+                        <div><a href="#"> Devenir Professeur</a></div>
+                        <div><a href="#"> Qui sommes-nous</a></div>
                     </div>
                 </div>
 
