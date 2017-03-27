@@ -3419,3 +3419,7 @@ input[type="radio"] {
 #footer-div a:hover {
     color: darkorange;
 }
+
+.faq {
+    background-color: white;
+}
