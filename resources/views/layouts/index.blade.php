@@ -23,14 +23,17 @@
 
         <div id="matieres" class="matieres-scroller hidden">
             <ul>
-                <li>Anglais</li>
-                <li>Yoga</li>
-                <li>Piano</li>
-                <li>Surf</li>
-                <li>Français</li>
-                <li>Cuisine</li>
-                <li>Théâtre</li>
-                <li>Mathématiques</li>
+                <li>Arts</li>
+                <li>Droit</li>
+                <li>Économie</li>
+                <li>Informatique</li>
+                <li>Langues</li>
+                <li>Loisirs</li>
+                <li>Musique</li>
+                <li>Sciences</li>
+                <li>Sciences Humaines</li>
+                <li>Soutien Scolaire</li>
+                <li>Sports</li>
             </ul>
         </div>
 
@@ -175,6 +178,41 @@
             <div class="student-presentation well-get-in-touch">Nous vous contacterons dès que des professeurs dans la
                 matière de votre choix
                 seront disponibles.
+            </div>
+
+            <div>
+                <div class="scrolling-pane topmargin-lg">
+                    <h2 class="section-title">Pourquoi choisir Taelam ?</h2>
+
+                    <div class="row">
+                        <ul id="bubbles">
+                            <li class="scroll-items col-md-2 pane-a" id="subject-1">
+                                <div class="fa fa-refresh fa-3x"></div>
+                                <a href="">Flexibilité</a>
+                            </li>
+                            <li class="scroll-items col-md-2 pane-a" id="subject-1">
+                                <div class="fa fa-check fa-3x"></div>
+                                <a href="">Profils vérifiés</a>
+                            </li>
+                            <li class="scroll-items col-md-2 pane-a" id="subject-1">
+                                <div class="fa fa-handshake-o fa-3x"></div>
+                                <a href="">Sans intermédiaire</a>
+                            </li>
+                            <li class="scroll-items col-md-2 pane-b" id="subject-1">
+                                <div class="fa fa-money fa-3x"></div>
+                                <a href="">Économique</a>
+                            </li>
+                            <li class="scroll-items col-md-2 pane-b" id="subject-1">
+                                <div class="fa fa-lock fa-3x"></div>
+                                <a href="">Sécurisé</a>
+                            </li>
+                            <li class="scroll-items col-md-2 pane-b" id="subject-1">
+                                <div class="fa fa-flask fa-3x"></div>
+                                <a href="">Des activités variées</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@
     <div class="col-md-12 faq">
 
         <div class=" col-md-8 col-md-offset-2" style="margin-top: 80px">
-        <h3 style="text-align: center">Section Élèves</h3>
+        <h3 style="text-align: center">FAQ Élèves</h3>
 
             <div class="question-reponse panel-group col-md-12 topmargin-small">
                 <div class="panel panel-default">
@@ -208,7 +208,7 @@
                 </div>
             </div>
 
-            <h3 class="topmargin-small" style="text-align: center">Section Professeurs</h3>
+            <h3 class="topmargin-small" style="text-align: center">FAQ Professeurs</h3>
 
             <div class="question-reponse panel-group col-md-12 topmargin-small">
                 <div class="panel panel-default">

@@ -102,6 +102,8 @@
 
     <!-- Content
     ============================================= -->
+    @include('includes.success')
+    @include('includes.error')
     <section id="content">
 
         <div class="content-wrap">

@@ -85,7 +85,7 @@ class DashboardController extends Controller
         thanks('Merci! Votre profil a bien été mis à jour');
 
 
-        return $this->index();
+        return redirect()->back();
     }
 
     public function completeProfile()
