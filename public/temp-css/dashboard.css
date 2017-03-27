@@ -2852,8 +2852,7 @@ a.component-pagination-item:hover {
     list-style: none;
     width: 140px;
     height: 140px;
-    background-color: #f7f7f7;
-    text-align: center;
+§    text-align: center;
     padding: 5px;
     border-radius: 50%;
 }

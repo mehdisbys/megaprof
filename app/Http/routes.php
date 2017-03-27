@@ -2,6 +2,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('/faq', function () {
+        return view('main.faq');
+    });
+
+
 //Lancement
     Route::get('/professeur', 'ListAdvertController@welcomeProfesseur');
 
