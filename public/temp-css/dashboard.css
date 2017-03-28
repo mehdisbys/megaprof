@@ -3423,3 +3423,7 @@ input[type="radio"] {
 .faq {
     background-color: white;
 }
+
+.nav>li>img{
+    max-width:190px;
+}

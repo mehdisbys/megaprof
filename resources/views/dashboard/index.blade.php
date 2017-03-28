@@ -19,10 +19,11 @@
                 <ul class="nav nav-tabs tabs-left topmargin-small" role="tablist">
 
                     <li class="active">
-                        <a href="#notifications" data-toggle="tab"><img src="/avatar_dashboard/{{Auth::id()}}"></a>
+
+                        <img src="/avatar_dashboard/{{Auth::id()}}">
                     </li>
 
-                    <li class="active">
+                    <li class="active topmargin-small">
                         <a href="#notifications" id="ui-id-25" data-toggle="tab">Notifications
                             <span class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                     </li>
@@ -37,7 +38,7 @@
                     </li>
 
                     <li data-toggle="tab">
-                        <a href="#comments" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
+                        <a href="#my-comments" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
                             commentaires
                             @if(isset($pendingComments) and $pendingComments->count())
                                 <span class="badge green-badge">{{$pendingComments->count()}}</span>
@@ -64,11 +65,9 @@
             <div class="col-md-9 col-xs-12">
                 @section('dashboard-content')
 
-                    <div class="tab-container col-xs-12">
+                    <div class="col-xs-12">
 
-                        <div class="tab-content" id="notifications"
-                             aria-labelledby="ui-id-25" role="tabpanel" aria-expanded="true" aria-hidden="false"
-                             style="display: block;">
+                        <div id="notifications">
                             <h4>Notifications</h4>
 
                             @if(isset($notifications) and $notifications->count())
@@ -77,37 +76,39 @@
                                 Vous avez lu toutes vos notifications.
                             @endif
                         </div>
-                        <div class="tab-content" id="bookings"
-                             aria-labelledby="ui-id-26" role="tabpanel" aria-expanded="false" aria-hidden="true"
-                             style="display: none;">
-
-                            <div class="clearfix"></div>
-                            <h4>Mes demandes de cours en attente de réponse</h4>
-                            <div class="col-md-12">
-                                @include('bookings.list')
-                            </div>
+                        <div id="bookings">
+                            @if(isset($bookings) and $bookings->count())
+                                <h4>Mes demandes de cours en attente de réponse</h4>
+                                <div class="col-md-12">
+                                    @include('bookings.list')
+                                </div>
+                            @endif
                             @if(isset($archivedBookings) and $archivedBookings->count())
                                 <h4>Mes demandes de cours déjà traitées</h4>
                                 <div class="col-md-12">
                                     @include('bookings.list', ['bookings' => $archivedBookings])
                                 </div>
                             @endif
+                            @if(isset($bookings) and $bookings->count() == 0 and isset($archivedBookings) and $archivedBookings->count() == 0)
+                                    <h4>Mes demandes de cours </h4>
+
+                                    <p>Vous n'avez pas encore fait ou reçu des demandes de cours</p>
+                            @endif
+                        </div>
+
+                        <div id="my-comments">
+                            @if(isset($pendingComments) and $pendingComments->count() > 0 )
+                                <h4>Commentez vos derniers cours</h4>
+
+                                @include('my-comments.pendingComments')
+                            @else
+                                <h4>Mes commentaires</h4>
+                                <p>Pas de commentaires à afficher pour l'instant</p>
+                            @endif
                         </div>
                     </div>
 
-                    <div class="tab-content" id="comments" aria-labelledby="ui-id-46" role="tabpanel"
-                         aria-expanded="false" aria-hidden="true"
-                         style="display: none;">
-                        @if(isset($pendingComments) and $pendingComments->count() > 0 )
-                            <h4>Commentez vos derniers cours</h4>
 
-                            <div class="col-md-8 bottommargin-sm">
-                                @include('comments.pendingComments')
-                            </div>
-                            @else
-                            <p>Pas de commentaires à afficher pour l'instant</p>
-                        @endif
-                    </div>
 
                     <div class="tab-container">
 
