@@ -12,7 +12,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class NotifiyProfAdvertWasApproved
 {
-
     private $mailer;
 
     public function __construct(MailerContract $mailer)

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\ProfCreatedAdvert;
 use App\Helpers\AfterRequest;
 use App\Models\Advert;
 use App\Models\Avatar;
@@ -220,8 +221,9 @@ class SubmitAdvertController extends Controller
     {
         $request->input('advert_id');
         $advert = Advert::find(session('advert_id') ?? $request->input('advert_id'));
-
         $advert->publish();
+
+        event(new ProfCreatedAdvert($advert));
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }

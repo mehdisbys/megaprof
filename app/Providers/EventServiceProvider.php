@@ -9,11 +9,13 @@ use App\Events\BookingRequestReply;
 use App\Events\BookingRequestSent;
 use App\Events\IdDocumentSent;
 use App\Events\ProfCommentedOnStudent;
+use App\Events\ProfCreatedAdvert;
 use App\Events\StudentCommentedOnProf;
 use App\Events\UserConfirmedAccountAndFirstLogin;
 use App\Listeners\DashboardNotificationsAfterAdSubmission;
 use App\Listeners\FirstLoginListener;
 use App\Listeners\NotifiyProfAdvertWasApproved;
+use App\Listeners\NotifyAdminAdvertCreated;
 use App\Listeners\NotifyAdminIdDocumentSent;
 use App\Listeners\NotifyBookingReply;
 use App\Listeners\NotifyBookingRequest;
@@ -69,6 +71,10 @@ class EventServiceProvider extends ServiceProvider
         UserConfirmedAccountAndFirstLogin::class =>
             [
                 FirstLoginListener::class,
+            ],
+        ProfCreatedAdvert::class =>
+            [
+                NotifyAdminAdvertCreated::class,
             ],
     ];
 
