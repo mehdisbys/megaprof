@@ -7,32 +7,28 @@
     {!! HTML::style('css/jquery-confirm.css')!!}
     {!! HTML::script("js/slim.jquery.min.js") !!}
     {!! HTML::style('css/slim.min.css')!!}
+    {!! HTML::style('css/tabs.css')!!}
 
-    <div class="col-md-12">
+    <div class="col-md-12 container">
 
         @include('includes.info')
 
-        <div class="col-md-12 clearfix">
-            <div class="col-md-3">
-                <img src="/avatar_dashboard/{{Auth::id()}}">
-            </div>
-        </div>
+        <div class="col-md-12 row tabs side-tabs">
 
-        <div class="col-md-12 tabs side-tabs">
+            <div class="col-md-3 col-xs-12" id="tab-10">
+                <ul class="nav nav-tabs tabs-left topmargin-small" role="tablist">
 
-            <div class="tabs side-tabs col-md-3" id="tab-10">
-                <ul class="tab-nav tab-nav2" role="tablist">
-
-                    <li class="ui-state-default ui-corner-top" role="tab" tabindex="0" aria-controls="tabs-37"
-                        aria-labelledby="ui-id-25" aria-selected="true">
-                        <a href="#tabs-37" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-25">
-                            Notifications <span
-                                    class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
+                    <li class="active">
+                        <a href="#notifications" data-toggle="tab"><img src="/avatar_dashboard/{{Auth::id()}}"></a>
                     </li>
 
-                    <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-38"
-                        aria-labelledby="ui-id-26" aria-selected="false">
-                        <a href="#tabs-38" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Demandes
+                    <li class="active">
+                        <a href="#notifications" id="ui-id-25" data-toggle="tab">Notifications
+                            <span class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
+                    </li>
+
+                    <li data-toggle="tab">
+                        <a href="#bookings" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Demandes
                             de cours
                             @if(isset($bookings) and $bookings->count())
                                 <span class="badge red-badge">{{$bookings->count()}}</span>
@@ -40,9 +36,8 @@
                         </a>
                     </li>
 
-                    <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-48"
-                        aria-labelledby="ui-id-46" aria-selected="false">
-                        <a href="#tabs-48" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
+                    <li data-toggle="tab">
+                        <a href="#comments" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
                             commentaires
                             @if(isset($pendingComments) and $pendingComments->count())
                                 <span class="badge green-badge">{{$pendingComments->count()}}</span>
@@ -50,9 +45,8 @@
                         </a>
                     </li>
 
-                    <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-39"
-                        aria-labelledby="ui-id-27" aria-selected="false">
-                        <a href="#tabs-39" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-27">Mes
+                    <li data-toggle="tab">
+                        <a href="#my-adverts" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-27">Mes
                             annonces
                             @if (isset($adverts) and $adverts->count())
                                 <span class="badge">{{$adverts->count()}}</span>
@@ -60,20 +54,19 @@
                         </a>
                     </li>
 
-                    <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-40"
-                        aria-labelledby="ui-id-28" aria-selected="false">
-                        <a href="#tabs-40" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-28">Gérer
+                    <li data-toggle="tab">
+                        <a href="#my-profile" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-28">Gérer
                             mon
                             profil</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 col-xs-12">
                 @section('dashboard-content')
 
-                    <div class="tab-container">
+                    <div class="tab-container col-xs-12">
 
-                        <div class="tab-content" id="tabs-37"
+                        <div class="tab-content" id="notifications"
                              aria-labelledby="ui-id-25" role="tabpanel" aria-expanded="true" aria-hidden="false"
                              style="display: block;">
                             <h4>Notifications</h4>
@@ -84,7 +77,7 @@
                                 Vous avez lu toutes vos notifications.
                             @endif
                         </div>
-                        <div class="tab-content" id="tabs-38"
+                        <div class="tab-content" id="bookings"
                              aria-labelledby="ui-id-26" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
 
@@ -93,14 +86,16 @@
                             <div class="col-md-12">
                                 @include('bookings.list')
                             </div>
-                            <h4>Mes demandes de cours déjà traitées</h4>
-                            <div class="col-md-12">
-                                @include('bookings.list', ['bookings' => $archivedBookings])
-                            </div>
+                            @if(isset($archivedBookings) and $archivedBookings->count())
+                                <h4>Mes demandes de cours déjà traitées</h4>
+                                <div class="col-md-12">
+                                    @include('bookings.list', ['bookings' => $archivedBookings])
+                                </div>
+                            @endif
                         </div>
                     </div>
 
-                    <div class="tab-content" id="tabs-48" aria-labelledby="ui-id-46" role="tabpanel"
+                    <div class="tab-content" id="comments" aria-labelledby="ui-id-46" role="tabpanel"
                          aria-expanded="false" aria-hidden="true"
                          style="display: none;">
                         @if(isset($pendingComments) and $pendingComments->count() > 0 )
@@ -109,12 +104,14 @@
                             <div class="col-md-8 bottommargin-sm">
                                 @include('comments.pendingComments')
                             </div>
+                            @else
+                            <p>Pas de commentaires à afficher pour l'instant</p>
                         @endif
                     </div>
 
                     <div class="tab-container">
 
-                        <div class="tab-content col-md-12" id="tabs-39"
+                        <div class="tab-content col-md-12" id="my-adverts"
                              aria-labelledby="ui-id-27" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
 
@@ -143,7 +140,7 @@
                     <div class="tab-container col-md-12">
                         @if(isset($user))
                             <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom"
-                                 id="tabs-40"
+                                 id="my-profile"
                                  aria-labelledby="ui-id-28" role="tabpanel" aria-expanded="false" aria-hidden="true"
                                  style="display: none;">
                                 <h4>Changer ma photo</h4>
@@ -282,10 +279,10 @@
                             </div>
                         @endif
                     </div>
-
-                    @include('dates.dates')
-                @show
             </div>
+            @include('dates.dates')
+            @show
+
         </div>
     </div>
 

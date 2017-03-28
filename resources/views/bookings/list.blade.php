@@ -1,7 +1,7 @@
 @if(isset($bookings))
     @foreach($bookings as $booking)
-        <article class="gray-background" id="booking_{{$booking->id}}">
-            <div class="col-md-10 well">
+        <div class="gray-background" id="booking_{{$booking->id}}">
+            <div class="col-md-10 col-xs-12 well">
 
                 @if($booking->isStudent())
 
@@ -14,6 +14,6 @@
                 @endif
 
             </div>
-        </article>
+        </div>
     @endforeach
 @endif
