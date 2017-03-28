@@ -3427,3 +3427,14 @@ input[type="radio"] {
 .nav>li>img{
     max-width:190px;
 }
+
+.dashboard-main {
+    margin-top: 50px;
+    background-color: white;
+    margin-bottom: 150px;
+    padding: 80px;
+}
+
+.notification-message {
+    padding: 15px;
+}

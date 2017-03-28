@@ -1,4 +1,4 @@
-@extends('layouts.__master')
+@extends('layouts.master')
 
 @section('content')
     {!! HTML::script("js/webcam.min.js") !!}
@@ -9,7 +9,7 @@
     {!! HTML::style('css/slim.min.css')!!}
     {!! HTML::style('css/tabs.css')!!}
 
-    <div class="col-md-12 container">
+    <div class="col-md-10 col-md-offset-1 container dashboard-main">
 
         @include('includes.info')
 

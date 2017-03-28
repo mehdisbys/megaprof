@@ -7,8 +7,11 @@
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
           rel="stylesheet" type="text/css"/>
 
+    <link rel="apple-touch-icon" sizes="57x57" href="/"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="/"/>
+    <link rel="icon" sizes="32x32" type="image/png" href="/"/>
+    <link rel="icon" sizes="16x16" type="image/png" href="/"/>
 
-    {!! HTML::style('/css/bootstrap.css') !!}
     {!! HTML::style('/css/style.css')!!}
     {!! HTML::style('/temp-css/dashboard.css') !!}
     {!! HTML::style('/css/dark.css')!!}
@@ -19,6 +22,8 @@
     {!! HTML::style('/css/custom.css')!!}
     {!! HTML::style("/css/responsive.css") !!}
     {!! HTML::style("/css/toastr.min.css") !!}
+    {!! HTML::style('/css/bootstrap.css') !!}
+
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>

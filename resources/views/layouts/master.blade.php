@@ -20,72 +20,93 @@
     <link rel="icon" sizes="32x32" type="image/png" href="/"/>
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
 
+{!! HTML::style('/css/style.css')!!}
 {!! HTML::style('temp-css/normalize.css') !!}
-{!! HTML::style('temp-css/cropper.css') !!}
 {!! HTML::style('temp-css/dashboard.css') !!}
+{!! HTML::style('/css/dark.css')!!}
 {!! HTML::style('temp-css/fonts.css') !!}
+{!! HTML::style('/css/font-icons.css')!!}
 {!! HTML::style('temp-css/footer.css') !!}
 {!! HTML::style('temp-css/header.css') !!}
 {!! HTML::style('temp-css/main.css') !!}
+{!! HTML::style('/css/custom.css')!!}
 {!! HTML::style('/css/toastr.min.css') !!}
 {!! HTML::style('/css/bootstrap.css') !!}
+{!! HTML::style('/css/checkbox-button.css')!!}
+{!! HTML::style('/css/magnific-popup.css')!!}
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
 
 {!! HTML::script("js/jquery.js") !!}
 {!! HTML::script("js/bootstrap.min.js") !!}
+{!! HTML::script("/js/plugins.js") !!}
+
 
 <!-- TODO convert to sass files   -->
 </head>
 
 <body>
-<div class="header">
-    <nav class="navbar   navbar-site" role="navigation" style="background-color: white;">
-        <div class="container">
-            <div class="navbar-header">
-                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                            class="icon-bar"></span> <span class="icon-bar"></span></button>
-                <a class="header-logo header-logo-normal"
-                   href="/" title="Revenir à l'accueil de Taelam">
-                    <img src="/temp-images/megaprof.png" width="170"
-                         alt="Cours particuliers avec Taelam"/>
-                </a>
-            </div>
-            <div id="navbar-header" class="navbar-collapse collapse">
 
-                <ul class="nav navbar-nav navbar-right">
+<header id="header" class="full-header sticky-header">
 
-                    @if(Auth::check())
-                        <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
-                        <li><a class="header-item" href="/mon-compte">Mon Compte <span
-                                        class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
-                        </li>
-                        <li><a class="header-item" href="/logout">Se déconnecter</a></li>
-                        <li><a class="header-item" href="/faq">Aide</a></li>
-                    @else
-                        <li><a class="header-item" href="/faq">Comment Ça Marche</a></li>
-                    @endif
-                    <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des cours</a></li>
+    <div id="header-wrap">
 
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
+        <div class="header">
+            <nav class="navbar   navbar-site navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
+                                type="button">
+                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+                        <a class="header-logo header-logo-normal"
+                           href="/" title="Revenir à l'accueil de Taelam">
+                            <img src="/temp-images/megaprof.png" width="170"
+                                 alt="Cours particuliers avec Taelam"/>
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            @if(Auth::check())
+                                <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
+                                <li><a class="header-item" href="/mon-compte">Mon Compte <span
+                                                class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
+                                </li>
+                                <li><a class="header-item" href="/logout">Se déconnecter</a></li>
+                                <li><a class="header-item" href="/faq">Aide</a></li>
+
+                            @else
+                                <li><a class="header-item" href="/faq">Comment Ça Marche</a></li>
+                                <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
+                                        cours</a></li>
+                            @endif
+
+
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-</div>
+
+    </div>
+
+</header>
 
 
 @include('includes.success')
 @include('includes.error')
+
 <div class="page">
     @section('content')
     @show
 </div>
 
 <!--footer start from here-->
-<footer class="footer-div topmargin-sm" id="footer-div">
+<footer class="footer-div topmargin-sm row col-md-12" id="footer-div">
     <div class="container">
         <div class="row">
 
@@ -144,6 +165,8 @@
 
 </body>
 @include('includes/toastr/toastr')
+{!! HTML::script("js/functions.js") !!}
+
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
