@@ -100,7 +100,7 @@
                             @if(isset($pendingComments) and $pendingComments->count() > 0 )
                                 <h4>Commentez vos derniers cours</h4>
 
-                                @include('my-comments.pendingComments')
+                                @include('comments.pendingComments')
                             @else
                                 <h4>Mes commentaires</h4>
                                 <p>Pas de commentaires à afficher pour l'instant</p>
