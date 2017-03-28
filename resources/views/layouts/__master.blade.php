@@ -17,6 +17,7 @@
     {!! HTML::style('/css/magnific-popup.css')!!}
     {!! HTML::style('/css/checkbox-button.css')!!}
     {!! HTML::style('/css/custom.css')!!}
+    {!! HTML::style("/css/responsive.css") !!}
     {!! HTML::style("/css/toastr.min.css") !!}
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
