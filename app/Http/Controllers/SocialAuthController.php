@@ -20,7 +20,7 @@ class SocialAuthController extends Controller
 
     public function callback()
     {
-        $providerUser = Socialite::driver('facebook')->user();
+        $providerUser = Socialite::driver('facebook')->stateless()->user();
         $token = $providerUser->token;
         $user = $this->createOrGetUser($providerUser);
         $this->getAndSaveAvatar($providerUser, $user);
