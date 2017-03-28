@@ -117,10 +117,17 @@
                         <div class="tab-content col-md-12" id="tabs-39"
                              aria-labelledby="ui-id-27" role="tabpanel" aria-expanded="false" aria-hidden="true"
                              style="display: none;">
+
+                            @if(isset($toBeReviewedAdverts) and $toBeReviewedAdverts->count())
+                                <h4>Mes annonces en cours de modération</h4>
+                                @include('dashboard.adverts-list',['adverts' => $toBeReviewedAdverts])
+                            @endif
+
+
                             <h4>Mes annonces publiées</h4>
                             @if(isset($adverts))
                                 @include('dashboard.adverts-list',['adverts' => $adverts])
-                            @else
+                            @elseif(isset($toBeReviewedAdverts) == false)
                                 <p>Vous n'avez pas encore créé d'annonces</p>
                                 <p><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
                                         cours</a></p>

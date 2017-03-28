@@ -23,13 +23,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $notifications    = Notification::currentUserNotifications();
-        $adverts          = Advert::currentUserAdverts();
-        $archivedAdverts  = Advert::archivedUserAdverts();
-        $pendingComments  = Comment::currentUserPendingComments();
-        $bookings         = Booking::currentProfBookingRequests();
-        $archivedBookings = Booking::archivedBookingRequests();
-        $user             = User::find(Auth::id());
+        $notifications       = Notification::currentUserNotifications();
+        $adverts             = Advert::currentUserAdverts();
+        $toBeReviewedAdverts = Advert::toBeReviewedtUserAdverts();
+        $archivedAdverts     = Advert::archivedUserAdverts();
+        $pendingComments     = Comment::currentUserPendingComments();
+        $bookings            = Booking::currentProfBookingRequests();
+        $archivedBookings    = Booking::archivedBookingRequests();
+        $user                = User::find(Auth::id());
 
         $user->birthdate ? list($dobday, $dobmonth, $dobyear) = explode('/', $user->birthdate) : null;
 

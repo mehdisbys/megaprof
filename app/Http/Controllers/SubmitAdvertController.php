@@ -221,6 +221,7 @@ class SubmitAdvertController extends Controller
     {
         $request->input('advert_id');
         $advert = Advert::find(session('advert_id') ?? $request->input('advert_id'));
+        $advert->approved_at = NULL;
         $advert->publish();
 
         event(new ProfCreatedAdvert($advert));
