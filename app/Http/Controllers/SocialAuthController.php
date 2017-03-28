@@ -20,7 +20,7 @@ class SocialAuthController extends Controller
 
     public function callback()
     {
-        $providerUser = Socialite::driver('facebook')->stateless()->user();
+        $providerUser = Socialite::driver('facebook')->user();
         $token = $providerUser->token;
         $user = $this->createOrGetUser($providerUser);
         $this->getAndSaveAvatar($providerUser, $user);
@@ -32,7 +32,7 @@ class SocialAuthController extends Controller
 //            return redirect('/completer-profil');
 //        }
 //        // if missing information -> ask for personal information
-        return redirect()->intended('/annonces');
+        return redirect()->intended('/mon-compte');
     }
 
     public function createOrGetUser(\Laravel\Socialite\Two\User $providerUser): User
