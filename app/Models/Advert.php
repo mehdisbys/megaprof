@@ -114,7 +114,6 @@ class Advert extends Model
     {
         $this->published_at = Carbon::now();
         $this->save();
-        \Event::fire(new AdvertPublished($this));
         return $this;
     }
 

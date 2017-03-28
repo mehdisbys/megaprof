@@ -27,6 +27,8 @@ class NotifiyProfAdvertWasApproved
      */
     public function handle(AdvertWasAcceptedByAdmin $event)
     {
+
+
         // Dashboard Events
         Notification::createAdvertNotification
         ('advert_accepted',

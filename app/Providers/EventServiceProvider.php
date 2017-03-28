@@ -43,7 +43,7 @@ class EventServiceProvider extends ServiceProvider
             ],
         AdvertPublished::class        =>
             [
-                DashboardNotificationsAfterAdSubmission::class,
+
             ],
         ProfCommentedOnStudent::class =>
             [
@@ -66,6 +66,7 @@ class EventServiceProvider extends ServiceProvider
         AdvertWasAcceptedByAdmin::class =>
             [
                 NotifiyProfAdvertWasApproved::class,
+                DashboardNotificationsAfterAdSubmission::class
             ],
 
         UserConfirmedAccountAndFirstLogin::class =>

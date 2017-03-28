@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\AdvertPublished;
+use App\Events\AdvertWasAcceptedByAdmin;
 use App\Models\Notification;
 
 class DashboardNotificationsAfterAdSubmission
@@ -14,7 +15,7 @@ class DashboardNotificationsAfterAdSubmission
      * @param  AdvertPublished  $event
      * @return void
      */
-    public function handle(AdvertPublished $event)
+    public function handle(AdvertWasAcceptedByAdmin $event)
     {
         $editLink = '/modifier-annonce-';
         $advertId = $event->advert->id;
