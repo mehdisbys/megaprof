@@ -139,7 +139,7 @@
 
                 <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
                     <div class="bs-callout bs-callout-warning hidden">
-                        <h4>Erreur :-(</h4>
+                        <h4>Il manque quelques champs à remplir</h4>
                         <p>Veuillez remplir toutes les sections comportant une astérisque(*) avant de continuer.</p>
                     </div>
                     <button type="submit" class="button button-3d button-large button-rounded button-green">

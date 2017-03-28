@@ -170,15 +170,16 @@
                                 var times = el.split('_')[1];
                                 if(checkInt(times) == false) times = 1 ;
 
-                                $(el + "_span").text(func(price, percent));
-                                $(el + "_total").text(func(price, percent) * times);
-                                $(el).val(func(price, percent) * times);
+                                $(el + "_span").text(Math.floor(func(price, percent) * times));
+                                $(el + "_total").text(Math.floor(func(price, percent) * times));
+                                $(el).val(Math.floor(func(price, percent) * times));
                             };
 
                             var getBasicPrice = function(){return checkInt($("#price").val())};
 
                             var minus_percentage = function (value, percentage){
-                                return value - ((value * percentage)/100);
+                                localPercentage =  (value - ((value * percentage)/100));
+                                return Math.floor(localPercentage);
                             };
 
                             function checkInt(value) {
