@@ -127,11 +127,17 @@
         </div>
 
         <div class="col-md-12 topmargin-big">
-            <div class="student-presentation">Nous sélectionnons les meilleurs professeurs dans votre région pour vous !
+
+            <div class="quote-container">
+                <i class="pin"></i>
+                <blockquote class="note yellow">
+                    Le site n'est pas encore ouvert aux élèves car nous sommes en train de <strong>sélectionner les meilleurs professeurs pour vous</strong>, mais
+                    vous pouvez nous aider en remplissant les champs ci-dessous, merci !
+                    <cite class="author">Equipe Taelam</cite>
+                </blockquote>
+
             </div>
 
-            <div class="student-presentation">Vous pouvez nous aider !</div>
-            <div class="student-presentation">Entrez votre ville, l'activité de votre choix et votre email</div>
 
             <div class="col-md-12 row student-get-interest">
 
