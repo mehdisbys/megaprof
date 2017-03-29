@@ -47,12 +47,12 @@
 
 <body>
 
-<header id="header" class="full-header sticky-header">
+<header id="header" class="header">
 
     <div id="header-wrap">
 
-        <div class="header">
-            <nav class="navbar   navbar-site navbar-default" role="navigation">
+        <div class="head">
+            <nav class="navbar navbar-site" role="navigation" style="background-color: white;">
                 <div class="container">
                     <div class="navbar-header">
                         <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
@@ -76,14 +76,18 @@
                                 </li>
                                 <li><a class="header-item" href="/logout">Se déconnecter</a></li>
                                 <li><a class="header-item" href="/faq">Aide</a></li>
+                            @endif
+                            @if(Auth::check() == false and \Illuminate\Support\Facades\Request::is('professeur'))
 
-                            @else
+                                <li><a class="header-item" href="/login">Se connecter</a></li>
+                                <li><a class="header-item" href="/inscription">S'inscrire</a></li>
+                            @endif
+
+                            @if(Auth::check() == false)
                                 <li><a class="header-item" href="/faq">Comment Ça Marche</a></li>
                                 <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
                                         cours</a></li>
                             @endif
-
-
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
@@ -91,9 +95,7 @@
                 <!-- /.container-fluid -->
             </nav>
         </div>
-
     </div>
-
 </header>
 
 
