@@ -7,6 +7,7 @@ use App\Events\BookingRequestSent;
 use App\Http\Requests\BookLesson;
 use App\Models\Advert;
 use App\Models\Booking;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Event;
 
 
@@ -24,6 +25,15 @@ class BookCourseController extends Controller
         $booking = $request->only(['prof_user_id', 'advert_id', 'presentation','date','location','client','mobile','addresse', 'pick_a_date','pick_a_location']);
 
         $date = $request->only([ 'dobday', 'dobmonth','dobyear']);
+
+        $dateOfBirth = Carbon::createFromDate($date["dobyear"], $date["dobmonth"], $date["dobday"]);
+
+
+        if($dateOfBirth->age < 18)
+        {
+            info_message("Vous devez avoir plus de 18 ans pour pouvoir réserver une annonce");
+            return redirect()->back();
+        }
 
         $booking['student_user_id'] = \Auth::id();
 

@@ -8,6 +8,7 @@
     {!! HTML::script("js/jquery-ui.js")!!}
 
     @include('includes.inputErrors')
+    @include('includes.info')
     <div class="row" data-spy="scroll" data-target=".scrollspy">
 
         <div id="author" class="col-md-3 col-md-offset-1 scrollspy">
@@ -49,7 +50,7 @@
                         <li>Quel type/niveau de cours recherchez-vous ?</li>
                         <li>A quelle fréquence souhaitez-vous prendre vos cours ?</li>
                     </ul>
-                    {!! Form::textarea('presentation',null,['class' => 'sm-form-control', 'id' => 'presentation',
+                    {!! Form::textarea('presentation',old('presentation'),['class' => 'sm-form-control', 'id' => 'presentation',
                              'required' => "required",
                             'data-parsley-required-message'=>"Ce champs est requis",
                             'data-parsley-minimumwords' => "40",
@@ -63,7 +64,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="ck-button">
-                        {!! Form::radio('date','asap', null,['class' => 'no-display', 'id' => 'date_asap']) !!}
+                        {!! Form::radio('date','asap', old('date'),['class' => 'no-display', 'id' => 'date_asap']) !!}
                         <label for='date_asap'>
                             <span>Au plus tôt</span>
                         </label>
@@ -81,7 +82,7 @@
                         </label>
                     </div>
                     <div class="col-md-12 no-visibility" id="date_custom_display">
-                        {!! Form::input('text','pick_a_date', null, ['id' => 'pick_a_date', 'placeholder' => 'Choisir une date', 'class' => 'pikaday-field']) !!}
+                        {!! Form::input('text','pick_a_date', old('pick_a_date'), ['id' => 'pick_a_date', 'placeholder' => 'Choisir une date', 'class' => 'pikaday-field']) !!}
                     </div>
                 </div>
 
