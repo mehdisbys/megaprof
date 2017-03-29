@@ -1,4 +1,4 @@
-@extends('layouts.__master')
+@extends('layouts.master')
 
 @section('content')
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
@@ -9,10 +9,10 @@
 
     @include('includes.inputErrors')
     @include('includes.info')
-    <div class="row" data-spy="scroll" data-target=".scrollspy">
+    <div class="row">
 
-        <div id="author" class="col-md-3 col-md-offset-1 scrollspy">
-            <div id="leftside" data-spy="affix">
+        <div id="author" class="col-md-3 col-md-offset-1">
+            <div id="leftside">
                 <img src="{{ $advert->getAvatar() }}" alt="">
 
                 <div id="info-author">
@@ -180,17 +180,11 @@
                 </div>
 
                 <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
-                    <button type="submit" class="button button-3d button-large button-rounded button-green">
+                    <button type="submit" class="button button-3d button-large button-rounded">
                         Envoyer ma demande
                     </button>
                 </div>
             </form>
-        </div>
-
-        <div class="col-md-3 scrollspy">
-            <div id="rightside" data-spy="affix" class="">
-
-            </div>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -198,13 +192,6 @@
     <script>
 
         $(document).ready(function () {
-
-            $("#leftside").affix({
-                offset: {
-                    top: $("#leftside").offset().top,
-                    bottom: ($('#validate_buttons').outerHeight(true) + $('#footer').outerHeight(true)) + 100
-                }
-            });
 
             $('#addresse').geocomplete({
             //    types: ['(street_address)'],
@@ -229,9 +216,7 @@
                         $(el + "_display").addClass('no-visibility');
                 });
             };
-
             toggleRadioDisplays([["date", "#date_custom"], ["location", "#location_custom"], ["client", "#client_notme"]]);
-
         });
     </script>
 

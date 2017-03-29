@@ -6836,7 +6836,7 @@ body:not(.device-touch) .button {
 }
 
 .button.button-3d:hover {
-    background-color: #1ABC9C !important;
+    background-color: #ff6038 !important;
     opacity: 0.9;
 }
 
