@@ -3,7 +3,7 @@
     {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
     {!! HTML::style("temp-css/awesomplete.css") !!}
     {!! HTML::style("temp-css/loader.css") !!}
-    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;language=fr-FR&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
+    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::script("js/jquery.form.min.js") !!}
 

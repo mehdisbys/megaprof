@@ -230,12 +230,12 @@
 
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            {!! Form::label('gender_man', 'Homme') !!}
+                                            <i class="fa fa-male"></i> {!! Form::label('gender_man', 'Homme') !!}
                                             {!! Form::radio('gender','man', $user->gender,['class' => '', 'id' => 'gender_man']) !!}
                                         </div>
 
                                         <div class="col-md-6">
-                                            {!! Form::label('gender_woman', 'Femme') !!}
+                                            <i class="fa fa-female"></i>  {!! Form::label('gender_woman', 'Femme') !!}
                                             {!! Form::radio('gender','woman', $user->gender,['class' => '', 'id' => 'gender_woman']) !!}
                                         </div>
 

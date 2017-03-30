@@ -2962,9 +2962,8 @@ a.component-pagination-item:hover {
 }
 
 .social-icons {
-    width: 140px;
-    margin: auto;
-    margin-top: 25px;
+    margin: 25px 25px 25px 60px;
+    text-align: center;
 }
 
 .social-icon {
@@ -3412,7 +3411,15 @@ input[type="radio"] {
 }
 
 
-#footer-div a, a:link {
+#footer-div a:link {
+    color: white;
+}
+
+#footer-div a {
+    color: white;
+}
+
+.btn > a {
     color: white;
 }
 
@@ -3531,3 +3538,7 @@ Create a CSS3 post-it note without images
     -ms-transform-origin: 50% 100%;
     -o-transform-origin: 50% 100%;
 }
+
+/**/
+
+
