@@ -52,7 +52,7 @@
     </div>
 
 
-    <div class="student-info col-md-12">
+    <div class="student-info col-md-12" id="student-info-div">
         <div class="wraper">
             <div class="home-hare-opinion">
                 <div class="col-md-12"><h2 class="section-title">Trouver un professeur, c'est facile !</h2></div>
@@ -298,7 +298,7 @@
 
         $("#student-btn").click(function () {
             $('html, body').animate({
-                scrollTop: $("#search_form").offset().top
+                scrollTop: $("#student-info-div").offset().top
             }, 1500);
         });
 
