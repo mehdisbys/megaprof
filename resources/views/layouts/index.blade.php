@@ -187,7 +187,7 @@
             </div>
 
             <div>
-                <div class="scrolling-pane topmargin-lg">
+                <div class="scrolling-pane topmargin-lg col-md-12">
                     <h2 class="section-title">Pourquoi choisir Taelam ?</h2>
 
                     <div class="row">
