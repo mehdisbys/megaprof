@@ -57,7 +57,7 @@
             <div class="home-hare-opinion">
                 <div class="col-md-12"><h2 class="section-title">Trouver un professeur, c'est facile !</h2></div>
                 <div class="topmargin-big col-md-12">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="quote-message-container">
                         <div class="col-md-3">
                             <div class="col-md-12" data-tooltip="En un clic, Taelam vous
 
@@ -126,9 +126,9 @@
             </div>
         </div>
 
-        <div class="col-md-12 topmargin-big">
+        <div class="col-md-12 topmargin-big" >
 
-            <div class="quote-container">
+            <div class="quote-container" >
                 <i class="pin"></i>
                 <blockquote class="note yellow">
                     Le site n'est pas encore ouvert aux élèves car nous sommes en train de <strong>sélectionner les meilleurs professeurs pour vous</strong>, mais
@@ -298,7 +298,7 @@
 
         $("#student-btn").click(function () {
             $('html, body').animate({
-                scrollTop: $("#student-info-div").offset().top
+                scrollTop: $("#quote-message-container").offset().top
             }, 1500);
         });
 
