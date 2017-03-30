@@ -19,6 +19,9 @@
     <link rel="apple-touch-icon" sizes="60x60" href="/"/>
     <link rel="icon" sizes="32x32" type="image/png" href="/"/>
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
+
+
 
 {!! HTML::style('/css/style.css')!!}
 {!! HTML::style('temp-css/normalize.css') !!}
