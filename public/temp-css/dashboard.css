@@ -2979,6 +2979,7 @@ a.component-pagination-item:hover {
     margin: 20px 10px 0px 10px;
     padding: 20px;
     border-radius: 5%;
+    border: 1px solid #e2e2e2;
 }
 
 .single-advert-title {
@@ -3541,4 +3542,16 @@ Create a CSS3 post-it note without images
 
 /**/
 
+.author-profile-header {
+    background-color: white;
+    padding:20px;
 
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid #e2e2e2;
+}
+
+.flag{
+    max-width: 60px;
+}

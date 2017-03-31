@@ -19,8 +19,7 @@
     <link rel="apple-touch-icon" sizes="60x60" href="/"/>
     <link rel="icon" sizes="32x32" type="image/png" href="/"/>
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
-
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
 
 {!! HTML::style('/css/style.css')!!}
@@ -38,7 +37,6 @@
 {!! HTML::style('/css/checkbox-button.css')!!}
 {!! HTML::style('/css/magnific-popup.css')!!}
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
-
 
 {!! HTML::script("js/jquery.js") !!}
 {!! HTML::script("js/bootstrap.min.js") !!}
@@ -145,6 +143,7 @@
                 <div class="text-center center-block">
 
                     <h6 class="heading7">TAELAM</h6>
+                    <img class="flag" src="css/flags/flags/4x3/ma.svg" alt="Drapeau Marocain">
 
                     <p><em>
                             <small>Taelam est le premier site Marocain de partage de connaissances.

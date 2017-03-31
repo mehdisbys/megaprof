@@ -1,15 +1,15 @@
 @extends('layouts.master')
 @section('content')
     <!-- 1 -->
-    <div class="top-container">
+    <div class="container">
 
-        <div class="view-profs-items-container">
+        <div class="col-md-8 col-md-offset-2">
             @if(isset($info))
                 <h4><span><i class="fa fa-warning"></i> </span>{{$info}}</h4>
             @endif
 
             @if(Auth::user() and Auth::user()->isAdmin() and $advert->published_at != NULL and $advert->approved_at == NULL)
-                <div class="advert-header">
+                <div class="col-md-12">
                     <form action="/rejeter-annonce/{{$advert->id}}" method="post">
 
                         {{csrf_field()}}
@@ -43,7 +43,7 @@
                 </div>
 
             @endif
-            <div class="advert-header">
+            <div class="col-md-12 author-profile-header topmargin-small">
 
 
                 <div class="single-view-info-author">
@@ -65,11 +65,21 @@
                 </div>
                 <div id="profile-author" class="single-view-profile-author-profile">
                     <div class="single-view-profile-info">
-                        <div class="single-view-profile-image-wrapper">
-                            <img src="{{ $advert->getAvatar() }}" alt="avatar">
-                        </div>
+                        <img src="{{ $advert->getAvatar() }}" alt="avatar">
                         <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
                         <ul class="iconlist-info">
+                            @if($advert->can_webcam)
+                                <li>
+                                    <i class="fa fa-skype"></i>
+                                    <small>Donne des cours par webcam</small>
+                                </li>
+                            @endif
+                                @if($advert->can_travel)
+                                    <li>
+                                        <i class="fa fa-home"></i>
+                                        <small>Se déplace à domicile</small>
+                                    </li>
+                                @endif
                             <li>
                                 <i class="fa fa-map-marker"></i>
                                 <strong>{{ $advert->location_city }}</strong>
@@ -89,15 +99,14 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="topmargin-small">
                     <a class="booking-button temp-btn-block "
-                       href="/mise-en-relation/{{$advert->slug}}">Réserver un cours : {{$advert->price}} Dhs/h</a>
+                       href="/mise-en-relation/{{$advert->slug}}">Réserver : {{$advert->price}} Dhs/h</a>
                 </div>
 
 
-
             </div>
-            <div class="col-md-12 row col-md-offset-3 social-icons">
+            <div class="col-md-12 row col-md-offset-3 social-icons topmargin-small">
                 <a href="http://www.facebook.com/sharer.php?u={{env('APP_URL')}}{{$advert->slug}}"
                    data-send="false"
                    data-layout="box_count"
@@ -141,7 +150,7 @@
             </div>
 
             <!-- 2 -->
-            <table class="view-table">
+            <table class="view-table col-md-12 row">
                 <thead>
                 <tr>
                     <th></th>
@@ -174,7 +183,7 @@
 
 
             <!-- 3 -->
-            <div class="view-comments">
+            <div class="view-comments col-md-12">
 
                 @if(isset($comments) and $comments->count())
                     <h3>Avis des étudiants</h3>
@@ -188,7 +197,7 @@
             </div>
 
             @if(isset($similarAdverts) and count($similarAdverts) > 0)
-                <div class="similar-adverts">
+                <div class="similar-adverts col-md-12">
                     <div class="similar-adverts-wrapper">
                         <h3>Les professeurs similaires</h3>
 
