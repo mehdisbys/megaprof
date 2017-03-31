@@ -1,0 +1,108 @@
+.no-visibility {
+
+    position: absolute;
+    left: -1000000px;
+}
+
+.make-visible {
+
+    position: relative;
+    left: 0px;
+}
+
+.parsley-minimumwords, .parsley-required {
+    list-style: none;
+    color: #C20000;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.small-input {
+    width: 50px !important;
+    height: 25px !important;
+    padding: 0px !important;
+}
+
+.imgpreview {
+    /* You can specify preview size in CSS */
+    /*  width: 700px;*/
+}
+
+img{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.absolute
+{
+    position: absolute;
+}
+
+
+.application {
+    border-top: 1px solid #c1e1ec;
+}
+
+.affix-top {
+    position: relative;
+}
+
+.affix {
+    top: 80px;
+}
+
+.affix,
+.affix-bottom {
+    width: 213px;
+}
+
+.affix-bottom {
+    position: absolute;
+}
+
+
+@media (min-width:1200px) {
+    .affix,
+    .affix-bottom {
+        width: 263px;
+    }
+}
+
+.border5px {
+
+    border: 5px solid #E5E5E5;
+}
+.border1px {
+
+    border: 1px solid #E5E5E5;
+}
+
+.gray-backround {
+    background-color: #F5F5F5;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.search-radio {
+    position: relative;
+    display: inline-block;
+    min-width: 90px;
+    padding: 5px 15px;
+    font-weight: 600;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
+    opacity: 0.35;
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+}

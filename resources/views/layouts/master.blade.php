@@ -24,18 +24,8 @@
 
 {!! HTML::style('/css/style.css')!!}
 {!! HTML::style('/css/bootstrap.css') !!}
-{!! HTML::style('temp-css/normalize.css') !!}
-{!! HTML::style('temp-css/dashboard.css') !!}
-{!! HTML::style('/css/dark.css')!!}
-{!! HTML::style('temp-css/fonts.css') !!}
-{!! HTML::style('/css/font-icons.css')!!}
-{!! HTML::style('temp-css/footer.css') !!}
-{!! HTML::style('temp-css/header.css') !!}
-{!! HTML::style('temp-css/main.css') !!}
-{!! HTML::style('/css/custom.css')!!}
-{!! HTML::style('/css/toastr.min.css') !!}
-{!! HTML::style('/css/checkbox-button.css')!!}
-{!! HTML::style('/css/magnific-popup.css')!!}
+{!! HTML::style('/css/all.css') !!}
+
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
 {!! HTML::script("js/jquery.js") !!}

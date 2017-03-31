@@ -12,5 +12,22 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+
+    mix.styles([
+        'bootstrap.css',
+        'normalize.css',
+        'dashboard.css',
+        'fonts.css',
+        'footer.css',
+        'header.css',
+        'main.css',
+
+        'custom.css',
+        'font-icons.css',
+        'toastr.min.css',
+        'checkbox-button.css',
+        'magnific-popup.css'
+    ]);
+
+
 });
