@@ -1,17 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-    {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
     {!! HTML::style("temp-css/awesomplete.css") !!}
     {!! HTML::style("css/fa/css/font-awesome.min.css") !!}
     {!! HTML::style("css/slick.css") !!}
     {!! HTML::style("css/slick-theme.css") !!}
 
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
-    {!! HTML::script("js/locationpicker.jquery.js") !!}
-    {!! HTML::script("js/jquery.geocomplete.min.js") !!}
-    {!! HTML::script("js/jquery.form.min.js") !!}
-    {!! HTML::script("js/parsley.min.js")!!}
     {!! HTML::script("js/jquery.vticker.min.js")!!}
 
 
@@ -224,6 +219,9 @@
     </div>
 
     {!! HTML::script("js/slick.min.js") !!}
+    {!! HTML::script("js/jquery.form.min.js") !!}
+    {!! HTML::script("js/parsley.min.js")!!}
+    {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
 
     <!-- five ============= -->
     @include('includes.awesomeplete.diacritics')

@@ -22,15 +22,11 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
 
-{!! HTML::style('/css/style.css')!!}
-{!! HTML::style('/css/bootstrap.css') !!}
 {!! HTML::style('/css/all.css') !!}
-
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
 {!! HTML::script("js/jquery.js") !!}
 {!! HTML::script("js/bootstrap.min.js") !!}
-{!! HTML::script("/js/plugins.js") !!}
 
 
 <!-- TODO convert to sass files   -->

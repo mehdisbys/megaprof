@@ -44,8 +44,6 @@
 
             @endif
             <div class="col-md-12 author-profile-header topmargin-small">
-
-
                 <div class="single-view-info-author">
                     <h3>{{ $advert->title }}</h3>
 
@@ -66,7 +64,7 @@
                 <div id="profile-author" class="single-view-profile-author-profile">
                     <div class="single-view-profile-info">
                         <img src="{{ $advert->getAvatar() }}" alt="avatar">
-                        <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
+                        <h3><a href="#" class="center">{{$advert->user->firstname }}</a></h3>
                         <ul class="iconlist-info">
                             @if($advert->can_webcam)
                                 <li>
