@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    {!! HTML::style('/css/style.css')!!}
     {!! HTML::script("js/webcam.min.js") !!}
     {!! HTML::script("js/jquery-confirm.js") !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
