@@ -156,7 +156,7 @@
                             return string
                                             .replace(/(^\s*)|(\s*$)/gi, "")
                                             .replace(/\s+/gi, " ")
-                                            .split(' ').length - 1;
+                                            .split(' ').length;
                         };
 
                         var updateCount = function (el, expected) {
@@ -185,7 +185,7 @@
                                 .addValidator('minimumwords', {
                                     requirementType: 'string',
                                     validateString: function (value, requirement) {
-                                        return countWords(value) > requirement;
+                                        return countWords(value) >= requirement;
                                     },
                                     messages: {
                                         en: 'Veuillez entrer au minimum %s mots dans cette section'
