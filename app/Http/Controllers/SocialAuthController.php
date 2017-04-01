@@ -47,11 +47,14 @@ class SocialAuthController extends Controller
 
             $user = User::where('email', $providerUser->getEmail())->first();
 
+            $name = explode(' ', $providerUser->getName());
+
+
             if (!$user) {
                 $user = User::create(
                     [
-                        'firstname'    => $providerUser->getName(),
-                        'lastname'     => '',
+                        'firstname'    => $name[0],
+                        'lastname'     => implode(" ", array_shift($name)),
                         'gender'       => $gender[$providerUser->user['gender']] ?? null,
                         'email'        => $providerUser->getEmail(),
                         'password'     => bcrypt(bin2hex(random_bytes(10))),

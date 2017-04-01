@@ -51,12 +51,11 @@
                             {!! Form::label('presentation','Présentation personelle et contenu de vos cours') !!}
                             <div class="leftmargin-sm">
                                 <ul class="form-inputs-informations">
-                                    <li>Qui êtes-vous en quelques mots et à qui s'adressent les cours (diplôme, niveau,
-                                        classe,
-                                        spécificités,etc.) ?
-                                    </li>
-                                    <li>Vos techniques et méthodes d'enseignement ? (déroulement du cours)</li>
-                                    <li>Vos spécificités en tant que professeur ? (méthodologie)</li>
+
+                                    Présentez-vous à vos futurs élèves et décrivez leurs votre parcours. <br>
+                                    Cela leur permettra de mieux vous connaitre
+                                    <li>Qu'est ce qui vous distingue des autres professeurs ?</li>
+                                    <li>Comment se déroule votre cours et quels sont vos objectifs</li>
                                 </ul>
                             </div>
 
@@ -65,9 +64,9 @@
                             {!! Form::textarea('presentation',$presentation,['class' => 'sm-form-control', 'id' => 'presentation',
                             'required' => "required",
                             'data-parsley-required-message'=>"Ce champs est requis",
-                            'data-parsley-minimumwords' => "40",
-                            'title' => "Entrez au moins 40 mots"]) !!}
-                            <p id="presentation-text"><span id="presentation-count">40</span> mots manquants pour être
+                            'data-parsley-minimumwords' => "30",
+                            'title' => "Entrez au moins 30 mots"]) !!}
+                            <p id="presentation-text"><span id="presentation-count">30</span> mots manquants pour être
                                 efficace
                             </p>
                             <p class="form-inputs-informations small">
@@ -95,9 +94,9 @@
                             {!! Form::textarea('content',$content,['class' => 'sm-form-control', 'id' => 'content',
                             'required' => "required",
                             'data-parsley-required-message'=>"Ce champs est requis",
-                            'data-parsley-minimumwords' => "40",
-                            'title' => "Entrez au moins 40 mots"]) !!}
-                            <div id="content-text"><span id="content-count">40</span> mots manquants pour être efficace
+                            'data-parsley-minimumwords' => "30",
+                            'title' => "Entrez au moins 30 mots"]) !!}
+                            <div id="content-text"><span id="content-count">30</span> mots manquants pour être efficace
                             </div>
 
                             <em class="small">Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître
@@ -122,10 +121,10 @@
                             {!! Form::textarea('experience', $experience,['class' => 'sm-form-control', 'id' => 'experience',
                              'required' => "required",
                              'data-parsley-required-message'=>"Ce champs est requis",
-                             'data-parsley-minimumwords' => "40",
-                             'title' => "Entrez au moins 40 mots"]) !!}
+                             'data-parsley-minimumwords' => "30",
+                             'title' => "Entrez au moins 30 mots"]) !!}
 
-                            <div id="experience-text"><span id="experience-count">40</span> mots manquants pour être
+                            <div id="experience-text"><span id="experience-count">30</span> mots manquants pour être
                                 efficace
                             </div>
                             <em class="small">Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître
@@ -138,70 +137,15 @@
 
 
                 <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
-                    <div class="bs-callout bs-callout-warning hidden">
+                    <div class="bs-callout bs-callout-warning col-md-6 col-md-offset-3 alert alert-danger hidden">
                         <h4>Il manque quelques champs à remplir</h4>
-                        <p>Veuillez remplir toutes les sections comportant une astérisque(*) avant de continuer.</p>
+                        <strong>Veuillez remplir toutes les sections comportant une astérisque(*) avant de continuer.</strong>
                     </div>
-                    <button type="submit" class="button button-3d button-large button-rounded button-green">
+                    <button type="submit" class="button button-3d button-large button-rounded">
                         J'ai défini le contenu de mes cours
                     </button>
                 </div>
 
                 {!! Form::close() !!}
 
-                <script>
-                    $(document).ready(function () {
-
-                        var countWords = function (string) {
-                            return string
-                                            .replace(/(^\s*)|(\s*$)/gi, "")
-                                            .replace(/\s+/gi, " ")
-                                            .split(' ').length;
-                        };
-
-                        var updateCount = function (el, expected) {
-                            var nb = expected - countWords($(el).val());
-                            if (nb > 0) {
-                                $("#" + $(el).attr('id') + "-text").removeClass('no-display');
-                                $("#" + $(el).attr('id') + "-count").text(nb);
-
-                            }
-                            if (nb <= 0) {
-                                $("#" + $(el).attr('id') + "-count").text('');
-                                $("#" + $(el).attr('id') + "-text").addClass('no-display');
-                            }
-                            return nb;
-                        };
-
-                        var count40 = function (el) {
-                            return updateCount(el, 40);
-                        };
-
-                        $(".sm-form-control").on("keypress change", (function () {
-                            count40(this);
-                        }));
-
-                        window.Parsley
-                                .addValidator('minimumwords', {
-                                    requirementType: 'string',
-                                    validateString: function (value, requirement) {
-                                        return countWords(value) >= requirement;
-                                    },
-                                    messages: {
-                                        en: 'Veuillez entrer au minimum %s mots dans cette section'
-                                    }
-                                });
-
-
-                        $('#presentation-content').parsley()
-                                .on('field:validated', function () {
-
-                                    var ok = $('.parsley-error').length === 0;
-
-                                    $('.bs-callout-warning').toggleClass('hidden', ok);
-                                })
-                                .on('form:submit', function () {
-                                    return true;
-                                });
-                    });
-                </script>
+    {!! HTML::script("js/step4.js")!!}
