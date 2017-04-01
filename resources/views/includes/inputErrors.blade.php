@@ -1,9 +1,9 @@
 
 @if (isset($errors) and count($errors) > 0)
-    <div class="alert alert-danger">
+    <div class="alert toastr-info alert-danger col-md-12">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        There were some problems with your input.<br><br>
-        <ul>
+        Désolé, il manque quelques informations : <br>
+        <ul class="col-md-8 col-md-offse">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach

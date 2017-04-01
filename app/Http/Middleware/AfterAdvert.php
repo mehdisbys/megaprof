@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\RedirectResponse;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class AfterAdvert
@@ -17,6 +18,11 @@ class AfterAdvert
     public function handle($request, Closure $next)
     {
         $response = $next($request);
+
+        if($response instanceof RedirectResponse)
+        {
+            return $response;
+        }
 
         $original = $response->getOriginalContent();
 

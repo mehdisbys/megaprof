@@ -11,7 +11,7 @@ var elixir = require('laravel-elixir');
  |
  */
 
-elixir(function(mix) {
+elixir(function (mix) {
 
     mix.styles([
         'style.css',
@@ -30,5 +30,19 @@ elixir(function(mix) {
         'magnific-popup.css'
     ]);
 
+    mix.styles([
+        'bootstrap.css',
+        'style.css',
+        'dashboard.css',
+        'dark.css',
+        'font-icons.css',
+        'animate.css',
+        'magnific-popup.css',
+        'checkbox-button.css',
+        'custom.css',
+        'responsive.css' ,
+        'toastr.min.css'
+    ], 'public/css/__master-all.css');
 
+    mix.scripts(['step1.js'], 'public/js/step1.js');
 });

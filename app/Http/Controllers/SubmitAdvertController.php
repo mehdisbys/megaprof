@@ -29,9 +29,9 @@ class SubmitAdvertController extends Controller
 
     public function getStep1Subjects()
     {
-        $subjects        = Subject::orderBy('name', 'ASC')->get();
-        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
-     //   $checkedSubjects = SubjectsPerAdvert::getSubjectsPerAdvert($this->advertId);
+        $subjects    = Subject::orderBy('name', 'ASC')->get();
+        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
+        //   $checkedSubjects = SubjectsPerAdvert::getSubjectsPerAdvert($this->advertId);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
@@ -39,6 +39,13 @@ class SubmitAdvertController extends Controller
 
     public function postStep1Subjects(Request $request)
     {
+
+        $this->validate($request,[
+            'subjects'      => 'required',
+            'subjects_text' => 'required',
+        ], ['required' => 'Veuillez choisir une matière'], []);
+
+
         // 1. Create advert linked with userid
         $advert    = Advert::create(['user_id' => Auth::id()]);
         $advert_id = $advert->id;
@@ -179,8 +186,8 @@ class SubmitAdvertController extends Controller
 
     public function getStep6Picture()
     {
-       // if (Avatar::hasAvatar(Auth::id()))
-       //     return $this->afterRequest->init('postStep6Picture', get_defined_vars());
+        // if (Avatar::hasAvatar(Auth::id()))
+        //     return $this->afterRequest->init('postStep6Picture', get_defined_vars());
 
         $advert_id = session('advert_id');
 
@@ -220,7 +227,7 @@ class SubmitAdvertController extends Controller
     public function postStep7Publish(Request $request)
     {
         $request->input('advert_id');
-        $advert = Advert::find(session('advert_id') ?? $request->input('advert_id'));
+        $advert              = Advert::find(session('advert_id') ?? $request->input('advert_id'));
         $advert->approved_at = NULL;
         $advert->publish();
 

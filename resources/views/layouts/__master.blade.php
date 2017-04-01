@@ -12,17 +12,8 @@
     <link rel="icon" sizes="32x32" type="image/png" href="/"/>
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
 
-    {!! HTML::style('/css/style.css')!!}
-    {!! HTML::style('/temp-css/dashboard.css') !!}
-    {!! HTML::style('/css/dark.css')!!}
-    {!! HTML::style('/css/font-icons.css')!!}
-    {!! HTML::style('/css/animate.css')!!}
-    {!! HTML::style('/css/magnific-popup.css')!!}
-    {!! HTML::style('/css/checkbox-button.css')!!}
-    {!! HTML::style('/css/custom.css')!!}
-    {!! HTML::style("/css/responsive.css") !!}
-    {!! HTML::style("/css/toastr.min.css") !!}
-    {!! HTML::style('/css/bootstrap.css') !!}
+    {!! HTML::style('/css/__master-all.css') !!}
+
 
     <!--[if lt IE 9]>
     <script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
