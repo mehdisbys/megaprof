@@ -85,6 +85,12 @@ class SubmitAdvertController extends Controller
 
     public function postStep2TitleAndLevels(Request $request)
     {
+        $this->validate($request, [
+            'title' => "required",
+            'levels' => "required",
+        ], ['title.required' => 'Veuillez choisir un titre',
+            'levels.required' => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
+
         $levels = $request->input('levels');
         $title  = $request->input('title');
 

@@ -45,4 +45,5 @@ elixir(function (mix) {
     ], 'public/css/__master-all.css');
 
     mix.scripts(['step1.js'], 'public/js/step1.js');
+    mix.scripts(['step2.js'], 'public/js/step2.js');
 });
