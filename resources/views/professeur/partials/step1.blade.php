@@ -20,7 +20,7 @@
 
                     <div class="col-md-10 col-md-offset-2">
 
-                        <h2 class="col-md-12">Quelle(s) matière(s) enseignez-vous ?</h2>
+                        <h2 class="col-md-12">Quelle(s) activité(s) proposez-vous?</h2>
                         {{--<div class="col-md-8">--}}
                         {{--<input--}}
                         {{--id="subject_input"--}}
@@ -79,10 +79,10 @@
 
                     <div class="col-md-12 text-center">
                         <div id="input_error_message" class=" col-md-6 col-md-offset-3 alert alert-danger hidden">
-                            <strong>Veuillez sélectionner une matière avant de passer à l'étape suivante.</strong>
+                            <strong>Veuillez sélectionner une activité avant de passer à l'étape suivante.</strong>
                         </div>
                         <button type="submit" class="button button-3d button-large button-rounded">
-                            J'ai sélectionné les matières de mon annonce
+                            J'ai sélectionné les activités de mon annonce
                         </button>
                     </div>
 

@@ -41,7 +41,7 @@ class SubmitAdvertController extends Controller
     {
         $this->validate($request, [
             'subjects' => "required",
-        ], ['required' => 'Veuillez choisir une matière'], []);
+        ], ['required' => 'Veuillez choisir une activité'], []);
 
 
         // 1. Create advert linked with userid
