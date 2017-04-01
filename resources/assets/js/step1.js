@@ -8,20 +8,17 @@ $(function () {
             }
         }
 
-        if ($("#subject_input").val() !== '')
-            return;
-
         e.preventDefault();
         $("#input_error_message").removeClass('hidden');
     });
 
-    new Awesomplete(document.getElementById('subject_input'), {
-        filter: function (text, input) {
-            return new RegExp("^" + removeDiacritics(input.match(/[^,]*$/)[0].trim()), "i").test(removeDiacritics(text));
-        },
-        replace: function (text) {
-            var before = this.input.value.match(/^.+,\s*|/)[0];
-            this.input.value = before + text + ", ";
-        }
-    });
+    // new Awesomplete(document.getElementById('subject_input'), {
+    //     filter: function (text, input) {
+    //         return new RegExp("^" + removeDiacritics(input.match(/[^,]*$/)[0].trim()), "i").test(removeDiacritics(text));
+    //     },
+    //     replace: function (text) {
+    //         var before = this.input.value.match(/^.+,\s*|/)[0];
+    //         this.input.value = before + text + ", ";
+    //     }
+    // });
 });

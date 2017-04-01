@@ -21,21 +21,21 @@
                     <div class="col-md-10 col-md-offset-2">
 
                         <h2 class="col-md-12">Quelle(s) matière(s) enseignez-vous ?</h2>
-                        <div class="col-md-8">
-                            <input
-                                    id="subject_input"
-                                    class="sm-form-control bottommargin-sm col-md-12"
-                                    placeholder="Choisissez une ou plusieurs matières"
-                                    data-minchars="1"
-                                    data-autofirst="1"
-                                    data-list="{!! $subsubjects !!}"
-                                    name="subjects_text"
-                                    type="text"
-                                    autocomplete="off"
-                                    aria-autocomplete="list"
-                                    data-multiple/>
-                        </div>
-                        <div class="col-md-6 col-md-offset-3 bottommargin-sm">Ou choisissez-en ci-dessous</div>
+                        {{--<div class="col-md-8">--}}
+                        {{--<input--}}
+                        {{--id="subject_input"--}}
+                        {{--class="sm-form-control bottommargin-sm col-md-12"--}}
+                        {{--placeholder="Choisissez une ou plusieurs matières"--}}
+                        {{--data-minchars="1"--}}
+                        {{--data-autofirst="1"--}}
+                        {{--data-list="{!! $subsubjects !!}"--}}
+                        {{--name="subjects_text"--}}
+                        {{--type="text"--}}
+                        {{--autocomplete="off"--}}
+                        {{--aria-autocomplete="list"--}}
+                        {{--data-multiple/>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-md-6 col-md-offset-3 bottommargin-sm">Ou choisissez-en ci-dessous</div>--}}
 
                         <div class="col-md-10 tabs side-tabs">
 

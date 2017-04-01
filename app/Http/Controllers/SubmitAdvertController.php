@@ -39,10 +39,8 @@ class SubmitAdvertController extends Controller
 
     public function postStep1Subjects(Request $request)
     {
-
-        $this->validate($request,[
-            'subjects'      => 'required',
-            'subjects_text' => 'required',
+        $this->validate($request, [
+            'subjects' => "required",
         ], ['required' => 'Veuillez choisir une matière'], []);
 
 
