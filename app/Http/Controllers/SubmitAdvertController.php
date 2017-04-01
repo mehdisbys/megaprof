@@ -112,6 +112,11 @@ class SubmitAdvertController extends Controller
 
     public function postStep3AddressAndTravel(Request $request)
     {
+        $this->validate($request, [
+            'location' => "required",
+        ], ['location.required' => 'Veuillez choisir le lieu où se dérouleront les cours',
+            'levels.required' => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
+
         $advert_id = session('advert_id');
 
         $table = [

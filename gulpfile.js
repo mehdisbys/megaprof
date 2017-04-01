@@ -46,4 +46,5 @@ elixir(function (mix) {
 
     mix.scripts(['step1.js'], 'public/js/step1.js');
     mix.scripts(['step2.js'], 'public/js/step2.js');
+    mix.scripts(['step3.js'], 'public/js/step3.js');
 });
