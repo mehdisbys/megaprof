@@ -86,9 +86,9 @@ class SubmitAdvertController extends Controller
     public function postStep2TitleAndLevels(Request $request)
     {
         $this->validate($request, [
-            'title' => "required",
+            'title'  => "required",
             'levels' => "required",
-        ], ['title.required' => 'Veuillez choisir un titre',
+        ], ['title.required'  => 'Veuillez choisir un titre',
             'levels.required' => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
 
         $levels = $request->input('levels');
@@ -115,7 +115,7 @@ class SubmitAdvertController extends Controller
         $this->validate($request, [
             'location' => "required",
         ], ['location.required' => 'Veuillez choisir le lieu où se dérouleront les cours',
-            'levels.required' => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
+            'levels.required'   => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
 
         $advert_id = session('advert_id');
 
@@ -151,6 +151,15 @@ class SubmitAdvertController extends Controller
 
     public function postStep4ContentAndExperience(Request $request)
     {
+        $this->validate($request, [
+            'presentation' => "required",
+            'content'      => "required",
+            'experience'   => "required",
+        ], ['presentation.required' => 'Veuillez remplir le champ description et expertise',
+            'content.required'    => 'Veuillez remplir le champ expérience',
+            'experience.required' => 'Veuillez remplir le champ CV et formation'], []);
+
+
         $content_data = $request->only(['presentation',
                                            'content',
                                            'experience']);

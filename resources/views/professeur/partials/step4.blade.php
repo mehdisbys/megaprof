@@ -4,6 +4,9 @@
     @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'active'])
 @endif
 
+<div class="container">
+    @include('includes.inputErrors')
+
 @if(isset($advert))
     <form id="presentation-content" accept-charset="UTF-8"
           action="/modifier-annonce-4/{{$advert->id}}" method="POST" data-parsley-validate>
@@ -149,3 +152,5 @@
                 {!! Form::close() !!}
 
     {!! HTML::script("js/step4.js")!!}
+
+</div>
