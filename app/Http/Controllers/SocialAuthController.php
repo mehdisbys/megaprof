@@ -54,7 +54,7 @@ class SocialAuthController extends Controller
                 $user = User::create(
                     [
                         'firstname'    => $name[0],
-                        'lastname'     => implode(" ", array_shift($name)),
+                        'lastname'     => "",
                         'gender'       => $gender[$providerUser->user['gender']] ?? null,
                         'email'        => $providerUser->getEmail(),
                         'password'     => bcrypt(bin2hex(random_bytes(10))),
