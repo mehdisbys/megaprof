@@ -182,6 +182,10 @@ class SubmitAdvertController extends Controller
 
     public function postStep5PriceAndConditions(Request $request)
     {
+        $this->validate($request, [
+            'price' => "required",
+        ], ['price.required' => 'Veuillez indiquer le prix par heure de cours'], []);
+
         $only = [
             "price",
             "price_travel_percentage",

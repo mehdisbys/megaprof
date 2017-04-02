@@ -72,13 +72,7 @@
                             <p id="presentation-text"><span id="presentation-count">30</span> mots manquants pour être
                                 efficace
                             </p>
-                            <p class="form-inputs-informations small">
-                                C'est la première chose que les élèves vont lire sur vos cours, pensez à bien soigner
-                                l'orthographe et
-                                le style de vos textes pour qu'ils soient les plus attractifs et sympathiques possibles.<br>
-                                <em>Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître dans vos
-                                    textes.</em>
-                            </p>
+
                         </div>
 
                         <div class="tab-content" id="experience">
@@ -87,10 +81,9 @@
                             {!! Form::label('content','Expérience dans les matières sélectionnées') !!}
                             <div class="leftmargin-sm">
                                 <ul class="form-inputs-informations">
+
                                     <li>Depuis combien de temps donnez-vous des cours ?</li>
-                                    <li>Combien d'élèves avez-vous déjà formés ?</li>
-                                    <li>Quels résultats vos élèves ont-ils obtenu grâce à vous (notes, diplômes, etc.) ?
-                                    </li>
+                                    <li>Racontez comment vous avez aidé vos élèves a obtenir de meilleures notes, leurs diplômes ou a réussir leurs concours, etc..</li>
                                 </ul>
                             </div>
                             <?php $content = isset($advert) ? $advert->content : null; ?>
@@ -115,8 +108,8 @@
 
                                 <ul class="form-inputs-informations">
                                     <li>Vos diplômes obtenus ou en cours d'obtention</li>
-                                    <li>Vos récompenses ou distinctions</li>
-                                    <li>Vos expériences professionnelles en lien avec vos matières enseignées</li>
+                                    <li>Vos loisirs en lien avec l'activité proposée</li>
+                                    <li>Une anecdote qui fournira un plus à votre annonce</li>
                                 </ul>
                             </div>
                             <?php $experience = isset($advert) ? $advert->experience : null; ?>
@@ -136,6 +129,12 @@
                                 textes.</em>
                         </div>
                     </div>
+                    <p class="form-inputs-informations small col-md-8 col-md-offset-4 topmargin-small">
+                        Ce qui plait aux élèves c'est une annonce professionnelle de qualité alors n'oubliez pas de faire attention à votre style d'écriture et aux fautes d'orthographe
+                        <br>
+                        <em>Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître dans vos
+                            textes.</em>
+                    </p>
                 </div>
 
 
