@@ -14,18 +14,10 @@
 
     <div id="validate_buttons" class="col-md-12 text-center topmargin-lg">
 
-        <button type="submit" class="button button-3d button-large button-rounded button-green">
+        <button type="submit" class="button button-3d button-large button-rounded">
             Publier l'annonce
         </button>
     </div>
     {!! Form::close() !!}
-
-    <script>
-
-        $( document ).ready(function() {
-
-        });
-
-    </script>
 
 </div>

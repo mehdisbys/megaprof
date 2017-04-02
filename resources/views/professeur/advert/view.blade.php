@@ -5,7 +5,10 @@
 
         <div class="col-md-8 col-md-offset-2">
             @if(isset($info))
-                <h4><span><i class="fa fa-warning"></i> </span>{{$info}}</h4>
+                <div class=" alert-info alert toastr-info">
+                    <h4><span><i class="fa fa-warning"></i> </span>{{$info}}</h4>
+                </div>
+
             @endif
 
             @if(Auth::user() and Auth::user()->isAdmin() and $advert->published_at != NULL and $advert->approved_at == NULL)
@@ -41,8 +44,24 @@
 
                     </form>
                 </div>
-
             @endif
+
+            @if(isset($thisIsAPreview) and $thisIsAPreview === true)
+                {!! Form::open(['url' => '/nouvelle-annonce-7']) !!}
+                {!! Form::hidden('advert_id', $advert->id) !!}
+
+                <div id="validate_buttons" class="col-md-12 text-center topmargin-lg">
+
+                    <a href="/modifier-annonce-1/{{$advert->id}}" class="btn btn-info">
+                       <i class="fa fa-reply"></i> Éditer l'annonce
+                    </a>
+                    <button type="submit" class="button button-3d button-large button-rounded">
+                        Publier l'annonce
+                    </button>
+                </div>
+                {!! Form::close() !!}
+            @endif
+
             <div class="col-md-12 author-profile-header topmargin-small">
                 <div class="single-view-info-author">
                     <h3>{{ $advert->title }}</h3>
@@ -72,12 +91,12 @@
                                     <small>Donne des cours par webcam</small>
                                 </li>
                             @endif
-                                @if($advert->can_travel)
-                                    <li>
-                                        <i class="fa fa-home"></i>
-                                        <small>Se déplace à domicile</small>
-                                    </li>
-                                @endif
+                            @if($advert->can_travel)
+                                <li>
+                                    <i class="fa fa-home"></i>
+                                    <small>Se déplace à domicile</small>
+                                </li>
+                            @endif
                             <li>
                                 <i class="fa fa-map-marker"></i>
                                 <strong>{{ $advert->location_city }}</strong>
@@ -98,8 +117,9 @@
                 </div>
 
                 <div class="topmargin-small">
-                    <a class="booking-button temp-btn-block "
-                       href="/mise-en-relation/{{$advert->slug}}">Réserver : {{$advert->price}} Dhs/h</a>
+                    <a class="booking-button temp-btn-block" href="
+                    {{ isset($thisIsAPreview) ? '' : '/mise-en-relation/'.$advert->slug}}">Réserver : {{$advert->price}}
+                        Dhs/h</a>
                 </div>
 
 

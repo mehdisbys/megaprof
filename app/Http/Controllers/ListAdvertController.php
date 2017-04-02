@@ -152,7 +152,8 @@ class ListAdvertController extends Controller
 
         if ($advert->published_at == NULL)
         {
-            $view->with(['info' => "Cette annonce n'est pas encore publiée et n'est pas visible des élèves"]);
+            $view->with(['info' => "Cette annonce n'est pas encore publiée et n'est pas visible des élèves",
+                        'thisIsAPreview' => true]);
         }
 
         return $view;

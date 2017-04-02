@@ -7,54 +7,59 @@
     @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'complete', 'step6' => 'active'])
 @endif
 
-@if(isset($advert))
-    <form class="avatar" id="presentation-content" accept-charset="UTF-8"
-          action="/modifier-annonce-6/{{$advert->id}}" method="POST" enctype="multipart/form-data"
-          data-parsley-validate>
-        @else
-            <form class="avatar" id="presentation-content" accept-charset="UTF-8"
-                  action="/nouvelle-annonce-6" method="POST" enctype="multipart/form-data" data-parsley-validate>
-                @endif
+<div class="container">
 
-                {!! csrf_field() !!}
+    @include('includes.inputErrors')
 
-                <h2 class="col-md-12 center">Montrez votre plus beau sourire !</h2>
+    @if(isset($advert))
+        <form class="avatar" id="presentation-content" accept-charset="UTF-8"
+              action="/modifier-annonce-6/{{$advert->id}}" method="POST" enctype="multipart/form-data"
+              data-parsley-validate>
+            @else
+                <form class="avatar" id="presentation-content" accept-charset="UTF-8"
+                      action="/nouvelle-annonce-6" method="POST" enctype="multipart/form-data" data-parsley-validate>
+                    @endif
 
-                <div class="col-md-12 center">
-                    <h5>Vous êtes sympathique, montrez-le ! Votre photo sera l'atout majeur de votre annonce pour donner
-                        confiance à vos élèves, elle est non seulement importante mais obligatoire pour que votre
-                        annonce soit en ligne</h5>
-                </div>
+                    {!! csrf_field() !!}
 
-                <div class="col-md-12 center topmargin-sm">
+                    <h2 class="col-md-12 center">Montrez votre plus beau sourire !</h2>
 
-                    <div id="img-container">
+                    <div class="col-md-12 center">
+                        <h5>Souriez! vos élèves vous regardent
+                            Votre photo est le premier contact des élèves avec votre profil alors montrez-vous sous
+                            votre meilleur profil. La photo est obligatoire pour que votre annonce soit publiée.
+                        </h5>
+
                     </div>
 
-                    <div class="clearfix"></div>
+                    <div class="col-md-12 center topmargin-sm">
 
-                    <div id="upload" style="width: 190px; height: auto; text-align: center; margin: auto">
-                        <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
-                        <input type="file" name="img_upload" id="img_upload">
+                        <div id="img-container">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div id="upload" style="width: 190px; height: auto; text-align: center; margin: auto">
+                            <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
+                            <input type="file" name="img_upload" id="img_upload">
+                        </div>
+
+                        <button type="submit" class="button button-3d button-large button-rounded">
+                            J'ai choisi ma photo
+                        </button>
+
+                        <script>
+                            $(document).ready(function () {
+
+                                $('#upload').slim({
+                                    ratio: '1:1',
+                                    label: 'Déposez votre image ici ou cliquez',
+                                    uploadBase64: false,
+                                    jpegCompression: 70
+                                });
+                            });
+
+                        </script>
                     </div>
-
-                    <button type="submit" class="button button-3d button-large button-rounded button-green">
-                        J'ai choisi ma photo
-                    </button>
-
-                    <script>
-                        $(document).ready(function () {
-
-                            $('#upload').slim({
-                                ratio: '1:1',
-                                label: 'Déposez votre image ici ou cliquez',
-                                uploadBase64: false,
-                                jpegCompression: 70
-                            })
-                            ;
-
-                        });
-
-                    </script>
-                </div>
-    {!! Form::close() !!}
+        {!! Form::close() !!}
+</div>

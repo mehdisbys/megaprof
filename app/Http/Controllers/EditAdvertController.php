@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Request;
 use App\Models\Advert;
 use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
@@ -32,8 +33,13 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('subjects', 'subsubjects', 'checkedSubjects', 'advert_id', 'step', 'advert'));
     }
 
-    public function postEditStep1($advert_id)
+    public function postEditStep1($advert_id, Request $request)
     {
+
+        $this->validate($request, [
+            'subjects' => "required",
+        ], ['required' => 'Veuillez choisir une activité'], []);
+
         $subjectsArray = \Input::get('subjects');
 
         // 3. Get Subject Names
@@ -84,8 +90,14 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('subjects', 'levels', 'advert_id', 'advert', 'checked', 'step'));
     }
 
-    public function postEditStep2($advert_id)
+    public function postEditStep2($advert_id, Request $request)
     {
+        $this->validate($request, [
+            'title'  => "required",
+            'levels' => "required",
+        ], ['title.required'  => 'Veuillez choisir un titre',
+            'levels.required' => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
+
         $levels = \Input::get('levels');
         $title  = \Input::get('title');
 
@@ -103,8 +115,13 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
-    public function postEditStep3($advert_id)
+    public function postEditStep3($advert_id, Request $request)
     {
+        $this->validate($request, [
+            'location' => "required",
+        ], ['location.required' => 'Veuillez choisir le lieu où se dérouleront les cours',
+            'levels.required'   => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
+
         $table = [
             'can_travel'  => 'can_travel',
             'can_receive' => 'can_receive',
@@ -128,8 +145,16 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
-    public function postEditStep4($advert_id)
+    public function postEditStep4($advert_id, Request $request)
     {
+        $this->validate($request, [
+            'presentation' => "required",
+            'content'      => "required",
+            'experience'   => "required",
+        ], ['presentation.required' => 'Veuillez remplir le champ description et expertise',
+            'content.required'    => 'Veuillez remplir le champ expérience',
+            'experience.required' => 'Veuillez remplir le champ CV et formation'], []);
+
         $content_data = \Request::only(['presentation',
                                            'content',
                                            'experience']);
@@ -150,8 +175,12 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'can_travel', 'can_webcam', 'step'));
     }
 
-    public function postEditStep5($advert_id)
+    public function postEditStep5($advert_id, Request $request)
     {
+        $this->validate($request, [
+            'price' => "required",
+        ], ['price.required' => 'Veuillez indiquer le prix par heure de cours'], []);
+
         $only = [
             "price",
             "price_travel_percentage",
@@ -181,8 +210,15 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
-    public function postEditStep6($advert_id)
+    public function postEditStep6($advert_id, Request $request)
     {
+        if(Avatar::hasAvatar(Auth::id()) == false) {
+            $this->validate($request, [
+                'img_upload' => "required",
+            ], ['img_upload.required' => 'La photo est nécessaire pour pouvoir créer une annonce'], []);
+
+        }
+
         $avatar = json_decode(Input::get('img_upload'));
 
         if ($avatar) {
@@ -202,6 +238,15 @@ class EditAdvertController extends Controller
         $advert = Advert::find($advert_id);
 
         return view('professeur.advert.createStep7')->with(compact('advert'));
+    }
+
+    public function editStep7($advert_id)
+    {
+        $advert = Advert::findOrFail($advert_id);
+
+        $step = 7;
+
+        return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
 
