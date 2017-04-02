@@ -43,9 +43,10 @@
                     <div class="col-md-12">
                         <div class="col-md-3">
 
+
                             <div class="col-md-12"><i style="color:#6a91ff;"
                                                       class="fa fa-pencil-square-o fa-5x clearfix"></i></div>
-                            <div class="col-md-12"><h4> Créer une annonce gratuitement</h4></div>
+                            <div class="col-md-12"><a href="/inscription"><h4> Créer une annonce gratuitement</h4></a></div>
                             <div class="col-md-12">
                                 <small>Des milliers de personnes cherchent
 
@@ -56,8 +57,8 @@
                                     possibilité de créer un compte
                                 </small>
                             </div>
-
                         </div>
+
                         <div class="col-md-3">
                             <div class="col-md-12"><i style="color:#b0ed7c;"
                                                       class="fa fa-money fa-5x clearfix"></i></div>
