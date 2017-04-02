@@ -26,6 +26,9 @@
 {!! HTML::script("/js/plugins.js") !!}
 
 
+@include('user_tracking.smartlook')
+
+
 <!-- Document Title
     ============================================= -->
     <title>Taelam</title>

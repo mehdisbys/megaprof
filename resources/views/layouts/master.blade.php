@@ -28,6 +28,8 @@
 {!! HTML::script("js/jquery.js") !!}
 {!! HTML::script("js/bootstrap.min.js") !!}
 
+@include('user_tracking.smartlook')
+
 
 <!-- TODO convert to sass files   -->
 </head>
