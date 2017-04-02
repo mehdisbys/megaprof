@@ -41,12 +41,12 @@
     <div id="header-wrap">
 
         <div class="head">
-            <nav class="navbar navbar-site" role="navigation" style="background-color: white;">
+            <nav class="navbar navbar-site" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
-                        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
+                        <button style="background-color: #ff8c00;" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
                                 type="button">
-                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                            <span class="sr-only">Toggle navigation</span> <span class="fa fa-bars"></span> <span
                                     class="icon-bar"></span> <span class="icon-bar"></span></button>
                         <a class="header-logo header-logo-normal"
                            href="/" title="Revenir à l'accueil de Taelam">

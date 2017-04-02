@@ -27,7 +27,9 @@ elixir(function (mix) {
         'font-icons.css',
         'toastr.min.css',
         'checkbox-button.css',
-        'magnific-popup.css'
+        'magnific-popup.css',
+        'dark.css',
+        'responsive.css'
     ]);
 
     mix.styles([
