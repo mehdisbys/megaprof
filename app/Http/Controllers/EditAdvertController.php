@@ -33,7 +33,7 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('subjects', 'subsubjects', 'checkedSubjects', 'advert_id', 'step', 'advert'));
     }
 
-    public function postEditStep1($advert_id, Request $request)
+    public function postEditStep1 ($advert_id, \Illuminate\Http\Request $request)
     {
 
         $this->validate($request, [
@@ -90,7 +90,7 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('subjects', 'levels', 'advert_id', 'advert', 'checked', 'step'));
     }
 
-    public function postEditStep2($advert_id, Request $request)
+    public function postEditStep2($advert_id, \Illuminate\Http\Request $request)
     {
         $this->validate($request, [
             'title'  => "required",
@@ -115,7 +115,7 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
-    public function postEditStep3($advert_id, Request $request)
+    public function postEditStep3($advert_id, \Illuminate\Http\Request $request)
     {
         $this->validate($request, [
             'location' => "required",
@@ -145,7 +145,7 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
-    public function postEditStep4($advert_id, Request $request)
+    public function postEditStep4($advert_id, \Illuminate\Http\Request $request)
     {
         $this->validate($request, [
             'presentation' => "required",
@@ -175,7 +175,7 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'can_travel', 'can_webcam', 'step'));
     }
 
-    public function postEditStep5($advert_id, Request $request)
+    public function postEditStep5($advert_id, \Illuminate\Http\Request $request)
     {
         $this->validate($request, [
             'price' => "required",
@@ -210,7 +210,7 @@ class EditAdvertController extends Controller
         return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
     }
 
-    public function postEditStep6($advert_id, Request $request)
+    public function postEditStep6($advert_id, \Illuminate\Http\Request $request)
     {
         if(Avatar::hasAvatar(Auth::id()) == false) {
             $this->validate($request, [
