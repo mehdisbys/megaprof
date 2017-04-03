@@ -51,10 +51,9 @@
 
                             {!! Form::label('presentation','Présentation personelle et contenu de vos cours') !!}
                             <div class="leftmargin-sm">
-                                <ul class="form-inputs-informations">
-
-                                    Présentez-vous à vos futurs élèves et décrivez leurs votre parcours. <br>
-                                    Cela leur permettra de mieux vous connaitre
+                                Présentez-vous à vos futurs élèves et décrivez leurs votre parcours. <br>
+                                Cela leur permettra de mieux vous connaitre
+                                <ul class="form-inputs-informations topmargin-sm">
                                     <li>Qu'est ce qui vous distingue des autres professeurs ?</li>
                                     <li>Comment se déroule votre cours et quels sont vos objectifs</li>
                                 </ul>
