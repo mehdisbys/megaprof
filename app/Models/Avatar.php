@@ -33,7 +33,7 @@ class Avatar extends Model
             ini_set('allow_url_fopen', 1);
             $img               = \Intervention\Image\Facades\Image::make($imgUrl);
             $this->img         = $img->encode('png');
-            $this->img_cropped = $img->resize(190,190)->encode('png');
+            $this->img_cropped = $img->encode('png');
             $this->img_name    = 'facebook_avatar';
             $this->img_mime    = $img->mime();
             $this->img_size    = $img->filesize();

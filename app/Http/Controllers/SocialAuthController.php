@@ -23,7 +23,10 @@ class SocialAuthController extends Controller
         $providerUser = Socialite::driver('facebook')->user();
         $token = $providerUser->token;
         $user = $this->createOrGetUser($providerUser);
-        $this->getAndSaveAvatar($providerUser, $user);
+        if(Avatar::hasAvatar($user->id) == false)
+        {
+            $this->getAndSaveAvatar($providerUser, $user);
+        }
         Auth::login($user);
         thanks("Bonjour " . $user->firstname . " vous avez été identifié avec succés");
 
