@@ -899,7 +899,6 @@ Header
 #header {
     position: relative;
     background-color: #FFF;
-    border-bottom: 1px solid #F5F5F5;
 }
 
 #header .container { position: relative; }
@@ -1922,7 +1921,7 @@ Sticky Header
 #header.sticky-style-3 { height: 181px; }
 
 #header.sticky-style-2 #header-wrap,
-#header.sticky-style-3 #header-wrap { height: 60px; }
+#header.sticky-style-3 #header-wrap { height: 90px; }
 
 #primary-menu > ul > li > ul,
 #primary-menu > ul > li > .mega-menu-content,
