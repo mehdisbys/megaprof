@@ -261,6 +261,8 @@ class SubmitAdvertController extends Controller
 
         event(new ProfCreatedAdvert($advert));
 
+        thanks('Votre annonce a été créée avec succès !');
+
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 }

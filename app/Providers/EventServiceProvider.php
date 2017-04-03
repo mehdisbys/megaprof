@@ -22,6 +22,7 @@ use App\Listeners\NotifyBookingRequest;
 use App\Listeners\NotifyProfAdvertWasRejected;
 use App\Listeners\NotifyProfOfPostedComment;
 use App\Listeners\NotifyStudentOfPostedComment;
+use App\Listeners\SuccessAdvertCreatedNotification;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -76,6 +77,7 @@ class EventServiceProvider extends ServiceProvider
         ProfCreatedAdvert::class =>
             [
                 NotifyAdminAdvertCreated::class,
+                SuccessAdvertCreatedNotification::class
             ],
     ];
 

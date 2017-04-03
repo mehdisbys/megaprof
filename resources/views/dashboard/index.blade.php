@@ -53,7 +53,7 @@
                         <a href="#my-adverts" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-27">Mes
                             annonces
                             @if (isset($adverts) and $adverts->count())
-                                <span class="badge">{{$adverts->count()}}</span>
+                                <span class="badge">{{$adverts->count() + $toBeReviewedAdverts->count()}}</span>
                             @endif
                         </a>
                     </li>
