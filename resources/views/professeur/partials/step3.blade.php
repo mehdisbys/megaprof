@@ -33,7 +33,7 @@
                         {!! Form::input('text','location',$location,['class' => 'alert_location sm-form-control required',
                         'data-parsley-required-message' => "N'oubliez pas de sélectionner le lieu où se dérouleront vos cours",
                         'id' => 'location']) !!}
-                        <div class="col-md-12"><em>Votre addresse ne sera pas divulguée à vos élèves nous l'utilisons seulement pour calculer les distances</em></div>
+                        <em>Votre addresse ne sera pas visible nous l'utilisons seulement pour calculer les distances</em>
 
                         <div class="location-details no-visibility">
 
