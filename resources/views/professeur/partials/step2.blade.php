@@ -27,9 +27,12 @@
                         {!! Form::input('text', 'title', $title, ['class' => 'sm-form-control required',
                         'data-parsley-minimumwords' => "10",
                         'title' => "Entrez au moins 10 mots",
-                        'data-parsley-required-message'=>"N'oubliez pas de choisir un titre pour votre annonce",]) !!}
-                        <em>Un titre efficace doit contenir au moins 10 mots.</em><br>
-                        <em>En général il contient l'activité enseignée, la ville et ce qui vous distingue des autres
+                        'id' => 'title',
+                         'data-parsley-required-message'=>"N'oubliez pas de choisir un titre pour votre annonce",]) !!}
+                        <p id="title-text"><span id="title-count">10</span> mots manquants pour être
+                            efficace
+                        </p>
+                        <em>En général le titre contient l'activité enseignée, la ville et ce qui vous distingue des autres
                             professeurs (diplômes, expérience..)</em>
 
                         {!! Form::hidden('advert_id', $advert_id) !!}
