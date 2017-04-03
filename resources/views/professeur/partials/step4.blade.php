@@ -17,37 +17,11 @@
                 {!! Form::hidden('advert_id', $advert_id) !!}
                 <div class="col-md-8 col-md-offset-4 clearfix"><h2>Description et expertise</h2></div>
 
-                <div class="col-md-1"></div>
+                <div class="col-md-8 col-md-offset-2">
 
-                <div class="col-md-8 tabs side-tabs">
+                    <div class="col-md-12">
 
-                    <ul class="tab-nav tab-nav2"
-                        role="tablist">
-                        <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active ui-state-focus"
-                            role="tab" tabindex="0" aria-controls="tabs-21" aria-labelledby="ui-id-37"
-                            aria-selected="true" aria-expanded="true">
-                            <a href="#description" class="ui-tabs-anchor"
-                               role="presentation" tabindex="-1"
-                               id="ui-id-37">Description et Expertise*</a></li>
-                        <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-22"
-                            aria-labelledby="ui-id-38" aria-selected="false" aria-expanded="false">
-                            <a href="#experience"
-                               class="ui-tabs-anchor"
-                               role="presentation"
-                               tabindex="-1"
-                               id="ui-id-38">Expérience*</a></li>
-                        <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-23"
-                            aria-labelledby="ui-id-39" aria-selected="false" aria-expanded="false" id="education-tab">
-                            <a href="#education"
-                               class="ui-tabs-anchor"
-                               role="presentation"
-                               tabindex="-1"
-                               id="ui-id-39">CV et Formation*</a></li>
-                    </ul>
-
-                    <div class="tab-container">
-
-                        <div class="tab-content" id="description">
+                        <div class="col-md-12 bottommargin-sm" id="description">
 
                             {!! Form::label('presentation','Présentation personelle et contenu de vos cours') !!}
                             <div class="leftmargin-sm">
@@ -72,7 +46,7 @@
 
                         </div>
 
-                        <div class="tab-content" id="experience">
+                        <div class="bottommargin-sm" id="experience">
 
 
                             {!! Form::label('content','Expérience dans les matières sélectionnées') !!}
@@ -126,7 +100,7 @@
                                 textes.</em>
                         </div>
                     </div>
-                    <p class="form-inputs-informations small col-md-8 col-md-offset-4 topmargin-small">
+                    <p class="form-inputs-informations small col-md-8 col-md-offset-2 topmargin-small">
                         Ce qui plait aux élèves c'est une annonce professionnelle de qualité alors n'oubliez pas de faire attention à votre style d'écriture et aux fautes d'orthographe
                         <br>
                         <em>Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître dans vos
