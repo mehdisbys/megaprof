@@ -60,7 +60,7 @@
 
                                     <div class="togglec" style="display: none;">
                                         @foreach ($level->subLevels as $subs)
-                                            <div class="">
+                                            <div class="col-md-4">
                                                 <input class="" type="checkbox" name="levels[{{$subject->id}}][]"
                                                        id="{{$subject->id ."_". $subs->id}}" value="{{$subs->id}}"
                                                        data-parsley-required data-parsley-required-message=""
