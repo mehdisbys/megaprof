@@ -13,7 +13,7 @@ class SuccessAdvertCreatedNotification
     {
         Notification::createAdvertNotification
         ('advert_created',
-         '<i class="fa fa-2x fa-check green"></i>  Votre annonce a été créée avec succès ! Nous sommes en train de la valider et elle sera visible par tous les élèves très bientôt.' ,
+         "<i class=\"fa fa-2x fa-check green\"></i>  Votre annonce : <strong>{$event->advert->title}</strong> a été créée avec succès ! Nous sommes en train de la valider et elle sera visible par tous les élèves très bientôt." ,
          '',
          $event->advert->id,
          $event->advert->user_id

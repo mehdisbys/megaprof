@@ -195,11 +195,7 @@
 
             <div class="col-xs-3 col-md-2 bs-wizard-step {{$step6 or 'disabled'}}">
 
-                @if(isset($advert) and $advert->step6Done())
-                    <div class="text-center bs-wizard-stepnum"><a href="/nouvelle-annonce-6"><span><i class="icon icon-checkmark"></i></span> Photo</a></div>
-                @else
                     <div class="text-center bs-wizard-stepnum">Photo</div>
-                @endif
 
                 <div class="progress">
                     <div class="progress-bar"></div>

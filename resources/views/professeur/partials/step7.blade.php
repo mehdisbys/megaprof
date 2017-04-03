@@ -7,13 +7,14 @@
 
     @include('main.advertPreview', ['urlPreview' => true])
 
-    <div class="clearfix"></div>
 
     {!! Form::open(['url' => '/nouvelle-annonce-7']) !!}
     {!! Form::hidden('advert_id', $advert->id) !!}
 
-    <div id="validate_buttons" class="col-md-12 text-center topmargin-lg">
-
+    <div id="validate_buttons" class="col-md-12 text-center">
+        <a href="/modifier-annonce-1/{{$advert->id}}" class="btn btn-info">
+            <i class="fa fa-reply"></i> Éditer l'annonce
+        </a>
         <button type="submit" class="button button-3d button-large button-rounded">
             Publier l'annonce
         </button>

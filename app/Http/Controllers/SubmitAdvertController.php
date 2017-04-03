@@ -299,6 +299,8 @@ class SubmitAdvertController extends Controller
 
         thanks('Votre annonce a été créée avec succès !');
 
+        session()->forget('advert_id');
+
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 }
