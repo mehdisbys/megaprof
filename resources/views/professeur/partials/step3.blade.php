@@ -46,34 +46,31 @@
                             {!! Form::hidden('country',  null, ['id' => 'country']) !!}
                         </div>
 
-                        <div class="ck-button col-md-6">
+                        <div class=" col-md-6">
                             <?php $can_webcam = isset($advert) ? $advert->can_webcam : null; ?>
 
-                            {!! Form::input('checkbox','can_webcam',null,['class' => 'no-display', 'id' => 'can_webcam',
-                            'checked' => $can_webcam ]) !!}
+                                <label for='can_webcam' class="topmargin-sm">
+                                    {!! Form::input('checkbox','can_webcam',null,['class' => '', 'id' => 'can_webcam','checked' => $can_webcam ]) !!}
+                                    Je peux donner des cours par webcam
+                                </label>
 
-                            <label for='can_webcam' class="topmargin-sm">
-                                <span><span class="fa fa-video-camera"></span> Je peux donner des cours par webcam</span>
-                            </label>
                         </div>
 
-                        <div class="ck-button col-md-6">
+                        <div class=" col-md-6">
                             <?php $can_receive = isset($advert) ? $advert->can_receive : null; ?>
 
-                            {!! Form::input('checkbox','can_receive', null,['class' => 'no-display', 'id' => 'can_receive',
-                            'checked' => $can_receive]) !!}
+
                             <label for='can_receive' class="topmargin-sm">
-                                <span><span class="fa fa-home"></span> Je peux recevoir mes élèves</span>
+                                {!! Form::input('checkbox','can_receive', null,['class' => '', 'id' => 'can_receive',
+                            'checked' => $can_receive]) !!} Je peux recevoir mes élèves
                             </label>
                         </div>
 
-                        <div class="ck-button col-md-6 col-md-offset-3">
+                        <div class=" col-md-6 col-md-offset-3">
                             <?php $can_travel = isset($advert) ? $advert->can_travel : null; ?>
-
-                            {!! Form::input('checkbox','can_travel',null,['class' => 'no-display', 'id' => 'can_travel',
-                            'checked' => $can_travel]) !!}
-                            <label for='can_travel' class="topmargin-sm">
-                                <span><span class="fa fa-taxi"></span> Je peux me déplacer</span>
+                                <label for='can_travel' class="topmargin-sm">
+                            {!! Form::input('checkbox','can_travel',null,['class' => '', 'id' => 'can_travel',
+                            'checked' => $can_travel]) !!} Je peux me déplacer
                             </label>
                         </div>
 
