@@ -1921,7 +1921,7 @@ Sticky Header
 #header.sticky-style-3 { height: 181px; }
 
 #header.sticky-style-2 #header-wrap,
-#header.sticky-style-3 #header-wrap { height: 90px; }
+#header.sticky-style-3 #header-wrap { height: 60px; }
 
 #primary-menu > ul > li > ul,
 #primary-menu > ul > li > .mega-menu-content,
@@ -1979,7 +1979,7 @@ body.top-search-open #side-panel-trigger { opacity: 0; }
 #header.sticky-header:not(.static-sticky):not(.sticky-style-2) #logo img,
 #header.sticky-header:not(.static-sticky) #primary-menu,
 #header.sticky-header:not(.static-sticky) #primary-menu > ul,
-#header.sticky-header:not(.static-sticky) #primary-menu > ul > li > a { height: 60px; }
+#header.sticky-header:not(.static-sticky) #primary-menu > ul > li > a { height: 93px; }
 
 #header.sticky-header:not(.static-sticky).sticky-style-2 { height: 161px; }
 
