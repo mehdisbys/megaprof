@@ -73,7 +73,7 @@
                             @endif
 
                             @if(Auth::check() == false)
-                                <li><a class="header-item" href="/faq">Comment Ça Marche</a></li>
+                                <li><a class="header-item" href="/faq">Aide</a></li>
                                 <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
                                         cours</a></li>
                             @endif
