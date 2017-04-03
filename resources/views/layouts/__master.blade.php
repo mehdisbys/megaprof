@@ -24,6 +24,7 @@
     ============================================= -->
 {!! HTML::script("/js/jquery.js") !!}
 {!! HTML::script("/js/plugins.js") !!}
+{!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
 
 @include('user_tracking.smartlook')

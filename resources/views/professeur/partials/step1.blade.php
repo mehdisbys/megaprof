@@ -1,14 +1,13 @@
 {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
 {!! HTML::style("temp-css/awesomplete.css") !!}
-@if(isset($advert) == false)
-    @include('professeur.process-steps.process-steps')
-@endif
+
+@include('professeur.process-steps.process-steps')
 
 <div class="container">
 
     @include('includes.inputErrors')
 
-    @if(isset($checkedSubjects) and $checkedSubjects != NULL)
+    @if(\Illuminate\Support\Facades\Request::is('*modifier-annonce*'))
         <form method="POST" action="/modifier-annonce-1/{{$advert_id}}" accept-charset="UTF-8"
               id="subject_form">
             {!! Form::hidden('advert_id', $advert_id) !!}

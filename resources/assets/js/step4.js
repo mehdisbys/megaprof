@@ -25,7 +25,11 @@ $(document).ready(function () {
         return updateCount(el, 30);
     };
 
-    $(".sm-form-control").on("keypress change", (function () {
+    var smFormControl = $(".sm-form-control");
+
+    smFormControl.each(function(){count30(this)});
+
+    smFormControl.on("keypress change", (function () {
         count30(this);
     }));
 

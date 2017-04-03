@@ -130,6 +130,39 @@ class Advert extends Model
         $this->save();
     }
 
+    public function step1Done(): bool
+    {
+        return SubjectsPerAdvert::select('subject_id')
+            ->where('advert_id', $this->id)
+            ->exists();
+    }
+
+    public function step2Done(): bool
+    {
+        return empty($this->title) == false;
+    }
+
+    public function step3Done(): bool
+    {
+        return empty($this->location) == false;
+    }
+
+    public function step4Done(): bool
+    {
+        return ((empty($this->presentation) == false) and (empty($this->content) == false) and (empty($this->experience) == false));
+    }
+
+    public function step5Done(): bool
+    {
+        return $this->price != NULL;
+    }
+
+    public function step6Done(): bool
+    {
+       return Avatar::hasAvatar($this->user_id);
+    }
+
+
     public static function searchAdvertIdsByGender(array $advert_ids, string $gender)
     {
         $query = self::whereIn('id', $advert_ids);

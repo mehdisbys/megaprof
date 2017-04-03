@@ -1,13 +1,12 @@
 {!! HTML::script("js/parsley.min.js")!!}
 
-@if(isset($advert) == false)
     @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'active'])
-@endif
+
 <div class="container">
 
     @include('includes.inputErrors')
 
-    @if(isset($advert))
+    @if(\Illuminate\Support\Facades\Request::is('*modifier-annonce*'))
         <form method="POST" action="/modifier-annonce-2/{{$advert_id}}" accept-charset="UTF-8" data-parsley-validate
               id="title_form">
             {!! Form::hidden('advert_id', $advert_id) !!}

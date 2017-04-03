@@ -33,6 +33,15 @@ class SubmitAdvertController extends Controller
         $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
         //   $checkedSubjects = SubjectsPerAdvert::getSubjectsPerAdvert($this->advertId);
 
+        $checkedSubjects = [];
+
+        if (session('advert_id')) {
+            $checkedSubjects = SubjectsPerAdvert::select('subject_id')
+                ->where('advert_id', session('advert_id'))
+                ->get()
+                ->pluck('subject_id')
+                ->toArray();
+        }
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
@@ -43,12 +52,18 @@ class SubmitAdvertController extends Controller
             'subjects' => "required",
         ], ['required' => 'Veuillez choisir une activité'], []);
 
+        $advert    = NULL;
+        $advert_id = NULL;
 
-        // 1. Create advert linked with userid
-        $advert    = Advert::create(['user_id' => Auth::id()]);
-        $advert_id = $advert->id;
-
-        session(['advert_id' => $advert_id]);
+        if (session('advert_id') == NULL) {
+            // 1. Create advert linked with userid
+            $advert    = Advert::create(['user_id' => Auth::id()]);
+            $advert_id = $advert->id;
+            session(['advert_id' => $advert_id]);
+        } else {
+            $advert    = Advert::find(session('advert_id'));
+            $advert_id = $advert->id;
+        }
 
         // 2. Get subjects ids
         $subjectsArray = $request->input('subjects') ?? [];
@@ -80,6 +95,24 @@ class SubmitAdvertController extends Controller
         $levels        = Level::all();
         $advert_id     = session('advert_id');
 
+        $checkedLevels = SubjectsPerAdvert::getLevelsPerSubjects($advert_id, $subjectsArray);
+        $checked       = [];
+        if ($checkedLevels) {
+            $checkedLevels->filter(function ($item) use ($subjects, $levels, &$checked) {
+                foreach ($subjects as $subject)
+                    foreach ($levels as $level) {
+                        foreach ($level->subLevels as $subs) {
+                            if ($subject->id == $item->subject_id and isset($item->level_ids) and in_array($subs->id, json_decode($item->level_ids))) {
+                                $checked[$subject->id][] = $subs->id;
+                            }
+                        }
+                    }
+            }
+            );
+        }
+
+        $advert = Advert::find($advert_id);
+
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
@@ -105,7 +138,7 @@ class SubmitAdvertController extends Controller
     public function getStep3AddressAndTravel()
     {
         $advert_id = session('advert_id');
-
+        $advert = Advert::find($advert_id);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
@@ -137,14 +170,17 @@ class SubmitAdvertController extends Controller
         $keys     = array_keys($table);
         $loc_data = array_combine($keys, $values);
 
-        Advert::find($advert_id)->update($loc_data);
+        $advert = Advert::find($advert_id);
 
-        return $this->afterRequest->init(__FUNCTION__, ['advert_id' => $advert_id]);
+        $advert->update($loc_data);
+
+        return $this->afterRequest->init(__FUNCTION__, ['advert_id' => $advert_id, 'advert' => $advert]);
     }
 
     public function getStep4ContentAndExperience()
     {
         $advert_id = session('advert_id');
+        $advert = Advert::find($advert_id);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
@@ -156,8 +192,8 @@ class SubmitAdvertController extends Controller
             'content'      => "required",
             'experience'   => "required",
         ], ['presentation.required' => 'Veuillez remplir le champ description et expertise',
-            'content.required'    => 'Veuillez remplir le champ expérience',
-            'experience.required' => 'Veuillez remplir le champ CV et formation'], []);
+            'content.required'      => 'Veuillez remplir le champ expérience',
+            'experience.required'   => 'Veuillez remplir le champ CV et formation'], []);
 
 
         $content_data = $request->only(['presentation',
@@ -177,7 +213,7 @@ class SubmitAdvertController extends Controller
         $can_travel = $advert->can_travel;
         $can_webcam = $advert->can_webcam;
 
-        return $this->afterRequest->init(__FUNCTION__, array_except(get_defined_vars(), ['advert']));
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars(), []);
     }
 
     public function postStep5PriceAndConditions(Request $request)
@@ -218,7 +254,7 @@ class SubmitAdvertController extends Controller
 
     public function postStep6Picture(Request $request)
     {
-        if(Avatar::hasAvatar(Auth::id()) == false) {
+        if (Avatar::hasAvatar(Auth::id()) == false) {
             $this->validate($request, [
                 'img_upload' => "required",
             ], ['img_upload.required' => 'La photo est nécessaire pour pouvoir créer une annonce'], []);

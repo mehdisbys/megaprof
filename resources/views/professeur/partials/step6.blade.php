@@ -3,15 +3,13 @@
 {!! HTML::script("js/slim.jquery.min.js") !!}
 {!! HTML::style('css/slim.min.css')!!}
 
-@if(isset($advert) == false)
     @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'complete', 'step6' => 'active'])
-@endif
 
 <div class="container">
 
     @include('includes.inputErrors')
 
-    @if(isset($advert))
+    @if(\Illuminate\Support\Facades\Request::is('*modifier-annonce*'))
         <form class="avatar" id="presentation-content" accept-charset="UTF-8"
               action="/modifier-annonce-6/{{$advert->id}}" method="POST" enctype="multipart/form-data"
               data-parsley-validate>

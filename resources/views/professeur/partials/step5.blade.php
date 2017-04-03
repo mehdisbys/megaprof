@@ -1,14 +1,12 @@
 {!! HTML::script("js/parsley.min.js")!!}
 
-@if(isset($advert) == false)
     @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'active'])
-@endif
 
 <div class="container">
 
     @include('includes.inputErrors')
 
-    @if(isset($advert))
+    @if(\Illuminate\Support\Facades\Request::is('*modifier-annonce*'))
         <form id="presentation-content" accept-charset="UTF-8"
               action="/modifier-annonce-5/{{$advert->id}}" method="POST" data-parsley-validate>
             @else
@@ -80,7 +78,7 @@
                                 </label>
                             </div>
 
-                            <?php $price_webcam = isset($advert) ? $advert->price_webcam : null ?>
+                            <?php $price_webcam = isset($advert) ? $advert->price_webcam_percentage : null ?>
                             <div class="col-md-12 {{$can_webcam? "" : 'no-visibility'}}" id="price_webcam_bool_display">
                                 <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix
                                         de base</em></div>
