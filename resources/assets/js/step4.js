@@ -8,7 +8,11 @@ $(document).ready(function () {
     };
 
     var updateCount = function (el, expected) {
+
+        if($(el).val().length == 0) return expected;
+
         var nb = expected - countWords($(el).val());
+
         if (nb > 0) {
             $("#" + $(el).attr('id') + "-text").removeClass('no-display');
             $("#" + $(el).attr('id') + "-count").text(nb);
@@ -22,6 +26,7 @@ $(document).ready(function () {
     };
 
     var count30 = function (el) {
+
         return updateCount(el, 30);
     };
 

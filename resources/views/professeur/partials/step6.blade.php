@@ -3,7 +3,7 @@
 {!! HTML::script("js/slim.jquery.min.js") !!}
 {!! HTML::style('css/slim.min.css')!!}
 
-    @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'complete', 'step6' => 'active'])
+@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'complete', 'step6' => 'active'])
 
 <div class="container">
 
@@ -38,8 +38,10 @@
                         <div class="clearfix"></div>
 
                         <div id="upload" style="width: 190px; height: auto; text-align: center; margin: auto">
-                            <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
-                            <input type="file" name="img_upload" id="img_upload">
+                            @if(\App\Models\Avatar::hasAvatar(\Auth::id()))
+                                <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
+                            @endif
+                                <input type="file" name="img_upload" id="img_upload">
                         </div>
 
                         <button type="submit" class="button button-3d button-large button-rounded">
