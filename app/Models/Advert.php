@@ -112,6 +112,7 @@ class Advert extends Model
 
     public function publish()
     {
+        $this->approved_at = NULL;
         $this->published_at = Carbon::now();
         $this->save();
         return $this;
@@ -162,6 +163,15 @@ class Advert extends Model
        return Avatar::hasAvatar($this->user_id);
     }
 
+    public function isApprovedByAdmin():bool
+    {
+        return $this->approved_at != NULL ;
+    }
+
+    public function isAwaitingApproval():bool
+    {
+        return $this->approved_at == NULL and $this->published_at != NULL;
+    }
 
     public static function searchAdvertIdsByGender(array $advert_ids, string $gender)
     {

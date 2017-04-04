@@ -138,7 +138,7 @@ class SubmitAdvertController extends Controller
     public function getStep3AddressAndTravel()
     {
         $advert_id = session('advert_id');
-        $advert = Advert::find($advert_id);
+        $advert    = Advert::find($advert_id);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
@@ -174,13 +174,14 @@ class SubmitAdvertController extends Controller
 
         $advert->update($loc_data);
 
-        return $this->afterRequest->init(__FUNCTION__, ['advert_id' => $advert_id, 'advert' => $advert]);
+        return $this->afterRequest->init(__FUNCTION__, ['advert_id' => $advert_id,
+                                                        'advert'    => $advert]);
     }
 
     public function getStep4ContentAndExperience()
     {
         $advert_id = session('advert_id');
-        $advert = Advert::find($advert_id);
+        $advert    = Advert::find($advert_id);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
@@ -291,13 +292,14 @@ class SubmitAdvertController extends Controller
     public function postStep7Publish(Request $request)
     {
         $request->input('advert_id');
-        $advert              = Advert::find(session('advert_id') ?? $request->input('advert_id'));
-        $advert->approved_at = NULL;
+        $advert = Advert::find(session('advert_id') ?? $request->input('advert_id'));
         $advert->publish();
 
-        event(new ProfCreatedAdvert($advert));
+        if (session('advert_id')) {
+            event(new ProfCreatedAdvert($advert));
+            thanks('Votre annonce a été créée avec succès !');
+        }
 
-        thanks('Votre annonce a été créée avec succès !');
 
         session()->forget('advert_id');
 

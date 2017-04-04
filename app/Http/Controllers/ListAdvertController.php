@@ -31,10 +31,10 @@ class ListAdvertController extends Controller
 
     public function index()
     {
-        $subsubjects        = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $selectedSubject    = null;
-       // $latestAdverts      = $this->latestAdverts();
-       // $popularSubjects    = $this->mostPopularSubjects();
+        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $selectedSubject = null;
+        // $latestAdverts      = $this->latestAdverts();
+        // $popularSubjects    = $this->mostPopularSubjects();
         $notificationsCount = Notification::currentUserNotificationsCount();
 
         return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'notificationsCount'));
@@ -44,8 +44,13 @@ class ListAdvertController extends Controller
     {
         $spam = (!empty($request->input('location_city_lat'))) or (!empty($request->input('location_city_long')));
 
-        if($spam == false){
-            $inputs = $request->only(["city" , "subject" , "email", "lng", "lat", "loc_name"]);
+        if ($spam == false) {
+            $inputs   = $request->only(["city",
+                                           "subject",
+                                           "email",
+                                           "lng",
+                                           "lat",
+                                           "loc_name"]);
             $interest = RegisterStudentInterest::create($inputs);
             $interest->save();
         }
@@ -74,8 +79,8 @@ class ListAdvertController extends Controller
         $data->city            = empty($city) ? null : $city;
         $coord                 = [];
 
-        if($city)
-        $coord = $this->geocode($city);
+        if ($city)
+            $coord = $this->geocode($city);
 
         if (count($coord)) {
             $data->lat = $coord[0];
@@ -143,17 +148,19 @@ class ListAdvertController extends Controller
     {
         $advert = Advert::findBySlug($slug);
 
-        if($advert == NULL)
-        {
+        if ($advert == NULL) {
             \App::abort(404);
         }
 
         $view = view('professeur.advert.view')->with(compact('advert'));
 
-        if ($advert->published_at == NULL)
-        {
-            $view->with(['info' => "Cette annonce n'est pas encore publiée et n'est pas visible des élèves",
-                        'thisIsAPreview' => true]);
+        if ($advert->published_at == NULL) {
+            $view->with(['info'           => "Cette annonce n'est pas encore publiée et n'est pas visible des élèves",
+                         'thisIsAPreview' => true]);
+        }
+
+        if ($advert->isAwaitingApproval()) {
+            $view->with(['info'           => "Cette annonce n'est pas encore visible des élèves. Elle sera visible dés qu'elle aura été approuvée par un modérateur."]);
         }
 
         return $view;
@@ -216,7 +223,8 @@ class ListAdvertController extends Controller
             null];
     }
 
-    function geocode($address){
+    function geocode($address)
+    {
 
         // url encode the address
         $address = urlencode($address);
@@ -231,18 +239,18 @@ class ListAdvertController extends Controller
         $resp = json_decode($resp_json, true);
 
         // response status will be 'OK', if able to geocode given address
-        if($resp['status']=='OK'){
+        if ($resp['status'] == 'OK') {
 
             // get the important data
-            $lati = $resp['results'][0]['geometry']['location']['lat'];
-            $longi = $resp['results'][0]['geometry']['location']['lng'];
+            $lati              = $resp['results'][0]['geometry']['location']['lat'];
+            $longi             = $resp['results'][0]['geometry']['location']['lng'];
             $formatted_address = $resp['results'][0]['formatted_address'];
 
             // verify if data is complete
-            if($lati && $longi && $formatted_address){
+            if ($lati && $longi && $formatted_address) {
 
                 // put the data in the array
-                $data_arr = array();
+                $data_arr = [];
 
                 array_push(
                     $data_arr,
@@ -251,13 +259,14 @@ class ListAdvertController extends Controller
                     $formatted_address
                 );
 
-                return [$lati, $longi];
+                return [$lati,
+                    $longi];
 
-            }else{
+            } else {
                 return [];
             }
 
-        }else{
+        } else {
             return [];
         }
     }

@@ -45,9 +45,18 @@
 
             @endif
 
-            <div class="btn btn-info topmargin-xsm">
-                <a href="/{{$advert->slug}}">Voir</a>
-            </div>
+            @if($advert->isAwaitingApproval())
+
+                <div class="btn btn-info topmargin-xsm">
+                    <a href="/preview/{{$advert->slug}}">Aperçu</a>
+                </div>
+
+            @else
+                    <div class="btn btn-info topmargin-xsm">
+                        <a href="/{{$advert->slug}}">Voir</a>
+                    </div>
+            @endif
+
             <div class="btn btn-primary topmargin-xsm">
                 <a href="/modifier-annonce-1/{{$advert->id}}">Modifier</a>
             </div>
