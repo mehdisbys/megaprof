@@ -24,7 +24,19 @@
                     <li class="active">
 
                         <img src="/avatar_dashboard/{{Auth::id()}}">
+
+                        <div class="  " style="margin-left: 20px;">
+                            @if(\App\Models\Avatar::hasAvatar(\Illuminate\Support\Facades\Auth::id()) == false)
+                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> Photo manquante</span>
+                                <br>
+                            @endif
+
+                            @if( \App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->hasConfirmedAccount() == false)
+                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> Email non vérifié </span>
+                            @endif
+                        </div>
                     </li>
+
 
                     <li class="active topmargin-small">
                         <a href="#notifications" id="ui-id-25" data-toggle="tab">Notifications
@@ -93,9 +105,9 @@
                                 </div>
                             @endif
                             @if(isset($bookings) and $bookings->count() == 0 and isset($archivedBookings) and $archivedBookings->count() == 0)
-                                    <h4>Mes demandes de cours </h4>
+                                <h4>Mes demandes de cours </h4>
 
-                                    <p>Vous n'avez pas encore fait ou reçu des demandes de cours</p>
+                                <p>Vous n'avez pas encore fait ou reçu des demandes de cours</p>
                             @endif
                         </div>
 
@@ -159,7 +171,11 @@
 
                                             <div id="upload"
                                                  style="width: 190px; height: auto; text-align: center; margin: auto">
-                                                <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
+                                                @if(\App\Models\Avatar::hasAvatar(\Illuminate\Support\Facades\Auth::id()))
+
+                                                    <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
+                                                @endif
+                                                
                                                 <input type="file" name="img_upload" id="img_upload">
                                             </div>
 
@@ -238,7 +254,7 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <i class="fa fa-female"></i>  {!! Form::label('gender_woman', 'Femme') !!}
+                                            <i class="fa fa-female"></i> {!! Form::label('gender_woman', 'Femme') !!}
                                             {!! Form::radio('gender','woman', $user->gender,['class' => '', 'id' => 'gender_woman']) !!}
                                         </div>
 

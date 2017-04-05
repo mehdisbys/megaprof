@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\UserConfirmedAccountAndFirstLogin;
+use App\Events\UserCreatedAccountAndFirstLogin;
 use App\Models\Notification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -13,10 +13,10 @@ class FirstLoginListener
     /**
      * Handle the event.
      *
-     * @param  UserConfirmedAccountAndFirstLogin $event
+     * @param  UserCreatedAccountAndFirstLogin $event
      * @return void
      */
-    public function handle(UserConfirmedAccountAndFirstLogin $event)
+    public function handle(UserCreatedAccountAndFirstLogin $event)
     {
         // Dashboard Events
         Notification::createAdvertNotification

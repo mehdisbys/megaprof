@@ -255,12 +255,7 @@ class SubmitAdvertController extends Controller
 
     public function postStep6Picture(Request $request)
     {
-        if (Avatar::hasAvatar(Auth::id()) == false) {
-            $this->validate($request, [
-                'img_upload' => "required",
-            ], ['img_upload.required' => 'La photo est nécessaire pour pouvoir créer une annonce'], []);
 
-        }
         $avatar = json_decode(Input::get('img_upload'));
 
         if ($avatar) {

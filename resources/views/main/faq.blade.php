@@ -398,7 +398,7 @@
                             Le tarif va dépendre de plusieurs critères comme : Du type d’activité, du niveau de
                             l’enseignement,
                             et de
-                            votre région. Et enfin, vous devez voir quels prix proposent les autres profs proches de
+                            votre région. Et enfin, vous devez voir quels prix proposent les autres professeurs proches de
                             chez
                             vous pour
                             la

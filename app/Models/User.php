@@ -185,6 +185,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
+    public function hasConfirmedAccount()
+    {
+       return $this->confirmed == true;
+    }
+
     public function generateForgottenToken()
     {
         $this->forgotten_token = str_random(30);

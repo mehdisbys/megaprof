@@ -54,7 +54,7 @@ class SessionsController extends Controller
             return view('auth.login')->with(['email' => $request->get('email')]);
         }
 
-        if ($this->checkUserisConfirmed($request->input('email')) && $this->signIn($request)) {
+        if ($this->signIn($request)) {
             thanks("Bonjour " . Auth::user()->firstname . " vous avez été identifié avec succés");
 
             return redirect()->intended(session('redirectPath'));

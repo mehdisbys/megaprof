@@ -25,7 +25,7 @@
 
                         <h2>Lieux des cours et Modalités</h2>
 
-                        <label for='location' class="topmargin-sm">Où se dérouleront vos cours ?</label>
+                        <label for='location' class="topmargin-sm">Quelle est votre addresse ?</label>
                         {!! Form::hidden('advert_id', $advert_id) !!}
 
                         <?php $location = (isset($advert) and $advert->location_street != NULL) ? $advert->location_street . ', ' . $advert->location_city : null; ?>

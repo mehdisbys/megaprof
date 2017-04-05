@@ -1,11 +1,12 @@
 <?php namespace App\Http\Controllers;
 
-use App\Events\UserConfirmedAccountAndFirstLogin;
+use App\Events\UserCreatedAccountAndFirstLogin;
 use App\Http\Requests;
 use App\Http\Requests\Signup ;
 use App\Models\User;
 use App\Helpers\Contracts\MailerContract;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class SignupController extends Controller
@@ -38,9 +39,13 @@ class SignupController extends Controller
 
         //TODO generate event UserRegistered
 
+        Auth::login($user);
+
 		$this->sendConfirmationEmail($user);
 
-		thanks('Un email de confirmation vient de vous être envoyé. Veuillez cliquer sur le lien inclus pour finaliser la création de votre compte');
+        event(new UserCreatedAccountAndFirstLogin($user));
+
+        thanks('Un email de confirmation vient de vous être envoyé. Veuillez cliquer sur le lien inclus pour finaliser la création de votre compte');
 
 		return redirect('/');
 	}
@@ -77,8 +82,6 @@ class SignupController extends Controller
 
         Auth::login($user);
 
-        event(new UserConfirmedAccountAndFirstLogin($user));
-		
 		return redirect('/mon-compte');
 	}
 
@@ -115,7 +118,7 @@ class SignupController extends Controller
      *
      * @param  string $token
      *
-     * @return  Illuminate\Http\Response
+     * @return  Response
      */
     public function resetPasswordSecondForm($token)
     {

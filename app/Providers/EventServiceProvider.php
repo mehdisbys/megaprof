@@ -11,7 +11,7 @@ use App\Events\IdDocumentSent;
 use App\Events\ProfCommentedOnStudent;
 use App\Events\ProfCreatedAdvert;
 use App\Events\StudentCommentedOnProf;
-use App\Events\UserConfirmedAccountAndFirstLogin;
+use App\Events\UserCreatedAccountAndFirstLogin;
 use App\Listeners\DashboardNotificationsAfterAdSubmission;
 use App\Listeners\FirstLoginListener;
 use App\Listeners\NotifiyProfAdvertWasApproved;
@@ -70,7 +70,7 @@ class EventServiceProvider extends ServiceProvider
                 DashboardNotificationsAfterAdSubmission::class
             ],
 
-        UserConfirmedAccountAndFirstLogin::class =>
+        UserCreatedAccountAndFirstLogin::class =>
             [
                 FirstLoginListener::class,
             ],

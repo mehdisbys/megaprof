@@ -82,7 +82,7 @@
                                     un suivi personnalisé
                                 "><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i>
                             </div>
-                            <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, Votre professeur</div>
+                            <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, votre professeur</div>
 
                         </div>
                         <div class="col-md-3">
