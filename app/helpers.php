@@ -142,8 +142,8 @@ function isCaptchaCodeCorrect(string $codeToValidate)
                                      ],
                                  ]);
 
-    dd($response->getBody()->getContents());
-
+    $captcha = json_decode($response->getBody()->getContents());
+    dd($captcha->success);
 
     return false;
 }
