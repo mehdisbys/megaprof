@@ -142,7 +142,7 @@ function isCaptchaCodeCorrect(string $codeToValidate)
                                      ],
                                  ]);
 
-    dd($response->getBody());
+    dd($response->getBody()->getContents());
 
 
     return false;
