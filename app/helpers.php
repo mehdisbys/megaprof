@@ -9,50 +9,50 @@
  */
 function __message($type, $message)
 {
-	session()->flash($type,$message);
+    session()->flash($type, $message);
 }
 
 function flashMessage($message)
 {
-	__message('message', $message);
+    __message('message', $message);
 }
 
 function thanks($message)
 {
-	__message('thanks_message', $message);
+    __message('thanks_message', $message);
 }
 
 function error($message)
 {
-	__message('error_message', $message);
+    __message('error_message', $message);
 }
 
 function info_message($message)
 {
-	__message('info_message', $message);
+    __message('info_message', $message);
 }
 
-function get_expiry_date($days=NULL)
+function get_expiry_date($days = NULL)
 {
-	$days = $days ? : Config::get('config.days_before_expiry');
+    $days = $days ?: Config::get('config.days_before_expiry');
 
-	return Carbon::now()->addDays($days);
+    return Carbon::now()->addDays($days);
 }
 
 function getModelColumns($model)
 {
-	return \DB::connection()->getSchemaBuilder()->getColumnListing($model);
+    return \DB::connection()->getSchemaBuilder()->getColumnListing($model);
 }
 
 function prepareFileUpload($path)
 {
-	TestCase::assertFileExists($path);
+    TestCase::assertFileExists($path);
 
-	$finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
-	$mime = finfo_file($finfo, $path);
+    $mime = finfo_file($finfo, $path);
 
-	return new \Symfony\Component\HttpFoundation\File\UploadedFile($path, null, $mime, null, null, true);
+    return new \Symfony\Component\HttpFoundation\File\UploadedFile($path, null, $mime, null, null, true);
 }
 
 function issetAndHasValue($var = NULL, $value = true)
@@ -62,58 +62,58 @@ function issetAndHasValue($var = NULL, $value = true)
 
 function calculate_next_time($interval, $start_time = NULL)
 {
-	$start_time = $start_time ?: time();
+    $start_time = $start_time ?: time();
 
-	return $start_time + $interval;
+    return $start_time + $interval;
 }
 
 function savePicture($type = 'advert')
 {
-	$coord = \Request::only(['w','h','x','y','r']);
+    $coord = \Request::only(['w',
+                                'h',
+                                'x',
+                                'y',
+                                'r']);
 
-	if($type == 'advert') {
+    if ($type == 'advert') {
         $m = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id()]);
+    } else {
+        $m = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id(),
+                                                'type'    => 'dashboard']);
     }
-    else
-    {
-        $m = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id(), 'type' => 'dashboard']);
+
+    $webcam = \Request::file('img_upload') ? false : true;
+
+    if (!$webcam) {
+        $filename = 'img_upload';
+        $m->handleFile($filename);
+        $m->cropAvatar($filename, $coord);
+    } else {
+        $filename = 'webcam_img';
+        $m->cropAvatar($filename, $coord, true);
     }
-
-	$webcam = \Request::file('img_upload') ? false : true;
-
-	if(! $webcam)
-	{
-		$filename = 'img_upload';
-		$m->handleFile($filename);
-		$m->cropAvatar($filename, $coord);
-	}
-
-	else
-	{
-		$filename ='webcam_img';
-		$m->cropAvatar($filename, $coord, true);
-	}
-	$m->save();
+    $m->save();
 }
 
 function emailConfig(\App\Models\User $user, $subject)
 {
-	$config['to']       = $user->email;
-	$config['name']     = $user->firstname;
-	$config['subject']  = ucfirst($user->firstname) . ' ' . $subject;
-	$all['name']        = $user->firstname;
+    $config['to']      = $user->email;
+    $config['name']    = $user->firstname;
+    $config['subject'] = ucfirst($user->firstname) . ' ' . $subject;
+    $all['name']       = $user->firstname;
 
-	return [$all, $config];
+    return [$all,
+        $config];
 }
 
 function getAvatar($userId)
 {
-	return "/avatar/{$userId}";
+    return "/avatar/{$userId}";
 }
 
 function base64_to_jpeg($base64_string, $output_file)
 {
-    $ifp = fopen($output_file, "wb");
+    $ifp  = fopen($output_file, "wb");
     $data = explode(',', $base64_string);
     fwrite($ifp, base64_decode($data[1]));
     fclose($ifp);
@@ -128,8 +128,21 @@ function saveCaptchaCode(string $code)
 
 function isCaptchaCodeCorrect(string $codeToValidate)
 {
-    if(getenv('APP_ENV') == 'local')
+    if (getenv('APP_ENV') == 'local')
         return true;
+
+    $client = new GuzzleHttp\Client();
+
+    $response = $client->request('POST', 'https://www.google.com/recaptcha/api/siteverify',
+                                 [
+                                     'body' => [
+                                         'secret'   => env('GOOGLE_RECAPTCHA'),
+                                         'response' => $codeToValidate,
+                                         'remoteip' => \Illuminate\Support\Facades\Request::ip(),
+                                     ],
+                                 ]);
+
+    dd($response->getBody());
 
     $code = session('captchaCode');
 

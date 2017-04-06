@@ -22,6 +22,8 @@
 
                    @include('auth.captcha')
 
+                    <div class="g-recaptcha" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
+
                     <input type="submit" value="Se connecter" class="button"/>
                     <p class="register-member">Pas encore membre ?
                         <a href="/inscription" class="register-member-link register-switch-panel">S'inscrire</a>

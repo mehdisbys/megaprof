@@ -25,7 +25,7 @@ class SignupController extends Controller
 	
 	public function candidateSignup(Signup $request)
 	{
-        if (isCaptchaCodeCorrect($request->get('captcha')) == false) {
+        if (isCaptchaCodeCorrect($request->get('g-recaptcha-response')) == false) {
             error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
             return view('signup.signup')->with(
                 [

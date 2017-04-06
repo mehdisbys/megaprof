@@ -32,6 +32,7 @@
 
 
 <!-- TODO convert to sass files   -->
+    @yield('custom-head')
 </head>
 
 <body>
