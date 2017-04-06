@@ -135,7 +135,7 @@ function isCaptchaCodeCorrect(string $codeToValidate)
 
     $response = $client->request('POST', 'https://www.google.com/recaptcha/api/siteverify',
                                  [
-                                     'body' => [
+                                     'form_params' => [
                                          'secret'   => env('GOOGLE_RECAPTCHA'),
                                          'response' => $codeToValidate,
                                          'remoteip' => \Illuminate\Support\Facades\Request::ip(),
