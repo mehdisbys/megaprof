@@ -128,8 +128,8 @@ function saveCaptchaCode(string $code)
 
 function isCaptchaCodeCorrect(string $codeToValidate)
 {
-    if (getenv('APP_ENV') == 'local')
-        return true;
+//    if (getenv('APP_ENV') == 'local')
+//        return true;
 
     $client = new GuzzleHttp\Client();
 
@@ -144,7 +144,6 @@ function isCaptchaCodeCorrect(string $codeToValidate)
 
     dd($response->getBody());
 
-    $code = session('captchaCode');
 
-    return $code === $codeToValidate;
+    return false;
 }

@@ -45,11 +45,11 @@ class SessionsController extends Controller
 
     public function postLogin(Request $request)
     {
-        $this->validate($request, ['email'    => 'required|email',
-                                   'password' => 'required',
-                                   'captcha'  => 'required']);
+        $this->validate($request, ['email'                => 'required|email',
+                                   'password'             => 'required',
+                                   'g-recaptcha-response' => 'required']);
 
-        if (isCaptchaCodeCorrect($request->get('captcha')) == false) {
+        if (isCaptchaCodeCorrect($request->get('g-recaptcha-response')) == false) {
             error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
             return view('auth.login')->with(['email' => $request->get('email')]);
         }
