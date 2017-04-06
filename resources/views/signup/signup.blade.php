@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@section('custom-head')
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+@endsection
+
 @section('content')
 @include('includes.inputErrors')
   <div class="wrapper">
@@ -29,7 +34,8 @@
             <input type="password" required="required" placeholder="Confirmation mot de passe" name="password_confirmation" class="input" value="" />
           </div>
 
-          @include('auth.captcha')
+          <div class="g-recaptcha" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
+
 
           <input type="submit" value="S'inscrire" class="button" id="submit-btn-register"/>
           <p class="register-member">Déjà membre Taelam ?

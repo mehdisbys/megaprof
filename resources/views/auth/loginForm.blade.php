@@ -20,8 +20,6 @@
                         <span class="error-tooltip">Mot de passe incorrect</span>
                     </div>
 
-                   @include('auth.captcha')
-
                     <div class="g-recaptcha" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
 
                     <input type="submit" value="Se connecter" class="button"/>
