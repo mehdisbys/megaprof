@@ -124,7 +124,7 @@
 
 
             </div>
-            <div class="col-md-12 row col-md-offset-3 social-icons topmargin-small">
+            <div class="col-md-10  row col-md-offset-4 social-icons topmargin-small">
 
                 <a href="http://www.facebook.com/sharer.php?u={{env('APP_URL')}}{{$advert->slug}}"
                    data-send="false"
@@ -133,7 +133,7 @@
                    data-show-faces="false"
                    rel="nofollow"
                    target="_blank"
-                   class="col-md-2 si-colored si-facebook">
+                   class="col-md-3">
                     <i class="fa fa-facebook fa-2x"></i>
                 </a>
 
@@ -141,15 +141,15 @@
                    data-count="vertical"
                    rel="nofollow"
                    target="_blank"
-                   class="col-md-2 si-colored si-twitter">
+                   class="col-md-3 ">
                     <i class="fa fa-twitter fa-2x"></i>
                 </a>
 
-                <a href="#" class="col-md-2 si-colored si-email3">
+                <a href="#" class="col-md-3">
                     <i class="fa fa-envelope-o fa-2x"></i>
                 </a>
-                <a class="col-md-2 si-colored si-ninetyninedesigns" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">
-                    <i class="fa fa-whatsapp"></i></a>
+                <a class="col-md-3" href="whatsapp://send?text=http://www.taelam.com/{{$advert->slug}}" data-action="share/whatsapp/share">
+                    <i class="fa fa-whatsapp fa-2x"></i></a>
 
 
             </div>
