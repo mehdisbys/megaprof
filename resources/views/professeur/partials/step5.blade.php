@@ -1,6 +1,6 @@
 {!! HTML::script("js/parsley.min.js")!!}
 
-    @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'active'])
+@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'complete', 'step4' => 'complete', 'step5' => 'active'])
 
 <div class="container">
 
@@ -26,7 +26,8 @@
                         {!! Form::label('price',"Quel est le prix d'une heure de cours ?", [
                         'class' => 'col-md-offset-3 col-md-9']) !!}
 
-                        <div class="small col-md-offset-1 col-md-2"><em>Renseignez ici votre prix pour une heure de cours</em></div>
+                        <div class="small col-md-offset-1 col-md-2"><em>Renseignez ici votre prix pour une heure de
+                                cours</em></div>
                         <div class="col-md-2"></div>
                         <?php $price = isset($advert) ? $advert->price : null ?>
                         {!! Form::input('text', 'price', $price,['class' =>
@@ -43,12 +44,10 @@
                             <?php $price_travel = isset($advert) ? $advert->price_travel : null ?>
                             <?php $price_travel_percentage = isset($advert) ? $advert->price_travel_percentage : null ?>
 
-                            <div class="ck-button col-md-12 col-md-offset-3">
-
-                                {!! Form::input('checkbox','price_travel_supp', $price_travel,['class' => 'no-display', 'id' => 'price_travel_supp',
-                                 'checked' => $can_travel]) !!}
+                            <div class="col-md-12 col-md-offset-3">
                                 <label for='price_travel_supp' class="bottommargin-sm">
-                                    <span>Je souhaite facturer un supplément lorsque je me déplace</span>
+                                    {!! Form::input('checkbox','price_travel_supp', $price_travel,['class' => '', 'id' => 'price_travel_supp','checked' => $can_travel])!!}
+                                    Je souhaite facturer un supplément lorsque je me déplace
                                 </label>
                             </div>
 
@@ -70,11 +69,12 @@
 
                         @if($can_webcam)
 
-                            <div class="ck-button col-md-12 col-md-offset-3">
-                                {!! Form::input('checkbox','price_webcam_bool',null,['class' => 'no-display', 'id' => 'price_webcam_bool',
-                                'checked' => $can_webcam]) !!}
+                            <div class="col-md-12 col-md-offset-3">
+
                                 <label for='price_webcam_bool' class="bottommargin-sm ">
-                                    <span>Je souhaite réduire le prix pour les cours faits via webcam</span>
+                                    {!! Form::input('checkbox','price_webcam_bool',null,['class' => '', 'id' => 'price_webcam_bool',
+                                'checked' => $can_webcam]) !!}
+                                    Je souhaite réduire le prix pour les cours faits via webcam
                                 </label>
                             </div>
 
@@ -94,14 +94,13 @@
                             <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
                         @endif
 
-                        <div class="ck-button col-md-12 col-md-offset-3">
+                        <div class="col-md-12 col-md-offset-3">
                             <?php $price_degressive_bool = isset($advert) ? $advert->price_5_hours or $advert->price_10_hours : null;
                             $price_degressive = $price_degressive_bool ? "on" : null;
                             ?>
-                            {!! Form::input('checkbox','price_degressive',null,['class' => 'no-display', 'id' => 'price_degressive',
-                                'checked' => $price_degressive]) !!}
                             <label for='price_degressive' class="bottommargin-sm">
-                                <span>Je pratique une réduction sur les forfaits payés à l'avance </span>
+                                {!! Form::input('checkbox','price_degressive',null,['class' => '', 'id' => 'price_degressive',
+    'checked' => $price_degressive]) !!} Je pratique une réduction sur les forfaits payés à l'avance
                             </label>
                         </div>
 
