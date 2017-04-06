@@ -34,10 +34,10 @@
             <input type="password" required="required" placeholder="Confirmation mot de passe" name="password_confirmation" class="input" value="" />
           </div>
 
-          <div class="g-recaptcha" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
+          <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
 
 
-          <input type="submit" value="S'inscrire" class="button" id="submit-btn-register"/>
+          <input type="submit" value="S'inscrire" class="button topmargin-sm" id="submit-btn-register"/>
           <p class="register-member">Déjà membre Taelam ?
             <a href="login" class="register-member-link register-switch-panel">Connexion</a>
           </p>

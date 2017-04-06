@@ -20,9 +20,9 @@
                         <span class="error-tooltip">Mot de passe incorrect</span>
                     </div>
 
-                    <div class="g-recaptcha" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
+                    <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
 
-                    <input type="submit" value="Se connecter" class="button"/>
+                    <input type="submit" value="Se connecter" class="button topmargin-sm"/>
                     <p class="register-member">Pas encore membre ?
                         <a href="/inscription" class="register-member-link register-switch-panel">S'inscrire</a>
                     </p>

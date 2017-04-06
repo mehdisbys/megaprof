@@ -27,7 +27,7 @@ class FlaggedAdvertsController extends Controller
 
     public function postForm(Request $request)
     {
-        if (isCaptchaCodeCorrect($request->get('captcha')) == false) {
+        if (isCaptchaCodeCorrect($request->get('g-recaptcha-response')) == false) {
             error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
             return redirect('register');
         }
@@ -38,7 +38,7 @@ class FlaggedAdvertsController extends Controller
 
         $advert = Advert::find($data['advert_id']);
 
-        $this->sendEmail(User::where(['email' => 'mehdi.souihed@gmail.com'])->first(), Advert::find($data['advert_id']), 'emails.flaggedAdvert.flag');
+        $this->sendEmail(User::where(['email' => 'mehdi.souihed@gmail.com'])->first(), $advert, 'emails.flaggedAdvert.flag');
 
         return redirect('/');
     }
