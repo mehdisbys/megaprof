@@ -16,7 +16,7 @@ class CreateAvatarTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->index('fk_userid_avatar');
-			$table->simple_array('type')->nullable()->default('advert');
+			$table->string('type')->nullable()->default('advert');
 			$table->binary('img', 16777215)->nullable();
 			$table->string('img_name', 45)->nullable();
 			$table->string('img_mime', 45)->nullable();
