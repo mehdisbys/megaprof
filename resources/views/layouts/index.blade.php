@@ -145,11 +145,6 @@
                     </div>
 
                     <div class="student-input  col-md-3">
-                        <input type="text" class="home-search-input " placeholder="Ville" name="city"
-                               id="location_input">
-                    </div>
-
-                    <div class="student-input  col-md-3">
 
                         <input id="subject_input" type="text" class="home-search-input "
                                placeholder="Ex: Anglais, Piano, Yoga" name="subject"
@@ -157,6 +152,12 @@
                                data-autofirst="1"
                                data-list="{!! $subsubjects !!}">
                     </div>
+
+                    <div class="student-input  col-md-3">
+                        <input type="text" class="home-search-input " placeholder="Ville" name="city"
+                               id="location_input">
+                    </div>
+                    
 
                     <div class="student-input col-md-3">
                         <input type="email" class="home-search-input" placeholder="Email" name="email" required
