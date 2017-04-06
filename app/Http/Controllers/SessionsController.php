@@ -45,12 +45,18 @@ class SessionsController extends Controller
 
     public function postLogin(Request $request)
     {
-        $this->validate($request, ['email'                => 'required|email',
-                                   'password'             => 'required',
-                                   'g-recaptcha-response' => 'required']);
+        $rules = ['email'                => 'required|email',
+                  'password'             => 'required',
+                  'g-recaptcha-response' => 'required'];
+
+        if (env('APP_ENV') == 'local') {
+            $rules['g-recaptcha-response'] = 'string';
+        }
+
+        $this->validate($request, $rules);
 
         if (isCaptchaCodeCorrect($request->get('g-recaptcha-response')) == false) {
-            error("Le code de sécurité est invalide. Veuillez réessayer s'il vous plaît.");
+            error("Veuillez cliquer sur \"Je ne suis pas un robot\" ");
             return view('auth.login')->with(['email' => $request->get('email')]);
         }
 
