@@ -73,12 +73,13 @@ class DashboardController extends Controller
 
 
         if ($data['id_document'] ?? null) {
-            $idDocument               = new IdDocument();
+            $idDocument               = IdDocument::firstOrCreate(['user_id' => \Auth::id()]);
             $idDocument->user_id      = \Auth::id();
             $idDocument->id_card      = file_get_contents($request->id_document->getRealPath());
             $idDocument->id_card_name = $request->id_document->getClientOriginalName();
             $idDocument->id_card_mime = $request->id_document->getMimeType();
             $idDocument->id_card_size = $request->id_document->getSize();
+            $idDocument->verified = false;
             $idDocument->save();
             Event::fire(new IdDocumentSent(Auth::user(), $idDocument));
         }

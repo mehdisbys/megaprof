@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
+
+
     Route::get('/faq', function () {
         return view('main.faq');
     });
@@ -128,6 +130,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
         Route::group(['middleware' => ['isAdmin']], function () {
+            Route::get('/download-id/{documentId}', 'IDdocumentController@downloadIdDocument');
 
             Route::get('/suspendre-annonce/{slug}', 'FlaggedAdvertsController@suspendAdvert');
             Route::get('/login-as/{userId}', 'SessionsController@loginAs');
