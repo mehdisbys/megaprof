@@ -40,17 +40,30 @@ class IDdocumentController extends Controller
         return redirect()->back();
     }
 
-    public function downloadIdDocument(int $documentID)
+    public function downloadIdDocument(int $documentID = NULL)
     {
         $idDocument = IdDocument::find($documentID);
 
         if (!$idDocument) App::abort(404);
 
-
         return response()->make($idDocument->id_card, 200,
                                [
-                                   'Content-type'   => $idDocument->id_card_mime,
-                                   'Content-length' => $idDocument->id_card_size,
+                                   'Content-Type'   => $idDocument->id_card_mime,
+                                   'Content-Length' => $idDocument->id_card_size,
                                ]);
+    }
+
+
+    public function userDownloadsOwnId()
+    {
+        $idDocument = IdDocument::getByUserId(\Auth::id());
+
+        if (!$idDocument) App::abort(404);
+
+        return response()->make($idDocument->id_card, 200,
+                                [
+                                    'Content-Type'   => $idDocument->id_card_mime,
+                                    'Content-Length' => $idDocument->id_card_size,
+                                ]);
     }
 }

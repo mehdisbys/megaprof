@@ -175,7 +175,7 @@
 
                                                     <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
                                                 @endif
-                                                
+
                                                 <input type="file" name="img_upload" id="img_upload">
                                             </div>
 
@@ -286,7 +286,33 @@
 
                                     <div class="form-group col-md-12">
                                         {!! Form::label('id_document', "Pièce d'identité (Professeurs Uniquement)") !!}
-                                        {!! Form::file('id_document', old('id_document'), ['class' => 'form-control']) !!}
+
+                                        <?php $idDocument = \App\Models\IdDocument::getByUserId(\Auth::id()) ?>
+
+                                        @if($idDocument)
+                                            <br>
+                                            <a href="/carte-identite"><span><i
+                                                            class="fa fa-id-card-o fa-2x bottommargin-sm"></i> {{$idDocument->id_card_name}}</span></a>
+                                            <br>
+                                        @endif
+
+                                        <div class="input-group input-group-md">
+
+
+                                            <div class="input-group-btn">
+
+                                                <div class="btn bt">
+                                                    <span class="hidden-xs">Télécharger ma carte d'identité</span>
+                                                    <input
+                                                            name="id_document"
+                                                            id="input-8"
+                                                            type="file"
+                                                            accept=""
+                                                            class=""
+                                                            data-allowed-file-extensions="[]">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="col-md-10">

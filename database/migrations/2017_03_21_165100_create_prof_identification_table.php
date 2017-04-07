@@ -16,13 +16,14 @@ class CreateProfIdentificationTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
-			$table->binary('id_card', 65535);
 			$table->string('id_card_name', 125);
 			$table->string('id_card_mime', 125);
 			$table->integer('id_card_size');
 			$table->boolean('verified')->default(0);
 			$table->timestamps();
 		});
+
+        \Illuminate\Support\Facades\DB::statement("ALTER TABLE prof_identification ADD id_card MEDIUMBLOB");
 	}
 
 

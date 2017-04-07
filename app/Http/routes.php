@@ -3,7 +3,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
 
-
     Route::get('/faq', function () {
         return view('main.faq');
     });
@@ -128,6 +127,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/laisser-un-commentaire/{comment_id}', 'CommentsController@getCommentForm');
         Route::post('/laisser-un-commentaire', 'CommentsController@postComment');
 
+        Route::get('/carte-identite', 'IDdocumentController@userDownloadsOwnId');
 
         Route::group(['middleware' => ['isAdmin']], function () {
             Route::get('/download-id/{documentId}', 'IDdocumentController@downloadIdDocument');
