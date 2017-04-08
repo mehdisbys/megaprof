@@ -301,7 +301,7 @@
 
                                             <div class="input-group-btn">
 
-                                                <div class="btn bt">
+                                                <div class="btn btn-info">
                                                     <span class="hidden-xs">Télécharger ma carte d'identité</span>
                                                     <input
                                                             name="id_document"
@@ -314,6 +314,40 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    <div class="form-group col-md-12">
+                                        {!! Form::label('id_document', "Diplômes / Certifications (Professeurs Uniquement)") !!}
+
+                                        <?php $degreeDocument = \App\Models\DegreeDocument::getByUserId(\Auth::id()) ?>
+
+                                        @if($degreeDocument)
+                                            <br>
+                                            <a href="/"><span><i
+                                                            class="fa fa-graduation-cap fa-2x bottommargin-sm"></i> {{$degreeDocument->id_card_name}}</span></a>
+                                            <br>
+                                        @endif
+
+                                        <div class="input-group input-group-md">
+
+
+                                            <div class="input-group-btn">
+
+                                                <div class="btn btn-primary">
+                                                    <span class="hidden-xs">Télécharger mon diplôme / certifications</span>
+                                                    <input
+                                                            name="id_document"
+                                                            id="input-8"
+                                                            type="file"
+                                                            accept=""
+                                                            class=""
+                                                            data-allowed-file-extensions="[]">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
 
                                     <div class="col-md-10">
                                         <button class="btn btn-success" type="submit">Mettre mon profil à jour</button>

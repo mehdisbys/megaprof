@@ -28,7 +28,7 @@ class AvatarController extends Controller
 
             $m              = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id()]);
             $m->img         = file_get_contents($filename);
-            $m->img_cropped = $this->img;
+            $m->img_cropped = $m->img;
             $m->img_name    = $output->name;
             $m->img_mime    = $output->type;
             $m->img_size    = filesize($filename);

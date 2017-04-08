@@ -17,17 +17,18 @@ class CreateAvatarTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->index('fk_userid_avatar');
 			$table->string('type')->nullable()->default('advert');
-			$table->binary('img', 16777215)->nullable();
 			$table->string('img_name', 45)->nullable();
 			$table->string('img_mime', 45)->nullable();
 			$table->integer('img_size')->nullable();
-			$table->binary('img_cropped', 16777215)->nullable();
 			$table->integer('img_cropped_x')->nullable();
 			$table->integer('img_cropped_y')->nullable();
 			$table->integer('img_cropped_w')->nullable();
 			$table->integer('img_cropped_h')->nullable();
 			$table->timestamps();
 		});
+
+        \Illuminate\Support\Facades\DB::statement("ALTER TABLE avatar ADD img MEDIUMBLOB");
+        \Illuminate\Support\Facades\DB::statement("ALTER TABLE avatar ADD img_cropped MEDIUMBLOB");
 	}
 
 

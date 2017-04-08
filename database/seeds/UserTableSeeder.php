@@ -19,17 +19,29 @@ class UserTableSeeder extends Seeder
 
             \DB::table('users')->insertGetId(
                 [
-                    'firstname'  => $faker->firstName,
-                    'lastname'   => $faker->lastName,
-                    'email'      => $faker->email,
-                    'telephone'  => $faker->phoneNumber,
-                    'gender'     => $gender[random_int(0,1)],
-                    'birthdate'  => $faker->dateTimeBetween('-60 years', '-18 years'),
-                    'password'   => '',
-                    'confirmed'  => 1,
+                    'firstname' => $faker->firstName,
+                    'lastname'  => $faker->lastName,
+                    'email'     => $faker->email,
+                    'telephone' => $faker->phoneNumber,
+                    'gender'    => $gender[random_int(0, 1)],
+                    'birthdate' => $faker->dateTimeBetween('-60 years', '-18 years'),
+                    'password'  => '',
+                    'confirmed' => 1,
                 ]);
-
         }
+
+        \DB::table('users')->insertGetId(
+            [
+                'firstname' => 'Mehdi',
+                'lastname'  => 'S.',
+                'email'     => 'ramses@yopmail.com',
+                'telephone' => 12345678,
+                'gender'    => 'man',
+                'birthdate' => '05/06/1985',
+                'password'  => bcrypt('po'),
+                'confirmed' => 1,
+                'is_admin'  => true,
+            ]);
     }
 
 

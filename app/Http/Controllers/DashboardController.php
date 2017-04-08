@@ -79,7 +79,7 @@ class DashboardController extends Controller
             $idDocument->id_card_name = $request->id_document->getClientOriginalName();
             $idDocument->id_card_mime = $request->id_document->getMimeType();
             $idDocument->id_card_size = $request->id_document->getSize();
-            $idDocument->verified = false;
+            $idDocument->verified     = false;
             $idDocument->save();
             Event::fire(new IdDocumentSent(Auth::user(), $idDocument));
         }
