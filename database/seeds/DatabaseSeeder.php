@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AvatarTableSeeder::class);
         $this->call(SubjectsTableSeeder::class);
         $this->call(SubSubjectsTableSeeder::class);
-        $this->call(AvatarTableSeeder::class);
         $this->call(AdvertsTableSeeder::class);
     }
 }

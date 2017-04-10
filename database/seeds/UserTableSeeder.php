@@ -42,6 +42,19 @@ class UserTableSeeder extends Seeder
                 'confirmed' => 1,
                 'is_admin'  => true,
             ]);
+
+        \DB::table('users')->insertGetId(
+            [
+                'firstname' => 'Yaya',
+                'lastname'  => 'C.',
+                'email'     => 'chayeb.yacine@gmail.com',
+                'telephone' => 12345678,
+                'gender'    => 'man',
+                'birthdate' => '05/06/1985',
+                'password'  => bcrypt('123456'),
+                'confirmed' => 1,
+                'is_admin'  => true,
+            ]);
     }
 
 
