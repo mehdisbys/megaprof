@@ -12,7 +12,7 @@
 
 <br>
 
-<p>A très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
+<p>À très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
 
 <br>
 
