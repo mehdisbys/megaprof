@@ -49,8 +49,8 @@ class DegreeDocumentController extends Controller
 
         return response()->make($idDocument->id_card, 200,
                                [
-                                   'Content-Type'   => $idDocument->id_card_mime,
-                                   'Content-Length' => $idDocument->id_card_size,
+                                   'Content-Type'   => $idDocument->degree_document_mime,
+                                   'Content-Length' => $idDocument->degree_document_size,
                                ]);
     }
 
@@ -61,10 +61,10 @@ class DegreeDocumentController extends Controller
 
         if (!$idDocument) App::abort(404);
 
-        return response()->make($idDocument->id_card, 200,
+        return response()->make($idDocument->degree_document, 200,
                                 [
-                                    'Content-Type'   => $idDocument->id_card_mime,
-                                    'Content-Length' => $idDocument->id_card_size,
+                                    'Content-Type'   => $idDocument->degree_document_mime,
+                                    'Content-Length' => $idDocument->degree_document_size,
                                 ]);
     }
 }

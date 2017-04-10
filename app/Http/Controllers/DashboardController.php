@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\IdDocumentSent;
+use App\Models\DegreeDocument;
 use Illuminate\Support\Facades\Event;
 use App\Models\Advert;
 use App\Models\Booking;
@@ -63,7 +64,8 @@ class DashboardController extends Controller
             'dobyear',
             'email',
             'telephone',
-            'id_document']);
+            'id_document',
+            'degree_document']);
         $user              = User::find(Auth::id());
         $data['birthdate'] = implode('/', [$data["dobday"],
             $data["dobmonth"],
@@ -83,6 +85,20 @@ class DashboardController extends Controller
             $idDocument->save();
             Event::fire(new IdDocumentSent(Auth::user(), $idDocument));
         }
+
+        if ($data['degree_document'] ?? null) {
+
+            $degreeDocument                       = DegreeDocument::firstOrCreate(['user_id' => \Auth::id()]);
+            $degreeDocument->user_id              = \Auth::id();
+            $degreeDocument->degree_document      = file_get_contents($request->degree_document->getRealPath());
+            $degreeDocument->degree_document_name = $request->degree_document->getClientOriginalName();
+            $degreeDocument->degree_document_mime = $request->degree_document->getMimeType();
+            $degreeDocument->degree_document_size = $request->degree_document->getSize();
+            $degreeDocument->verified             = false;
+            $degreeDocument->save();
+            //Event::fire(new IdDocumentSent(Auth::user(), $idDocument));
+        }
+
 
         thanks('Merci! Votre profil a bien été mis à jour');
 

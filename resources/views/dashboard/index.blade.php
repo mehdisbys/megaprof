@@ -260,31 +260,31 @@
 
                                     </div>
 
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6 clearfix">
                                         {!! Form::label('firstname', 'Prénom') !!}
-                                        {!! Form::text('firstname', $user->firstname, ['class' => 'form-control']) !!}
+                                        {!! Form::text('firstname', $user->firstname, ['class' => 'sm-form-control']) !!}
                                     </div>
 
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         {!! Form::label('lastname', 'Nom') !!}
-                                        {!! Form::text('lastname', $user->lastname, ['class' => 'form-control']) !!}
+                                        {!! Form::text('lastname', $user->lastname, ['class' => 'sm-form-control']) !!}
                                     </div>
 
                                     <div class="form-group col-md-12">
                                         @include('includes.date-of-birth')
                                     </div>
 
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         {!! Form::label('email', 'Email') !!}
-                                        {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
+                                        {!! Form::text('email', $user->email, ['class' => 'sm-form-control']) !!}
                                     </div>
 
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         {!! Form::label('telephone', 'Mobile') !!}
-                                        {!! Form::text('telephone', $user->telephone, ['class' => 'form-control']) !!}
+                                        {!! Form::text('telephone', $user->telephone, ['class' => 'sm-form-control']) !!}
                                     </div>
 
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12 topmargin-sm">
                                         {!! Form::label('id_document', "Pièce d'identité (Professeurs Uniquement)") !!}
 
                                         <?php $idDocument = \App\Models\IdDocument::getByUserId(\Auth::id()) ?>
@@ -323,8 +323,8 @@
 
                                         @if($degreeDocument)
                                             <br>
-                                            <a href="/"><span><i
-                                                            class="fa fa-graduation-cap fa-2x bottommargin-sm"></i> {{$degreeDocument->id_card_name}}</span></a>
+                                            <a href="/mon-diplome"><span><i
+                                                            class="fa fa-graduation-cap fa-2x bottommargin-sm"></i> {{$degreeDocument->degree_document_name}}</span></a>
                                             <br>
                                         @endif
 
@@ -336,7 +336,7 @@
                                                 <div class="btn btn-primary">
                                                     <span class="hidden-xs">Télécharger mon diplôme / certifications</span>
                                                     <input
-                                                            name="id_document"
+                                                            name="degree_document"
                                                             id="input-8"
                                                             type="file"
                                                             accept=""

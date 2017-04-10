@@ -7,7 +7,6 @@ Route::group(['middleware' => ['web']], function () {
         return view('main.faq');
     });
 
-
 //Lancement
     Route::get('/professeur', 'ListAdvertController@welcomeProfesseur');
 
@@ -128,6 +127,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/laisser-un-commentaire', 'CommentsController@postComment');
 
         Route::get('/carte-identite', 'IDdocumentController@userDownloadsOwnId');
+        Route::get('/mon-diplome', 'DegreedocumentController@userDownloadsOwnId');
 
         Route::group(['middleware' => ['isAdmin']], function () {
             Route::get('/download-id/{documentId}', 'IDdocumentController@downloadIdDocument');

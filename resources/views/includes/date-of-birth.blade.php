@@ -1,4 +1,4 @@
-<div class="control-group">
+<div class="control-group ">
     <label for="dob-day" class="control-label">Date de naissance</label>
     <div class="controls">
         {{ Form::select('dobday', [

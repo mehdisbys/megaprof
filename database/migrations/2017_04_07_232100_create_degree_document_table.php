@@ -16,14 +16,14 @@ class CreateDegreeDocumentTable extends Migration {
         {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('id_card_name', 125);
-            $table->string('id_card_mime', 125);
-            $table->integer('id_card_size');
+            $table->string('degree_document_name', 125);
+            $table->string('degree_document_mime', 125);
+            $table->integer('degree_document_size');
             $table->boolean('verified')->default(0);
             $table->timestamps();
         });
 
-        \Illuminate\Support\Facades\DB::statement("ALTER TABLE prof_degree_document ADD id_card MEDIUMBLOB");
+        \Illuminate\Support\Facades\DB::statement("ALTER TABLE prof_degree_document ADD degree_document MEDIUMBLOB");
     }
 
 
