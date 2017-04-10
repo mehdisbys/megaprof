@@ -7,7 +7,7 @@
     <p>Votre annonce : {{$advert->title}} a été modérée par l'un de nos administrateurs.</p>
     <br>
 
-    <p>Nous nous pouvons pas la publier pour le moment pour la raison suivante : </p>
+    <p>Nous ne pouvons pas la publier pour le moment pour la raison suivante : </p>
 
     <p>{{$message}}</p>
 
@@ -17,7 +17,7 @@
 
     <br>
 
-    <p>A très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
+    <p>À très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
     <br>
 
     <p>L'Équipe Taelam</p>
