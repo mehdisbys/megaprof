@@ -5,13 +5,13 @@
 
 <hr>
 
-<p>Signalement d'annonce</p>
+<h3>Signalement d'annonce</h3>
 
 <br>
 <p>L'annonce suivante a été signalée:  <a href="{{$link}}">{{$advert->title}}</a> </p>
 <br>
-<p>Yacine et Mehdi : jetons y un coup d'oeil le plus rapidement possible.</p>
+<p>Mon petit Chayoubi (Je peux pas vous dire plusse) : jetons y un coup d'oeil le plus rapidement possible.</p>
 
-<p>Merci, petit con !</p>
+<p>Merci ya hmar !</p>
 </body>
 </html>
