@@ -1,17 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-    {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
     {!! HTML::style("temp-css/awesomplete.css") !!}
     {!! HTML::style("css/fa/css/font-awesome.min.css") !!}
     {!! HTML::style("css/slick.css") !!}
     {!! HTML::style("css/slick-theme.css") !!}
-
-    {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
-
-    {!! HTML::script("js/locationpicker.jquery.js") !!}
-    {!! HTML::script("js/jquery.geocomplete.min.js") !!}
-    {!! HTML::script("js/jquery.form.min.js") !!}
 
     <!-- one ============= -->
     <div class="home-search-prof">
@@ -24,7 +17,8 @@
             Des dizaines de matières et activités variées sont disponibles !</p>
 
         <div id="prof-register" class="teacher-btn-div">
-            <a href="/inscription" class="btn btn-success btn-lg "><i class="fa fa-pencil-square-o"></i> Créer une annonce</a>
+            <a href="/inscription" class="btn btn-success btn-lg "><i class="fa fa-pencil-square-o"></i> Créer une
+                annonce</a>
         </div>
     </div>
 
@@ -46,7 +40,8 @@
 
                             <div class="col-md-12"><i style="color:#6a91ff;"
                                                       class="fa fa-pencil-square-o fa-5x clearfix"></i></div>
-                            <div class="col-md-12"><a href="/inscription"><h4> Créer une annonce gratuitement</h4></a></div>
+                            <div class="col-md-12"><a href="/inscription"><h4> Créer une annonce gratuitement</h4></a>
+                            </div>
                             <div class="col-md-12">
                                 <small>Des milliers de personnes cherchent
 
@@ -114,38 +109,7 @@
 
 
     <div>
-        <div class="scrolling-pane topmargin-lg">
-            <h2 class="section-title">Pourquoi choisir Taelam ?</h2>
-
-            <div class="row">
-                <ul id="bubbles">
-                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
-                        <div class="fa fa-refresh fa-3x"></div>
-                        <a href="">Flexibilité</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
-                        <div class="fa fa-check fa-3x"></div>
-                        <a href="">Profils vérifiés</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-a" id="subject-1">
-                        <div class="fa fa-handshake-o fa-3x"></div>
-                        <a href="">Sans intermédiaire</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
-                        <div class="fa fa-money fa-3x"></div>
-                        <a href="">Économique</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
-                        <div class="fa fa-lock fa-3x"></div>
-                        <a href="">Sécurisé</a>
-                    </li>
-                    <li class="scroll-items col-md-2 pane-b" id="subject-1">
-                        <div class="fa fa-flask fa-3x"></div>
-                        <a href="">Des activités variées</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        @include('main.why-choose-taelam')
     </div>
 
 
@@ -207,7 +171,7 @@
                     });
                 }
             };
-            setInterval(toggleFade, 5000);
+            // setInterval(toggleFade, 5000);
 
             new Awesomplete(document.getElementById('subject_input'), {
                 filter: function (text, input) {

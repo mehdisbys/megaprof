@@ -2830,7 +2830,7 @@ a.component-pagination-item:hover {
 .scrolling-pane {
     background-color: white;
     clear: both;
-    padding: 20px;
+    padding: 40px;
 }
 
 .scrolling-pane h2 {
@@ -2851,20 +2851,20 @@ a.component-pagination-item:hover {
     list-style: none;
     width: 140px;
     height: 140px;
-§    text-align: center;
+    text-align: center;
     padding: 5px;
     border-radius: 50%;
 }
 
 .scrolling-pane ul li .fa {
-    background-color: #fd875e;
+    background-color: rgba(255, 133, 93, 0.74);
     display: block;
     color: white;
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     margin: 15px auto;
-    line-height: 60px;
+    line-height: 90px;
 }
 
 .scrolling-pane ul li .subject-icon {
