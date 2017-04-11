@@ -51,7 +51,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth']], function () {
 
-        Route::get('/avatar_dashboard/{user_id}', 'AvatarController@getDefaultAvatar');
         Route::post('/avatar', 'AvatarController@saveAvatar');
 
         Route::group(['middleware' => ['afterAdvert']], function () {
@@ -59,22 +58,22 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/nouvelle-annonce-1', 'SubmitAdvertController@getStep1Subjects');
             Route::post('/nouvelle-annonce-1', 'SubmitAdvertController@postStep1Subjects');
 
-            Route::get('/nouvelle-annonce-2', 'SubmitAdvertController@getStep2TitleAndLevels');
+            Route::get('/nouvelle-annonce-2', 'SubmitAdvertController@getStep2TitleAndLevels')->middleware('revalidate');
             Route::post('/nouvelle-annonce-2', 'SubmitAdvertController@postStep2TitleAndLevels');
 
-            Route::get('/nouvelle-annonce-3', 'SubmitAdvertController@getStep3AddressAndTravel');
+            Route::get('/nouvelle-annonce-3', 'SubmitAdvertController@getStep3AddressAndTravel')->middleware('revalidate');
             Route::post('/nouvelle-annonce-3', 'SubmitAdvertController@postStep3AddressAndTravel');
 
-            Route::get('/nouvelle-annonce-4', 'SubmitAdvertController@getStep4ContentAndExperience');
+            Route::get('/nouvelle-annonce-4', 'SubmitAdvertController@getStep4ContentAndExperience')->middleware('revalidate');
             Route::post('/nouvelle-annonce-4', 'SubmitAdvertController@postStep4ContentAndExperience');
 
-            Route::get('/nouvelle-annonce-5', 'SubmitAdvertController@getStep5PriceAndConditions');
+            Route::get('/nouvelle-annonce-5', 'SubmitAdvertController@getStep5PriceAndConditions')->middleware('revalidate');
             Route::post('/nouvelle-annonce-5', 'SubmitAdvertController@postStep5PriceAndConditions');
 
-            Route::get('/nouvelle-annonce-6', 'SubmitAdvertController@getStep6Picture');
+            Route::get('/nouvelle-annonce-6', 'SubmitAdvertController@getStep6Picture')->middleware('revalidate');
             Route::post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6Picture');
 
-            Route::get('/nouvelle-annonce-7', 'SubmitAdvertController@getStep7Publish');
+            Route::get('/nouvelle-annonce-7', 'SubmitAdvertController@getStep7Publish')->middleware('revalidate');
             Route::post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7Publish');
         });
 
@@ -110,7 +109,6 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/mon-compte', 'DashboardController@index');
         Route::get('/mon-compte/annonce-{advert_id}', 'DashboardController@editAdvert');
         Route::post('/hide-notification/{notification_id}', 'DashboardController@hideNotification');
-        Route::get('/editer-profil', 'DashboardController@index');
         Route::post('/editer-profil', 'DashboardController@updateProfile');
         Route::get('/completer-profil', 'DashboardController@completeProfile');
 

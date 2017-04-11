@@ -34,6 +34,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
         ],
+
     ];
 
     /**
@@ -42,14 +43,12 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'          => \App\Http\Middleware\Authenticate::class,
-        'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'role'          => \Zizaco\Entrust\Middleware\EntrustRole::class,
-        'permission'    => \Zizaco\Entrust\Middleware\EntrustPermission::class,
-        'ability'       => \Zizaco\Entrust\Middleware\EntrustAbility::class,
-        'ownsAdvert'    => \App\Http\Middleware\IfOwnsAdvert::class,
-        'afterAdvert'   => \App\Http\Middleware\AfterAdvert::class,
-        'isAdmin'       => IfIsAdmin::class
+        'auth'        => \App\Http\Middleware\Authenticate::class,
+        'auth.basic'  => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest'       => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'ownsAdvert'  => \App\Http\Middleware\IfOwnsAdvert::class,
+        'afterAdvert' => \App\Http\Middleware\AfterAdvert::class,
+        'isAdmin'     => IfIsAdmin::class,
+        'revalidate'  => \App\Http\Middleware\PreventBackHistory::class,
     ];
 }

@@ -62,7 +62,11 @@ class SubmitAdvertController extends Controller
             session(['advert_id' => $advert_id]);
         } else {
             $advert    = Advert::find(session('advert_id'));
-            $advert_id = $advert->id;
+
+            if($advert)
+            {
+                $advert_id = $advert->id;
+            }
         }
 
         // 2. Get subjects ids
@@ -278,7 +282,6 @@ class SubmitAdvertController extends Controller
 
     public function getStep7Publish()
     {
-        $advert_id = session('advert_id');
         $advert    = Advert::find(session('advert_id'));
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
@@ -287,14 +290,15 @@ class SubmitAdvertController extends Controller
     public function postStep7Publish(Request $request)
     {
         $request->input('advert_id');
-        $advert = Advert::find(session('advert_id') ?? $request->input('advert_id'));
+        $advert_id = session('advert_id') ?? $request->input('advert_id');
+
+        $advert = Advert::find($advert_id);
         $advert->publish();
 
         if (session('advert_id')) {
             event(new ProfCreatedAdvert($advert));
             thanks('Votre annonce a été créée avec succès !');
         }
-
 
         session()->forget('advert_id');
 
