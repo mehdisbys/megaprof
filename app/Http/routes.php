@@ -127,6 +127,8 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('/carte-identite', 'IDdocumentController@userDownloadsOwnId');
         Route::get('/mon-diplome', 'DegreedocumentController@userDownloadsOwnId');
+        Route::get('/notifications', 'DashboardController@getNotificaticationCount');
+
 
         Route::group(['middleware' => ['isAdmin']], function () {
             Route::get('/download-id/{documentId}', 'IDdocumentController@downloadIdDocument');

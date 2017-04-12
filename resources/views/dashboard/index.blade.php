@@ -40,7 +40,7 @@
 
                     <li class="active topmargin-small">
                         <a href="#notifications" id="ui-id-25" data-toggle="tab">Notifications
-                            <span class="badge blue-badge">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
+                            <span class="badge blue-badge notification-count">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                     </li>
 
                     <li data-toggle="tab">
@@ -188,6 +188,12 @@
 
                                             <script>
                                                 $(document).ready(function () {
+
+                                                    $('.close').on('click', function(){
+                                                        $.get('/notifications', function(data){
+                                                            $('.notification-count').each(function(index, element){ $(this).html(data.notificationsCount)})
+                                                        });
+                                                    });
 
                                                     $('.delete-advert').on('click', function (e) {
 

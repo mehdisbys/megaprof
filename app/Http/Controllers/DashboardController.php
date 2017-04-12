@@ -38,6 +38,13 @@ class DashboardController extends Controller
         return view('dashboard.index')->with(get_defined_vars());
     }
 
+    public function getNotificaticationCount()
+    {
+        $count       = Notification::currentUserNotificationsCount();
+
+        return response()->json(['notificationsCount' => $count]);
+    }
+
     public function editAdvert($advert_id)
     {
         $advert = Advert::findOrFail($advert_id);
