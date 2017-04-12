@@ -34,10 +34,12 @@
 
         <div class="col-md-12 btns">
             <div class="student-btn-div">
-                <a id="student-btn" href="#student-info" class="btn btn-info btn-lg ">Trouver un Professeur</a>
+                <a id="student-btn" href="#student-info" class="">Trouver un Professeur</a>
             </div>
             <div class=" teacher-btn-div">
-                <a href="/professeur" class="btn btn-warning btn-lg ">Donner des Cours</a>
+                <a id="accueil-donner-des-cours" class=" big-button" href="/professeur">Donner des
+                    cours</a>
+
             </div>
         </div>
 
