@@ -7,6 +7,10 @@ Route::group(['middleware' => ['web']], function () {
         return view('main.faq');
     });
 
+    Route::get('/cgu', function () {
+        return view('main.cgu');
+    });
+
 //Lancement
     Route::get('/professeur', 'ListAdvertController@welcomeProfesseur');
 

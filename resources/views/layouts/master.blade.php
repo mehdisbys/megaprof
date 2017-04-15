@@ -106,7 +106,7 @@
                     <h6 class="heading7">À PROPOS</h6>
                     <div><a href="/faq"> Foire Aux Questions</a></div>
                     <div><a href="/nouvelle-annonce-1"> Créer une annonce</a></div>
-                    <div><a href="#"> Conditions Générales</a></div>
+                    <div><a href="/cgu"> Conditions Générales</a></div>
                     <div><a href="/professeur"> Devenir Professeur</a></div>
                     <div><a href="#"> Qui sommes-nous</a></div>
                 </div>

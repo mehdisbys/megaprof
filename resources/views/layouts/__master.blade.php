@@ -129,7 +129,7 @@
                         <h6 class="heading7" style="color: white">À PROPOS</h6>
                         <div><a href="#"> Foire Aux Questions</a></div>
                         <div><a href="#"> Créer une annonce</a></div>
-                        <div><a href="#"> Conditions Générales</a></div>
+                        <div><a href="/cgu"> Conditions Générales</a></div>
                         <div><a href="#"> Devenir Professeur</a></div>
                         <div><a href="#"> Qui sommes-nous</a></div>
                     </div>
