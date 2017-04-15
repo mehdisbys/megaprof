@@ -30,7 +30,7 @@
                         <input type="email" placeholder="Email" name="email" class="input" value="{{$email ?? ''}}"/>
                     </div>
                     <div class="input-text input-container">
-                        <input type="password" required="required" placeholder="Mot de passe" name="password"
+                        <input type="password" required="required" placeholder="Mot de passe (5 caractères minimum)" name="password"
                                class="input" value=""/>
                     </div>
 
