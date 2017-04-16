@@ -138,9 +138,9 @@ class SubjectsTableSeeder extends Seeder
                     'Portugais',
                     'Russe',
                     'Turc',
-                    'Réduction d\'accent français',
-                    'Réduction d\'accent anglais',
-                    'Réduction d\'accent espagnol',
+                    'Amélioration d\'accent français',
+                    'Amélioration d\'accent anglais',
+                    'Amélioration d\'accent espagnol',
                 ],
             'Droit'             =>
                 [
