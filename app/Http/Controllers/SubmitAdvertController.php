@@ -14,8 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
-//TODO
-// 4. Use Form requests
+
 class SubmitAdvertController extends Controller
 {
     private $advertId = NULL;
