@@ -33,7 +33,11 @@
     @include('includes.info')
     <div class="row">
 
+        <div class="col-md-6 center bottommargin-sm"><a href="/{{$advert->slug}}"> << Retour à l'annonce </a></div>
+        <div class="clearfix"></div>
+
         <div id="author" class="col-md-3 col-md-offset-1">
+
             <div id="leftside">
                 <img src="{{ $advert->getAvatar() }}" alt="">
 
