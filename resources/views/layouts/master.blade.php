@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Cours particuliers Taelam - Trouvez un professeur particulier au Maroc : Soutien scolaire, Concours, Mathématiques, Langues...</title>
+    @section('title')
+        <title>Cours particuliers Taelam - Trouvez un professeur particulier au Maroc : Soutien scolaire, Concours,
+            Mathématiques, Langues...</title>
+    @show
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta name="Description" lang="fr" content="Trouvez votre professeur particulier"/>
+
+    @section('meta_description')
+        <meta name="Description" lang="fr"
+              content="Cours particuliers, cours à domicile, soutien scolaire en mathématiques, anglais, arabe, et bien d'autres matières dans tout le Maroc"/>
+    @show
+
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="theme-color" content="#ffffff"/>
@@ -20,13 +28,13 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
 
-{!! HTML::style('/css/all.css') !!}
-{!! HTML::style('css/fa/css/font-awesome.min.css')!!}
+    {!! HTML::style('/css/all.css') !!}
+    {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
-{!! HTML::script("js/jquery.js") !!}
-{!! HTML::script("js/bootstrap.min.js") !!}
+    {!! HTML::script("js/jquery.js") !!}
+    {!! HTML::script("js/bootstrap.min.js") !!}
 
-@include('user_tracking.smartlook')
+    @include('user_tracking.smartlook')
 
 
 <!-- TODO convert to sass files   -->
@@ -43,7 +51,8 @@
             <nav class="navbar navbar-site" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
-                        <button style="background-color: #ff8c00;" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
+                        <button style="background-color: #ff8c00;" data-target=".navbar-collapse" data-toggle="collapse"
+                                class="navbar-toggle"
                                 type="button">
                             <span class="sr-only">Toggle navigation</span> <span class="fa fa-bars"></span> <span
                                     class="icon-bar"></span> <span class="icon-bar"></span></button>

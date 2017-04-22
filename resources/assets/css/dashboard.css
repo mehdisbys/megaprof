@@ -3593,3 +3593,8 @@ Create a CSS3 post-it note without images
 .flag{
     max-width: 60px;
 }
+
+.single-view-title {
+    font-size: 24px;
+    font-weight: 600;
+}

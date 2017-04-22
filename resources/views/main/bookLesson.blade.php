@@ -1,5 +1,27 @@
 @extends('layouts.master')
 
+
+@section('title')
+
+    @if($advert->subjectsPerAd->count() == 1)
+        <?php $subjects = ucfirst(\App\Models\SubSubject::find($advert->subjectsPerAd->first()->subject_id)->name) ?>
+    @elseif($advert->subjectsPerAd->count() > 1)
+        <?php $titleSubjects = [] ?>
+        @foreach($advert->subjectsPerAd as $subject)
+            <?php $titleSubjects[] = ucfirst(\App\Models\SubSubject::find($subject->subject_id)->name); ?>
+        @endforeach
+        <?php $subjects = implode($titleSubjects, ', ') ?>
+    @endif
+
+    <title>Prendre un cours particulier de {{$subjects}} à {{$advert->location_city}} avec {{$advert->user->firstname}} |
+        Taelam </title>
+@endsection()
+
+@section('meta_description')
+    <meta name="Description" lang="fr"
+          content="Professeur particulier offre cours de {{$subjects}} à {{$advert->location_city}} : {{str_limit($advert->presentation, 150)}}"/>
+@endsection
+
 @section('content')
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
     {!! HTML::script("js/locationpicker.jquery.js") !!}

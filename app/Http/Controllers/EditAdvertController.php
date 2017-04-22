@@ -63,7 +63,7 @@ class EditAdvertController extends Controller
 
     public function editStep2($advert_id)
     {
-        $subjectsArray = [SubjectsPerAdvert::where('advert_id', $advert_id)->value('subject_id')];
+        $subjectsArray = SubjectsPerAdvert::where('advert_id', $advert_id)->pluck('subject_id')->toArray();
 
         // 3. Return data necessary for next step
         $subjects = SubSubject::whereIn('id', $subjectsArray)->get();
