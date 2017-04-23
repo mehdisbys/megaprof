@@ -64,7 +64,7 @@
                     </div>
                     <div class="navbar-collapse collapse">
 
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right top-header-menu">
 
                             @if(Auth::check())
                                 <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
