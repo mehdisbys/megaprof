@@ -49,7 +49,7 @@ class ContactEmailController extends Controller
     }
 
 
-    public function sendContactEmail($subject, $firstname, $message, $userEmail)
+    public function sendContactEmail(string $subject, string $firstname, string $message, string $userEmail)
     {
         $view                   = 'emails.contact.contactEmail';
         $config['to']           = $this->contactEmail;

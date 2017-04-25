@@ -193,13 +193,13 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                     <input class="form-control" name="subject" placeholder="Objet" type="text"
-                                           required/>
+                                           required value="asdasd"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <textarea style="resize:vertical;" class="form-control" placeholder="Message..."
-                                              rows="6" name="message" required></textarea>
+                                              rows="6" name="message" required>sasdasdasfaf</textarea>
                                 </div>
                             </div>
                         </div>

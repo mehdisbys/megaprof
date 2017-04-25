@@ -5,7 +5,7 @@
 
 <hr>
 
-<h3>Support : {{$subject}} </h3>
+<h3>Support utilisateur: {{$subject}} </h3>
 
 <br>
 <p>Nom de l'utilisateur : {{$userName}}</p>
@@ -14,7 +14,7 @@
 <br>
 <p>Objet : {{$subject}}</p>
 
-<p>Message : {{$message}}</p>
+<p>Message : {{$messageFromUser}}</p>
 
 </body>
 </html>
