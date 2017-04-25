@@ -59,6 +59,7 @@ class ContactEmailController extends Controller
         $all['userEmail']       = $userEmail;
         $all['userName']        = $firstname;
         $all['hasAccount']      = Auth::check() ? 'Oui' : 'Non';
+        $all['subject']         = $subject;
 
         $this->mailer->sendMail($view, $all, $config);
     }
