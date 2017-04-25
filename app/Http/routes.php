@@ -11,6 +11,8 @@ Route::group(['middleware' => ['web']], function () {
         return view('main.cgu');
     });
 
+    Route::post('/contact', 'ContactEmailController@postContact');
+
 //Lancement
     Route::get('/professeur', 'ListAdvertController@welcomeProfesseur');
 

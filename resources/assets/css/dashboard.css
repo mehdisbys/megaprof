@@ -3602,3 +3602,8 @@ Create a CSS3 post-it note without images
 .top-header-menu {
     margin-top: 25px;
 }
+
+.mouse-hand:hover {
+    cursor: hand;
+    cursor: pointer;
+}

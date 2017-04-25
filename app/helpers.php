@@ -126,7 +126,7 @@ function saveCaptchaCode(string $code)
     session(['captchaCode' => $code]);
 }
 
-function isCaptchaCodeCorrect(string $codeToValidate)
+function isCaptchaCodeCorrect(string $codeToValidate): bool
 {
     if (getenv('APP_ENV') == 'local')
         return true;
