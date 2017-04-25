@@ -8,7 +8,7 @@
 <h3>Support : {{$subject}} </h3>
 
 <br>
-<p>Nom de l'utilisateur : {{$firstname}}</p>
+<p>Nom de l'utilisateur : {{$userName}}</p>
 <p>Email de l'utilisateur : {{$userEmail}}</p>
 <p>Posséde un compte Taelam : {{$hasAccount}}</p>
 <br>
