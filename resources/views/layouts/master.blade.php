@@ -177,16 +177,17 @@
                             Vous avez une question ? N'hésitez pas à nous contacter !</h4>
                     </div>
                     <form action="/contact" method="post" accept-charset="utf-8">
+                        {{csrf_field()}}
                         <div class="modal-body" style="padding: 5px;">
                             <div class="row topmargin-sm">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                     <input class="form-control" name="firstname" placeholder="Nom et Prénom" type="text"
-                                           required autofocus/>
+                                           required autofocus value="{{\Illuminate\Support\Facades\Auth::user() ? \Illuminate\Support\Facades\Auth::user()->firstname:null}}"/>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                     <input class="form-control" name="email" placeholder="Votre adresse e-mail"
-                                           type="text" required/>
+                                           type="text" required value="{{\Illuminate\Support\Facades\Auth::user() ? \Illuminate\Support\Facades\Auth::user()->email:null}}"/>
                                 </div>
                             </div>
                             <div class="row">
