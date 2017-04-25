@@ -159,7 +159,7 @@
                 <i class="fa fa-facebook fa-2x"></i>
             </a>
 
-            <a href="http://twitter.com/intent/tweet?text={!! $advert->title !!}&url={{ urlencode('http://www.taelam.com/' .$advert->slug)  }}"
+            <a href="http://twitter.com/intent/tweet?text={!! str_limit($advert->title,50,'..') !!}&url={{ urlencode('http://www.taelam.com/' .$advert->slug)  }}&via=taelam_officiel&hashtags=taelam,{{$subjects}}"
                data-count="vertical"
                rel="nofollow"
                target="_blank"
