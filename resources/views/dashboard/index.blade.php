@@ -3,7 +3,6 @@
 @section('content')
     {!! HTML::script("js/webcam.min.js") !!}
     {!! HTML::script("js/jquery-confirm.js") !!}
-    {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
     {!! HTML::style('css/jquery-confirm.css')!!}
     {!! HTML::script("js/slim.jquery.min.js") !!}
     {!! HTML::style('css/slim.min.css')!!}
