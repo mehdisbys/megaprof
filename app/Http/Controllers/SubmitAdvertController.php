@@ -237,6 +237,7 @@ class SubmitAdvertController extends Controller
             "price_5_hours",
             "price_10_hours",
             "price_more",
+            "free_first_time"
         ];
 
         $data = $request->only($only);

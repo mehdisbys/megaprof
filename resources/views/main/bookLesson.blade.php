@@ -47,6 +47,9 @@
                         <div class="clearfix"></div>
                         <ul class="iconlist">
                             <li><i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong></li>
+                            @if($advert->free_first_time != NULL)
+                                <li class="topmargin-small"><strong>1ère heure de cours offerte !</strong></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

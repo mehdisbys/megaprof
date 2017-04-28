@@ -3059,7 +3059,7 @@ th {
 
 @media all and (max-width: 1230px) {
     .temp-btn-block {
-        width: 70% !important;
+        width: 80% !important;
     }
 
     .advert-header {
@@ -3606,4 +3606,13 @@ Create a CSS3 post-it note without images
 .mouse-hand:hover {
     cursor: hand;
     cursor: pointer;
+}
+
+.first_free_time {
+    color: #5073a7;
+    line-height: 5px;
+    font-weight: 600;
+    font-size: inherit;
+    margin: 0px 15% 20px 50%;
+    width: 50%;
 }

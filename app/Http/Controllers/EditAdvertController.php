@@ -192,6 +192,7 @@ class EditAdvertController extends Controller
             "price_5_hours",
             "price_10_hours",
             "price_more",
+            "free_first_time"
         ];
 
         $data = \Request::only($only);

@@ -23,7 +23,7 @@
 @endsection
 
 <!-- 1 -->
-<div class="container">
+<div class="col-md-12">
 
     <div class="col-md-8 col-md-offset-2">
         @if(isset($info))
@@ -142,11 +142,15 @@
                 <a class="booking-button temp-btn-block" href="
                     {{ isset($thisIsAPreview) ? '' : '/mise-en-relation/'.$advert->slug}}">Réserver : {{$advert->price}}
                     Dhs/h</a>
+                @if($advert->free_first_time != NULL)
+                    <div class="first_free_time">1ère heure de cours offerte !</div>
+                @endif
+
             </div>
 
 
         </div>
-        <div class="col-md-10  row col-md-offset-4 social-icons topmargin-small">
+        <div class="col-sm-12 col-sm-offset-0 col-md-10 row center topmargin-small">
 
             <a href="http://www.facebook.com/sharer.php?u={{env('APP_URL')}}{{$advert->slug}}"
                data-send="false"

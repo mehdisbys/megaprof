@@ -134,6 +134,31 @@
 
                         <div class="divider divider-short divider-center topmargin-sm"><i class="icon-crop"></i></div>
 
+                        <div class="col-md-12" id="free_first_time">
+
+                            <div class="small col-md-offset-1 col-md-2"><em>Offrir la première heure de cours permet
+                                    d'inciter de nouveaux élèves à vous contacter ! Ce premier contact augmente vos
+                                    chances d'en faire des étudiants réguliers.</em></div>
+
+                            <label for="free_first_time"><input type="checkbox"
+                                                                 <?php
+                                                                 if(isset($advert) and $advert->published_at != NULL)
+                                                                     {
+                                                                         if($advert->free_first_time == true) {
+                                                                                 echo 'checked="checked"';
+                                                                             }
+                                                                     }
+                                                                     else {
+                                                                         echo 'checked="checked"';
+                                                                     }
+                                                                         ?>
+                                                                  name="free_first_time"> J'offre la
+                                première heure de cours</label>
+
+                        </div>
+
+                        <div class="divider divider-short divider-center topmargin-sm"><i class="icon-crop"></i></div>
+
                         <div class="col-md-offset-3 col-md-6">
                             <?php $price_more = isset($advert) ? $advert->price_more : null ?>
 

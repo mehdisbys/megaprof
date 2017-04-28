@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     @section('title')
-        <title>Cours particuliers Taelam - Trouvez un professeur particulier au Maroc : Soutien scolaire, Concours,
+        <title>Taelam - Cours particuliers au Maroc : Soutien scolaire, Concours,
             Mathématiques, Langues...</title>
     @show
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
@@ -139,7 +139,7 @@
                 <div class="text-center center-block">
 
                     <h6 class="heading7">TAELAM</h6>
-                    <img class="flag" src="css/flags/flags/4x3/ma.svg" alt="Drapeau Marocain">
+                    <img class="flag" src="/css/flags/flags/4x3/ma.svg" alt="Drapeau Marocain">
 
                     <p><em>
                             <small>Taelam est le premier site Marocain de partage de connaissances.
