@@ -130,7 +130,7 @@
                                                                  class="fa fa-facebook-square fa-3x social"></i></a>
                     <a href="https://twitter.com/taelam_officiel"><i id="social-tw"
                                                             class="fa fa-twitter-square fa-3x social"></i></a>
-                    <a href="https://plus.google.com/+taelam"><i id="social-gp"
+                    <a href="https://plus.google.com/u/1/115934799609055669898"><i id="social-gp"
                                                                  class="fa fa-google-plus-square fa-3x social"></i></a>
                 </div>
             </div>

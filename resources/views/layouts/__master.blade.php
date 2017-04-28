@@ -144,14 +144,14 @@
                                                                      class="fa fa-facebook-square fa-3x social"></i></a>
                         <a href="https://twitter.com/taelam"><i id="social-tw"
                                                                 class="fa fa-twitter-square fa-3x social"></i></a>
-                        <a href="https://plus.google.com/+taelam"><i id="social-gp"
+                        <a href="https://plus.google.com/u/1/115934799609055669898"><i id="social-gp"
                                                                      class="fa fa-google-plus-square fa-3x social"></i></a>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-sm-12">
                     <h6 class="heading7" style="color: white">TAELAM</h6>
-
+                    <img class="flag" src="/css/flags/flags/4x3/ma.svg" alt="Drapeau Marocain">
                     <p><em>
                             <small>Taelam est le premier site Marocain de partage de connaissances.
                                 Apprenez sans limites ! Trouvez des professeurs dans tout le Maroc dans des dizaines de
