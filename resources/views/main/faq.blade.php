@@ -22,7 +22,7 @@
                             d’un
                             professeur,
                             la
-                            ville souhaitée (ex: Cuisine, Casablanca). Vous verrez ensuite une liste de tous les
+                            ville souhaitée (ex: Anglais, Casablanca). Vous verrez ensuite une liste de tous les
                             professeurs
                             correspondant à
                             vos critères. Cliquez sur le nom du professeur pour en savoir plus et le contacter
@@ -52,7 +52,7 @@
                             donnons
                             accès
                             aux
-                            détails de ses coordonnées. Nous envoyons également en simultanée vos coordonnées aux
+                            détails de ses coordonnées. Nous envoyons également vos coordonnées aux
                             professeurs.
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse3" class="question">Comment TAELAM Assure-t-il
+                            <a data-toggle="collapse" href="#collapse3" class="question">Comment TAELAM assure-t-il
                                 la
                                 qualité des professeurs  ?</a>
                         </h4>
@@ -115,13 +115,7 @@
                         <div class="panel-body reponse">
                             Il est gratuit de chercher, sélectionner et contacter les professeurs de toutes
                             disciplines.
-                            Lorsque
-                            l’une de
-                            vos demandes de cours a été acceptée nous procédons à l’encaissement de X euros qui vous
-                            permet
-                            ensuite
-                            de
-                            contacter tous les professeurs sans frais pendant un mois.
+
                         </div>
                     </div>
                 </div>
@@ -148,7 +142,8 @@
                             de
                             réponses possible. Si vous avez des questions auxquelles nous n’avons pas répondu ou des
                             informations
-                            complémentaires que vous souhaitez avoir, merci de nous poser votre question ici.
+                            complémentaires que vous souhaitez avoir,  <a class="mouse-hand" data-toggle="modal" data-target="#contact"
+                                                                                                            data-original-title>merci de nous poser votre question</a>.
                         </div>
                     </div>
                 </div>
@@ -270,7 +265,7 @@
                     </div>
                     <div id="collapse11" class="panel-collapse collapse reponse">
                         <div class="panel-body reponse">
-                            Notre site attire une très large gamme de disciplines, le niveau de qualification demandé
+                            Notre site propose une très large gamme de disciplines, le niveau de qualification demandé
                             dépendra
                             donc
                             de
@@ -313,7 +308,7 @@
                     </div>
                     <div id="collapse13" class="panel-collapse collapse reponse">
                         <div class="panel-body reponse">
-                            Si votre titre de séjour vous permet de travailler au Maroc, vous pouvez bien sûr
+                            Si votre titre de séjour vous permet de travailler au Maroc, vous pouvez biensûr
                             devenir
                             professeur.
                         </div>
@@ -395,16 +390,9 @@
                     </div>
                     <div id="collapse17" class="panel-collapse collapse reponse">
                         <div class="panel-body reponse">
-                            Le tarif va dépendre de plusieurs critères comme : Du type d’activité, du niveau de
-                            l’enseignement,
-                            et de
-                            votre région. Et enfin, vous devez voir quels prix proposent les autres professeurs proches de
-                            chez
-                            vous pour
-                            la
-                            même
-                            activité ou des activités similaires.
-
+                            Le tarif dépend de plusieurs critères comme : le type d’activité, du niveau de
+                            l’enseignement, et de votre région. Et enfin, vous devez voir quels prix proposent les autres professeurs proches de
+                            chez vous pour la même activité ou des activités similaires.
                         </div>
                     </div>
                 </div>
