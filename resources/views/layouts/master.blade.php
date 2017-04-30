@@ -126,7 +126,7 @@
                 <div class="text-center center-block">
                     <h6 class="heading7">SUIVEZ-NOUS</h6>
                     <br/>
-                    <a href="https://www.facebook.com/taelamOfficiel_ma"><i id="social-fb"
+                    <a href="https://www.facebook.com/taelamOfficiel"><i id="social-fb"
                                                                  class="fa fa-facebook-square fa-3x social"></i></a>
                     <a href="https://twitter.com/taelam_officiel"><i id="social-tw"
                                                             class="fa fa-twitter-square fa-3x social"></i></a>
