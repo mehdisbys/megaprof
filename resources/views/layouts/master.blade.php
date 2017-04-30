@@ -155,7 +155,7 @@
 
                     <h6 class="heading7">CONTACT</h6>
 
-                    <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div>
+                  <!--  <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div> -->
                     <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal" data-target="#contact"
                                                            data-original-title>Contactez-nous</a></div>
                 </div>

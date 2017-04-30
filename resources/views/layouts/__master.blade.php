@@ -162,8 +162,7 @@
 
                 <div class="col-md-3 col-sm-6 ">
                     <h6 class="heading7" style="color: white">CONTACT</h6>
-
-                    <p><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></p>
+                    <!--  <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div> -->
                     <p><i class="fa fa-envelope"></i> <a href="">Contactez-nous</a></p>
                 </div>
             </div>
