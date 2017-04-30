@@ -10,7 +10,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/cgu', function () {
         return view('main.cgu');
     });
-
+    
     Route::post('/contact', 'ContactEmailController@postContact');
 
 //Lancement

@@ -21,7 +21,7 @@
 <p>Taelam se distingue par un processus de création d’annonce intuitif et optimisé afin d’attirer le maximum d'élèves potentiels. </p>
 
     <br>
-<p>Venez vite créer votre annonce en quelques clics</p>
+<p>Venez vite créer votre annonce en quelques clics :</p>
 
     <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
            style="margin: auto;">
@@ -30,11 +30,13 @@
                 <a href="https://taelam.com/inscription"
                    style="background: #fd875e; border: 15px solid #fd875e; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"
                    class="button-a">
-                    <span style="color:#ffffff;" class="button-link">Je crée mon annonce</span>
+                    <span style="color:#ffffff;" class="button-link">Je crée mon annonce en moins de 10 minutes</span>
                 </a>
             </td>
         </tr>
     </table>
+
+    <p><a href="https://taelam.com/professeur">En savoir plus, sur les cours particuliers avec Taelam.</a></p>
 
 <p>L’Equipe TAELAM </p>
 @stop
