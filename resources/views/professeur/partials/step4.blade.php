@@ -38,9 +38,9 @@
                             {!! Form::textarea('presentation',$presentation,['class' => 'sm-form-control', 'id' => 'presentation',
                             'required' => "required",
                             'data-parsley-required-message'=>"Ce champs est requis",
-                            'data-parsley-minimumwords' => "30",
-                            'title' => "Entrez au moins 30 mots"]) !!}
-                            <p id="presentation-text"><span id="presentation-count">30</span> mots manquants pour être
+                            'data-parsley-minimumwords' => "20",
+                            'title' => "Entrez au moins 20 mots"]) !!}
+                            <p id="presentation-text"><span id="presentation-count">20</span> mots manquants pour être
                                 efficace
                             </p>
 
@@ -61,9 +61,9 @@
                             {!! Form::textarea('content',$content,['class' => 'sm-form-control', 'id' => 'content',
                             'required' => "required",
                             'data-parsley-required-message'=>"Ce champs est requis",
-                            'data-parsley-minimumwords' => "30",
-                            'title' => "Entrez au moins 30 mots"]) !!}
-                            <div id="content-text"><span id="content-count">30</span> mots manquants pour être efficace
+                            'data-parsley-minimumwords' => "20",
+                            'title' => "Entrez au moins 20 mots"]) !!}
+                            <div id="content-text"><span id="content-count">20</span> mots manquants pour être efficace
                             </div>
 
                             <em class="small">Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître
@@ -88,10 +88,10 @@
                             {!! Form::textarea('experience', $experience,['class' => 'sm-form-control', 'id' => 'experience',
                              'required' => "required",
                              'data-parsley-required-message'=>"Ce champs est requis",
-                             'data-parsley-minimumwords' => "30",
-                             'title' => "Entrez au moins 30 mots"]) !!}
+                             'data-parsley-minimumwords' => "20",
+                             'title' => "Entrez au moins 20 mots"]) !!}
 
-                            <div id="experience-text"><span id="experience-count">30</span> mots manquants pour être
+                            <div id="experience-text"><span id="experience-count">20</span> mots manquants pour être
                                 efficace
                             </div>
                             <em class="small">Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître

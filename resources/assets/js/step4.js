@@ -25,17 +25,17 @@ $(document).ready(function () {
         return nb;
     };
 
-    var count30 = function (el) {
+    var count20 = function (el) {
 
-        return updateCount(el, 30);
+        return updateCount(el, 20);
     };
 
     var smFormControl = $(".sm-form-control");
 
-    smFormControl.each(function(){count30(this)});
+    smFormControl.each(function(){count20(this)});
 
     smFormControl.on("keypress change", (function () {
-        count30(this);
+        count20(this);
     }));
 
     window.Parsley
