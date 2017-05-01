@@ -12,11 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       // $this->call(UserTableSeeder::class);
-       // $this->call(AvatarTableSeeder::class);
         $this->call(SubjectsTableSeeder::class);
         $this->call(LevelsTableSeeder::class);
         $this->call(SubLevelsTableSeeder::class);
-       // $this->call(AdvertsTableSeeder::class);
+
+        if(false and env('APP_ENV') == 'local') {
+            $this->call(UserTableSeeder::class);
+            $this->call(AvatarTableSeeder::class);
+            $this->call(AdvertsTableSeeder::class);
+        }
     }
 }
