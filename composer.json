@@ -22,7 +22,8 @@
     "cviebrock/eloquent-sluggable": "^4.2",
     "guzzlehttp/guzzle": "^6.2",
     "laravel/dusk": "^1.0",
-    "orangehill/iseed": "dev-master"
+    "orangehill/iseed": "dev-master",
+    "doctrine/dbal": "^2.5"
 
   },
   "require-dev": {
