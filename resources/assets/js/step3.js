@@ -59,4 +59,9 @@ $(document).ready(function () {
     $('#radius').change(function () {
         geo.trigger('geocode:result');
     });
+
+    // gmaps.config.locationInput = 'location';
+    // gmaps.config.formID = 'location_form';
+    gmaps.init({locationInput : 'location', formID : 'location_form'});
+
 });

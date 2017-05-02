@@ -104,6 +104,8 @@
 
         {!! Form::close() !!}
 
+        @include('includes.gmaps.autocomplete')
+
         {!! HTML::script("js/step3.js")!!}
 
 </div>

@@ -53,10 +53,9 @@
                 if (loc_name)
                     loc_name.value = place.name;
 
-                $("#" + gmaps.config.formID).submit();
             });
 
-            $("#location_input").on('keyup', function () {
+            $("#" + gmaps.config.locationInput).on('keyup', function () {
                 if ($(this).val()) {
                     gmaps.autocomplete.getPlacePredictions({
                         input: $(this).val(),
@@ -67,17 +66,18 @@
             });
 
             var submitForm = function (event) {
-                event.preventDefault();
-                toastr.options.positionClass = "toast-top-full-width";
-                toastr.options.preventDuplicates = true;
-
                 if (gmaps.predictions < 1) {
+                    event.preventDefault();
+                    toastr.options.positionClass = "toast-top-full-width";
+                    toastr.options.preventDuplicates = true;
                     toastr.info(gmaps.config.noPredictionsMsg);
                     return;
                 }
                 if (gmaps.config.submitCallBack) {
                     gmaps.config.submitCallBack();
                 }
+                console.log(gmaps.config.formID);
+
             };
 
             $("#" + gmaps.config.formID).submit(submitForm);

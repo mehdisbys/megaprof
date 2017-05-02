@@ -123,9 +123,17 @@ class EditAdvertController extends Controller
             'levels.required'   => 'Veuillez choisir les niveaux enseignés pour chaque activité'], []);
 
         $table = [
-            'can_travel'  => 'can_travel',
-            'can_receive' => 'can_receive',
-            'can_webcam'  => 'can_webcam',
+            'location'          => 'location',
+            'location_postcode' => 'postal_code',
+            'location_country'  => 'country',
+            'location_street'   => 'formatted_address',
+            'location_long'     => 'lng',
+            'location_city'     => 'locality',
+            'travel_radius'     => 'radius',
+            'location_lat'      => 'lat',
+            'can_receive'       => 'can_receive',
+            'can_travel'        => 'can_travel',
+            'can_webcam'        => 'can_webcam',
         ];
 
         $values   = \Request::only(array_values($table));
