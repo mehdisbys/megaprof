@@ -246,4 +246,18 @@ class Advert extends Model
             ->toArray();
     }
 
+    public function getLocationText()
+    {
+        if (isset($this->location_city)) {
+            return $this->location_city;
+        }
+        if (isset($this->location)) {
+            $location = explode(',', $this->location);
+            if (isset($location[0])) {
+                return $location[0];
+            }
+        }
+        return '';
+    }
+
 }

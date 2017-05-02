@@ -20,7 +20,7 @@
 
                 <div class="col-md-12 topmargin-sm bottommargin-sm">
                     <div class="col-md-4">
-                        <i class="fa fa-map-marker"></i><strong> {{ $advert->location_city ?? 'Non renseigné' }}</strong>
+                        <i class="fa fa-map-marker"></i><strong> {{ $advert->getLocationText() ?? 'Non renseigné' }}</strong>
                     </div>
 
                     <div class="col-md-8 pull-right">

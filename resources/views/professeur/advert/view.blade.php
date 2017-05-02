@@ -13,13 +13,13 @@
         <?php $subjects = implode($titleSubjects, ', ') ?>
     @endif
 
-    <title>Cours particulier de {{$subjects}} à {{$advert->location_city}} avec {{$advert->user->firstname}} |
+    <title>Cours particulier de {{$subjects}} à {{$advert->getLocationText()}} avec {{$advert->user->firstname}} |
         Taelam </title>
 @endsection()
 
 @section('meta_description')
     <meta name="Description" lang="fr"
-          content="Cours particulier de {{$subjects}} à {{$advert->location_city}} : {{str_limit($advert->presentation, 150)}}"/>
+          content="Cours particulier de {{$subjects}} à {{$advert->getLocationText()}} : {{str_limit($advert->presentation, 150)}}"/>
 @endsection
 
 <!-- 1 -->
@@ -124,7 +124,7 @@
                         @endif
                         <li>
                             <i class="fa fa-map-marker"></i>
-                            <strong>{{ $advert->location_city }}</strong>
+                            <strong>{{ $advert->getLocationText() }}</strong>
                         </li>
                         @if(isset($ratings))
                             <li>

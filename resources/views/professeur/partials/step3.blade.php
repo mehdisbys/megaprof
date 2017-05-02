@@ -28,7 +28,7 @@
                         <label for='location' class="topmargin-sm">Quelle est votre addresse ?</label>
                         {!! Form::hidden('advert_id', $advert_id) !!}
 
-                        <?php $location = (isset($advert) and $advert->location_street != NULL) ? $advert->location_street . ', ' . $advert->location_city : null; ?>
+                        <?php $location = isset($advert) ? $advert->location : null; ?>
 
                         {!! Form::input('text','location',$location,['class' => 'alert_location sm-form-control required',
                         'data-parsley-required-message' => "N'oubliez pas de sélectionner le lieu où se dérouleront vos cours",
