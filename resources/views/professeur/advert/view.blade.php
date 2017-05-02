@@ -96,9 +96,12 @@
                 </div>
 
                 <div class="pull-right">
-                    @foreach(json_decode(\App\Models\SubjectsPerAdvert::getLevelsPerAdvert($advert->id)[0],true) as $level_id)
-                        <div class="label label-primary">{{\App\Models\SubLevel::find($level_id)->name}}</div>
-                    @endforeach
+                    <?php $advertLevels = json_decode(\App\Models\SubjectsPerAdvert::getLevelsPerAdvert($advert->id)[0], true); ?>
+                    @if(is_array($advertLevels))
+                        @foreach($advertLevels as $level_id)
+                            <div class="label label-primary">{{\App\Models\SubLevel::find($level_id)->name}}</div>
+                        @endforeach
+                    @endif
                 </div>
 
             </div>
