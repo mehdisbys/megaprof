@@ -30,7 +30,7 @@
                 <h5>Votre annonce a été modérée : {{$advert->title}}</h5>
                 <div><u>Raison:</u></div>
                 <div class="col-md-10 bottommargin-sm">
-                    {{$notification->message}}
+                    {!! nl2br(e($notification->message))!!}
                 </div>
                 <small class="col-md-10"><i class="fa fa-info-circle"> </i> Allez dans mes annonces et effectuez les
                     modifications nécessaires afin que votre annonce soit publiée au plus vite.

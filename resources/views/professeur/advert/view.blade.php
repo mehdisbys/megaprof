@@ -188,17 +188,17 @@
 
             <div id="presentation" class="single-advert-text">
                 <h4 id="experience-title" class="single-advert-title">Description</h4>
-                <div id="presentation-text"> {{ $advert->presentation  }}</div>
+                <div id="presentation-text"> {!!  nl2br(e($advert->presentation)) !!}</div>
             </div>
 
             <div id="experience" class="single-advert-text">
                 <h4 id="experience-title" class="single-advert-title">Expérience</h4>
-                <div id="experience-text"> {{ $advert->experience }}</div>
+                <div id="experience-text"> {!!   nl2br(e($advert->experience)) !!}</div>
             </div>
 
             <div id="curriculum" class="single-advert-text">
                 <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
-                <div id="curriculum-text"> {{ $advert->content }}</div>
+                <div id="curriculum-text"> {!! nl2br(e($advert->content)) !!}</div>
             </div>
 
         </div>

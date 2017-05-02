@@ -279,7 +279,7 @@ class EditAdvertController extends Controller
     {
         $advert = Advert::find($advert_id);
         $advert->publish();
-        thanks("Votre annonce vient d'être publiée, elle sera désormais visible par tous les élèves.");
+        thanks("Votre annonce est maintenant en cours de validation");
         return redirect()->back();
     }
 }
