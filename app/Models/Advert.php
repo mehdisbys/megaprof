@@ -248,7 +248,7 @@ class Advert extends Model
 
     public function getLocationText()
     {
-        if (isset($this->location_city)) {
+        if (isset($this->location_city) and empty($this->location_city) == false) {
             return $this->location_city;
         }
         if (isset($this->location)) {
