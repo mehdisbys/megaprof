@@ -19,8 +19,9 @@ class AdminController extends Controller
     {
         $adverts = Advert::whereNotNull('published_at')->whereNull('approved_at')->get();
         $usersCount = User::count();
+        $approvedAdverts = Advert::whereNotNull('approved_at')->get();
 
-        return view('admin.adminOverview')->with(compact('adverts', 'usersCount'));
+        return view('admin.adminOverview')->with(compact('adverts', 'usersCount', 'approvedAdverts'));
     }
 
     public function listAllUsers()

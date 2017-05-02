@@ -90,7 +90,7 @@
 
                 <div class="pull-left">
                     @foreach($advert->subjectsPerAd as $subject)
-                        <div class="label label-info">{{\App\Models\SubSubject::find($subject->subject_id)->name}}</div>
+                        <div class="label label-info">{{ \App\Models\SubSubject::find($subject->subject_id)->name}}</div>
                         <div class="clearfix"></div>
                     @endforeach
                 </div>
@@ -108,7 +108,7 @@
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
                     <img src="{{ $advert->getAvatar() }}" alt="avatar">
-                    <h3><a href="#" class="center">{{$advert->user->firstname }}</a></h3>
+                    <h3><a href="#" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
                     <ul class="iconlist-info">
                         @if($advert->can_webcam)
                             <li>
