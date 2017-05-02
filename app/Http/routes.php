@@ -137,6 +137,9 @@ Route::group(['middleware' => ['web']], function () {
 
 
         Route::group(['middleware' => ['isAdmin']], function () {
+            Route::get('/admin', 'AdminController@adminDashboard');
+            Route::get('/admin/lister-utilisateurs', 'AdminController@listAllUsers');
+
             Route::get('/download-id/{documentId}', 'IDdocumentController@downloadIdDocument');
 
             Route::get('/suspendre-annonce/{slug}', 'FlaggedAdvertsController@suspendAdvert');

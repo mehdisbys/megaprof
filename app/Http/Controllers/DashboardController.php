@@ -33,7 +33,10 @@ class DashboardController extends Controller
         $archivedBookings    = Booking::archivedBookingRequests();
         $user                = User::find(Auth::id());
 
-        $user->birthdate ? list($dobday, $dobmonth, $dobyear) = explode('/', $user->birthdate) : null;
+        try {
+            $user->birthdate ? list($dobday, $dobmonth, $dobyear) = explode('/', $user->birthdate) : null;
+        }
+        catch (\Exception $e){}
 
         return view('dashboard.index')->with(get_defined_vars());
     }

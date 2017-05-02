@@ -27,6 +27,7 @@ class UserTableSeeder extends Seeder
                     'birthdate' => $faker->dateTimeBetween('-60 years', '-18 years'),
                     'password'  => '',
                     'confirmed' => 1,
+                    'created_at' => $faker->dateTimeBetween('-1 month')
                 ]);
         }
 
