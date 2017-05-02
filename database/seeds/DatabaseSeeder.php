@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LevelsTableSeeder::class);
         $this->call(SubLevelsTableSeeder::class);
 
-        if(false and env('APP_ENV') == 'local') {
+        if(env('APP_ENV') == 'local') {
             $this->call(UserTableSeeder::class);
             $this->call(AvatarTableSeeder::class);
             $this->call(AdvertsTableSeeder::class);

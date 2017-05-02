@@ -153,7 +153,9 @@
 
 
         </div>
-        <div class="col-sm-12 col-sm-offset-0 col-md-10 row center topmargin-small">
+        <div class="col-sm-12 col-sm-offset-0 col-md-12 row center topmargin-small">
+
+            <div class="col-md-8 col-md-offset-2">
 
             <a href="http://www.facebook.com/sharer.php?u={{env('APP_URL')}}{{$advert->slug}}"
                data-send="false"
@@ -182,21 +184,21 @@
                data-action="share/whatsapp/share">
                 <i class="fa fa-whatsapp fa-2x"></i></a>
 
-
+            </div>
         </div>
         <div class="profile-author-description col-md-12 row">
 
-            <div id="presentation" class="single-advert-text">
+            <div id="presentation" class="single-advert-text col-md-8 col-md-offset-2">
                 <h4 id="experience-title" class="single-advert-title">Description</h4>
                 <div id="presentation-text"> {!!  nl2br(e($advert->presentation)) !!}</div>
             </div>
 
-            <div id="experience" class="single-advert-text">
+            <div id="experience" class="single-advert-text col-md-8 col-md-offset-2">
                 <h4 id="experience-title" class="single-advert-title">Expérience</h4>
                 <div id="experience-text"> {!!   nl2br(e($advert->experience)) !!}</div>
             </div>
 
-            <div id="curriculum" class="single-advert-text">
+            <div id="curriculum" class="single-advert-text col-md-8 col-md-offset-2">
                 <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
                 <div id="curriculum-text"> {!! nl2br(e($advert->content)) !!}</div>
             </div>
