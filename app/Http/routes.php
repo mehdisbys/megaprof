@@ -151,7 +151,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/rejeter-annonce/{advert_id}', 'AdminController@advertRejected');
             Route::get('/validate-advert/{advert_id}', 'AdminController@advertAccepted');
         });
-
     });
 
     Route::get('/{slug}', 'ViewController@view');
