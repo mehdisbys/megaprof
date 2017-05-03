@@ -3624,3 +3624,7 @@ Create a CSS3 post-it note without images
     margin: 0px 15% 20px 50%;
     width: 50%;
 }
+
+.article-paragraph {
+    font-size: 20px;
+}
