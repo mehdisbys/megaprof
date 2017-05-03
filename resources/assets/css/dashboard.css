@@ -3481,6 +3481,14 @@ input[type="radio"] {
     padding: 80px;
 }
 
+@media all and (max-width: 980px) {
+
+    .dashboard-main {
+        padding: 0px;
+
+    }
+}
+
 .notification-message {
     padding: 15px;
 }
