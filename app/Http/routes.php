@@ -147,6 +147,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/valider-utilisateurs', 'IDdocumentController@listAllIdDocumentsWaitingForApproval');
             Route::get('/validate-user-identification/{documentId}', 'IDdocumentController@validateDocumentId');
             Route::get('/annonces-en-attente-de-moderation', 'AdminController@listWaitingForApprovalAdverts');
+            Route::get('/annonces-validees', 'AdminController@listAcceptedAdverts');
             Route::post('/rejeter-annonce/{advert_id}', 'AdminController@advertRejected');
             Route::get('/validate-advert/{advert_id}', 'AdminController@advertAccepted');
         });

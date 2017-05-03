@@ -17,11 +17,11 @@ class AdminController extends Controller
 
     public function adminDashboard()
     {
-        $adverts = Advert::whereNotNull('published_at')->whereNull('approved_at')->get();
+        $advertsCount = Advert::whereNotNull('published_at')->whereNull('approved_at')->count();
         $usersCount = User::count();
-        $approvedAdverts = Advert::whereNotNull('approved_at')->get();
+        $approvedAdvertsCount = Advert::whereNotNull('approved_at')->whereNotNull('published_at')->orderBy('approved_at', 'DESC')->count();
 
-        return view('admin.adminOverview')->with(compact('adverts', 'usersCount', 'approvedAdverts'));
+        return view('admin.adminOverview')->with(compact('advertsCount', 'usersCount', 'approvedAdvertsCount'));
     }
 
     public function listAllUsers()
@@ -31,7 +31,6 @@ class AdminController extends Controller
         $usersGroupedByDate = $users->groupBy('date');
 
         return view('admin.adminListAllUsers')->with(compact('usersGroupedByDate'));
-
     }
 
     public function listWaitingForApprovalAdverts()
@@ -41,7 +40,15 @@ class AdminController extends Controller
         return view('admin.AdvertsToApprove')->with(compact('adverts'));
     }
 
-    public function advertRejected(Request $request, int $advert_id)
+    public function listAcceptedAdverts()
+    {
+        $adverts = Advert::whereNotNull('approved_at')->whereNotNull('published_at')->orderBy('approved_at', 'DESC')->get();
+
+        return view('admin.approvedAdverts')->with(compact('adverts'));
+    }
+
+
+        public function advertRejected(Request $request, int $advert_id)
     {
         $this->validate($request, ['message' => 'required']);
 
