@@ -159,7 +159,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/annonces-brouillons', 'AdminController@listArchivedAdverts');
             Route::post('/rejeter-annonce/{advert_id}', 'AdminController@advertRejected');
             Route::get('/validate-advert/{advert_id}', 'AdminController@advertAccepted');
-            Route::get('/envoyer-les-emails', 'AdminController@fixEmails');
 
         });
     });

@@ -86,15 +86,4 @@ class AdminController extends Controller
 
         return redirect('/annonces-en-attente-de-moderation');
     }
-
-    public function fixEmails()
-    {
-        $rejected = Notification::where(['name' => 'advert_rejected'])->get();
-
-        foreach ($rejected as $r)
-        {
-            event(new AdvertWasRejectedByAdmin(Advert::find($r->advert_id), $r->message));
-            sleep(1);
-        }
-    }
 }
