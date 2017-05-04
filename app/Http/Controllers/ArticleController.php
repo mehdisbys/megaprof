@@ -11,12 +11,54 @@ class ArticleController extends Controller
 
     public function view($slug)
     {
-        // $article = Article::where(['slug' => $slug])->first();
+         $article = Article::where(['slug' => $slug])->first();
 
-        // if ($article == NULL) App::abort(404);
+         if ($article == NULL) App::abort(404);
 
-//        return view('articles.article')->with(['article' => $article]);
-        return view('articles.article');
+        return view('articles.article')->with(['article' => $article]);
+    }
+
+
+    public function getCreate()
+    {
+        return view('articles.create');
+    }
+
+    public function postCreate(\Illuminate\Http\Request $request)
+    {
+        $data = $request->only(['title', 'meta', 'tagline', 'content']);
+
+        $article = Article::create($data);
+
+        $article->save();
+
+        thanks('Article sauvegardé');
+
+        return redirect()->back();
+    }
+
+    public function getEdit($slug)
+    {
+        $article = Article::where(['slug' => $slug])->first();
+
+        if ($article == NULL) App::abort(404);
+
+        return view('articles.create')->with(['article' => $article]);
+    }
+
+    public function postEdit(\Illuminate\Http\Request $request, $slug)
+    {
+        $data = $request->only(['title', 'meta', 'tagline', 'content']);
+
+        $article = Article::where(['slug' => $slug])->first();
+
+        if ($article == NULL) App::abort(404);
+
+        $article->update($data);
+
+        thanks('Article edité');
+
+        return redirect()->back();
     }
 
 }

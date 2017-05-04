@@ -11,7 +11,7 @@ Route::group(['middleware' => ['web']], function () {
         return view('main.cgu');
     });
 
-    Route::get('/article/{slug}', 'ArticleController@view');
+    Route::get('/blog/{slug}', 'ArticleController@view');
 
     Route::post('/contact', 'ContactEmailController@postContact');
 
@@ -141,6 +141,11 @@ Route::group(['middleware' => ['web']], function () {
         Route::group(['middleware' => ['isAdmin']], function () {
             Route::get('/admin', 'AdminController@adminDashboard');
             Route::get('/admin/lister-utilisateurs', 'AdminController@listAllUsers');
+
+            Route::get('/admin/blog', 'ArticleController@getCreate');
+            Route::post('/admin/blog', 'ArticleController@postCreate');
+            Route::get('/admin/blog/edit/{slug}', 'ArticleController@getEdit');
+            Route::post('/admin/blog/edit/{slug}', 'ArticleController@postEdit');
 
             Route::get('/download-id/{documentId}', 'IDdocumentController@downloadIdDocument');
 

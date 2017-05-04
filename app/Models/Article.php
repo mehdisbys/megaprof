@@ -12,6 +12,8 @@ class Article extends Model
     use Sluggable;
     use SoftDeletes;
 
+    protected $guarded = ['id'];
+
     protected $sluggable = [
         'build_from'      => 'title',
         'save_to'         => 'slug',
@@ -29,5 +31,7 @@ class Article extends Model
             ]
         ];
     }
+
+
 
 }
