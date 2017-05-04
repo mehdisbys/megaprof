@@ -11,7 +11,7 @@
 
     <p>Nous ne pouvons pas la publier pour le moment pour la raison suivante : </p>
 
-    <p>{{$message}}</p>
+    <p>{{$messageAdmin}}</p>
 
 
 

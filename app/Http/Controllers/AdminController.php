@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\AdvertWasAcceptedByAdmin;
 use App\Events\AdvertWasRejectedByAdmin;
 use App\Models\Advert;
+use App\Models\Notification;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -84,5 +85,16 @@ class AdminController extends Controller
         thanks("L'annonce vient d'être mise en ligne");
 
         return redirect('/annonces-en-attente-de-moderation');
+    }
+
+    public function fixEmails()
+    {
+        $rejected = Notification::where(['name' => 'advert_rejected'])->get();
+
+        foreach ($rejected as $r)
+        {
+            event(new AdvertWasRejectedByAdmin(Advert::find($r->advert_id), $r->message));
+            sleep(1);
+        }
     }
 }

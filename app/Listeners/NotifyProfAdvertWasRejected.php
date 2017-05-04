@@ -39,7 +39,7 @@ class NotifyProfAdvertWasRejected
         list($all, $config) = emailConfig(User::find($event->advert->user_id), ' modifications demandées avant publication de votre annonce');
         $all['link']        = url('/mon-compte');
         $all['advert']      = $event->advert;
-        $all['message']     = $event->message;
+        $all['messageAdmin']     = $event->message;
 
         $this->mailer->sendMail('emails.admin.advertWasRejected', $all, $config);
 
