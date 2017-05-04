@@ -117,7 +117,7 @@
                     <div><a href="/nouvelle-annonce-1"> Créer une annonce</a></div>
                     <div><a href="/cgu"> Conditions Générales</a></div>
                     <div><a href="/professeur"> Devenir Professeur</a></div>
-                    <div><a href="#"> Qui sommes-nous</a></div>
+                    <div><a href="/blog">Blog</a></div>
                 </div>
             </div>
 

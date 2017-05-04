@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{$article->meta}}">
+    <meta name="description" content="Cours particuliers au Maroc | Blog Taelam">
     <meta name="author" content="">
 
-    <title>Taelam | {{$article->title or 'Titre'}}</title>
+    <title>Taelam | Blog</title>
 
 {!! HTML::style('/css/all.css') !!}
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
@@ -74,8 +74,8 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>{{$article->title}}</h1>
-                    <h2 class="subheading">{{$article->tagline or ''}}</h2>
+                    <h2>Apprenez sans limites !</h2>
+                    <h4 class="suheading">Nos articles, astuces et conseils pour réussir tous vos objectifs.</h4>
                 </div>
             </div>
         </div>
@@ -86,7 +86,23 @@
 <article>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">{!! $article->content !!}</div>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                @foreach($articles as $article)
+
+                    <div class="post-preview">
+
+                        <a href="/blog/{{$article->slug}}">
+                            <h2 class="post-title">
+                                {{$article->title}}
+                            </h2>
+                            <h3 class="post-subtitle">
+                                {{str_limit($article->tagline, 70)}}
+                            </h3>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </article>

@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\App;
 class ArticleController extends Controller
 {
 
+    public function index()
+    {
+        $articles = Article::all();
+
+        return view('articles.index')->with(['articles' => $articles]);
+    }
+
 
     public function view($slug)
     {

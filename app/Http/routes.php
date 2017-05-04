@@ -12,6 +12,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('/blog/{slug}', 'ArticleController@view');
+    Route::get('/blog/', 'ArticleController@index');
 
     Route::post('/contact', 'ContactEmailController@postContact');
 
