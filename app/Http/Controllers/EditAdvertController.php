@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\ProfCreatedAdvert;
 use App\Http\Requests\Request;
 use App\Models\Advert;
 use App\Models\Subject;
@@ -278,8 +279,13 @@ class EditAdvertController extends Controller
     public function activateAdvert($advert_id)
     {
         $advert = Advert::find($advert_id);
-        $advert->publish();
-        thanks("Votre annonce est maintenant en cours de validation");
+        if($advert->notPublished())
+        {
+            $advert->publish();
+            event(new ProfCreatedAdvert($advert));
+            thanks("Votre annonce est maintenant en cours de validation");
+        }
+
         return redirect()->back();
     }
 }
