@@ -193,14 +193,14 @@
                 <div id="presentation-text"> {!!  nl2br(e($advert->presentation)) !!}</div>
             </div>
 
-            <div id="experience" class="single-advert-text col-md-8 col-md-offset-2">
-                <h4 id="experience-title" class="single-advert-title">Expérience</h4>
-                <div id="experience-text"> {!!   nl2br(e($advert->experience)) !!}</div>
-            </div>
-
             <div id="curriculum" class="single-advert-text col-md-8 col-md-offset-2">
                 <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
                 <div id="curriculum-text"> {!! nl2br(e($advert->content)) !!}</div>
+            </div>
+
+            <div id="experience" class="single-advert-text col-md-8 col-md-offset-2">
+                <h4 id="experience-title" class="single-advert-title">Expérience</h4>
+                <div id="experience-text"> {!!   nl2br(e($advert->experience)) !!}</div>
             </div>
 
         </div>
