@@ -110,7 +110,7 @@
 <hr>
 
 <!-- Footer -->
-<footer class="footer-div topmargin-sm row col-md-12" id="footer-div">
+<footer class="footer-div topmargin-lg row col-md-12" id="footer-div">
     <div class="container">
         <div class="row">
 
