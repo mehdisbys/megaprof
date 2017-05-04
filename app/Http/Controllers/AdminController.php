@@ -20,8 +20,9 @@ class AdminController extends Controller
         $advertsCount = Advert::whereNotNull('published_at')->whereNull('approved_at')->count();
         $usersCount = User::count();
         $approvedAdvertsCount = Advert::whereNotNull('approved_at')->whereNotNull('published_at')->orderBy('approved_at', 'DESC')->count();
+        $archivedAdvertsCount = Advert::whereNull('published_at')->orderBy('created_at', 'desc')->count();
 
-        return view('admin.adminOverview')->with(compact('advertsCount', 'usersCount', 'approvedAdvertsCount'));
+        return view('admin.adminOverview')->with(compact('advertsCount', 'usersCount', 'approvedAdvertsCount', 'archivedAdvertsCount'));
     }
 
     public function listAllUsers()
@@ -45,6 +46,13 @@ class AdminController extends Controller
         $adverts = Advert::whereNotNull('approved_at')->whereNotNull('published_at')->orderBy('approved_at', 'DESC')->get();
 
         return view('admin.approvedAdverts')->with(compact('adverts'));
+    }
+
+    public function listArchivedAdverts()
+    {
+        $adverts = Advert::whereNull('published_at')->orderBy('created_at', 'DESC')->get();
+
+        return view('admin.unfinishedOrArchivedAdverts')->with(compact('adverts'));
     }
 
 
