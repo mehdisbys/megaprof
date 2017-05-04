@@ -23,25 +23,25 @@ class DashboardNotificationsAfterAdSubmission
         //Run through the ad and check if it can be made better
 
         // TODO Social networks sharing
-        Notification::createAdvertNotification(
-            'social-networks',
-            "Touchez le maximum d'élèves potentiels en faisant la promotion de votre annonce : " . str_limit($event->advert->title, 55),
-            "",
-            $advertId,
-            \Auth::id()
-        );
-
-
-        // Webcam
-        if($event->advert->can_webcam == NULL)
-        {
-            Notification::createAdvertNotification(
-                'webcam',
-                config('notifications.webcam'),
-                $editLink."5/$advertId",
-                $advertId,
-                \Auth::id());
-        }
+//        Notification::createAdvertNotification(
+//            'social-networks',
+//            "Touchez le maximum d'élèves potentiels en faisant la promotion de votre annonce : " . str_limit($event->advert->title, 55),
+//            "",
+//            $advertId,
+//            \Auth::id()
+//        );
+//
+//
+//        // Webcam
+//        if($event->advert->can_webcam == NULL)
+//        {
+//            Notification::createAdvertNotification(
+//                'webcam',
+//                config('notifications.webcam'),
+//                $editLink."5/$advertId",
+//                $advertId,
+//                \Auth::id());
+//        }
 
 //        // TODO Presentation video
 //        if($event->advert->marketing_video == NULL)
