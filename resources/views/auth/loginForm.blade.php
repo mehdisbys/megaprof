@@ -1,7 +1,7 @@
     <div class="wrapper">
         <div class="connection-form">
             <h1 class="register-step-title">Se connecter</h1>
-            <form role="form" method="POST" action="/login" class="component-form">
+            <form id="loginForm" role="form" method="POST" action="/login" class="component-form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 <div class="form-wrapper">
                     <a class="facebook-connect" href="redirect">Connexion avec Facebook</a>
@@ -32,6 +32,6 @@
     <script>
         function submitForm(response)
         {
-            console.log(response);
+            $('#loginForm').submit();
         }
     </script>
