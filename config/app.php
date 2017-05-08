@@ -163,7 +163,7 @@ return [
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
-
+        Spatie\Activitylog\ActivitylogServiceProvider::class
 
     ],
 

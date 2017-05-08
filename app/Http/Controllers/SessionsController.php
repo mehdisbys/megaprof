@@ -65,6 +65,10 @@ class SessionsController extends Controller
         if ($this->signIn($request)) {
             thanks("Bonjour " . Auth::user()->firstname . " vous avez été identifié avec succés");
 
+            try{
+                activity()->useLog(Auth::user()->email)->log('Login')->causedBy(Auth::user());
+            }catch (\Exception $e){}
+
             return redirect()->intended(session('redirectPath'));
         }
 
