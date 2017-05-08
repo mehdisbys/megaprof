@@ -1,1 +1,1 @@
-$(function(){$("#subject_form").on("submit",function(e){var n=$(this).find("[type=checkbox]");for(i=0;i<n.length;i++)if($(n[i]).is(":checked")===!0)return;e.preventDefault(),$("#input_error_message").removeClass("hidden")})});
+$(function(){$("#subject_form").on("submit",function(e){var n=$(this).find("[type=checkbox]"),r=0;for(i=0;i<n.length;i++)$(n[i]).is(":checked")===!0&&r++;0==r&&(e.preventDefault(),$("#input_error_message").removeClass("hidden")),r>5&&(e.preventDefault(),$("#input_error_no_more_than_six").removeClass("hidden"))})});

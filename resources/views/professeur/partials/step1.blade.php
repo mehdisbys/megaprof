@@ -20,6 +20,8 @@
                     <div class="col-md-10 col-md-offset-2">
 
                         <h2 class="col-md-12">Quelle(s) activité(s) proposez-vous?</h2>
+
+                        <em class="center col-md-offset-3 bottommargin-big">Sélectionnez 5 activités au maximum.</em>
                         {{--<div class="col-md-8">--}}
                         {{--<input--}}
                         {{--id="subject_input"--}}
@@ -36,7 +38,7 @@
                         {{--</div>--}}
                         {{--<div class="col-md-6 col-md-offset-3 bottommargin-sm">Ou choisissez-en ci-dessous</div>--}}
 
-                        <div class="col-md-10 tabs side-tabs">
+                        <div class="col-md-10 tabs side-tabs topmargin-sm">
 
                             <ul class="tab-nav tab-nav2" role="tablist">
                                 @foreach ($subjects as $subject)
@@ -78,8 +80,13 @@
 
                     <div class="col-md-12 text-center">
                         <div id="input_error_message" class=" col-md-6 col-md-offset-3 alert alert-danger hidden">
-                            <strong>Veuillez sélectionner une activité avant de passer à l'étape suivante.</strong>
+                            <strong>Veuillez sélectionner au moins une activité avant de passer à l'étape suivante.</strong>
                         </div>
+
+                        <div id="input_error_no_more_than_six" class=" col-md-6 col-md-offset-3 alert alert-danger hidden">
+                            <strong>Veuillez sélectionner au maximum 5 activités.</strong>
+                        </div>
+
                         <button type="submit" class="button button-3d button-large button-rounded">
                             J'ai sélectionné les activités de mon annonce
                         </button>

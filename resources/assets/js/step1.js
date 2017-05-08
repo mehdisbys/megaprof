@@ -2,15 +2,27 @@ $(function () {
     $('#subject_form').on('submit', function (e) {
         var subjects = $(this).find("[type=checkbox]");
 
+        var nbSubjectsSelected = 0;
+
         for (i = 0; i < subjects.length; i++) {
+
             if ($(subjects[i]).is(':checked') === true) {
-                return;
+                nbSubjectsSelected++;
             }
         }
 
-        e.preventDefault();
-        $("#input_error_message").removeClass('hidden');
+        if(nbSubjectsSelected == 0)
+        {
+            e.preventDefault();
+            $("#input_error_message").removeClass('hidden');
+        }
+
+        if(nbSubjectsSelected > 5){
+            e.preventDefault();
+            $("#input_error_no_more_than_six").removeClass('hidden');
+        }
     });
+
 
     // new Awesomplete(document.getElementById('subject_input'), {
     //     filter: function (text, input) {
