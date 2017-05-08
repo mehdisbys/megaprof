@@ -37,7 +37,7 @@ return [
 
     'resetPasswordForm' => [
         'token'                 => 'required',
-        'password'              => 'required|min:4|confirmed',
-        'password_confirmation' => 'required|min:4',
+        'password'              => 'required|min:5|confirmed',
+        'password_confirmation' => 'required|min:5',
     ],
 ];

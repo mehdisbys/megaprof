@@ -26,4 +26,15 @@ class ResetPassword extends Request
         return Config::get('validation.resetPasswordForm');
 
     }
+
+    public function messages()
+    {
+        return [
+            'password.required'              => 'Veuillez entrer un mot de passe',
+            'password.min'                   => 'Le mot de passe doit comprendre 5 caractères au minimum',
+            'password.confirmed'             => 'Le mot de passe et la confirmation du mot de passe sont différents',
+            'password_confirmation.required' => 'La confirmation du mot de passe est requise',
+        ];
+    }
+
 }

@@ -61,7 +61,6 @@ class SignupController extends Controller
 		$all['link'] = url('register/confirm/' . $user->confirmation_code);
 
 		$this->mailer->sendMail($view, $all, $config);
-
 	}
 
 	/**

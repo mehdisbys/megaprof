@@ -26,4 +26,12 @@ class ResetPasswordEmail extends Request
     {
         return Config::get('validation.resetPasswordEmail');
     }
+
+    public function messages()
+    {
+        return [
+            'email.required'                 => 'Veuillez entrer votre email',
+            'email.email'                    => 'Veuillez entrer une addresse email valide',
+        ];
+    }
 }
