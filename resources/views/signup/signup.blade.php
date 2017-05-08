@@ -16,7 +16,7 @@
         <div class="register-form">
             <h2 class="register-step-title">Créer un compte Taelam</h2>
             <p class="register-step-subtitle">Pour rencontrer des professeurs et des élèves formidables</p>
-            <form role="form" method="POST" action="/inscription" class="component-form">
+            <form id="signupForm" role="form" method="POST" action="/inscription" class="component-form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 <div class="form-wrapper">
                     <a class="facebook-connect" style="display:block" data-href="#"
@@ -52,7 +52,7 @@
                     </div>
 
 
-                    <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
+                    <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU" data-callback="submitForm"></div>
 
 
                     <input type="submit" value="S'inscrire" class="button topmargin-sm" id="submit-btn-register"/>
@@ -63,5 +63,12 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function submitForm(response)
+        {
+            $('#signupForm').submit();
+        }
+    </script>
 
 @endsection
