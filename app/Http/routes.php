@@ -83,7 +83,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/nouvelle-annonce-6', 'SubmitAdvertController@getStep6Picture')->middleware('revalidate');
             Route::post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6Picture');
 
-            Route::get('/nouvelle-annonce-7', 'SubmitAdvertController@getStep7Publish')->middleware('revalidate');
             Route::post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7Publish');
         });
 

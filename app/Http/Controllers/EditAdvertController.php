@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 use App\Events\ProfCreatedAdvert;
 use App\Http\Requests\Request;
 use App\Models\Advert;
+use App\Models\Avatar;
 use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
 use App\Models\Level;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class EditAdvertController extends Controller
@@ -236,7 +238,7 @@ class EditAdvertController extends Controller
             $filename = '/tmp/'.str_random(10);
             base64_to_jpeg($output->image, $filename);
 
-            $m              = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id()]);
+            $m              = \App\Models\Avatar::firstOrCreate(['user_id' => Auth::id()]);
             $m->img         = file_get_contents($filename);
             $m->img_cropped = file_get_contents($filename);
             $m->img_name    = $output->name;
@@ -245,9 +247,7 @@ class EditAdvertController extends Controller
             $m->save();
         }
 
-        $advert = Advert::find($advert_id);
-
-        return view('professeur.advert.createStep7')->with(compact('advert'));
+        return redirect()->action('DashboardController@index');
     }
 
     public function editStep7($advert_id)

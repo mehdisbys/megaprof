@@ -276,18 +276,20 @@ class SubmitAdvertController extends Controller
             $m->save();
         }
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
-    }
-
-
-    public function getStep7Publish()
-    {
-        $advert    = Advert::find(session('advert_id'));
+        $this->__publish($request);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
+
 
     public function postStep7Publish(Request $request)
+    {
+        $this->__publish($request);
+
+        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+    }
+
+    private function __publish(Request $request)
     {
         $request->input('advert_id');
         $advert_id = session('advert_id') ?? $request->input('advert_id');
@@ -301,7 +303,5 @@ class SubmitAdvertController extends Controller
         }
 
         session()->forget('advert_id');
-
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 }

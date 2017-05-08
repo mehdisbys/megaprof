@@ -66,10 +66,7 @@
                             <div id="content-text"><span id="content-count">20</span> mots manquants pour être efficace
                             </div>
 
-                            <em class="small">Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître
-                                dans
-                                vos
-                                textes.</em>
+                            <em class="small ">Vos nom de famille, numéro de téléphone et adresse e-mail  ne doivent pas apparaître</em>
                         </div>
 
                         <div class="tab-content" id="education">
@@ -94,17 +91,15 @@
                             <div id="experience-text"><span id="experience-count">20</span> mots manquants pour être
                                 efficace
                             </div>
-                            <em class="small">Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître
-                                dans
-                                vos
-                                textes.</em>
+                            <em class="small">Vos nom de famille, numéro de téléphone et adresse e-mail  ne doivent pas apparaître</em>
                         </div>
                     </div>
                     <p class="form-inputs-informations small col-md-8 col-md-offset-2 topmargin-small">
-                        Ce qui plait aux élèves c'est une annonce professionnelle de qualité alors n'oubliez pas de faire attention à votre style d'écriture et aux fautes d'orthographe
+                        Ce qui plait aux élèves c'est une annonce professionnelle de qualité alors n'oubliez pas de faire attention à votre style d'écriture et aux fautes d'orthographe.
                         <br>
-                        <em>Vos nom de famille, coordonnées, logo ou URLs ne doivent pas apparaître dans vos
-                            textes.</em>
+                        <br>
+                         <em  style="color: indianred"><i class="fa fa-info-circle fa-2x"></i> Veuillez ne pas inclure vos nom de famille, numéro de téléphone et   e-mail.
+                             <br> (Dans le cas contraire l'annonce ne sera pas validée par la modération.)</em>
                     </p>
                 </div>
 

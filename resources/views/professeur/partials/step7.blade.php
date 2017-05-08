@@ -1,10 +1,6 @@
 <div>
     <h2 class="col-md-12 center">Publication de l'annonce</h2>
 
-    <div class="col-md-12 center">
-        <h5>Félicitations votre annonce est prête à être publiée!</h5>
-    </div>
-
     @include('main.advertPreview', ['urlPreview' => true])
 
 

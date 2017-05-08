@@ -81,14 +81,7 @@ return [
         [
             'args'   => ['step' => 6],
             'action' => 'redirect',
-            'next'   => 'SubmitAdvertController@getStep7Publish'
-        ],
-
-    'getStep7Publish' =>
-        [
-            'view'   => ['create' => 'professeur.advert.createStep7'],
-            'args'   => ['step' => 7],
-            'action' => 'view'
+            'next'   => 'DashboardController@index'
         ],
 
     'postStep7Publish' =>

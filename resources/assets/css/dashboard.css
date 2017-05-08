@@ -3628,3 +3628,7 @@ Create a CSS3 post-it note without images
 .article-paragraph {
     font-size: 20px;
 }
+
+.red-text {
+    color: crimson;
+}
