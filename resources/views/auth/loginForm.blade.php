@@ -16,7 +16,7 @@
                                class="input" value=""/>
                     </div>
 
-                    <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"></div>
+                    <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU" data-callback="submitForm"></div>
 
                     <input type="submit" value="Se connecter" class="button topmargin-sm"/>
                     <p class="register-member">Pas encore membre ?
@@ -27,3 +27,11 @@
             <a href="/reset_password">Mot de passe oublié ?</a>
         </div>
     </div>
+
+
+    <script>
+        function submitForm(response)
+        {
+            console.log(response);
+        }
+    </script>
