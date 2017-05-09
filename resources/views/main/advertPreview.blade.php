@@ -12,7 +12,7 @@
             <div>
                 <p>
                  <span>
-                        <i class="fa fa-map-marker"></i><strong>{{ $advert->location_city }}</strong>
+                        <i class="fa fa-map-marker"></i><strong>{{ $advert->getLocationText() }}</strong>
                  </span>
                     @if(isset($distances) and isset($distances[$advert->id]))
                         <i>, à {{ round($distances[$advert->id],1) }} km</i>
@@ -32,15 +32,8 @@
 
         <div id="presentation"> {{ str_limit($advert->presentation, $trimChar ?? 345) }}</div>
 
-        @if(isset($urlPreview))
             <div class="entry-overlay-meta">
-                <h4><a href="/preview/{{$advert->slug}}"> Voir un aperçu </a></h4>
+                <h4><a href="/{{$advert->slug}}"> Voir l'annonce </a></h4>
             </div>
-        @else
-
-            <div class="entry-overlay-meta">
-                <h4><a href="/preview/{{$advert->slug}}"> Voir l'annonce </a></h4>
-            </div>
-        @endif
     </div>
 </div>
