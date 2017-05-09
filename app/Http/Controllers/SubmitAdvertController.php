@@ -105,7 +105,7 @@ class SubmitAdvertController extends Controller
                 foreach ($subjects as $subject)
                     foreach ($levels as $level) {
                         foreach ($level->subLevels as $subs) {
-                            if ($subject->id == $item->subject_id and isset($item->level_ids) and in_array($subs->id, json_decode($item->level_ids))) {
+                            if ($subject->id == $item->subject_id and isset($item->level_ids) and in_array($subs->id, json_decode($item->level_ids) ?? [])) {
                                 $checked[$subject->id][] = $subs->id;
                             }
                         }

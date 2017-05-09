@@ -62,6 +62,13 @@ $(document).ready(function () {
 
     // gmaps.config.locationInput = 'location';
     // gmaps.config.formID = 'location_form';
-    gmaps.init({locationInput : 'location', formID : 'location_form'});
+    gmaps.init({
+        locationInput: 'location',
+        formID: 'location_form',
+        latitude: 'lat',
+        longitude: 'lng',
+        types: [],
+        noPredictionsMsg: 'Aucun lieu ne correspond à votre saisie'
+    });
 
 });

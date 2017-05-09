@@ -266,6 +266,7 @@
         <p class="c1"><span class="c0">La diffusion des annonces est enti&egrave;rement gratuite. &Agrave; savoir que l&rsquo;annonce peut &ecirc;tre publi&eacute;
                 dans les r&eacute;seaux sociaux afin d&rsquo;augmenter sa visibilit&eacute; et de promouvoir l&rsquo;activit&eacute;
                 de l&rsquo;Annonceur. &nbsp;</span></p>
+
         <p class="c1"><span class="c0">&nbsp;</span></p>
         <p class="c1"><span class="c0">Nous rappelons que l&rsquo;Annonceur est &nbsp;totalement responsable du contenu de son annonce et que son annonce doit respecter la l&eacute;gislation en vigueur Marocaine.</span>
         </p>
@@ -275,6 +276,8 @@
         <p class="c1 c2"><span class="c0"></span></p>
         <p class="c1"><span class="c9">TAELAM</span><span class="c0">&nbsp;n&rsquo;est pas responsable de la reproduction ou copie de l&rsquo;utilisateur de l&rsquo;Annonce d&rsquo;un membre.</span>
         </p>
+        <p class="c2"><a href="/annonces" style="margin-top: 50px;">annonces</a></p>
+
         <p class="c1 c2"><span class="c0"></span></p>
         <p class="c1"><span class="c0">Enfin le Site a la possibilit&eacute; de suspendre ou supprimer toute annonce, sans pr&eacute;avis ou notification au pr&eacute;alable, ni indemnit&eacute;
                 ou remboursement, qui serait non conforme aux CGU ou &agrave;

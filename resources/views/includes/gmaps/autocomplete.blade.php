@@ -7,7 +7,10 @@
                 locationInput: 'location_input',
                 locationDetails: '.location-details',
                 formID: 'search_form',
-                submitCallBack: null
+                submitCallBack: null,
+                types: ['(cities)'],
+                latitude : 'latitude',
+                longitude : 'longitude'
             };
 
             $.extend(gmaps.config, settings);
@@ -25,14 +28,13 @@
             if (status != google.maps.places.PlacesServiceStatus.OK) {
                 toastr.options.preventDuplicates = true;
                 toastr.info(gmaps.config.noPredictionsMsg);
-                return;
             }
         },
 
         setup: function () {
 
             var autocomplete = new google.maps.places.Autocomplete(document.getElementById(gmaps.config.locationInput), {
-                types: ['(cities)'],
+                types: gmaps.config.types,
                 componentRestrictions: {country: "ma"},
                 details: gmaps.config.locationDetails
             });
@@ -40,8 +42,8 @@
             autocomplete.addListener('place_changed', function () {
                 var place = autocomplete.getPlace();
 
-                var latitude  = document.getElementById('latitude');
-                var longitude = document.getElementById('longitude');
+                var latitude  = document.getElementById(gmaps.config.latitude);
+                var longitude = document.getElementById(gmaps.config.longitude);
                 var loc_name  = document.getElementById('loc_name');
 
                 if (latitude)
@@ -52,14 +54,13 @@
 
                 if (loc_name)
                     loc_name.value = place.name;
-
             });
 
             $("#" + gmaps.config.locationInput).on('keyup', function () {
                 if ($(this).val()) {
                     gmaps.autocomplete.getPlacePredictions({
                         input: $(this).val(),
-                        types: ['(cities)'],
+                        types: gmaps.config.types,
                         componentRestrictions: {country: "ma"}
                     }, gmaps.displaySuggestions)
                 }
@@ -76,8 +77,6 @@
                 if (gmaps.config.submitCallBack) {
                     gmaps.config.submitCallBack();
                 }
-                console.log(gmaps.config.formID);
-
             };
 
             $("#" + gmaps.config.formID).submit(submitForm);
