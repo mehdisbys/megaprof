@@ -6,6 +6,7 @@
 
     <h1 class="center">Annonces par matières</h1>
 
+    <h4 class="center">{{$totalCountOfVirtualAdverts}} annonces virtuelles.</h4>
 
     <div class="col-md-10 topmargin-lg col-md-offset-1" id="content">
 

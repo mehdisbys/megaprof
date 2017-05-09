@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -67,7 +68,12 @@ class AdminController extends Controller
 
         $advertsGroupedBySubject = $adverts->groupBy('subject_id');
 
-        return view('admin.advertsPerSubjects')->with(compact('advertsGroupedBySubject'));
+        /** @param $advertsGroupedBySubject Collection */
+       $totalCountOfVirtualAdverts = $advertsGroupedBySubject->reduce( function ($carry, $item) {
+            return  $carry + count($item);
+        });
+
+        return view('admin.advertsPerSubjects')->with(compact('advertsGroupedBySubject', 'totalCountOfVirtualAdverts'));
     }
 
 
