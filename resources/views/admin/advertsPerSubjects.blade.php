@@ -17,8 +17,10 @@
         <ul>
             @foreach($adverts as $advert)
 
+                @if($advert->advert)
                 <li class="col-md-8 col-md-offset-1"><a href="/{{$advert->advert->slug}}"> {{$advert->advert->title}} </a></li>
-
+                @endif
+                
             @endforeach
         </ul>
         @endforeach
