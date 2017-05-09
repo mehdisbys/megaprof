@@ -137,6 +137,10 @@ class Advert extends Model
         return $this->published_at == NULL ;
     }
 
+    public function published(): bool {
+        return $this->published_at != NULL ;
+    }
+
     public function suspend()
     {
         $this->deleted_at = Carbon::now();

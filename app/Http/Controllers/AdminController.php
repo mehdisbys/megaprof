@@ -60,7 +60,10 @@ class AdminController extends Controller
 
     public function listAdvertPerSubjects()
     {
-        $adverts = SubjectsPerAdvert::with('advert')->get();
+        $adverts =  DB::table('subjects_per_advert')
+        ->join('adverts', 'adverts.id', '=', 'subjects_per_advert.advert_id')
+        ->whereNotNull('adverts.approved_at')
+        ->get();
 
         $advertsGroupedBySubject = $adverts->groupBy('subject_id');
 
