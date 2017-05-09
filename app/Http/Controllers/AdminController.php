@@ -73,7 +73,9 @@ class AdminController extends Controller
             return  $carry + count($item);
         });
 
-        return view('admin.advertsPerSubjects')->with(compact('advertsGroupedBySubject', 'totalCountOfVirtualAdverts'));
+        $totalCountOfApprovedAdverts = \App\Models\Advert::approved()->count();
+
+        return view('admin.advertsPerSubjects')->with(compact('advertsGroupedBySubject', 'totalCountOfVirtualAdverts', 'totalCountOfApprovedAdverts'));
     }
 
 

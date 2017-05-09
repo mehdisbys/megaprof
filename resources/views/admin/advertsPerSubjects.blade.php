@@ -7,6 +7,9 @@
     <h1 class="center">Annonces par matières</h1>
 
     <h4 class="center">{{$totalCountOfVirtualAdverts}} annonces virtuelles.</h4>
+    <h4 class="center">{{$totalCountOfApprovedAdverts}} annonces réelles.</h4>
+    <h4 class="center">{{round($totalCountOfVirtualAdverts/$totalCountOfApprovedAdverts,2)}} matières par annonce en moyenne.</h4>
+
 
     <div class="col-md-10 topmargin-lg col-md-offset-1" id="content">
 
