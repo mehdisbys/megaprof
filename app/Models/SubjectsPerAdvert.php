@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class SubjectsPerAdvert extends Model
 {
@@ -13,6 +14,11 @@ class SubjectsPerAdvert extends Model
     public function subsubjects()
     {
         return $this->belongsTo(SubSubject::class, 'subject_id');
+    }
+
+    public function advert()
+    {
+        return $this->belongsTo(Advert::class, 'advert_id');
     }
 
     public static function fillSubjectForAdvert($advert_id, $subjectsArray)
@@ -64,9 +70,12 @@ class SubjectsPerAdvert extends Model
 
     public static function getAllAdvertIdsForSubject(int $subjectId): array
     {
-       return self::where('subject_id', $subjectId)
-           ->get()
-           ->pluck('advert_id')
-           ->toArray();
+        return DB::table('subjects_per_advert')
+                ->join('adverts', 'adverts.id', '=', 'subjects_per_advert.advert_id')
+                //->whereNotNull('adverts.approved_at')
+                ->where(['subjects_per_advert.subject_id' => $subjectId])
+                ->get()
+                ->pluck('advert_id')
+                ->toArray();
     }
 }

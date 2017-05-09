@@ -156,6 +156,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/annonces-en-attente-de-moderation', 'AdminController@listWaitingForApprovalAdverts');
             Route::get('/annonces-validees', 'AdminController@listAcceptedAdverts');
             Route::get('/annonces-brouillons', 'AdminController@listArchivedAdverts');
+            Route::get('/annonces-par-matieres', 'AdminController@listAdvertPerSubjects');
+
             Route::post('/rejeter-annonce/{advert_id}', 'AdminController@advertRejected');
             Route::get('/validate-advert/{advert_id}', 'AdminController@advertAccepted');
 

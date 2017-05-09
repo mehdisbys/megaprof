@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -52,6 +54,15 @@ class Advert extends Model
     public function subjectsPerAd()
     {
         return $this->hasMany(SubjectsPerAdvert::class);
+    }
+
+    /**
+     * @param $query Builder
+     * @return Builder
+     */
+    public function scopeApproved($query)
+    {
+        return $query->whereNotNull('approved_at');
     }
 
     public static function currentUserAdverts()
@@ -239,6 +250,7 @@ class Advert extends Model
     public static function fullTextSearch(string $keyword)
     {
         return self::select(['id'])
+            ->approved()
             ->where('title', 'LIKE', "%{$keyword}%")
             ->orWhere('presentation', 'LIKE', "%{$keyword}%")
             ->orWhere('content', 'LIKE', "%{$keyword}%")

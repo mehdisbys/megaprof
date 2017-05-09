@@ -6,6 +6,7 @@ use App\Events\AdvertWasAcceptedByAdmin;
 use App\Events\AdvertWasRejectedByAdmin;
 use App\Models\Advert;
 use App\Models\Notification;
+use App\Models\SubjectsPerAdvert;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,12 +19,13 @@ class AdminController extends Controller
 
     public function adminDashboard()
     {
-        $advertsCount = Advert::whereNotNull('published_at')->whereNull('approved_at')->count();
-        $usersCount = User::count();
+        $advertsCount         = Advert::whereNotNull('published_at')->whereNull('approved_at')->count();
+        $usersCount           = User::count();
         $approvedAdvertsCount = Advert::whereNotNull('approved_at')->whereNotNull('published_at')->orderBy('approved_at', 'DESC')->count();
         $archivedAdvertsCount = Advert::whereNull('published_at')->orderBy('created_at', 'desc')->count();
 
-        return view('admin.adminOverview')->with(compact('advertsCount', 'usersCount', 'approvedAdvertsCount', 'archivedAdvertsCount'));
+
+        return view('admin.adminOverview')->with(get_defined_vars());
     }
 
     public function listAllUsers()
@@ -54,6 +56,15 @@ class AdminController extends Controller
         $adverts = Advert::whereNull('published_at')->orderBy('created_at', 'DESC')->get();
 
         return view('admin.unfinishedOrArchivedAdverts')->with(compact('adverts'));
+    }
+
+    public function listAdvertPerSubjects()
+    {
+        $adverts = SubjectsPerAdvert::with('advert')->get();
+
+        $advertsGroupedBySubject = $adverts->groupBy('subject_id');
+
+        return view('admin.advertsPerSubjects')->with(compact('advertsGroupedBySubject'));
     }
 
 
