@@ -98,8 +98,8 @@
                         Ce qui plait aux élèves c'est une annonce professionnelle de qualité alors n'oubliez pas de faire attention à votre style d'écriture et aux fautes d'orthographe.
                         <br>
                         <br>
-                         <em  style="color: indianred"><i class="fa fa-info-circle fa-2x"></i> Veuillez ne pas inclure vos nom de famille, numéro de téléphone et   e-mail.
-                             <br> (Dans le cas contraire l'annonce ne sera pas validée par la modération.)</em>
+                         {{--<em  style="color: indianred"><i class="fa fa-info-circle fa-2x"></i> Veuillez ne pas inclure vos nom de famille, numéro de téléphone et   e-mail.--}}
+                             {{--<br> (Dans le cas contraire l'annonce ne sera pas validée par la modération.)</em>--}}
                     </p>
                 </div>
 

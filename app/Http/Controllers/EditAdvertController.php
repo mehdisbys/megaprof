@@ -139,8 +139,6 @@ class EditAdvertController extends Controller
             'can_webcam'        => 'can_webcam',
         ];
 
-        dd($request->all());
-
         $values   = \Request::only(array_values($table));
         $keys     = array_keys($table);
         $loc_data = array_combine($keys, $values);
