@@ -5,12 +5,13 @@
             gmaps.config = {
                 noPredictionsMsg: "Aucune ville ne correspond à votre saisie",
                 locationInput: 'location_input',
-                locationDetails: '.location-details',
+                locationDetails: '',
                 formID: 'search_form',
                 submitCallBack: null,
                 types: ['(cities)'],
                 latitude : 'latitude',
-                longitude : 'longitude'
+                longitude : 'longitude',
+                fillLocationDetails : true
             };
 
             $.extend(gmaps.config, settings);
@@ -36,15 +37,18 @@
             var autocomplete = new google.maps.places.Autocomplete(document.getElementById(gmaps.config.locationInput), {
                 types: gmaps.config.types,
                 componentRestrictions: {country: "ma"},
-                details: gmaps.config.locationDetails
+                details: '.toto'
             });
 
             autocomplete.addListener('place_changed', function () {
+
+                if (gmaps.config.fillLocationDetails === true )
+                {
                 var place = autocomplete.getPlace();
 
                 var latitude  = document.getElementById(gmaps.config.latitude);
                 var longitude = document.getElementById(gmaps.config.longitude);
-                var loc_name  = document.getElementById('loc_name');
+                var loc_name  = document.getElementById('locality');
 
                 if (latitude)
                     latitude.value = place.geometry.location.lat();
@@ -54,6 +58,7 @@
 
                 if (loc_name)
                     loc_name.value = place.name;
+                }
             });
 
             $("#" + gmaps.config.locationInput).on('keyup', function () {
