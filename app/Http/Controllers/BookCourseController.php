@@ -35,7 +35,7 @@ class BookCourseController extends Controller
 
         if($dateOfBirth->age < 18)
         {
-            info_message("Vous devez avoir plus de 18 ans pour pouvoir réserver une annonce");
+            info_message("Vous devez être adulte pour pouvoir réserver une annonce");
             return redirect()->back();
         }
 

@@ -12,7 +12,7 @@
             <div>
                 <p>
                  <span>
-                        <i class="fa fa-map-marker"></i><strong>{{ $advert->getLocationText() }}</strong>
+                        <i class="fa fa-map-marker"></i><strong>{{ $advert->location_city }}</strong>
                  </span>
                     @if(isset($distances) and isset($distances[$advert->id]))
                         <i>, à {{ round($distances[$advert->id],1) }} km</i>
