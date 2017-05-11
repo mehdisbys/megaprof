@@ -1,5 +1,12 @@
 $(function () {
     $('#subject_form').on('submit', function (e) {
+
+        var inputErrorMessage =  $("#input_error_message");
+        var inputErrorMoreThanSix = $("#input_error_no_more_than_six");
+
+        inputErrorMessage.addClass('hidden');
+        inputErrorMoreThanSix.addClass('hidden');
+
         var subjects = $(this).find("[type=checkbox]");
 
         var nbSubjectsSelected = 0;
@@ -14,12 +21,12 @@ $(function () {
         if(nbSubjectsSelected == 0)
         {
             e.preventDefault();
-            $("#input_error_message").removeClass('hidden');
+            inputErrorMessage.removeClass('hidden');
         }
 
         if(nbSubjectsSelected > 5){
             e.preventDefault();
-            $("#input_error_no_more_than_six").removeClass('hidden');
+            inputErrorMoreThanSix.removeClass('hidden');
         }
     });
 
