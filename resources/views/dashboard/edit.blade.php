@@ -41,7 +41,7 @@
         </ul>
     </div>
     <div class="col-md-2 topmargin-lg ">
-        <a href="/modifier-annonce-7/{{$advert->id}}" class="ui-tabs-anchor nice-orange">
+        <a href="/publier/{{$advert->id}}" class="ui-tabs-anchor nice-orange">
             Publier
         </a>
     </div>

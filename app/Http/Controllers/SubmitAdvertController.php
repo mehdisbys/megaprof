@@ -276,25 +276,36 @@ class SubmitAdvertController extends Controller
             $m->save();
         }
 
+
         $this->__publish($request);
 
         return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
-
-    public function postStep7Publish(Request $request)
+    public function getStep7Publish(Request $request)
     {
         $this->__publish($request);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return redirect('/mon-compte');
     }
 
-    private function __publish(Request $request)
-    {
-        $request->input('advert_id');
-        $advert_id = session('advert_id') ?? $request->input('advert_id');
 
-        $advert = Advert::find($advert_id);
+    public function postStep7Publish(Request $request, $advert_id = NULL)
+    {
+        $this->__publish($request, $advert_id);
+
+        return redirect('/mon-compte');
+    }
+
+    private function __publish(Request $request, $advert_id = NULL)
+    {
+
+        $advertId = session('advert_id') ?? $request->input('advert_id');
+
+        $advertId = $advert_id ?? $advertId;
+
+        $advert = Advert::find($advertId);
+
         $advert->publish();
 
         if (session('advert_id')) {

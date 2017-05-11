@@ -250,15 +250,6 @@ class EditAdvertController extends Controller
         return redirect()->action('DashboardController@index');
     }
 
-    public function editStep7($advert_id)
-    {
-        $advert = Advert::findOrFail($advert_id);
-
-        $step = 7;
-
-        return view('dashboard.edit')->with(compact('advert_id', 'advert', 'step'));
-    }
-
 
     public function deactivateAdvert($advert_id)
     {
