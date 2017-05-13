@@ -86,7 +86,7 @@
 
         <div class="col-md-12 author-profile-header topmargin-small">
             <div class="single-view-info-author">
-                <h1 class="single-view-title">{{ $advert->title }}</h1>
+                <h1 class="single-view-title">{{ ucfirst($advert->title) }}</h1>
 
                 <div class="pull-left">
                     @foreach($advert->subjectsPerAd as $subject)
