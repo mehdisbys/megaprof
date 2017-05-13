@@ -160,11 +160,7 @@ class EditAdvertController extends Controller
     {
         $this->validate($request, [
             'presentation' => "required",
-            'content'      => "required",
-            'experience'   => "required",
-        ], ['presentation.required' => 'Veuillez remplir le champ description et expertise',
-            'content.required'    => 'Veuillez remplir le champ expérience',
-            'experience.required' => 'Veuillez remplir le champ CV et formation'], []);
+        ], ['presentation.required' => 'Veuillez remplir le champ description et expertise'], []);
 
         $content_data = \Request::only(['presentation',
                                            'content',

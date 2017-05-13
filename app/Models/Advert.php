@@ -166,7 +166,7 @@ class Advert extends Model
 
     public function step4Done(): bool
     {
-        return ((empty($this->presentation) == false) and (empty($this->content) == false) and (empty($this->experience) == false));
+        return (empty($this->presentation) == false);
     }
 
     public function step5Done(): bool

@@ -157,32 +157,32 @@
 
             <div class="col-md-8 col-md-offset-2">
 
-            <a href="http://www.facebook.com/sharer.php?u={{env('APP_URL')}}{{$advert->slug}}"
-               data-send="false"
-               data-layout="box_count"
-               data-width="60"
-               data-show-faces="false"
-               rel="nofollow"
-               target="_blank"
-               class="col-md-3">
-                <i class="fa fa-facebook fa-2x"></i>
-            </a>
+                <a href="http://www.facebook.com/sharer.php?u={{env('APP_URL')}}{{$advert->slug}}"
+                   data-send="false"
+                   data-layout="box_count"
+                   data-width="60"
+                   data-show-faces="false"
+                   rel="nofollow"
+                   target="_blank"
+                   class="col-md-3">
+                    <i class="fa fa-facebook fa-2x"></i>
+                </a>
 
-            <a href="http://twitter.com/intent/tweet?text={!! str_limit($advert->title,50,'..') !!}&url={{ urlencode('http://www.taelam.com/' .$advert->slug)  }}&via=taelam_officiel&hashtags=taelam,{{$subjects}}"
-               data-count="vertical"
-               rel="nofollow"
-               target="_blank"
-               class="col-md-3 ">
-                <i class="fa fa-twitter fa-2x"></i>
-            </a>
+                <a href="http://twitter.com/intent/tweet?text={!! str_limit($advert->title,50,'..') !!}&url={{ urlencode('http://www.taelam.com/' .$advert->slug)  }}&via=taelam_officiel&hashtags=taelam,{{$subjects}}"
+                   data-count="vertical"
+                   rel="nofollow"
+                   target="_blank"
+                   class="col-md-3 ">
+                    <i class="fa fa-twitter fa-2x"></i>
+                </a>
 
-            <a href="mailto:?subject{{$advert->title}}&body={{"J'ai trouvé cette annonce : ". str_limit($advert->presentation, 200)}}"
-               class="col-md-3">
-                <i class="fa fa-envelope-o fa-2x"></i>
-            </a>
-            <a class="col-md-3" href="whatsapp://send?text=http://www.taelam.com/{{$advert->slug}}"
-               data-action="share/whatsapp/share">
-                <i class="fa fa-whatsapp fa-2x"></i></a>
+                <a href="mailto:?subject{{$advert->title}}&body={{"J'ai trouvé cette annonce : ". str_limit($advert->presentation, 200)}}"
+                   class="col-md-3">
+                    <i class="fa fa-envelope-o fa-2x"></i>
+                </a>
+                <a class="col-md-3" href="whatsapp://send?text=http://www.taelam.com/{{$advert->slug}}"
+                   data-action="share/whatsapp/share">
+                    <i class="fa fa-whatsapp fa-2x"></i></a>
 
             </div>
         </div>
@@ -193,16 +193,23 @@
                 <div id="presentation-text"> {!!  nl2br(e($advert->presentation)) !!}</div>
             </div>
 
-            <div id="curriculum" class="single-advert-text col-md-8 col-md-offset-2">
-                <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
-                <div id="curriculum-text"> {!! nl2br(e($advert->content)) !!}</div>
-            </div>
+            @if(strlen($advert->content))
 
-            <div id="experience" class="single-advert-text col-md-8 col-md-offset-2">
-                <h4 id="experience-title" class="single-advert-title">Expérience</h4>
-                <div id="experience-text"> {!!   nl2br(e($advert->experience)) !!}</div>
-            </div>
+                <div id="curriculum" class="single-advert-text col-md-8 col-md-offset-2">
+                    <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
+                    <div id="curriculum-text"> {!! nl2br(e($advert->content)) !!}</div>
+                </div>
+            @endif
 
+
+            @if(strlen($advert->experience))
+
+                <div id="experience" class="single-advert-text col-md-8 col-md-offset-2">
+                    <h4 id="experience-title" class="single-advert-title">Expérience</h4>
+                    <div id="experience-text"> {!!   nl2br(e($advert->experience)) !!}</div>
+                </div>
+
+            @endif
         </div>
 
         <!-- 2 -->

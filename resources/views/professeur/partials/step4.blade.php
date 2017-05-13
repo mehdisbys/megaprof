@@ -58,13 +58,7 @@
                                 </ul>
                             </div>
                             <?php $content = isset($advert) ? $advert->content : null; ?>
-                            {!! Form::textarea('content',$content,['class' => 'sm-form-control', 'id' => 'content',
-                            'required' => "required",
-                            'data-parsley-required-message'=>"Ce champs est requis",
-                            'data-parsley-minimumwords' => "20",
-                            'title' => "Entrez au moins 20 mots"]) !!}
-                            <div id="content-text"><span id="content-count">20</span> mots manquants pour être efficace
-                            </div>
+                            {!! Form::textarea('content',$content,['class' => 'sm-form-control', 'id' => 'content']) !!}
 
                             <em class="small ">Vos nom de famille, numéro de téléphone et adresse e-mail  ne doivent pas apparaître</em>
                         </div>
@@ -82,15 +76,8 @@
                             </div>
                             <?php $experience = isset($advert) ? $advert->experience : null; ?>
 
-                            {!! Form::textarea('experience', $experience,['class' => 'sm-form-control', 'id' => 'experience',
-                             'required' => "required",
-                             'data-parsley-required-message'=>"Ce champs est requis",
-                             'data-parsley-minimumwords' => "20",
-                             'title' => "Entrez au moins 20 mots"]) !!}
+                            {!! Form::textarea('experience', $experience,['class' => 'sm-form-control', 'id' => 'experience']) !!}
 
-                            <div id="experience-text"><span id="experience-count">20</span> mots manquants pour être
-                                efficace
-                            </div>
                             <em class="small">Vos nom de famille, numéro de téléphone et adresse e-mail  ne doivent pas apparaître</em>
                         </div>
                     </div>
