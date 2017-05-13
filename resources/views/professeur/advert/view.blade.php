@@ -193,7 +193,7 @@
                 <div id="presentation-text"> {!!  nl2br(e($advert->presentation)) !!}</div>
             </div>
 
-            @if(dd($advert->content))
+            @if($advert)
 
                 <div id="curriculum" class="single-advert-text col-md-8 col-md-offset-2">
                     <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
