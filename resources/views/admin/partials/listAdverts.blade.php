@@ -2,7 +2,7 @@
 
     <div class="row border1px bottommargin-sm">
 
-        <div class="col-md-2">{{\App\Models\User::find($advert->user_id)->firstname}}</div>
+        <div class="col-md-2"><a href="/login-as/{{$advert->user_id}}"></a>{{\App\Models\User::find($advert->user_id)->firstname}}</div>
 
         <div class="col-md-4">
             <a href="/{{$advert->slug}}">{{$advert->title}}</a>
