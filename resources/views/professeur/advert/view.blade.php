@@ -202,7 +202,7 @@
             @endif
 
 
-            @if(strlen($advert->experience))
+            @if(strlen(trim($advert->experience)))
 
                 <div id="experience" class="single-advert-text col-md-8 col-md-offset-2">
                     <h4 id="experience-title" class="single-advert-title">Expérience</h4>
