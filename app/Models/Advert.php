@@ -67,12 +67,24 @@ class Advert extends Model
 
     public static function currentUserAdverts()
     {
-        return static::where('user_id', \Auth::id())
+        return static::getAdvertsForUserId(\Auth::id());
+
+    }
+
+    public static function getUserAdverts(User $user)
+    {
+        return static::getAdvertsForUserId($user->id);
+    }
+
+    private static function getAdvertsForUserId(int $userId)
+    {
+        return static::where('user_id', $userId)
             ->with('subjectsPerAd')
             ->whereNotNull('published_at')
             ->whereNotNull('approved_at')
             ->orderBy('published_at', 'desc')->get();
     }
+
 
     public static function toBeReviewedtUserAdverts()
     {

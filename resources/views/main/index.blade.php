@@ -184,6 +184,7 @@
                                 updatePage(data);
                             });
                 };
+
                 return sendForm;
             };
 
