@@ -27,7 +27,7 @@ class RemindUserToFinishAdvert implements ReminderInterface
     public function reminderIsDueForUser(User $user): bool
     {
         /** @var Collection $userAdverts */
-        $userAdverts = Advert::getUserAdverts($user);
+        $userAdverts = Advert::getUnpublishedUserAdverts($user);
 
         $advertsNotFinished = new \Illuminate\Support\Collection();
 
@@ -46,12 +46,18 @@ class RemindUserToFinishAdvert implements ReminderInterface
 
     public function getEmailView(): string
     {
-        return '';
+        return 'emails.reminders.remindToFinishCreatingAdvert';
     }
 
     public function getEmailViewArguments(): Collection
     {
         return $this->unfinishedAdverts ?? new Collection();
+    }
+
+
+    public function getEmailSubject(User $user): string
+    {
+        return sprintf("%s, votre annonce est presque prête à être publiée", $user->firstname);
     }
 
 }

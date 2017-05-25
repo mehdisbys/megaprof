@@ -22,9 +22,11 @@ use App\Listeners\NotifyBookingRequest;
 use App\Listeners\NotifyProfAdvertWasRejected;
 use App\Listeners\NotifyProfOfPostedComment;
 use App\Listeners\NotifyStudentOfPostedComment;
+use App\Listeners\SendReminderToUser;
 use App\Listeners\SuccessAdvertCreatedNotification;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Reminders\Events\ReminderEmail;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -78,6 +80,10 @@ class EventServiceProvider extends ServiceProvider
             [
                 NotifyAdminAdvertCreated::class,
                 SuccessAdvertCreatedNotification::class
+            ],
+        ReminderEmail::class =>
+            [
+                SendReminderToUser::class,
             ],
     ];
 

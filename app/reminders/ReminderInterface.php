@@ -2,6 +2,7 @@
 
 namespace Reminders;
 
+use App\Models\User;
 use Illuminate\Support\Collection;
 
 interface ReminderInterface
@@ -16,5 +17,7 @@ interface ReminderInterface
     public function getEmailView(): string;
 
     public function getEmailViewArguments(): Collection;
+
+    public function getEmailSubject(User $user): string;
 
 }

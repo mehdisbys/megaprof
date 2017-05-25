@@ -1,6 +1,6 @@
 <?php
 
-namespace Reminders\RemindUsers;
+namespace Reminders\Commands;
 
 use Illuminate\Console\Command;
 use Reminders\Events\ReminderEmail;
@@ -43,11 +43,6 @@ class RemindUsers extends Command
     public function handle()
     {
 
-        // Reminders
-
-
-        // Ex. Received student booking, condition=No reply in the last 1h, send specific email
-
         $reminders = [
             new RemindUserToCreateAnAdvert(),
             new RemindUserToFinishAdvert(),
@@ -66,8 +61,7 @@ class RemindUsers extends Command
             if ($reminder->reminderIsDueForUser($user) and
                 ReminderTracker::reminderHasNotBeenSent($user, $reminder)
             ) {
-
-                event(new ReminderEmail($user, $reminder->getEmailView(), $reminder->getEmailViewArguments()));
+                event(new ReminderEmail($user, $reminder));
 
                 ReminderTracker::reminderWasSent($user, $reminder);
             }

@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Support\Collection;
+use Reminders\ReminderInterface;
 
 class ReminderEmail
 {
@@ -15,11 +16,8 @@ class ReminderEmail
     /** @var  User */
     public $user;
 
-    /** @var  string */
-    public $view;
-
-    /** @var  Collection */
-    public $viewArguments;
+    /** @var  ReminderInterface */
+    public $reminder;
 
     /**
      * ReminderEmail constructor.
@@ -27,11 +25,10 @@ class ReminderEmail
      * @param string     $view
      * @param Collection $viewArguments
      */
-    public function __construct(User $user, $view, Collection $viewArguments)
+    public function __construct(User $user, ReminderInterface $reminder)
     {
-        $this->user          = $user;
-        $this->view          = $view;
-        $this->viewArguments = $viewArguments;
+        $this->user     = $user;
+        $this->reminder = $reminder;
     }
 
 

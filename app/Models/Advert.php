@@ -71,9 +71,12 @@ class Advert extends Model
 
     }
 
-    public static function getUserAdverts(User $user)
+    public static function getUnpublishedUserAdverts(User $user)
     {
-        return static::getAdvertsForUserId($user->id);
+        return static::where('user_id', $user->id)
+            ->whereNull('published_at')
+            ->whereNull('approved_at')
+            ->get();
     }
 
     private static function getAdvertsForUserId(int $userId)

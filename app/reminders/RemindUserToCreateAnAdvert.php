@@ -25,18 +25,23 @@ class RemindUserToCreateAnAdvert implements ReminderInterface
     public function reminderIsDueForUser(User $user): bool
     {
         /** @var Collection $userAdverts */
-        $userAdverts = Advert::getUserAdverts($user);
+        $userAdverts = Advert::where(['user_id' => $user->id])->get();
 
         return $userAdverts->count() == 0 and Carbon::now()->diffInHours($user->created_at) > $this->remindUsersToCreateAdvert;
     }
 
     public function getEmailView(): string
     {
-        return '';
+        return 'emails.reminders.remindToCreateAnAdvert';
     }
 
     public function getEmailViewArguments(): Collection
     {
         return new Collection();
+    }
+
+    public function getEmailSubject(User $user): string
+    {
+        return sprintf("%s, postez une annonce, rencontrez des élèves formidables", $user->firstname);
     }
 }
