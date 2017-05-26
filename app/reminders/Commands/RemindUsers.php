@@ -62,7 +62,7 @@ class RemindUsers extends Command
                 ReminderTracker::reminderHasNotBeenSent($user, $reminder)
             ) {
                 event(new ReminderEmail($user, $reminder));
-
+                activity()->useLog($user->email)->log('Reminder to ' . $reminder->getReminderId())->causedBy($user->email);
                 ReminderTracker::reminderWasSent($user, $reminder);
             }
         }
