@@ -31,6 +31,6 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')->hourly();
         $schedule->command('sitemap:generate')->dailyAt('04:00');
-        $schedule->command('remind_users:check')->everyTenMinutes();
+        $schedule->command('remind_users:check')->dailyAt('05:00');
     }
 }
