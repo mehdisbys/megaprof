@@ -153,7 +153,7 @@ class SignupController extends Controller
         $view = 'emails.auth.resetPassword';
         $config['to'] = $user->email;
         $config['name'] = $user->username;
-        $config['subject'] = 'Please reset your password';
+        $config['subject'] = 'Réinitialisez votre mot de passe';
         $all['name'] = $user->username;
         $all['link'] = url("reset_token/{$user->forgotten_token}");
 

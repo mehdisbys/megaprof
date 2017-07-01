@@ -1638,6 +1638,9 @@ a.component-pagination-item:hover {
     height: 650px;
 }
 
+.medium-height {
+    height: 300px;
+}
 .home-search-prof {
     padding: 1px 20px;
     background-image: url("/temp-images/backgrounds/accueil-prof.jpg");
@@ -1653,7 +1656,8 @@ a.component-pagination-item:hover {
 }
 
 .home-search-form-inner {
-    position: relative
+    position: relative;
+    margin-top: 7%;
 }
 
 .home-search-field-wrapper {
@@ -3271,7 +3275,6 @@ input[type="radio"] {
 }
 
 #donner-des-cours, #submit-btn, .button {
-    margin-top: 7px;
     display: inline-block;
     padding: 5px 5px;
     border: 1px solid #fd875e;
@@ -3286,6 +3289,10 @@ input[type="radio"] {
     transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in
 }
 
+#submit-btn {
+    padding: 20px 3px 20px 3px;
+    line-height: 5px;
+}
 
 
 .booking-button {
@@ -3305,9 +3312,6 @@ input[type="radio"] {
     transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in
 }
 
-#submit-btn {
-    padding: 16px 16px;
-}
 
 .button:focus,
 .button:hover {

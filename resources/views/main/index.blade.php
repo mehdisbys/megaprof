@@ -7,7 +7,7 @@
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::script("js/jquery.form.min.js") !!}
 
-    <div class="home-search">
+    <div class="home-search medium-height">
 
         <div class="home-search-form-inner autocomplete awesomplete">
             <div class="search-form-wrapper">
