@@ -220,7 +220,9 @@ class Advert extends Model
     {
         $query = DB::table('adverts');
 
-        if (in_array($gender, ['man', 'woman'])) {
+	$query->whereNotNull('approved_at');
+        
+	if (in_array($gender, ['man', 'woman'])) {
             $query = $query->join('users', function ($join) use ($gender) {
                 $join->on('adverts.user_id', '=', 'users.id')
                     ->where('users.gender', '=', $gender);
