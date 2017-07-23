@@ -61,6 +61,7 @@ class AdvertsTableSeeder extends Seeder
                 'published_at'              => $faker->dateTime,
                 'created_at'                => $faker->dateTime,
                 'updated_at'                => $faker->dateTime,
+                'approved_at'               => $faker->dateTime,
                 'deleted_at'                => NULL,
             ]);
 
