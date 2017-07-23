@@ -15,10 +15,6 @@ class BookCourseController extends Controller
 {
     public function bookLesson($slug)
     {
-        thanks("Taelam sera disponible pour les élèves très bientôt ! En ce moment il n'est pas encore possible de réserver un cours.");
-
-        return redirect('/');
-
         $advert = Advert::findBySlugOr404($slug);
 
         return view('main.bookLesson')->with(compact('advert'));
