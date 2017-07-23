@@ -33,11 +33,11 @@ class ListAdvertController extends Controller
     {
         $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
         $selectedSubject = null;
-        // $latestAdverts      = $this->latestAdverts();
-        // $popularSubjects    = $this->mostPopularSubjects();
+        $latestAdverts      = $this->latestAdverts();
+        $popularSubjects    = $this->mostPopularSubjects();
         $notificationsCount = Notification::currentUserNotificationsCount();
 
-        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'notificationsCount'));
+        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'notificationsCount', 'latestAdverts', 'popularSubjects'));
     }
 
     public function registerStudentInterest(Request $request)

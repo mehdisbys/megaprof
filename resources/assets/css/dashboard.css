@@ -1641,6 +1641,12 @@ a.component-pagination-item:hover {
 .medium-height {
     height: 300px;
 }
+
+.medium-height-plus {
+    height: 450px;
+}
+
+
 .home-search-prof {
     padding: 1px 20px;
     background-image: url("/temp-images/backgrounds/accueil-prof.jpg");
@@ -1657,7 +1663,7 @@ a.component-pagination-item:hover {
 
 .home-search-form-inner {
     position: relative;
-    margin-top: 7%;
+    margin-top: 1%;
 }
 
 .home-search-field-wrapper {
@@ -3069,6 +3075,9 @@ th {
     .advert-header {
         margin-top: 80px;
     }
+    .search-title {
+        margin-top: 20px;
+    }
 }
 
 .flag-advert {
@@ -3199,18 +3208,16 @@ input[type="radio"] {
     font-size: 30px;
     color: black;
     text-align: center;
-    margin: auto;
-    width: 20%;
-    margin-top: 50px;
+    width: 50%;
+    margin : 35px 0px 35px 35%;
     font-weight: bold;
-
 }
 
-@media all and (max-width: 980px) {
+@media all and (max-width: 767px) {
 
     .matieres-scroller {
-        width: 60%;
-
+        width: 100%;
+        margin : 35px 0px 35px 4%;
     }
 }
 

@@ -1,43 +1,59 @@
 <div class="col-md-12">
-    <div class="advert-header carousel-preview">
+    <div class="advert-header carousel-preview"><div class="col-md-12 author-profile-header topmargin-small">
+            <div class="single-view-info-author">
+                <h1 class="single-view-title"><a href="/{{$advert->slug}}">{{ ucfirst($advert->title) }}</a></h1>
 
-        <div class="single-view-info-author">
-            <h3><a href="/{{$advert->slug}}">{{ str_limit($advert->title,100) }}</a></h3>
-
-            <ul class="icon-list">
-                @foreach($advert->subjectsPerAd as $subject)
-                    <li>{{\App\Models\SubSubject::find($subject->subject_id)->name}}</li>
-                @endforeach
-
-            </ul>
-            <ul class="iconlist-info">
-                @if($advert->location_city)
-                    <li>
-                        <i class="fa fa-map-marker"></i>
-                        <strong>{{ $advert->location_city }}</strong>
-
-                    </li>
-                @endif
-                @if(isset($ratings))
-                    <li>
-                        <i class="fa fa-star"></i>
-                        <strong>Noté {{ $ratings->ratings_average}}/5</strong>
-                    </li>
-                    <li>
-                        <i class="fa fa-star"></i>
-                        <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
-                    </li>
-                @endif
-            </ul>
-            <h4><a href="/{{$advert->slug}}"> {{$advert->price}} Dhs/h</a></h4>
-        </div>
-        <div id="profile-author" class="single-view-profile-author-profile">
-            <div class="single-view-profile-info">
-                <div class="single-view-profile-image-wrapper-carousel">
-                    <a href="/{{$advert->slug}}"> <img src="{{ $advert->getAvatar() }}" alt="avatar"></a>
+                <div class="pull-left">
+                    @foreach($advert->subjectsPerAd as $subject)
+                        <div class="label label-info">{{ \App\Models\SubSubject::find($subject->subject_id)->name}}</div>
+                        <div class="clearfix"></div>
+                    @endforeach
                 </div>
-                <h3><a href="/{{$advert->slug}}">{{$advert->user->firstname }}</a></h3>
 
+                <div class="pull-right">
+                    <?php $advertLevels = json_decode(\App\Models\SubjectsPerAdvert::getLevelsPerAdvert($advert->id)[0], true); ?>
+                    @if(is_array($advertLevels))
+                        @foreach($advertLevels as $level_id)
+                            <div class="label label-primary">{{\App\Models\SubLevel::find($level_id)->name}}</div>
+                        @endforeach
+                    @endif
+                </div>
+
+            </div>
+            <div id="profile-author" class="single-view-profile-author-profile">
+                <div class="single-view-profile-info">
+                    <img src="{{ $advert->getAvatar() }}" alt="avatar">
+                    <h3><a href="#" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
+                    <ul class="iconlist-info">
+                        @if($advert->can_webcam)
+                            <li>
+                                <i class="fa fa-skype"></i>
+                                <small>Donne des cours par webcam</small>
+                            </li>
+                        @endif
+                        @if($advert->can_travel)
+                            <li>
+                                <i class="fa fa-home"></i>
+                                <small>Se déplace à domicile</small>
+                            </li>
+                        @endif
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <strong>{{ $advert->getLocationText() }}</strong>
+                        </li>
+                        @if(isset($ratings))
+                            <li>
+                                <i class="fa fa-star"></i>
+                                <strong>Noté {{ $ratings->ratings_average}}/5</strong>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i>
+                                <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
+                            </li>
+                        @endif
+                        <li><h3><a href="#" class=" center"> </a></h3></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

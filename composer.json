@@ -51,7 +51,8 @@
     ],
     "psr-4": {
       "App\\": "app/",
-      "Reminders\\": "app/reminders"
+      "Reminders\\": "app/reminders",
+      "Taelam\\": "taelam"
     }
   },
   "autoload-dev": {

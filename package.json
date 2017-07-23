@@ -14,5 +14,11 @@
     "url": "mehdi@taelam.com:/var/www/repo/megaprof.git"
   },
   "author": "Mehdi Souihed",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "laravel-elixir": "^6.0.0-15"
+  }
 }

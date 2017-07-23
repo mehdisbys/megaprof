@@ -11,8 +11,7 @@
 
 
     <!-- one ============= -->
-    <div class="home-search ">
-
+    <div class="home-search medium-height-plus">
 
         <h1 class="search-title">Apprenez sans limites</h1>
 
@@ -32,22 +31,55 @@
             </ul>
         </div>
 
-        <div class="col-md-12 btns">
-            <div class="student-btn-div">
-                <a id="student-btn" href="#student-info" class="">Trouver un Professeur</a>
-            </div>
-            <div class=" teacher-btn-div">
-                <a id="accueil-donner-des-cours" class=" big-button" href="/professeur">Donner des
-                    cours</a>
 
+        <div class="home-search-form-inner autocomplete awesomplete">
+            <div class="search-form-wrapper">
+                <form action="/search" method="post" id="search_form">
+                    {!! csrf_field() !!}
+                    <div class="home-search-field-wrapper">
+                        <input
+                                id="subject_input"
+                                class="awesomplete home-search-input autocomplete-input-subject"
+                                placeholder="Que souhaitez-vous apprendre ?"
+                                data-minchars="1"
+                                data-autofirst="1"
+                                data-list="{!! $subsubjects !!}"
+                                name="subject"
+                                type="text"
+                                autocomplete="off"
+                                aria-autocomplete="list"
+                                value="{{$selectedSubject or ''}}"/>
+                    </div>
+
+                    <div class="home-search-field-wrapper">
+                        <input
+                                id="location_input"
+                                class="home-search-input autocomplete-input-city"
+                                placeholder="Ville où le cours a lieu"
+                                name="city" type="text" value="{{$selectedCity or ''}}"/>
+                    </div>
+
+                    <div class="home-search-button-wrapper ">
+                        <button id="submit-btn" class="button home-search-submit" type="submit"> Chercher</button>
+                    </div>
+
+                    <div class="location-details no-visibility">
+                        {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
+                        {!! Form::hidden('lat', null, ['id' => 'latitude']) !!}
+                    </div>
+                </form>
             </div>
         </div>
+
+
 
         <div class="home-search-form-inner autocomplete">
         </div>
         <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
 
+
+    @include('main.latestPublishedAdverts')
 
     <div class="student-info col-md-12" id="student-info-div">
         <div class="wraper">
@@ -66,7 +98,7 @@
 
                                     chez vous
                                 "><i style="color:#7663ff;"
-                                                      class="fa fa-binoculars fa-5x clearfix"></i></div>
+                                     class="fa fa-binoculars fa-5x clearfix"></i></div>
                             <div class="col-md-12">Découvrez des activités et des professeurs partout au Maroc</div>
 
                         </div>
@@ -98,7 +130,7 @@
 
                                     vos attentes
                                 "><i style="color:#6a91ff;"
-                                                      class="fa fa-calendar-check-o fa-5x clearfix"></i>
+                                     class="fa fa-calendar-check-o fa-5x clearfix"></i>
                             </div>
                             <div class="col-md-12">Réservez votre activité</div>
 
@@ -111,7 +143,7 @@
 
                                     connaissances
                                 "><i style="color:#ffcc66;"
-                                                      class="fa fa-thumbs-o-up fa-5x clearfix"></i>
+                                     class="fa fa-thumbs-o-up fa-5x clearfix"></i>
                             </div>
                             <div class="col-md-12">
 
@@ -123,22 +155,12 @@
             </div>
         </div>
 
-        <div class="col-md-12 topmargin-big" >
-
-            <div class="quote-container" >
-                <i class="pin"></i>
-                <blockquote class="note yellow">
-                    Le site n'est pas encore ouvert aux élèves car nous sommes en train de <strong>sélectionner les meilleurs professeurs pour vous</strong>, mais
-                    vous pouvez nous aider en remplissant les champs ci-dessous, merci !
-                    <cite class="author">Équipe Taelam</cite>
-                </blockquote>
-
-            </div>
+        <div class="col-md-12 topmargin-big">
 
 
             <div class="col-md-12 row student-get-interest">
 
-                <form id="search_form" action="student" method="POST">
+                <form id="seach_form" action="student" method="POST">
                     {!! csrf_field() !!}
 
                     <div class="col-md-1">
@@ -185,7 +207,7 @@
             </div>
 
             <div>
-            @include('main.why-choose-taelam')
+                @include('main.why-choose-taelam')
             </div>
         </div>
     </div>
@@ -203,10 +225,10 @@
 
             $('.carousel').slick({
                 autoplay: true,
-                autoplaySpeed: 5000,
+                autoplaySpeed: 4500,
                 arrows: false,
                 dots: true,
-                cssEase: 'linear',
+                cssEase: 'linear'
             });
 
             var submitForm = function (event) {
@@ -226,7 +248,7 @@
                 }
 
                 //TODO @postlaunch remove following line
-                this.submit();
+             //   this.submit();
 
                 url = "/annonces/" + subject + "/" + loc;
                 url = url.replace(/ /g, '-');
@@ -272,9 +294,9 @@
             }, 1500);
         });
 
-        $(function() {
+        $(function () {
             $('#matieres').removeClass('hidden');
-            $('#matieres').vTicker('init',{pause: 2000, mousePause:false});
+            $('#matieres').vTicker('init', {pause: 2000, mousePause: false});
         });
     </script>
 

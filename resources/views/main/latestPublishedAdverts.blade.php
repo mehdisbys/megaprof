@@ -1,6 +1,6 @@
-<div class="col-md-12">
-    <h2>Les dernières annonces publiées</h2>
-    <div class="carousel">
+<div class="col-md-12 text-center">
+    <h3>Les dernières annonces publiées</h3>
+    <div class="carousel col-md-8 col-md-offset-2">
         @foreach($latestAdverts as $advert)
             @include('main.carouselPreview', ['trimchar' => 350])
         @endforeach
