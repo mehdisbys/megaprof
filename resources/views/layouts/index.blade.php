@@ -155,8 +155,7 @@
             </div>
         </div>
 
-        {{--<div class="col-md-12 topmargin-big">--}}
-
+        <div class="col-md-12 topmargin-big">
 
             {{--<div class="col-md-12 row student-get-interest">--}}
 
@@ -206,10 +205,10 @@
                 {{--seront disponibles.--}}
             {{--</div>--}}
 
-            {{--<div>--}}
-                {{--@include('main.why-choose-taelam')--}}
-            {{--</div>--}}
-        {{--</div>--}}
+            <div>
+                @include('main.why-choose-taelam')
+            </div>
+        </div>
     </div>
 
     {!! HTML::script("js/slick.min.js") !!}
