@@ -16,7 +16,7 @@
         <h1 class="search-title">Apprenez sans limites</h1>
 
         <div id="matieres" class="matieres-scroller hidden">
-            <ul>
+            <ul style="list-style: none">
                 <li>Arts</li>
                 <li>Droit</li>
                 <li>Économie</li>

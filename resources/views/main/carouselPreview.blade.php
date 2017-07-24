@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="advert-header carousel-preview"><div class="col-md-12 author-profile-header topmargin-small">
+    <div class="advert-header carousel-preview"><div class="col-md-12 author-profile-header">
             <div class="single-view-info-author">
                 <h1 class="single-view-title"><a href="/{{$advert->slug}}">{{ ucfirst($advert->title) }}</a></h1>
 
@@ -19,6 +19,9 @@
                     @endif
                 </div>
 
+                <div class="col-md-12 topmargin-sm">
+                    {{ str_limit($advert->presentation, 150)}}
+                </div>
             </div>
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
