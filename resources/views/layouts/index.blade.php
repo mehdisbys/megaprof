@@ -247,7 +247,7 @@
                 }
 
                 //TODO @postlaunch remove following line
-             //   this.submit();
+                //this.submit();
 
                 url = "/annonces/" + subject + "/" + loc;
                 url = url.replace(/ /g, '-');
@@ -279,10 +279,6 @@
             new Awesomplete(document.getElementById('subject_input'), {
                 filter: function (text, input) {
                     return new RegExp("^" + removeDiacritics(input.match(/[^,]*$/)[0].trim()), "i").test(removeDiacritics(text));
-                },
-                replace: function (text) {
-                    var before = this.input.value.match(/^.+,\s*|/)[0];
-                    this.input.value = before + text + ", ";
                 }
             });
         });
