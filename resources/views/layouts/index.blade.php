@@ -81,6 +81,8 @@
 
     @include('main.latestPublishedAdverts')
 
+
+
     <div class="student-info col-md-12" id="student-info-div">
         <div class="wraper">
             <div class="home-hare-opinion">
