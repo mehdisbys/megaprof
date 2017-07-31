@@ -1,4 +1,4 @@
-<div class="scrolling-pane topmargin-lg col-md-12">
+<div class="scrolling-pane topmargin-lg col-md-10 col-md-offset-1">
     <h2 class="section-title">Pourquoi choisir Taelam ?</h2>
 
     <div class="row">

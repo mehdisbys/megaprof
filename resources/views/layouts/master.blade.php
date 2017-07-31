@@ -51,7 +51,7 @@
             <nav class="navbar navbar-site" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
-                        <button style="background-color: #ff8c00;" data-target=".navbar-collapse" data-toggle="collapse"
+                        <button style="background-color: #fd875e;" data-target=".navbar-collapse" data-toggle="collapse"
                                 class="navbar-toggle"
                                 type="button">
                             <span class="sr-only">Toggle navigation</span> <span class="fa fa-bars"></span> <span

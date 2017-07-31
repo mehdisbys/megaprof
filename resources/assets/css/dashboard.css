@@ -2840,7 +2840,7 @@ a.component-pagination-item:hover {
 .scrolling-pane {
     background-color: white;
     clear: both;
-    padding: 40px;
+    /*padding: 40px;*/
 }
 
 .scrolling-pane h2 {
@@ -2855,7 +2855,6 @@ a.component-pagination-item:hover {
 
 .scrolling-pane ul li {
     float: right;
-    padding-top: 15px;
     margin-right: calc(100% / 6);
     margin-bottom: 20px;
     list-style: none;
@@ -2865,6 +2864,15 @@ a.component-pagination-item:hover {
     padding: 5px;
     border-radius: 50%;
 }
+
+@media all and (max-width: 767px) {
+
+    .scrolling-pane ul li {
+        margin-right: calc(100% / 3 - 5%);
+    }
+}
+
+
 
 .scrolling-pane ul li .fa {
     background-color: rgba(255, 133, 93, 0.74);
