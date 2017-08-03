@@ -61,25 +61,25 @@
                     <div class="sorting-field col-md-12 topmargin-sm">
                         <label>Trier par</label>
                         <select name="sortBy" class="autocomplete-input-sortby">
-                            <option value="distance">Distance</option>
+                            {{--<option value="distance">Distance</option>--}}
                             <option value="date">Date</option>
                             <option value="price">Prix</option>
                         </select>
                     </div>
-                    <div class="col-md-12">
-                        <div id="teacher_gender" class="topmargin-sm teacher_gender">
-                            <h3>Je préfère un professeur:</h3>
-                            <label class="col-md-8">
-                                <input name="gender" value="man" type="radio"> Homme
-                            </label>
-                            <label class="col-md-8">
-                                <input name="gender" value="woman" type="radio"> Femme
-                            </label>
-                            <label class="col-md-10">
-                                <input name="gender" value="both" type="radio"> Les deux me vont
-                            </label>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-12">--}}
+                        {{--<div id="teacher_gender" class="topmargin-sm teacher_gender">--}}
+                            {{--<h3>Je préfère un professeur:</h3>--}}
+                            {{--<label class="col-md-8">--}}
+                                {{--<input name="gender" value="man" type="radio"> Homme--}}
+                            {{--</label>--}}
+                            {{--<label class="col-md-8">--}}
+                                {{--<input name="gender" value="woman" type="radio"> Femme--}}
+                            {{--</label>--}}
+                            {{--<label class="col-md-10">--}}
+                                {{--<input name="gender" value="both" type="radio"> Les deux me vont--}}
+                            {{--</label>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
 
                 @if(count($adverts) == 0)

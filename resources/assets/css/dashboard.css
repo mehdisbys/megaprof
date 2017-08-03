@@ -3097,10 +3097,9 @@ input[type="radio"] {
     vertical-align: middle;
 }
 
-.search-options {
-    border-radius: 25px;
-    background-color: #fff;
-
+.no-style-url {
+    text-decoration: none;
+    color: inherit;
 }
 
 .topmargin-big {
