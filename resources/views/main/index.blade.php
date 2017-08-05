@@ -9,7 +9,7 @@
 
     <div class="home-search medium-height">
 
-        <div class="home-search-form-inner autocomplete awesomplete">
+        <div class="home-search-form-inner-2 autocomplete awesomplete">
             <div class="search-form-wrapper">
                 <form action="/search" method="post" id="search_form">
                     {!! csrf_field() !!}
@@ -52,7 +52,7 @@
         </div>
     </div>
     </div>
-    <div class="section section-odd home-profs">
+    <div class="section-odd home-profs">
         <div class="wrapper">
 
             <div class="home-profs-items-container">
@@ -97,7 +97,7 @@
         <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
             trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{isset($selectedCity) ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
                     </div>
-                    <div id="search_results" class="col-md-9 topmargin-sm">
+                    <div id="search_results" class="col-md-9 col-sm-12 col-xs-12 topmargin-sm">
                         @include('main.multipleAdvertPreview')
                     </div>
                 @endif

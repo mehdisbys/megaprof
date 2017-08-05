@@ -1630,7 +1630,7 @@ a.component-pagination-item:hover {
 }
 
 .home-search {
-    padding: 1px 20px;
+    padding: 1px 180px;
     background-image: url("/temp-images/backgrounds/header-banner-bg4.jpg");
     -webkit-background-size: cover;
     background-size: cover;
@@ -1639,7 +1639,7 @@ a.component-pagination-item:hover {
 }
 
 .medium-height {
-    height: 300px;
+    height: 265px;
 }
 
 .medium-height-plus {
@@ -1665,6 +1665,12 @@ a.component-pagination-item:hover {
     position: relative;
     margin-top: 1%;
 }
+
+.home-search-form-inner-2 {
+    position: relative;
+    margin-top: 8%;
+}
+
 
 .home-search-field-wrapper {
     position: relative;
@@ -1879,6 +1885,8 @@ a.component-pagination-item:hover {
 
     .home-search {
         padding-top: 35px;
+        padding-right: 40px;
+        padding-left: 40px;
         padding-bottom: 45px
     }
 
@@ -2824,7 +2832,8 @@ a.component-pagination-item:hover {
 }
 
 .count_results {
-    font-size: 2em;
+    padding: 1px 40px;
+    font-size: 1.8em;
 }
 
 .radius-group {
@@ -2869,6 +2878,10 @@ a.component-pagination-item:hover {
 
     .scrolling-pane ul li {
         margin-right: calc(100% / 3 - 5%);
+    }
+
+    .count_results {
+        font-size: 1.5em;
     }
 }
 
