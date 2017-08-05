@@ -3663,3 +3663,7 @@ Create a CSS3 post-it note without images
 .red-text {
     color: crimson;
 }
+
+.mini-padding-top {
+    padding-top: 50px;
+}
