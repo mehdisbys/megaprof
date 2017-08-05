@@ -252,6 +252,49 @@ class Advert extends Model
         return $query->paginate(self::$paginateCount);
     }
 
+    public static function radiusSearchRefactor($lat, $lng, int $radius = null, string $sortBy = 'distance', $gender, $subjectId, array $exceptAdvertIds = [])
+    {
+        $query = DB::table('adverts');
+
+        $query->whereNotNull('approved_at');
+
+
+        $query->whereNotIn('adverts.id', $exceptAdvertIds);
+
+        $query->join('subjects_per_advert', 'adverts.id', '=', 'subjects_per_advert.advert_id')
+              ->where(['subjects_per_advert.subject_id' => $subjectId]);
+
+
+        if (in_array($gender, ['man', 'woman'])) {
+            $query = $query->join('users', function ($join) use ($gender) {
+                $join->on('adverts.user_id', '=', 'users.id')
+                     ->where('users.gender', '=', $gender);
+            });
+        };
+
+        if ($lat and $lng) {
+            $query->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
+    COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
+        }
+
+        if (isset($radius) and $lat and $lng)
+            $query->having('distance', '<', $radius);
+
+
+        if ($lat and $lng and $sortBy === 'distance')
+            $query->orderBy('distance', 'ASC');
+
+        if ($sortBy === 'date')
+            $query->orderBy('adverts.updated_at', 'ASC');
+
+        if ($sortBy === 'price')
+            $query->orderBy('price', 'ASC');
+
+//        dd($subjectId, $query->toSql());
+
+        return $query->paginate(self::$paginateCount);
+    }
+
 
     public static function paginateResults(Collection $adverts )
     {

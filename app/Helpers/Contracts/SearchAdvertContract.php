@@ -4,5 +4,5 @@ namespace App\Helpers\Contracts;
 
 Interface SearchAdvertContract
 {
-    public function search(\stdClass $data);
+    public function search($data);
 }

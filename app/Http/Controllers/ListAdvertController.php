@@ -10,6 +10,8 @@ use App\Models\RegisterStudentInterest;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
 use App\Models\UserRatings;
+use App\Search\Search;
+use App\Search\SearchArguments;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -131,6 +133,52 @@ class ListAdvertController extends Controller
                        'distances'       => $distances,
                        'selectedCity'    => $data->city ?? null,
                        'radius'          => $data->radius ?? null,
+                   ]
+            )->render();
+
+        return response()->json(
+            [
+                'params'    => $data,
+                'count'     => $adverts->total(),
+                'distances' => $distances,
+                'results'   => $results,
+            ]);
+    }
+
+    public function searchRefactor(Request $request)
+    {
+
+        if ($request->get('subject') == null)
+            return response()->json([]);
+
+        $subject = SubSubject::where('name', $request->get('subject'))->first();
+
+        $data = new SearchArguments($request->get('subject'),
+                                    $subject,
+                                    implode(',', SubSubject::all()->pluck('name')->toArray()),
+                                    $subject->id ?? null,
+                                    $request->get('lat') ?? null,
+                                    $request->get('lng') ?? null,
+                                    $this->mapRadius($request->get('radius'))[0],
+                                    $this->mapRadius($request->get('radius'))[1],
+                                    explode(',', $request->get('city'))[0] ?? null,
+                                    $request->get('gender') ?? 'both',
+                                    $request->get('sortBy') ?? 'date');
+
+        $search = new Search();
+
+        list($adverts, $distances) = $search->search($data);
+
+     //   dd($data->getSelectedSubject());
+
+        $results = view('main.multipleAdvertPreview')
+            ->with([
+                       'adverts'         => $adverts,
+                       'subsubjects'     => $data->getSubsubjects(),
+                       'selectedSubject' => $data->getSelectedSubject(),
+                       'distances'       => $distances,
+                       'selectedCity'    => $data->getCity() ?? null,
+                       'radius'          => $data->getRadius() ?? null,
                    ]
             )->render();
 
