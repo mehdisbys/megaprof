@@ -30,7 +30,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/annonces/{subject}/{town}', 'ListAdvertController@searchByURL');
     Route::get('/annonces/{subject}', 'ListAdvertController@searchByURL');
 
-    Route::post('/search', 'ListAdvertController@search');
+    Route::post('/search', 'ListAdvertController@searchRefactor');
 
     // Avatar
     Route::get('/avatar/{user_id}', 'AvatarController@getAvatar');

@@ -61,7 +61,7 @@
                     <div class="sorting-field col-md-12 topmargin-sm">
                         <label>Trier par</label>
                         <select name="sortBy" class="autocomplete-input-sortby">
-                            {{--<option value="distance">Distance</option>--}}
+                            <option value="distance">Distance</option>
                             <option value="date">Date</option>
                             <option value="price">Prix</option>
                         </select>
@@ -97,7 +97,7 @@
         <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
             trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{isset($selectedCity) ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
                     </div>
-                    <div id="search_results" class="col-md-9">
+                    <div id="search_results" class="col-md-9 topmargin-sm">
                         @include('main.multipleAdvertPreview')
                     </div>
                 @endif
@@ -170,19 +170,19 @@
                     $("#loader").addClass('show');
 
                     $.post('/search',
-                            {
-                                'subject': subject,
-                                'city': city,
-                                '_token': token,
-                                'sortBy': sortBy,
-                                'gender': gender,
-                                'lng': lng,
-                                'lat': lat,
-                                'page': page ? page.replace(/[^0-9]/g, '') : null
-                            },
-                            function (data) {
-                                updatePage(data);
-                            });
+                        {
+                            'subject': subject,
+                            'city': city,
+                            '_token': token,
+                            'sortBy': sortBy,
+                            'gender': gender,
+                            'lng': lng,
+                            'lat': lat,
+                            'page': page ? page.replace(/[^0-9]/g, '') : null
+                        },
+                        function (data) {
+                            updatePage(data);
+                        });
                 };
 
                 return sendForm;

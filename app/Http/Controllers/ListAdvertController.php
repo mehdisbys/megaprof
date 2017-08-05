@@ -165,11 +165,19 @@ class ListAdvertController extends Controller
                                     $request->get('gender') ?? 'both',
                                     $request->get('sortBy') ?? 'date');
 
+        $coord = [];
+
+        if ($data->getCity() and $data->getLgn() == NULL)
+            $coord = $this->geocode($data->getCity());
+
+        if (count($coord)) {
+            $data->setLat($coord[0]);
+            $data->setLgn($coord[1]);
+        }
+
         $search = new Search();
 
         list($adverts, $distances) = $search->search($data);
-
-     //   dd($data->getSelectedSubject());
 
         $results = view('main.multipleAdvertPreview')
             ->with([
@@ -184,7 +192,7 @@ class ListAdvertController extends Controller
 
         return response()->json(
             [
-                'params'    => $data,
+                'params'    => $data->toArray(),
                 'count'     => $adverts->total(),
                 'distances' => $distances,
                 'results'   => $results,

@@ -223,4 +223,21 @@ class SearchArguments
     }
 
 
+    public function toArray() :array
+    {
+        return [
+            'selectedSubject' => $this->selectedSubject,
+            'subject'         => $this->subject,
+            'subsubjects'     => $this->subsubjects,
+            'subjectId'       => $this->subjectId,
+            'lat'             => $this->lat,
+            'lgn'             => $this->lgn,
+            'radius'          => $this->radius,
+            'selectedRadius ' => $this->selectedRadius,
+            'city'            => $this->city,
+            'gender'          => $this->gender,
+            'sortBy'          => $this->sortBy,
+        ];
+    }
+
 }
