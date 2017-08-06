@@ -3512,11 +3512,22 @@ input[type="radio"] {
     padding: 80px;
 }
 
+.single-view-title-carousel {
+    font-size: 22px;
+    font-weight: 400;
+}
+
 @media all and (max-width: 980px) {
 
     .dashboard-main {
         padding: 0px;
 
+    }
+
+    .single-view-title-carousel {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.3em;
     }
 }
 
@@ -3634,7 +3645,7 @@ Create a CSS3 post-it note without images
 }
 
 .single-view-title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
 }
 
