@@ -82,6 +82,28 @@
     @include('main.latestPublishedAdverts')
 
 
+    <div class="col-md-12">
+        <div class="wrapper">
+            <div class="connection-form">
+                <form id="loginForm" role="form" method="POST" action="/login" class="component-form">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                    <div class="form-wrapper">
+                        <a class="facebook-connect" href="/redirect">Connexion avec Facebook</a>
+                    </div>
+                </form>
+                <a href="/inscription">Connexion avec email</a>
+            </div>
+        </div>
+
+
+        <script>
+            function submitForm(response)
+            {
+                $('#loginForm').submit();
+            }
+        </script>
+    </div>
+
 
     <div class="student-info col-md-12" id="student-info-div">
         <div class="wraper">
