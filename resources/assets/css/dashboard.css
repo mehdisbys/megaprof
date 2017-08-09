@@ -3557,11 +3557,25 @@ Create a CSS3 post-it note without images
     box-shadow: 2px 10px 15px 6px rgba(255,255,255,0.3);
 }
 
+.first_free_time {
+    color: #5073a7;
+    line-height: 5px;
+    font-weight: 600;
+    font-size: inherit;
+    margin: 0px 15% 20px 50%;
+    width: 50%;
+}
+
 @media all and (max-width: 980px) {
 
     .note {
         width: 100%;
 
+    }
+
+    .first_free_time {
+        margin: 0px 0px 10px 0px;
+        width: 100%;
     }
 }
 
@@ -3656,15 +3670,6 @@ Create a CSS3 post-it note without images
 .mouse-hand:hover {
     cursor: hand;
     cursor: pointer;
-}
-
-.first_free_time {
-    color: #5073a7;
-    line-height: 5px;
-    font-weight: 600;
-    font-size: inherit;
-    margin: 0px 15% 20px 50%;
-    width: 50%;
 }
 
 .article-paragraph {
