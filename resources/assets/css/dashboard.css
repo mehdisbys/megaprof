@@ -2055,9 +2055,9 @@ a.component-pagination-item:hover {
     text-decoration: none
 }
 
-/*.facebook-connect a:hover{*/
-    /*color: #a7a7a7 !important;*/
-/*}*/
+.facebook-connect:hover{
+    color: #FFFFFF !important;
+}
 
 .facebook-connect:before {
     vertical-align: middle;

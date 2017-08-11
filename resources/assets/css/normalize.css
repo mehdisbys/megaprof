@@ -46,7 +46,6 @@ a:active,
 a:hover {
     outline: 0;
     text-decoration: none;
-    color: #FFFFFF;
 }
 abbr[title] {
     border-bottom: 1px dotted
