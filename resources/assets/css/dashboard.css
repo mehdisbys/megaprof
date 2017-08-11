@@ -3342,7 +3342,7 @@ input[type="radio"] {
 
 .button-dp-blue{
     border: 1px solid #17a5ff;
-    background-color: #1c84e5;
+    background-color: rgba(28, 132, 229, 0.62);
 }
 
 #submit-btn {
