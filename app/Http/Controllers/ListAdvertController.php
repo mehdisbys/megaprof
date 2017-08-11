@@ -1,29 +1,17 @@
 <?php
 namespace App\Http\Controllers;
 
-
-use App\Helpers\Contracts\SearchAdvertContract;
 use App\Models\Advert;
-use App\Models\Comment;
 use App\Models\Notification;
 use App\Models\RegisterStudentInterest;
 use App\Models\SubjectsPerAdvert;
 use App\Models\SubSubject;
-use App\Models\UserRatings;
 use App\Search\Search;
 use App\Search\SearchArguments;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class ListAdvertController extends Controller
 {
-    private $engine;
-
-    public function __construct(SearchAdvertContract $engine)
-    {
-        $this->engine = $engine;
-    }
 
     public function welcomeProfesseur()
     {
@@ -92,7 +80,6 @@ class ListAdvertController extends Controller
 
     }
 
-    //TODO TEST search location by radius
     public function search(Request $request)
     {
         if ($request->get('subject') == null)

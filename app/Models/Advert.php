@@ -223,7 +223,6 @@ class Advert extends Model
 
         $query->whereNotNull('approved_at');
 
-
         $query->whereNotIn('adverts.id', $exceptAdvertIds);
 
         $query->join('subjects_per_advert', 'adverts.id', '=', 'subjects_per_advert.advert_id')
@@ -254,8 +253,6 @@ class Advert extends Model
 
         if ($sortBy === 'price')
             $query->orderBy('price', 'ASC');
-
-//        dd($subjectId, $query->toSql());
 
         return $query->paginate(self::$paginateCount);
     }

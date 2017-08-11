@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Contracts\SearchAdvertContract;
 use App\Models\Advert;
 use App\Models\Comment;
 use App\Models\UserRatings;
+use App\Search\Search;
+use App\Search\SearchArguments;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class ViewController extends Controller
 {
-
-    private $engine;
-
-    public function __construct(SearchAdvertContract $engine)
-    {
-        $this->engine = $engine;
-    }
 
     public function view(string $slug)
     {
@@ -57,16 +51,18 @@ class ViewController extends Controller
 
     public function findSimilarAdverts(Advert $advert)
     {
-        $data = new \stdClass();
-
-        $data->subjectId       = $advert->getSubjectId();
-        $data->lat             = $advert->location_lat;
-        $data->lgn             = $advert->location_long;
-        $data->radius          = null;
-        $data->exceptAdvertIds = [$advert->id];
-
         Advert::paginateCount(5);
-        list($adverts, $distances) = $this->engine->search($data);
+
+        $data = SearchArguments::fromArray([
+                                               'subjectId' => $advert->getSubjectId(),
+                                               'lat'       => $advert->location_lat,
+                                               'lgn'       => $advert->location_long
+                                           ]);
+
+        $search = new Search();
+
+        list($adverts, $distances) = $search->search($data, [$advert->id]);
+
         return $adverts;
     }
 

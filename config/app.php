@@ -154,7 +154,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MailServiceProvider::class,
-        App\Providers\SearchAdvertServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,

@@ -245,19 +245,25 @@ class SearchArguments
 
     public static function fromArray(array $request) : self
     {
-        $subject = SubSubject::where('name', $request['subject'])->first();
+        $subject = null;
 
-        $data = new self($request['subject'],
-                                    $subject,
-                                    implode(',', SubSubject::all()->pluck('name')->toArray()),
-                                    $subject->id ?? null,
-                                    $request['lat'] ?? null,
-                                    $request['lng'] ?? null,
-                                    self::mapRadius($request['radius'] ?? null)[0],
-                                    self::mapRadius($request['radius'] ?? null)[1],
-                                    explode(',', $request['city'])[0] ?? null,
-                                    $request['gender'] ?? 'both',
-                                    $request['sortBy'] ?? 'date');
+        if (isset($request['subject']))
+            $subject = SubSubject::where('name', $request['subject'])->first();
+
+        else
+            $subject = SubSubject::find($request['subjectId']);
+
+        $data = new self($request['subject'] ?? $subject->name,
+                         $subject,
+                         implode(',', SubSubject::all()->pluck('name')->toArray()),
+                         $subject->id ?? null,
+                         $request['lat'] ?? null,
+                         $request['lng'] ?? null,
+                         self::mapRadius($request['radius'] ?? null)[0],
+                         self::mapRadius($request['radius'] ?? null)[1],
+                         explode(',', $request['city'] ?? '')[0] ?? null,
+                         $request['gender'] ?? 'both',
+                         $request['sortBy'] ?? 'date');
 
         $coord = [];
 
