@@ -73,31 +73,20 @@ class ListAdvertController extends Controller
 
     public function searchByURL($subject, $city = null)
     {
-        $data                  = new \stdClass();
-        $subjectObject         = SubSubject::where('name', $subject)->first();
-        $data->selectedSubject = $subject;
-        $data->subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $data->subjectId       = $subjectObject->id ?? null;
-        $data->city            = empty($city) ? null : $city;
-        $coord                 = [];
 
-        if ($city)
-            $coord = geocode($city);
+        $data = SearchArguments::fromArray(['subject' => $subject, 'city' => $city]);
 
-        if (count($coord)) {
-            $data->lat = $coord[0];
-            $data->lgn = $coord[1];
-        }
+        $search = new Search();
 
-        list($adverts, $distances) = $this->engine->search($data);
+        list($adverts, $distances) = $search->search($data);
 
         return view('main.index')->with(
             [
                 'adverts'         => $adverts,
-                'subsubjects'     => $data->subsubjects,
-                'selectedSubject' => $data->selectedSubject,
+                'subsubjects'     => $data->getSubsubjects(),
+                'selectedSubject' => $data->getSelectedSubject(),
                 'distances'       => $distances,
-                'selectedCity'    => $data->city ?? null,
+                'selectedCity'    => $data->getCity() ?? null
             ]
         );
 
