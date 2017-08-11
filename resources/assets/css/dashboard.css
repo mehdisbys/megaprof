@@ -2055,6 +2055,10 @@ a.component-pagination-item:hover {
     text-decoration: none
 }
 
+/*.facebook-connect a:hover{*/
+    /*color: #a7a7a7 !important;*/
+/*}*/
+
 .facebook-connect:before {
     vertical-align: middle;
     margin-right: 20px;
@@ -2062,6 +2066,8 @@ a.component-pagination-item:hover {
     background: url("/temp-images/sprite.png") no-repeat transparent;
     background-position: -160px -400px;
 }
+
+
 
 .register-student-step2 {
     width: 980px;
@@ -3306,6 +3312,16 @@ input[type="radio"] {
 
     .prof-short-presentation {
         width: 80%;
+    }
+
+    .topmargin-lg-when-mobile
+    {
+        margin-top: 80px !important;
+    }
+
+    .mini-padding-top-when-mobile
+    {
+        padding-top: 75px;
     }
 }
 
