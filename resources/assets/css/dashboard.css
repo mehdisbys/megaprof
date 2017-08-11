@@ -2883,6 +2883,10 @@ a.component-pagination-item:hover {
     .count_results {
         font-size: 1.5em;
     }
+
+    .search-title-prof {
+        font-size: 36px;
+    }
 }
 
 
@@ -3299,6 +3303,10 @@ input[type="radio"] {
     #student-btn, #accueil-donner-des-cours {
         width: 100%;
     }
+
+    .prof-short-presentation {
+        width: 80%;
+    }
 }
 
 #donner-des-cours, #submit-btn, .button {
@@ -3314,6 +3322,11 @@ input[type="radio"] {
     color: #fff;
     -webkit-transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in;
     transition: background-color 0.2s ease-in, border 0.2s ease-in, color 0.2s ease-in
+}
+
+.button-dp-blue{
+    border: 1px solid #17a5ff;
+    background-color: #1c84e5;
 }
 
 #submit-btn {

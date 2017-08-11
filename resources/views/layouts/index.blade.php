@@ -78,6 +78,9 @@
         <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
 
+    <div class="col-md-12 text-center mini-padding-top">
+        <a class="button button-dp-blue" href="/professeur">Je peux donner des cours</a>
+    </div>
 
     @include('main.latestPublishedAdverts')
 

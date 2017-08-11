@@ -35,9 +35,6 @@
     {!! HTML::script("js/bootstrap.min.js") !!}
 
     @include('user_tracking.smartlook')
-
-
-<!-- TODO convert to sass files   -->
     @yield('custom-head')
 </head>
 
@@ -54,8 +51,9 @@
                         <button style="background-color: #fd875e;" data-target=".navbar-collapse" data-toggle="collapse"
                                 class="navbar-toggle"
                                 type="button">
-                            <span class="sr-only">Toggle navigation</span> <span class="fa fa-bars"></span> <span
-                                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+                            <span class="sr-only">Toggle navigation</span> <span class="fa fa-bars fa-lg"></span></button>
+
+
                         <a class="header-logo header-logo-normal"
                            href="/" title="Revenir à l'accueil de Taelam">
                             <img src="/temp-images/megaprof.png" width="170"
@@ -82,7 +80,7 @@
 
                             @if(Auth::check() == false)
                                 <li><a class="header-item" href="/faq">Aide</a></li>
-                                <li><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
+                                <li><a id="donner-des-cours" class="button" href="/professeur">Donner des
                                         cours</a></li>
                             @endif
                         </ul>
