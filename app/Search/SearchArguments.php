@@ -2,6 +2,8 @@
 
 namespace App\Search;
 
+use App\Models\SubSubject;
+
 class SearchArguments
 {
 
@@ -240,4 +242,53 @@ class SearchArguments
         ];
     }
 
+
+    public static function fromArray(array $request) : self
+    {
+        $subject = SubSubject::where('name', $request['subject'])->first();
+
+        $data = new self($request['subject'],
+                                    $subject,
+                                    implode(',', SubSubject::all()->pluck('name')->toArray()),
+                                    $subject->id ?? null,
+                                    $request['lat'] ?? null,
+                                    $request['lng'] ?? null,
+                                    self::mapRadius($request['radius'] ?? null)[0],
+                                    self::mapRadius($request['radius'] ?? null)[1],
+                                    explode(',', $request['city'])[0] ?? null,
+                                    $request['gender'] ?? 'both',
+                                    $request['sortBy'] ?? 'date');
+
+        $coord = [];
+
+        if ($data->getCity() and $data->getLgn() == NULL)
+            $coord = geocode($data->getCity());
+
+        if (count($coord)) {
+            $data->setLat($coord[0]);
+            $data->setLgn($coord[1]);
+        }
+
+        return $data;
+    }
+
+    private static function mapRadius(int $radius = null)
+    {
+        $map = [
+            1 => [5,
+                  '5 km'],
+            2 => [10,
+                  '10 km'],
+            3 => [20,
+                  '20 km'],
+            4 => [1,
+                  'à domicile'],
+        ];
+
+        if (isset($map[$radius]))
+            return $map[$radius];
+
+        return [null,
+                null];
+    }
 }

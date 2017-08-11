@@ -82,7 +82,7 @@ class ListAdvertController extends Controller
         $coord                 = [];
 
         if ($city)
-            $coord = $this->geocode($city);
+            $coord = geocode($city);
 
         if (count($coord)) {
             $data->lat = $coord[0];
@@ -104,76 +104,12 @@ class ListAdvertController extends Controller
     }
 
     //TODO TEST search location by radius
-    public function search(Request $request)
-    {
-        $data                  = new \stdClass();
-        $data->selectedSubject = $request->get('subject');
-        $subject               = SubSubject::where('name', $data->selectedSubject)->first();
-
-        if ($data->selectedSubject == null)
-            return response()->json([]);
-
-        $data->subsubjects    = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $data->subjectId      = $subject->id ?? null;
-        $data->lat            = $request->get('lat') ?? null;
-        $data->lgn            = $request->get('lng') ?? null;
-        $data->radius         = $this->mapRadius($request->get('radius'))[0];
-        $data->selectedRadius = $this->mapRadius($request->get('radius'))[1];
-        $data->city           = explode(',', $request->get('city'))[0] ?? null;
-        $data->gender         = $request->get('gender') ?? 'both';
-        $data->sortBy         = $request->get('sortBy') ?? 'date';
-
-        list($adverts, $distances) = $this->engine->search($data);
-
-        $results = view('main.multipleAdvertPreview')
-            ->with([
-                       'adverts'         => $adverts,
-                       'subsubjects'     => $data->subsubjects,
-                       'selectedSubject' => $data->selectedSubject,
-                       'distances'       => $distances,
-                       'selectedCity'    => $data->city ?? null,
-                       'radius'          => $data->radius ?? null,
-                   ]
-            )->render();
-
-        return response()->json(
-            [
-                'params'    => $data,
-                'count'     => $adverts->total(),
-                'distances' => $distances,
-                'results'   => $results,
-            ]);
-    }
-
     public function searchRefactor(Request $request)
     {
-
         if ($request->get('subject') == null)
             return response()->json([]);
 
-        $subject = SubSubject::where('name', $request->get('subject'))->first();
-
-        $data = new SearchArguments($request->get('subject'),
-                                    $subject,
-                                    implode(',', SubSubject::all()->pluck('name')->toArray()),
-                                    $subject->id ?? null,
-                                    $request->get('lat') ?? null,
-                                    $request->get('lng') ?? null,
-                                    $this->mapRadius($request->get('radius'))[0],
-                                    $this->mapRadius($request->get('radius'))[1],
-                                    explode(',', $request->get('city'))[0] ?? null,
-                                    $request->get('gender') ?? 'both',
-                                    $request->get('sortBy') ?? 'date');
-
-        $coord = [];
-
-        if ($data->getCity() and $data->getLgn() == NULL)
-            $coord = $this->geocode($data->getCity());
-
-        if (count($coord)) {
-            $data->setLat($coord[0]);
-            $data->setLgn($coord[1]);
-        }
+        $data = SearchArguments::fromArray($request->all());
 
         $search = new Search();
 
@@ -257,73 +193,5 @@ class ListAdvertController extends Controller
             $r[] = array_merge(array_merge($value, $s[$key]), ['class' => $icons[$s[$key]['parent_id']]]);
         }
         return collect($r);
-    }
-
-    private function mapRadius(int $radius = null)
-    {
-        $map = [
-            1 => [5,
-                '5 km'],
-            2 => [10,
-                '10 km'],
-            3 => [20,
-                '20 km'],
-            4 => [1,
-                'à domicile'],
-        ];
-
-        if (isset($map[$radius]))
-            return $map[$radius];
-
-        return [null,
-            null];
-    }
-
-    function geocode($address)
-    {
-
-        // url encode the address
-        $address = urlencode($address);
-
-        // google map geocode api url
-        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc";
-
-        // get the json response
-        $resp_json = file_get_contents($url);
-
-        // decode the json
-        $resp = json_decode($resp_json, true);
-
-        // response status will be 'OK', if able to geocode given address
-        if ($resp['status'] == 'OK') {
-
-            // get the important data
-            $lati              = $resp['results'][0]['geometry']['location']['lat'];
-            $longi             = $resp['results'][0]['geometry']['location']['lng'];
-            $formatted_address = $resp['results'][0]['formatted_address'];
-
-            // verify if data is complete
-            if ($lati && $longi && $formatted_address) {
-
-                // put the data in the array
-                $data_arr = [];
-
-                array_push(
-                    $data_arr,
-                    $lati,
-                    $longi,
-                    $formatted_address
-                );
-
-                return [$lati,
-                    $longi];
-
-            } else {
-                return [];
-            }
-
-        } else {
-            return [];
-        }
     }
 }
