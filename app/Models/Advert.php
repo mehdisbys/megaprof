@@ -216,43 +216,8 @@ class Advert extends Model
         return $query->get();
     }
 
-    public static function radiusSearch(array $advertIds, $lat, $lng, int $radius = null, string $sortBy = 'distance', $gender)
-    {
-        $query = DB::table('adverts');
 
-	$query->whereNotNull('approved_at');
-        
-	if (in_array($gender, ['man', 'woman'])) {
-            $query = $query->join('users', function ($join) use ($gender) {
-                $join->on('adverts.user_id', '=', 'users.id')
-                    ->where('users.gender', '=', $gender);
-            });
-        };
-
-        if ($lat and $lng) {
-            $query->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
-    COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
-        }
-
-        if (isset($radius))
-            $query->having('distance', '<', $radius);
-
-        if (isset($advertIds))
-            $query->whereIn('adverts.id', $advertIds);
-
-        if ($lat and $lng and $sortBy === 'distance')
-            $query->orderBy('distance', 'ASC');
-
-        if ($sortBy === 'date')
-            $query->orderBy('adverts.updated_at', 'ASC');
-
-        if ($sortBy === 'price')
-            $query->orderBy('price', 'ASC');
-
-        return $query->paginate(self::$paginateCount);
-    }
-
-    public static function radiusSearchRefactor($lat, $lng, int $radius = null, string $sortBy = 'distance', $gender, $subjectId, array $exceptAdvertIds = [])
+    public static function radiusSearch($lat, $lng, int $radius = null, string $sortBy = 'distance', $gender, $subjectId, array $exceptAdvertIds = [])
     {
         $query = DB::table('adverts');
 

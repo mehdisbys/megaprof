@@ -93,7 +93,7 @@ class ListAdvertController extends Controller
     }
 
     //TODO TEST search location by radius
-    public function searchRefactor(Request $request)
+    public function search(Request $request)
     {
         if ($request->get('subject') == null)
             return response()->json([]);

@@ -15,7 +15,7 @@ class Search implements SearchAdvertContract
         $rawResults = null;
         $distances  = null;
 
-        $rawResults = Advert::radiusSearchRefactor($data->getLat() ?? null, $data->getLgn() ?? null, $data->getRadius() ?? null, $data->getSortBy() ?? 'distance', $data->getGender() ?? 'both', $data->getSubjectId(), []);
+        $rawResults = Advert::radiusSearch($data->getLat() ?? null, $data->getLgn() ?? null, $data->getRadius() ?? null, $data->getSortBy() ?? 'distance', $data->getGender() ?? 'both', $data->getSubjectId(), []);
 
         $distances  = array_pluck($rawResults, 'distance', 'id');
 
