@@ -6,6 +6,9 @@ use App\Http\Requests\BookLesson;
 use App\Models\Advert;
 use App\Models\Booking;
 use App\Taelam\Booking\Exceptions\AdvertNotFound;
+use App\Taelam\Booking\Exceptions\BookingNotFound;
+use App\Taelam\Booking\Exceptions\BookingRequestAlreadyHasAReply;
+use App\Taelam\Booking\Exceptions\InvalidReplyToBookingRequest;
 use App\Taelam\Booking\Exceptions\StudentNotFound;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
 use App\Taelam\Booking\Lesson;
@@ -63,19 +66,25 @@ class BookCourseController extends Controller
 
     public function replyBookingRequest($booking_id, $answer)
     {
-        $booking = Booking::bookingExists($booking_id);
+        $lesson = new Lesson();
 
-        if ($booking == null) {
+        try {
+            $lesson->teacherReply($booking_id, $answer);
+        }
+        catch (BookingNotFound $e) {
             error("Cette demande de cours n'existe pas");
             return redirect()->back();
         }
-        $booking->answer = $answer;
-        $booking->save();
-
-        Event::fire(new BookingRequestReply($booking));
+        catch (BookingRequestAlreadyHasAReply $e) {
+            error("Vous avez déjà répondu à cette demande");
+            return redirect()->back();
+        }
+        catch (InvalidReplyToBookingRequest $e) {
+            error("Réponse à la demande de cours invalide");
+            return redirect()->back();
+        }
 
         thanks("Votre réponse a été envoyée à l'élève avec succès");
-
         return redirect('/mon-compte');
     }
 }

@@ -3,8 +3,13 @@
 
 namespace Tests;
 
+use App\Events\BookingRequestReply;
+use App\Events\BookingRequestSent;
 use App\Models\Advert;
 use App\Models\User;
+use App\Taelam\Booking\Exceptions\BookingNotFound;
+use App\Taelam\Booking\Exceptions\BookingRequestAlreadyHasAReply;
+use App\Taelam\Booking\Exceptions\InvalidReplyToBookingRequest;
 use App\Taelam\Booking\Exceptions\ProfCannotBookOwnLesson;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
 use App\Taelam\Booking\Lesson;
@@ -18,6 +23,17 @@ class LessonTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testCanBookLesson()
+    {
+        $this->expectsEvents(BookingRequestSent::class);
+
+        $advert  = Advert::inRandomOrder()->first();
+        $details = $this->fakeBookingForm($advert);
+        $lesson  = new Lesson();
+        $student = User::inRandomOrder()->where('id', '<>', $advert->user->id)->first();
+        $lesson->book($student, $details);
+    }
+
     public function testProfCannotBookOwnAdvert()
     {
         $this->expectException(ProfCannotBookOwnLesson::class);
@@ -28,16 +44,77 @@ class LessonTest extends TestCase
         $lesson->book($advert->user, $details);
     }
 
-    public function test_under_18_cannot_book_lesson()
+    public function testUnder18CannotBookLesson()
     {
         $this->expectException(TooYoungToBookLessonOnYourOwn::class);
 
-        $advert             = Advert::inRandomOrder()->first();
-        $details            = $this->fakeBookingForm($advert);
-        $lesson             = new Lesson();
-        $student            = User::inRandomOrder()->where('id', '<>', $advert->user->id)->first();
+        $advert  = Advert::inRandomOrder()->first();
+        $details = $this->fakeBookingForm($advert);
+        $lesson  = new Lesson();
+        $student = User::inRandomOrder()->where('id', '<>', $advert->user->id)->first();
         $details->setDobYear(date('Y') - 17);
         $lesson->book($student, $details);
+    }
+
+    public function testCanAcceptBookingRequest()
+    {
+        $this->expectsEvents(BookingRequestReply::class);
+
+        $advert  = Advert::inRandomOrder()->first();
+        $details = $this->fakeBookingForm($advert);
+        $lesson  = new Lesson();
+        $student = User::inRandomOrder()->where('id', '<>', $advert->user->id)->first();
+        $booking = $lesson->book($student, $details);
+
+        $lesson->teacherReply($booking->id, Lesson::ACCEPT, $advert->user->id);
+    }
+
+    public function testCanRejectBookingRequest()
+    {
+        $this->expectsEvents(BookingRequestReply::class);
+
+        $advert  = Advert::inRandomOrder()->first();
+        $details = $this->fakeBookingForm($advert);
+        $lesson  = new Lesson();
+        $student = User::inRandomOrder()->where('id', '<>', $advert->user->id)->first();
+        $booking = $lesson->book($student, $details);
+
+        $lesson->teacherReply($booking->id, Lesson::REJECT, $advert->user->id);
+    }
+
+    public function testCannotReplyBookingRequestThatDoesntExist()
+    {
+        $this->expectException(BookingNotFound::class);
+        $advert  = Advert::inRandomOrder()->first();
+        $lesson  = new Lesson();
+        $lesson->teacherReply(99999, Lesson::REJECT, $advert->user->id);
+    }
+
+    public function testCannotReplyBookingRequestThatHasAReplyAlready()
+    {
+        $this->expectException(BookingRequestAlreadyHasAReply::class);
+
+        $advert  = Advert::inRandomOrder()->first();
+        $details = $this->fakeBookingForm($advert);
+        $lesson  = new Lesson();
+        $student = User::inRandomOrder()->where('id', '<>', $advert->user->id)->first();
+        $booking = $lesson->book($student, $details);
+
+        $lesson->teacherReply($booking->id, Lesson::REJECT, $advert->user->id);
+        $lesson->teacherReply($booking->id, Lesson::REJECT, $advert->user->id);
+    }
+
+    public function testCannotReplyBookingRequestWithInvalidAnswer()
+    {
+        $this->expectException(InvalidReplyToBookingRequest::class);
+
+        $advert  = Advert::inRandomOrder()->first();
+        $details = $this->fakeBookingForm($advert);
+        $lesson  = new Lesson();
+        $student = User::inRandomOrder()->where('id', '<>', $advert->user->id)->first();
+        $booking = $lesson->book($student, $details);
+
+        $lesson->teacherReply($booking->id, 'maybe', $advert->user->id);
     }
 
 

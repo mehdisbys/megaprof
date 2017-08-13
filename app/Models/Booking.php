@@ -68,9 +68,9 @@ class Booking extends Model
             ->get();
     }
 
-    public static function bookingExists($booking_id)
+    public static function bookingExists($booking_id, $userId = null)
     {
-        return static::where('prof_user_id', \Auth::id())->where('id', $booking_id)->first();
+        return static::where('prof_user_id', $userId ?? \Auth::id())->where('id', $booking_id)->first();
     }
 
     public function isStudent()
