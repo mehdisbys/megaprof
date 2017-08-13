@@ -7,30 +7,23 @@ use App\Models\User;
 use App\Taelam\Booking\Exceptions\ProfCannotBookOwnLesson;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
 use App\Events\BookingRequestSent;
-use Carbon\Carbon;
 
 class Lesson
 {
 
-    public function book (User $student, array $details) : Booking
+    public function book (User $student, LessonDetails $details) : Booking
     {
-        if($student->id === $details['prof_user_id'] )
+        if($student->id === $details->getProfUserId() )
         {
             throw new ProfCannotBookOwnLesson();
         }
 
-        $dateOfBirth = Carbon::createFromDate($details["dobyear"], $details["dobmonth"], $details["dobday"]);
-
-        if($dateOfBirth->age < 18)
+        if($details->getStudentAge() < 18)
         {
             throw new TooYoungToBookLessonOnYourOwn();
         }
 
-        $details['birthdate'] = implode('/', [$details["dobday"], $details["dobmonth"], $details["dobyear"]]);
-
-        $detailsA = array_only($details, ['prof_user_id', 'advert_id', 'presentation', 'date', 'location', 'client', 'mobile', 'addresse', 'pick_a_date', 'pick_a_location', 'birthdate']);
-
-        $bookModel = Booking::create($detailsA + ['student_user_id' => $student->id]);
+        $bookModel = Booking::create($details->toArray() + ['student_user_id' => $student->id]);
 
         event(new BookingRequestSent($bookModel));
 

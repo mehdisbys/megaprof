@@ -9,6 +9,7 @@ use App\Taelam\Booking\Exceptions\AdvertNotFound;
 use App\Taelam\Booking\Exceptions\StudentNotFound;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
 use App\Taelam\Booking\Lesson;
+use App\Taelam\Booking\LessonDetails;
 use Illuminate\Support\Facades\Event;
 
 
@@ -35,7 +36,7 @@ class BookCourseController extends Controller
             if(Advert::find($request->get('advert_id')) == null)
                 throw new AdvertNotFound();
 
-            $lesson->book($student, $request->all());
+            $lesson->book($student, LessonDetails::fromArray($request->all()));
         }
         catch (AdvertNotFound $e) {
             info_message("Une erreur est survenue, veuillez réessayer plus tard");
