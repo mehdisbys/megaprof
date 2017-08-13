@@ -1,47 +1,54 @@
 <?php
 namespace App\Http\Controllers;
 
-
 use App\Events\BookingRequestReply;
-use App\Events\BookingRequestSent;
 use App\Http\Requests\BookLesson;
 use App\Models\Advert;
 use App\Models\Booking;
-use Carbon\Carbon;
+use App\Taelam\Booking\Exceptions\AdvertNotFound;
+use App\Taelam\Booking\Exceptions\StudentNotFound;
+use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
+use App\Taelam\Booking\Lesson;
 use Illuminate\Support\Facades\Event;
 
 
 class BookCourseController extends Controller
 {
-    public function bookLesson($slug)
+    public function bookLesson($slug, $testing = false)
     {
+        if($testing) $testing = true; ;
+
         $advert = Advert::findBySlugOr404($slug);
 
-        return view('main.bookLesson')->with(compact('advert'));
+        return view('main.bookLesson')->with(compact('advert', 'testing'));
     }
 
     public function postBookLesson(BookLesson $request)
     {
-        $booking = $request->only(['prof_user_id', 'advert_id', 'presentation','date','location','client','mobile','addresse', 'pick_a_date','pick_a_location']);
+        $lesson = new Lesson();
 
-        $date = $request->only([ 'dobday', 'dobmonth','dobyear']);
+        try {
+            $student = \Auth::user();
+            if ($student == null)
+                throw new StudentNotFound();
 
-        $dateOfBirth = Carbon::createFromDate($date["dobyear"], $date["dobmonth"], $date["dobday"]);
+            if(Advert::find($request->get('advert_id')) == null)
+                throw new AdvertNotFound();
 
-
-        if($dateOfBirth->age < 18)
-        {
+            $lesson->book($student, $request->all());
+        }
+        catch (AdvertNotFound $e) {
+            info_message("Une erreur est survenue, veuillez réessayer plus tard");
+            return redirect()->back();
+        }
+        catch (StudentNotFound $e) {
+            info_message("Vous devez être connecté pour pouvoir réserver une annonce");
+            return redirect()->back();
+        }
+        catch (TooYoungToBookLessonOnYourOwn $e) {
             info_message("Vous devez être adulte pour pouvoir réserver une annonce");
             return redirect()->back();
         }
-
-        $booking['student_user_id'] = \Auth::id();
-
-        $booking['birthdate'] = implode('/', [$date["dobday"], $date["dobmonth"], $date["dobyear"]]);
-
-        $bookModel = Booking::create($booking);
-
-        Event::fire(new BookingRequestSent($bookModel));
 
         thanks('Votre demande de cours a été envoyée au professeur avec succès');
 

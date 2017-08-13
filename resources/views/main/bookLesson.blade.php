@@ -56,6 +56,8 @@
             </div>
         </div>
 
+            <?php $radioClass = $testing ? '' : 'no-display' ?>
+
         <div class="col-md-7">
             <h2 class="col-md-10">Réservez votre première heure de cours avec {{ $advert->user->firstname}}</h2>
 
@@ -93,19 +95,19 @@
                 </div>
                 <div class="col-md-8">
                     <div class="ck-button">
-                        {!! Form::radio('date','asap', old('date'),['class' => 'no-display', 'id' => 'date_asap']) !!}
+                        {!! Form::radio('date','asap', old('date'),['class' => $radioClass, 'id' => 'date_asap']) !!}
                         <label for='date_asap'>
                             <span>Au plus tôt</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('date','this_week', null,['class' => 'no-display', 'id' => 'date_this_week']) !!}
+                        {!! Form::radio('date','this_week', null,['class' => $radioClass, 'id' => 'date_this_week']) !!}
                         <label for='date_this_week'>
                             <span>Cette semaine</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('date','custom', null,['class' => 'no-display', 'id' => 'date_custom']) !!}
+                        {!! Form::radio('date','custom', null,['class' => $radioClass, 'id' => 'date_custom']) !!}
                         <label for='date_custom'>
                             <span>Date au choix</span>
                         </label>
@@ -120,31 +122,31 @@
                 </div>
                 <div class="col-md-8 topmargin-sm">
                     <div class="ck-button">
-                        {!! Form::radio('location','teacher', null,['class' => 'no-display', 'id' => 'location_teacher']) !!}
+                        {!! Form::radio('location','teacher', null,['class' => $radioClass, 'id' => 'location_teacher']) !!}
                         <label for='location_teacher'>
                             <span>Chez {{$advert->user->firstname}}</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('location','my_place', null,['class' => 'no-display', 'id' => 'location_my_place']) !!}
+                        {!! Form::radio('location','my_place', null,['class' => $radioClass, 'id' => 'location_my_place']) !!}
                         <label for='location_my_place'>
                             <span>Chez moi</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('location','any', null,['class' => 'no-display', 'id' => 'location_any']) !!}
+                        {!! Form::radio('location','any', null,['class' => $radioClass, 'id' => 'location_any']) !!}
                         <label for='location_any'>
                             <span>Les deux me vont</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('location','webcam', null,['class' => 'no-display', 'id' => 'location_webcam']) !!}
+                        {!! Form::radio('location','webcam', null,['class' => $radioClass, 'id' => 'location_webcam']) !!}
                         <label for='location_webcam'>
                             <span>Par Webcam</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('location','custom', null,['class' => 'no-display', 'id' => 'location_custom']) !!}
+                        {!! Form::radio('location','custom', null,['class' => $radioClass, 'id' => 'location_custom']) !!}
                         <label for='location_custom'>
                             <span>Proposer un lieu</span>
                         </label>
@@ -158,13 +160,13 @@
                 </div>
                 <div class="col-md-8 topmargin-sm">
                     <div class="ck-button">
-                        {!! Form::radio('client','myself', null,['class' => 'no-display', 'id' => 'client_myself']) !!}
+                        {!! Form::radio('client','myself', null,['class' => $radioClass, 'id' => 'client_myself']) !!}
                         <label for='client_myself'>
                             <span>Moi</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('client','notme', null,['class' => 'no-display', 'id' => 'client_notme']) !!}
+                        {!! Form::radio('client','notme', null,['class' => $radioClass, 'id' => 'client_notme']) !!}
                         <label for='client_notme'>
                             <span>Quelqu'un d'autre</span>
                         </label>
@@ -174,13 +176,13 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="ck-button">
-                        {!! Form::radio('gender','man', null,['class' => 'no-display', 'id' => 'gender_man']) !!}
+                        {!! Form::radio('gender','man', null,['class' => $radioClass, 'id' => 'gender_man']) !!}
                         <label for='gender_man'>
                             <span>Homme</span>
                         </label>
                     </div>
                     <div class="ck-button">
-                        {!! Form::radio('gender','woman', null,['class' => 'no-display', 'id' => 'gender_woman']) !!}
+                        {!! Form::radio('gender','woman', null,['class' => $radioClass, 'id' => 'gender_woman']) !!}
                         <label for='gender_woman'>
                             <span>Femme</span>
                         </label>
@@ -209,7 +211,7 @@
                 </div>
 
                 <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
-                    <button type="submit" class="button button-3d button-large button-rounded">
+                    <button type="submit" class="button button-3d button-large button-rounded" id="submitForm">
                         Envoyer ma demande
                     </button>
                 </div>

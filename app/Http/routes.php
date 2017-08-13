@@ -122,7 +122,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/completer-profil', 'DashboardController@completeProfile');
 
         // Book a lesson
-        Route::get('/mise-en-relation/{slug}', 'BookCourseController@bookLesson');
+        Route::get('/mise-en-relation/{slug}/{testing?}', 'BookCourseController@bookLesson');
         Route::post('/reserver-un-cours', 'BookCourseController@postBookLesson');
 
         // Answer a booking
