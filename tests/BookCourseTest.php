@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-
 use App\Models\Booking;
 use App\Models\User;
 use Faker\Factory as Faker;
@@ -75,6 +74,7 @@ class BookCourseTest extends DuskTestCase
     {
         $advert  = $this->exampleAdvert();
         $details = $this->fakeBookingForm($advert);
+        //TODO create through Lesson.php
         $booking = Booking::create($details + ['student_user_id' => User::inRandomOrder()->first()->id]);
 
 
@@ -88,6 +88,16 @@ class BookCourseTest extends DuskTestCase
 
         $this->assertEquals('no', $booking->answer);
     }
+
+    //TODO
+    //public function test_prof_cannot_book_own_advert(){}
+    //TODO
+    //public function test_accepted_booking_cannot_be_modified(){}
+    //TODO
+    //public function test_rejected_booking_cannot_be_modified(){}
+    //TODO
+    //public function test_under_18_cannot_book_lesson(){}
+
 
     private function fakeBookingForm(\App\Models\Advert $advert)
     {
