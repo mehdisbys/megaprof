@@ -1,34 +1,27 @@
 <?php
+
 namespace Tests;
 
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Models\Booking;
 use App\Models\User;
 use Faker\Factory as Faker;
-use Illuminate\Support\Facades\Auth;
 use Laravel\Dusk\Browser;
 
 class BookCourseTest extends DuskTestCase
 {
-    use DatabaseTransactions;
-
     private $prof;
-
     private $booking;
 
 
-    /** @test */
     public function test_book_course()
     {
-        $advert = $this->exampleAdvert();
-
+        $advert     = $this->exampleAdvert();
         $this->prof = $advert->prof;
-        $faker = Faker::create();
+        $faker      = Faker::create();
 
-       $presentation = $faker->paragraph;
+        $presentation = $faker->paragraph;
         $this->browse(function (Browser $browser) use ($advert, $presentation) {
-
-
             $browser
                 ->loginAs(User::first()->id)
                 ->visit("/$advert->slug")
@@ -45,13 +38,13 @@ class BookCourseTest extends DuskTestCase
             $browser->driver->executeScript('window.scrollTo(0, 1000);');
 
             $browser->radio('gender', 'man')
-                ->type('mobile', '0623435324')
-                ->select('dobday', '06')
-                ->select('dobmonth', '06')
-                ->select('dobyear', '1984')
-                ->type('addresse', '131 Victoria Street, Londres, Royaume-Uni')
-                ->click('#submitForm')
-                ->assertSee('Votre demande de cours a été envoyée au professeur avec succès');
+                    ->type('mobile', '0623435324')
+                    ->select('dobday', '06')
+                    ->select('dobmonth', '06')
+                    ->select('dobyear', '1984')
+                    ->type('addresse', '131 Victoria Street, Londres, Royaume-Uni')
+                    ->click('#submitForm')
+                    ->assertSee('Votre demande de cours a été envoyée au professeur avec succès');
         });
 
         $this->booking = \App\Models\Booking::where(['presentation' => $presentation])->get();
@@ -60,68 +53,65 @@ class BookCourseTest extends DuskTestCase
         return $this->booking->first();
     }
 
-//    /** @test
-//     *
-//     * @depends test_book_course
-//     */
-//    public function test_accept_course_booking_request($booking)
-//    {
-//        //Fucking laravel..
-//        $booking = \App\Models\Booking::create($booking->toArray());
-//
-//        $this->loginAsUser($this->prof);
-//
-//        $this->visit("/mon-compte")
-//            ->see("Mes demandes de cours");
-//
-//        $this->visit("/demande/{$booking->id}/yes");
-//
-//        $id = $booking->id;
-//
-//        $this->booking = \App\Models\Booking::find($id);
-//
-//        $this->assertNotNull($this->booking, "Booking model with ID $id wasnt found");
-//
-//        $this->assertEquals('yes', $this->booking->answer);
-//
-//    }
-//
-//    /** @test
-//     *
-//     * @depends test_book_course
-//     */
-//    public function test_reject_course_booking_request($booking)
-//    {
-//        //Fucking laravel..
-//        $booking = \App\Models\Booking::create($booking->toArray());
-//
-//        $this->loginAsUser($this->prof);
-//
-//        $this->visit("/mon-compte")
-//            ->see("Mes demandes de cours");
-//
-//        $this->visit("/demande/{$booking->id}/no");
-//
-//        $this->booking = \App\Models\Booking::find($booking->id);
-//
-//        $this->assertNotNull($this->booking);
-//
-//        $this->assertEquals('no', $this->booking->answer);
-//    }
-
-
-    public function exampleAdvert()
+    public function test_accept_course_booking_request()
     {
-        return \App\Models\Advert::liveAdverts()->first();
+        $advert  = $this->exampleAdvert();
+        $details = $this->fakeBookingForm($advert);
+        $booking = Booking::create($details + ['student_user_id' => User::inRandomOrder()->first()->id]);
+
+        $this->browse(function (Browser $browser) use ($advert, $booking) {
+            $browser
+                ->loginAs($advert->user)
+                ->visit("/demande/{$booking->id}/yes");
+        });
+
+        $booking->refresh();
+
+        $this->assertEquals('yes', $booking->answer);
+
     }
 
-    public function loginAsUser(User $usr = null)
+    public function test_reject_course_booking_request()
     {
-        $user = $usr ?? User::first();
+        $advert  = $this->exampleAdvert();
+        $details = $this->fakeBookingForm($advert);
+        $booking = Booking::create($details + ['student_user_id' => User::inRandomOrder()->first()->id]);
 
-        Auth::loginUsingId($user->id);
 
-        return $user;
+        $this->browse(function (Browser $browser) use ($advert, $booking) {
+            $browser
+                ->loginAs($advert->user)
+                ->visit("/demande/{$booking->id}/no");
+        });
+
+        $booking->refresh();
+
+        $this->assertEquals('no', $booking->answer);
+    }
+
+    private function fakeBookingForm(\App\Models\Advert $advert)
+    {
+        $faker = Faker::create();
+
+        return
+            [
+                'advert_id'    => $advert->id,
+                'prof_user_id' => $advert->user->id,
+                'subject_id' => 39,
+                'presentation' => $faker->paragraph,
+                'date'         => 'this_week',
+                'location'     => 'any',
+                'client'       => 'myself',
+                'gender'       => 'man',
+                'mobile'       => '0623435324',
+                'birthdate'    => '06/12/1984',
+                'addresse'     => '131 Victoria Street, Londres, Royaume-Uni',
+            ];
+    }
+
+    private function exampleAdvert()
+    {
+        return \App\Models\Advert::liveAdverts()->first();
     }
 
 }
