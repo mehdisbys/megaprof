@@ -4,6 +4,7 @@ namespace Tests;
 
 use App\Models\Booking;
 use App\Models\User;
+use App\Taelam\Booking\Lesson;
 use Faker\Factory as Faker;
 use Laravel\Dusk\Browser;
 
@@ -46,7 +47,7 @@ class BookCourseTest extends DuskTestCase
                     ->assertSee('Votre demande de cours a été envoyée au professeur avec succès');
         });
 
-        $this->booking = \App\Models\Booking::where(['presentation' => $presentation])->get();
+        $this->booking = Booking::where(['presentation' => $presentation])->get();
         $this->assertNotNull($this->booking);
 
         return $this->booking->first();
@@ -56,7 +57,8 @@ class BookCourseTest extends DuskTestCase
     {
         $advert  = $this->exampleAdvert();
         $details = $this->fakeBookingForm($advert);
-        $booking = Booking::create($details + ['student_user_id' => User::inRandomOrder()->first()->id]);
+        $lesson  = new Lesson();
+        $booking = $lesson->book(User::inRandomOrder()->first(), $details);
 
         $this->browse(function (Browser $browser) use ($advert, $booking) {
             $browser
@@ -74,8 +76,8 @@ class BookCourseTest extends DuskTestCase
     {
         $advert  = $this->exampleAdvert();
         $details = $this->fakeBookingForm($advert);
-        //TODO create through Lesson.php
-        $booking = Booking::create($details + ['student_user_id' => User::inRandomOrder()->first()->id]);
+        $lesson  = new Lesson();
+        $booking = $lesson->book(User::inRandomOrder()->first(), $details);
 
 
         $this->browse(function (Browser $browser) use ($advert, $booking) {
@@ -107,14 +109,16 @@ class BookCourseTest extends DuskTestCase
             [
                 'advert_id'    => $advert->id,
                 'prof_user_id' => $advert->user->id,
-                'subject_id' => 39,
+                'subject_id'   => 39,
                 'presentation' => $faker->paragraph,
                 'date'         => 'this_week',
                 'location'     => 'any',
                 'client'       => 'myself',
                 'gender'       => 'man',
                 'mobile'       => '0623435324',
-                'birthdate'    => '06/12/1984',
+                'dobday'       => '06',
+                'dobmonth'     => '12',
+                'dobyear'      => '1984',
                 'addresse'     => '131 Victoria Street, Londres, Royaume-Uni',
             ];
     }

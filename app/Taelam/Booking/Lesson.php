@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class Lesson
 {
 
-    public function book (User $student, array $details)
+    public function book (User $student, array $details) : Booking
     {
         $dateOfBirth = Carbon::createFromDate($details["dobyear"], $details["dobmonth"], $details["dobday"]);
 
@@ -27,6 +27,8 @@ class Lesson
         $bookModel = Booking::create($detailsA + ['student_user_id' => $student->id]);
 
         event(new BookingRequestSent($bookModel));
+
+        return $bookModel;
     }
 
 }
