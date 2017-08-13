@@ -1,18 +1,18 @@
 <?php
 
-namespace Tests;
+namespace Tests\Browser;
 
 use App\Models\Booking;
 use App\Models\User;
 use App\Taelam\Booking\Lesson;
 use Faker\Factory as Faker;
 use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
 
 class BookCourseTest extends DuskTestCase
 {
     private $prof;
     private $booking;
-
 
     public function test_book_course()
     {
@@ -92,14 +92,9 @@ class BookCourseTest extends DuskTestCase
     }
 
     //TODO
-    //public function test_prof_cannot_book_own_advert(){}
-    //TODO
     //public function test_accepted_booking_cannot_be_modified(){}
     //TODO
     //public function test_rejected_booking_cannot_be_modified(){}
-    //TODO
-    //public function test_under_18_cannot_book_lesson(){}
-
 
     private function fakeBookingForm(\App\Models\Advert $advert)
     {

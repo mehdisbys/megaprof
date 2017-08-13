@@ -4,6 +4,7 @@ namespace App\Taelam\Booking;
 
 use App\Models\Booking;
 use App\Models\User;
+use App\Taelam\Booking\Exceptions\ProfCannotBookOwnLesson;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
 use App\Events\BookingRequestSent;
 use Carbon\Carbon;
@@ -13,6 +14,11 @@ class Lesson
 
     public function book (User $student, array $details) : Booking
     {
+        if($student->id === $details['prof_user_id'] )
+        {
+            throw new ProfCannotBookOwnLesson();
+        }
+
         $dateOfBirth = Carbon::createFromDate($details["dobyear"], $details["dobmonth"], $details["dobday"]);
 
         if($dateOfBirth->age < 18)
