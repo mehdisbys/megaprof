@@ -92,11 +92,6 @@ class BookCourseTest extends DuskTestCase
         $this->assertEquals('no', $booking->answer);
     }
 
-    //TODO
-    //public function test_accepted_booking_cannot_be_modified(){}
-    //TODO
-    //public function test_rejected_booking_cannot_be_modified(){}
-
     private function fakeBookingForm(\App\Models\Advert $advert)
     {
         $faker = Faker::create();

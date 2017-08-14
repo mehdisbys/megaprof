@@ -47,7 +47,7 @@ class Kernel extends HttpKernel
         'auth.basic'  => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest'       => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'ownsAdvert'  => \App\Http\Middleware\IfOwnsAdvert::class,
-        'afterAdvert' => \App\Http\Middleware\AfterAdvert::class,
+       // 'afterAdvert' => \App\Http\Middleware\AfterAdvert::class,
         'isAdmin'     => IfIsAdmin::class,
         'revalidate'  => \App\Http\Middleware\PreventBackHistory::class,
     ];

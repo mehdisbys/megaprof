@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\RedirectResponse;
-use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class AfterAdvert
 {
@@ -30,6 +29,8 @@ class AfterAdvert
 
         switch ($config['action']) {
             case 'view' :
+                //dd($original);
+
                 return $response->setContent(view($config['view']['create'])
                     ->with($original->getArgs() + $config['args']));
 

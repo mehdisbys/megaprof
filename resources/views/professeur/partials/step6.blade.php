@@ -44,7 +44,7 @@
                                 <input type="file" name="img_upload" id="img_upload">
                         </div>
 
-                        <button type="submit" class="button button-3d button-large button-rounded">
+                        <button type="submit" class="button button-3d button-large button-rounded" id="submitStep6">
                             J'ai choisi ma photo
                         </button>
 

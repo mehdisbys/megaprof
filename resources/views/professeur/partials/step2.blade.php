@@ -49,7 +49,7 @@
 
                             @foreach($levels as $level)
 
-                                <div class="toggle toggle-bg clearfix">
+                                <div class="toggle toggle-bg clearfix" id="toggle_{{$subject->id}}">
 
                                     <div class="togglet"
                                          style="background-color: transparent; border: 1px dashed black;">
@@ -83,7 +83,7 @@
                                 <strong>Veuillez sélectionner au moins un niveau par activité avant de passer à l'étape
                                     suivante.</strong>
                             </div>
-                            <button type="submit" class="button button-3d button-large button-rounded">
+                            <button type="submit" class="button button-3d button-large button-rounded" id="submitStep2">
                                 Je valide mes choix
                             </button>
                         </div>

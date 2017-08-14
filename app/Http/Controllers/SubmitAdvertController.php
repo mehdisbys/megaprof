@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Events\ProfCreatedAdvert;
 use App\Helpers\AfterRequest;
 use App\Models\Advert;
-use App\Models\Avatar;
 use App\Models\SubSubject;
 use App\Models\Subject;
 use App\Models\SubjectsPerAdvert;
@@ -41,7 +40,7 @@ class SubmitAdvertController extends Controller
                 ->pluck('subject_id')
                 ->toArray();
         }
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return view ('professeur.advert.createStep1Subjects')->with(get_defined_vars());
     }
 
 
@@ -60,6 +59,7 @@ class SubmitAdvertController extends Controller
             $advert_id = $advert->id;
             session(['advert_id' => $advert_id]);
         } else {
+
             $advert    = Advert::find(session('advert_id'));
 
             if($advert)
@@ -85,10 +85,12 @@ class SubmitAdvertController extends Controller
 
         $subjectsArray = array_merge($subjectsArray, $subjectObjects);
 
+        session(['subjectsArray' => $subjectsArray]);
         // 5. Fill subjects_per_advert table
         SubjectsPerAdvert::fillSubjectForAdvert($advert->id, $subjectsArray);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return redirect()->action('SubmitAdvertController@getStep2TitleAndLevels');
+      //  return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
     }
 
     public function getStep2TitleAndLevels(Request $request)
@@ -97,6 +99,7 @@ class SubmitAdvertController extends Controller
         $subjects      = SubSubject::whereIn('id', $subjectsArray)->get();
         $levels        = Level::all();
         $advert_id     = session('advert_id');
+
 
         $checkedLevels = SubjectsPerAdvert::getLevelsPerSubjects($advert_id, $subjectsArray);
         $checked       = [];
@@ -116,7 +119,7 @@ class SubmitAdvertController extends Controller
 
         $advert = Advert::find($advert_id);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return view('professeur.advert.createStep2TitleAndLevels')->with(get_defined_vars());
     }
 
     public function postStep2TitleAndLevels(Request $request)
@@ -135,7 +138,7 @@ class SubmitAdvertController extends Controller
 
         SubjectsPerAdvert::fillLevelsPerSubjects(session('advert_id'), $levels);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return redirect()->action('SubmitAdvertController@getStep3AddressAndTravel');
     }
 
     public function getStep3AddressAndTravel()
@@ -143,7 +146,7 @@ class SubmitAdvertController extends Controller
         $advert_id = session('advert_id');
         $advert    = Advert::find($advert_id);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return view('professeur.advert.createStep3AddressAndTravel')->with(get_defined_vars());
     }
 
     public function postStep3AddressAndTravel(Request $request)
@@ -177,16 +180,15 @@ class SubmitAdvertController extends Controller
 
         $advert->update($loc_data);
 
-        return $this->afterRequest->init(__FUNCTION__, ['advert_id' => $advert_id,
-                                                        'advert'    => $advert]);
+        session(['advert_id' => $advert_id, 'advert'    => $advert]);
+        return redirect()->action('SubmitAdvertController@getStep4ContentAndExperience');
     }
 
     public function getStep4ContentAndExperience()
     {
         $advert_id = session('advert_id');
         $advert    = Advert::find($advert_id);
-
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return view('professeur.advert.createStep4ContentAndExperience')->with(get_defined_vars());
     }
 
     public function postStep4ContentAndExperience(Request $request)
@@ -203,7 +205,7 @@ class SubmitAdvertController extends Controller
 
         Advert::find(session('advert_id'))->update($content_data);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return redirect()->action('SubmitAdvertController@getStep5PriceAndConditions');
     }
 
     public function getStep5PriceAndConditions()
@@ -213,7 +215,7 @@ class SubmitAdvertController extends Controller
         $can_travel = $advert->can_travel;
         $can_webcam = $advert->can_webcam;
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars(), []);
+        return view('professeur.advert.createStep5PriceAndConditions')->with(get_defined_vars());
     }
 
     public function postStep5PriceAndConditions(Request $request)
@@ -240,7 +242,7 @@ class SubmitAdvertController extends Controller
 
         Advert::find(session('advert_id'))->update($data);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return redirect()->action('SubmitAdvertController@getStep6Picture');
     }
 
     public function getStep6Picture()
@@ -250,7 +252,7 @@ class SubmitAdvertController extends Controller
 
         $advert_id = session('advert_id');
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return view('professeur.advert.createStep6Picture')->with(get_defined_vars());
     }
 
     public function postStep6Picture(Request $request)
@@ -275,7 +277,8 @@ class SubmitAdvertController extends Controller
 
         $this->__publish($request);
 
-        return $this->afterRequest->init(__FUNCTION__, get_defined_vars());
+        return redirect()->action('SubmitAdvertController@getStep7Publish');
+
     }
 
     public function getStep7Publish(Request $request)

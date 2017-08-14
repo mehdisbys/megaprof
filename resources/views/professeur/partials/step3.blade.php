@@ -97,7 +97,7 @@
 
                     </div>
                     <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
-                        <button type="submit" class="button button-3d button-large button-rounded">
+                        <button type="submit" class="button button-3d button-large button-rounded" id="submitStep3">
                             J'ai défini où se dérouleront mes cours
                         </button>
                     </div>

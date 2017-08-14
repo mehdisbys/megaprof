@@ -87,7 +87,7 @@
                             <strong>Veuillez sélectionner au maximum 5 activités.</strong>
                         </div>
 
-                        <button type="submit" class="button button-3d button-large button-rounded">
+                        <button type="submit" class="button button-3d button-large button-rounded" id="submitStep1">
                             J'ai sélectionné les activités de mon annonce
                         </button>
                     </div>

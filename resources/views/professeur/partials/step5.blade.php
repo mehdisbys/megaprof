@@ -171,7 +171,7 @@
                             <div class="bs-callout bs-callout-warning  col-md-6 col-md-offset-3 alert alert-danger hidden">
                                 <strong>N'oubliez pas d'indiquer le prix pour une heure de cours</strong>
                             </div>
-                            <button type="submit" class="button button-3d button-large button-rounded">
+                            <button type="submit" class="button button-3d button-large button-rounded" id="submitStep5">
                                 J'ai défini le prix de mes cours
                             </button>
                         </div>

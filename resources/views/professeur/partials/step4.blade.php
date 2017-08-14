@@ -96,7 +96,7 @@
                         <h4>Il manque quelques champs à remplir</h4>
                         <strong>Veuillez remplir toutes les sections comportant une astérisque(*) avant de continuer.</strong>
                     </div>
-                    <button type="submit" class="button button-3d button-large button-rounded">
+                    <button type="submit" class="button button-3d button-large button-rounded" id="submitStep4">
                         J'ai défini le contenu de mes cours
                     </button>
                 </div>

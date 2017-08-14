@@ -1,10 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Events\BookingRequestReply;
 use App\Http\Requests\BookLesson;
 use App\Models\Advert;
-use App\Models\Booking;
 use App\Taelam\Booking\Exceptions\AdvertNotFound;
 use App\Taelam\Booking\Exceptions\BookingNotFound;
 use App\Taelam\Booking\Exceptions\BookingRequestAlreadyHasAReply;
@@ -13,7 +11,6 @@ use App\Taelam\Booking\Exceptions\StudentNotFound;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
 use App\Taelam\Booking\Lesson;
 use App\Taelam\Booking\LessonDetails;
-use Illuminate\Support\Facades\Event;
 
 
 class BookCourseController extends Controller
