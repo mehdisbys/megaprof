@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    {!! HTML::style("temp-css/awesomplete.css") !!}
+    {!! HTML::style("css/awesomplete.css") !!}
     {!! HTML::style("css/fa/css/font-awesome.min.css") !!}
     {!! HTML::style("css/slick.css") !!}
     {!! HTML::style("css/slick-theme.css") !!}

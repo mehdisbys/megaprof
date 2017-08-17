@@ -2,8 +2,6 @@
 
 namespace App\Console;
 
-use App\Console\Commands\GenerateSitemap;
-use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Reminders\Commands\RemindUsers;

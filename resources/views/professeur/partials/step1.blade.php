@@ -1,5 +1,5 @@
 {!! HTML::script("js/awesomplete/awesomplete.min.js")!!}
-{!! HTML::style("temp-css/awesomplete.css") !!}
+{!! HTML::style("css/awesomplete.css") !!}
 
 @include('professeur.process-steps.process-steps')
 
