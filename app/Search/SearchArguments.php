@@ -80,6 +80,11 @@ class SearchArguments
         $this->subject = $subject;
     }
 
+    public function getSubjectName()
+    {
+        return $this->subject->name;
+    }
+
     /**
      * @return mixed
      */

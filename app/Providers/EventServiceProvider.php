@@ -12,6 +12,7 @@ use App\Events\ProfCommentedOnStudent;
 use App\Events\ProfCreatedAdvert;
 use App\Events\StudentCommentedOnProf;
 use App\Events\UserCreatedAccountAndFirstLogin;
+use App\Events\UserDidASearch;
 use App\Listeners\DashboardNotificationsAfterAdSubmission;
 use App\Listeners\FirstLoginListener;
 use App\Listeners\NotifiyProfAdvertWasApproved;
@@ -24,6 +25,7 @@ use App\Listeners\NotifyProfOfPostedComment;
 use App\Listeners\NotifyStudentOfPostedComment;
 use App\Listeners\SendReminderToUser;
 use App\Listeners\SuccessAdvertCreatedNotification;
+use App\Listeners\ZeroSearchResultsNotifier;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Reminders\Events\ReminderEmail;
@@ -85,6 +87,10 @@ class EventServiceProvider extends ServiceProvider
             [
                 SendReminderToUser::class,
             ],
+        UserDidASearch::class =>
+        [
+            ZeroSearchResultsNotifier::class
+        ]
     ];
 
     /**
