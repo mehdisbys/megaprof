@@ -277,8 +277,7 @@ class SubmitAdvertController extends Controller
 
         $this->__publish($request);
 
-        return redirect()->action('SubmitAdvertController@getStep7Publish');
-
+        return redirect('/mon-compte');
     }
 
     public function getStep7Publish(Request $request)
