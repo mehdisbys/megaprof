@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Search\SearchStatistics;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Reminders\Commands\RemindUsers;
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\Inspire::class,
         \App\Console\Commands\GenerateSitemap::class,
         RemindUsers::class,
+        SearchStatistics::class
     ];
 
     /**
@@ -30,5 +32,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('inspire')->hourly();
         $schedule->command('sitemap:generate')->dailyAt('04:00');
         $schedule->command('remind_users:check')->dailyAt('05:00');
+        $schedule->command('search_statistics')->weekly()->mondays()->at('07:00');
     }
 }
