@@ -18,7 +18,6 @@
     "intervention/image": "^2.3",
     "predis/predis": "^1.0",
     "laravel/socialite": "^3.0",
-    "gregwar/captcha": "^1.1",
     "cviebrock/eloquent-sluggable": "^4.2",
     "guzzlehttp/guzzle": "^6.2",
     "laravel/dusk": "^1.0",
