@@ -79,7 +79,7 @@
     </div>
 
     <div class="col-md-12 text-center topmargin-lg-when-mobile mini-padding-top-when-mobile">
-        <a class="button button-dp-blue" href="/professeur">Je peux donner des cours</a>
+        <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
     </div>
 
     @include('main.latestPublishedAdverts')
