@@ -3325,6 +3325,31 @@ input[type="radio"] {
     }
 }
 
+.button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    margin: 5px;
+    padding: 0 22px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 30px;
+    color: #FFF;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+body:not(.device-touch) .button {
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
 #donner-des-cours, #submit-btn, .button {
     display: inline-block;
     padding: 5px 5px;
@@ -3712,3 +3737,36 @@ Create a CSS3 post-it note without images
 .mini-padding-top {
     padding-top: 35px;
 }
+
+#header {
+    position: relative;
+    background-color: #FFF;
+}
+
+#header,
+#header-wrap,
+#logo img,
+#primary-menu:not(.style-2),
+#primary-menu:not(.style-2) > ul {
+    height: 50px;
+    -webkit-transition: height .4s ease, opacity .3s ease;
+    -o-transition: height .4s ease, opacity .3s ease;
+    transition: height .4s ease, opacity .3s ease;
+}
+
+.topmargin { margin-top: 50px !important; }
+
+.bottommargin { margin-bottom: 50px !important; }
+
+.clear-bottommargin { margin-bottom: -50px !important; }
+
+.allmargin-sm { margin: 30px !important; }
+
+.leftmargin-sm { margin-left: 30px !important; }
+
+.rightmargin-sm { margin-right: 30px !important; }
+
+.topmargin-sm { margin-top: 30px !important; }
+.topmargin-xsm { margin-top: 7px !important; }
+
+.bottommargin-sm { margin-bottom: 30px !important; }

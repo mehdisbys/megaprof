@@ -3,7 +3,7 @@
 @section('content')
     {!! HTML::style("css/jquery-ui.css") !!}
     {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
-    {!! HTML::style('temp-css/ratings.css')!!}
+    {!! HTML::style('css/ratings.css')!!}
 
     {!! HTML::script("js/jquery-ui.js")!!}
 

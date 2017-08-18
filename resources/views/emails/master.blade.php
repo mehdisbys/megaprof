@@ -19,18 +19,17 @@
     <link rel="icon" sizes="32x32" type="image/png" href="/"/>
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
 
-{!! HTML::style('temp-css/normalize.css') !!}
-{!! HTML::style('temp-css/dashboard.css') !!}
-{!! HTML::style('temp-css/fonts.css') !!}
-{!! HTML::style('temp-css/footer.css') !!}
-{!! HTML::style('temp-css/header.css') !!}
-{!! HTML::style('temp-css/main.css') !!}
+{{--{!! HTML::style('temp-css/normalize.css') !!}--}}
+{{--{!! HTML::style('temp-css/dashboard.css') !!}--}}
+{{--{!! HTML::style('temp-css/fonts.css') !!}--}}
+{{--{!! HTML::style('temp-css/footer.css') !!}--}}
+{{--{!! HTML::style('temp-css/header.css') !!}--}}
+{{--{!! HTML::style('temp-css/main.css') !!}--}}
 {!! HTML::style('/css/bootstrap.min.css') !!}
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
 <!-- {!! HTML::script("js/bootstrap.min.js") !!} -->
 
-    <!-- TODO convert to sass files   -->
 </head>
 
 <body>
