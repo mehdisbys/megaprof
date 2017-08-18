@@ -253,10 +253,10 @@ class SearchArguments
         $subject = null;
 
         if (isset($request['subject']))
-            $subject = SubSubject::where('name', $request['subject'])->first();
+            $subject = SubSubject::where('name', str_replace('-', ' ', $request['subject']))->first();
 
         else
-            $subject = SubSubject::find($request['subjectId']);
+            $subject = SubSubject::find($request['subjectId'] ?? null);
 
         $data = new self($request['subject'] ?? $subject->name,
                          $subject,
