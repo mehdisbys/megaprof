@@ -123,7 +123,7 @@
         <h1 class="search-title">Apprenez sans limites</h1>
         <h4 class="text-center" style="color: black">Activités et cours de soutien entre particuliers</h4>
 
-        <div id="matieres" class="matieres-scroller hidden">
+        <div id="matieres" class="matieres-scroller hidden" style="color: white">
             <ul style="list-style: none">
                 <li>Arts</li>
                 <li>Droit</li>

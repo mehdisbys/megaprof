@@ -1631,7 +1631,7 @@ a.component-pagination-item:hover {
 
 .home-search {
     padding: 1px 180px;
-    background-image: url("/temp-images/backgrounds/header-banner-bg4.jpg");
+    background-image: url("/temp-images/backgrounds/header-banner-bg5.jpg");
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center;
@@ -3770,3 +3770,9 @@ Create a CSS3 post-it note without images
 .topmargin-xsm { margin-top: 7px !important; }
 
 .bottommargin-sm { margin-bottom: 30px !important; }
+
+.morocco-flag {
+    width:40px;
+    height:auto;
+    padding-bottom: 30px;
+}

@@ -58,6 +58,7 @@
                            href="/" title="Revenir à l'accueil de Taelam">
                             <img src="/temp-images/megaprof.png" width="170"
                                  alt="Cours particuliers avec Taelam"/>
+                            <img src="/images/icons/morocco_square_icon_64.png" alt="" class="morocco-flag">
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
@@ -72,14 +73,11 @@
                                 <li><a class="header-item" href="/logout">Se déconnecter</a></li>
                                 <li><a class="header-item" href="/faq">Aide</a></li>
                             @endif
-                            @if(Auth::check() == false and \Illuminate\Support\Facades\Request::is('professeur'))
-
-                                <li><a class="header-item" href="/login">Se connecter</a></li>
-                                <li><a class="header-item" href="/inscription">S'inscrire</a></li>
-                            @endif
 
                             @if(Auth::check() == false)
-                                <li><a class="header-item" href="/faq">Aide</a></li>
+                                    <li><a class="header-item" href="/login">Se connecter</a></li>
+                                    <li><a class="header-item" href="/inscription">S'inscrire</a></li>
+                                    <li><a class="header-item" href="/faq">Aide</a></li>
                                 <li><a id="donner-des-cours" class="button" href="/professeur">Donner des
                                         cours</a></li>
                             @endif
