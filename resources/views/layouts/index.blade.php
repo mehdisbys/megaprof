@@ -11,12 +11,12 @@
 
     <style>
         /* fade in */
-        #quote-message-container li {
+        #quote-message-container .animated {
             opacity: 0;
             list-style: none;
         }
 
-        #quote-message-container li.search_prof {
+        #quote-message-container .animated.search_prof {
             -webkit-animation: fade 2s ease-in-out forwards;
             -webkit-animation-delay: 1s;
             -moz-animation: fade 2s ease-in-out forwards;
@@ -27,7 +27,7 @@
             animation-delay: 1s;
         }
 
-        #quote-message-container li.find_prof {
+        #quote-message-container .animated.find_prof {
             -webkit-animation: fade 2s ease-in-out forwards;
             -webkit-animation-delay: 2.5s;
             -moz-animation: fade 2s ease-in-out forwards;
@@ -38,7 +38,7 @@
             animation-delay: 2.5s;
         }
 
-        #quote-message-container li.book_prof {
+        #quote-message-container .animated.book_prof {
             -webkit-animation: fade 2s ease-in-out forwards;
             -webkit-animation-delay: 4s;
             -moz-animation: fade 2s ease-in-out forwards;
@@ -49,7 +49,7 @@
             animation-delay: 4s;
         }
 
-        #quote-message-container li.learn {
+        #quote-message-container .animated.learn {
             -webkit-animation: fade 2s ease-in-out forwards;
             -webkit-animation-delay: 5.5s;
             -moz-animation: fade 2s ease-in-out forwards;
@@ -60,7 +60,7 @@
             animation-delay: 5.5s;
         }
 
-        #quote-message-container li.github {
+        #quote-message-container animated.github {
             -webkit-animation: fade 2s ease-in-out forwards;
             -webkit-animation-delay: 7s;
             -moz-animation: fade 2s ease-in-out forwards;
@@ -114,10 +114,14 @@
         }
     </style>
 
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+
     <!-- one ============= -->
     <div class="home-search medium-height-plus">
 
         <h1 class="search-title">Apprenez sans limites</h1>
+        <h4 class="text-center" style="color: black">Activités et cours de soutien entre particuliers</h4>
 
         <div id="matieres" class="matieres-scroller hidden">
             <ul style="list-style: none">
@@ -182,7 +186,7 @@
         <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
 
-    <div class="col-md-12 text-center topmargin-lg-when-mobile mini-padding-top-when-mobile">
+    <div class="col-md-12 text-center topmargin mini-padding-top-when-mobile">
         <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
     </div>
 
@@ -216,11 +220,11 @@
     <div class="student-info col-md-12" id="student-info-div">
         <div class="wraper">
             <div class="home-hare-opinion">
-                <div class="col-md-12"><h2 class="section-title">Trouver un professeur, c'est facile !</h2></div>
+                <div class="col-md-12"><h2 class="section-title">Trouver un professeur au Maroc, c'est facile !</h2></div>
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12" id="quote-message-container">
                         <ul>
-                            <li class="col-md-3 topmargin-lg-when-mobile search_prof">
+                            <li class="col-md-3 hidden topmargin-lg-when-mobile search_prof">
                                 <div class="col-md-12" data-tooltip="En un clic, Taelam vous
 
                                     propose une liste de professeurs
@@ -238,7 +242,7 @@
                             </li>
 
 
-                            <li class="col-md-3 topmargin-lg-when-mobile when-mo find_prof">
+                            <li class="col-md-3 hidden topmargin-lg-when-mobile when-mo find_prof">
                                 <div class="col-md-12" data-tooltip="Choisissez des professeurs
 
                                     sélectionnés et vérifiés par nos
@@ -255,7 +259,7 @@
                                 </div>
 
                             </li>
-                            <li class="col-md-3 topmargin-lg-when-mobile book_prof">
+                            <li class="col-md-3 hidden topmargin-lg-when-mobile book_prof">
                                 <div class="col-md-12" data-tooltip="Après avoir sélectionné une
 
                                     matière et un lieu, réservez
@@ -272,7 +276,7 @@
 
                             </li>
 
-                            <li class="col-md-3 topmargin-lg-when-mobile learn">
+                            <li class="col-md-3 hidden topmargin-lg-when-mobile learn">
                                 <div class="col-md-12" data-tooltip="Apprenez, échangez
 
                                     ou perfectionnez vos
@@ -357,7 +361,18 @@
     @include('includes.awesomeplete.diacritics')
 
     <script>
+
+        $(window).scroll(function () {
+            var y = $(window).scrollTop(),
+                x = $('#quote-message-container').offset().top - 650;
+            if (y > x) {
+                console.log($(window).scrollTop());
+                $('.hidden').addClass('animated').removeClass('hidden');
+            }
+        });
+
         $(document).ready(function () {
+
 
             $('.carousel').slick({
                 autoplay: true,
@@ -430,6 +445,8 @@
             $('#matieres').removeClass('hidden');
             $('#matieres').vTicker('init', {pause: 2000, mousePause: false});
         });
+
+
     </script>
 
     @include('includes.gmaps.autocomplete')
