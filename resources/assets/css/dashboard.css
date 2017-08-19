@@ -3304,26 +3304,7 @@ input[type="radio"] {
     width: 30%;
 }
 
-@media all and (max-width: 980px) {
 
-    #student-btn, #accueil-donner-des-cours {
-        width: 100%;
-    }
-
-    .prof-short-presentation {
-        width: 80%;
-    }
-
-    .topmargin-lg-when-mobile
-    {
-        margin-top: 80px !important;
-    }
-
-    .mini-padding-top-when-mobile
-    {
-        padding-top: 45px;
-    }
-}
 
 .button {
     display: inline-block;
@@ -3775,4 +3756,25 @@ Create a CSS3 post-it note without images
     width:40px;
     height:auto;
     padding-bottom: 30px;
+}
+
+@media all and (max-width: 980px) {
+
+    #student-btn, #accueil-donner-des-cours {
+        width: 100%;
+    }
+
+    .prof-short-presentation {
+        width: 80%;
+    }
+
+    .topmargin-lg-when-mobile
+    {
+        margin-top: 80px !important;
+    }
+
+    .mini-padding-top-when-mobile
+    {
+        padding-top: 125px;
+    }
 }

@@ -121,7 +121,7 @@
     <div class="home-search medium-height-plus">
 
         <h1 class="search-title">Apprenez sans limites</h1>
-        <h4 class="text-center" style="color: black">Activités et cours de soutien entre particuliers</h4>
+        <h4 class="text-center" style="color: white">Activités et cours de soutien entre particuliers</h4>
 
         <div id="matieres" class="matieres-scroller hidden" style="color: white">
             <ul style="list-style: none">
@@ -186,7 +186,7 @@
         <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
 
-    <div class="col-md-12 text-center topmargin mini-padding-top-when-mobile">
+    <div class="col-md-12 text-center topmargin mini-padding-top-when-mobile ">
         <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
     </div>
 
