@@ -9,6 +9,110 @@
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
     {!! HTML::script("js/jquery.vticker.min.js")!!}
 
+    <style>
+        /* fade in */
+        #quote-message-container li {
+            opacity: 0;
+            list-style: none;
+        }
+
+        #quote-message-container li.search_prof {
+            -webkit-animation: fade 2s ease-in-out forwards;
+            -webkit-animation-delay: 1s;
+            -moz-animation: fade 2s ease-in-out forwards;
+            -moz-animation-delay: 1s;
+            -o-animation: fade 2s ease-in-out forwards;
+            -o-animation-delay: 1s;
+            animation: fade 2s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        #quote-message-container li.find_prof {
+            -webkit-animation: fade 2s ease-in-out forwards;
+            -webkit-animation-delay: 2.5s;
+            -moz-animation: fade 2s ease-in-out forwards;
+            -moz-animation-delay: 2.5s;
+            -o-animation: fade 2s ease-in-out forwards;
+            -o-animation-delay: 2.5s;
+            animation: fade 2s ease-in-out forwards;
+            animation-delay: 2.5s;
+        }
+
+        #quote-message-container li.book_prof {
+            -webkit-animation: fade 2s ease-in-out forwards;
+            -webkit-animation-delay: 4s;
+            -moz-animation: fade 2s ease-in-out forwards;
+            -moz-animation-delay: 4s;
+            -o-animation: fade 2s ease-in-out forwards;
+            -o-animation-delay: 4s;
+            animation: fade 2s ease-in-out forwards;
+            animation-delay: 4s;
+        }
+
+        #quote-message-container li.learn {
+            -webkit-animation: fade 2s ease-in-out forwards;
+            -webkit-animation-delay: 5.5s;
+            -moz-animation: fade 2s ease-in-out forwards;
+            -moz-animation-delay: 5.5s;
+            -o-animation: fade 2s ease-in-out forwards;
+            -o-animation-delay: 5.5s;
+            animation: fade 2s ease-in-out forwards;
+            animation-delay: 5.5s;
+        }
+
+        #quote-message-container li.github {
+            -webkit-animation: fade 2s ease-in-out forwards;
+            -webkit-animation-delay: 7s;
+            -moz-animation: fade 2s ease-in-out forwards;
+            -moz-animation-delay: 7s;
+            -o-animation: fade 2s ease-in-out forwards;
+            -o-animation-delay: 7s;
+            animation: fade 2s ease-in-out forwards;
+            animation-delay: 7s;
+        }
+
+        li.instagram {
+            -webkit-animation: fade 2s ease-in-out forwards;
+            -webkit-animation-delay: 8.5s;
+            -moz-animation: fade 2s ease-in-out forwards;
+            -moz-animation-delay: 8.5s;
+            -o-animation: fade 2s ease-in-out forwards;
+            -o-animation-delay: 8.5s;
+            animation: fade 2s ease-in-out forwards;
+            animation-delay: 8.5s;
+        }
+
+        li.linkedin {
+            -webkit-animation: fade 2s ease-in-out forwards;
+            -webkit-animation-delay: 10s;
+            -moz-animation: fade 2s ease-in-out forwards;
+            -moz-animation-delay: 10s;
+            -o-animation: fade 2s ease-in-out forwards;
+            -o-animation-delay: 10s;
+            animation: fade 2s ease-in-out forwards;
+            animation-delay: 10s;
+        }
+
+        @-webkit-keyframes fade {
+            100% { opacity: 1; }
+        }
+
+        @-moz-keyframes fade {
+            100% { opacity: 1; }
+        }
+
+        @-o-keyframes fade {
+            100% { opacity: 1; }
+        }
+
+        @keyframes fade {
+            100% { opacity: 1; }
+        }
+
+        .presentation-icons {
+            width: 45%;
+        }
+    </style>
 
     <!-- one ============= -->
     <div class="home-search medium-height-plus">
@@ -82,6 +186,7 @@
         <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
     </div>
 
+
     @include('main.latestPublishedAdverts')
 
 
@@ -114,8 +219,9 @@
                 <div class="col-md-12"><h2 class="section-title">Trouver un professeur, c'est facile !</h2></div>
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12" id="quote-message-container">
-                        <div class="col-md-3">
-                            <div class="col-md-12" data-tooltip="En un clic, Taelam vous
+                        <ul>
+                            <li class="col-md-3 topmargin-lg-when-mobile search_prof">
+                                <div class="col-md-12" data-tooltip="En un clic, Taelam vous
 
                                     propose une liste de professeurs
 
@@ -124,15 +230,16 @@
                                     les goûts et les budgets près de
 
                                     chez vous
-                                "><i style="color:#7663ff;"
-                                     class="fa fa-binoculars fa-5x clearfix"></i></div>
-                            <div class="col-md-12">Découvrez des activités et des professeurs partout au Maroc</div>
+                                ">
+                                    <img class="presentation-icons" src="/images/icons/009-web-page.svg" alt="">
+                                </div>
+                                <div class="col-md-12">Découvrez des activités et des professeurs partout au Maroc</div>
 
-                        </div>
+                            </li>
 
 
-                        <div class="col-md-3">
-                            <div class="col-md-12" data-tooltip="Choisissez des professeurs
+                            <li class="col-md-3 topmargin-lg-when-mobile when-mo find_prof">
+                                <div class="col-md-12" data-tooltip="Choisissez des professeurs
 
                                     sélectionnés et vérifiés par nos
 
@@ -141,13 +248,15 @@
                                     professeur et atteignez-les grâce à
 
                                     un suivi personnalisé
-                                "><i style="color:#b0ed7c;" class="fa fa-bullseye fa-5x clearfix"></i>
-                            </div>
-                            <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, votre professeur</div>
+                                ">
+                                    <img class="presentation-icons" src="/images/icons/047-chat.svg" alt="">
+                                </div>
+                                <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, votre professeur
+                                </div>
 
-                        </div>
-                        <div class="col-md-3">
-                            <div class="col-md-12" data-tooltip="Après avoir sélectionné une
+                            </li>
+                            <li class="col-md-3 topmargin-lg-when-mobile book_prof">
+                                <div class="col-md-12" data-tooltip="Après avoir sélectionné une
 
                                     matière et un lieu, réservez
 
@@ -156,27 +265,28 @@
                                     qui correspond le mieux à
 
                                     vos attentes
-                                "><i style="color:#6a91ff;"
-                                     class="fa fa-calendar-check-o fa-5x clearfix"></i>
-                            </div>
-                            <div class="col-md-12">Réservez votre activité</div>
+                                ">
+                                    <img class="presentation-icons" src="/images/icons/teamwork.svg" alt="">
+                                </div>
+                                <div class="col-md-12">Réservez votre activité</div>
 
-                        </div>
+                            </li>
 
-                        <div class="col-md-3">
-                            <div class="col-md-12" data-tooltip="Apprenez, échangez
+                            <li class="col-md-3 topmargin-lg-when-mobile learn">
+                                <div class="col-md-12" data-tooltip="Apprenez, échangez
 
                                     ou perfectionnez vos
 
                                     connaissances
-                                "><i style="color:#ffcc66;"
-                                     class="fa fa-thumbs-o-up fa-5x clearfix"></i>
-                            </div>
-                            <div class="col-md-12">
+                                ">
+                                    <img class="presentation-icons" src="/images/icons/020-like-1.svg" alt="">
+                                </div>
+                                <div class="col-md-12">
 
-                                <div class="col-md-12">Commencez à apprendre !</div>
-                            </div>
-                        </div>
+                                    <div class="col-md-12">Commencez à apprendre !</div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
