@@ -16,7 +16,7 @@
     "spatie/laravel-tail": "dev-master",
     "intervention/image": "^2.3",
     "predis/predis": "^1.0",
-    "laravel/socialite": "2.0.21",
+    "laravel/socialite": "^3.0",
     "cviebrock/eloquent-sluggable": "^4.2",
     "guzzlehttp/guzzle": "^6.2",
     "laravel/dusk": "^1.0",
