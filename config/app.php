@@ -157,7 +157,6 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
@@ -215,7 +214,6 @@ return [
         'Form'         => Collective\Html\FormFacade::class,
         'HTML'         => Collective\Html\HtmlFacade::class,
         'Image'        => Intervention\Image\Facades\Image::class,
-        'Debugbar'     => Barryvdh\Debugbar\Facade::class,
         'Socialite'    => Laravel\Socialite\Facades\Socialite::class,
         'ModelToTable' => Gbrock\Table\Facades\Table::class,
     ],
