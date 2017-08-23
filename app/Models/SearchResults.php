@@ -12,4 +12,20 @@ class SearchResults extends Model
 
     protected $guarded = ['id'];
 
+    private static $recordSearches = true;
+
+    public static function disableRecording()
+    {
+        self::$recordSearches = false;
+    }
+
+    public static function enableRecording()
+    {
+        self::$recordSearches = true;
+    }
+
+    public static function shouldRecord() : bool
+    {
+        return self::$recordSearches;
+    }
 }

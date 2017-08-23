@@ -12,13 +12,14 @@ class ZeroSearchResultsNotifier
 
     public function handle(UserDidASearch $event)
     {
-        SearchResults::create([
-                                  'count'       => $event->count,
-                                  'subjectId'   => $event->subjectId,
-                                  'subjectName' => $event->subjectName,
-                                  'location'    => $event->location,
-                                  'ip'          => \Illuminate\Support\Facades\Request::ip()
-                              ]);
-
+        if (SearchResults::shouldRecord()) {
+            SearchResults::create([
+                                      'count'       => $event->count,
+                                      'subjectId'   => $event->subjectId,
+                                      'subjectName' => $event->subjectName,
+                                      'location'    => $event->location,
+                                      'ip'          => \Illuminate\Support\Facades\Request::ip()
+                                  ]);
+        }
     }
 }
