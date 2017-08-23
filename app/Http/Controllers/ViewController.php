@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Models\Comment;
+use App\Models\SearchResults;
 use App\Models\UserRatings;
 use App\Search\Search;
 use App\Search\SearchArguments;
@@ -59,6 +60,7 @@ class ViewController extends Controller
                                                'lgn'       => $advert->location_long
                                            ]);
 
+        SearchResults::disableRecording();
         $search = new Search();
 
         list($adverts, $distances) = $search->search($data, [$advert->id]);
