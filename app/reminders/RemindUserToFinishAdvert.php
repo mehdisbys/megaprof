@@ -57,7 +57,7 @@ class RemindUserToFinishAdvert implements ReminderInterface
 
     public function getEmailSubject(User $user): string
     {
-        return sprintf("%s, votre annonce est presque prête à être publiée", $user->firstname);
+        return sprintf("%s, votre annonce est presque prête à être publiée!", $user->firstname);
     }
 
 }

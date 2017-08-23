@@ -8,7 +8,7 @@
 
     <p>Vous avez commencé à créer une annonce sur Taelam et il ne reste que quelques étapes avant sa publication.</p>
 
-    <p>Finir votre annonce permettra aux élèves de vous contacter et réserver un cours avec vous</p>
+    <p>Finir votre annonce permettra aux élèves de vous contacter, de réserver un cours avec vous et de <strong> vous rémunérer !</strong></p>
 
 
     <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
