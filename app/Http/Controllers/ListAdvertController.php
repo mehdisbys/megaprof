@@ -37,10 +37,10 @@ class ListAdvertController extends Controller
         if ($spam == false) {
             $inputs   = $request->only(["city",
                                            "subject",
+                                           "subjectId",
                                            "email",
                                            "lng",
-                                           "lat",
-                                           "loc_name"]);
+                                           "lat"]);
             $interest = RegisterStudentInterest::create($inputs);
             $interest->save();
         }
@@ -74,7 +74,10 @@ class ListAdvertController extends Controller
                 'subsubjects'     => $data->getSubsubjects(),
                 'selectedSubject' => $data->getSelectedSubject(),
                 'distances'       => [],
-                'selectedCity'    => $data->getCity() ?? null
+                'selectedCity'    => $data->getCity() ?? null,
+                'lat'             => $data->getLat(),
+                'lgn'             => $data->getLgn(),
+                'subjectId'       => $data->getSubjectId()
             ]
         );
 
@@ -107,7 +110,10 @@ class ListAdvertController extends Controller
                        'distances'       => $distances,
                        'selectedCity'    => $data->getCity() ?? null,
                        'radius'          => $data->getRadius() ?? null,
-                       'widerSearch'     => $data->getRadius() == $widerRadius
+                       'widerSearch'     => $data->getRadius() == $widerRadius,
+                       'lat'             => $data->getLat(),
+                       'lgn'             => $data->getLgn(),
+                       'subjectId'       => $data->getSubjectId()
                    ]
             )->render();
 

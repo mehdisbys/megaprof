@@ -3226,7 +3226,8 @@ input[type="radio"] {
 }
 
 #submit-bttn {
-    padding: 18px;
+    margin-top: 7px;
+    padding: 16px;
 }
 
 .well-get-in-touch {

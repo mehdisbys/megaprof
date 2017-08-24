@@ -6,6 +6,8 @@
     {!! HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr-FR&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc') !!}
     {!! HTML::script("js/jquery.geocomplete.min.js") !!}
     {!! HTML::script("js/jquery.form.min.js") !!}
+    {!! HTML::script("js/parsley.min.js")!!}
+
 
     <div class="home-search medium-height">
 
@@ -90,12 +92,6 @@
                 <div id="search_results" class="col-md-9 col-sm-12 col-xs-12 topmargin-sm">
                     @include('main.multipleAdvertPreview')
 
-
-                </div>
-                <div id="zero_results" class="col-md-9 col-md-offset-3 {{$adverts->total() == 0 ? '' : 'hidden' }} ">
-                    <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec
-                        d'autres options
-                    </div>
                 </div>
             </div>
 

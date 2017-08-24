@@ -298,53 +298,7 @@
 
         <div class="col-md-12 topmargin-big">
 
-            {{--<div class="col-md-12 row student-get-interest">--}}
 
-                {{--<form id="seach_form" action="student" method="POST">--}}
-                    {{--{!! csrf_field() !!}--}}
-
-                    {{--<div class="col-md-1">--}}
-                        {{--<input type="hidden" class="" name="location_city_lat">--}}
-                        {{--<input type="hidden" class="" name="location_city_long">--}}
-                    {{--</div>--}}
-
-                    {{--<div class="student-input  col-md-3">--}}
-
-                        {{--<input id="subject_input" type="text" class="home-search-input "--}}
-                               {{--placeholder="Ex: Anglais, Piano, Yoga" name="subject"--}}
-                               {{--data-minchars="1"--}}
-                               {{--data-autofirst="1"--}}
-                               {{--data-list="{!! $subsubjects !!}">--}}
-                    {{--</div>--}}
-
-                    {{--<div class="student-input  col-md-3">--}}
-                        {{--<input type="text" class="home-search-input " placeholder="Ville" name="city"--}}
-                               {{--id="location_input">--}}
-                    {{--</div>--}}
-
-
-                    {{--<div class="student-input col-md-3">--}}
-                        {{--<input type="email" class="home-search-input" placeholder="Email" name="email" required--}}
-                               {{--data-parsley-required-message="Un email valide est requis." data-parsley-type="email">--}}
-                    {{--</div>--}}
-
-                    {{--<div class="student-input-submit-button">--}}
-                        {{--<button id="submit-bttn" class="btn btn-info btn-lg" type="submit">Envoyer</button>--}}
-                    {{--</div>--}}
-                    {{--<div class="location-details no-visibility">--}}
-                        {{--{!! Form::hidden('lng',null, ['id' => 'longitude']) !!}--}}
-                        {{--{!! Form::hidden('lat', null, ['id' => 'latitude']) !!}--}}
-                        {{--{!! Form::hidden('loc_name', null, ['id' => 'loc_name']) !!}--}}
-                    {{--</div>--}}
-
-                {{--</form>--}}
-
-            {{--</div>--}}
-
-            {{--<div class="student-presentation well-get-in-touch">Nous vous contacterons dès que des professeurs dans la--}}
-                {{--matière de votre choix--}}
-                {{--seront disponibles.--}}
-            {{--</div>--}}
 
             <div>
                 @include('main.why-choose-taelam')
