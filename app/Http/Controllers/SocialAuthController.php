@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Avatar;
 use App\Models\User;
-use Illuminate\Auth\AuthManager;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 

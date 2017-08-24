@@ -21,8 +21,8 @@ class ListAdvertController extends Controller
 
     public function index()
     {
-        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $selectedSubject = null;
+        $subsubjects        = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $selectedSubject    = null;
         $latestAdverts      = $this->latestAdverts();
         $popularSubjects    = $this->mostPopularSubjects();
         $notificationsCount = Notification::currentUserNotificationsCount();
@@ -73,7 +73,7 @@ class ListAdvertController extends Controller
                 'adverts'         => $adverts,
                 'subsubjects'     => $data->getSubsubjects(),
                 'selectedSubject' => $data->getSelectedSubject(),
-                'distances'       => $distances,
+                'distances'       => [],
                 'selectedCity'    => $data->getCity() ?? null
             ]
         );
@@ -89,7 +89,15 @@ class ListAdvertController extends Controller
 
         $search = new Search();
 
-        list($adverts, $distances) = $search->search($data);
+        list($adverts,$distances ) = $search->search($data);
+
+        $distances = [];
+        $widerRadius = 100 ;// km
+
+        if(count($adverts) == 0){
+            $data->setRadius($widerRadius);
+            list($adverts, $distances) = $search->search($data);
+        }
 
         $results = view('main.multipleAdvertPreview')
             ->with([
@@ -99,6 +107,7 @@ class ListAdvertController extends Controller
                        'distances'       => $distances,
                        'selectedCity'    => $data->getCity() ?? null,
                        'radius'          => $data->getRadius() ?? null,
+                       'widerSearch'     => $data->getRadius() == $widerRadius
                    ]
             )->render();
 

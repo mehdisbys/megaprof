@@ -299,7 +299,6 @@ class SearchArguments
         if (isset($map[$radius]))
             return $map[$radius];
 
-        return [null,
-                null];
+        return [null, null];
     }
 }

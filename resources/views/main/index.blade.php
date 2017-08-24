@@ -67,41 +67,38 @@
                         </select>
                     </div>
                     {{--<div class="col-md-12">--}}
-                        {{--<div id="teacher_gender" class="topmargin-sm teacher_gender">--}}
-                            {{--<h3>Je préfère un professeur:</h3>--}}
-                            {{--<label class="col-md-8">--}}
-                                {{--<input name="gender" value="man" type="radio"> Homme--}}
-                            {{--</label>--}}
-                            {{--<label class="col-md-8">--}}
-                                {{--<input name="gender" value="woman" type="radio"> Femme--}}
-                            {{--</label>--}}
-                            {{--<label class="col-md-10">--}}
-                                {{--<input name="gender" value="both" type="radio"> Les deux me vont--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
+                    {{--<div id="teacher_gender" class="topmargin-sm teacher_gender">--}}
+                    {{--<h3>Je préfère un professeur:</h3>--}}
+                    {{--<label class="col-md-8">--}}
+                    {{--<input name="gender" value="man" type="radio"> Homme--}}
+                    {{--</label>--}}
+                    {{--<label class="col-md-8">--}}
+                    {{--<input name="gender" value="woman" type="radio"> Femme--}}
+                    {{--</label>--}}
+                    {{--<label class="col-md-10">--}}
+                    {{--<input name="gender" value="both" type="radio"> Les deux me vont--}}
+                    {{--</label>--}}
+                    {{--</div>--}}
                     {{--</div>--}}
                 </div>
 
-                @if(count($adverts) == 0)
-                    <div class="count_results" class="bottommargin-sm col-md-9">
+
+                <div class="count_results" class="bottommargin-sm col-md-9">
         <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
             trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{isset($selectedCity) ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
+                </div>
+                <div id="search_results" class="col-md-9 col-sm-12 col-xs-12 topmargin-sm">
+                    @include('main.multipleAdvertPreview')
+
+
+                </div>
+                <div id="zero_results" class="col-md-9 col-md-offset-3 {{$adverts->total() == 0 ? '' : 'hidden' }} ">
+                    <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec
+                        d'autres options
                     </div>
-                    <div id="search_results" class="col-md-9">
-                        <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Réessayez avec
-                            d'autres options
-                        </div>
-                    </div>
-                @else
-                    <div class="count_results" class="bottommargin-sm col-md-9">
-        <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
-            trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{isset($selectedCity) ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
-                    </div>
-                    <div id="search_results" class="col-md-9 col-sm-12 col-xs-12 topmargin-sm">
-                        @include('main.multipleAdvertPreview')
-                    </div>
-                @endif
+                </div>
             </div>
+
 
             <div id="loader" class='loader-animation-css show' style='-webkit-transform:scale(0.21)'>
                 <div></div>
@@ -131,6 +128,14 @@
                 if (data.params.selectedSubject) {
                     searchText = data.count + ' Professeurs trouvés pour ' + data.params.selectedSubject;
                 }
+
+                if(data.count === 0) {
+                    $("#zero_results").removeClass('hidden');
+                }
+                else
+                    $("#zero_results").addClass('hidden');
+
+                console.log(data.count === 0);
 
                 if (data.params.city) {
                     searchText += ' à ' + data.params.city;

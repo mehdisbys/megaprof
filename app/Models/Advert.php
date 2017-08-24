@@ -45,6 +45,7 @@ class Advert extends Model
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
     private static $paginateCount = 20;
+    public static $defaultRadius = 30;
 
     public function user()
     {
@@ -241,8 +242,12 @@ class Advert extends Model
     COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
         }
 
+        if ($radius === null)
+            $radius = self::$defaultRadius;
+
         if (isset($radius) and $lat and $lng)
-            $query->having('distance', '<', $radius);
+            $query->whereRaw ("(6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
+    COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) <  {$radius} ");
 
 
         if ($lat and $lng and $sortBy === 'distance')
