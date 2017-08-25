@@ -14,6 +14,7 @@ use App\Events\UserCreatedAccountAndFirstLogin;
 use App\Events\UserDidASearch;
 use App\Listeners\DashboardNotificationsAfterAdSubmission;
 use App\Listeners\FirstLoginListener;
+use App\Listeners\InstantMatchAdvertsRegisteredUserInterests;
 use App\Listeners\NotifiyProfAdvertWasApproved;
 use App\Listeners\NotifyAdminAdvertCreated;
 use App\Listeners\NotifyAdminIdDocumentSent;
@@ -65,7 +66,8 @@ class EventServiceProvider extends ServiceProvider
         AdvertWasAcceptedByAdmin::class =>
             [
                 NotifiyProfAdvertWasApproved::class,
-                DashboardNotificationsAfterAdSubmission::class
+                DashboardNotificationsAfterAdSubmission::class,
+                InstantMatchAdvertsRegisteredUserInterests::class
             ],
 
         UserCreatedAccountAndFirstLogin::class =>
@@ -75,7 +77,7 @@ class EventServiceProvider extends ServiceProvider
         ProfCreatedAdvert::class =>
             [
                 NotifyAdminAdvertCreated::class,
-                SuccessAdvertCreatedNotification::class
+                SuccessAdvertCreatedNotification::class,
             ],
         ReminderEmail::class =>
             [
