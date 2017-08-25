@@ -17,9 +17,9 @@ class SendReminderToUser
     public function handle(\Reminders\Events\ReminderEmail $event)
     {
         if (env('APP_ENV') == 'local') {
-            Mail::to('mehdi.souihed@gmail.com')->queue(new ReminderMailable($event));
+            Mail::to('mehdi.souihed@gmail.com')->send(new ReminderMailable($event));
         } else {
-            Mail::to($event->user->email)->send(new ReminderMailable($event));
+            Mail::to($event->user->email)->queue(new ReminderMailable($event));
         }
     }
 }

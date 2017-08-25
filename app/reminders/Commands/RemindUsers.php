@@ -43,8 +43,6 @@ class RemindUsers extends Command
      */
     public function handle()
     {
-        DB::table('reminders_tracker')->truncate();
-
 
         $reminders = [
             new RemindUserToCreateAnAdvert(),
