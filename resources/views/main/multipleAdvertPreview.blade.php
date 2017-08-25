@@ -14,7 +14,7 @@
     @endif
 </div>
 
-<div id="zero_results" class="col-md-8 text-center col-md-offset-4 {{$adverts->total() == 0 ? '' : 'hidden' }} ">
+<div id="zero_results" class="col-md-8 text-center {{$adverts->total() == 0 ? '' : 'hidden' }} ">
         <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Entrez votre email ci-dessous pour être informé dès qu'un professeur
                 est disponible dans votre ville.
         </div>
