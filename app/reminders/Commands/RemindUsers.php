@@ -3,6 +3,7 @@
 namespace Reminders\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Reminders\Events\ReminderEmail;
 use Reminders\Models\ReminderTracker;
 use Reminders\ReminderInterface;
@@ -42,6 +43,8 @@ class RemindUsers extends Command
      */
     public function handle()
     {
+        DB::table('reminders_tracker')->truncate();
+
 
         $reminders = [
             new RemindUserToCreateAnAdvert(),

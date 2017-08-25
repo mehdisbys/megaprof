@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Events\AdvertPublished;
 use App\Events\AdvertWasAcceptedByAdmin;
 use App\Events\AdvertWasRejectedByAdmin;
 use App\Events\BookingRequestReply;
@@ -26,7 +25,6 @@ use App\Listeners\NotifyStudentOfPostedComment;
 use App\Listeners\SendReminderToUser;
 use App\Listeners\SuccessAdvertCreatedNotification;
 use App\Listeners\ZeroSearchResultsNotifier;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Reminders\Events\ReminderEmail;
 
@@ -45,10 +43,6 @@ class EventServiceProvider extends ServiceProvider
         BookingRequestReply::class    =>
             [
                 NotifyBookingReply::class,
-            ],
-        AdvertPublished::class        =>
-            [
-
             ],
         ProfCommentedOnStudent::class =>
             [
