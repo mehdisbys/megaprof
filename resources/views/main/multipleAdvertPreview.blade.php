@@ -14,7 +14,7 @@
     @endif
 </div>
 
-<div id="zero_results" class="col-md-9 {{$adverts->total() == 0 ? '' : 'hidden' }} ">
+<div id="zero_results" class="col-md-8 text-center col-md-offset-3 {{$adverts->total() == 0 ? '' : 'hidden' }} ">
         <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Entrez votre email ci-dessous pour être informé dès qu'un professeur
                 est disponible dans votre ville.
         </div>
@@ -22,7 +22,6 @@
 
                 <form id="seach_form" action="/student" method="POST">
                         {!! csrf_field() !!}
-
 
                         <div class="student-input col-xs-12 col-md-8 ">
                                 <input type="email" class="home-search-input" placeholder="Email" name="email" required
