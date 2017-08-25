@@ -26,5 +26,5 @@
 
     <p>L’Equipe TAELAM </p>
 
-    <small><a href="https://taelam.com/deactivate-student-alert/{{$studentInterest->id}}">Se désabonner de cette alerte</a></small>
+    <small><a href="{{env('APP_URL')}}/deactivate-student-alert/{{$studentInterest->token}}">Se désabonner de cette alerte</a></small>
 @stop

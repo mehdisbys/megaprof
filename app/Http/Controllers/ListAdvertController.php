@@ -41,7 +41,7 @@ class ListAdvertController extends Controller
                                            "email",
                                            "lng",
                                            "lat"]);
-            $interest = RegisterStudentInterest::create($inputs);
+            $interest = RegisterStudentInterest::create($inputs + ['token' => str_random(30)]);
             $interest->save();
         }
 
@@ -49,6 +49,19 @@ class ListAdvertController extends Controller
 
         return redirect()->back();
     }
+
+    public function deactivateStudentInterest(string $token)
+    {
+        $interest = RegisterStudentInterest::where(['token' => $token])->first();
+
+        if ($interest) {
+            $interest->delete();
+            thanks('Votre alerte est à présent désactivée');
+        }
+
+        return redirect()->back();
+    }
+
 
     public function allAdverts()
     {
