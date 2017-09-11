@@ -1,6 +1,6 @@
 # TAELAM
 
-_Taelam is arabic slang for "learning"._ 
+_Taelam is Moroccan slang for "learning"._ 
 
 A Marketplace to connect skilled individuals willing to teach to students of all ages. The teachers create ads stating the skills taught, the location, the price and the students can search for teachers and book them. Not limited to tuitions in school subjects, Sports, Arts, Exotic cooking, Music and many others are available. Great attention to User Experience.
 
