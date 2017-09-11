@@ -32,5 +32,3 @@ A Marketplace to connect skilled individuals willing to teach to students of all
 - [ ] Backend : get total number of facebook friends
 - [ ] Backend : when logging-in check that address is populated
 - [ ] Backend : Count page views for advert and make it available to prof
-
-s`
