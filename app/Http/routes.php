@@ -59,6 +59,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('signaler/{slug}', 'FlaggedAdvertsController@getForm');
     Route::post('signaler', 'FlaggedAdvertsController@postForm');
 
+    Route::group(['middleware' => ['registerIfNotLoggedIn']], function () {
+        // Book a lesson
+        Route::get('/mise-en-relation/{slug}/{testing?}', 'BookCourseController@bookLesson');
+        Route::post('/reserver-un-cours', 'BookCourseController@postBookLesson');
+    });
+
+
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/avatar_dashboard/{user_id}', 'AvatarController@getDefaultAvatar');
 
@@ -122,9 +129,6 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/editer-profil', 'DashboardController@updateProfile');
         Route::get('/completer-profil', 'DashboardController@completeProfile');
 
-        // Book a lesson
-        Route::get('/mise-en-relation/{slug}/{testing?}', 'BookCourseController@bookLesson');
-        Route::post('/reserver-un-cours', 'BookCourseController@postBookLesson');
 
         // Answer a booking
         Route::get('/demande/{booking_id}/repondre', 'BookCourseController@replyBookingRequest');

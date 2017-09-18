@@ -43,12 +43,13 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'        => \App\Http\Middleware\Authenticate::class,
-        'auth.basic'  => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest'       => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'ownsAdvert'  => \App\Http\Middleware\IfOwnsAdvert::class,
-       // 'afterAdvert' => \App\Http\Middleware\AfterAdvert::class,
-        'isAdmin'     => IfIsAdmin::class,
-        'revalidate'  => \App\Http\Middleware\PreventBackHistory::class,
+        'auth'                  => \App\Http\Middleware\Authenticate::class,
+        'registerIfNotLoggedIn' => \App\Http\Middleware\RegisterIfNotLoggedIn::class,
+        'auth.basic'            => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest'                 => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'ownsAdvert'            => \App\Http\Middleware\IfOwnsAdvert::class,
+        // 'afterAdvert' => \App\Http\Middleware\AfterAdvert::class,
+        'isAdmin'               => IfIsAdmin::class,
+        'revalidate'            => \App\Http\Middleware\PreventBackHistory::class,
     ];
 }
