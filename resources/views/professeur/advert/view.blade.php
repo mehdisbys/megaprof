@@ -244,6 +244,12 @@
             </tbody>
         </table>
 
+            @if($advert->price_more)
+                <div class="single-advert-text col-md-8 col-md-offset-2 row">
+                <span class="fa fa-info-circle"></span> {{ucfirst($advert->price_more)}}
+                </div>
+            @endif
+
 
         <!-- 3 -->
         <div class="view-comments col-md-12">
