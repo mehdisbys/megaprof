@@ -60,13 +60,13 @@
             @if($booking->wasAccepted())
                 <div class="col-md-12"><strong>Contactez votre professeur</strong>:</div>
                 <div class="col-md-12"><strong>E-mail</strong>: {{$booking->prof->email}}</div>
-                <div class="col-md-12"><strong>Telephone</strong>: {{$booking->prof->telephone or  "N/A"}}</div>
+                <div class="col-md-12"><strong>Telephone</strong>: {{$booking->prof->mobile or  "N/A"}}</div>
             @endif
         </div>
 
         <div class="col-md-12 topmargin-small row">
             <div class="col-md-6">Envoyée le {{$booking->created_at->format('d/m/Y à H:i') }}</div>
-            <div class="col-md-6 pull-right"><i class="icon-location"></i><strong>Casablanca</strong></div>
+            <div class="col-md-6 pull-right"><i class="icon-location"></i><strong>{{$booking->locality}}</strong></div>
         </div>
 
 

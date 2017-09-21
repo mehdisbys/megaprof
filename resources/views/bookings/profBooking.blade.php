@@ -45,7 +45,7 @@
                 <div class="clearfix"></div>
                 <div class="col-md-12">Contactez votre élève :</div>
                 <div class="col-md-12">E-mail: {{$booking->student->email}}</div>
-                <div class="col-md-12">Telephone: {{$booking->student->telephone or  "N/A"}}</div>
+                <div class="col-md-12">Telephone: {{$booking->student->mobile or  "N/A"}}</div>
             @endif
             <div class="pull-right">
                 <i class="icon-location"></i>
