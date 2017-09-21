@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Reminders\Events\ReminderEmail;
 use Reminders\Models\ReminderTracker;
 use Reminders\ReminderInterface;
+use Reminders\RemindProfToReplyToBooking;
+use Reminders\RemindProfToReplyToBookingSecondTime;
 use Reminders\RemindUserToCreateAnAdvert;
 use Reminders\RemindUserToFinishAdvert;
 
@@ -43,10 +45,11 @@ class RemindUsers extends Command
      */
     public function handle()
     {
-
         $reminders = [
             new RemindUserToCreateAnAdvert(),
             new RemindUserToFinishAdvert(),
+            new RemindProfToReplyToBooking(),
+            new RemindProfToReplyToBookingSecondTime(),
         ];
 
         foreach ($reminders as $reminder) {

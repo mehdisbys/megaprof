@@ -40,6 +40,21 @@ class Booking extends Model
             ->get();
     }
 
+
+    public static function getProfBookingRequests(User $prof)
+    {
+        return static::where(function ($q) use ($prof){
+            $q->where('prof_user_id', $prof->id)
+              ->orWhere('student_user_id', $prof->id);
+        })
+                     ->whereNull('answer')
+                     ->with('student')
+                     ->with('advert')
+                     ->orderBy('updated_at', 'desc')
+                     ->get();
+    }
+
+
     public static function archivedBookingRequests()
     {
         return static::where(function ($q) {
