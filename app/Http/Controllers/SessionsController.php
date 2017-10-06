@@ -55,7 +55,8 @@ class SessionsController extends Controller
 
         $this->validate($request, $rules, ['email.required'                 => 'Veuillez entrer votre email',
                                            'email.email'                    => 'Veuillez entrer une addresse email valide',
-                                           'password.required'              => 'Veuillez entrer votre mot de passe',]);
+                                           'password.required'              => 'Veuillez entrer votre mot de passe',
+                                           'g-recaptcha-response.required'  => "Veuillez cliquer sur 'Je ne suis pas un robot'"]);
 
         if (isCaptchaCodeCorrect($request->get('g-recaptcha-response')) == false) {
             error("Veuillez cliquer sur \"Je ne suis pas un robot\" ");
