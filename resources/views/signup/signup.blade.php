@@ -40,10 +40,6 @@
                                class="input" value=""/>
                     </div>
 
-                    <div class="input-text input-container">
-                        <input type="password" required="required" placeholder="Confirmation mot de passe"
-                               name="password_confirmation" class="input" value=""/>
-                    </div>
                     <div class="input-text input-container topmargin-sm">
                         <label style="text-transform: none">
                             <input type="checkbox" required="required" name="cgu"/>
