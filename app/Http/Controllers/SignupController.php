@@ -35,32 +35,20 @@ class SignupController extends Controller
                 ]);
         }
 
-		$user = User::newUser($request->all());
+        $guest = new \App\Taelam\Users\User();
 
-        //TODO generate event UserRegistered
+		$user = $guest->register(
+		    $request->get('firstname'),
+		    $request->get('lastname'),
+		    $request->get('email'),
+		    $request->get('password')
+        );
 
         Auth::login($user);
-
-		$this->sendConfirmationEmail($user);
-
-        event(new UserCreatedAccountAndFirstLogin($user));
 
         thanks('Un email de confirmation vient de vous être envoyé. Veuillez cliquer sur le lien inclus pour finaliser la création de votre compte');
 
 		return redirect('/');
-	}
-
-
-	public function sendConfirmationEmail(User $user)
-	{
-		$view = 'emails.auth.confirmEmail';
-		$config['to'] = $user->email;
-		$config['name'] = $user->firstname;
-		$config['subject'] = ucfirst($user->firstname) . ' bienvenue sur TAELAM ! – Confirmation de votre Inscription';
-		$all['name'] = $user->firstname;
-		$all['link'] = url('register/confirm/' . $user->confirmation_code);
-
-		$this->mailer->sendMail($view, $all, $config);
 	}
 
 	/**

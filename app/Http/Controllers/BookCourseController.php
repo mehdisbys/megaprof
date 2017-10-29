@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookLesson;
+use App\Http\Requests\BookLessonUnregistered;
 use App\Models\Advert;
 use App\Taelam\Booking\Exceptions\AdvertNotFound;
 use App\Taelam\Booking\Exceptions\BookingNotFound;
@@ -11,13 +13,14 @@ use App\Taelam\Booking\Exceptions\StudentNotFound;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
 use App\Taelam\Booking\Lesson;
 use App\Taelam\Booking\LessonDetails;
+use Illuminate\Support\Facades\Auth;
 
 
 class BookCourseController extends Controller
 {
     public function bookLesson($slug, $testing = false)
     {
-        if($testing) $testing = true; ;
+        if ($testing) $testing = true;
 
         $advert = Advert::findBySlugOr404($slug);
 
@@ -33,25 +36,20 @@ class BookCourseController extends Controller
             if ($student == null)
                 throw new StudentNotFound();
 
-            if(Advert::find($request->get('advert_id')) == null)
+            if (Advert::find($request->get('advert_id')) == null)
                 throw new AdvertNotFound();
 
             $lesson->book($student, LessonDetails::fromArray($request->all()));
-        }
-        catch (AdvertNotFound $e) {
+        } catch (AdvertNotFound $e) {
             info_message("Une erreur est survenue, veuillez réessayer plus tard");
             return redirect()->back();
-        }
-        catch (StudentNotFound $e) {
+        } catch (StudentNotFound $e) {
             info_message("Vous devez être connecté pour pouvoir réserver une annonce");
             return redirect()->back();
-        }
-        catch (TooYoungToBookLessonOnYourOwn $e) {
+        } catch (TooYoungToBookLessonOnYourOwn $e) {
             info_message("Vous devez être adulte pour pouvoir réserver une annonce");
             return redirect()->back();
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             info_message("Une erreur est survenue, veuillez réessayer plus tard");
             return redirect()->back();
         }
@@ -61,22 +59,63 @@ class BookCourseController extends Controller
         return redirect('/mon-compte');
     }
 
+    public function postBookLessonUnregistered(BookLessonUnregistered $request)
+    {
+        $student = NULL;
+
+        try {
+            if (Advert::find($request->get('advert_id')) == null)
+                throw new AdvertNotFound();
+
+            $lesson = new Lesson();
+            $guest  = new \App\Taelam\Users\User();
+
+            $student = $guest->register(
+                $request->get('firstname'),
+                $request->get('lastname', ''),
+                $request->get('email'),
+                $request->get('password')
+            );
+
+            if ($student == null)
+                throw new StudentNotFound();
+
+            $lesson->book($student, LessonDetails::fromArray($request->all()));
+        } catch (AdvertNotFound $e) {
+            info_message("Une erreur est survenue, veuillez réessayer plus tard");
+            return redirect()->back();
+        } catch (StudentNotFound $e) {
+            info_message("Vous devez être connecté pour pouvoir réserver une annonce");
+            return redirect()->back();
+        } catch (TooYoungToBookLessonOnYourOwn $e) {
+            info_message("Vous devez être adulte pour pouvoir réserver une annonce");
+            return redirect()->back();
+        } catch (\Exception $e) {
+            info_message("Une erreur est survenue, veuillez réessayer plus tard");
+            return redirect()->back();
+        }
+
+        thanks('Votre demande de cours a été envoyée au professeur avec succès');
+
+        Auth::login($student);
+
+        return redirect('/mon-compte');
+    }
+
+
     public function replyBookingRequest($booking_id, $answer)
     {
         $lesson = new Lesson();
 
         try {
             $lesson->teacherReply($booking_id, $answer);
-        }
-        catch (BookingNotFound $e) {
+        } catch (BookingNotFound $e) {
             error("Cette demande de cours n'existe pas");
             return redirect()->back();
-        }
-        catch (BookingRequestAlreadyHasAReply $e) {
+        } catch (BookingRequestAlreadyHasAReply $e) {
             error("Vous avez déjà répondu à cette demande");
             return redirect()->back();
-        }
-        catch (InvalidReplyToBookingRequest $e) {
+        } catch (InvalidReplyToBookingRequest $e) {
             error("Réponse à la demande de cours invalide");
             return redirect()->back();
         }

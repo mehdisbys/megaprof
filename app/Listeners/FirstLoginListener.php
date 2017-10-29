@@ -3,9 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UserCreatedAccountAndFirstLogin;
+use App\Mail\RegistrationEmail;
 use App\Models\Notification;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
 class FirstLoginListener
 {
@@ -18,6 +18,9 @@ class FirstLoginListener
      */
     public function handle(UserCreatedAccountAndFirstLogin $event)
     {
+        // Send Welcome Registration email
+        Mail::to($event->user)->send(new RegistrationEmail($event));
+
         // Dashboard Events
         Notification::createAdvertNotification
         ('first_login',

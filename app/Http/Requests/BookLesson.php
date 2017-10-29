@@ -12,7 +12,6 @@ class BookLesson extends Request
      */
     public function authorize()
     {
-        //TODO check a professor isnt trying to apply to its own advert
         return true;
     }
 

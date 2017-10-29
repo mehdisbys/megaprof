@@ -138,13 +138,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                                    ]);
     }
 
-    public static function newUser(array $data)
+    public static function newUser(string $firstname, string $lastname, string $email, string $password)
     {
         return User::create([
-                                'firstname'         => $data['firstname'],
-                                'lastname'          => $data['lastname'],
-                                'email'             => $data['email'],
-                                'password'          => bcrypt($data['password']),
+                                'firstname'         => $firstname,
+                                'lastname'          => $lastname,
+                                'email'             => $email,
+                                'password'          => bcrypt($password),
                                 'confirmation_code' => str_random(30),
                             ]);
     }

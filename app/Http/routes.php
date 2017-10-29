@@ -59,10 +59,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('signaler/{slug}', 'FlaggedAdvertsController@getForm');
     Route::post('signaler', 'FlaggedAdvertsController@postForm');
 
+    Route::get('/mise-en-relation/{slug}/{testing?}', 'BookCourseController@bookLesson');
+    Route::post('/reserver-un-cours-guest', 'BookCourseController@postBookLessonUnregistered');
+
     Route::group(['middleware' => ['registerIfNotLoggedIn']], function () {
         // Book a lesson
-        Route::get('/mise-en-relation/{slug}/{testing?}', 'BookCourseController@bookLesson');
         Route::post('/reserver-un-cours', 'BookCourseController@postBookLesson');
+
     });
 
 
@@ -70,8 +73,6 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/avatar_dashboard/{user_id}', 'AvatarController@getDefaultAvatar');
 
         Route::post('/avatar', 'AvatarController@saveAvatar');
-
-        //Route::group(['middleware' => ['afterAdvert']], function () {
 
             Route::get('/nouvelle-annonce-1', 'SubmitAdvertController@getStep1Subjects');
             Route::post('/nouvelle-annonce-1', 'SubmitAdvertController@postStep1Subjects');
@@ -92,8 +93,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/nouvelle-annonce-6', 'SubmitAdvertController@postStep6Picture');
 
             Route::post('/nouvelle-annonce-7', 'SubmitAdvertController@postStep7Publish');
-       // });
-
 
         // Edit CreateAdvert
         Route::get('/modifier-annonce-1/{advert_id}', 'EditAdvertController@editStep1');
