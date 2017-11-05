@@ -8,6 +8,7 @@ use App\Models\Advert;
 use App\Taelam\Booking\Exceptions\AdvertNotFound;
 use App\Taelam\Booking\Exceptions\BookingNotFound;
 use App\Taelam\Booking\Exceptions\BookingRequestAlreadyHasAReply;
+use App\Taelam\Booking\Exceptions\CaptaIncorrect;
 use App\Taelam\Booking\Exceptions\InvalidReplyToBookingRequest;
 use App\Taelam\Booking\Exceptions\StudentNotFound;
 use App\Taelam\Booking\Exceptions\TooYoungToBookLessonOnYourOwn;
@@ -64,6 +65,10 @@ class BookCourseController extends Controller
         $student = NULL;
 
         try {
+            if (isCaptchaCodeCorrect($request->get('g-recaptcha-response')) == false) {
+                throw new CaptaIncorrect();
+            }
+
             if (Advert::find($request->get('advert_id')) == null)
                 throw new AdvertNotFound();
 
@@ -90,11 +95,13 @@ class BookCourseController extends Controller
         } catch (TooYoungToBookLessonOnYourOwn $e) {
             info_message("Vous devez être adulte pour pouvoir réserver une annonce");
             return redirect()->back();
+        } catch (CaptaIncorrect $e) {
+            error("Veuillez cliquer sur \"Je ne suis pas un robot\" ");
+            return redirect()->back();
         } catch (\Exception $e) {
             info_message("Une erreur est survenue, veuillez réessayer plus tard");
             return redirect()->back();
         }
-
         thanks('Votre demande de cours a été envoyée au professeur avec succès');
 
         Auth::login($student);
