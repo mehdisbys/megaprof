@@ -234,7 +234,7 @@
                              data-callback="submitForm"></div>
 
                         <p class="register-member">Déjà membre Taelam ?
-                            <a href="login" class="register-member-link register-switch-panel">Connexion</a>
+                            <a href="/login" class="register-member-link register-switch-panel">Connexion</a>
                         </p>
                     </div>
 
