@@ -17,6 +17,7 @@ use App\Listeners\FirstLoginListener;
 use App\Listeners\InstantMatchAdvertsRegisteredUserInterests;
 use App\Listeners\NotifiyProfAdvertWasApproved;
 use App\Listeners\NotifyAdminAdvertCreated;
+use App\Listeners\NotifyAdminBookingRequestSent;
 use App\Listeners\NotifyAdminIdDocumentSent;
 use App\Listeners\NotifyBookingReply;
 use App\Listeners\NotifyBookingRequest;
@@ -40,6 +41,7 @@ class EventServiceProvider extends ServiceProvider
         BookingRequestSent::class     =>
             [
                 NotifyBookingRequest::class,
+                NotifyAdminBookingRequestSent::class
             ],
         BookingRequestReply::class    =>
             [

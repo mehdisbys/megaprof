@@ -59,6 +59,4 @@
 <div class="footer"></div>
 
 </body>
-@include('includes/toastr/toastr')
-
 </html>
