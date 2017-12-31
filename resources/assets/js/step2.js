@@ -12,11 +12,13 @@ $(function () {
         if (nb > 0) {
             $("#" + $(el).attr('id') + "-text").removeClass('no-display');
             $("#" + $(el).attr('id') + "-count").text(nb);
+            $("#" + $(el).attr('id') + "-max").addClass('no-display');
 
         }
         if (nb <= 0) {
             $("#" + $(el).attr('id') + "-count").text('');
             $("#" + $(el).attr('id') + "-text").addClass('no-display');
+            $("#" + $(el).attr('id') + "-max").removeClass('no-display');
         }
         return nb;
     };
@@ -33,11 +35,21 @@ $(function () {
         .addValidator('minimumwords', {
             requirementType: 'string',
             validateString: function (value, requirement) {
-                console.log(countWords(value), requirement);
                 return countWords(value) >= requirement;
             },
             messages: {
                 en: 'Veuillez entrer au minimum %s mots dans cette section'
+            }
+        });
+
+    window.Parsley
+        .addValidator('maximumwords', {
+            requirementType: 'string',
+            validateString: function (value, requirement) {
+                return countWords(value) <= requirement;
+            },
+            messages: {
+                en: 'Veuillez entrer au maximum %s mots dans cette section'
             }
         });
 
