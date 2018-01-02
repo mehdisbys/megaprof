@@ -45,11 +45,12 @@ class Comment extends Model
         return self::where(['id' => $id, 'source_user_id' => \Auth::id()])->exists();
     }
 
-    public static function currentUserPendingComments()
+    public static function userPendingComments(int $userid)
     {
-        return self::where(['source_user_id' => \Auth::id(), 'comment' => NULL])
+        return self::where(['source_user_id' => $userid, 'comment' => NULL])
                    ->whereDate('comment_at', '<=', Carbon::now())
                    ->with(['targetUser' => function($q){$q->select(['id','firstname']);}])
+                   ->with(['advert'     => function($q){$q->select(['id', 'title']);}])
                    ->get();
     }
 

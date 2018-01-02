@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $adverts             = Advert::currentUserAdverts();
         $toBeReviewedAdverts = Advert::toBeReviewedtUserAdverts();
         $archivedAdverts     = Advert::archivedUserAdverts();
-        $pendingComments     = Comment::currentUserPendingComments();
+        $pendingComments     = Comment::userPendingComments(Auth::id());
         $bookings            = Booking::currentProfBookingRequests();
         $archivedBookings    = Booking::archivedBookingRequests();
         $user                = User::find(Auth::id());

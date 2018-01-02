@@ -54,7 +54,6 @@ class RemindUserToFinishAdvert implements ReminderInterface
         return $this->unfinishedAdverts ?? new Collection();
     }
 
-
     public function getEmailSubject(User $user): string
     {
         return sprintf("%s, votre annonce est presque prête à être publiée!", $user->firstname);

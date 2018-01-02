@@ -9,6 +9,7 @@ use Reminders\Models\ReminderTracker;
 use Reminders\ReminderInterface;
 use Reminders\RemindProfToReplyToBooking;
 use Reminders\RemindProfToReplyToBookingSecondTime;
+use Reminders\RemindStudentToComment;
 use Reminders\RemindUserToCreateAnAdvert;
 use Reminders\RemindUserToFinishAdvert;
 
@@ -50,6 +51,7 @@ class RemindUsers extends Command
             new RemindUserToFinishAdvert(),
             new RemindProfToReplyToBooking(),
             new RemindProfToReplyToBookingSecondTime(),
+            new RemindStudentToComment()
         ];
 
         foreach ($reminders as $reminder) {
