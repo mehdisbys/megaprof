@@ -137,10 +137,10 @@
 
 
                             <h4>Mes annonces publiées</h4>
-                            @if(isset($adverts))
-                                @include('dashboard.adverts-list',['adverts' => $adverts])
-                            @elseif(isset($toBeReviewedAdverts) == false)
-                                <p>Vous n'avez pas encore créé d'annonces</p>
+                            @if($adverts->isNotEmpty())
+                                    @include('dashboard.adverts-list',['adverts' => $adverts])
+                            @elseif($toBeReviewedAdverts->isEmpty())
+                                    <p>Vous n'avez pas encore créé d'annonces</p>
                                 <p><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
                                         cours</a></p>
                             @endif

@@ -218,8 +218,7 @@
                         <input class="topmargin-sm" id="addresse" placeholder="Votre ville ou quartier" name="addresse" type="text">
                         <input class="topmargin-sm" id="firstname" placeholder="Pr&eacute;nom" name="firstname" type="text">
                         <input class="topmargin-sm" id="email" placeholder="Email" name="email" type="email">
-                        <input class="topmargin-sm" size="28" id="password"
-                               placeholder="Choisissez un mot de passe" name="password" type="password">
+                        <input class="topmargin-sm" size="28" id="password" placeholder="Choisissez un mot de passe" name="password" type="password">
                        <span> <i data-tooltip="Un mot de passe est nécessaire pour suivre votre réservation."><i class="icon-question-sign" ></i></i></span>
 
                         <div class="input-text input-container topmargin-lg">

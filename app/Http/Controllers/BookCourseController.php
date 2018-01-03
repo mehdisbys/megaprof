@@ -51,6 +51,7 @@ class BookCourseController extends Controller
             info_message("Vous devez être adulte pour pouvoir réserver une annonce");
             return redirect()->back();
         } catch (\Exception $e) {
+            dd($e->getMessage(), $e->getTraceAsString());
             info_message("Une erreur est survenue, veuillez réessayer plus tard");
             return redirect()->back();
         }

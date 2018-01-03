@@ -68,13 +68,13 @@ class LessonDetails
                 $details['date'],
                 $details['location'],
                 $details['client'],
-                $details['mobile'],
-                $details['addresse'],
+                $details['mobile'] ?? NULL,
+                $details['addresse'] ?? NULL,
                 $details['pick_a_date'],
                 $details['pick_a_location'],
-                $details['dobyear'],
-                $details['dobmonth'],
-                $details['dobday']);
+                $details['dobyear'] ?? NULL,
+                $details['dobmonth'] ?? NULL,
+                $details['dobday'] ?? NULL);
 
         } catch (\Exception $e) {
             throw new InvalidLessonDetailsArguments($e->getMessage());
@@ -99,14 +99,16 @@ class LessonDetails
     }
 
 
-
-    public function getStudentAge() : int
+    public function getStudentAge(): int
     {
-        $dateOfBirth = Carbon::createFromDate($this->dobyear, $this->dobmonth, $this->dobday);
-        return $dateOfBirth->age;
+        if ($this->dobyear and $this->dobmonth and $this->dobday) {
+            $dateOfBirth = Carbon::createFromDate($this->dobyear, $this->dobmonth, $this->dobday);
+            return $dateOfBirth->age;
+        }
+        return 18;
     }
 
-    public function getStudentBirthdate() : string
+    public function getStudentBirthdate(): string
     {
         return implode('/', [$this->dobyear, $this->dobmonth, $this->dobday]);
 
