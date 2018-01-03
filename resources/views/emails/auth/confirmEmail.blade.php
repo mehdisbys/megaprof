@@ -31,4 +31,4 @@
 
     <p>L'Équipe Taelam</p>
 
-@stop
+@endsection

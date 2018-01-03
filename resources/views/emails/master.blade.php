@@ -12,19 +12,14 @@
     <meta property="og:site_name" content="Taelam"/>
     <meta property="og:description" content="Trouvez votre professeur pour des cours particuliers"/>
 
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+          rel="stylesheet" type="text/css"/>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/"/>
     <link rel="apple-touch-icon" sizes="60x60" href="/"/>
     <link rel="icon" sizes="32x32" type="image/png" href="/"/>
     <link rel="icon" sizes="16x16" type="image/png" href="/"/>
 
-{{--{!! HTML::style('temp-css/normalize.css') !!}--}}
-{{--{!! HTML::style('temp-css/dashboard.css') !!}--}}
-{{--{!! HTML::style('temp-css/fonts.css') !!}--}}
-{{--{!! HTML::style('temp-css/footer.css') !!}--}}
-{{--{!! HTML::style('temp-css/header.css') !!}--}}
-{{--{!! HTML::style('temp-css/main.css') !!}--}}
 {!! HTML::style('/css/bootstrap.min.css') !!}
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
@@ -43,20 +38,32 @@
                          alt="Cours particuliers avec Taelam"/>
                 </a>
             </div>
-
-            <div class="header-inner-cell header-inner-cell-menu">
-                <div class="header-menu-inner"></div>
-            </div>
-
         </div>
     </div>
 </div>
+
+
 <div class="page">
     @section('content')
     @show
 </div>
 
-<div class="footer"></div>
+<div>
+    <div class="col-md-offset-3 col-sm-6">
+        <div class="text-center">
+            <a href="https://www.facebook.com/taelamOfficiel">Facebook
+                <img src="http://localhost:8000/images/facebook-icon.png" width="40">
+            </a>
+            <a href="https://twitter.com/taelam_officiel"> Twitter
+                <img src="http://localhost:8000/images/twitter-icon.png" width="40">
+            </a>
+            <a href="https://plus.google.com/u/1/115934799609055669898"> Google Plus
+                <img src="http://localhost:8000/images/googleplus-icon.png" width="40">
+            </a>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
