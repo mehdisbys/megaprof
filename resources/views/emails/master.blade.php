@@ -42,7 +42,6 @@
     </div>
 </div>
 
-
 <div class="page">
     @section('content')
     @show
@@ -52,13 +51,13 @@
     <div class="col-md-offset-3 col-sm-6">
         <div class="text-center">
             <a href="https://www.facebook.com/taelamOfficiel">Facebook
-                <img src="http://localhost:8000/images/facebook-icon.png" width="40">
+                <img src="http://taelam.com/images/facebook-icon.png" width="40">
             </a>
             <a href="https://twitter.com/taelam_officiel"> Twitter
-                <img src="http://localhost:8000/images/twitter-icon.png" width="40">
+                <img src="http://taelam.com/images/twitter-icon.png" width="40">
             </a>
             <a href="https://plus.google.com/u/1/115934799609055669898"> Google Plus
-                <img src="http://localhost:8000/images/googleplus-icon.png" width="40">
+                <img src="http://taelam.com/images/googleplus-icon.png" width="40">
             </a>
         </div>
     </div>
