@@ -29,11 +29,8 @@
         <li>Le sens de l'écoute</li>
         <li>La pédagogie</li>
         <li>La ponctualité</li>
-        <li>Les résultats obtenus</li>
+        <li>Les progrès obtenus grâce au cours</li>
     </ol>
-
-
-    <p>N’hésitez pas à répondre à ce mail pour toute information ou aide dans la création de votre annonce.</p>
 
     <p>L’Equipe TAELAM </p>
 @stop
