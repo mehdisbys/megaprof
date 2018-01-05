@@ -14,13 +14,16 @@ class Search implements SearchAdvertContract
     public function search(SearchArguments $data, array $exceptAdverts = [])
     {
         $rawResults = null;
-        $distances  = null;
+        $distances = null;
 
         $rawResults = Advert::radiusSearch($data->getLat() ?? null, $data->getLgn() ?? null, $data->getRadius() ?? null, $data->getSortBy() ?? 'distance', $data->getGender() ?? 'both', $data->getSubjectId(), $exceptAdverts);
 
-        $distances  = array_pluck($rawResults, 'distance', 'id');
+        $distances = array_pluck($rawResults, 'distance', 'id');
 
-        event(new UserDidASearch(count($rawResults), $data->getSubjectId(), $data->getSubjectName(), $data->getCity()));
+        try {
+            event(new UserDidASearch(count($rawResults), $data->getSubjectId(), $data->getSubjectName(), $data->getCity()));
+        } catch (\Exception $e) {
+        }
 
         return [$rawResults, $distances];
     }

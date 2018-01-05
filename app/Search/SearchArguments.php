@@ -36,16 +36,16 @@ class SearchArguments
     public function __construct($selectedSubject, $subject, $subsubjects, $subjectId, $lat, $lgn, $radius, $selectedRadius, $city, $gender, $sortBy)
     {
         $this->selectedSubject = $selectedSubject;
-        $this->subject         = $subject;
-        $this->subsubjects     = $subsubjects;
-        $this->subjectId       = $subjectId;
-        $this->lat             = $lat;
-        $this->lgn             = $lgn;
-        $this->radius          = $radius;
-        $this->selectedRadius  = $selectedRadius;
-        $this->city            = $city;
-        $this->gender          = $gender;
-        $this->sortBy          = $sortBy;
+        $this->subject = $subject;
+        $this->subsubjects = $subsubjects;
+        $this->subjectId = $subjectId;
+        $this->lat = $lat;
+        $this->lgn = $lgn;
+        $this->radius = $radius;
+        $this->selectedRadius = $selectedRadius;
+        $this->city = $city;
+        $this->gender = $gender;
+        $this->sortBy = $sortBy;
     }
 
     /**
@@ -82,7 +82,9 @@ class SearchArguments
 
     public function getSubjectName()
     {
-        return $this->subject->name;
+        if (isset($this->subject) and isset($this->subject->name))
+            return $this->subject->name;
+        return $this->subject;
     }
 
     /**
@@ -230,45 +232,45 @@ class SearchArguments
     }
 
 
-    public function toArray() :array
+    public function toArray(): array
     {
         return [
             'selectedSubject' => $this->selectedSubject,
-            'subject'         => $this->subject,
-            'subsubjects'     => $this->subsubjects,
-            'subjectId'       => $this->subjectId,
-            'lat'             => $this->lat,
-            'lgn'             => $this->lgn,
-            'radius'          => $this->radius,
+            'subject' => $this->subject,
+            'subsubjects' => $this->subsubjects,
+            'subjectId' => $this->subjectId,
+            'lat' => $this->lat,
+            'lgn' => $this->lgn,
+            'radius' => $this->radius,
             'selectedRadius ' => $this->selectedRadius,
-            'city'            => $this->city,
-            'gender'          => $this->gender,
-            'sortBy'          => $this->sortBy,
+            'city' => $this->city,
+            'gender' => $this->gender,
+            'sortBy' => $this->sortBy,
         ];
     }
 
 
-    public static function fromArray(array $request) : self
+    public static function fromArray(array $request): self
     {
         $subject = null;
 
         if (isset($request['subject']))
-            $subject = SubSubject::where('name', str_replace('-', ' ', $request['subject']))->first();
+            $subject = SubSubject::where('name', str_replace('-', ' ', $request['subject']))->first() ?? $request['subject'] ;
 
         else
             $subject = SubSubject::find($request['subjectId'] ?? null);
 
         $data = new self($request['subject'] ?? $subject->name,
-                         $subject,
-                         implode(',', SubSubject::all()->pluck('name')->toArray()),
-                         $subject->id ?? null,
-                         $request['lat'] ?? null,
-                         $request['lng'] ?? null,
-                         self::mapRadius($request['radius'] ?? null)[0],
-                         self::mapRadius($request['radius'] ?? null)[1],
-                         explode(',', $request['city'] ?? '')[0] ?? null,
-                         $request['gender'] ?? 'both',
-                         $request['sortBy'] ?? 'date');
+            $subject,
+            implode(',', SubSubject::all()->pluck('name')->toArray()),
+            $subject->id ?? null,
+            $request['lat'] ?? null,
+            $request['lng'] ?? null,
+            self::mapRadius($request['radius'] ?? null)[0],
+            self::mapRadius($request['radius'] ?? null)[1],
+            explode(',', $request['city'] ?? '')[0] ?? null,
+            $request['gender'] ?? 'both',
+            $request['sortBy'] ?? 'date');
 
         $coord = [];
 
@@ -287,13 +289,13 @@ class SearchArguments
     {
         $map = [
             1 => [5,
-                  '5 km'],
+                '5 km'],
             2 => [10,
-                  '10 km'],
+                '10 km'],
             3 => [20,
-                  '20 km'],
+                '20 km'],
             4 => [1,
-                  'à domicile'],
+                'à domicile'],
         ];
 
         if (isset($map[$radius]))
