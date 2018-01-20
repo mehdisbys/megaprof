@@ -25,12 +25,12 @@ class Advert extends Model
     protected $softDelete = true;
 
     protected $sluggable = [
-        'build_from'      => 'title',
-        'save_to'         => 'slug',
-        'separator'       => '-',
-        'unique'          => true,
+        'build_from' => 'title',
+        'save_to' => 'slug',
+        'separator' => '-',
+        'unique' => true,
         'include_trashed' => true,
-        'on_update'       => false,
+        'on_update' => false,
     ];
 
     public function sluggable()
@@ -149,12 +149,14 @@ class Advert extends Model
         return $this;
     }
 
-    public function notPublished(): bool {
-        return $this->published_at == NULL ;
+    public function notPublished(): bool
+    {
+        return $this->published_at == NULL;
     }
 
-    public function published(): bool {
-        return $this->published_at != NULL ;
+    public function published(): bool
+    {
+        return $this->published_at != NULL;
     }
 
     public function suspend()
@@ -192,15 +194,22 @@ class Advert extends Model
 
     public function step6Done(): bool
     {
-       return Avatar::hasAvatar($this->user_id);
+        return Avatar::hasAvatar($this->user_id);
     }
 
-    public function isApprovedByAdmin():bool
+    public function isAllDoneExceptAvatar(): bool
     {
-        return $this->approved_at != NULL ;
+        return $this->step1Done() and $this->step2Done()
+            and $this->step3Done() and $this->step4Done()
+            and $this->step5Done();
     }
 
-    public function isAwaitingApproval():bool
+    public function isApprovedByAdmin(): bool
+    {
+        return $this->approved_at != NULL;
+    }
+
+    public function isAwaitingApproval(): bool
     {
         return $this->approved_at == NULL and $this->published_at != NULL;
     }
@@ -227,13 +236,13 @@ class Advert extends Model
         $query->whereNotIn('adverts.id', $exceptAdvertIds);
 
         $query->join('subjects_per_advert', 'adverts.id', '=', 'subjects_per_advert.advert_id')
-              ->where(['subjects_per_advert.subject_id' => $subjectId]);
+            ->where(['subjects_per_advert.subject_id' => $subjectId]);
 
 
         if (in_array($gender, ['man', 'woman'])) {
             $query = $query->join('users', function ($join) use ($gender) {
                 $join->on('adverts.user_id', '=', 'users.id')
-                     ->where('users.gender', '=', $gender);
+                    ->where('users.gender', '=', $gender);
             });
         };
 
@@ -246,7 +255,7 @@ class Advert extends Model
             $radius = self::$defaultRadius;
 
         if (isset($radius) and $lat and $lng)
-            $query->whereRaw ("(6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
+            $query->whereRaw("(6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
     COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) <  {$radius} ");
 
 
@@ -263,7 +272,7 @@ class Advert extends Model
     }
 
 
-    public static function paginateResults(Collection $adverts )
+    public static function paginateResults(Collection $adverts)
     {
         return self::whereIn('id', $adverts->pluck('id'))->paginate(self::$paginateCount);
     }

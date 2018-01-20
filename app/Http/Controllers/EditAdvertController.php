@@ -266,8 +266,15 @@ class EditAdvertController extends Controller
     public function activateAdvert($advert_id)
     {
         $advert = Advert::find($advert_id);
-        if($advert->notPublished())
-        {
+
+        if ($advert->isAllDoneExceptAvatar() == false) {
+            info_message("Désolé, votre annonce est incomplète et ne peut pas être activée. 
+            L'annonce doit comporter au minimum: une matière, un titre, un niveau, un lieu et une description. 
+            <a href='/modifier-annonce-1/$advert->id'>Compléter mon annonce</a>");
+            return redirect()->back();
+        }
+
+        if($advert->notPublished()) {
             $advert->publish();
             event(new ProfCreatedAdvert($advert));
             thanks("Votre annonce est maintenant en cours de validation");
