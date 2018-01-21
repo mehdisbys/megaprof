@@ -297,12 +297,18 @@ class SubmitAdvertController extends Controller
 
     private function __publish(Request $request, $advert_id = NULL)
     {
-
         $advertId = session('advert_id') ?? $request->input('advert_id');
 
         $advertId = $advert_id ?? $advertId;
 
         $advert = Advert::find($advertId);
+
+        if ($advert->isAllDoneExceptAvatar() == false) {
+            info_message("Désolé, votre annonce est incomplète et ne peut pas être activée. 
+            L'annonce doit comporter au minimum: une matière, un titre, un niveau, un lieu et une description. 
+            <a href='/modifier-annonce-1/$advert->id'>Compléter mon annonce</a>");
+            return redirect('/mon-compte');
+        }
 
         $advert->publish();
 
