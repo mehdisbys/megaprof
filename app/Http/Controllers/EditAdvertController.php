@@ -229,17 +229,22 @@ class EditAdvertController extends Controller
 
         $avatar = json_decode(Input::get('img_upload'));
 
+        $advertId = session('advert_id') ?? $request->input('advert_id');
+
+        $advertId = $advert_id ?? $advertId;
+
         if ($avatar) {
             $output   = $avatar->output;
             $filename = '/tmp/'.str_random(10);
             base64_to_jpeg($output->image, $filename);
 
-            $m              = \App\Models\Avatar::firstOrCreate(['user_id' => Auth::id()]);
+            $m              = \App\Models\Avatar::firstOrCreate(['user_id' => Auth::id(), 'advert_id' => $advertId]);
             $m->img         = file_get_contents($filename);
             $m->img_cropped = file_get_contents($filename);
             $m->img_name    = $output->name;
             $m->img_mime    = $output->type;
             $m->img_size    = filesize($filename);
+            $m->advert_id   = $advertId;
             $m->save();
         }
 

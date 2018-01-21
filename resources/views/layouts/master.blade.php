@@ -161,7 +161,7 @@
 </footer>
 
 
-@include('main.partials.contactForm')
+{{--@include('main.partials.contactForm')--}}
 
 </body>
 @include('includes/toastr/toastr')

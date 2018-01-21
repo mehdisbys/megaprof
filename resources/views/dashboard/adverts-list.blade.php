@@ -4,6 +4,11 @@
         <div class="col-md-8 clearfix bottommargin-sm border1px">
             <div>
 
+                <div class="col-md-3">
+                    {!! HTML::image("/avatarb/$advert->user_id/$advert->id",
+                                       null, ["style" => "width:190px;", 'id' => 'img-question-mark']) !!}
+                </div>
+
                 @if($advert->title == '')
                     <div class="bold col-md-12"><span class="fa fa-warning"></span> Brouillon - (Annonce sans titre)
                     </div>

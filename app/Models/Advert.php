@@ -117,6 +117,11 @@ class Advert extends Model
         return "/avatar/{$this->user_id}";
     }
 
+    public function getAdvertAvatar()
+    {
+        return "/avatarb/{$this->user_id}/{$this->id}";
+    }
+
     public static function findBySlugOr404($slug)
     {
         $advert = self::where(['slug' => $slug])->whereNotNull('published_at')->first();

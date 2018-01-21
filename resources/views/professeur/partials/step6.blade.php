@@ -38,8 +38,8 @@
                         <div class="clearfix"></div>
 
                         <div id="upload" style="width: 190px; height: auto; text-align: center; margin: auto">
-                            @if(\App\Models\Avatar::hasAvatar(\Auth::id()))
-                                <img id="current_picture" src="{{ getAvatar(\Auth::id()) }}" alt="">
+                            @if(isset($advert) and \App\Models\Avatar::hasAdvertAvatar($advert->user_id, $advert->id))
+                                <img id="current_picture" src="{{"/avatarb/$advert->user_id/$advert->id"}}" alt="">
                             @endif
                                 <input type="file" name="img_upload" id="img_upload">
                         </div>

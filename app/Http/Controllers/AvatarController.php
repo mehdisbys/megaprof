@@ -12,6 +12,11 @@ class AvatarController extends Controller
         return Avatar::getAvatar($user_id);
     }
 
+    public function getAdvertAvatar($user_id, $advert_id)
+    {
+        return Avatar::getAdvertAvatar($user_id, $advert_id);
+    }
+
     public function getDefaultAvatar($user_id)
     {
         return Avatar::getDashboardAvatar($user_id);

@@ -260,20 +260,25 @@ class SubmitAdvertController extends Controller
 
         $avatar = json_decode(Input::get('img_upload'));
 
+        $advertId = session('advert_id') ?? $request->input('advert_id');
+
+        $advertId = $advert_id ?? $advertId;
+
         if ($avatar) {
             $output   = $avatar->output;
             $filename = str_random(10);
             base64_to_jpeg($output->image, $filename);
 
-            $m              = \App\Models\Avatar::firstOrCreate(['user_id' => \Auth::id()]);
+            $m              = new \App\Models\Avatar();
+            $m->user_id     = \Auth::id();
             $m->img         = file_get_contents($filename);
             $m->img_cropped = file_get_contents($filename);
             $m->img_name    = $output->name;
             $m->img_mime    = $output->type;
             $m->img_size    = filesize($filename);
+            $m->advert_id   = $advertId;
             $m->save();
         }
-
 
         $this->__publish($request);
 

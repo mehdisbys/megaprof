@@ -16,14 +16,14 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('/contact', 'ContactEmailController@postContact');
 
-//Lancement
+    //Lancement
     Route::get('/professeur', 'ListAdvertController@welcomeProfesseur');
 
-//Social
+    //Social
     Route::get('/redirect', 'SocialAuthController@redirect');
     Route::get('/callback', 'SocialAuthController@callback');
 
-//Main Page
+    //Main Page
     Route::get('/', 'ListAdvertController@index');
     Route::post('/student', 'ListAdvertController@registerStudentInterest');
     Route::get('/deactivate-student-alert/{token}', 'ListAdvertController@deactivateStudentInterest');
@@ -35,15 +35,16 @@ Route::group(['middleware' => ['web']], function () {
 
     // Avatar
     Route::get('/avatar/{user_id}', 'AvatarController@getAvatar');
+    Route::get('/avatarb/{user_id}/{advert_id}', 'AvatarController@getAdvertAvatar');
 
-// Signup
+    // Signup
     Route::get('inscription', 'SignupController@getSignup');
     Route::post('inscription', 'SignupController@candidateSignup');
 
-// Confirm
+    // Confirm
     Route::get('register/confirm/{code}', 'SignupController@confirmEmail');
 
-// Signing in
+    // Signing in
     Route::get('login', 'SessionsController@login');
     Route::post('login', 'SessionsController@postLogin');
     Route::get('logout', 'SessionsController@logout');

@@ -107,7 +107,7 @@
             </div>
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
-                    <img src="{{ $advert->getAvatar() }}" alt="avatar">
+                    <img src="{{ $advert->getAdvertAvatar() }}" alt="avatar">
                     <h3><a href="#" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
                     <ul class="iconlist-info">
                         @if($advert->can_webcam)
