@@ -12,8 +12,8 @@
                     {{\App\Models\SubSubject::find($subject->subject_id)->name}}
                 </div>
             @endforeach
+                <div class=""><strong>{{$booking->advert->price}}Dh/h</strong></div>
         @endif
-        <div class=""><strong>{{$booking->advert->price}}Dh/h</strong></div>
     </div>
 
 
