@@ -4082,7 +4082,7 @@ Create a CSS3 post-it note without images
 
     .mini-padding-top-when-mobile
     {
-        padding-top: 125px;
+        margin-top: 155px;
     }
 }
 

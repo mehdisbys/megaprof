@@ -186,7 +186,7 @@
         <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
 
-    <div class="col-md-12 text-center topmargin mini-padding-top-when-mobile ">
+    <div class="col-md-12 text-center mini-padding-top-when-mobile ">
         <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
     </div>
 
