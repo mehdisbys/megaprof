@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
 
         if(env('APP_ENV') == 'local') {
             $this->call(UserTableSeeder::class);
-            $this->call(AvatarTableSeeder::class);
             $this->call(AdvertsTableSeeder::class);
+            $this->call(AvatarTableSeeder::class);
         }
     }
 }

@@ -9,7 +9,7 @@ class AvatarTableSeeder extends Seeder
     {
         \DB::table('avatar')->delete();
 
-        $userIds = array_pluck(\App\Models\User::all(['id'])->toArray(), 'id');
+        $userIds = array_pluck(\App\Models\Advert::all(['user_id'])->toArray(), 'user_id');
 
         $avatars = \File::allFiles('./public/images/sample-avatars');
 
@@ -29,6 +29,7 @@ class AvatarTableSeeder extends Seeder
             $model->img_size    = $avatar->getSize();
             $model->img_mime    = \Intervention\Image\Facades\Image::make($avatar->getPathname())->mime();
             $model->user_id     = $userId;
+            $model->advert_id   = \App\Models\Advert::where(["user_id" => $userId])->pluck("id" )[0];
             $model->save();
         }
 

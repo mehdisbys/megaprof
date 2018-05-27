@@ -57,6 +57,11 @@ class Advert extends Model
         return $this->hasMany(SubjectsPerAdvert::class);
     }
 
+    public function avatar()
+    {
+        return $this->hasMany(Avatar::class);
+    }
+
     /**
      * @param $query Builder
      * @return Builder
