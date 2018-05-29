@@ -63,6 +63,7 @@
                     <div class="sorting-field col-md-12 topmargin-sm">
                         <label>Trier par</label>
                         <select name="sortBy" class="autocomplete-input-sortby">
+                            <option value="avatar">Photos en priorité</option>
                             <option value="distance">Distance</option>
                             <option value="date">Date</option>
                             <option value="price">Prix</option>

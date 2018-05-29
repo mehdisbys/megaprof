@@ -7,6 +7,8 @@ namespace App\Search;
 use App\Events\UserDidASearch;
 use App\Helpers\Contracts\SearchAdvertContract;
 use App\Models\Advert;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Log;
 
 class Search implements SearchAdvertContract
 {
@@ -16,7 +18,7 @@ class Search implements SearchAdvertContract
         $rawResults = null;
         $distances = null;
 
-        $rawResults = Advert::radiusSearch($data->getLat() ?? null, $data->getLgn() ?? null, $data->getRadius() ?? null, $data->getSortBy() ?? 'distance', $data->getGender() ?? 'both', $data->getSubjectId(), $exceptAdverts);
+        $rawResults = Advert::radiusSearch($data->getLat() ?? null, $data->getLgn() ?? null, $data->getRadius() ?? null, $data->getSortBy() ?? 'avatar', $data->getGender() ?? 'both', $data->getSubjectId(), $exceptAdverts);
 
         $distances = array_pluck($rawResults, 'distance', 'id');
 

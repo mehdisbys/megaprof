@@ -3,6 +3,7 @@ namespace App\Helpers\Contracts;
 
 
 use App\Search\SearchArguments;
+use Illuminate\Support\Collection;
 
 Interface SearchAdvertContract
 {

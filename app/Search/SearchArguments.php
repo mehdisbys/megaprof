@@ -3,6 +3,7 @@
 namespace App\Search;
 
 use App\Models\SubSubject;
+use Illuminate\Support\Facades\Log;
 
 class SearchArguments
 {
@@ -270,12 +271,12 @@ class SearchArguments
             self::mapRadius($request['radius'] ?? null)[1],
             explode(',', $request['city'] ?? '')[0] ?? null,
             $request['gender'] ?? 'both',
-            $request['sortBy'] ?? 'date');
+            $request['sortBy'] ?? 'avatar');
 
         $coord = [];
 
         if ($data->getCity() and $data->getLgn() == NULL)
-            $coord = geocode($data->getCity());
+            $coord = geocode($data->getCity(), env('COUNTRY', 'MA'));
 
         if (count($coord)) {
             $data->setLat($coord[0]);

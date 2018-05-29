@@ -147,14 +147,14 @@ function isCaptchaCodeCorrect(string $codeToValidate): bool
     return $captcha->success ?? false;
 }
 
-function geocode($address)
+function geocode($address, $country)
 {
 
     // url encode the address
     $address = urlencode($address);
 
     // google map geocode api url
-    $url = "http://maps.google.com/maps/api/geocode/json?address={$address}&amp;key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc";
+    $url = "https://maps.google.com/maps/api/geocode/json?address={$address}&components=country:{$country}&key=AIzaSyBMbqBykgfCFr3pgcj0dRU6rlmSggAZygc";
 
     // get the json response
     $resp_json = file_get_contents($url);

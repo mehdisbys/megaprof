@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Doctrine\DBAL\Query\QueryBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -237,7 +236,7 @@ class Advert extends Model
     }
 
 
-    public static function radiusSearch($lat, $lng, int $radius = null, string $sortBy = 'distance', $gender, $subjectId, array $exceptAdvertIds = [])
+    public static function radiusSearch($lat, $lng, int $radius = null, string $sortBy, $gender, $subjectId, array $exceptAdvertIds = [])
     {
         $query = DB::table('adverts');
 
@@ -245,9 +244,10 @@ class Advert extends Model
 
         $query->whereNotIn('adverts.id', $exceptAdvertIds);
 
+        $query->leftJoin('avatar', 'adverts.id', '=', 'avatar.advert_id')->select(["adverts.*", "avatar.img"]);
+
         $query->join('subjects_per_advert', 'adverts.id', '=', 'subjects_per_advert.advert_id')
             ->where(['subjects_per_advert.subject_id' => $subjectId]);
-
 
         if (in_array($gender, ['man', 'woman'])) {
             $query = $query->join('users', function ($join) use ($gender) {
@@ -257,7 +257,7 @@ class Advert extends Model
         };
 
         if ($lat and $lng) {
-            $query->selectRaw("*, (6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
+            $query->selectRaw("(6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(location_lat)) *
     COS(RADIANS(location_long) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(location_lat)))) AS distance");
         }
 
@@ -277,6 +277,9 @@ class Advert extends Model
 
         if ($sortBy === 'price')
             $query->orderBy('price', 'ASC');
+
+        if ($sortBy === 'avatar')
+            $query->orderByRaw('avatar.img DESC');
 
         return $query->paginate(self::$paginateCount);
     }
