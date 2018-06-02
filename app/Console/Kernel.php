@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\Inspire::class,
         \App\Console\Commands\GenerateSitemap::class,
         RemindUsers::class,
-        SearchStatistics::class
+        SearchStatistics::class,
     ];
 
     /**

@@ -162,7 +162,7 @@ class EditAdvertController extends Controller
             'presentation' => "required",
         ], ['presentation.required' => 'Veuillez remplir le champ description et expertise'], []);
 
-        $content_data = \Request::only(['presentation',
+        $content_data = \Request::all(['presentation',
                                            'content',
                                            'experience']);
 
@@ -202,7 +202,7 @@ class EditAdvertController extends Controller
             "free_first_time"
         ];
 
-        $data = \Request::only($only);
+        $data = \Request::all($only);
 
         \App\Models\Advert::find($advert_id)->update($data);
 

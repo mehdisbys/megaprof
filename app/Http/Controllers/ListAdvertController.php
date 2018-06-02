@@ -35,7 +35,7 @@ class ListAdvertController extends Controller
         $spam = (!empty($request->input('location_city_lat'))) or (!empty($request->input('location_city_long')));
 
         if ($spam == false) {
-            $inputs   = $request->only(["city",
+            $inputs   = $request->all(["city",
                                            "subject",
                                            "subjectId",
                                            "email",

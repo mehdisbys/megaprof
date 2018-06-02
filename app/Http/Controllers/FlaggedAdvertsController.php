@@ -32,7 +32,7 @@ class FlaggedAdvertsController extends Controller
             return redirect('register');
         }
 
-        $data =  $request->only(['email', 'advert_id', 'comment', 'user_id']);
+        $data =  $request->all(['email', 'advert_id', 'comment', 'user_id']);
         FlaggedAdvert::create($data);
         thanks('Merci de nous avoir signalé cette annonce. Nous allons traiter votre demande dans les plus brefs délais');
 

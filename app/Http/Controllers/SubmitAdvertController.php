@@ -172,7 +172,7 @@ class SubmitAdvertController extends Controller
             'can_webcam'        => 'can_webcam',
         ];
 
-        $values   = $request->only(array_values($table));
+        $values   = $request->all(array_values($table));
         $keys     = array_keys($table);
         $loc_data = array_combine($keys, $values);
 
@@ -198,7 +198,7 @@ class SubmitAdvertController extends Controller
         ], ['presentation.required' => 'Veuillez remplir le champ description et expertise'], []);
 
 
-        $content_data = $request->only(['presentation',
+        $content_data = $request->all(['presentation',
                                            'content',
                                            'experience']);
 
@@ -238,7 +238,7 @@ class SubmitAdvertController extends Controller
             "free_first_time"
         ];
 
-        $data = $request->only($only);
+        $data = $request->all($only);
 
         Advert::find(session('advert_id'))->update($data);
 

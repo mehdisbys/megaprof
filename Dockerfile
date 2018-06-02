@@ -33,7 +33,6 @@ RUN chown -R www-data:www-data /var/www
 
 
 EXPOSE 80
-EXPOSE 3306
 
 CMD apachectl -D FOREGROUND
 

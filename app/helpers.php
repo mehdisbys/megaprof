@@ -69,7 +69,7 @@ function calculate_next_time($interval, $start_time = NULL)
 
 function savePicture($type = 'advert')
 {
-    $coord = \Request::only(['w',
+    $coord = \Request::all(['w',
                                 'h',
                                 'x',
                                 'y',

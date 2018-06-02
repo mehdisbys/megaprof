@@ -33,7 +33,7 @@ class ArticleController extends Controller
 
     public function postCreate(\Illuminate\Http\Request $request)
     {
-        $data = $request->only(['title', 'meta', 'tagline', 'content']);
+        $data = $request->all(['title', 'meta', 'tagline', 'content']);
 
         $article = Article::create($data);
 
@@ -55,7 +55,7 @@ class ArticleController extends Controller
 
     public function postEdit(\Illuminate\Http\Request $request, $slug)
     {
-        $data = $request->only(['title', 'meta', 'tagline', 'content']);
+        $data = $request->all(['title', 'meta', 'tagline', 'content']);
 
         $article = Article::where(['slug' => $slug])->first();
 
