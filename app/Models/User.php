@@ -70,6 +70,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return Advert::whereSlug($slug)->where('user_id', $this->id)->exists();
     }
 
+    public function getFirstAdvertForUser($userid){
+        return Advert::where('user_id', $userid)->first();
+    }
+
     public function hasAdvertsCredits($id = NULL)
     {
         return $this->__hasCredit($id, 'adverts_credit');

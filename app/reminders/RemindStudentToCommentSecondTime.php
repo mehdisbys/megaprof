@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 class RemindStudentToCommentSecondTime implements ReminderInterface
 {
     private $reminderId       = 'remind_students_to_comment_on_an_accepted_booking_second_time';
-    private $daysAfterAcceptedBooking = 1000;
+    private $daysAfterAcceptedBooking = 7; // days
     private $currentCommentId = '';
     private $currentProf      = NULL;
     private $currentAdvert    = NULL;
