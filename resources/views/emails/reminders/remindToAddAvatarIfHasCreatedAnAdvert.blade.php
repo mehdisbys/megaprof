@@ -4,11 +4,11 @@
 
     <p>{{$user->firstname}},</p>
 
-    <p>Vous avez récemment créé une annonce sur Taelam : <a href="{{env('APP_URL') . '/' . $arguments->get('advert')->slug}}">{{$arguments->get('advert')->title}} </a> de cours entre particuliers sur Taelam.com et à ce jour vous n'avez pas encore recu de réservations. </p>
+    <p>Vous avez récemment créé une <a href="{{env('APP_URL') . '/' . $arguments->get('advert')->slug}}">annonce </a> de cours entre particuliers sur  <a href="https://taelam.com/mon-compte">Taelam.com</a></p>
 
     <p>Pour multiplier vos chances d'obtenir une réservation <strong>ajoutez une photo à votre profil !</strong></p>
 
-    <p>En effet les annonces sans photos apparaissent en dernier dans les résultats de recherche et reçoivent beaucoup moins de réservations, c’est la raison pour laquelle nous vous invitons fortement à compléter votre profil en mettant une photo de vous.</p>
+    <p>En effet <strong>les annonces sans photos apparaissent en dernier dans les résultats de recherche </strong> et reçoivent beaucoup moins de réservations, c’est la raison pour laquelle nous vous invitons fortement à compléter votre profil en mettant une photo de vous.</p>
 
     <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
            style="margin: auto;">

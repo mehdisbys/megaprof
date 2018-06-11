@@ -9,12 +9,10 @@ use Illuminate\Support\Collection;
 use Carbon\Carbon;
 
 
-class RemindUserToAddAnAvatar
+class RemindUserToAddAnAvatar implements ReminderInterface
 {
     private $reminderId = 'remind_students_and_profs_to_add_an_avatar';
     private $daysAfterAdvertCreated = 48; // hours
-    private $currentCommentId = '';
-    private $currentProf = NULL;
     private $currentAdvert = NULL;
 
     public function getUsersToRemind(): Collection

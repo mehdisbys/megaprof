@@ -11,6 +11,7 @@ use Reminders\RemindProfToReplyToBooking;
 use Reminders\RemindProfToReplyToBookingSecondTime;
 use Reminders\RemindStudentToComment;
 use Reminders\RemindStudentToCommentSecondTime;
+use Reminders\RemindUserToAddAnAvatar;
 use Reminders\RemindUserToCreateAnAdvert;
 use Reminders\RemindUserToFinishAdvert;
 
@@ -53,7 +54,8 @@ class RemindUsers extends Command
             new RemindProfToReplyToBooking(),
             new RemindProfToReplyToBookingSecondTime(),
             new RemindStudentToComment(),
-            new RemindStudentToCommentSecondTime()
+            new RemindStudentToCommentSecondTime(),
+            new RemindUserToAddAnAvatar(),
         ];
 
         foreach ($reminders as $reminder) {
