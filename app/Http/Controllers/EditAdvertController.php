@@ -204,6 +204,10 @@ class EditAdvertController extends Controller
 
         $data = \Request::all($only);
 
+        if (!isset ($data['price_webcam_percentage']) or $data['price_webcam_percentage'] == null) {
+            $data['price_webcam_percentage'] = 0;
+        }
+
         \App\Models\Advert::find($advert_id)->update($data);
 
         return redirect("modifier-annonce-6/{$advert_id}");

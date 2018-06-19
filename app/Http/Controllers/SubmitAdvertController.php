@@ -240,6 +240,10 @@ class SubmitAdvertController extends Controller
 
         $data = $request->all($only);
 
+        if (!isset ($data['price_webcam_percentage']) or $data['price_webcam_percentage'] == null) {
+            $data['price_webcam_percentage'] = 0;
+        }
+
         Advert::find(session('advert_id'))->update($data);
 
         return redirect()->action('SubmitAdvertController@getStep6Picture');
