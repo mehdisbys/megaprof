@@ -10,6 +10,8 @@
         <h2 class="col-md-6 border1px"><a href="/annonces-validees">Annonces validées : {{$approvedAdvertsCount}}</a></h2>
         <h2 class="col-md-6 border1px"><a href="/annonces-brouillons">Brouillons : {{$archivedAdvertsCount}}</a></h2>
         <h2 class="col-md-6 border1px"><a href="/annonces-par-matieres">Annonces par Matières</a></h2>
+        <h2 class="col-md-6 border1px"><a href="/reservations-acceptees">Réservations acceptées : ({{$acceptedBookingsCount}})</a></h2>
+        <h2 class="col-md-6 border1px"><a href="/reservations-en-attente">Réservations en attente de réponse : {{$waitingReplyBookingsCount}}</a></h2>
         <h2 class="col-md-12 border1px">
             <a class="col-md-2" href="https://analytics.google.com/analytics/web/"><i class="fa fa-line-chart"></i></a>
             <a class="col-md-2" href="https://www.facebook.com/taelamOfficiel"><i class="fa fa-facebook-square"></i></a>

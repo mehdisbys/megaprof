@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\Events\AdvertWasAcceptedByAdmin;
 use App\Events\AdvertWasRejectedByAdmin;
 use App\Models\Advert;
-use App\Models\Notification;
-use App\Models\SubjectsPerAdvert;
+use App\Models\Booking;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +22,8 @@ class AdminController extends Controller
         $usersCount           = User::count();
         $approvedAdvertsCount = Advert::whereNotNull('approved_at')->whereNotNull('published_at')->orderBy('approved_at', 'DESC')->count();
         $archivedAdvertsCount = Advert::whereNull('published_at')->orderBy('created_at', 'desc')->count();
-
+        $acceptedBookingsCount = Booking::where('answer', 'yes')->count();
+        $waitingReplyBookingsCount = Booking::whereNull('answer')->count();
 
         return view('admin.adminOverview')->with(get_defined_vars());
     }
@@ -57,6 +56,20 @@ class AdminController extends Controller
         $adverts = Advert::whereNull('published_at')->orderBy('created_at', 'DESC')->get();
 
         return view('admin.unfinishedOrArchivedAdverts')->with(compact('adverts'));
+    }
+
+    public function listWaitingReplyBookings()
+    {
+        $bookings = Booking::whereNull('answer')->orderBy('created_at', 'DESC')->get();
+
+        return view('admin.bookingsWaitingReply')->with(compact('bookings'));
+    }
+
+    public function listBookingsAccepted()
+    {
+        $bookings = Booking::where('answer', 'yes')->orderBy('created_at', 'DESC')->get();
+
+        return view('admin.bookingsListAccepted')->with(compact('bookings'));
     }
 
     public function listAdvertPerSubjects()
