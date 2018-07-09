@@ -23,7 +23,7 @@ class Booking extends Model
 
     public function advert()
     {
-        return $this->belongsTo(Advert::class, 'advert_id', 'id');
+        return $this->belongsTo(Advert::class, 'advert_id', 'id')->withTrashed();
     }
 
     public static function currentProfBookingRequests()
