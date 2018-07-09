@@ -1,11 +1,16 @@
 @foreach($bookings as $booking)
 
+    @if($booking->advert == NULL or !isset($booking->advert->slug) )
+        <p>Debug : Could not display booking id : {{$booking->id}} </p>
+        @continue
+    @endif
+
     <div class="row border1px bottommargin-sm">
 
         <div class="col-md-4">
+
             <a href="/{{$booking->advert->slug}}">{{$booking->advert->title}}</a>
         </div>
-
 
         <div class="col-md-3">
             {{$booking->student->firstname}} (élève): {{$booking->presentation}}
