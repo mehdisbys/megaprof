@@ -2,19 +2,20 @@
 {!! HTML::style('css/fa/css/font-awesome.min.css')!!}
 
 @if(isset($advert))
-    <form id="presentation-content"  accept-charset="UTF-8"
-          action="/modifier-annonce-6/{{$advert->id}}" method="POST" enctype="multipart/form-data" data-parsley-validate>
+    <form id="presentation-content" accept-charset="UTF-8"
+          action="/modifier-annonce-6/{{$advert->id}}" method="POST" enctype="multipart/form-data"
+          data-parsley-validate>
         @else
-            <form id="presentation-content"  accept-charset="UTF-8"
+            <form id="presentation-content" accept-charset="UTF-8"
                   action="/nouvelle-annonce-6" method="POST" enctype="multipart/form-data" data-parsley-validate>
                 @endif
 
                 {!! csrf_field() !!}
 
-                <h2 class="col-md-12 center">Montrez votre plus beau sourire !</h2>
+                <h2 class="col-md-12 center">@lang('avatar.smile')</h2>
 
                 <div class="col-md-12 center">
-                    <h5>Vous êtes sympathique, montrez-le ! Votre photo sera l'atout majeur de votre annonce pour donner confiance à vos élèves, elle est non seulement importante mais obligatoire pour que votre annonce soit en ligne</h5>
+                    <h5>@lang('avatar.smileDesc')</h5>
                 </div>
 
                 <div class="col-md-12 center topmargin-sm">
@@ -30,7 +31,8 @@
 
                         <div id="webcam" class="no-visibility col-md-3 col-md-offset-3">
                             <div id="my_camera"></div>
-                            <a href="javascript:void(take_snapshot())" class="button button-3d button-mini button-rounded button-blue">Prendre la photo</a>
+                            <a href="javascript:void(take_snapshot())"
+                               class="button button-3d button-mini button-rounded button-blue">@lang('avatar.takePicture')</a>
                             <input type="hidden" name="webcam_img" id="webcam_img">
 
                         </div>
@@ -63,8 +65,9 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 scrollspy" >
-                            <div id="img-preview" data-spy="affix" class="no-visibility topmargin-lg" style="width: 190px; height: 190px;"></div>
+                        <div class="col-md-3 scrollspy">
+                            <div id="img-preview" data-spy="affix" class="no-visibility topmargin-lg"
+                                 style="width: 190px; height: 190px;"></div>
                         </div>
 
                     </div>
@@ -74,23 +77,23 @@
                     </div>
 
                     <div id="my_buttons" class="">
-                        <label class="button" for="img_upload"><i class="icon-camera"></i>Téléchargez une photo</label>
-                        <a class="button" href="#" id="use-webcam"><i class="icon-facetime-video"></i>Utilisez votre webcam</a>
+                        <label class="button" for="img_upload"><i class="icon-camera"></i>@lang('avatar.uploadPicture')</label>
+                        <a class="button" href="#" id="use-webcam"><i class="icon-facetime-video"></i>@lang('avatar.useWebcam')
+                        </a>
                     </div>
 
                     <div id="validate_buttons" class="col-md-12 text-center topmargin-sm no-visibility">
 
                         <button id="back_button" class="button button-3d button-large button-rounded button-teal">
-                            Retour
+                            @lang('avatar.cancelPicture')
                         </button>
 
                         <button type="submit" class="button button-3d button-large button-rounded button-green">
-                            Valider cette photo
+                            @lang('avatar.validatePicture')
                         </button>
                     </div>
 
 
-
                     <script></script>
                 </div>
-    {!! Form::close() !!}
+            </form>
