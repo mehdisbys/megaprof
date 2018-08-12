@@ -12,10 +12,10 @@
 
                 {!! csrf_field() !!}
 
-                <h2 class="col-md-12 center">@lang('avatar.smile')</h2>
+                <h2 class="col-md-12 center">@lang('avatar/uploadPicture.smile')</h2>
 
                 <div class="col-md-12 center">
-                    <h5>@lang('avatar.smileDesc')</h5>
+                    <h5>@lang('avatar/uploadPicture.smileDesc')</h5>
                 </div>
 
                 <div class="col-md-12 center topmargin-sm">
@@ -32,7 +32,7 @@
                         <div id="webcam" class="no-visibility col-md-3 col-md-offset-3">
                             <div id="my_camera"></div>
                             <a href="javascript:void(take_snapshot())"
-                               class="button button-3d button-mini button-rounded button-blue">@lang('avatar.takePicture')</a>
+                               class="button button-3d button-mini button-rounded button-blue">@lang('avatar/uploadPicture.takePicture')</a>
                             <input type="hidden" name="webcam_img" id="webcam_img">
 
                         </div>
@@ -77,19 +77,19 @@
                     </div>
 
                     <div id="my_buttons" class="">
-                        <label class="button" for="img_upload"><i class="icon-camera"></i>@lang('avatar.uploadPicture')</label>
-                        <a class="button" href="#" id="use-webcam"><i class="icon-facetime-video"></i>@lang('avatar.useWebcam')
+                        <label class="button" for="img_upload"><i class="icon-camera"></i>@lang('avatar/uploadPicture.uploadPicture')</label>
+                        <a class="button" href="#" id="use-webcam"><i class="icon-facetime-video"></i>@lang('avatar/uploadPicture.useWebcam')
                         </a>
                     </div>
 
                     <div id="validate_buttons" class="col-md-12 text-center topmargin-sm no-visibility">
 
                         <button id="back_button" class="button button-3d button-large button-rounded button-teal">
-                            @lang('avatar.cancelPicture')
+                            @lang('avatar/uploadPicture.cancelPicture')
                         </button>
 
                         <button type="submit" class="button button-3d button-large button-rounded button-green">
-                            @lang('avatar.validatePicture')
+                            @lang('avatar/uploadPicture.validatePicture')
                         </button>
                     </div>
 

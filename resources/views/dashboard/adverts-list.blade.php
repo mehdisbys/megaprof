@@ -10,7 +10,7 @@
                 </div>
 
                 @if($advert->title == '')
-                    <div class="bold col-md-12"><span class="fa fa-warning"></span> Brouillon - (Annonce sans titre)
+                    <div class="bold col-md-12"><span class="fa fa-warning"></span> @lang('dashboard/adverts-list.draft')
                     </div>
                 @else
                     <div class="bold col-md-12">{{$advert->title}}</div>
@@ -25,11 +25,12 @@
 
                 <div class="col-md-12 topmargin-sm bottommargin-sm">
                     <div class="col-md-4">
-                        <i class="fa fa-map-marker"></i><strong> {{ $advert->getLocationText() ?? 'Non renseigné' }}</strong>
+                        @if ($advert->getLocationText() != '')
+                            <i class="fa fa-map-marker"></i><strong> {{ $advert->getLocationText()}}</strong>
                     </div>
 
                     <div class="col-md-8 pull-right">
-                        <small>Dernière modification: {{$advert->updated_at->format('d/m/Y H:i') }}</small>
+                        <small>@lang('dashboard/adverts-list.lastModified'): {{$advert->updated_at->format('d/m/Y H:i') }}</small>
                     </div>
                 </div>
             </div>
@@ -38,14 +39,14 @@
 
             @if($advert->published_at != null)
                 <div class="btn btn-warning ">
-                    <a href="/desactiver-annonce/{{$advert->id}}/">Désactiver</a>
+                    <a href="/desactiver-annonce/{{$advert->id}}/">@lang('dashboard/adverts-list.deactivate')</a>
                 </div>
             @else
                 <div class="btn btn-success">
-                    <a href="/activer-annonce/{{$advert->id}}/">Activer</a>
+                    <a href="/activer-annonce/{{$advert->id}}/">@lang('dashboard/adverts-list.activate')</a>
                 </div>
                 <div class="btn btn-danger topmargin-xsm">
-                    <a class='delete-advert' href="/supprimer-annonce/{{$advert->id}}/">Supprimer</a>
+                    <a class='delete-advert' href="/supprimer-annonce/{{$advert->id}}/">@lang('dashboard/adverts-list.delete')</a>
                 </div>
 
             @endif
@@ -53,17 +54,17 @@
             @if($advert->isAwaitingApproval())
 
                 <div class="btn btn-info topmargin-xsm">
-                    <a href="/preview/{{$advert->slug}}">Aperçu</a>
+                    <a href="/preview/{{$advert->slug}}">@lang('dashboard/adverts-list.preview')</a>
                 </div>
 
             @else
-                    <div class="btn btn-info topmargin-xsm">
-                        <a href="/{{$advert->slug}}">Voir</a>
-                    </div>
+                <div class="btn btn-info topmargin-xsm">
+                    <a href="/{{$advert->slug}}">@lang('dashboard/adverts-list.see')</a>
+                </div>
             @endif
 
             <div class="btn btn-primary topmargin-xsm">
-                <a href="/modifier-annonce-1/{{$advert->id}}">Modifier</a>
+                <a href="/modifier-annonce-1/{{$advert->id}}">@lang('dashboard/adverts-list.edit')</a>
             </div>
         </div>
         <div class="clearfix"></div>

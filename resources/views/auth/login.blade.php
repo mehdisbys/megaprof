@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>@lang('auth.login.title')</title>
+    <title>@lang('auth/login.title')</title>
 @endsection()
 
 @section('meta_description')
     <meta name="Description" lang="fr"
-          content=@lang('auth.login.meta')/>
+          content=@lang('auth/login.meta')/>
 @endsection
 
 @section('custom-head')

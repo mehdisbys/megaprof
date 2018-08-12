@@ -4,18 +4,18 @@
         <div class="content">
             <div class="col-md-12 border1px topmargin-sm content-message" id="{{$comment->id}}">
                 <div class="col-md-8 topmargin-sm bottommargin-sm">
-                    Laissez un commentaire sur votre
+                    @lang('comments/pendingComments.leaveComment)
                     @if($comment->iWasTheProf())
-                        étudiant(e)
+                        @lang('comments/pendingComments.student')
                     @else
-                        professeur(e)
+                        @lang('comments/pendingComments.teacher)
                     @endif
                     <strong>{{$comment->targetUser->firstname}}</strong>
                 </div>
 
                 <div class="col-md-4 pull-right topmargin-sm bottommargin-sm">
                     <a class="btn btn-warning btn-md" href="/laisser-un-commentaire/{{$comment->id}}">
-                        Commenter
+                        @lang('comments/pendingComments.comment')
                     </a>
                 </div>
             </div>

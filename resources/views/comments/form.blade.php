@@ -17,24 +17,23 @@
 
             <div class="col-md-10 bold ">
 
-                Comment s'est passé votre cours avec {{$comment->targetUser->firstname}} ?
+                @lang('comments/form.title') {{$comment->targetUser->firstname}} ?
 
                 {!! Form::textarea('comment',null,['class' => 'sm-form-control', 'id' => 'presentation',
                 'required' => "required",
-                'data-parsley-required-message'=>"Ce champs est requis",
+                'data-parsley-required-message'=>__('comments/form.requiredField'),
                 'data-parsley-minimumwords' => "10",
-                'Placeholder' => 'Décrivez le déroulement du cours en quelques mots',
-                'title' => "Entrez au moins 10 mots"]) !!}
+                'Placeholder' => __('comments/form.describeLesson'),
+                'title' => __('comments/form.minimumWords')]) !!}
             </div>
 
-            <div class="col-md-10 topmargin-sm">Attribuez une note globale à  {{$comment->targetUser->firstname}} en prenant en compte la
-                ponctualité, la compétence et la pédagogie.
+            <div class="col-md-10 topmargin-sm">{{ __('comments/form.rateTeacher', ['name' => $comment->targetUser->firstname])}}
             </div>
 
             <div class="col-md-offset-1 col-md-8 star-rating ratingsm rating-active topmargin-sm">
 
                 <fieldset>
-                    <span class="col-md-1">Pas terrible</span>
+                    <span class="col-md-1">@lang('comments/form.rateBad')</span>
                     <div class="rating col-md-8">
                         <input type="radio" id="star5" name="rating" value="5"/>
                         <label class="full" for="star5"
@@ -67,12 +66,12 @@
                         <label class="half" for="starhalf"
                                title="Sucks big time - 0.5 stars"></label>
                     </div>
-                    <span class="col-md-2">Excellent!</span>
+                    <span class="col-md-2">@lang('comments/form.rateGood')</span>
                 </fieldset>
             </div>
             <div class="col-md-8 col-md-offset-1 text-center topmargin-sm">
                 <button type="submit" class="button button-3d button-large button-rounded button-green">
-                    Poster mon commentaire
+@lang('comments/form.postComment)
                 </button>
             </div>
         </form>

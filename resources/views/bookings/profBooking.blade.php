@@ -21,15 +21,15 @@
 
         <?php
         $location = [
-            'teacher' => __('bookings.profBooking.yourPlace'),
-            'my_place' => __('bookings.profBooking.theirPlace'),
-            'any' => __('bookings.profBooking.any'),
-            'location_webcam' => __('bookings.profBooking.webcam')
+            'teacher' => __('bookings/profBooking.yourPlace'),
+            'my_place' => __('bookings/profBooking.theirPlace'),
+            'any' => __('bookings/profBooking.any'),
+            'location_webcam' => __('bookings/profBooking.webcam')
         ];
         ?>
 
-        <em><strong>{{ $booking->student->firstname }}</strong> @lang("bookings.profBooking.livingAt")
-            <strong>{{$booking->locality}}</strong> @lang("bookings.profBooking.contactedYouForLesson")
+        <em><strong>{{ $booking->student->firstname }}</strong> @lang("bookings/profBooking.livingAt")
+            <strong>{{$booking->locality}}</strong> @lang("bookings/profBooking.contactedYouForLesson")
             <strong>{{$location[$booking->location] or $booking->pick_a_location}}</strong></em>
     </div>
 
@@ -44,10 +44,10 @@
 
             @if($booking->wasAccepted())
                 <div class="clearfix"></div>
-                <div class="col-md-12">@lang("bookings.profBooking.contactYourStudent") :</div>
-                <div class="col-md-12">@lang("bookings.profBooking.email"): {{$booking->student->email}}</div>
-                <div class="col-md-12">@lang("bookings.profBooking.phone")
-                    : {{$booking->student->mobile or  __('bookings.profBooking.noPhone')}}</div>
+                <div class="col-md-12">@lang("bookings/profBooking.contactYourStudent") :</div>
+                <div class="col-md-12">@lang("bookings/profBooking.email"): {{$booking->student->email}}</div>
+                <div class="col-md-12">@lang("bookings/profBooking.phone")
+                    : {{$booking->student->mobile or  __('bookings/profBooking.noPhone')}}</div>
             @endif
             <div class="pull-right">
                 <i class="icon-location"></i>
@@ -61,20 +61,20 @@
 
         <div class="col-md-4 topmargin-sm">
             @if($booking->wasAccepted())
-                <div class="green">@lang('bookings.profBooking.youAccepted')</div>
+                <div class="green">@lang('bookings/profBooking.youAccepted')</div>
 
             @elseif($booking->wasRejected())
-                <div class="">@lang('bookings.profBooking.youRejected')</div>
+                <div class="">@lang('bookings/profBooking.youRejected')</div>
 
             @else
                 <div id="booking_{{$booking->id}}_accept"
                      class="button button-small button-white button-rounded"><a
-                            href="/demande/{{$booking->id}}/yes">@lang('bookings.profBooking.accept')</a>
+                            href="/demande/{{$booking->id}}/yes">@lang('bookings/profBooking.accept')</a>
                 </div>
 
                 <div id="booking_{{$booking->id}}_refuse"
                      class="button button-small button-gray button-rounded"><a
-                            href="/demande/{{$booking->id}}/no">@lang('bookings.profBooking.reject')</a>
+                            href="/demande/{{$booking->id}}/no">@lang('bookings/profBooking.reject')</a>
                 </div>
             @endif
 
