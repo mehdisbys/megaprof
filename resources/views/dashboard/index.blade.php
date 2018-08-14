@@ -26,25 +26,24 @@
 
                         <div class="  " style="margin-left: 20px;">
                             @if(\App\Models\Avatar::hasAvatar(\Illuminate\Support\Facades\Auth::id()) == false)
-                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> Photo manquante</span>
+                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> @lang('dashboard/index.missingPicture')</span>
                                 <br>
                             @endif
 
                             @if( \App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->hasConfirmedAccount() == false)
-                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> Email non vérifié </span>
+                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> @lang('dashboard/index.emailNotVerified) </span>
                             @endif
                         </div>
                     </li>
 
 
                     <li class="active topmargin-small">
-                        <a href="#notifications" id="ui-id-25" data-toggle="tab">Notifications
+                        <a href="#notifications" id="ui-id-25" data-toggle="tab">@lang('dashboard/index.notifications')
                             <span class="badge blue-badge notification-count">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                     </li>
 
                     <li data-toggle="tab">
-                        <a href="#bookings" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Demandes
-                            de cours
+                        <a href="#bookings" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">@lang('dashboard/index.lessonsRequest')
                             @if(isset($bookings) and $bookings->count())
                                 <span class="badge red-badge">{{$bookings->count()}}</span>
                             @endif
@@ -52,8 +51,7 @@
                     </li>
 
                     <li data-toggle="tab">
-                        <a href="#my-comments" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">Mes
-                            commentaires
+                        <a href="#my-comments" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-26">@lang('dashboard/index.myComments')
                             @if(isset($pendingComments) and $pendingComments->count())
                                 <span class="badge green-badge">{{$pendingComments->count()}}</span>
                             @endif
@@ -61,8 +59,7 @@
                     </li>
 
                     <li data-toggle="tab">
-                        <a href="#my-adverts" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-27">Mes
-                            annonces
+                        <a href="#my-adverts" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-27">@lang('dashboard/index.myAdverts')
                             @if (isset($adverts))
                                 <span class="badge">{{$adverts->count()  + $toBeReviewedAdverts->count() + $archivedAdverts->count()}}</span>
                             @endif
@@ -70,9 +67,7 @@
                     </li>
 
                     <li data-toggle="tab">
-                        <a href="#my-profile" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-28">Gérer
-                            mon
-                            profil</a>
+                        <a href="#my-profile" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-28">@lang('dashboard/index.manageProfile')</a>
                     </li>
                 </ul>
             </div>
@@ -87,37 +82,37 @@
                             @if(isset($notifications) and $notifications->count())
                                 @include('notifications.list', ['notifications' => $notifications])
                             @else
-                                Vous avez lu toutes vos notifications.
+                                @lang('dashboard/index.readAllNotifications')
                             @endif
                         </div>
                         <div id="bookings">
                             @if(isset($bookings) and $bookings->count())
-                                <h4>Mes demandes de cours en attente de réponse</h4>
+                                <h4>@lang('dashboard/index.waitingRequests')</h4>
                                 <div class="col-md-12">
                                     @include('bookings.list')
                                 </div>
                             @endif
                             @if(isset($archivedBookings) and $archivedBookings->count())
-                                <h4>Mes demandes de cours déjà traitées</h4>
+                                <h4>@lang('dashboard/index.alreadyRepliedRequests')</h4>
                                 <div class="col-md-12">
                                     @include('bookings.list', ['bookings' => $archivedBookings])
                                 </div>
                             @endif
                             @if(isset($bookings) and $bookings->count() == 0 and isset($archivedBookings) and $archivedBookings->count() == 0)
-                                <h4>Mes demandes de cours </h4>
+                                <h4> @lang('dashboard/index.myRequests')</h4>
 
-                                <p>Vous n'avez pas encore fait ou reçu des demandes de cours</p>
+                                <p>@lang('dashboard/index.noRequestsYet')</p>
                             @endif
                         </div>
 
                         <div id="my-comments">
                             @if(isset($pendingComments) and $pendingComments->count() > 0 )
-                                <h4>Commentez vos derniers cours</h4>
+                                <h4>@lang('dashboard/index.commentLessons')</h4>
 
                                 @include('comments.pendingComments')
                             @else
-                                <h4>Mes commentaires</h4>
-                                <p>Pas de commentaires à afficher pour l'instant</p>
+                                <h4>@lang('dashboard/index.myComments')</h4>
+                                <p>@lang('dashboard/index.noCommentsYet')</p>
                             @endif
                         </div>
                     </div>
@@ -131,22 +126,21 @@
                              style="display: none;">
 
                             @if(isset($toBeReviewedAdverts) and $toBeReviewedAdverts->count())
-                                <h4>Mes annonces en cours de modération</h4>
+                                <h4>@lang('dashboard/index.waitingAdminAdverts')</h4>
                                 @include('dashboard.adverts-list',['adverts' => $toBeReviewedAdverts])
                             @endif
 
 
-                            <h4>Mes annonces publiées</h4>
+                            <h4>@lang('dashboard/index.publishedAdverts')</h4>
                             @if($adverts->isNotEmpty())
                                     @include('dashboard.adverts-list',['adverts' => $adverts])
                             @elseif($toBeReviewedAdverts->isEmpty())
-                                    <p>Vous n'avez pas encore créé d'annonces</p>
-                                <p><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">Donner des
-                                        cours</a></p>
+                                    <p>@lang('dashboard/index.noAdvertsYet')</p>
+                                <p><a id="donner-des-cours" class="button" href="/nouvelle-annonce-1">@lang('dashboard/index.giveLessons')</a></p>
                             @endif
 
                             @if(isset($archivedAdverts) and $archivedAdverts->count())
-                                <h4>Mes annonces hors-ligne</h4>
+                                <h4>@lang('dashboard/index.disabledAdverts')</h4>
                                 @include('dashboard.adverts-list',['adverts' => $archivedAdverts])
 
                             @endif
@@ -158,7 +152,7 @@
                                  id="my-profile"
                                  aria-labelledby="ui-id-28" role="tabpanel" aria-expanded="false" aria-hidden="true"
                                  style="display: none;">
-                                <h4>Changer ma photo</h4>
+                                <h4>@lang('dashboard/index.updatePicture')</h4>
                                 <div class="col-md-12">
                                     <form id="presentation-content" accept-charset="UTF-8"
                                           action="/avatar" method="POST" enctype="multipart/form-data"
@@ -181,7 +175,7 @@
 
                                             <button type="submit"
                                                     class="button button-3d button-small button-rounded nice-orange">
-                                                Valider cette photo
+                                                @lang('dashboard/index.validatePicture')
                                             </button>
 
 
@@ -254,24 +248,24 @@
 
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                            <i class="fa fa-male"></i> {!! Form::label('gender_man', 'Homme') !!}
+                                            <i class="fa fa-male"></i> {!! Form::label('gender_man', __('dashboard/index.man')) !!}
                                             {!! Form::radio('gender','man', $user->gender,['class' => '', 'id' => 'gender_man']) !!}
                                         </div>
 
                                         <div class="col-md-6">
-                                            <i class="fa fa-female"></i> {!! Form::label('gender_woman', 'Femme') !!}
+                                            <i class="fa fa-female"></i> {!! Form::label('gender_woman', __('dashboard/index.woman')) !!}
                                             {!! Form::radio('gender','woman', $user->gender,['class' => '', 'id' => 'gender_woman']) !!}
                                         </div>
 
                                     </div>
 
                                     <div class="form-group col-md-6 clearfix">
-                                        {!! Form::label('firstname', 'Prénom') !!}
+                                        {!! Form::label('firstname', __('dashboard/index.firstname')) !!}
                                         {!! Form::text('firstname', $user->firstname, ['class' => 'sm-form-control']) !!}
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        {!! Form::label('lastname', 'Nom') !!}
+                                        {!! Form::label('lastname', __('dashboard/index.lastname')) !!}
                                         {!! Form::text('lastname', $user->lastname, ['class' => 'sm-form-control']) !!}
                                     </div>
 
@@ -280,17 +274,17 @@
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        {!! Form::label('email', 'Email') !!}
+                                        {!! Form::label('email', __('dashboard/index.email')) !!}
                                         {!! Form::text('email', $user->email, ['class' => 'sm-form-control']) !!}
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        {!! Form::label('telephone', 'Mobile') !!}
+                                        {!! Form::label('telephone', __('dashboard/index.mobile')) !!}
                                         {!! Form::text('telephone', $user->telephone, ['class' => 'sm-form-control']) !!}
                                     </div>
 
                                     <div class="form-group col-md-12 topmargin-sm">
-                                        {!! Form::label('id_document', "Pièce d'identité (Professeurs Uniquement)") !!}
+                                        {!! Form::label('id_document', __('dashboard/index.teacherProofID')) !!}
 
                                         <?php $idDocument = \App\Models\IdDocument::getByUserId(\Auth::id()) ?>
 
@@ -307,7 +301,7 @@
                                             <div class="input-group-btn">
 
                                                 <div class="btn btn-info">
-                                                    <span class="hidden-xs">Télécharger ma carte d'identité</span>
+                                                    <span class="hidden-xs">@lang('dashboard/index.uploadProofID')</span>
                                                     <input
                                                             name="id_document"
                                                             id="input-8"
@@ -322,7 +316,7 @@
 
 
                                     <div class="form-group col-md-12">
-                                        {!! Form::label('id_document', "Diplômes / Certifications (Professeurs Uniquement)") !!}
+                                        {!! Form::label('id_document', __('dashboard/index.diplomas')) !!}
 
                                         <?php $degreeDocument = \App\Models\DegreeDocument::getByUserId(\Auth::id()) ?>
 
@@ -339,7 +333,7 @@
                                             <div class="input-group-btn">
 
                                                 <div class="btn btn-primary">
-                                                    <span class="hidden-xs">Télécharger mon diplôme / certifications</span>
+                                                    <span class="hidden-xs">@lang('dashboard/index.uploadDiploma')</span>
                                                     <input
                                                             name="degree_document"
                                                             id="input-8"
@@ -355,7 +349,7 @@
 
 
                                     <div class="col-md-10">
-                                        <button class="btn btn-success" type="submit">Mettre mon profil à jour</button>
+                                        <button class="btn btn-success" type="submit">@lang('dashboard/index.updateProfile')</button>
                                     </div>
 
                                     {!! Form::close() !!}

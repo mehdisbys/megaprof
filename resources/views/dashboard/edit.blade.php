@@ -4,45 +4,45 @@
 
 
     <div class="col-md-8 col-md-offset-1">
-        <h2><i class="icon icon-pen"></i> Édition d'annonce</h2>
+        <h2><i class="icon icon-pen"></i> @lang('dashboard/edit.advertEdition')</h2>
 
         <ul class="nav nav-pills">
 
             <div class="col-md-2">
                 <a href="/modifier-annonce-1/{{$advert->id}}" class="ui-tabs-anchor nice-orange" role="presentation"
-                   tabindex="-1" id="ui-id-137">Matières</a>
+                   tabindex="-1" id="ui-id-137">@lang('dashboard/edit.subjects')</a>
             </div>
 
             <div class="col-md-2">
                 <a href="/modifier-annonce-2/{{$advert->id}}" class="ui-tabs-anchor nice-orange" role="presentation"
-                   tabindex="-1" id="ui-id-139">Titre</a>
+                   tabindex="-1" id="ui-id-139">@lang('dashboard/edit.title')</a>
             </div>
 
             <div class="col-md-2">
                 <a href="/modifier-annonce-3/{{$advert->id}}" class="ui-tabs-anchor nice-orange" role="presentation"
-                   tabindex="-1" id="ui-id-140">Lieu</a>
+                   tabindex="-1" id="ui-id-140">@lang('dashboard/edit.location')</a>
             </div>
 
             <div class="col-md-2">
                 <a href="/modifier-annonce-4/{{$advert->id}}" class="ui-tabs-anchor nice-orange" role="presentation"
-                   tabindex="-1" id="ui-id-141">Description</a>
+                   tabindex="-1" id="ui-id-141">@lang('dashboard/edit.desc')</a>
             </div>
 
             <div class="col-md-2">
                 <a href="/modifier-annonce-5/{{$advert->id}}" class="ui-tabs-anchor nice-orange" role="presentation"
-                   tabindex="-1" id="ui-id-142">Prix</a>
+                   tabindex="-1" id="ui-id-142">@lang('dashboard/edit.price')</a>
             </div>
 
             <div class="col-md-2">
                 <a href="/modifier-annonce-6/{{$advert->id}}" class="ui-tabs-anchor nice-orange" role="presentation"
-                   tabindex="-1" id="ui-id-143">Photo</a>
+                   tabindex="-1" id="ui-id-143">@lang('dashboard/edit.photo')</a>
             </div>
 
         </ul>
     </div>
     <div class="col-md-2 topmargin-lg ">
         <a href="/publier/{{$advert->id}}" class="ui-tabs-anchor nice-orange">
-            Publier
+            @lang('dashboard/edit.publish')
         </a>
     </div>
 
