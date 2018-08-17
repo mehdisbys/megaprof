@@ -54,7 +54,7 @@ class SocialAuthController extends Controller
                     [
                         'firstname'    => $name[0],
                         'lastname'     => "",
-                        'gender'       => $gender[$providerUser->user['gender']] ?? null,
+                        'gender'       => null,
                         'email'        => $providerUser->getEmail(),
                         'password'     => bcrypt(bin2hex(random_bytes(10))),
                         'facebook_id'  => $providerUser->id,
