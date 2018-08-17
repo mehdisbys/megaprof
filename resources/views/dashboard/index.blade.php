@@ -31,7 +31,7 @@
                             @endif
 
                             @if( \App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->hasConfirmedAccount() == false)
-                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> @lang('dashboard/index.emailNotVerified) </span>
+                                <span class="topmargin-small"><i class="fa fa-warning" style="color: orange;"></i> @lang('dashboard/index.emailNotVerified') </span>
                             @endif
                         </div>
                     </li>
