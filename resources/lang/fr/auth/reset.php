@@ -6,8 +6,4 @@ return [
     'confirmPassword' => 'Confirmation Mot de passe',
     'reinitButton' => 'Réinitialiser',
     'forgottenPassword' => 'Mot de passe oublié ?',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
 ];
