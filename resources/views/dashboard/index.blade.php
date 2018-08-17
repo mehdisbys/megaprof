@@ -38,7 +38,7 @@
 
 
                     <li class="active topmargin-small">
-                        <a href="#notifications" id="ui-id-25" data-toggle="tab">@lang('dashboard/index.notifications')
+                        <a href="#notifications" id="ui-id-25" data-toggle="tab"> @lang('dashboard/index.notifications')
                             <span class="badge blue-badge notification-count">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                     </li>
 

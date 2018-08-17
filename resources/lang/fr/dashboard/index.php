@@ -15,7 +15,6 @@ return [
     'noRequestsYet' => "Vous n'avez pas encore fait ou reçu des demandes de cours",
     'commentLessons' => "Commentez vos derniers cours",
     'noCommentsYet' => "Pas de commentaires à afficher pour l'instant",
-    'myComments' => "Mes commentaires",
     'waitingAdminAdverts' => "Mes annonces en cours de modération",
     'publishedAdverts' => "Mes annonces publiées",
     'noAdvertsYet' => "Vous n'avez pas encore créé d'annonces",
