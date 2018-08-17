@@ -16,7 +16,7 @@
 			<div class="form-wrapper">
 
 				<div class="input-text input-container">
-					<input type="text" data-type="email" placeholder=@lang('auth/password.email') required="" name="email" class="input"/>
+					<input type="text" data-type="email" placeholder="@lang('auth/password.email')" required="" name="email" class="input"/>
 				</div>
 
 				<input type="submit" value="@lang('auth/password.reinitializeButton')" class="button topmargin-sm"/>

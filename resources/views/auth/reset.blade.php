@@ -17,12 +17,12 @@
                 <div class="form-wrapper">
 
                     <div class="input-text input-container">
-                        <input type="password" data-type="email" placeholder=@lang("auth/reset.password") required="" name="password"
+                        <input type="password" data-type="email" placeholder="@lang("auth/reset.password")" required="" name="password"
                                class="input"/>
                     </div>
 
                     <div class="input-text input-container">
-                        <input type="password" data-type="required" required="" placeholder=@lang('auth/reset.confirmPassword')
+                        <input type="password" data-type="required" required="" placeholder="@lang('auth/reset.confirmPassword')"
                                name="password_confirmation"
                                class="input" value=""/>
                     </div>
