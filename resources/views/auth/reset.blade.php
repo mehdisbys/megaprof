@@ -27,7 +27,7 @@
                                class="input" value=""/>
                     </div>
 
-                    <input type="submit" value=@lang('auth/reset.reinitButton') class="button topmargin-sm"/>
+                    <input type="submit" value="@lang('auth/reset.reinitButton')" class="button topmargin-sm"/>
 
                 </div>
             </form>
