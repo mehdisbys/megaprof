@@ -9,7 +9,7 @@
 
     <br>
 
-    <p> sur votre <a href="http://www.taelam.com/mon-compte">
+    <p><a href="http://www.taelam.com/mon-compte">
             @lang('emails/comment/profCommented.loginToSeeComment')</a></p>
 
     <br>

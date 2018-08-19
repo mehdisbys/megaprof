@@ -2,19 +2,21 @@
 @section('content')
 
 
-<p>Bonjour {{$name }},</p>
+    <p>{{$name }}</p>
 
-<br>
+    <br>
 
-<p>Votre étudiant a laissé un commentaire sur votre cours.</p>
+    <p>@lang('emails/comment/studentCommented.studentCommentedOnYou')</p>
 
-<br>
+    <br>
 
-<p>Connectez-vous sur <a href="http://www.taelam.com/mon-compte">votre compte Taelam</a> pour le consulter.</p>
+    <p><a href="http://www.taelam.com/mon-compte">
+            @lang('emails/comment/studentCommented.loginToSeeComment')</a></p>
+    <br>
 
- <br>
+    <p>
+        <a href="http://www.taelam.com">@lang('emails/comment/studentCommented.seeYouSoon')</a></p>
+    <br>
 
-<p>À très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
-<br>
-<p>L'Équipe Taelam</p>
+    <p>@lang('emails/comment/studentCommented.team')</p>
 @stop
