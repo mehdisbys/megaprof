@@ -1,23 +1,24 @@
 @extends('emails.master')
 @section('content')
 
-    <p>Bonjour {{$name }},</p>
+    <p>{{$name }}</p>
 
-<br>
+    <br>
 
-<p>Votre professeur a laissé un commentaire sur vous.</p>
+    <p>@lang('emails/comment/profCommented.profCommentedOnYou')</p>
 
-<br>
+    <br>
 
-<p>Connectez-vous sur votre <a href="http://www.taelam.com/mon-compte">votre compte Taelam</a> pour le consulter.</p>
+    <p> sur votre <a href="http://www.taelam.com/mon-compte">
+            @lang('emails/comment/profCommented.loginToSeeComment')</a></p>
 
-<br>
+    <br>
 
-<p>À très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
+    <p>
+        <a href="http://www.taelam.com">@lang('emails/comment/profCommented.seeYouSoon')</a></p>
+    <br>
 
-<br>
-
-<p>L'Équipe Taelam</p>
+    <p>@lang('emails/comment/profCommented.team')</p>
 
 @stop
 
