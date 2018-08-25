@@ -1,13 +1,16 @@
 @extends('emails.master')
 @section('content')
 
+    <p>@lang('instantMatch/matchedAdvert.title')</p>
 
-<h4>Un professeur de {{$studentInterest->subject}} est disponible à {{$advert->getLocationText()}} ! </h4>
+    <h4><p>@lang('instantMatch/matchedAdvert.subjectTeacher') </p>
+        <p>{{$studentInterest->subject}}</p>
+        <p>@lang('instantMatch/matchedAdvert.isAvailableAt')</p>
+        <p>{{$advert->getLocationText()}}</p></h4>
 
-    <p>Vous nous avez demandé de vous informer dès qu'un professeur de {{$studentInterest->subject}} serait disponible près de chez vous</p>
 
 
-    <p>Vous pouvez dès à présent voir l'annonce du professeur en ligne :</p>
+    <p>@lang('instantMatch/matchedAdvert.youCanSeeAdvert')</p>
 
     <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
            style="margin: auto;">
@@ -16,15 +19,17 @@
                 <a href="https://taelam.com/{{$advert->slug}}"
                    style="background: #fd875e; border: 15px solid #fd875e; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"
                    class="button-a">
-                    <span style="color:#ffffff;" class="button-link">Voir l'annonce de {{$studentInterest->subject}}</span>
+                    <span style="color:#ffffff;" class="button-link">Voir l'annonce</span>
                 </a>
             </td>
         </tr>
     </table>
 
-    <p>Apprenez Sans Limites !</p>
+    <p>@lang('instantMatch/matchedAdvert.learnWLimits')</p>
 
-    <p>L’Equipe TAELAM </p>
+    <p>@lang('instantMatch/matchedAdvert.team')</p>
 
-    <small><a href="{{env('APP_URL')}}/deactivate-student-alert/{{$studentInterest->token}}">Se désabonner de cette alerte</a></small>
+    <small>
+        <a href="{{env('APP_URL')}}/deactivate-student-alert/{{$studentInterest->token}}">@lang('deactivateAlert')</a>
+    </small>
 @stop

@@ -2,13 +2,20 @@
 @section('content')
 
 
-    <p>{{$user->firstname}},</p>
+    <p>{{$user->firstname}}</p>
 
-    <p>Vous avez récemment créé une <a href="{{env('APP_URL') . '/' . $arguments->get('advert')->slug}}">annonce </a> de cours entre particuliers sur  <a href="https://taelam.com/mon-compte">Taelam.com</a></p>
+    <p>
+        <a href="{{env('APP_URL') . '/' . $arguments->get('advert')->slug}}">@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.youHaveCreated')</a>
+    </p>
 
-    <p>Pour multiplier vos chances d'obtenir une réservation <strong>ajoutez une photo à votre profil !</strong></p>
+    <p>@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.getMoreBookings')</p>
 
-    <p>En effet <strong>les annonces sans photos apparaissent en dernier dans les résultats de recherche </strong> et reçoivent beaucoup moins de réservations, c’est la raison pour laquelle nous vous invitons fortement à compléter votre profil en mettant une photo de vous.</p>
+    <p>@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.advertsWithoutAvatar) </p>
+    <ul>
+        <li>@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.willAppearLast')</li>
+        <li>@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.willGetLessBookings')</li>
+    </ul>
+    <p>@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.adviseToAddPic')</p>
 
     <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
            style="margin: auto;">
@@ -17,13 +24,15 @@
                 <a href="https://taelam.com/mon-compte"
                    style="background: #fd875e; border: 15px solid #fd875e; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"
                    class="button-a">
-                    <span style="color:#ffffff;" class="button-link">Rajouter une photo</span>
+                    <span style="color:#ffffff;" class="button-link">
+                        @lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.addAPic')
+                    </span>
                 </a>
             </td>
         </tr>
     </table>
 
-   <p><strong>Faites la différence !</strong></p>
+    <p><strong>@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.makeTheDifference')</strong></p>
 
-    <p>L’Equipe TAELAM </p>
+    <p>@lang('reminders/remindToAddAvatarIfHasCreatedAnAdvert.team')</p>
 @stop
