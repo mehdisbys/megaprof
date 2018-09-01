@@ -1,21 +1,20 @@
 @extends('emails.master')
 @section('content')
-<p>Bonjour {{$name }},</p>
+    <p>{{$name}}</p>
 
-<br>
+    <br>
 
-<p>Nous vous confirmons que votre demande de cours a bien été envoyée.</p>
+    <p>@lang('requests/bookingRequestStudent.confirm')</p>
 
-<br>
+    <br>
 
-<p>Nous vous enverrons un email lorsque le professeur aura répondu à votre demande.</p>
+    <p>@lang('requests/bookingRequestStudent.notify')</p>
 
-<br>
+    <br>
 
-<p>À très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
+    <p>@lang('requests/bookingRequestStudent.seeYouSoon')</p>
 
-<br>
+    <br>
 
-<p>L'Équipe Taelam</p>
-
+    <p>@lang('requests/bookingRequestStudent.team')</p>
 @stop
