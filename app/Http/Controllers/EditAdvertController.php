@@ -134,14 +134,18 @@ class EditAdvertController extends Controller
             'location_city'     => 'locality',
             'travel_radius'     => 'radius',
             'location_lat'      => 'lat',
-            'can_receive'       => 'can_receive',
-            'can_travel'        => 'can_travel',
-            'can_webcam'        => 'can_webcam',
+        ];
+
+        $can = [
+            'can_receive'       => $request->get('can_receive'),
+            'can_travel'        => $request->get('can_travel'),
+            'can_webcam'        => $request->get('can_webcam'),
         ];
 
         $values   = \Request::only(array_values($table));
         $keys     = array_keys($table);
         $loc_data = array_combine($keys, $values);
+        $loc_data += $can;
 
         \App\Models\Advert::find($advert_id)->update($loc_data);
 
