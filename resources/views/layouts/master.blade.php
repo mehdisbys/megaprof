@@ -66,7 +66,8 @@
                         <ul class="nav navbar-nav navbar-right top-header-menu">
 
                             @if(Auth::check())
-                                <li><a class="header-item" href="/nouvelle-annonce-1">@lang('layouts/master.createAdvert')</a></li>
+                                <li><a class="header-item"
+                                       href="/nouvelle-annonce-1">@lang('layouts/master.createAdvert')</a></li>
                                 <li><a class="header-item" href="/mon-compte">@lang('layouts/master.myAccount') <span
                                                 class="badge blue-badge notification-count">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                                 </li>
@@ -78,7 +79,8 @@
                                 <li><a class="header-item" href="/login">@lang('layouts/master.connect')</a></li>
                                 <li><a class="header-item" href="/inscription">@lang('layouts/master.register')</a></li>
                                 <li><a class="header-item" href="/faq">@lang('layouts/master.help')</a></li>
-                                <li><a id="donner-des-cours" class="button" href="/professeur">@lang('layouts/master.giveLessons')</a></li>
+                                <li><a id="donner-des-cours" class="button"
+                                       href="/professeur">@lang('layouts/master.giveLessons')</a></li>
                             @endif
                         </ul>
                     </div>
@@ -107,19 +109,19 @@
             <div class="col-md-2 col-sm-6 paddingtop-bottom col-md-offset-1">
                 <div class="text-center center-block">
 
-                    <h6 class="heading7">À PROPOS</h6>
-                    <div><a href="/faq"> Foire Aux Questions</a></div>
-                    <div><a href="/nouvelle-annonce-1"> Créer une annonce</a></div>
-                    <div><a href="/cgu"> Conditions Générales</a></div>
-                    <div><a href="/professeur"> Devenir Professeur</a></div>
-                    <div><a href="/blog">Blog</a></div>
+                    <h6 class="heading7">@lang('layouts/master.ABOUT')</h6>
+                    <div><a href="/faq">@lang('layouts/master.FAQ')</a></div>
+                    <div><a href="/nouvelle-annonce-1"> </a></div>
+                    <div><a href="/cgu">@lang('layouts/master.cgu')</a></div>
+                    <div><a href="/professeur">@lang('layouts/master.becomeTeacher')</a></div>
+                    <div><a href="/blog">@lang('layouts/master.blog')</a></div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6 paddingtop-bottom">
 
                 <div class="text-center center-block">
-                    <h6 class="heading7">SUIVEZ-NOUS</h6>
+                    <h6 class="heading7">@lang('layouts/master.FOLLOW')</h6>
                     <br/>
                     <a href="https://www.facebook.com/taelamOfficiel"><i id="social-fb"
                                                                          class="fa fa-facebook-square fa-3x social"></i></a>
@@ -133,14 +135,11 @@
             <div class="col-md-3 col-sm-6 footerleft">
                 <div class="text-center center-block">
 
-                    <h6 class="heading7">TAELAM</h6>
+                    <h6 class="heading7"></h6>
                     <img class="flag" src="/css/flags/flags/4x3/ma.svg" alt="Drapeau Marocain">
 
                     <p><em>
-                            <small>Taelam est le premier site Marocain de partage de connaissances.
-                                Apprenez sans limites ! Trouvez des professeurs dans tout le Maroc dans des dizaines de
-                                matières différentes.
-                            </small>
+                            <small>@lang('layouts/master.taelamDescription')</small>
                         </em></p>
                 </div>
             </div>
@@ -148,11 +147,11 @@
             <div class="col-md-3 col-sm-6 ">
                 <div class="text-center center-block">
 
-                    <h6 class="heading7">CONTACT</h6>
+                    <h6 class="heading7">@lang('layouts/master.CONTACT')</h6>
 
                     <!--  <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div> -->
-                    <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal" data-target="#contact"
-                                                           data-original-title>Contactez-nous</a></div>
+                    <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal" data-target=1"#contact"
+                                                           data-original-title>@lang('layouts/master.contactUs')</a></div>
                 </div>
             </div>
         </div>

@@ -15,5 +15,14 @@ return [
     'connect' => "Se connecter",
     'register' => "S'inscrire",
     'giveLessons' => "Donner des cours",
-    '' => "",
+    'ABOUT' => "À PROPOS",
+    'FAQ' => " Foire Aux Questions",
+    'cgu' => "Conditions Générales",
+    'becomeTeacher' => "Devenir Professeur",
+    'blog' => 'Blog',
+    'FOLLOW' => 'SUIVEZ-NOUS',
+    'taelamDescription' => "Taelam est le premier site Marocain de partage de connaissances. Apprenez sans limites ! Trouvez des professeurs dans tout le Maroc dans des dizaines de matières différentes.",
+    'CONTACT' => 'CONTACT',
+    'contactUs' => "Contactez-nous",
+    'TAELAM' => "TAELAM"
 ];

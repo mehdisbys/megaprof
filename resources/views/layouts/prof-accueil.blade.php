@@ -10,15 +10,13 @@
     <div class="home-search-prof">
 
 
-        <h1 class="search-title-prof">Partagez vos compétences</h1>
+        <h1 class="search-title-prof">@lang('layouts/prof-accueil.shareYourSkills')</h1>
 
-        <p class="prof-short-presentation">Partager sa passion ou ses compétences et être rémunéré c'est facile avec
-            Taelam.
-            Des dizaines de matières et activités variées sont disponibles !</p>
+        <p class="prof-short-presentation">@lang('layouts/prof-accueil.taelamDesc')</p>
 
         <div id="prof-register" class="teacher-btn-div">
-            <a href="/inscription" class="btn btn-success btn-lg "><i class="fa fa-pencil-square-o"></i> Créer une
-                annonce</a>
+            <a href="/inscription" class="btn btn-success btn-lg "><i
+                        class="fa fa-pencil-square-o"></i> @lang('layouts/prof-accueil.createAdvert')</a>
         </div>
     </div>
 
@@ -31,8 +29,8 @@
     <div class="prof-info col-md-12">
         <div class="wraper">
             <div class="comd-12">
-                <div class="col-md-12 topmargin-big"><h2 class="section-title">Diffusez votre annonce en quelques
-                        clics</h2></div>
+                <div class="col-md-12 topmargin-big"><h2
+                            class="section-title">@lang('layouts/prof-accueil.marketAd')</h2></div>
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12">
                         <div class="col-md-3">
@@ -40,16 +38,11 @@
 
                             <div class="col-md-12"><i style="color:#6a91ff;"
                                                       class="fa fa-pencil-square-o fa-5x clearfix"></i></div>
-                            <div class="col-md-12"><a href="/inscription"><h4> Créer une annonce gratuitement</h4></a>
+                            <div class="col-md-12"><a href="/inscription">
+                                    <h4>@lang('layouts/prof-accueil.freeAdvert')</h4></a>
                             </div>
                             <div class="col-md-12">
-                                <small>Des milliers de personnes cherchent
-
-                                    des professeurs particuliers chaque
-
-                                    jour. TAELAM vous donne la
-
-                                    possibilité de créer un compte
+                                <small>@lang('layouts/prof-accueil.reachPeople')
                                 </small>
                             </div>
                         </div>
@@ -57,15 +50,9 @@
                         <div class="col-md-3">
                             <div class="col-md-12"><i style="color:#b0ed7c;"
                                                       class="fa fa-money fa-5x clearfix"></i></div>
-                            <div class="col-md-12"><h4>Fixez vos propres tarifs</h4></div>
+                            <div class="col-md-12"><h4>@lang('layouts/prof-accueil.chooseYourPrice')</h4></div>
                             <div class="col-md-12">
-                                <small>Pas d’intermédiaire, c’est à votre
-
-                                    guise ! Vous déterminez le prix de
-
-                                    votre cours, votre disponibilité et
-
-                                    le choix de vos élèves
+                                <small>@lang('layouts/prof-accueil.chooseYourPriceDesc')
                                 </small>
                             </div>
                         </div>
@@ -73,26 +60,18 @@
                             <div class="col-md-12"><i style="color:#fd875e;"
                                                       class="fa fa-users fa-5x clearfix"></i></div>
 
-                            <div class="col-md-12"><h4>Répondez aux demandes de vos élèves</h4></div>
+                            <div class="col-md-12"><h4>@lang('layouts/prof-accueil.answerStudents')</h4></div>
                             <div class="col-md-12">
-                                <small>Des élèves vous contactent, échangez avec
-
-                                    eux et acceptez ou refusez leurs demandes
-                                </small>
+                                <small>@lang('layouts/prof-accueil.answerStudentsDesc')</small>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="col-md-12"><i style="color:#ffcc66;"
                                                       class="fa fa-dashboard fa-5x clearfix"></i></div>
 
-                            <div class="col-md-12"><h4>Construisez votre business</h4></div>
+                            <div class="col-md-12"><h4>@lang('layouts/prof-accueil.buildYourBusiness')</h4></div>
                             <div class="col-md-12">
-                                <small>Consultez et suivez vos cours,
-
-                                    organisez-vous grâce à votre
-
-                                    tableau de bord
-                                </small>
+                                <small>@lang('layouts/prof-accueil.buildYourBusinessDesc')</small>
                             </div>
                         </div>
                     </div>
@@ -138,12 +117,12 @@
                 toastr.options.positionClass = "toast-top-full-width";
 
                 if (subject.length < 1) {
-                    toastr.info("Veuillez saisir une matière");
+                    toastr.info("@lang('layouts/prof-accueil.chooseSubject')");
                     return;
                 }
 
                 if (loc.length < 1) {
-                    toastr.info("Veuillez sélectionner une ville");
+                    toastr.info("@lang("layouts/prof-accueil.chooseCity")");
                     return;
                 }
 
