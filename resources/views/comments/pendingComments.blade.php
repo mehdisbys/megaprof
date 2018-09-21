@@ -8,7 +8,7 @@
                     @if($comment->iWasTheProf())
                         @lang('comments/pendingComments.student')
                     @else
-                        @lang('comments/pendingComments.teacher)
+                        @lang('comments/pendingComments.teacher')
                     @endif
                     <strong>{{$comment->targetUser->firstname}}</strong>
                 </div>
