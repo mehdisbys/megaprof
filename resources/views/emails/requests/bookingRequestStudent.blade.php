@@ -4,17 +4,17 @@
 
     <br>
 
-    <p>@lang('requests/bookingRequestStudent.confirm')</p>
+    <p>@lang('emails/requests/bookingRequestStudent.confirm')</p>
 
     <br>
 
-    <p>@lang('requests/bookingRequestStudent.notify')</p>
+    <p>@lang('emails/requests/bookingRequestStudent.notify')</p>
 
     <br>
 
-    <p>@lang('requests/bookingRequestStudent.seeYouSoon')</p>
+    <p>@lang('emails/requests/bookingRequestStudent.seeYouSoon')</p>
 
     <br>
 
-    <p>@lang('requests/bookingRequestStudent.team')</p>
+    <p>@lang('emails/requests/bookingRequestStudent.team')</p>
 @stop

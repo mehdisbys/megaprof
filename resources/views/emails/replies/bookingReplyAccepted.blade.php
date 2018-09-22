@@ -4,14 +4,14 @@
     <p>{{$name}}</p>
 
     <br>
-    <p>@lang('replies/bookingReplyAccepted.acceptedBooking')</p>
+    <p>@lang('emails/replies/bookingReplyAccepted.acceptedBooking')</p>
     <br>
-    <p>@lang('replies/bookingReplyAccepted.connect')</p>
+    <p>@lang('emails/replies/bookingReplyAccepted.connect')</p>
 
     <br>
 
-    <p>@lang('replies/bookingReplyAccepted.seeYouSoon')</p>
+    <p>@lang('emails/replies/bookingReplyAccepted.seeYouSoon')</p>
     <br>
 
-    <p>@lang('replies/bookingReplyAccepted.team')</p>
+    <p>@lang('emails/replies/bookingReplyAccepted.team')</p>
 @stop

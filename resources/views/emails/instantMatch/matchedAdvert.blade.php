@@ -1,16 +1,16 @@
 @extends('emails.master')
 @section('content')
 
-    <p>@lang('instantMatch/matchedAdvert.title')</p>
+    <p>@lang('emails/instantMatch/matchedAdvert.title')</p>
 
-    <h4><p>@lang('instantMatch/matchedAdvert.subjectTeacher') </p>
+    <h4><p>@lang('emails/instantMatch/matchedAdvert.subjectTeacher') </p>
         <p>{{$studentInterest->subject}}</p>
-        <p>@lang('instantMatch/matchedAdvert.isAvailableAt')</p>
+        <p>@lang('emails/instantMatch/matchedAdvert.isAvailableAt')</p>
         <p>{{$advert->getLocationText()}}</p></h4>
 
 
 
-    <p>@lang('instantMatch/matchedAdvert.youCanSeeAdvert')</p>
+    <p>@lang('emails/instantMatch/matchedAdvert.youCanSeeAdvert')</p>
 
     <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
            style="margin: auto;">
@@ -25,11 +25,11 @@
         </tr>
     </table>
 
-    <p>@lang('instantMatch/matchedAdvert.learnWLimits')</p>
+    <p>@lang('emails/instantMatch/matchedAdvert.learnWLimits')</p>
 
-    <p>@lang('instantMatch/matchedAdvert.team')</p>
+    <p>@lang('emails/instantMatch/matchedAdvert.team')</p>
 
     <small>
-        <a href="{{env('APP_URL')}}/deactivate-student-alert/{{$studentInterest->token}}">@lang('deactivateAlert')</a>
+        <a href="{{env('APP_URL')}}/deactivate-student-alert/{{$studentInterest->token}}">@lang('emails/instantMatch/matchedAdvert.deactivateAlert')</a>
     </small>
 @stop

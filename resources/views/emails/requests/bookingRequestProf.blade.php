@@ -1,18 +1,18 @@
 @extends('emails.master')
 @section('content')
 
-    <h2>@lang('requests/bookingRequestProf.youReceivedBooking', ['name' => $name])</h2>
+    <h2>@lang('emails/requests/bookingRequestProf.youReceivedBooking', ['name' => $name])</h2>
     <br>
 
-    <p>@lang('requests/bookingRequestProf.studentWantLesson')</p>
+    <p>@lang('emails/requests/bookingRequestProf.studentWantLesson')</p>
 
-    <p>@lang('requests/bookingRequestProf.connect')</p>
+    <p>@lang('emails/requests/bookingRequestProf.connect')</p>
 
     <br>
 
-    <p>@lang('requests/bookingRequestProf.warning')</p>
+    <p>@lang('emails/requests/bookingRequestProf.warning')</p>
     <br>
-    <p>@lang('requests/bookingRequestProf.seeYouSoon')</p>
+    <p>@lang('emails/requests/bookingRequestProf.seeYouSoon')</p>
     <br>
-    <p>@lang('requests/bookingRequestProf.team')</p>
+    <p>@lang('emails/requests/bookingRequestProf.team')</p>
 @stop

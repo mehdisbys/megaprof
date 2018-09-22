@@ -4,11 +4,11 @@
 
     <p>{{$user->firstname}}</p>
 
-    <p>@lang('reminders/remindToFinishCreatingAdvert.thankMember')</p>
+    <p>@lang('emails/reminders/remindToFinishCreatingAdvert.thankMember')</p>
 
-    <p>@lang('reminders/remindToFinishCreatingAdvert.youStartedAd')</p>
+    <p>@lang('emails/reminders/remindToFinishCreatingAdvert.youStartedAd')</p>
 
-    <p>@lang('reminders/remindToFinishCreatingAdvert.finishAd')</p>
+    <p>@lang('emails/reminders/remindToFinishCreatingAdvert.finishAd')</p>
 
 
     <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
@@ -19,13 +19,13 @@
                    style="background: #fd875e; border: 15px solid #fd875e; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"
                    class="button-a">
                     <span style="color:#ffffff;"
-                          class="button-link">@lang('reminders/remindToFinishCreatingAdvert.goToAccount')</span>
+                          class="button-link">@lang('emails/reminders/remindToFinishCreatingAdvert.goToAccount')</span>
                 </a>
             </td>
         </tr>
     </table>
 
-    <p>@lang('reminders/remindToFinishCreatingAdvert.weCanHelp')</p>
+    <p>@lang('emails/reminders/remindToFinishCreatingAdvert.weCanHelp')</p>
 
-    <p>@lang('reminders/remindToFinishCreatingAdvert.team')</p>
+    <p>@lang('emails/reminders/remindToFinishCreatingAdvert.team')</p>
 @stop
