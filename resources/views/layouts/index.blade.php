@@ -94,19 +94,27 @@
         }
 
         @-webkit-keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         @-moz-keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         @-o-keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         @keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         .presentation-icons {
@@ -120,22 +128,22 @@
     <!-- one ============= -->
     <div class="home-search medium-height-plus">
 
-        <h1 class="search-title">Apprenez sans limites</h1>
-        <h4 class="text-center" style="color: white">Activités et cours de soutien entre particuliers</h4>
+        <h1 class="search-title">@lang('layouts/index.title')</h1>
+        <h4 class="text-center" style="color: white">@lang('layouts/index.subtitle')</h4>
 
         <div id="matieres" class="matieres-scroller hidden" style="color: white">
             <ul style="list-style: none">
-                <li>Arts</li>
-                <li>Droit</li>
-                <li>Économie</li>
-                <li>Informatique</li>
-                <li>Langues</li>
-                <li>Loisirs</li>
-                <li>Musique</li>
-                <li>Sciences</li>
-                <li>Sciences Humaines</li>
-                <li>Soutien Scolaire</li>
-                <li>Sports</li>
+                <li>@lang('layouts/index.arts')</li>
+                <li>@lang('layouts/index.law')</li>
+                <li>@lang('layouts/index.economy')</li>
+                <li>@lang('layouts/index.it')</li>
+                <li>@lang('layouts/index.languages')</li>
+                <li>@lang('layouts/index.leisure')</li>
+                <li>@lang('layouts/index.music')</li>
+                <li>@lang('layouts/index.sciences')</li>
+                <li>@lang('layouts/index.socialSciences')</li>
+                <li>@lang('layouts/index.privateTuition')</li>
+                <li>@lang('layouts/index.sports')</li>
             </ul>
         </div>
 
@@ -148,7 +156,7 @@
                         <input
                                 id="subject_input"
                                 class="awesomplete home-search-input autocomplete-input-subject"
-                                placeholder="Que souhaitez-vous apprendre ?"
+                                placeholder="@lang('layouts/index.learnWhat')"
                                 data-minchars="1"
                                 data-autofirst="1"
                                 data-list="{!! $subsubjects !!}"
@@ -163,12 +171,13 @@
                         <input
                                 id="location_input"
                                 class="home-search-input autocomplete-input-city"
-                                placeholder="Ville où le cours a lieu"
+                                placeholder="@lang('layouts/index.learnWhere')"
                                 name="city" type="text" value="{{$selectedCity or ''}}"/>
                     </div>
 
                     <div class="home-search-button-wrapper ">
-                        <button id="submit-btn" class="button home-search-submit" type="submit"> Chercher</button>
+                        <button id="submit-btn" class="button home-search-submit"
+                                type="submit"> @lang('layouts/index.search')</button>
                     </div>
 
                     <div class="location-details no-visibility">
@@ -180,14 +189,13 @@
         </div>
 
 
-
         <div class="home-search-form-inner autocomplete">
         </div>
         <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
 
     <div class="col-md-12 text-center mini-padding-top-when-mobile ">
-        <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
+        <a class="button button-dp-blue" href="/professeur">@lang('layouts/index.iWantToGiveLessons')</a>
     </div>
 
 
@@ -200,17 +208,16 @@
                 <form id="loginForm" role="form" method="POST" action="/login" class="component-form">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     <div class="form-wrapper">
-                        <a class="facebook-connect" href="/redirect">Connexion avec Facebook</a>
+                        <a class="facebook-connect" href="/redirect">@lang('layouts/index.connectWithFB')</a>
                     </div>
                 </form>
-                <a href="/inscription">Connexion avec email</a>
+                <a href="/inscription">@lang('layouts/index.connectWithEmail')</a>
             </div>
         </div>
 
 
         <script>
-            function submitForm(response)
-            {
+            function submitForm(response) {
                 $('#loginForm').submit();
             }
         </script>
@@ -220,74 +227,42 @@
     <div class="student-info col-md-12" id="student-info-div">
         <div class="wraper">
             <div class="home-hare-opinion">
-                <div class="col-md-12"><h2 class="section-title">Trouver un professeur au Maroc, c'est facile !</h2></div>
+                <div class="col-md-12"><h2 class="section-title">@lang('layouts/index.findTeacher')</h2>
+                </div>
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12" id="quote-message-container">
                         <ul>
                             <li class="col-md-3 hidden topmargin-lg-when-mobile search_prof">
-                                <div class="col-md-12" data-tooltip="En un clic, Taelam vous
-
-                                    propose une liste de professeurs
-
-                                    et d’activités multiples pour tous
-
-                                    les goûts et les budgets près de
-
-                                    chez vous
-                                ">
+                                <div class="col-md-12" data-tooltip="@lang('layouts/index.findTeacherTooltip')">
                                     <img class="presentation-icons" src="/images/icons/009-web-page.svg" alt="">
                                 </div>
-                                <div class="col-md-12">Découvrez des activités et des professeurs partout au Maroc</div>
+                                <div class="col-md-12">@lang('layouts/index.findTeacherText')</div>
 
                             </li>
 
 
                             <li class="col-md-3 hidden topmargin-lg-when-mobile when-mo find_prof">
-                                <div class="col-md-12" data-tooltip="Choisissez des professeurs
-
-                                    sélectionnés et vérifiés par nos
-
-                                    soins. Fixez vos objectifs avec votre
-
-                                    professeur et atteignez-les grâce à
-
-                                    un suivi personnalisé
-                                ">
+                                <div class="col-md-12" data-tooltip="@lang('layouts/index.chooseTeacherText')">
                                     <img class="presentation-icons" src="/images/icons/047-chat.svg" alt="">
                                 </div>
-                                <div class="col-md-12">Trouvez parmi les professeurs sélectionnés, votre professeur
-                                </div>
+                                <div class="col-md-12">@lang('layouts/index.chooseTeacherShort')</div>
 
                             </li>
                             <li class="col-md-3 hidden topmargin-lg-when-mobile book_prof">
-                                <div class="col-md-12" data-tooltip="Après avoir sélectionné une
-
-                                    matière et un lieu, réservez
-
-                                    un cours avec le professeur
-
-                                    qui correspond le mieux à
-
-                                    vos attentes
-                                ">
+                                <div class="col-md-12" data-tooltip="@lang('layouts/index.chooseYourSubject')">
                                     <img class="presentation-icons" src="/images/icons/teamwork.svg" alt="">
                                 </div>
-                                <div class="col-md-12">Réservez votre activité</div>
+                                <div class="col-md-12">@lang('layouts/index.bookLesson')</div>
 
                             </li>
 
                             <li class="col-md-3 hidden topmargin-lg-when-mobile learn">
-                                <div class="col-md-12" data-tooltip="Apprenez, échangez
-
-                                    ou perfectionnez vos
-
-                                    connaissances
-                                ">
+                                <div class="col-md-12" data-tooltip="@lang('layouts/index.bookLessonTooltip')">
                                     <img class="presentation-icons" src="/images/icons/020-like-1.svg" alt="">
                                 </div>
                                 <div class="col-md-12">
 
-                                    <div class="col-md-12">Commencez à apprendre !</div>
+                                    <div class="col-md-12">@lang('layouts/index.startLearning')</div>
                                 </div>
                             </li>
                         </ul>
@@ -297,7 +272,6 @@
         </div>
 
         <div class="col-md-12 topmargin-big">
-
 
 
             <div>
@@ -343,12 +317,12 @@
                 toastr.options.positionClass = "toast-top-full-width";
 
                 if (subject.length < 1) {
-                    toastr.info("Veuillez saisir une matière");
+                    toastr.info("@lang('layouts/index.pleaseEnterASubject')");
                     return;
                 }
 
                 if (loc.length < 1) {
-                    toastr.info("Veuillez sélectionner une ville");
+                    toastr.info("@lang('layouts/index.pleaseEnterACity')");
                     return;
                 }
 
