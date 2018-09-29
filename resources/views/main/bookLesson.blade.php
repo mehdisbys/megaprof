@@ -13,14 +13,13 @@
         <?php $subjects = implode($titleSubjects, ', ') ?>
     @endif
 
-    <title>Prendre un cours particulier de {{$subjects}} à {{$advert->location_city}} avec {{$advert->user->firstname}}
-        |
-        Taelam </title>
+    <title> {{$subjects}} | {{$advert->location_city}} | {{$advert->user->firstname}}
+        | @lang('main/bookLesson.Taelam') </title>
 @endsection()
 
 @section('meta_description')
     <meta name="Description" lang="fr"
-          content="Professeur particulier offre cours de {{$subjects}} à {{$advert->location_city}} : {{str_limit($advert->presentation, 150)}}"/>
+          content="{{$subjects}} | {{$advert->location_city}} : {{str_limit($advert->presentation, 150)}}"/>
 @endsection
 
 @section('content')
@@ -34,7 +33,8 @@
     @include('includes.info')
     <div class="row">
 
-        <div class="col-md-6 center bottommargin-sm"><a href="/{{$advert->slug}}"> << Retour à l'annonce </a></div>
+        <div class="col-md-6 center bottommargin-sm"><a href="/{{$advert->slug}}">
+                << @lang('main/bookLesson.goBackToAdvert') </a></div>
         <div class="clearfix"></div>
 
         <div id="author" class="col-md-3 col-md-offset-1">
@@ -49,7 +49,7 @@
                         {{--<ul class="iconlist">--}}
                         <li><i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong></li>
                         @if($advert->free_first_time != NULL)
-                            <li class="topmargin-small"><strong>1ère heure de cours offerte !</strong></li>
+                            <li class="topmargin-small"><strong>@lang("main/bookLesson.firstHourFree")</strong></li>
                             @endif
                             </ul>
                     </div>
@@ -60,7 +60,7 @@
         <?php $radioClass = $testing ? '' : 'no-display' ?>
 
         <div class="col-md-7">
-            <h2 class="col-md-10">Réservez votre première heure de cours avec {{ $advert->user->firstname}}</h2>
+            <h2 class="col-md-10">@lang("main/bookLesson.bookWithTeacher", ["teacher" =>  $advert->user->firstname]) </h2>
 
             @if(Auth::check() == false)
                 <?php $action = "/reserver-un-cours-guest" ?>
@@ -76,126 +76,121 @@
 
                 <div class="clearfix"></div>
                 <div class="col-md-4 bold">
-                    Présentez-vous à {{$advert->user->firstname}} et dites-lui ce que vous souhaitez
-                    apprendre
+                    @lang("main/bookLesson.describeYourself", ["teacher" =>  $advert->user->firstname])
                 </div>
 
                 <div class="col-md-8">
-                    <em> Dites-en un peu plus à {{$advert->user->firstname}} sur votre recherche de cours.
-                        Plus vous
-                        donnerez d'informations à votre professeur, plus il sera susceptible d'accepter
-                        votre
-                        demande</em>
+                    <em> @lang("main/bookLesson.describeYourNeeds", ["teacher" =>  $advert->user->firstname])</em>
                     <ul class="form-inputs-informations topmargin-sm">
-                        <li>Qu'attendez vous de ses cours ?</li>
-                        <li>Quel type/niveau de cours recherchez-vous ?</li>
-                        <li>A quelle fréquence souhaitez-vous prendre vos cours ?</li>
+                        <li>@lang('main/bookLesson.whatDoYouExpect')</li>
+                        <li>@lang('main/bookLesson.whatLevelAreYou')</li>
+                        <li>@lang('main/bookLesson.tuitionsHowOften')</li>
                     </ul>
                     {!! Form::textarea('presentation',old('presentation'),['class' => 'sm-form-control', 'id' => 'presentation',
                              'required' => "required",
-                            'data-parsley-required-message'=>"Ce champs est requis",
+                            'data-parsley-required-message'=>__("main/bookLesson.requiredField"),
                             'data-parsley-minimumwords' => "40",
-                            'Placeholder' => 'Présentez-vous',
-                            'title' => "Entrez au moins 40 mots"]) !!}
+                            'Placeholder' => __('main/bookLesson.describeYourselfPlaceholder'),
+                            'title' => __('main/bookLesson.min40Words')]) !!}
 
                     <div class="divider divider-short divider-rounded divider-center"><i
                                 class="icon-pencil"></i></div>
                 </div>
                 <div class="col-md-4 bold">
-                    Date du premier cours
+                    @lang('main/bookLesson.firstLessonDate')
                 </div>
                 <div class="col-md-8">
                     <div class="ck-button">
                         {!! Form::radio('date','asap', old('date'),['class' => $radioClass, 'id' => 'date_asap']) !!}
                         <label for='date_asap'>
-                            <span>Au plus tôt</span>
+                            <span>@lang('main/bookLesson.asap')</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('date','this_week', old('date'),['class' => $radioClass, 'id' => 'date_this_week']) !!}
                         <label for='date_this_week'>
-                            <span>Cette semaine</span>
+                            <span>@lang('main/bookLesson.thisWeek')</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('date','custom', old('date'),['class' => $radioClass, 'id' => 'date_custom']) !!}
                         <label for='date_custom'>
-                            <span>Date au choix</span>
+                            <span>@lang('main/bookLesson.customDate')</span>
                         </label>
                     </div>
                     <div class="col-md-12 no-visibility" id="date_custom_display">
-                        {!! Form::input('text','pick_a_date', old('pick_a_date'), ['id' => 'pick_a_date', 'placeholder' => 'Choisir une date', 'class' => 'pikaday-field']) !!}
+                        {!! Form::input('text','pick_a_date', old('pick_a_date'), ['id' => 'pick_a_date', 'placeholder' => __('main/bookLesson.pickADate'), 'class' => 'pikaday-field']) !!}
                     </div>
                 </div>
 
                 <div class="col-md-4 bold topmargin-sm">
-                    Oú se déroulera le cours ?
+                    @lang('main/bookLesson.whereWillLessonHappen')
                 </div>
                 <div class="col-md-8 topmargin-sm">
                     <div class="ck-button">
                         {!! Form::radio('location','teacher', null,['class' => $radioClass, 'id' => 'location_teacher']) !!}
                         <label for='location_teacher'>
-                            <span>Chez {{$advert->user->firstname}}</span>
+                            <span> @lang('main/bookLesson.atTeacher', ["teacher" =>  $advert->user->firstname])</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('location','my_place', null,['class' => $radioClass, 'id' => 'location_my_place']) !!}
                         <label for='location_my_place'>
-                            <span>Chez moi</span>
+                            <span>@lang('main/bookLesson.myPlace')</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('location','any', null,['class' => $radioClass, 'id' => 'location_any']) !!}
                         <label for='location_any'>
-                            <span>Les deux me vont</span>
+                            <span>@lang('main/bookLesson.eitherLocation')</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('location','webcam', null,['class' => $radioClass, 'id' => 'location_webcam']) !!}
                         <label for='location_webcam'>
-                            <span>Par Webcam</span>
+                            <span>@lang('main/bookLesson.byWebcam')</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('location','custom', null,['class' => $radioClass, 'id' => 'location_custom']) !!}
                         <label for='location_custom'>
-                            <span>Proposer un lieu</span>
+                            <span>@lang('main/bookLesson.customLocation')</span>
                         </label>
                     </div>
                     <div class="col-md-12 no-visibility" id="location_custom_display">
-                        {!! Form::input('text','pick_a_location', null, ['id' => 'pick_a_location', 'placeholder' => 'Précisez le lieu']) !!}
+                        {!! Form::input('text','pick_a_location', null, ['id' => 'pick_a_location', 'placeholder' => __('main/bookLesson.describeCustomLocation')]) !!}
                     </div>
                 </div>
                 <div class="col-md-4 bold topmargin-sm">
-                    À qui s'adresse ce cours ?
+                    @lang('main/bookLesson.whoIsTheTuitionFor')
                 </div>
                 <div class="col-md-8 topmargin-sm">
                     <div class="ck-button">
                         {!! Form::radio('client','myself', null,['class' => $radioClass, 'id' => 'client_myself']) !!}
                         <label for='client_myself'>
-                            <span>Moi</span>
+                            <span>@lang('main/bookLesson.tuitionIsForMyself')</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('client','notme', null,['class' => $radioClass, 'id' => 'client_notme']) !!}
                         <label for='client_notme'>
-                            <span>Quelqu'un d'autre</span>
+                            <span>@lang('main/bookLesson.tuitionIsForSomeoneElse')</span>
                         </label>
                     </div>
                     <div class="col-md-12 no-visibility" id="client_notme_display">
-                        {!! Form::input('text','pick_a_client', null, ['id' => 'pick_a_client', 'placeholder' => "Prénom de l'élève"]) !!}
+                        {!! Form::input('text','pick_a_client', null, ['id' => 'pick_a_client', 'placeholder' => __('main/bookLesson.studentFirstname')]) !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="ck-button">
                         {!! Form::radio('gender','man', null,['class' => $radioClass, 'id' => 'gender_man']) !!}
                         <label for='gender_man'>
-                            <span>Homme</span>
+                            <span>@lang('main/bookLesson.studentIsMan')</span>
                         </label>
                     </div>
                     <div class="ck-button">
                         {!! Form::radio('gender','woman', null,['class' => $radioClass, 'id' => 'gender_woman']) !!}
                         <label for='gender_woman'>
-                            <span>Femme</span>
+                            <span>@lang('main/bookLesson.studentIsWoman')</span>
                         </label>
                     </div>
                     @if(Auth::check() == false)
@@ -209,22 +204,32 @@
                 <div class="clearfix topmargin-sm"></div>
                 @if(Auth::check() == false)
                     <div class="col-md-4 bold topmargin-sm">
-                        Vos coordonnées
+                        @lang('main/bookLesson.yourContactDetails')
                     </div>
 
                     <div class="col-md-8">
 
-                        <input class="topmargin-sm" id="mobile" placeholder="T&eacute;l&eacute;phone" name="mobile" type="text">
-                        <input class="topmargin-sm" id="addresse" placeholder="Votre ville ou quartier" name="addresse" type="text">
-                        <input class="topmargin-sm" id="firstname" placeholder="Pr&eacute;nom" name="firstname" type="text">
+                        <input class="topmargin-sm" id="mobile"
+                               placeholder="@lang('main/bookLesson.studentPhoneNumber')" name="mobile"
+                               type="text">
+                        <input class="topmargin-sm" id="addresse" placeholder="@lang('main/bookLesson.studentAddress')"
+                               name="addresse"
+                               type="text">
+                        <input class="topmargin-sm" id="firstname"
+                               placeholder="@lang('main/bookLesson.bookerFirstname')"
+                               name="firstname"
+                               type="text">
                         <input class="topmargin-sm" id="email" placeholder="Email" name="email" type="email">
-                        <input class="topmargin-sm" size="28" id="password" placeholder="Choisissez un mot de passe" name="password" type="password">
-                       <span> <i data-tooltip="Un mot de passe est nécessaire pour suivre votre réservation."><i class="icon-question-sign" ></i></i></span>
+                        <input class="topmargin-sm" size="28" id="password"
+                               placeholder="@lang('main/bookLesson.choosePassword')"
+                               name="password" type="password">
+                        <span> <i data-tooltip="@lang('main/bookLesson.aPasswordIsNecessary')"><i
+                                        class="icon-question-sign"></i></i></span>
 
                         <div class="input-text input-container topmargin-lg">
                             <label style="text-transform: none">
                                 <input class="topmargin-sm" type="checkbox" required="required" name="cgu"/>
-                                J'ai lu et j'accepte les <a href="/cgu">CGU</a>
+                                @lang("main/bookLesson.iHaveReadAndAcceptedConditions") <a href="/cgu">CGU</a>
                             </label>
                         </div>
 
@@ -232,8 +237,9 @@
                              data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"
                              data-callback="submitForm"></div>
 
-                        <p class="register-member">Déjà membre Taelam ?
-                            <a href="/login" class="register-member-link register-switch-panel">Connexion</a>
+                        <p class="register-member">@lang('main/bookLesson.alreadyMember')
+                            <a href="/login"
+                               class="register-member-link register-switch-panel">@lang('main/bookLesson.connect')</a>
                         </p>
                     </div>
 
@@ -249,7 +255,7 @@
                 <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
                     <button type="submit" class="button button-3d button-large button-rounded"
                             id="submitForm">
-                        Envoyer ma demande
+                        @lang('main/bookLesson.submitBooking')
                     </button>
                 </div>
             </form>

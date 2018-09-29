@@ -5,7 +5,7 @@
         <input
                 id="subject_input"
                 class="home-search-input autocomplete-input"
-                placeholder="Que souhaitez-vous apprendre ?"
+                placeholder="@lang('main/partials/search_form.subject')"
                 data-minchars="1"
                 data-autofirst="1"
                 data-list="{!! $subsubjects !!}"
@@ -18,12 +18,12 @@
     <div class="home-search-field-wrapper">
         <input id="location_input"
                class="home-search-input"
-               placeholder="Ville où le cours a lieu"
+               placeholder="@lang('main/partials/search_form.city')"
                name="city" type="text"/>
     </div>
 
     <div class="home-search-button-wrapper">
-        <button id="submit-btn" class="button" type="submit"> Chercher</button>
+        <button id="submit-btn" class="button" type="submit">@lang('main/partials/search_form.search') </button>
     </div>
     <div class="location-details no-visibility">
         {!! Form::hidden('lng',null, ['id' => 'longitude']) !!}
