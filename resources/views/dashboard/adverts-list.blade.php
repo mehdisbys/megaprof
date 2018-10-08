@@ -27,6 +27,7 @@
                     <div class="col-md-4">
                         @if ($advert->getLocationText() != '')
                             <i class="fa fa-map-marker"></i><strong> {{ $advert->getLocationText()}}</strong>
+                            @endif
                     </div>
 
                     <div class="col-md-8 pull-right">

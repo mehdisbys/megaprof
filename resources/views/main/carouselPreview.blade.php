@@ -1,21 +1,23 @@
 <div class="col-md-12">
-    <div class="advert-header carousel-preview"><div class="col-md-12 author-profile-header">
+    <div class="advert-header carousel-preview">
+        <div class="col-md-12 author-profile-header">
 
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
                     <a href="/{{$advert->slug}}"> <img src="{{ $advert->getAvatar() }}" alt="avatar"></a>
-                    <h3><a href="/{{$advert->slug}}" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
+                    <h3><a href="/{{$advert->slug}}"
+                           class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
                     <ul class="iconlist-info">
                         {{--@if($advert->can_webcam)--}}
-                            {{--<li>--}}
-                                {{--<i class="fa fa-skype"></i>--}}
-                                {{--<small>Donne des cours par webcam</small>--}}
-                            {{--</li>--}}
+                        {{--<li>--}}
+                        {{--<i class="fa fa-skype"></i>--}}
+                        {{--<small>Donne des cours par webcam</small>--}}
+                        {{--</li>--}}
                         {{--@endif--}}
                         @if($advert->can_travel)
                             <li>
                                 <i class="fa fa-home"></i>
-                                <small>Se déplace à domicile</small>
+                                <small>@lang('main/carouselPreview.canComeToStudentHome')</small>
                             </li>
                         @endif
                         <li>
@@ -25,11 +27,11 @@
                         @if(isset($ratings))
                             <li>
                                 <i class="fa fa-star"></i>
-                                <strong>Noté {{ $ratings->ratings_average}}/5</strong>
+                                <strong>{{ $ratings->ratings_average}}/5</strong>
                             </li>
                             <li>
                                 <i class="fa fa-star"></i>
-                                <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
+                                <strong>{{ $ratings->ratings_count}} @lang('main/carouselPreview.studentReviews')</strong>
                             </li>
                         @endif
                         <li><h3><a href="#" class=" center"> </a></h3></li>
@@ -37,7 +39,8 @@
                 </div>
             </div>
             <div class="single-view-info-author">
-                <h3 class="single-view-title-carousel"><a href="/{{$advert->slug}}">{{ str_limit(ucfirst($advert->title), 95) }}</a></h3>
+                <h3 class="single-view-title-carousel"><a
+                            href="/{{$advert->slug}}">{{ str_limit(ucfirst($advert->title), 95) }}</a></h3>
 
                 <div class="pull-left">
                     @foreach($advert->subjectsPerAd as $subject)

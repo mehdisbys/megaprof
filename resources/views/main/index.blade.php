@@ -19,7 +19,7 @@
                         <input
                                 id="subject_input"
                                 class="awesomplete home-search-input autocomplete-input-subject"
-                                placeholder="Que souhaitez-vous apprendre ?"
+                                placeholder="@lang("main/index.learnWhat")"
                                 data-minchars="1"
                                 data-autofirst="1"
                                 data-list="{!! $subsubjects !!}"
@@ -34,12 +34,13 @@
                         <input
                                 id="location_input"
                                 class="home-search-input autocomplete-input-city"
-                                placeholder="Ville où le cours a lieu"
+                                placeholder="@lang("main/index.learnWhere")"
                                 name="city" type="text" value="{{$selectedCity or ''}}"/>
                     </div>
 
                     <div class="home-search-button-wrapper ">
-                        <button id="submit-btn" class="button home-search-submit" type="submit"> Chercher</button>
+                        <button id="submit-btn" class="button home-search-submit"
+                                type="submit"> @lang('main/index.search')</button>
                     </div>
 
                     <div class="location-details no-visibility">
@@ -63,10 +64,10 @@
                     <div class="sorting-field col-md-12 topmargin-sm">
                         <label>Trier par</label>
                         <select name="sortBy" class="autocomplete-input-sortby">
-                            <option value="avatar">Photos en priorité</option>
-                            <option value="distance">Distance</option>
-                            <option value="date">Date</option>
-                            <option value="price">Prix</option>
+                            <option value="avatar">@lang('main/index.photoAdsFirst')</option>
+                            <option value="distance">@lang('main/index.distance')</option>
+                            <option value="date">@lang('main/index.date')</option>
+                            <option value="price">@lang('main/index.price')</option>
                         </select>
                     </div>
                     {{--<div class="col-md-12">--}}
@@ -87,8 +88,11 @@
 
 
                 <div class="count_results" class="bottommargin-sm col-md-9">
-        <span id="count_text">{{ $adverts->total() }} Professeur{{$adverts->total() > 1 ? 's' : ''}}
-            trouvés {{$selectedSubject ? "pour $selectedSubject" : ''}} {{isset($selectedCity) ? "à " . explode(',',$selectedCity)[0] : ''}} </span>
+                    <p><span id="count_text">{{ $adverts->total() }}</span> Résultats <br>
+                        Matière: <span id="selected_subject">{{$selectedSubject}}</span> <br>
+                        Ville: <span
+                                id="selected_city">{{isset($selectedCity) ?  explode(',',$selectedCity)[0] : ''}}</span>
+                    </p>
                 </div>
                 <div id="search_results" class="col-md-9 col-sm-12 col-xs-12 topmargin-sm">
                     @include('main.multipleAdvertPreview')
@@ -122,11 +126,7 @@
 
                 if (data.params.city) $("#search_city").html('à ' + data.params.city);
 
-                if (data.params.selectedSubject) {
-                    searchText = data.count + ' Professeurs trouvés pour ' + data.params.selectedSubject;
-                }
-
-                if(data.count === 0) {
+                if (data.count === 0) {
                     $("#zero_results").removeClass('hidden');
                 }
                 else
@@ -134,11 +134,9 @@
 
                 console.log(data.count === 0);
 
-                if (data.params.city) {
-                    searchText += ' à ' + data.params.city;
-                }
-
-                $("#count_text").html(searchText);
+                $("#count_text").html(data.count);
+                $("#selected_city").html(data.params.city);
+                $("#selected_subject").html(data.params.selectedSubject);
 
                 $("#loader").removeClass('show');
             }

@@ -6,18 +6,16 @@
 
 <div id="pagination" class="pagination col-md-12">
     @if($adverts->previousPageUrl())
-        <a href="#{{$adverts->currentPage() -1}}" class="pagination-link js-id-previous-page"> < Page précèdente</a>
+        <a href="#{{$adverts->currentPage() -1}}" class="pagination-link js-id-previous-page">@lang('main/multipleAdvertPreview.previousPage')</a>
     @endif
 
     @if($adverts->nextPageUrl())
-        <a href="#{{$adverts->currentPage() +1}}" class="pagination-link js-id-next-page">Page suivante > </a>
+        <a href="#{{$adverts->currentPage() +1}}" class="pagination-link js-id-next-page">@lang('main/multipleAdvertPreview.Page suivante > ')</a>
     @endif
 </div>
 
 <div id="zero_results" class="col-md-8 text-center {{$adverts->total() == 0 ? '' : 'hidden' }} ">
-        <div>Malheuresement aucune annonce correspondant à vos critères n'a été trouvée. Entrez votre email ci-dessous pour être informé dès qu'un professeur
-                est disponible dans votre ville.
-        </div>
+        <div>@lang('main/multipleAdvertPreview.noSearchResults')</div>
         <div class="col-md-12 row student-get-interest">
 
                 <form id="seach_form" action="/student" method="POST">
@@ -35,14 +33,11 @@
                         <input type="hidden" value="{{$lgn or ''}}" name="lng">
 
                         <div class="student-input-submit-button text-center">
-                                <button id="submit-bttn" class="btn btn-info" type="submit">Envoyer</button>
+                                <button id="submit-bttn" class="btn btn-info" type="submit">@lang('main/multipleAdvertPreview.submit')</button>
                         </div>
 
                 </form>
         </div>
 
-        <div class="student-presentation well-get-in-touch">Nous vous contacterons dès que des professeurs dans la
-                matière de votre choix
-                seront disponibles.
-        </div>
+        <div class="student-presentation well-get-in-touch">@lang('main/multipleAdvertPreview.notifyWhenProfAvailable')</div>
 </div>
