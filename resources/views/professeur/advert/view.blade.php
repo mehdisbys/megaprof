@@ -75,10 +75,10 @@
             <div id="validate_buttons" class="col-md-12 text-center topmargin-lg">
 
                 <a href="/modifier-annonce-1/{{$advert->id}}" class="btn btn-info">
-                    <i class="fa fa-reply"></i> Éditer l'annonce
+                    <i class="fa fa-reply"></i> @lang('professeur/advert/view.editAdvert')
                 </a>
                 <button type="submit" class="button button-3d button-large button-rounded">
-                    Publier l'annonce
+                    @lang('professeur/advert/view.publishAdvert')
                 </button>
             </div>
             {!! Form::close() !!}
@@ -110,16 +110,16 @@
                     <img src="{{ $advert->getAdvertAvatar() }}" alt="avatar">
                     <h3><a href="#" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
                     <ul class="iconlist-info">
-                        @if($advert->can_webcam)
-                            <li>
-                                <i class="fa fa-skype"></i>
-                                <small>Donne des cours par webcam</small>
-                            </li>
-                        @endif
+                        {{--@if($advert->can_webcam)--}}
+                        {{--<li>--}}
+                        {{--<i class="fa fa-skype"></i>--}}
+                        {{--<small>@lang('professeur/advert/view.webcamLessons')</small>--}}
+                        {{--</li>--}}
+                        {{--@endif--}}
                         @if($advert->can_travel)
                             <li>
                                 <i class="fa fa-home"></i>
-                                <small>Se déplace à domicile</small>
+                                <small>@lang('professeur/advert/view.travelToStudentHome')</small>
                             </li>
                         @endif
                         <li>
@@ -129,11 +129,11 @@
                         @if(isset($ratings))
                             <li>
                                 <i class="fa fa-star"></i>
-                                <strong>Noté {{ $ratings->ratings_average}}/5</strong>
+                                <strong>@lang('professeur/advert/view.studentRatings', ['ratings' => $ratings->ratings_average/5])
                             </li>
                             <li>
                                 <i class="fa fa-star"></i>
-                                <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
+                                <strong> @lang('professeur/advert/view.studentCommentsCount',["count" =>  $ratings->ratings_count]) </strong>
                             </li>
                         @endif
                         <li><h3><a href="#" class=" center"> </a></h3></li>
@@ -143,10 +143,10 @@
 
             <div class="topmargin-small">
                 <a class="booking-button temp-btn-block" href="
-                    {{ isset($thisIsAPreview) ? '' : '/mise-en-relation/'.$advert->slug}}">Réserver : {{$advert->price}}
-                    Dhs/h</a>
+                    {{ isset($thisIsAPreview) ? '' : '/mise-en-relation/'.$advert->slug}}">@lang('professeur/advert/view.bookLesson', ['price' => $advert->price])
+                </a>
                 @if($advert->free_first_time != NULL)
-                    <div class="first_free_time">1ère heure de cours offerte !</div>
+                    <div class="first_free_time">@lang('professeur/advert/view.firstHourFree')</div>
                 @endif
 
             </div>
@@ -189,14 +189,14 @@
         <div class="profile-author-description col-md-12 row">
 
             <div id="presentation" class="single-advert-text col-md-8 col-md-offset-2">
-                <h4 id="experience-title" class="single-advert-title">Description</h4>
+                <h4 id="description-title" class="single-advert-title">@lang('professeur/advert/view.description')</h4>
                 <div id="presentation-text"> {!!  nl2br(e($advert->presentation)) !!}</div>
             </div>
 
             @if(strlen(trim($advert->content)))
 
                 <div id="curriculum" class="single-advert-text col-md-8 col-md-offset-2">
-                    <h4 id="curriculum-title" class="single-advert-title">Curriculum Vitae</h4>
+                    <h4 id="curriculum-title" class="single-advert-title">@lang('professeur/advert/view.cv')</h4>
                     <div id="curriculum-text"> {!! nl2br(e($advert->content)) !!}</div>
                 </div>
             @endif
@@ -205,7 +205,8 @@
             @if(strlen(trim($advert->experience)))
 
                 <div id="experience" class="single-advert-text col-md-8 col-md-offset-2">
-                    <h4 id="experience-title" class="single-advert-title">Expérience</h4>
+                    <h4 id="experience-title"
+                        class="single-advert-title">@lang('professeur/advert/view.experience')</h4>
                     <div id="experience-text"> {!!   nl2br(e($advert->experience)) !!}</div>
                 </div>
 
@@ -217,45 +218,45 @@
             <thead>
             <tr>
                 <th></th>
-                <th>Chez {{$advert->user->firstname}}</th>
-                <th>À domicile</th>
-                <th>Par webcam</th>
+                <th>@lang('professeur/advert/view.atProfHome', ['prof'=> $advert->user->firstname])</th>
+                <th>@lang('professeur/advert/view.atStudentHome')</th>
+                {{--<th>Par webcam</th>--}}
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>1 heure</td>
+                <td>@lang('professeur/advert/view.oneHour')</td>
                 <td>{{$advert->price}}Dh</td>
                 <td>{{$advert->price_travel}}Dh</td>
-                <td>{{$advert->price * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>
+                {{--<td>{{$advert->price * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>--}}
             </tr>
             <tr>
-                <td>5 heures</td>
+                <td>@lang('professeur/advert/view.manyHours', ["count" => 5])</td>
                 <td>{{$advert->price_5_hours}}Dh</td>
                 <td>{{$advert->price_5_hours + $advert->price_travel}}Dh</td>
-                <td>{{$advert->price_5_hours * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>
+                {{--<td>{{$advert->price_5_hours * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>--}}
             </tr>
             <tr>
-                <td>10 heures</td>
+                <td>@lang('professeur/advert/view.manyHours', ["count" => 10])</td>
                 <td>{{$advert->price_10_hours}}Dh</td>
                 <td>{{$advert->price_10_hours + $advert->price_travel}}Dh</td>
-                <td>{{$advert->price_10_hours * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>
+                {{--<td>{{$advert->price_10_hours * ((100 - $advert->price_webcam_percentage)/100)}}Dh</td>--}}
             </tr>
             </tbody>
         </table>
 
-            @if($advert->price_more)
-                <div class="single-advert-text col-md-8 col-md-offset-2 row">
+        @if($advert->price_more)
+            <div class="single-advert-text col-md-8 col-md-offset-2 row">
                 <span class="fa fa-info-circle"></span> {{ucfirst($advert->price_more)}}
-                </div>
-            @endif
+            </div>
+        @endif
 
 
-        <!-- 3 -->
+    <!-- 3 -->
         <div class="view-comments col-md-12">
 
             @if(isset($comments) and $comments->count())
-                <h3>Avis des étudiants</h3>
+                <h3>@lang('professeur/advert/view.studentReviews')</h3>
                 @foreach($comments as $comment)
                     <div class="single-advert-text">
                         <strong>{{$comment->sourceUser->firstname}}</strong> :
@@ -267,11 +268,13 @@
 
         @if(isset($similarAdverts) and count($similarAdverts) > 0)
             <div class="similar-adverts col-md-12">
+                <h3 class="row col-md-8 col-md-offset-2">@lang('professeur/advert/view.similarTeachers')</h3>
+                <p class="clearfix"></p>
+
                 <div class="similar-adverts-wrapper">
-                    <h3>Les professeurs similaires</h3>
 
                     @foreach($similarAdverts as $advert)
-                        <div class="similar-advert">
+                        <div class="similar-advert col-md-10">
 
                             <div class="avatar-wrapper"><a href="/{{$advert->slug}}">
                                     <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
