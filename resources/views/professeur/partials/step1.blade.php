@@ -8,8 +8,7 @@
     @include('includes.inputErrors')
 
     @if(\Illuminate\Support\Facades\Request::is('*modifier-annonce*'))
-        <form method="POST" action="/modifier-annonce-1/{{$advert_id}}" accept-charset="UTF-8"
-              id="subject_form">
+        <form method="POST" action="/modifier-annonce-1/{{$advert_id}}" accept-charset="UTF-8" id="subject_form">
             {!! Form::hidden('advert_id', $advert_id) !!}
             @else
                 <form method="POST" action="/nouvelle-annonce-1" accept-charset="UTF-8"
@@ -19,9 +18,9 @@
 
                     <div class="col-md-10 col-md-offset-2">
 
-                        <h2 class="col-md-12">Quelle(s) activité(s) proposez-vous?</h2>
+                        <h2 class="col-md-12">@lang('professeur/partials/step1.whatActivity')</h2>
 
-                        <em class="center col-md-offset-3 bottommargin-big">Sélectionnez 5 activités au maximum.</em>
+                        <em class="center col-md-offset-3 bottommargin-big">@lang('professeur/partials/step1.select5Max')</em>
                         {{--<div class="col-md-8">--}}
                         {{--<input--}}
                         {{--id="subject_input"--}}
@@ -80,15 +79,15 @@
 
                     <div class="col-md-12 text-center">
                         <div id="input_error_message" class=" col-md-6 col-md-offset-3 alert alert-danger hidden">
-                            <strong>Veuillez sélectionner au moins une activité avant de passer à l'étape suivante.</strong>
+                            <strong>@lang('professeur/partials/step1.pleaseSelect1Subject')</strong>
                         </div>
 
                         <div id="input_error_no_more_than_six" class=" col-md-6 col-md-offset-3 alert alert-danger hidden">
-                            <strong>Veuillez sélectionner au maximum 5 activités.</strong>
+                            <strong>@lang('professeur/partials/step1.pleaseSelect5SubjectsMax')</strong>
                         </div>
 
                         <button type="submit" class="button button-3d button-large button-rounded" id="submitStep1">
-                            J'ai sélectionné les activités de mon annonce
+@lang('professeur/partials/step1.iHaveSelectedMySubjects')
                         </button>
                     </div>
 

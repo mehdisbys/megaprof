@@ -5,7 +5,7 @@
 {!! HTML::script("js/parsley.min.js")!!}
 
 
-    @include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'active'])
+@include('professeur.process-steps.process-steps', ['step1' => 'complete', 'step2' => 'complete', 'step3' => 'active'])
 
 <div class="container">
 
@@ -23,17 +23,17 @@
 
                     <div class="col-md-6 col-md-offset-3">
 
-                        <h2>Lieux des cours et Modalités</h2>
+                        <h2>@lang('professeur/partials/step3.locationDetails')</h2>
 
-                        <label for='location' class="topmargin-sm">Quelle est votre quartier ou ville ?</label>
+                        <label for='location' class="topmargin-sm">@lang('professeur/partials/step3.whatIsYourCity')</label>
                         {!! Form::hidden('advert_id', $advert_id) !!}
 
                         <?php $location = isset($advert) ? $advert->location : null; ?>
 
                         {!! Form::input('text','location',$location,['class' => 'alert_location sm-form-control required',
-                        'data-parsley-required-message' => "N'oubliez pas de sélectionner le lieu où se dérouleront vos cours",
+                        'data-parsley-required-message' => __('professeur/partials/step3.pleaseEnterLocation'),
                         'id' => 'location']) !!}
-                        <em>Votre addresse ne sera pas visible nous l'utilisons seulement pour calculer les distances</em>
+                        <em>@lang('professeur/partials/step3.locationNotVisible')</em>
 
                         <div class="location-details no-visibility">
 
@@ -46,6 +46,8 @@
                             {!! Form::hidden('country',  null, ['id' => 'country']) !!}
                         </div>
 
+                        <?php
+                        /*
                         <div class=" col-md-6">
                             <?php $can_webcam = isset($advert) ? $advert->can_webcam : null; ?>
 
@@ -55,6 +57,7 @@
                                 </label>
 
                         </div>
+                        */?>
 
                         <div class=" col-md-6">
                             <?php $can_receive = isset($advert) ? $advert->can_receive : null; ?>
@@ -62,15 +65,15 @@
 
                             <label for='can_receive' class="topmargin-sm">
                                 {!! Form::input('checkbox','can_receive', null,['class' => '', 'id' => 'can_receive',
-                            'checked' => $can_receive]) !!} Je peux recevoir mes élèves
+                            'checked' => $can_receive]) !!} @lang('professeur/partials/step3.studentCanComeToMyPlace')
                             </label>
                         </div>
 
-                        <div class=" col-md-6 col-md-offset-3">
+                        <div class=" col-md-6">
                             <?php $can_travel = isset($advert) ? $advert->can_travel : null; ?>
-                                <label for='can_travel' class="topmargin-sm">
-                            {!! Form::input('checkbox','can_travel',null,['class' => '', 'id' => 'can_travel',
-                            'checked' => $can_travel]) !!} Je peux me déplacer
+                            <label for='can_travel' class="topmargin-sm">
+                                {!! Form::input('checkbox','can_travel',null,['class' => '', 'id' => 'can_travel',
+                                'checked' => $can_travel]) !!} @lang('professeur/partials/step3.iCanTravelToStudentPlace')
                             </label>
                         </div>
 
@@ -78,7 +81,7 @@
 
                         <div class="col-md-12 topmargin-sm no-visibility" id="map-and-radius">
                             <div class="col-md-4 form-group">
-                                Dans un rayon de:
+                                @lang('professeur/partials/step3.travelRadius')
                                 <select id="radius" name="radius" class="form-control">
                                     <option value="1000" selected>1 Km</option>
                                     <option value="3000">3 Km</option>
@@ -98,7 +101,7 @@
                     </div>
                     <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
                         <button type="submit" class="button button-3d button-large button-rounded" id="submitStep3">
-                            J'ai défini où se dérouleront mes cours
+@lang('professeur/partials/step3.submitLessonLocation')
                         </button>
                     </div>
 

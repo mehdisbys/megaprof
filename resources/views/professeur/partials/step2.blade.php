@@ -18,30 +18,27 @@
                     {!! csrf_field() !!}
                     <div class="col-md-6 col-md-offset-3">
 
-                        <h2>Titre de l'annonce et Niveaux</h2>
+                        <h2>@lang('professeur/partials/step2.titleOfAdvert')</h2>
 
-                        <label for='title' class="topmargin-sm">Titre de votre annonce </label>
+                        <label for='title' class="topmargin-sm">@lang('professeur/partials/step2.titleOfYourAdvert')</label>
 
                         <?php $title = isset($advert) ? $advert->title : null; ?>
 
                         {!! Form::input('text', 'title', $title, ['class' => 'sm-form-control required',
                         'data-parsley-minimumwords' => "10",
                         'data-parsley-maximumwords' => "15",
-                        'title' => "Entrez au minimum 10 mots et au maximum 15 mots",
+                        'title' => __('professeur/partials/step2.min10Wordsmax15Words'),
                         'id' => 'title',
-                         'data-parsley-required-message'=>"N'oubliez pas de choisir un titre pour votre annonce",]) !!}
-                        <p id="title-text"><span id="title-count">10</span> mots manquants pour être
-                            efficace
+                         'data-parsley-required-message'=>__('professeur/partials/step2.mandatoryTitle'),]) !!}
+                        <p id="title-text"><span id="title-count">10</span> @lang('professeur/partials/step2.missingWordsCount')
                         </p>
-                        <p id="title-max" class="no-display">N'entrez pas plus de 15 mots pour que le titre ne soit pas trop long</p>
-                        <em>En général le titre contient l'activité enseignée, la ville et ce qui vous distingue des autres
-                            professeurs (diplômes, expérience..)</em>
+                        <p id="title-max" class="no-display">@lang('professeur/partials/step2.please15WordsMax')</p>
+                        <em>@lang('professeur/partials/step2.titleAdvice')</em>
 
                         {!! Form::hidden('advert_id', $advert_id) !!}
                         <div class="clear topmargin-sm"></div>
 
-                        <div class="col-md-10 col-md-offset-2 bottommargin-sm clearfix">Indiquez le niveau enseigné pour chaque activité
-                        </div>
+                        <div class="col-md-10 col-md-offset-2 bottommargin-sm clearfix">@lang('professeur/partials/step2.levelPerSubject')</div>
 
 
                         @foreach ($subjects as $subject)
@@ -82,16 +79,15 @@
                         <div class="col-md-12 text-center">
                             <div class="bs-callout bs-callout-warning  col-md-6 col-md-offset-3 alert alert-danger hidden">
                                 <ul>
-                                    <li class="bottommargin-sm"><strong class="">Entrez un titre comprenant entre 10 et 15 mots.</strong></li>
-                                    <li><strong>Veuillez sélectionner au moins un niveau par activité avant de passer à l'étape
-                                            suivante.</strong></li>
+                                    <li class="bottommargin-sm"><strong class="">@lang('professeur/partials/step2.validationTitle')</strong></li>
+                                    <li><strong>@lang('professeur/partials/step2.validationLevels')</strong></li>
                                 </ul>
 
 
 
                             </div>
                             <button type="submit" class="button button-3d button-large button-rounded" id="submitStep2">
-                                Je valide mes choix
+@lang('professeur/partials/step2.submitMyChoices')
                             </button>
                         </div>
                     </div>
