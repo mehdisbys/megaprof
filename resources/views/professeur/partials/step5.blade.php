@@ -21,13 +21,12 @@
 
                         {!! Form::hidden('advert_id', $advert_id) !!}
 
-                        <h2 class="col-md-offset-3">Quel est le prix de vos cours ?</h2>
+                        <h2 class="col-md-offset-3">@lang('professeur/partials/step5.titlePrice')</h2>
 
-                        {!! Form::label('price',"Quel est le prix d'une heure de cours ?", [
+                        {!! Form::label('price',__('professeur/partials/step5.pricePerHour'), [
                         'class' => 'col-md-offset-3 col-md-9']) !!}
 
-                        <div class="small col-md-offset-1 col-md-2"><em>Renseignez ici votre prix pour une heure de
-                                cours</em></div>
+                        <div class="small col-md-offset-1 col-md-2"><em>@lang('professeur/partials/step5.fillInPrice')</em></div>
                         <div class="col-md-2"></div>
                         <?php $price = isset($advert) ? $advert->price : null ?>
                         {!! Form::input('text', 'price', $price,['class' =>
@@ -35,7 +34,7 @@
                         'data-parsley-required-message'=>"",
                         'id' => 'price']) !!}
 
-                        <div class="col-md-3 small">&nbsp; Dirhams</div>
+                        <div class="col-md-3 small">&nbsp; @lang('professeur/partials/step5.dirhams')</div>
                         <br>
 
                         <div class="divider divider-short divider-center"><i class="icon-crop"></i></div>
@@ -47,20 +46,17 @@
                             <div class="col-md-12 col-md-offset-3">
                                 <label for='price_travel_supp' class="bottommargin-sm">
                                     {!! Form::input('checkbox','price_travel_supp', $price_travel,['class' => '', 'id' => 'price_travel_supp','checked' => $can_travel])!!}
-                                    Je souhaite facturer un supplément lorsque je me déplace
+@lang('professeur/partials/step5.addExtraFareForTravel')
                                 </label>
                             </div>
 
                             <div class="col-md-12 {{$can_travel ? "" : "no-visibility" }}"
                                  id="price_travel_supp_display">
 
-                                <div class="small col-md-offset-1 col-md-2"><em>Ce montant sera rajouté à votre prix de
-                                        base</em></div>
+                                <div class="small col-md-offset-1 col-md-2"><em>@lang('professeur/partials/step5.thisWillBeAddedToTheBasicFare')</em></div>
                                 {!! Form::input('text', 'price_travel_percentage', $price_travel_percentage,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_travel_percentage']) !!}
-                                <div class="col-md-1 small">&nbsp; Dirhams</div>
-                                <div class="col-md-6" id="price_travel_text">Le tarif lorsque vous vous déplacez sera de
-                                    <span id="price_travel_span"></span> Dhs par heure
-                                </div>
+                                <div class="col-md-1 small">&nbsp; @lang('professeur/partials/step5.dirhams')</div>
+                                <div class="col-md-6" id="price_travel_text"> <span id="price_travel_span"></span> @lang('professeur/partials/step5.dirhams') </div>
                                 {!! Form::hidden('price_travel', null, ['id' => 'price_travel']) !!}
                             </div>
 
@@ -74,19 +70,16 @@
                                 <label for='price_webcam_bool' class="bottommargin-sm ">
                                     {!! Form::input('checkbox','price_webcam_bool',null,['class' => '', 'id' => 'price_webcam_bool',
                                 'checked' => $can_webcam]) !!}
-                                    Je souhaite réduire le prix pour les cours faits via webcam
+@lang('professeur/partials/step5.iOfferAReductionForWebcamLessons')
                                 </label>
                             </div>
 
                             <?php $price_webcam = isset($advert) ? $advert->price_webcam_percentage : null ?>
                             <div class="col-md-12 {{$can_webcam? "" : 'no-visibility'}}" id="price_webcam_bool_display">
-                                <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix
-                                        de base</em></div>
+                                <div class="small col-md-offset-1 col-md-2"><em>@lang('professeur/partials/step5.thisPercentageWillBeDeducted')</em></div>
                                 {!! Form::input('text', 'price_webcam_percentage', $price_webcam,['class' => 'sm-form-control small-input col-md-1 leftmargin-sm', 'id' => 'price_webcam_percentage']) !!}
                                 <div class="col-md-1 small">&nbsp; %</div>
-                                <div class="col-md-6" id="price_webcam_text">Le tarif lorsque vous enseignez via webcam
-                                    sera de <span id="price_webcam_span"></span> Dhs par heure
-                                </div>
+                                <div class="col-md-6" id="price_webcam_text"> <span id="price_webcam_span"></span> @lang('professeur/partials/step5.dirhams') @lang('professeur/partials/step5.pricePerHourViaWebcam') </div>
                                 {!! Form::hidden('price_webcam', null, ['id' => 'price_webcam' ]) !!}
 
                             </div>
@@ -100,23 +93,20 @@
                             ?>
                             <label for='price_degressive' class="bottommargin-sm">
                                 {!! Form::input('checkbox','price_degressive',null,['class' => '', 'id' => 'price_degressive',
-    'checked' => $price_degressive]) !!} Je pratique une réduction sur les forfaits payés à l'avance
+    'checked' => $price_degressive]) !!} @lang('professeur/partials/step5.iOfferADeductionForBundles')
                             </label>
                         </div>
 
                         <div class="col-md-12 {{ $price_degressive_bool ? '' : 'no-visibility'}}"
                              id="price_degressive_display">
 
-                            <div class="small col-md-offset-1 col-md-2"><em>Ce pourcentage sera déduit de votre prix de
-                                    base</em></div>
+                            <div class="small col-md-offset-1 col-md-2"><em>@lang('professeur/partials/step5.thisPercentageWillBeDeducted')</em></div>
 
                             <?php $percentage_5_hours = isset($advert) ? $advert->price_5_hours_percentage : null; ?>
                             {!! Form::label('price_5_hours_percentage',"Pour 5 heures", ['class' => 'col-md-2']) !!}
                             {!! Form::input('text', 'price_5_hours_percentage', $percentage_5_hours,['class' => 'sm-form-control small-input col-md-1', 'id' => 'price_5_hours_percentage']) !!}
                             <div class="col-md-1 small">&nbsp; %</div>
-                            <div class="col-md-5" id="price_5_hours_text">Soit <span id="price_5_hours_span"></span>
-                                Dhs par heure, et <span id="price_5_hours_total"></span> Dhs au total
-                            </div>
+                            <div class="col-md-5" id="price_5_hours_text"> <span id="price_5_hours_total"></span> @lang('professeur/partials/step5.dirhams')</div>
 
                             <div class="clearfix"></div>
 
@@ -124,8 +114,7 @@
                             {!! Form::label('price_10_hours_percentage',"Pour 10 heures", ['class' => 'col-md-offset-3 col-md-2']) !!}
                             {!! Form::input('text', 'price_10_hours_percentage', $percentage_10_hours,['class' => 'sm-form-control small-input col-md-2 bottommargin-sm', 'id' => 'price_10_hours_percentage']) !!}
                             <div class="col-md-1 small">&nbsp; %</div>
-                            <div class="col-md-5" id="price_10_hours_text">Soit <span id="price_10_hours_span"></span>
-                                Dhs par heure, et <span id="price_10_hours_total"></span> Dhs au total
+                            <div class="col-md-5" id="price_10_hours_text"><span id="price_10_hours_total"></span> @lang('professeur/partials/step5.dirhams')
                             </div>
                             {!! Form::hidden('price_5_hours', null, ['id' => 'price_5_hours' ]) !!}
                             {!! Form::hidden('price_10_hours', null, ['id' => 'price_10_hours' ]) !!}
@@ -136,9 +125,7 @@
 
                         <div class="col-md-12" id="free_first_time">
 
-                            <div class="small col-md-offset-1 col-md-2"><em>Offrir la première heure de cours permet
-                                    d'inciter de nouveaux élèves à vous contacter ! Ce premier contact augmente vos
-                                    chances d'en faire des étudiants réguliers.</em></div>
+                            <div class="small col-md-offset-1 col-md-2"><em>@lang('professeur/partials/step5.firstHourFree')</em></div>
 
                             <label for="free_first_time"><input type="checkbox"
                                                                  <?php
@@ -152,8 +139,7 @@
                                                                          echo 'checked="checked"';
                                                                      }
                                                                          ?>
-                                                                  name="free_first_time"> J'offre la
-                                première heure de cours</label>
+                                                                  name="free_first_time">@lang('professeur/partials/step5.iOfferTheFirstHour')</label>
 
                         </div>
 
@@ -162,17 +148,17 @@
                         <div class="col-md-offset-3 col-md-6">
                             <?php $price_more = isset($advert) ? $advert->price_more : null ?>
 
-                            {!! Form::label('price_more',"Si vos tarifs varient en fonction d'autres paramètres, veuillez l'indiquer ci-dessous (facultatif)") !!}
+                            {!! Form::label('price_more',__('professeur/partials/step5.pricingMoreInfo')) !!}
 
                             {!! Form::textarea('price_more', $price_more,['class' => 'sm-form-control', 'id' => 'price_more']) !!}
                         </div>
 
                         <div class="col-md-6 col-md-offset-3 text-center topmargin-sm">
                             <div class="bs-callout bs-callout-warning  col-md-6 col-md-offset-3 alert alert-danger hidden">
-                                <strong>N'oubliez pas d'indiquer le prix pour une heure de cours</strong>
+                                <strong>@lang('professeur/partials/step5.pleasePutPriceForOneHour')</strong>
                             </div>
                             <button type="submit" class="button button-3d button-large button-rounded" id="submitStep5">
-                                J'ai défini le prix de mes cours
+                                @lang('professeur/partials/step5.iHaveDefinedThePrice')
                             </button>
                         </div>
         {!! Form::close() !!}

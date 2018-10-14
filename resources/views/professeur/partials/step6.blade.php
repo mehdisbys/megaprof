@@ -20,13 +20,10 @@
 
                     {!! csrf_field() !!}
 
-                    <h2 class="col-md-12 center">Montrez votre plus beau sourire !</h2>
+                    <h2 class="col-md-12 center">@lang('professeur/partials/step6.smileTitle')</h2>
 
                     <div class="col-md-12 center">
-                        <h5>Souriez! vos élèves vous regardent
-                            Votre photo est le premier contact des élèves avec votre profil alors montrez-vous sous
-                            votre meilleur profil. La photo est obligatoire pour que votre annonce soit publiée.
-                        </h5>
+                        <h5>@lang('professeur/partials/step6.pleaseSmile')</h5>
 
                     </div>
 
@@ -45,15 +42,16 @@
                         </div>
 
                         <button type="submit" class="button button-3d button-large button-rounded" id="submitStep6">
-                            J'ai choisi ma photo
+                            @lang('professeur/partials/step6.iChoseMyPicture')
                         </button>
 
+                        <div class="hidden" id="textPutImage">@lang('professeur/partials/step6.putImageHere')</div>
                         <script>
                             $(document).ready(function () {
 
                                 $('#upload').slim({
                                     ratio: '1:1',
-                                    label: 'Déposez votre image ici ou cliquez',
+                                    label: $('#textPutImage').html(),
                                     uploadBase64: false,
                                     jpegCompression: 70
                                 });
