@@ -122,7 +122,7 @@
                     <div class="text-center bs-wizard-stepnum"><a href="/nouvelle-annonce-1"><span><i
                                         class="icon icon-checkmark"></i></span> Activités</a></div>
                 @else
-                    <div class="text-center bs-wizard-stepnum">Activités</div>
+                    <div class="text-center bs-wizard-stepnum">@lang('professeur/process-steps/process-steps.subjects')</div>
                 @endif
 
                 <div class="progress">
@@ -136,9 +136,9 @@
 
                 @if(isset($advert) and $advert->step2Done())
                     <div class="text-center bs-wizard-stepnum"><a href='/nouvelle-annonce-2'>
-                            <span><i class="icon icon-checkmark"></i></span> Titre</a></div>
+                            <span><i class="icon icon-checkmark"></i></span>@lang('professeur/process-steps/process-steps.title')</a></div>
                 @else
-                    <div class="text-center bs-wizard-stepnum">Titre</div>
+                    <div class="text-center bs-wizard-stepnum">@lang('professeur/process-steps/process-steps.title')</div>
                 @endif
 
                 <div class="progress">
@@ -151,9 +151,10 @@
             <div class="col-xs-3 col-md-2 bs-wizard-step {{$step3 or 'disabled'}}">
 
                 @if(isset($advert) and $advert->step3Done())
-                    <div class="text-center bs-wizard-stepnum"><a href='/nouvelle-annonce-3'><span><i class="icon icon-checkmark"></i></span> Lieu</a></div>
+                    <div class="text-center bs-wizard-stepnum"><a href='/nouvelle-annonce-3'><span><i
+                                        class="icon icon-checkmark"></i></span> @lang('professeur/process-steps/process-steps.location')</a></div>
                 @else
-                    <div class="text-center bs-wizard-stepnum">Lieu</div>
+                    <div class="text-center bs-wizard-stepnum">@lang('professeur/process-steps/process-steps.location')</div>
                 @endif
 
                 <div class="progress">
@@ -166,9 +167,10 @@
             <div class="col-xs-3 col-md-2 bs-wizard-step {{$step4 or 'disabled'}}">
 
                 @if(isset($advert) and $advert->step4Done())
-                    <div class="text-center bs-wizard-stepnum"><a href="/nouvelle-annonce-4"><span><i class="icon icon-checkmark"></i></span> Description</a></div>
+                    <div class="text-center bs-wizard-stepnum"><a href="/nouvelle-annonce-4"><span><i
+                                        class="icon icon-checkmark"></i></span> @lang('professeur/process-steps/process-steps.description')</a></div>
                 @else
-                    <div class="text-center bs-wizard-stepnum">Description</div>
+                    <div class="text-center bs-wizard-stepnum">@lang('professeur/process-steps/process-steps.description')</div>
                 @endif
 
                 <div class="progress">
@@ -181,9 +183,10 @@
             <div class="col-xs-3 col-md-2 bs-wizard-step {{$step5 or 'disabled'}}">
 
                 @if(isset($advert) and $advert->step5Done())
-                    <div class="text-center bs-wizard-stepnum"><a href="/nouvelle-annonce-5"><span><i class="icon icon-checkmark"></i></span> Prix</a></div>
+                    <div class="text-center bs-wizard-stepnum"><a href="/nouvelle-annonce-5"><span><i
+                                        class="icon icon-checkmark"></i></span> @lang('professeur/process-steps/process-steps.price')</a></div>
                 @else
-                    <div class="text-center bs-wizard-stepnum">Prix</div>
+                    <div class="text-center bs-wizard-stepnum">@lang('professeur/process-steps/process-steps.price')</div>
                 @endif
 
                 <div class="progress">
@@ -195,7 +198,7 @@
 
             <div class="col-xs-3 col-md-2 bs-wizard-step {{$step6 or 'disabled'}}">
 
-                    <div class="text-center bs-wizard-stepnum">Photo</div>
+                <div class="text-center bs-wizard-stepnum">@lang('professeur/process-steps/process-steps.photo')</div>
 
                 <div class="progress">
                     <div class="progress-bar"></div>
