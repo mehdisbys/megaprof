@@ -54,6 +54,16 @@ class Booking extends Model
                      ->get();
     }
 
+    public static function getAcceptedProfBookings(User
+                                                   $prof)
+    {
+        return static::where(function ($q) use ($prof){
+            $q->where('prof_user_id', $prof->id);
+        })
+            ->where('answer', '=','yes')
+            ->get();
+    }
+
 
     public static function archivedBookingRequests()
     {
