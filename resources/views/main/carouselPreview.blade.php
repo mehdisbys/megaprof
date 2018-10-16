@@ -1,6 +1,11 @@
 <div class="col-md-12">
     <div class="advert-header carousel-preview"><div class="col-md-12 author-profile-header">
 
+            <?php
+            $prof = \App\Models\User::find($advert->user_id);
+            $bookings = \App\Models\Booking::getAcceptedProfBookings($prof);
+            ?>
+
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
                     <a href="/{{$advert->slug}}"> <img src="{{ $advert->getAvatar() }}" alt="avatar"></a>
@@ -30,6 +35,12 @@
                             <li>
                                 <i class="fa fa-star"></i>
                                 <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
+                            </li>
+                        @endif
+                        @if(isset($bookings) and $bookings->count() > 1)
+                            <li>
+                                <i class="fa fa-group"></i>
+                                <em>@lang('professeur/advert/view.bookedAdverts', ['count' => $bookings->count()]) </em>
                             </li>
                         @endif
                         <li><h3><a href="#" class=" center"> </a></h3></li>

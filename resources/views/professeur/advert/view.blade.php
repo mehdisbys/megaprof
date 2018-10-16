@@ -138,7 +138,7 @@
                         @if(isset($bookings) and $bookings->count() > 1)
                             <li>
                                 <i class="fa fa-group"></i>
-                                <strong>@lang('professeur/advert/view.bookedAdverts', ['count' => $bookings->count()])
+                                <strong>@lang('professeur/advert/view.bookedAdverts', ['count' => $bookings->count()]) </strong>
                             </li>
                         @endif
 
