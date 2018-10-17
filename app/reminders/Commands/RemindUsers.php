@@ -3,7 +3,6 @@
 namespace Reminders\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Reminders\Events\ReminderEmail;
 use Reminders\Models\ReminderTracker;
 use Reminders\ReminderInterface;
@@ -14,6 +13,7 @@ use Reminders\RemindStudentToCommentSecondTime;
 use Reminders\RemindUserToAddAnAvatar;
 use Reminders\RemindUserToCreateAnAdvert;
 use Reminders\RemindUserToFinishAdvert;
+use Reminders\RemoveUnansweredBookingFromProf;
 
 class RemindUsers extends Command
 {
@@ -56,6 +56,7 @@ class RemindUsers extends Command
             new RemindStudentToComment(),
             new RemindStudentToCommentSecondTime(),
             new RemindUserToAddAnAvatar(),
+            new RemoveUnansweredBookingFromProf,
         ];
 
         foreach ($reminders as $reminder) {
@@ -71,7 +72,10 @@ class RemindUsers extends Command
             if ($reminder->reminderIsDueForUser($user) and
                 ReminderTracker::reminderHasNotBeenSent($user, $reminder)
             ) {
-                event(new ReminderEmail($user, $reminder));
+                if ($reminder->getEmailView() != '') {
+                    event(new ReminderEmail($user, $reminder));
+                }
+
                 activity()->useLog($user->email)->log('Reminder to ' . $reminder->getReminderId())->causedBy($user);
                 ReminderTracker::reminderWasSent($user, $reminder);
             }

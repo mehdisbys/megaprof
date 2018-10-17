@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 
@@ -7,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $table   = 'book_lesson';
+    protected $table = 'book_lesson';
     protected $guarded = ['id'];
 
 
@@ -43,24 +44,32 @@ class Booking extends Model
 
     public static function getProfBookingRequests(User $prof)
     {
-        return static::where(function ($q) use ($prof){
+        return static::where(function ($q) use ($prof) {
             $q->where('prof_user_id', $prof->id)
-              ->orWhere('student_user_id', $prof->id);
+                ->orWhere('student_user_id', $prof->id);
         })
-                     ->whereNull('answer')
-                     ->with('student')
-                     ->with('advert')
-                     ->orderBy('updated_at', 'desc')
-                     ->get();
+            ->whereNull('answer')
+            ->with('student')
+            ->with('advert')
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
-    public static function getAcceptedProfBookings(User
-                                                   $prof)
+    public static function getAcceptedProfBookings(User $prof)
     {
-        return static::where(function ($q) use ($prof){
+        return static::where(function ($q) use ($prof) {
             $q->where('prof_user_id', $prof->id);
         })
-            ->where('answer', '=','yes')
+            ->where('answer', '=', 'yes')
+            ->get();
+    }
+
+    public static function getUnansweredProfBookings(User $prof)
+    {
+        return static::where(function ($q) use ($prof) {
+            $q->where('prof_user_id', $prof->id);
+        })
+            ->where('answer', '=', NULL)
             ->get();
     }
 
@@ -121,6 +130,12 @@ class Booking extends Model
     public function isWaitingReply()
     {
         return $this->answer == null;
+    }
+
+    public function cancel()
+    {
+        $this->answer = '-';
+        $this->save();
     }
 
 }
