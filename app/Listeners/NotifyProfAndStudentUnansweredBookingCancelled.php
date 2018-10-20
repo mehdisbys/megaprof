@@ -24,9 +24,15 @@ class NotifyProfAndStudentUnansweredBookingCancelled
      */
     public function handle(CancelUnansweredBookingTriggered $event)
     {
+        $student = $event->booking->student;
+        $advert = $event->booking->advert;
+
+      //  dd($student, $advert);
+
         // Dashboard Events
         Notification::createAdvertNotification('booking_cancelled',
-            "Advert cancelled", // get this from language files
+            __('app/notifications/dashboardNotifications.profBookingCancelled', ['studentName'
+            => $student->firstname]),
             '',
             $event->booking->id,
             $event->prof->id
@@ -34,7 +40,8 @@ class NotifyProfAndStudentUnansweredBookingCancelled
 
         // Dashboard Events
         Notification::createAdvertNotification('booking_cancelled',
-            "Advert cancelled", // get this from language files
+            __('app/notifications/dashboardNotifications.studentBookingCancelled', ['advertTitle'
+            => $advert->title]), // get this from language files studentBookingCancelled
             '',
             $event->booking->id,
             $event->booking->student_user_id

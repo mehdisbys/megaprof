@@ -66,6 +66,9 @@
             @elseif($booking->wasRejected())
                 <div class="">@lang('bookings/profBooking.youRejected')</div>
 
+            @elseif($booking->wasCancelled())
+                <div class="label label-warning">@lang('bookings/profBooking.cancelled')</div>
+
             @else
                 <div id="booking_{{$booking->id}}_accept"
                      class="button button-small button-white button-rounded"><a

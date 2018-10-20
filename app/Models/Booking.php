@@ -127,6 +127,11 @@ class Booking extends Model
         return $this->answer == 'no';
     }
 
+    public function wasCancelled()
+    {
+        return $this->answer == '-';
+    }
+
     public function isWaitingReply()
     {
         return $this->answer == null;

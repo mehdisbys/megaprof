@@ -4,6 +4,7 @@
 return [
     'accepted' => "Votre demande a été acceptée",
     'rejected' => "Votre demande a été refusée",
+    'cancelled' => "Demande expirée après 3 jours",
     'waitingAnswer' => "Demande en attente de réponse",
     'youContacted' => "Vous avez contacté",
     'forALesson' => "pour un cours",
@@ -13,5 +14,4 @@ return [
     'phone' => "Téléphone",
     'noPhone' => "Pas de téléphone",
     'sentAt' => "Envoyée le",
-    '' => "",
 ];
