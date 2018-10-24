@@ -47,6 +47,9 @@ class NotifyProfAndStudentUnansweredBookingCancelled
             $event->booking->student_user_id
         );
 
+
+        Mail::to($event->user->email)->queue(new ReminderMailable($event));
+
 //        // Mail prof
 //        list($all, $config) = emailConfig(User::find($event->advert->user_id), ' Advert cancelled'); // get this from language files
 //        $all['link'] = url('/mon-compte');
