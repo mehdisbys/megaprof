@@ -4,7 +4,10 @@ namespace App\Listeners;
 
 use App\Events\CancelUnansweredBookingTriggered;
 use App\Helpers\Contracts\MailerContract;
+use App\Mail\ProfUnansweredBookingCancelled;
+use App\Mail\StudentUnansweredBookingCancelled;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Mail;
 
 class NotifyProfAndStudentUnansweredBookingCancelled
 {
@@ -27,7 +30,7 @@ class NotifyProfAndStudentUnansweredBookingCancelled
         $student = $event->booking->student;
         $advert = $event->booking->advert;
 
-      //  dd($student, $advert);
+        //  dd($student, $advert);
 
         // Dashboard Events
         Notification::createAdvertNotification('booking_cancelled',
@@ -47,16 +50,14 @@ class NotifyProfAndStudentUnansweredBookingCancelled
             $event->booking->student_user_id
         );
 
+        // Mail prof
+        Mail::to($event->booking->prof->email)->queue(new ProfUnansweredBookingCancelled
+        ($event));
 
-        Mail::to($event->user->email)->queue(new ReminderMailable($event));
-
-//        // Mail prof
-//        list($all, $config) = emailConfig(User::find($event->advert->user_id), ' Advert cancelled'); // get this from language files
-//        $all['link'] = url('/mon-compte');
-//        $all['advert'] = $event->advert;
-//        $all['messageAdmin'] = $event->message;
-//
-//        $this->mailer->sendMail('emails.admin.advertWasRejected', $all, $config);
+        // Mail student
+        Mail::to($event->booking->student->email)->queue(new
+        StudentUnansweredBookingCancelled
+        ($event));
 
     }
 }

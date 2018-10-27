@@ -6,7 +6,7 @@
 
     <p>Nous vous informons que cette réservation a automatiquement expirée en l'absence de réponse du professeur.</p>
 
-    <p>Nous vous invitons à continuer votre recherche sur Taelam</p>
+    <p>Nous vous invitons à continuer votre recherche sur <a href="https://taelam.com">Taelam</a>.</p>
 
     <p>Merci de votre compréhension</p>
 
