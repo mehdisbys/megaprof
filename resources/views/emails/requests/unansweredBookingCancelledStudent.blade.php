@@ -1,14 +1,14 @@
 @extends('emails.master')
 @section('content')
-    <p>Bonjour {{$studentName}}</p>
+    <p>@lang('emails/requests/unansweredBookingCancelledStudent.hi', ['studentName' => $studentName])</p>
 
-    <p>Vous avez récemment fait une demande de réservation au professeur {{$profName}}.</p>
+    <p>@lang('emails/requests/unansweredBookingCancelledStudent.youBooked', ['profName' => $profName])</p>
 
-    <p>Nous vous informons que cette réservation a automatiquement expirée en l'absence de réponse du professeur.</p>
+    <p>@lang('emails/requests/unansweredBookingCancelledStudent.bookingCancelled')</p>
 
-    <p>Nous vous invitons à continuer votre recherche sur <a href="https://taelam.com">Taelam</a>.</p>
+    <p>@lang('emails/requests/unansweredBookingCancelledStudent.pleaseTryAgain')</p>
 
-    <p>Merci de votre compréhension</p>
+    <p>@lang('emails/requests/unansweredBookingCancelledStudent.thanks')</p>
 
-    <p>L'Equipe Taelam</p>
+    <p>@lang('emails/requests/unansweredBookingCancelledStudent.theTeam')</p>
 @stop

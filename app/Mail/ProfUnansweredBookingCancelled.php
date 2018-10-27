@@ -14,12 +14,13 @@ class ProfUnansweredBookingCancelled extends Mailable
     use Queueable, SerializesModels;
 
     /** @var  User */
-    public $user;
-    public $profName;
+    public $prof, $student;
+    public $profName, $studentName;
 
     public function __construct(CancelUnansweredBookingTriggered $event)
     {
-        $this->user = $event->prof;
+        $this->prof = $event->prof;
+        $this->student = $event->booking->student;
     }
 
     /**
@@ -29,9 +30,10 @@ class ProfUnansweredBookingCancelled extends Mailable
      */
     public function build()
     {
-        $this->subject('Réservation expirée');
+        $this->subject(__('emails/requests/unansweredBookingCancelledProf.subject'));
 
-        $this->profName = $this->user->firstname;
+        $this->profName = $this->prof->firstname;
+        $this->studentName = $this->student->firstname;
 
         return $this->view('emails.requests.unansweredBookingCancelledProf');
     }

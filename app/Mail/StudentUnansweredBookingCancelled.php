@@ -19,8 +19,8 @@ class StudentUnansweredBookingCancelled extends Mailable
 
     public function __construct(CancelUnansweredBookingTriggered $event)
     {
-        $this->student = $event->booking->student;
         $this->prof = $event->prof;
+        $this->student = $event->booking->student;
 
     }
 
@@ -31,7 +31,7 @@ class StudentUnansweredBookingCancelled extends Mailable
      */
     public function build()
     {
-        $this->subject("Votre réservation n'a pas reçu de réponse");
+        $this->subject(__('emails/requests/unansweredBookingCancelledStudent.subject'));
 
         $this->studentName = $this->student->firstname;
         $this->profName = $this->prof->firstname;

@@ -51,11 +51,11 @@ class NotifyProfAndStudentUnansweredBookingCancelled
         );
 
         // Mail prof
-        Mail::to($event->booking->prof->email)->queue(new ProfUnansweredBookingCancelled
+        Mail::to('mehdi.souihed@gmail.com')->queue(new ProfUnansweredBookingCancelled
         ($event));
 
         // Mail student
-        Mail::to($event->booking->student->email)->queue(new
+        Mail::to('mehdi.souihed@gmail.com')->queue(new
         StudentUnansweredBookingCancelled
         ($event));
 
