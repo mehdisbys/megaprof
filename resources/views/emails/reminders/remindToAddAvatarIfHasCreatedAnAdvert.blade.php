@@ -10,7 +10,7 @@
 
     <p>@lang('emails/reminders/remindToAddAvatarIfHasCreatedAnAdvert.getMoreBookings')</p>
 
-    <p>@lang('emails/reminders/remindToAddAvatarIfHasCreatedAnAdvert.advertsWithoutAvatar) </p>
+    <p>@lang('emails/reminders/remindToAddAvatarIfHasCreatedAnAdvert.advertsWithoutAvatar') </p>
     <ul>
         <li>@lang('emails/reminders/remindToAddAvatarIfHasCreatedAnAdvert.willAppearLast')</li>
         <li>@lang('emails/reminders/remindToAddAvatarIfHasCreatedAnAdvert.willGetLessBookings')</li>
