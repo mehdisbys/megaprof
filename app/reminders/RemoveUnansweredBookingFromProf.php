@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 class RemoveUnansweredBookingFromProf implements ReminderInterface
 {
-    private $timeBeforeRemovingAdverFromProf = 2; // hours
+    private $timeBeforeRemovingAdverFromProf = 72; // hours
     private $reminderId = 'remove_unanswered_advert_from_prof';
     private $unansweredAdverts = NULL;
 
@@ -32,7 +32,7 @@ class RemoveUnansweredBookingFromProf implements ReminderInterface
 
 
         foreach ($unansweredBookings as $booking) {
-            if (Carbon::now()->diffInSeconds($booking->created_at) >
+            if (Carbon::now()->diffInHours($booking->created_at) >
                 $this->timeBeforeRemovingAdverFromProf) {
                 $bookingsList->push($booking);
                 event(new CancelUnansweredBookingTriggered($booking, $user));
