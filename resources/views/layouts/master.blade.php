@@ -76,6 +76,7 @@
                             @endif
 
                             @if(Auth::check() == false)
+                                <li><a class="facebook-connect" href="/redirect"> @lang('auth/loginForm.connectFacebook')</a></li>
                                 <li><a class="header-item" href="/login">@lang('layouts/master.connect')</a></li>
                                 <li><a class="header-item" href="/inscription">@lang('layouts/master.register')</a></li>
                                 <li><a class="header-item" href="/faq">@lang('layouts/master.help')</a></li>
