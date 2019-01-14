@@ -20,7 +20,7 @@
                 <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"
                      data-callback="submitForm"></div>
 
-                <input type="submit" value="@lang('auth/loginForm.connect')" class="button topmargin-sm">
+                {{--<input type="submit" value="@lang('auth/loginForm.connect')" class="button topmargin-sm">--}}
                 <p class="register-member">@lang('auth/loginForm.notMember')
                     <a href="/inscription" class="register-member-link register-switch-panel">@lang('auth/loginForm.register')</a>
                 </p>
