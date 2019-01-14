@@ -51,7 +51,7 @@
                     <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU" data-callback="submitForm"></div>
 
 
-                    <input type="submit" value="S'inscrire" class="button topmargin-sm" id="submit-btn-register"/>
+                    {{--<input type="submit" value="S'inscrire" class="button topmargin-sm" id="submit-btn-register"/>--}}
                     <p class="register-member">Déjà membre Taelam ?
                         <a href="login" class="register-member-link register-switch-panel">Connexion</a>
                     </p>
