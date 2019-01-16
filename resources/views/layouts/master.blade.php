@@ -2,23 +2,22 @@
 <html lang="fr">
 <head>
     @section('title')
-        <title>Taelam - Cours particuliers au Maroc : Soutien scolaire, Concours,
-            Mathématiques, Langues...</title>
+        <title>@lang('layouts/master.pageTitle')</title>
     @show
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 
     @section('meta_description')
         <meta name="Description" lang="fr"
-              content="Cours particuliers, cours à domicile, soutien scolaire en mathématiques, anglais, arabe, et bien d'autres matières dans tout le Maroc"/>
+              content="@lang('layouts/master.title')"/>
     @show
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="theme-color" content="#ffffff"/>
-    <meta property="og:title" content="Taelam - La plateforme des professeurs particuliers"/>
+    <meta property="og:title" content="@lang('layouts/master.metaTitle')"/>
     <meta property="og:image" content="/temp-image/megaprof@2x.png"/>
-    <meta property="og:site_name" content="Taelam"/>
-    <meta property="og:description" content="Trouvez votre professeur pour des cours particuliers"/>
+    <meta property="og:site_name" content="@lang('layouts/master.taelam')"/>
+    <meta property="og:description" content="@lang('layouts/master.findATeacher')"/>
 
 
     <link rel="apple-touch-icon" sizes="57x57" href="/"/>
@@ -51,13 +50,14 @@
                         <button style="background-color: #fd875e;" data-target=".navbar-collapse" data-toggle="collapse"
                                 class="navbar-toggle"
                                 type="button">
-                            <span class="sr-only">Toggle navigation</span> <span class="fa fa-bars fa-lg"></span></button>
+                            <span class="sr-only">Toggle navigation</span> <span class="fa fa-bars fa-lg"></span>
+                        </button>
 
 
                         <a class="header-logo header-logo-normal"
-                           href="/" title="Revenir à l'accueil de Taelam">
+                           href="/" title="@lang('layouts/master.goHome')">
                             <img src="/temp-images/megaprof.png" width="170"
-                                 alt="Cours particuliers avec Taelam"/>
+                                 alt="@lang('layouts/master.logoAlt')"/>
                             <img src="/images/icons/morocco_square_icon_64.png" alt="" class="morocco-flag">
                         </a>
                     </div>
@@ -66,20 +66,22 @@
                         <ul class="nav navbar-nav navbar-right top-header-menu">
 
                             @if(Auth::check())
-                                <li><a class="header-item" href="/nouvelle-annonce-1"> Créer une annonce</a></li>
-                                <li><a class="header-item" href="/mon-compte">Mon Compte <span
+                                <li><a class="header-item"
+                                       href="/nouvelle-annonce-1">@lang('layouts/master.createAdvert')</a></li>
+                                <li><a class="header-item" href="/mon-compte">@lang('layouts/master.myAccount') <span
                                                 class="badge blue-badge notification-count">{{\App\Models\Notification::currentUserNotificationsCount()}}</span></a>
                                 </li>
-                                <li><a class="header-item" href="/logout">Se déconnecter</a></li>
-                                <li><a class="header-item" href="/faq">Aide</a></li>
+                                <li><a class="header-item" href="/logout">@lang('layouts/master.logout')</a></li>
+                                <li><a class="header-item" href="/faq">@lang('layouts/master.help')</a></li>
                             @endif
 
                             @if(Auth::check() == false)
-                                    <li><a class="header-item" href="/login">Se connecter</a></li>
-                                    <li><a class="header-item" href="/inscription">S'inscrire</a></li>
-                                    <li><a class="header-item" href="/faq">Aide</a></li>
-                                <li><a id="donner-des-cours" class="button" href="/professeur">Donner des
-                                        cours</a></li>
+                                <li><a class="facebook-connect" href="/redirect"> @lang('auth/loginForm.connectFacebook')</a></li>
+                                <li><a class="header-item" href="/login">@lang('layouts/master.connect')</a></li>
+                                <li><a class="header-item" href="/inscription">@lang('layouts/master.register')</a></li>
+                                <li><a class="header-item" href="/faq">@lang('layouts/master.help')</a></li>
+                                <li><a id="donner-des-cours" class="button"
+                                       href="/professeur">@lang('layouts/master.giveLessons')</a></li>
                             @endif
                         </ul>
                     </div>
@@ -108,40 +110,37 @@
             <div class="col-md-2 col-sm-6 paddingtop-bottom col-md-offset-1">
                 <div class="text-center center-block">
 
-                    <h6 class="heading7">À PROPOS</h6>
-                    <div><a href="/faq"> Foire Aux Questions</a></div>
-                    <div><a href="/nouvelle-annonce-1"> Créer une annonce</a></div>
-                    <div><a href="/cgu"> Conditions Générales</a></div>
-                    <div><a href="/professeur"> Devenir Professeur</a></div>
-                    <div><a href="/blog">Blog</a></div>
+                    <h6 class="heading7">@lang('layouts/master.ABOUT')</h6>
+                    <div><a href="/faq">@lang('layouts/master.FAQ')</a></div>
+                    <div><a href="/nouvelle-annonce-1"> </a></div>
+                    <div><a href="/cgu">@lang('layouts/master.cgu')</a></div>
+                    <div><a href="/professeur">@lang('layouts/master.becomeTeacher')</a></div>
+                    <div><a href="/blog">@lang('layouts/master.blog')</a></div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6 paddingtop-bottom">
 
                 <div class="text-center center-block">
-                    <h6 class="heading7">SUIVEZ-NOUS</h6>
+                    <h6 class="heading7">@lang('layouts/master.FOLLOW')</h6>
                     <br/>
                     <a href="https://www.facebook.com/taelamOfficiel"><i id="social-fb"
-                                                                 class="fa fa-facebook-square fa-3x social"></i></a>
+                                                                         class="fa fa-facebook-square fa-3x social"></i></a>
                     <a href="https://twitter.com/taelam_officiel"><i id="social-tw"
-                                                            class="fa fa-twitter-square fa-3x social"></i></a>
+                                                                     class="fa fa-twitter-square fa-3x social"></i></a>
                     <a href="https://plus.google.com/u/1/115934799609055669898"><i id="social-gp"
-                                                                 class="fa fa-google-plus-square fa-3x social"></i></a>
+                                                                                   class="fa fa-google-plus-square fa-3x social"></i></a>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6 footerleft">
                 <div class="text-center center-block">
 
-                    <h6 class="heading7">TAELAM</h6>
+                    <h6 class="heading7"></h6>
                     <img class="flag" src="/css/flags/flags/4x3/ma.svg" alt="Drapeau Marocain">
 
                     <p><em>
-                            <small>Taelam est le premier site Marocain de partage de connaissances.
-                                Apprenez sans limites ! Trouvez des professeurs dans tout le Maroc dans des dizaines de
-                                matières différentes.
-                            </small>
+                            <small>@lang('layouts/master.taelamDescription')</small>
                         </em></p>
                 </div>
             </div>
@@ -149,11 +148,11 @@
             <div class="col-md-3 col-sm-6 ">
                 <div class="text-center center-block">
 
-                    <h6 class="heading7">CONTACT</h6>
+                    <h6 class="heading7">@lang('layouts/master.CONTACT')</h6>
 
-                  <!--  <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div> -->
-                    <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal" data-target="#contact"
-                                                           data-original-title>Contactez-nous</a></div>
+                    <!--  <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div> -->
+                    <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal" data-target=1"#contact"
+                                                           data-original-title>@lang('layouts/master.contactUs')</a></div>
                 </div>
             </div>
         </div>
@@ -171,10 +170,10 @@
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
+            m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)

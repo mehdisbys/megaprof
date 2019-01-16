@@ -1,19 +1,15 @@
 @if(env('APP_ENV') == 'prod')
 
-    <script type="text/javascript">
-        window.smartlook || (function (d) {
-            var o = smartlook = function () {
-                o.api.push(arguments)
-            }, h = d.getElementsByTagName('head')[0];
-            var c = d.createElement('script');
-            o.api = new Array();
-            c.async = true;
-            c.type = 'text/javascript';
-            c.charset = 'utf-8';
-            c.src = '//rec.smartlook.com/recorder.js';
-            h.appendChild(c);
-        })(document);
-        smartlook('init', 'f319a0238c2514efc3273b601b15609ca6969577');
+    <!-- Hotjar Tracking Code for Www.taelam.com -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1154249,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
 
 @endif

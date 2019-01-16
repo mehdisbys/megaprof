@@ -10,7 +10,8 @@
                 </div>
 
                 @if($advert->title == '')
-                    <div class="bold col-md-12"><span class="fa fa-warning"></span> @lang('dashboard/adverts-list.draft')
+                    <div class="bold col-md-12"><span
+                                class="fa fa-warning"></span> @lang('dashboard/adverts-list.draft')
                     </div>
                 @else
                     <div class="bold col-md-12">{{$advert->title}}</div>
@@ -27,10 +28,12 @@
                     <div class="col-md-4">
                         @if ($advert->getLocationText() != '')
                             <i class="fa fa-map-marker"></i><strong> {{ $advert->getLocationText()}}</strong>
+                        @endif
                     </div>
 
                     <div class="col-md-8 pull-right">
-                        <small>@lang('dashboard/adverts-list.lastModified'): {{$advert->updated_at->format('d/m/Y H:i') }}</small>
+                        <small>@lang('dashboard/adverts-list.lastModified')
+                            : {{$advert->updated_at->format('d/m/Y H:i') }}</small>
                     </div>
                 </div>
             </div>
@@ -46,7 +49,8 @@
                     <a href="/activer-annonce/{{$advert->id}}/">@lang('dashboard/adverts-list.activate')</a>
                 </div>
                 <div class="btn btn-danger topmargin-xsm">
-                    <a class='delete-advert' href="/supprimer-annonce/{{$advert->id}}/">@lang('dashboard/adverts-list.delete')</a>
+                    <a class='delete-advert'
+                       href="/supprimer-annonce/{{$advert->id}}/">@lang('dashboard/adverts-list.delete')</a>
                 </div>
 
             @endif

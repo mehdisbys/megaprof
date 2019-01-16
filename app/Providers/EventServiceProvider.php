@@ -6,6 +6,7 @@ use App\Events\AdvertWasAcceptedByAdmin;
 use App\Events\AdvertWasRejectedByAdmin;
 use App\Events\BookingRequestReply;
 use App\Events\BookingRequestSent;
+use App\Events\CancelUnansweredBookingTriggered;
 use App\Events\IdDocumentSent;
 use App\Events\ProfCommentedOnStudent;
 use App\Events\ProfCreatedAdvert;
@@ -22,8 +23,10 @@ use App\Listeners\NotifyAdminIdDocumentSent;
 use App\Listeners\NotifyBookingReply;
 use App\Listeners\NotifyBookingRequest;
 use App\Listeners\NotifyProfAdvertWasRejected;
+use App\Listeners\NotifyProfAndStudentUnansweredBookingCancelled;
 use App\Listeners\NotifyProfOfPostedComment;
 use App\Listeners\NotifyStudentOfPostedComment;
+use App\Listeners\RemoveUnansweredAdvertFromProf;
 use App\Listeners\SendReminderToUser;
 use App\Listeners\SuccessAdvertCreatedNotification;
 use App\Listeners\ZeroSearchResultsNotifier;
@@ -38,12 +41,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        BookingRequestSent::class     =>
+        BookingRequestSent::class =>
             [
                 NotifyBookingRequest::class,
                 NotifyAdminBookingRequestSent::class
             ],
-        BookingRequestReply::class    =>
+        BookingRequestReply::class =>
             [
                 NotifyBookingReply::class,
             ],
@@ -55,7 +58,7 @@ class EventServiceProvider extends ServiceProvider
             [
                 NotifyProfOfPostedComment::class,
             ],
-        IdDocumentSent::class         =>
+        IdDocumentSent::class =>
             [
                 NotifyAdminIdDocumentSent::class,
             ],
@@ -86,9 +89,14 @@ class EventServiceProvider extends ServiceProvider
                 SendReminderToUser::class,
             ],
         UserDidASearch::class =>
-        [
-            ZeroSearchResultsNotifier::class
-        ]
+            [
+                ZeroSearchResultsNotifier::class
+            ],
+        CancelUnansweredBookingTriggered::class =>
+            [
+                RemoveUnansweredAdvertFromProf::class,
+                NotifyProfAndStudentUnansweredBookingCancelled::class
+            ],
     ];
 
     /**

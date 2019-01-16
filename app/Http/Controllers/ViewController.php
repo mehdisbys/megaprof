@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advert;
+use App\Models\Booking;
 use App\Models\Comment;
 use App\Models\SearchResults;
 use App\Models\UserRatings;
@@ -16,6 +17,7 @@ class ViewController extends Controller
 
     public function view(string $slug)
     {
+        /** @var Advert $advert */
         $advert = NULL;
 
         $user = Auth::user();
@@ -44,10 +46,12 @@ class ViewController extends Controller
         }
 
         $comments       = Comment::commentsForAdvertId($advert->id);
+        $bookings       = Booking::getAcceptedProfBookings($advert->user);
         $similarAdverts = $this->findSimilarAdverts($advert);
         $ratings        = UserRatings::where(['user_id' => $advert->user->id])->first();
 
-        return view('professeur.advert.view')->with(compact('advert', 'comments', 'similarAdverts', 'ratings'));
+        return view('professeur.advert.view')->with
+        (compact('advert', 'comments', 'similarAdverts', 'ratings', 'bookings'));
     }
 
     public function findSimilarAdverts(Advert $advert)

@@ -2,7 +2,6 @@
 @section('content')
 
 @section('title')
-
     @if($advert->subjectsPerAd->count() == 1)
         <?php $subjects = ucfirst(\App\Models\SubSubject::find($advert->subjectsPerAd->first()->subject_id)->name) ?>
     @elseif($advert->subjectsPerAd->count() > 1)
@@ -136,6 +135,13 @@
                                 <strong>{{ $ratings->ratings_count}} avis d'élèves</strong>
                             </li>
                         @endif
+                        @if(isset($bookings) and $bookings->count() > 1)
+                            <li>
+                                <i class="fa fa-group"></i>
+                                <strong>@lang('professeur/advert/view.bookedAdverts', ['count' => $bookings->count()]) </strong>
+                            </li>
+                        @endif
+
                         <li><h3><a href="#" class=" center"> </a></h3></li>
                     </ul>
                 </div>

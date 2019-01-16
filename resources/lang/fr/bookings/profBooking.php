@@ -14,6 +14,7 @@ return [
     'noPhone' => "Pas de téléphone",
     'youAccepted' => "Vous avez accepté cette demande",
     'youRejected' => "Vous avez refusé cette demande",
+    'cancelled' => "Demande expirée après 3 jours",
     'accept' => "Accepter",
     'reject' => "Refuser",
 

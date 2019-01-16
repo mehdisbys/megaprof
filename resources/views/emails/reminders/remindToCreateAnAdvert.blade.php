@@ -2,20 +2,20 @@
 @section('content')
 
 
-    <p>{{$user->firstname}},</p>
+    <p>{{$user->firstname}}</p>
 
-    <p>Merci de votre intérêt pour <a href="https://taelam.com">taelam.com</a>, nous sommes heureux de vous compter parmi nos professeurs !</p>
-
-
-    <p>Afin de permettre aux élèves de bénéficier de vos compétences et d’en être rémunéré, nous vous invitons à créer vos annonces dans les activités de votre choix.</p>
+    <p>@lang('emails/reminders/remindToCreateAnAdvert.thankMember')</p>
 
 
-    <p>Partager sa passion ou ses compétences et être rémunéré c'est facile avec Taelam !</p>
+    <p>@lang('emails/reminders/remindToCreateAnAdvert.createAdvert')</p>
+
+
+    <p>@lang('emails/reminders/remindToCreateAnAdvert.sharePassion')</p>
 
     <ol>
-        <li> Postez votre annonce</li>
-        <li> Recevez les demandes des élèves</li>
-        <li> Faites votre cours et soyez rémunéré</li>
+        <li>@lang('emails/reminders/remindToCreateAnAdvert.postAd')</li>
+        <li>@lang('emails/reminders/remindToCreateAnAdvert.receiveBookings')</li>
+        <li>@lang('emails/reminders/remindToCreateAnAdvert.getPaid')</li>
     </ol>
 
 
@@ -26,13 +26,14 @@
                 <a href="https://taelam.com/inscription"
                    style="background: #fd875e; border: 15px solid #fd875e; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"
                    class="button-a">
-                    <span style="color:#ffffff;" class="button-link">Je crée mon annonce en moins de 10 minutes</span>
+                    <span style="color:#ffffff;"
+                          class="button-link">@lang('emails/reminders/remindToCreateAnAdvert.createAdvertIn10')</span>
                 </a>
             </td>
         </tr>
     </table>
 
-        <p>N’hésitez pas à répondre à ce mail pour toute information ou aide dans la création de votre annonce.</p>
+    <p>@lang('emails/reminders/remindToCreateAnAdvert.weCanHelp')</p>
 
-    <p>L’Equipe TAELAM </p>
+    <p>@lang('emails/reminders/remindToCreateAnAdvert.team')</p>
 @stop

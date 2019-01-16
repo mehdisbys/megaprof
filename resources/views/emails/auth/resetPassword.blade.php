@@ -1,25 +1,34 @@
 @extends('emails.master')
 @section('content')
 
-    <h1>Réinitialisation du mot de passe</h1>
+    <h1>@lang('emails/auth/resetPassword.title')</h1>
     <br>
 
-    <p>Bonjour {{$name}},</p>
+    <p> @lang('emails/auth/resetPassword.youAskedReset')</p>
 
+    <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
+           style="margin: auto;">
+        <tr>
+            <td style="border-radius: 3px; background: #fd875e; text-align: center;" class="button-td">
+                <a href="{{$link or ''}}"
+                   style="background: #fd875e; border: 15px solid #fd875e; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"
+                   class="button-a">
+                    <span style="color:#ffffff;"
+                          class="button-link">@lang('emails/auth/resetPassword.resetButton')</span>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <p>@lang('emails/auth/resetPassword.afterText')</p>
+
+    <p>@lang('emails/auth/resetPassword.ignore')</p>
     <br>
 
-    <p>Vous avez demandé une réinitialisation de votre mot de passe,
-        Pour en créer un nouveau, merci de cliquer sur <a href="{{$link}}">ici</a></p>
-
-    <p>Vous pourrez à nouveau accéder à l’ensemble de nos services.</p>
-
-    <p>Veuillez ignorer cet email si vous n'avez pas demandé de réinitialisation de votre mot de passe.</p>
+    <p>
+        <a href="http://www.taelam.com">@lang('emails/auth/resetPassword.seeYouSoon')</a></p>
     <br>
 
-    <p>À très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
-
-    <br>
-
-    <p>L'Équipe Taelam</p>
+    <p>@lang('emails/auth/resetPassword.team')</p>
 
 @stop

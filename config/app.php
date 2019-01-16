@@ -162,7 +162,7 @@ return [
         Orangehill\Iseed\IseedServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
-//        Gbrock\Table\Providers\TableServiceProvider::class
+        Gbrock\Table\Providers\TableServiceProvider::class
 
     ],
 

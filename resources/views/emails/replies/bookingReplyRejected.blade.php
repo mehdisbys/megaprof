@@ -1,17 +1,17 @@
 @extends('emails.master')
 @section('content')
 
-<p>Bonjour {{$name }},</p>
+    <p>{{$name}}</p>
 
-<br>
-<p>Votre demande de cours a malheuresement été refusée par le professeur.</p>
-<br>
-<p>Connectez-vous sur <a href="http://www.taelam.com">Taelam</a> pour voir les offres d'autres professeurs.</p>
+    <br>
+    <p>@lang('emails/replies/bookingReplyRejected.bookingRejected')</p>
+    <br>
+    <p>@lang('emails/replies/bookingReplyRejected.connect')</p>
 
-<br>
+    <br>
 
-<p>À très bientôt sur <a href="http://www.taelam.com">Taelam</a></p>
-<br>
+    <p>@lang('emails/replies/bookingReplyRejected.seeYouSoon')</p>
+    <br>
 
-<p>L'Équipe Taelam</p>
+    <p>@lang('emails/replies/bookingReplyRejected.team')</p>
 @stop

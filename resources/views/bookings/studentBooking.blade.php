@@ -30,10 +30,13 @@
             @if($booking->wasAccepted())
 
                 <div class="label label-success">@lang('bookings/studentBooking.accepted') <span><i class="fa fa-check"
-                                                                         aria-hidden="true"></i></span>
+                                                                                                    aria-hidden="true"></i></span>
                 </div>
             @elseif($booking->wasRejected())
                 <div class="label label-warning">@lang('bookings/studentBooking.rejected')</div>
+
+            @elseif($booking->wasCancelled())
+                <div class="label label-warning">@lang('bookings/studentBooking.cancelled')</div>
 
             @else
                 <div class="label label-info">@lang('bookings/studentBooking.waitingAnswer')</div>
@@ -42,7 +45,9 @@
         </div>
 
         <div class="col-md-9 topmargin-sm">
-            <em> @lang('bookings/studentBooking.youContacted') <strong>{{ $booking->prof->firstname }}</strong> @lang('bookings/studentBooking.forALesson') <strong>{{$location[$booking->location] or $booking->pick_a_location}}</strong></em>
+            <em> @lang('bookings/studentBooking.youContacted')
+                <strong>{{ $booking->prof->firstname }}</strong> @lang('bookings/studentBooking.forALesson')
+                <strong>{{$location[$booking->location] or $booking->pick_a_location}}</strong></em>
         </div>
 
         <div class="clearfix"></div>
@@ -50,7 +55,8 @@
         <div class="col-md-12 row ">
             <div class="col-md-12 topmargin-small">
 
-                <strong>@lang('bookings/studentBooking.yourMessage')</strong> : <p>{{ str_limit($booking->presentation, 100) }}</p>
+                <strong>@lang('bookings/studentBooking.yourMessage')</strong> :
+                <p>{{ str_limit($booking->presentation, 100) }}</p>
 
             </div>
         </div>
@@ -58,8 +64,11 @@
         <div class="col-md-12 row">
             @if($booking->wasAccepted())
                 <div class="col-md-12"><strong>@lang('bookings/studentBooking.contactTeacher')</strong>:</div>
-                <div class="col-md-12"><strong>@lang('bookings/studentBooking.email')</strong>: {{$booking->prof->email}}</div>
-                <div class="col-md-12"><strong>@lang('bookings/studentBooking.phone')</strong>: {{$booking->prof->mobile or  __('bookings/studentBooking.noPhone')}}</div>
+                <div class="col-md-12">
+                    <strong>@lang('bookings/studentBooking.email')</strong>: {{$booking->prof->email}}</div>
+                <div class="col-md-12">
+                    <strong>@lang('bookings/studentBooking.phone')</strong>: {{$booking->prof->mobile or  __('bookings/studentBooking.noPhone')}}
+                </div>
             @endif
         </div>
 
