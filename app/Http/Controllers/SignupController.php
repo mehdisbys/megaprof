@@ -20,6 +20,10 @@ class SignupController extends Controller
 
 	public function getSignup()
 	{
+        if (Auth::check()) {
+            return redirect('/mon-compte');
+        }
+
 		return view('signup.signup');
 	}
 	

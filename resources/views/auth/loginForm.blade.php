@@ -1,4 +1,3 @@
-
 <div class="wrapper">
     <div class="connection-form">
         <h1 class="register-step-title">@lang('auth/loginForm.connect')</h1>
@@ -20,9 +19,12 @@
                 <div class="g-recaptcha topmargin-sm" data-sitekey="6LfJ2xsUAAAAACPgk0dN3HNLY1p_3vS0_s1964mU"
                      data-callback="submitForm"></div>
 
-                {{--<input type="submit" value="@lang('auth/loginForm.connect')" class="button topmargin-sm">--}}
+                @if(env('APP_ENV')=='local')
+                    <input type="submit" value="@lang('auth/loginForm.connect')" class="button topmargin-sm">
+                @endif
                 <p class="register-member">@lang('auth/loginForm.notMember')
-                    <a href="/inscription" class="register-member-link register-switch-panel">@lang('auth/loginForm.register')</a>
+                    <a href="/inscription"
+                       class="register-member-link register-switch-panel">@lang('auth/loginForm.register')</a>
                 </p>
             </div>
         </form>
