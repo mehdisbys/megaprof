@@ -37,21 +37,25 @@
         <div class="col-md-6 center bottommargin-sm"><a href="/{{$advert->slug}}"> << Retour à l'annonce </a></div>
         <div class="clearfix"></div>
 
-        <div id="author" class="col-md-3 col-md-offset-1">
+        <div id="author" class="col-md-3 col-md-offset-1 single-view-profile-author-profile">
 
-            <div id="leftside">
+            <div id="leftside" class="single-view-profile-info">
                 <img src="{{ $advert->getAvatar() }}" alt="">
 
-                <div id="info-author">
-                    <div class="entry-overlay-meta">
-                        <h3><a href="#" class=" center">{{$advert->user->firstname }}</a></h3>
-                        <div class="clearfix"></div>
-                        {{--<ul class="iconlist">--}}
-                        <li><i class="icon-location"></i> <strong>{{ $advert->location_city }}</strong></li>
-                        @if($advert->free_first_time != NULL)
-                            <li class="topmargin-small"><strong>1ère heure de cours offerte !</strong></li>
+                <div id="info-author center">
+                    <div class="entry-overlay-meta center">
+                        <h3><a href="#" class="center">{{$advert->user->firstname }}</a></h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="icon-location"></i>
+                                <strong>{{ $advert->location_city }}</strong>
+                            </li>
+                            @if($advert->free_first_time != NULL)
+                                <li class="topmargin-small">
+                                    <strong>1ère heure de cours offerte !</strong>
+                                </li>
                             @endif
-                            </ul>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -128,6 +132,7 @@
                     </div>
                 </div>
 
+                <div class="clearfix"></div>
                 <div class="col-md-4 bold topmargin-sm">
                     Oú se déroulera le cours ?
                 </div>
@@ -166,6 +171,7 @@
                         {!! Form::input('text','pick_a_location', null, ['id' => 'pick_a_location', 'placeholder' => 'Précisez le lieu']) !!}
                     </div>
                 </div>
+                <div class="clearfix"></div>
                 <div class="col-md-4 bold topmargin-sm">
                     À qui s'adresse ce cours ?
                 </div>
@@ -200,7 +206,8 @@
                     </div>
                     @if(Auth::check() == false)
 
-                        <div class="col-md-12" id="birthdate_display">
+                        <div class="clearfix"></div>
+                        <div class="col-md-12 topmargin" id="birthdate_display">
                             @include('includes.date-of-birth')
                         </div>
                     @endif
@@ -214,12 +221,17 @@
 
                     <div class="col-md-8">
 
-                        <input class="topmargin-sm" id="mobile" placeholder="T&eacute;l&eacute;phone" name="mobile" type="text">
-                        <input class="topmargin-sm" id="addresse" placeholder="Votre ville ou quartier" name="addresse" type="text">
-                        <input class="topmargin-sm" id="firstname" placeholder="Pr&eacute;nom" name="firstname" type="text">
+                        <input class="topmargin-sm" id="mobile" placeholder="T&eacute;l&eacute;phone" name="mobile"
+                               type="text">
+                        <input class="topmargin-sm" id="addresse" placeholder="Votre ville ou quartier" name="addresse"
+                               type="text">
+                        <input class="topmargin-sm" id="firstname" placeholder="Pr&eacute;nom" name="firstname"
+                               type="text">
                         <input class="topmargin-sm" id="email" placeholder="Email" name="email" type="email">
-                        <input class="topmargin-sm" size="28" id="password" placeholder="Choisissez un mot de passe" name="password" type="password">
-                       <span> <i data-tooltip="Un mot de passe est nécessaire pour suivre votre réservation."><i class="icon-question-sign" ></i></i></span>
+                        <input class="topmargin-sm" size="28" id="password" placeholder="Choisissez un mot de passe"
+                               name="password" type="password">
+                        <span> <i data-tooltip="Un mot de passe est nécessaire pour suivre votre réservation."><i
+                                        class="icon-question-sign"></i></i></span>
 
                         <div class="input-text input-container topmargin-lg">
                             <label style="text-transform: none">

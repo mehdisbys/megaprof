@@ -17,6 +17,7 @@
                     {!! csrf_field() !!}
                     <div class="home-search-field-wrapper">
                         <input
+                                data-hj-whitelist
                                 id="subject_input"
                                 class="awesomplete home-search-input autocomplete-input-subject"
                                 placeholder="Que souhaitez-vous apprendre ?"
@@ -32,6 +33,7 @@
 
                     <div class="home-search-field-wrapper">
                         <input
+                                data-hj-whitelist
                                 id="location_input"
                                 class="home-search-input autocomplete-input-city"
                                 placeholder="Ville où le cours a lieu"

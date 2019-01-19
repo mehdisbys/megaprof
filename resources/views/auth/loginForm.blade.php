@@ -7,7 +7,7 @@
                 <a class="facebook-connect" href="redirect">@lang('auth/loginForm.connectFacebook')</a>
                 <span class="text-separator">ou</span>
                 <div class="input-text input-container">
-                    <input type="email" data-type="email" placeholder="Email" required="" name="email" class="input"
+                    <input data-hj-whitelist type="email" data-type="email" placeholder="Email" required="" name="email" class="input"
                            value="{{ $email or '' }}"/>
                 </div>
 

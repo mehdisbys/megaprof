@@ -25,15 +25,15 @@
                     </a>
                     <span class="text-separator">ou</span>
                     <div class="input-text input-container">
-                        <input type="text" required="required" placeholder="Prénom" name="firstname" class="input"
+                        <input data-hj-whitelist type="text" required="required" placeholder="Prénom" name="firstname" class="input"
                                value="{{$firstname ?? old('firstname')}}"/>
                     </div>
                     <div class="input-text input-container">
-                        <input type="text" required="required" placeholder="Nom" name="lastname" class="input"
+                        <input data-hj-whitelist type="text" required="required" placeholder="Nom" name="lastname" class="input"
                                value="{{$lastname ?? old('lastname')}}"/>
                     </div>
                     <div class="input-text input-container">
-                        <input type="email" placeholder="Email" name="email" class="input" value="{{$email ?? old('email')}}"/>
+                        <input data-hj-whitelist type="email" placeholder="Email" name="email" class="input" value="{{$email ?? old('email')}}"/>
                     </div>
                     <div class="input-text input-container">
                         <input type="password" required="required" placeholder="Mot de passe (5 caractères minimum)" name="password"
