@@ -110,7 +110,7 @@ class Avatar extends Model
 
             return $response;
         }
-        return static::defaultAvatar();
+        return static::getDashboardAvatar($user_id);
     }
 
     public static function getDashboardAvatar($user_id)

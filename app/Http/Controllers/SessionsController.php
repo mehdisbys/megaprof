@@ -21,6 +21,10 @@ class SessionsController extends Controller
      */
     public function login()
     {
+        if (Auth::check()) {
+            return redirect('/mon-compte');
+        }
+
         return view('auth.login');
     }
 
@@ -45,18 +49,18 @@ class SessionsController extends Controller
 
     public function postLogin(Request $request)
     {
-        $rules = ['email'                => 'required|email',
-                  'password'             => 'required',
-                  'g-recaptcha-response' => 'required'];
+        $rules = ['email' => 'required|email',
+            'password' => 'required',
+            'g-recaptcha-response' => 'required'];
 
         if (env('APP_ENV') == 'local') {
             $rules['g-recaptcha-response'] = 'string';
         }
 
-        $this->validate($request, $rules, ['email.required'                 => 'Veuillez entrer votre email',
-                                           'email.email'                    => 'Veuillez entrer une addresse email valide',
-                                           'password.required'              => 'Veuillez entrer votre mot de passe',
-                                           'g-recaptcha-response.required'  => "Veuillez cliquer sur 'Je ne suis pas un robot'"]);
+        $this->validate($request, $rules, ['email.required' => 'Veuillez entrer votre email',
+            'email.email' => 'Veuillez entrer une addresse email valide',
+            'password.required' => 'Veuillez entrer votre mot de passe',
+            'g-recaptcha-response.required' => "Veuillez cliquer sur 'Je ne suis pas un robot'"]);
 
         if (isCaptchaCodeCorrect($request->get('g-recaptcha-response')) == false) {
             error("Veuillez cliquer sur \"Je ne suis pas un robot\" ");
@@ -66,9 +70,10 @@ class SessionsController extends Controller
         if ($this->signIn($request)) {
             thanks("Bonjour " . Auth::user()->firstname . " vous avez été identifié avec succés");
 
-            try{
+            try {
                 activity()->useLog(Auth::user()->email)->log('Login')->causedBy(Auth::user());
-            }catch (\Exception $e){}
+            } catch (\Exception $e) {
+            }
 
             return redirect()->intended(session('redirectPath'));
         }
@@ -131,7 +136,7 @@ class SessionsController extends Controller
     protected function getCredentials(Request $request)
     {
         return [
-            'email'    => $request->input('email'),
+            'email' => $request->input('email'),
             'password' => $request->input('password'),
         ];
     }
