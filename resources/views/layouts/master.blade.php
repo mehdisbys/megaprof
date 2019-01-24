@@ -34,6 +34,8 @@
     {!! HTML::script("js/bootstrap.min.js") !!}
 
     @include('user_tracking.smartlook')
+    @include('ads.ads')
+
     @yield('custom-head')
 </head>
 
