@@ -14,7 +14,7 @@ var elixir = require('laravel-elixir');
 elixir(function (mix) {
 
     mix.styles([
-      //  'style.css',
+        //  'style.css',
         'bootstrap.css',
         'normalize.css',
         'dashboard.css',
@@ -42,7 +42,7 @@ elixir(function (mix) {
         'magnific-popup.css',
         'checkbox-button.css',
         'custom.css',
-        'responsive.css' ,
+        'responsive.css',
         'toastr.min.css'
     ], 'public/css/__master-all.css');
 
@@ -51,4 +51,5 @@ elixir(function (mix) {
     mix.scripts(['step3.js'], 'public/js/step3.js');
     mix.scripts(['step4.js'], 'public/js/step4.js');
     mix.scripts(['step5.js'], 'public/js/step5.js');
+    mix.scripts(['avatar.js'], 'public/js/avatar.js');
 });

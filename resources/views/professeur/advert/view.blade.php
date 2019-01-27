@@ -106,7 +106,14 @@
             </div>
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
-                    <img src="{{ $advert->getAdvertAvatar() }}" alt="avatar">
+
+                    @if(\App\Models\Avatar::hasAvatar($advert->user->id))
+                        <img src="{{ $advert->getAdvertAvatar() }}" alt="avatar">
+                    @else
+                        <img alt="avatar" avatar="{{ucfirst(strtolower($advert->user->firstname ))}}">
+                    @endif
+
+
                     <h3><a href="#" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
                     <ul class="iconlist-info">
                         @if($advert->can_webcam)
@@ -250,14 +257,14 @@
             </tbody>
         </table>
 
-            @if($advert->price_more)
-                <div class="single-advert-text col-md-8 col-md-offset-2 row">
+        @if($advert->price_more)
+            <div class="single-advert-text col-md-8 col-md-offset-2 row">
                 <span class="fa fa-info-circle"></span> {{ucfirst($advert->price_more)}}
-                </div>
-            @endif
+            </div>
+        @endif
 
 
-        <!-- 3 -->
+    <!-- 3 -->
         <div class="view-comments col-md-12">
 
             @if(isset($comments) and $comments->count())
@@ -277,17 +284,21 @@
                     <h3>Les professeurs similaires</h3>
 
                     @foreach($similarAdverts as $advert)
+                        <?php
+                        $firstname = \App\Models\User::find($advert->user_id)->firstname
+                        ?>
                         <div class="similar-advert">
-
                             <div class="avatar-wrapper"><a href="/{{$advert->slug}}">
-                                    <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt=""/>
+                                    @if(\App\Models\Avatar::hasAvatar($advert->user_id))
+                                        <img src="{{ getAvatar($advert->user_id) }}" alt="avatar">
+                                    @else
+                                        <img alt="avatar" avatar="{{ucfirst(strtolower($firstname))}}">
+                                    @endif
                                 </a>
                                 <h5><a href="#" class=""> {{$advert->price}} Dhs/h</a></h5>
                             </div>
 
-                            <h4 class="firstname"><a
-                                        href="/{{$advert->slug}}">{{ \App\Models\User::find($advert->user_id)->firstname}}</a>
-                            </h4>
+                            <h4 class="firstname"><a href="/{{$advert->slug}}">{{ $firstname}}</a></h4>
 
                             <div class="location">
                                 <i class="fa fa-map-marker"></i> {{ $advert->location_city }}
@@ -303,3 +314,5 @@
     </div>
 </div>
 @endsection
+
+{!! HTML::script("js/avatar.js") !!}
