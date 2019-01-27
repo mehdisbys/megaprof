@@ -107,7 +107,7 @@
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
 
-                    @if(\App\Models\Avatar::hasAvatar($advert->user->id) == false)
+                    @if(\App\Models\Avatar::hasAvatar($advert->user->id))
                         <img src="{{ $advert->getAdvertAvatar() }}" alt="avatar">
                     @else
                         <img alt="avatar" avatar="{{ucfirst(strtolower($advert->user->firstname ))}}">
@@ -289,7 +289,7 @@
                         ?>
                         <div class="similar-advert">
                             <div class="avatar-wrapper"><a href="/{{$advert->slug}}">
-                                    @if(\App\Models\Avatar::hasAvatar($advert->user_id) == false)
+                                    @if(\App\Models\Avatar::hasAvatar($advert->user_id))
                                         <img src="{{ getAvatar($advert->user_id) }}" alt="avatar">
                                     @else
                                         <img alt="avatar" avatar="{{ucfirst(strtolower($firstname))}}">
