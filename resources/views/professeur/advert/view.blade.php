@@ -84,35 +84,15 @@
         @endif
 
         <div class="col-md-12 author-profile-header topmargin-small">
-            <div class="single-view-info-author">
-                <h1 class="single-view-title">{{ ucfirst($advert->title) }}</h1>
 
-                <div class="pull-left">
-                    @foreach($advert->subjectsPerAd as $subject)
-                        <div class="label label-info">{{ \App\Models\SubSubject::find($subject->subject_id)->name}}</div>
-                        <div class="clearfix"></div>
-                    @endforeach
-                </div>
-
-                <div class="pull-right">
-                    <?php $advertLevels = json_decode(\App\Models\SubjectsPerAdvert::getLevelsPerAdvert($advert->id)[0], true); ?>
-                    @if(is_array($advertLevels))
-                        @foreach($advertLevels as $level_id)
-                            <div class="label label-primary">{{\App\Models\SubLevel::find($level_id)->name}}</div>
-                        @endforeach
-                    @endif
-                </div>
-
-            </div>
-            <div id="profile-author" class="single-view-profile-author-profile">
-                <div class="single-view-profile-info">
+            <div id="profile-author" class="single-view-profile-author-profile topmargin-sm">
+                <div class="single-view-profile-info ">
 
                     @if(\App\Models\Avatar::hasAvatar($advert->user->id))
                         <img src="{{ $advert->getAdvertAvatar() }}" alt="avatar">
                     @else
-                        <img alt="avatar" avatar="{{ucfirst(strtolower($advert->user->firstname ))}}">
+                        <img alt="avatar" avatar="{{ucfirst($advert->user->firstname )}}">
                     @endif
-
 
                     <h3><a href="#" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
                     <ul class="iconlist-info">
@@ -154,14 +134,42 @@
                 </div>
             </div>
 
-            <div class="topmargin-small">
-                <a class="booking-button temp-btn-block" href="
-                    {{ isset($thisIsAPreview) ? '' : '/mise-en-relation/'.$advert->slug}}">Réserver : {{$advert->price}}
-                    Dhs/h</a>
-                @if($advert->free_first_time != NULL)
-                    <div class="first_free_time">1ère heure de cours offerte !</div>
-                @endif
+            <div class="single-view-info-author bottommargin-small">
 
+                <h1 class="single-view-title">{{ ucfirst($advert->title) }}</h1>
+
+                <div class="topmargin-small">
+
+                    <a class="booking-button temp-btn-block" href="
+                    {{ isset($thisIsAPreview) ? '' : '/mise-en-relation/'.$advert->slug}}">Réserver : {{$advert->price}}
+                        Dhs/h</a>
+                    @if($advert->free_first_time != NULL)
+                        <div class="first_free_time">1ère heure de cours offerte !</div>
+                    @endif
+
+                </div>
+
+            </div>
+
+
+            <div>
+                <div>
+                    <div class="pull-left">
+                        @foreach($advert->subjectsPerAd as $subject)
+                            <div class="label label-info">{{ \App\Models\SubSubject::find($subject->subject_id)->name}}</div>
+                            <div class="clearfix"></div>
+                        @endforeach
+                    </div>
+
+                    <div class="pull-right">
+                        <?php $advertLevels = json_decode(\App\Models\SubjectsPerAdvert::getLevelsPerAdvert($advert->id)[0], true); ?>
+                        @if(is_array($advertLevels))
+                            @foreach($advertLevels as $level_id)
+                                <div class="label label-primary">{{\App\Models\SubLevel::find($level_id)->name}}</div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
             </div>
 
 

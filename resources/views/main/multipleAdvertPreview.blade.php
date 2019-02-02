@@ -46,3 +46,5 @@
                 seront disponibles.
         </div>
 </div>
+
+{!! HTML::script("js/avatar.js") !!}

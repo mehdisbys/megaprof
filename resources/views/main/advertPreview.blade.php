@@ -8,7 +8,13 @@
             ?>
 
             <a href="/{{$advert->slug}}" class="profile-image-wrapper">
-                <img class="avatar" src="{{ getAvatar($advert->user_id) }}" alt="avatar"/>
+
+                @if(\App\Models\Avatar::hasAvatar($advert->user_id))
+                    <img src="{{ getAvatar($advert->user_id) }}" alt="avatar">
+                @else
+                    <img alt="avatar" avatar="{{ucfirst($prof->firstname)}}" style="height: 8.2em; width: 8.2em">
+                @endif
+
             </a>
             <h3>
                 <a href="/{{$advert->slug}}">
