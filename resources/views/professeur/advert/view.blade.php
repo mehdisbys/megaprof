@@ -154,15 +154,12 @@
 
             <div>
                 <div>
-                    <div class="pull-left">
+                    <div class="pullleft">
                         @foreach($advert->subjectsPerAd as $subject)
-                            <div class="label label-info">{{ \App\Models\SubSubject::find($subject->subject_id)->name}}</div>
-                            <div class="clearfix"></div>
+                            <div class="label label-info bottommargin-small">{{ \App\Models\SubSubject::find($subject->subject_id)->name}}</div>
                         @endforeach
-                    </div>
-
-                    <div class="pull-right">
                         <?php $advertLevels = json_decode(\App\Models\SubjectsPerAdvert::getLevelsPerAdvert($advert->id)[0], true); ?>
+
                         @if(is_array($advertLevels))
                             @foreach($advertLevels as $level_id)
                                 <div class="label label-primary">{{\App\Models\SubLevel::find($level_id)->name}}</div>
