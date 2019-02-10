@@ -187,6 +187,12 @@
     </div>
 
     <div class="col-md-12 text-center mini-padding-top-when-mobile ">
+        @include('includes.facebook.likeButton')
+
+    </div>
+
+    <div class="col-md-12 text-center mini-padding-top-when-mobile ">
+        <div class="clearfix"></div>
         <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
     </div>
 

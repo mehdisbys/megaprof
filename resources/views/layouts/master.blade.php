@@ -35,6 +35,7 @@
 
     @include('user_tracking.smartlook')
     @include('ads.ads')
+    @include('includes.facebook.sdk')
 
     @yield('custom-head')
 </head>
@@ -78,13 +79,15 @@
                             @endif
 
                             @if(Auth::check() == false)
-                                <li><a class="facebook-connect" href="/redirect"> @lang('auth/loginForm.connectFacebook')</a></li>
+                                <li><a class="facebook-connect"
+                                       href="/redirect"> @lang('auth/loginForm.connectFacebook')</a></li>
                                 <li><a class="header-item" href="/login">@lang('layouts/master.connect')</a></li>
                                 <li><a class="header-item" href="/inscription">@lang('layouts/master.register')</a></li>
                                 <li><a class="header-item" href="/faq">@lang('layouts/master.help')</a></li>
                                 <li><a id="donner-des-cours" class="button"
                                        href="/professeur">@lang('layouts/master.giveLessons')</a></li>
                             @endif
+
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
@@ -100,8 +103,10 @@
 @include('includes.error')
 
 <div class="page">
-    @section('content')
+
+@section('content')
     @show
+
 </div>
 
 <!--footer start from here-->
@@ -153,8 +158,10 @@
                     <h6 class="heading7">@lang('layouts/master.CONTACT')</h6>
 
                     <!--  <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div> -->
-                    <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal" data-target=1"#contact"
-                                                           data-original-title>@lang('layouts/master.contactUs')</a></div>
+                    <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal"
+                                                           data-target=1"#contact"
+                                                           data-original-title>@lang('layouts/master.contactUs')</a>
+                    </div>
                 </div>
             </div>
         </div>
