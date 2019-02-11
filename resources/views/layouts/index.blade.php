@@ -94,19 +94,27 @@
         }
 
         @-webkit-keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         @-moz-keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         @-o-keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         @keyframes fade {
-            100% { opacity: 1; }
+            100% {
+                opacity: 1;
+            }
         }
 
         .presentation-icons {
@@ -180,20 +188,21 @@
         </div>
 
 
-
         <div class="home-search-form-inner autocomplete">
         </div>
         <!-- <div id="howto-btn" class="howto"><a href="#howto" class="howto-link">Comment ça marche</a></div> -->
     </div>
+    <div class="clearfix mini-padding-top-when-mobile"></div>
 
-    <div class="col-md-12 text-center mini-padding-top-when-mobile ">
+    <div class="topmargin bottommargin text-center">
         @include('includes.facebook.likeButton')
-
     </div>
 
-    <div class="col-md-12 text-center mini-padding-top-when-mobile ">
-        <div class="clearfix"></div>
-        <a class="button button-dp-blue" href="/professeur">Je veux donner des cours</a>
+
+    <div class="text-center mini-padding-top-when-mobile ">
+                <a class="topmargin-lg button button-dp-blue" href="/professeur"> Je veux
+                    donner des cours </a>
+            </div>
     </div>
 
 
@@ -215,8 +224,7 @@
 
 
         <script>
-            function submitForm(response)
-            {
+            function submitForm(response) {
                 $('#loginForm').submit();
             }
         </script>
@@ -226,7 +234,8 @@
     <div class="student-info col-md-12" id="student-info-div">
         <div class="wraper">
             <div class="home-hare-opinion">
-                <div class="col-md-12"><h2 class="section-title">Trouver un professeur au Maroc, c'est facile !</h2></div>
+                <div class="col-md-12"><h2 class="section-title">Trouver un professeur au Maroc, c'est facile !</h2>
+                </div>
                 <div class="topmargin-big col-md-12">
                     <div class="col-md-12" id="quote-message-container">
                         <ul>
@@ -303,7 +312,6 @@
         </div>
 
         <div class="col-md-12 topmargin-big">
-
 
 
             <div>
