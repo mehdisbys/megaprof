@@ -9,57 +9,48 @@ $(document).ready(function () {
     zoomLevels['13000'] = 10;
     zoomLevels['20000'] = 9;
 
-    var geo = $('#location').geocomplete({
-        types: ['(cities)'],
-        componentRestrictions: {country: "ma"},
-        map: "#map",
-        mapOptions: {
-            center: {lat: 33.5, lng: -7.5},
-            zoom: 2
-        },
-        markerOptions: {
-            draggable: true
-        },
-        details: ".location-details"
-    }).bind("geocode:result", function (event, result) {
+    // var geo = $('#location').geocomplete({
+    //     types: ['address'],
+    //     componentRestrictions: {country: "ma"},
+    //     map: "#map",
+    //     mapOptions: {
+    //         center: {lat: 33.5, lng: -7.5},
+    //         zoom: 2
+    //     },
+    //     markerOptions: {
+    //         draggable: true
+    //     },
+    //     details: ".location-details"
+    // });
+    //
+    // function clearOverlays() {
+    //     for (var i = 0; i < circlesArray.length; i++) {
+    //         circlesArray[i].setMap(null);
+    //     }
+    //     circlesArray.length = 0;
+    // };
+    //
+    // $("#can_travel").change(function () {
+    //     if ($("#can_travel").prop('checked'))
+    //         $("#map-and-radius").removeClass('no-visibility');
+    //     else
+    //         $("#map-and-radius").addClass('no-visibility');
+    // });
+    //
+    // $('#radius').change(function () {
+    //     geo.trigger('geocode:result');
+    // });
 
-        var map = $("#location").geocomplete("map");
-        var marker = $("#location").geocomplete("marker");
-        var radius = parseInt($('#radius').val());
-
-        var circle = new google.maps.Circle({
-            map: map,
-            radius: parseInt($('#radius').val()),
-            fillColor: '#fd875e',
-            fillOpacity: 0.65,
-            strokeWeight: 1
-        });
-
-        map.setZoom(zoomLevels[radius]);
-
-        clearOverlays();
-        circlesArray.push(circle);
-        circle.bindTo('center', marker, 'position');
+    gmaps.init({
+        locationInput: 'location',
+        formID: 'location_form',
+        types : ['(cities)'],
+        noPredictionsMsg: 'Aucun lieu ne correspond à votre saisie',
+        fillLocationDetails: true,
+        locationDetails : '.location-details',
+        latitude: 'lat',
+        longitude : 'lng'
     });
-
-    function clearOverlays() {
-        for (var i = 0; i < circlesArray.length; i++) {
-            circlesArray[i].setMap(null);
-        }
-        circlesArray.length = 0;
-    };
-
-    $("#can_travel").change(function () {
-        if ($("#can_travel").prop('checked'))
-            $("#map-and-radius").removeClass('no-visibility');
-        else
-            $("#map-and-radius").addClass('no-visibility');
-    });
-
-    $('#radius').change(function () {
-        geo.trigger('geocode:result');
-    });
-
 
 });
 
