@@ -60,13 +60,6 @@ $(document).ready(function () {
         geo.trigger('geocode:result');
     });
 
-    gmaps.init({
-        locationInput: 'location',
-        formID: 'location_form',
-        types : ['(cities)'],
-        noPredictionsMsg: 'Aucun lieu ne correspond à votre saisie',
-        fillLocationDetails: false
-    });
 
 });
 
