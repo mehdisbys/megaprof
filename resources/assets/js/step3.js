@@ -10,7 +10,7 @@ $(document).ready(function () {
     zoomLevels['20000'] = 9;
 
     var geo = $('#location').geocomplete({
-        types: ['address'],
+        types: ['(cities)'],
         componentRestrictions: {country: "ma"},
         map: "#map",
         mapOptions: {
@@ -60,12 +60,12 @@ $(document).ready(function () {
         geo.trigger('geocode:result');
     });
 
-    // gmaps.init({
-    //     locationInput: 'location',
-    //     formID: 'location_form',
-    //     types : ['address'],
-    //     noPredictionsMsg: 'Aucun lieu ne correspond à votre saisie',
-    //     fillLocationDetails: false
-    // });
+    gmaps.init({
+        locationInput: 'location',
+        formID: 'location_form',
+        types : ['(cities)'],
+        noPredictionsMsg: 'Aucun lieu ne correspond à votre saisie',
+        fillLocationDetails: false
+    });
 
 });
