@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Advert;
@@ -24,10 +25,12 @@ class ListAdvertController extends Controller
         $subsubjects        = implode(',', SubSubject::all()->pluck('name')->toArray());
         $selectedSubject    = null;
         $latestAdverts      = $this->latestAdverts();
+        $frenchAdverts      = $this->getLatestAdvertsPerSubjectID(41);
+        $englishAdverts     = $this->getLatestAdvertsPerSubjectID(5);
         $popularSubjects    = $this->mostPopularSubjects();
         $notificationsCount = Notification::currentUserNotificationsCount();
 
-        return view('layouts.index')->with(compact('subsubjects', 'selectedSubject', 'notificationsCount', 'latestAdverts', 'popularSubjects'));
+        return view('layouts.index')->with(get_defined_vars());
     }
 
     public function registerStudentInterest(Request $request)
@@ -166,6 +169,13 @@ class ListAdvertController extends Controller
     public function latestAdverts()
     {
         return Advert::whereNotNull('published_at')->whereNotNull('approved_at')->orderBy('created_at', 'DESC')->has('avatar')->paginate(5);
+    }
+
+    public function getLatestAdvertsPerSubjectID(int $subjectId)
+    {
+        return Advert::whereHas('subjectsPerAd', function ($query) use ($subjectId) {
+            $query->where('subject_id', $subjectId);
+        })->whereNotNull('published_at')->whereNotNull('approved_at')->orderBy('created_at', 'DESC')->has('avatar')->paginate(5);
     }
 
     public function mostPopularSubjects(int $limit = 12)

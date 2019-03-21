@@ -200,14 +200,14 @@
 
 
     <div class="text-center mini-padding-top-when-mobile ">
-                <a class="topmargin-lg button button-dp-blue" href="/professeur"> Je veux
-                    donner des cours </a>
-            </div>
+        <a class="topmargin-lg button button-dp-blue" href="/professeur"> Je veux
+            donner des cours </a>
+    </div>
     </div>
 
 
-    @include('main.latestPublishedAdverts')
-
+    @include('main.latestPublishedAdverts', ['carouselAdverts' => $latestAdverts, 'title' => 'Les dernières annonces publiées'])
+    <div class="clearfix"></div>
 
     <div class="col-md-12">
         <div class="wrapper">
@@ -229,6 +229,13 @@
             }
         </script>
     </div>
+
+    @include('main.latestPublishedAdverts', ['carouselAdverts' => $frenchAdverts, 'title' => 'Annonces de Français'])
+    <div class="clearfix"></div>
+    @include('main.latestPublishedAdverts', ['carouselAdverts' => $englishAdverts, 'title' => 'Annonces d\'Anglais'])
+
+
+
 
 
     <div class="student-info col-md-12" id="student-info-div">
