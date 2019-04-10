@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
 
+
     public function adminDashboard()
     {
-        $advertsCount         = Advert::whereNotNull('published_at')->whereNull('approved_at')->count();
-        $usersCount           = User::count();
+
+        $advertsCount = Advert::whereNotNull('published_at')->whereNull('approved_at')->count();
+        $usersCount = User::count();
         $approvedAdvertsCount = Advert::whereNotNull('approved_at')->whereNotNull('published_at')->orderBy('approved_at', 'DESC')->count();
         $archivedAdvertsCount = Advert::whereNull('published_at')->orderBy('created_at', 'desc')->count();
         $acceptedBookingsCount = Booking::where('answer', 'yes')->count();
@@ -27,6 +29,7 @@ class AdminController extends Controller
 
         return view('admin.adminOverview')->with(get_defined_vars());
     }
+
 
     public function listAllUsers()
     {
@@ -74,16 +77,16 @@ class AdminController extends Controller
 
     public function listAdvertPerSubjects()
     {
-        $adverts =  DB::table('subjects_per_advert')
-        ->join('adverts', 'adverts.id', '=', 'subjects_per_advert.advert_id')
-        ->whereNotNull('adverts.approved_at')
-        ->get();
+        $adverts = DB::table('subjects_per_advert')
+            ->join('adverts', 'adverts.id', '=', 'subjects_per_advert.advert_id')
+            ->whereNotNull('adverts.approved_at')
+            ->get();
 
         $advertsGroupedBySubject = $adverts->groupBy('subject_id');
 
         /** @param $advertsGroupedBySubject Collection */
-       $totalCountOfVirtualAdverts = $advertsGroupedBySubject->reduce( function ($carry, $item) {
-            return  $carry + count($item);
+        $totalCountOfVirtualAdverts = $advertsGroupedBySubject->reduce(function ($carry, $item) {
+            return $carry + count($item);
         });
 
         $totalCountOfApprovedAdverts = \App\Models\Advert::approved()->count();
@@ -92,7 +95,7 @@ class AdminController extends Controller
     }
 
 
-        public function advertRejected(Request $request, int $advert_id)
+    public function advertRejected(Request $request, int $advert_id)
     {
         $this->validate($request, ['message' => 'required']);
 

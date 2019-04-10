@@ -10,6 +10,7 @@ use App\Models\SubSubject;
 use App\Search\Search;
 use App\Search\SearchArguments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ListAdvertController extends Controller
 {
@@ -22,15 +23,26 @@ class ListAdvertController extends Controller
 
     public function index()
     {
-        $subsubjects        = implode(',', SubSubject::all()->pluck('name')->toArray());
-        $selectedSubject    = null;
-        $latestAdverts      = $this->latestAdverts();
-        $frenchAdverts      = $this->getLatestAdvertsPerSubjectID(41);
-        $englishAdverts     = $this->getLatestAdvertsPerSubjectID(90);
-        $popularSubjects    = $this->mostPopularSubjects();
+        $this->listAdvertPerCities();
+        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $selectedSubject = null;
+        $latestAdverts = $this->latestAdverts();
+        $frenchAdverts = $this->getLatestAdvertsPerSubjectID(41);
+        $englishAdverts = $this->getLatestAdvertsPerSubjectID(90);
+        $popularSubjects = $this->mostPopularSubjects();
         $notificationsCount = Notification::currentUserNotificationsCount();
 
         return view('layouts.index')->with(get_defined_vars());
+    }
+
+    public function listAdvertPerCities()
+    {
+        $adverts = DB::table('adverts')
+            ->selectRaw(DB::raw(("location_lat as lat, location_long as lng")))
+            ->whereNotNull('approved_at')
+            ->get();
+
+        return json_encode($adverts);
     }
 
     public function registerStudentInterest(Request $request)
@@ -38,12 +50,12 @@ class ListAdvertController extends Controller
         $spam = (!empty($request->input('location_city_lat'))) or (!empty($request->input('location_city_long')));
 
         if ($spam == false) {
-            $inputs   = $request->all(["city",
-                                           "subject",
-                                           "subjectId",
-                                           "email",
-                                           "lng",
-                                           "lat"]);
+            $inputs = $request->all(["city",
+                "subject",
+                "subjectId",
+                "email",
+                "lng",
+                "lat"]);
             $interest = RegisterStudentInterest::create($inputs + ['token' => str_random(30)]);
             $interest->save();
         }
@@ -68,8 +80,8 @@ class ListAdvertController extends Controller
 
     public function allAdverts()
     {
-        $adverts         = Advert::liveAdverts(20);
-        $subsubjects     = implode(',', SubSubject::all()->pluck('name')->toArray());
+        $adverts = Advert::liveAdverts(20);
+        $subsubjects = implode(',', SubSubject::all()->pluck('name')->toArray());
         $selectedSubject = null;
 
         return view('main.index')->with(compact('adverts', 'subsubjects', 'selectedSubject'));
@@ -86,14 +98,14 @@ class ListAdvertController extends Controller
 
         return view('main.index')->with(
             [
-                'adverts'         => $adverts,
-                'subsubjects'     => $data->getSubsubjects(),
+                'adverts' => $adverts,
+                'subsubjects' => $data->getSubsubjects(),
                 'selectedSubject' => $data->getSelectedSubject(),
-                'distances'       => [],
-                'selectedCity'    => $data->getCity() ?? null,
-                'lat'             => $data->getLat(),
-                'lgn'             => $data->getLgn(),
-                'subjectId'       => $data->getSubjectId()
+                'distances' => [],
+                'selectedCity' => $data->getCity() ?? null,
+                'lat' => $data->getLat(),
+                'lgn' => $data->getLgn(),
+                'subjectId' => $data->getSubjectId()
             ]
         );
 
@@ -108,37 +120,37 @@ class ListAdvertController extends Controller
 
         $search = new Search();
 
-        list($adverts,$distances ) = $search->search($data);
+        list($adverts, $distances) = $search->search($data);
 
         $distances = [];
-        $widerRadius = 100 ;// km
+        $widerRadius = 100;// km
 
-        if(count($adverts) == 0){
+        if (count($adverts) == 0) {
             $data->setRadius($widerRadius);
             list($adverts, $distances) = $search->search($data);
         }
 
         $results = view('main.multipleAdvertPreview')
             ->with([
-                       'adverts'         => $adverts,
-                       'subsubjects'     => $data->getSubsubjects(),
-                       'selectedSubject' => $data->getSelectedSubject(),
-                       'distances'       => $distances,
-                       'selectedCity'    => $data->getCity() ?? null,
-                       'radius'          => $data->getRadius() ?? null,
-                       'widerSearch'     => $data->getRadius() == $widerRadius,
-                       'lat'             => $data->getLat(),
-                       'lgn'             => $data->getLgn(),
-                       'subjectId'       => $data->getSubjectId()
-                   ]
+                    'adverts' => $adverts,
+                    'subsubjects' => $data->getSubsubjects(),
+                    'selectedSubject' => $data->getSelectedSubject(),
+                    'distances' => $distances,
+                    'selectedCity' => $data->getCity() ?? null,
+                    'radius' => $data->getRadius() ?? null,
+                    'widerSearch' => $data->getRadius() == $widerRadius,
+                    'lat' => $data->getLat(),
+                    'lgn' => $data->getLgn(),
+                    'subjectId' => $data->getSubjectId()
+                ]
             )->render();
 
         return response()->json(
             [
-                'params'    => $data->toArray(),
-                'count'     => $adverts->total(),
+                'params' => $data->toArray(),
+                'count' => $adverts->total(),
                 'distances' => $distances,
-                'results'   => $results,
+                'results' => $results,
             ]);
     }
 
@@ -154,12 +166,12 @@ class ListAdvertController extends Controller
         $view = view('professeur.advert.view')->with(compact('advert'));
 
         if ($advert->published_at == NULL) {
-            $view->with(['info'           => "Cette annonce n'est pas encore publiée et n'est pas visible des élèves",
-                         'thisIsAPreview' => true]);
+            $view->with(['info' => "Cette annonce n'est pas encore publiée et n'est pas visible des élèves",
+                'thisIsAPreview' => true]);
         }
 
         if ($advert->isAwaitingApproval()) {
-            $view->with(['info'           => "Cette annonce n'est pas encore visible des élèves. Elle sera visible dés qu'elle aura été approuvée par un modérateur."]);
+            $view->with(['info' => "Cette annonce n'est pas encore visible des élèves. Elle sera visible dés qu'elle aura été approuvée par un modérateur."]);
         }
 
         return $view;
@@ -191,15 +203,15 @@ class ListAdvertController extends Controller
         $r = [];
 
         $icons = [
-            1  => 'fa-graduation-cap',
-            2  => 'fa-flask',
-            3  => 'fa-line-chart',
-            4  => 'fa-language',
-            5  => 'fa-balance-scale',
-            6  => 'fa-group',
-            7  => 'fa-laptop',
-            8  => 'fa-music',
-            9  => 'fa-futbol-o',
+            1 => 'fa-graduation-cap',
+            2 => 'fa-flask',
+            3 => 'fa-line-chart',
+            4 => 'fa-language',
+            5 => 'fa-balance-scale',
+            6 => 'fa-group',
+            7 => 'fa-laptop',
+            8 => 'fa-music',
+            9 => 'fa-futbol-o',
             10 => 'fa-paint-brush',
             11 => 'fa-fort-awesome',
         ];

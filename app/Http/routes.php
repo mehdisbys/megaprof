@@ -25,6 +25,8 @@ Route::group(['middleware' => ['web']], function () {
 
     //Main Page
     Route::get('/', 'ListAdvertController@index');
+    Route::get('/ads-per-cities', 'ListAdvertController@listAdvertPerCities');
+
     Route::post('/student', 'ListAdvertController@registerStudentInterest');
     Route::get('/deactivate-student-alert/{token}', 'ListAdvertController@deactivateStudentInterest');
     Route::get('/annonces', 'ListAdvertController@allAdverts');
