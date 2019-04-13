@@ -37,7 +37,7 @@ class ListAdvertController extends Controller
     public function listAdvertPerCities()
     {
         $adverts = DB::table('adverts')
-            ->selectRaw(DB::raw(("title, location_lat as lat, location_long as lng")))
+            ->selectRaw(DB::raw(("title, slug, location_lat as lat, location_long as lng")))
             ->whereNotNull('approved_at')
             ->get();
 

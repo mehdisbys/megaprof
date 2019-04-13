@@ -19,11 +19,11 @@
         }
     </style>
 
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    {{--<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>--}}
 
     <script>
         var markers = [];
-        $.get("/a-per-cities", function(data, status){
+        $.get("/a-per-cities", function (data, status) {
             markers = $.parseJSON(data);
         });
         var activeInfoWindow;
@@ -32,7 +32,7 @@
         function initialize() {
             var casablanca = {lat: 32.389886, lng: -8.603869};
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 6 ,
+                zoom: 6,
                 center: casablanca,
                 disableDefaultUI: true
             });
@@ -62,7 +62,7 @@
                 map: map
             });
             var infowindow = new google.maps.InfoWindow({
-                content: location.title
+                content: '<a target=_blank href="' + location.slug + '">' + location.title + '</a>'
             });
 
             marker.addListener('click', function () {
