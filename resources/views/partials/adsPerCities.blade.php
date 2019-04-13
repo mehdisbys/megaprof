@@ -23,7 +23,7 @@
 
     <script>
         var markers = [];
-        $.get("/ads-per-cities", function(data, status){
+        $.get("/a-per-cities", function(data, status){
             markers = $.parseJSON(data);
         });
         var activeInfoWindow;
