@@ -148,6 +148,7 @@
         </div>
 
 
+
         <div class="home-search-form-inner autocomplete awesomplete">
             <div class="search-form-wrapper">
                 <form action="/search" method="post" id="search_form">
@@ -194,15 +195,21 @@
     </div>
     <div class="clearfix mini-padding-top-when-mobile"></div>
 
+
+    <div class="clearfix"></div>
+
     <div class="topmargin bottommargin text-center">
         @include('includes.facebook.likeButton')
     </div>
 
-
-    <div class="text-center mini-padding-top-when-mobile ">
-        <a class="topmargin-lg button button-dp-blue" href="/professeur"> Je veux
-            donner des cours </a>
+    <div >
+        @include('partials.adsPerCities')
     </div>
+
+    {{--<div class="text-center mini-padding-top-when-mobile ">--}}
+        {{--<a class="topmargin-lg button button-dp-blue" href="/professeur"> Je veux--}}
+            {{--donner des cours </a>--}}
+    {{--</div>--}}
     </div>
 
 
