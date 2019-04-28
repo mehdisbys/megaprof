@@ -12,7 +12,7 @@ jobs:
           command: apt-get update && apt-get -y install git python3-pip
       - run:
           name: Install awscli
-          command: pip install awscli
+          command: pip3 install awscli
       - run:
           name: Install PHP extensions
           command: docker-php-ext-install pdo
