@@ -28,10 +28,10 @@ jobs:
             php composer.phar --version
       - run:
           name: Install project dependencies
-          command: php composer.phar install
-      - run:
-          name: Run CS tests
-          command: vendor/bin/phpcs
-      - run:
-          name: Run Unit tests
-          command: vendor/bin/phpunit
+          command: php composer.phar install --no-scripts
+#      - run:
+#          name: Run CS tests
+#          command: vendor/bin/phpcs
+#      - run:
+#          name: Run Unit tests
+#          command: vendor/bin/phpunit
