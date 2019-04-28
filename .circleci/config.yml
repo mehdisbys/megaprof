@@ -9,7 +9,10 @@ jobs:
     steps:
       - run:
           name: Install system packages
-          command: apt-get update && apt-get -y install git python3-pip docker-ce
+          command: apt-get update && apt-get -y install git python3-pip
+      - run:
+          name: Install Docker
+          command: curl -sSL https://get.docker.com/ | sh
       - run:
           name: Install awscli
           command: pip3 install awscli
