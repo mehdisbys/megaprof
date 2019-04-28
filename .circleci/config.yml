@@ -43,5 +43,8 @@ jobs:
           name: Run Apache Server
           command: apachectl -D FOREGROUND
       - run:
+          name: Build Docker Image
+          command: docker build --rm=false -t $AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/${SERVICE}:${CIRCLE_BUILD_NUM} .
+      - run:
           name: Push to ECR
           command: eval $(aws ecr get-login --region eu-west-1 --no-include-email) && docker push $AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/${SERVICE}:${CIRCLE_BUILD_NUM}
