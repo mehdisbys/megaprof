@@ -31,7 +31,7 @@ jobs:
           command: php composer.phar install --no-scripts
       - run:
           name: Configure Apache Server
-          command: cp apache-config.conf /etc/apache2/sites-enabled/000-default.conf && a2enmod rewrite && service apache restart
+          command: cp apache-config.conf /etc/apache2/sites-enabled/000-default.conf && a2enmod rewrite && service apache2 restart
       - run:
           name: Run Apache Server
           command: apachectl -D FOREGROUND
