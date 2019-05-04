@@ -3,7 +3,7 @@ return [
     'shareYourSkills' => "Partagez vos compétences",
     'taelamDesc' => "Partager sa passion ou ses compétences et être rémunéré c'est facile avec Taelam. Des dizaines de matières et activités variées sont disponibles !",
     'createAdvert' => "Créer une annonce",
-    'marketAd' => "Diffusez votre annonce de cours en quelques clics",
+    'marketAd' => "Diffusez votre super annonce",
     'freeAdvert' => " Créer une annonce gratuitement",
     'reachPeople' => "Des milliers de personnes cherchent des professeurs particuliers chaque jour. TAELAM vous permet de rentrer en contact avec eux.",
     'chooseYourPrice' => "Fixez vos propres tarifs",
