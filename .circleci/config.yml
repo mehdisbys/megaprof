@@ -19,7 +19,7 @@ jobs:
           command: pip3 install awscli
       - run:
           name: Checkout AWS S3 files
-          command: aws s3 cp s3://s3://circleci25924/.env .
+          command: aws s3 cp s3://circleci25924/.env .
       - run:
           name: Install PHP extensions
           command: docker-php-ext-install pdo
