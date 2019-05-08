@@ -23,7 +23,6 @@ RUN npm install -g bower grunt-cli gulp
 RUN phpenmod pdo_mysql
 
 ADD . /var/www
-RUN mv /var/www/.env-docker /var/www/.env
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 RUN a2enmod rewrite

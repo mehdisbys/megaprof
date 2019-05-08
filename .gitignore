@@ -10,5 +10,6 @@ vendor/
 Homestead.yaml
 Homestead.json
 .env
+.env-docker
 .DS_Store
 nohup.out
