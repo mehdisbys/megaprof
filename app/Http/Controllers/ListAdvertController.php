@@ -28,6 +28,7 @@ class ListAdvertController extends Controller
         $latestAdverts = $this->latestAdverts();
         $frenchAdverts = $this->getLatestAdvertsPerSubjectID(41);
         $englishAdverts = $this->getLatestAdvertsPerSubjectID(90);
+        $mathAdverts = $this->getLatestAdvertsPerSubjectID(62);
         $popularSubjects = $this->mostPopularSubjects();
         $notificationsCount = Notification::currentUserNotificationsCount();
 

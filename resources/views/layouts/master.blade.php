@@ -159,7 +159,7 @@
 
                     <!--  <div><i class="fa fa-newspaper-o"></i> <a href="">Presse</a></div> -->
                     <div><i class="fa fa-envelope"></i> <a class="mouse-hand" data-toggle="modal"
-                                                           data-target=1"#contact"
+                                                           data-target="#contact"
                                                            data-original-title>@lang('layouts/master.contactUs')</a>
                     </div>
                 </div>

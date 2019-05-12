@@ -240,8 +240,8 @@
     @include('main.latestPublishedAdverts', ['carouselAdverts' => $frenchAdverts, 'title' => 'Annonces de Français'])
     <div class="clearfix"></div>
     @include('main.latestPublishedAdverts', ['carouselAdverts' => $englishAdverts, 'title' => 'Annonces d\'Anglais'])
-
-
+    <div class="clearfix"></div>
+    @include('main.latestPublishedAdverts', ['carouselAdverts' => $mathAdverts, 'title' => 'Annonces de Mathématiques'])
 
 
 
