@@ -33,5 +33,5 @@ RUN chown -R www-data:www-data /var/www
 
 EXPOSE 80
 
-ENTRYPOINT cp .env /var/www ; apachectl -D FOREGROUND
+ENTRYPOINT cp .env-prod /var/www ; apachectl -D FOREGROUND
 
