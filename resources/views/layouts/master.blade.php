@@ -36,7 +36,16 @@
     @include('user_tracking.smartlook')
     @include('ads.ads')
     @include('includes.facebook.sdk')
-
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js"
+            data-dojo-config="usePlainJson: true, isDebug: false"></script>
+    <script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function (L) {
+            L.start({
+                "baseUrl": "mc.us20.list-manage.com",
+                "uuid": "ce331f3486fb2bded071a0a1c",
+                "lid": "b93d5f83fb",
+                "uniqueMethods": true
+            })
+        })</script>
     @yield('custom-head')
 </head>
 
@@ -104,7 +113,7 @@
 
 <div class="page">
 
-@section('content')
+    @section('content')
     @show
 
 </div>
