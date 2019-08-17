@@ -65,7 +65,7 @@ jobs:
       - run:
           name: Push to GCP
           command: |
-            echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+            echo ${GCP_AUTH} > ${HOME}/gcp-key.json
             docker build --rm=false -t eu.gcr.io/${GCP_PROJECT}/${SERVICE}:$CIRCLE_SHA1 .
             gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
             gcloud --quiet config set project ${GCP_PROJECT}
