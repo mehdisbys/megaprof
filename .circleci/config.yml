@@ -53,6 +53,15 @@ jobs:
       - run:
           name: Push to ECR
           command: eval $(aws ecr get-login --region eu-west-1 --no-include-email) && docker push $AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/${SERVICE}:latest
+
+      - run:
+          name: Install Gcloud
+          command: |
+            echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+            apt-get install apt-transport-https ca-certificates
+            curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+            apt-get update && sudo apt-get install google-cloud-sdk
+
       - run:
           name: Push to GCP
           command: |
