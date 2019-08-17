@@ -53,3 +53,11 @@ jobs:
       - run:
           name: Push to ECR
           command: eval $(aws ecr get-login --region eu-west-1 --no-include-email) && docker push $AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/${SERVICE}:latest
+      - run:
+          name: Push to GCP
+          command: |
+            echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+            docker build --rm=false -t eu.gcr.io/${GCP_PROJECT}/${SERVICE}:$CIRCLE_SHA1 .
+            gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+            gcloud --quiet config set project ${GCP_PROJECT}
+            gcloud docker -- push eu.gcr.io/${GCP_PROJECT}/${SERVICE}:$CIRCLE_SHA1
