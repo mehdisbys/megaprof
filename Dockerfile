@@ -29,9 +29,10 @@ RUN a2enmod rewrite
 RUN service apache2 restart
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN chown -R www-data:www-data /var/www
-
+RUN service cron start
+RUN crontab < cronfile
 
 EXPOSE 80
 
-ENTRYPOINT cp .env-prod /var/www ; apachectl -D FOREGROUND
+ENTRYPOINT cp env-prod /var/www/.env ; apachectl -D FOREGROUND
 
