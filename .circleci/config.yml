@@ -27,7 +27,7 @@ jobs:
           command: aws s3 cp s3://circleci25924/envs . --recursive
       - run:
           name: Checkout Cronjobs
-          command: aws s3 cp s3://circleci25924/cronjobs/cronfile
+          command: aws s3 cp s3://circleci25924/cronjobs/cronfile .
       - setup_remote_docker
       - run:
           name: Install Composer
