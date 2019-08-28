@@ -30,6 +30,7 @@ RUN service apache2 restart
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN chown -R www-data:www-data /var/www
 RUN service cron start
+ADD ./cronfile cronfile
 RUN crontab < ./cronfile
 
 EXPOSE 80
