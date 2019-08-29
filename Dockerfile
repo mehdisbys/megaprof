@@ -32,8 +32,9 @@ RUN chown -R www-data:www-data /var/www
 RUN service cron start
 ADD ./cronfile cronfile
 RUN crontab < ./cronfile
+ADD env-prod /var/www/.env
 
 EXPOSE 80
 
-ENTRYPOINT cp env-prod /var/www/.env ; apachectl -D FOREGROUND
+ENTRYPOINT apachectl -D FOREGROUND
 
