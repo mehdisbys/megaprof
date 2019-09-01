@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
       //  $schedule->command('inspire')->hourly();
-      //  $schedule->command('sitemap:generate')->dailyAt('04:00');
+        $schedule->command('sitemap:generate')->dailyAt('04:00');
       //  $schedule->command('remind_users:check')->dailyAt('05:00');
       //  $schedule->command('search_statistics')->weekly()->mondays()->at('07:00');
     }

@@ -55,6 +55,18 @@ class Booking extends Model
             ->get();
     }
 
+    public static function getProfBookingRequestsOnly(User $prof)
+    {
+        return static::where(function ($q) use ($prof) {
+            $q->where('prof_user_id', $prof->id);
+        })
+            ->whereNull('answer')
+            ->with('student')
+            ->with('advert')
+            ->orderBy('updated_at', 'desc')
+            ->get();
+    }
+
     public static function getAcceptedProfBookings(User $prof)
     {
         return static::where(function ($q) use ($prof) {
