@@ -26,7 +26,7 @@ class RemindProfToReplyToBookingSecondTime implements ReminderInterface
 
     public function reminderIsDueForUser(User $user): bool
     {
-        $userBookings = Booking::getProfBookingRequests($user);
+        $userBookings = Booking::getProfBookingRequestsOnly($user);
 
         $bookingsWithoutReply = new \Illuminate\Support\Collection();
 
