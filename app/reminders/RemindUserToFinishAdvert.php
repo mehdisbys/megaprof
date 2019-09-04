@@ -1,6 +1,6 @@
 <?php
-namespace Reminders;
 
+namespace Reminders;
 
 
 use App\Models\Advert;
@@ -21,7 +21,7 @@ class RemindUserToFinishAdvert implements ReminderInterface
 
     public function getReminderId(): string
     {
-        return $this->reminderId;
+        return $this->reminderId . $this->unfinishedAdverts->first()->id;
     }
 
     public function reminderIsDueForUser(User $user): bool
@@ -31,17 +31,15 @@ class RemindUserToFinishAdvert implements ReminderInterface
 
         $advertsNotFinished = new \Illuminate\Support\Collection();
 
-        foreach ($userAdverts as $advert)
-        {
-            if ($advert->notPublished() and Carbon::now()->diffInHours($advert->updated_at) > $this->remindUsersToFinishAdvert)
-            {
+        foreach ($userAdverts as $advert) {
+            if ($advert->notPublished() and Carbon::now()->diffInHours($advert->updated_at) > $this->remindUsersToFinishAdvert) {
                 $advertsNotFinished->push($advert);
+                $this->unfinishedAdverts = $advertsNotFinished;
+                return true;
             }
         }
 
-        $this->unfinishedAdverts = $advertsNotFinished;
-
-        return $advertsNotFinished->count() > 0 ;
+        return false;
     }
 
     public function getEmailView(): string

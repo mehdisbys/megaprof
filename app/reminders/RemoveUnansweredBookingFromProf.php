@@ -22,7 +22,7 @@ class RemoveUnansweredBookingFromProf implements ReminderInterface
 
     public function getReminderId(): string
     {
-        return $this->reminderId;
+        return $this->reminderId . $this->unansweredAdverts->first()->id;
     }
 
     public function reminderIsDueForUser(User $user): bool
@@ -36,11 +36,11 @@ class RemoveUnansweredBookingFromProf implements ReminderInterface
                 $this->timeBeforeRemovingAdverFromProf) {
                 $bookingsList->push($booking);
                 event(new CancelUnansweredBookingTriggered($booking, $user));
+                $this->unansweredAdverts = $bookingsList;
+                return true;
             }
         }
-
-        $this->unansweredAdverts = $bookingsList;
-        return $this->unansweredAdverts->count() > 0;
+        return false;
     }
 
     public function getEmailView(): string

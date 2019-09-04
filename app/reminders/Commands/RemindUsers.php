@@ -68,7 +68,9 @@ class RemindUsers extends Command
     {
         $users = $reminder->getUsersToRemind();
 
+
         foreach ($users as $user) {
+
             if ($reminder->reminderIsDueForUser($user) and
                 ReminderTracker::reminderHasNotBeenSent($user, $reminder)
             ) {

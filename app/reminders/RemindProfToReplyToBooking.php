@@ -21,7 +21,7 @@ class RemindProfToReplyToBooking implements ReminderInterface
 
     public function getReminderId(): string
     {
-        return $this->reminderId;
+        return $this->reminderId . $this->unfinishedBookings->first()->id;
     }
 
     public function reminderIsDueForUser(User $user): bool
@@ -30,17 +30,15 @@ class RemindProfToReplyToBooking implements ReminderInterface
 
         $bookingsWithoutReply = new \Illuminate\Support\Collection();
 
-        foreach ($userBookings as $booking)
-        {
-            if (Carbon::now()->diffInHours($booking->updated_at) > $this->remindUsersToFinishAdvert)
-            {
+        foreach ($userBookings as $booking) {
+            if (Carbon::now()->diffInHours($booking->updated_at) > $this->remindUsersToFinishAdvert) {
                 $bookingsWithoutReply->push($booking);
+                $this->unfinishedBookings = $bookingsWithoutReply;
+                return true;
             }
         }
 
-        $this->unfinishedBookings = $bookingsWithoutReply;
-
-        return $bookingsWithoutReply->count() > 0 ;
+        return false;
     }
 
     public function getEmailView(): string
