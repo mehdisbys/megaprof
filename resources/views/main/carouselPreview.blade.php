@@ -8,7 +8,7 @@
 
             <div id="profile-author" class="single-view-profile-author-profile">
                 <div class="single-view-profile-info">
-                    <a href="/{{$advert->slug}}"> <img src="{{ $advert->getAvatar() }}" alt="avatar"></a>
+                    <a href="/{{$advert->slug}}"> <img src="{{ $advert->getAdvertAvatar() }}" alt="avatar"></a>
                     <h3><a href="/{{$advert->slug}}" class="center">{{ucfirst(strtolower($advert->user->firstname ))}}</a></h3>
                     <ul class="iconlist-info">
                         {{--@if($advert->can_webcam)--}}
