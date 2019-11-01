@@ -14,10 +14,10 @@ RUN apt-get install -y zip unzip
 RUN apt-get install -y software-properties-common python-software-properties
 RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 
-RUN apt-get update -y && apt-get install -y php7.1 php7.1-fpm php7.1-cli php7.1-common php7.1-mbstring php7.1-gd php7.1-intl php7.1-xml php7.1-pdo php7.1-mysql php7.1-mcrypt php7.1-zip php7.1-curl
+RUN apt-get update -y && apt-get install -y php7.2 php7.2-fpm php7.2-cli php7.2-common php7.2-mbstring php7.2-gd php7.2-intl php7.2-xml php7.2-pdo php7.2-mysql php7.2-mcrypt php7.2-zip php7.2-curl
 
 
-RUN apt-get install apache2 libapache2-mod-php7.1 -y
+RUN apt-get install apache2 libapache2-mod-php7.2 -y
 RUN apt-get install git nodejs npm composer nano tree vim curl ftp -y
 RUN npm install -g bower grunt-cli gulp
 RUN phpenmod pdo_mysql
