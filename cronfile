@@ -23,5 +23,5 @@
 
 * * * * * cd /var/www && php artisan remind_users:check >> ./cronlogs
 0 0 * * 0 cd /var/www && php artisan search_statistics >> ./cronlogs
-* * * * * cd /var/www && php artisan queue:listen >> ./cronlogs
-* * * * * cd /var/www && php artisan schedule:run >> ./cronlogs
+#* * * * * cd /var/www && php artisan queue:listen >> ./cronlogs
+#* * * * * cd /var/www && php artisan schedule:run >> ./cronlogs

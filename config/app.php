@@ -159,7 +159,7 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class,
+   //     Orangehill\Iseed\IseedServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
         Gbrock\Table\Providers\TableServiceProvider::class
